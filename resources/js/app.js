@@ -1,4 +1,3 @@
-// import './bootstrap';
 import '../plugins/jquery/jquery.min.js';
 import '../plugins/bootstrap/js/bootstrap.bundle.min.js';
 import '../plugins/morris/morris.min.js';
@@ -13,4 +12,3 @@ import '../plugins/slimScroll/jquery.slimscroll.min.js';
 import '../plugins/fastclick/fastclick.js';
 import './admin/adminlte.min.js';
 import './admin/pages/dashboard.js';
-import './admin/demo.js';
