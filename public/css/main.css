@@ -1,0 +1,19 @@
+.ck {
+    background-color: #272e48 !important;
+}
+
+.ck-icon, .ck-button__label, .ck-dropdown__button, .ck-input, .ck-input-text, .ck-label, .ck-labeled-field-view__status, .ck-content p {
+    color: #a9a9a9 !important;
+}
+
+.ck-editor__editable {
+    min-height: 250px;
+}
+
+.ck-content, .ck-toolbar_grouping {
+    border-color: #464D5C !important;
+}
+
+.ck-content:focus {
+    border-color: #464D5C !important;
+}

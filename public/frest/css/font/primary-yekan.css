@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "yekan-bold";
+    src: url("../../fonts/yekan/yekan-bakh-faNum-bold.eot");
+    src: url("../../fonts/yekan/yekan-bakh-faNum-bold.eot?#iefix") format("embedded-opentype"),
+    url("../../fonts/yekan/yekan-bakh-faNum-bold.woff") format("woff"),
+    url("../../fonts/yekan/yekan-bakh-faNum-bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "yekan-regular";
+    src: url("../../fonts/yekan/yekan-bakh-faNum-regular.eot");
+    src: url("../../fonts/yekan/yekan-bakh-faNum-regular.eot?#iefix") format("embedded-opentype"),
+    url("../../fonts/yekan/yekan-bakh-faNum-regular.woff") format("woff"),
+    url("../../fonts/yekan/yekan-bakh-faNum-regular.ttf") format("truetype");
+}
+
+* {
+    font-family: yekan-bold, serif;
+}
