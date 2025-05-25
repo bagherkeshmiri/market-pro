@@ -18,7 +18,7 @@ class Login extends Component
     public function login(): RedirectResponse
     {
         $this->validate([
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required|min:8'
         ]);
         try {
@@ -26,14 +26,11 @@ class Login extends Component
                 ->where('email', $this->email)
                 ->first();
 
-            if (is_null($admin)) {
+            if (is_null($admin) || !Hash::check($this->password, $admin->password)) {
                 session()->flash('error', __('global.wrong_inputs'));
                 return redirect()->back();
             }
-            if (!Hash::check($this->password, $admin->password)) {
-                session()->flash('error', __('global.wrong_inputs'));
-                return redirect()->back();
-            }
+
             Auth::loginUsingId($admin->id);
             return redirect()->route('admin.dashboard');
         } catch (Exception) {
