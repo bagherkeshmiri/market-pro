@@ -1,1 +1,16 @@
-import './bootstrap';
+// import './bootstrap';
+import '../plugins/jquery/jquery.min.js';
+import '../plugins/bootstrap/js/bootstrap.bundle.min.js';
+import '../plugins/morris/morris.min.js';
+import '../plugins/sparkline/jquery.sparkline.min.js';
+import '../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js';
+import '../plugins/jvectormap/jquery-jvectormap-world-mill-en.js';
+import '../plugins/knob/jquery.knob.js';
+import '../plugins/daterangepicker/daterangepicker.js';
+import '../plugins/datepicker/bootstrap-datepicker.js';
+import '../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js';
+import '../plugins/slimScroll/jquery.slimscroll.min.js';
+import '../plugins/fastclick/fastclick.js';
+import './admin/adminlte.min.js';
+import './admin/pages/dashboard.js';
+import './admin/demo.js';
