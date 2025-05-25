@@ -8,10 +8,30 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Morilog\Jalali\Jalalian;
 
+/**
+ * 
+ *
+ * @property-read mixed $created_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Role> $roles
+ * @property-read int|null $roles_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission query()
+ * @property int $id
+ * @property string $fa_name
+ * @property string $en_name
+ * @property string|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereEnName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereFaName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Permission extends Model
 {
-    use HasFactory;
-
     protected $table = 'permissions';
 
     protected $fillable = [

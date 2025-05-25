@@ -12,29 +12,29 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    public $username;
+    public $email;
     public $password;
 
     public function login(): RedirectResponse
     {
         $this->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required|min:8'
         ]);
         try {
-            $admin = User::query()
-                ->where('username', $this->username)
+            $admin = User::IsAdmin()
+                ->where('email', $this->email)
                 ->first();
 
             if (is_null($admin)) {
-                session()->flash('error', __('global.wrong_username'));
+                session()->flash('error', __('global.wrong_inputs'));
                 return redirect()->back();
             }
             if (!Hash::check($this->password, $admin->password)) {
-                session()->flash('error', __('global.wrong_password'));
+                session()->flash('error', __('global.wrong_inputs'));
                 return redirect()->back();
             }
-            Auth::guard('admin')->loginUsingId($admin->id);
+            Auth::loginUsingId($admin->id);
             return redirect()->route('admin.dashboard');
         } catch (Exception) {
             session()->flash('error', __('global.error_message'));
