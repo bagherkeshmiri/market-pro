@@ -60,7 +60,6 @@ class User extends Authenticatable
         ];
     }
 
-
     public function scopeIsAdmin(Builder $query): Builder
     {
         return $query->where('role', UserRole::Admin);
