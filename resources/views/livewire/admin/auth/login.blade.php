@@ -34,12 +34,12 @@
 
 
                     <form wire:submit.prevent="login">
-
+                        @csrf
                         <div class="form-group mb-50">
-                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'username' , 'content' => 'نام کاربری'] )
+                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'email' , 'content' =>__('login.email')] )
                             @include('frest-components.tags.required-tag')
-                            @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'username' , 'classes' => 'text-left' , 'id' => 'username' , 'dir' => 'ltr' , 'icon' => emailIcon() , 'attributes' => 'required' ])
-                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'username' ])
+                            @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'email' , 'classes' => 'text-left' , 'id' => 'email' , 'dir' => 'ltr' , 'icon' => emailIcon() , 'attributes' => 'required' ])
+                            @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'email' ])
                         </div>
 
                         <div class="form-group">

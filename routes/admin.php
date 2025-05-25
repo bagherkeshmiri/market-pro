@@ -31,7 +31,7 @@ use App\Http\Controllers\admin\AccountController;
 
 Route::prefix('auth')
     ->group(function () {
-        Route::get('/management', Login::class)->name('show-login');
+        Route::get('/management', Login::class)->name('login');
 
         Route::controller(AuthController::Class)->group(function () {
             Route::get('/logout', 'logout')->name('logout');

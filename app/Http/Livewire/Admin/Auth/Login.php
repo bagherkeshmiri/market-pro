@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Admin\Auth;
 
 use App\Models\User;
-use App\Repositories\Admin\AdminRepositoryInterface;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +20,7 @@ class Login extends Component
             'email' => 'required|email',
             'password' => 'required|min:8'
         ]);
+
         try {
             $admin = User::IsAdmin()
                 ->where('email', $this->email)
