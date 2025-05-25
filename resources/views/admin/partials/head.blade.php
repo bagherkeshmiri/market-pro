@@ -15,7 +15,6 @@
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/css/themes/dark-layout.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/css/themes/semi-dark-layout.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/css/core/menu/menu-types/horizontal-menu.css') }}">
-    {!! htmlScriptTagJsApi() !!}
 
     <style>
         textarea {
