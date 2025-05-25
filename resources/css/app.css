@@ -1,11 +1,39 @@
-@import 'tailwindcss';
+@import './frest/core/colors/palette-noui.css';
+@import './frest/core/menu/menu-types/horizontal-menu.css';
+@import './frest/font/primary-iran-sans.css';
+@import './frest/pages/app-chat.css';
+@import './frest/pages/app-email.css';
+@import './frest/pages/app-file-manager.css';
+@import './frest/pages/app-invoice.css';
+@import './frest/pages/app-kanban.css';
+@import './frest/pages/app-todo.css';
+@import './frest/pages/authentication.css';
+@import './frest/pages/chart-chartist.css';
+@import './frest/pages/coming-soon.css';
+@import './frest/pages/dashboard-analytics.css';
+@import './frest/pages/dashboard-ecommerce.css';
+@import './frest/pages/faq.css';
+@import './frest/pages/page-knowledge-base.css';
+@import './frest/pages/page-user-profile.css';
+@import './frest/pages/page-users.css';
+@import './frest/pages/search.css';
+@import './frest/pages/widgets.css';
+@import './frest/plugins/animate/animate.css';
+@import './frest/plugins/calendars/app-calendar.css';
+@import './frest/plugins/extensions/context-menu.css';
+@import './frest/plugins/extensions/drag-and-drop.css';
+@import './frest/plugins/extensions/ext-component-treeview.css';
+@import './frest/plugins/extensions/noui-slider.css';
+@import './frest/plugins/extensions/swiper.css';
+@import './frest/plugins/extensions/toastr.css';
+@import './frest/plugins/file-uploaders/dropzone.css';
+@import './frest/plugins/forms/validation/form-validation.css';
+@import './frest/plugins/forms/wizard.css';
+@import './frest/plugins/tour/tour.css';
+@import './frest/themes/dark-layout.css';
+@import './frest/themes/semi-dark-layout.css';
+@import './frest/bootstrap.min.css';
+@import './frest/bootstrap-extended.css';
+@import './frest/colors.css';
+@import './frest/components.css';
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
-
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-}
