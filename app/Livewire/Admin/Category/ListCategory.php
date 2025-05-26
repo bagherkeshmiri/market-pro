@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Category;
+namespace App\Livewire\Admin\Category;
 
 use App\Repositories\Category\CategoryRepositoryInterface;
 use Livewire\Component;

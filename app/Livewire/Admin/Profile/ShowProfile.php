@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Profile;
+namespace App\Livewire\Admin\Profile;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;

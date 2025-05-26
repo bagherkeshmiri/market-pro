@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Livewire\Admin\MainMenu;
+namespace App\Livewire\Admin\MainMenu;
 
-use App\Repositories\Article\ArticleRepositoryInterface;
-use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Models\MainMenu;
 use App\Repositories\MainMenu\MainMenuRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Livewire\Component;
 
-class CreateMainMenu extends Component
+class ShowMainMenu extends Component
 {
+    public object $main_menu;
     public $title;
     public $address;
     protected object $mainMenuRepository;
@@ -21,14 +20,20 @@ class CreateMainMenu extends Component
         $this->mainMenuRepository = $mainMenuRepo;
     }
 
+    public function mount(MainMenu $main_menu)
+    {
+        $this->title = $main_menu->key;
+        $this->address = $main_menu->value;
+    }
+
     public function render()
     {
-        return view('livewire.admin.mainMenu.create-main-menu')->layout(
+        return view('livewire.admin.mainMenu.show-main-menu')->layout(
             'layouts.admin-layout'
         );
     }
 
-    public function store()
+    public function update()
     {
         $this->validate([
             'title' => 'required',
@@ -40,15 +45,14 @@ class CreateMainMenu extends Component
         ];
         DB::beginTransaction();
         try {
-            $this->mainMenuRepository->create($data);
+            $this->main_menu->update($data);
             DB::commit();
-            $this->reset(['title', 'address']);
             session()->flash('success', __('global.success_message'));
-            return redirect()->back();
+            return redirect()->route('admin.main_menu.show', ['main_menu' => $this->main_menu->id]);
         } catch (Exception) {
             DB::rollBack();
             session()->flash('error', __('global.error_message'));
-            return redirect()->route('admin.main_menu.create');
+            return redirect()->route('admin.main_menu.show', ['main_menu' => $this->main_menu->id]);
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\MainMenu;
+namespace App\Livewire\Admin\MainMenu;
 
 use App\Enums\IsActive;
 use App\Repositories\MainMenu\MainMenuRepositoryInterface;

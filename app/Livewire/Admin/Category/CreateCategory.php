@@ -1,24 +1,21 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Category;
+namespace App\Livewire\Admin\Category;
 
-use App\Models\Category;
 use App\Repositories\Category\CategoryRepositoryInterface;
 use Exception;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
-class ShowCategory extends Component
+class CreateCategory extends Component
 {
-    public object $category;
     public $title;
-    public $parentId;
-    public $type;
-    public $description;
     public $seoTitle;
+    public $parentId;
+    public $description;
     public $enTitle;
     public $slug;
+    public $type = [];
     protected object $categoryRepository;
 
     public function boot(CategoryRepositoryInterface $categoryRepo)
@@ -26,50 +23,40 @@ class ShowCategory extends Component
         $this->categoryRepository = $categoryRepo;
     }
 
-    public function mount(Category $category)
-    {
-        $this->title = $category->title;
-        $this->parentId = $category->parent_id;
-        $this->type = $category->type;
-        $this->description = $category->description;
-        $this->seoTitle = $category->seo_title;
-        $this->enTitle = $category->en_title;
-        $this->slug = $category->slug;
-    }
-
     public function render()
     {
         $allCategories = $this->categoryRepository->all()->pluck('id', 'title')->toArray();
-        Arr::forget($allCategories, $this->category->title);
-        return view('livewire.admin.category.show-category', [
-            'allCategories' => $allCategories,
-            'categoryType' => $this->categoryRepository->getModel()->getCategoryTypeList(),
-        ])->layout('layouts.admin-layout');
+        return view(
+            'livewire.admin.category.create-category',
+            [
+                'allCategories' => $allCategories,
+                'categoryType' => $this->categoryRepository->getModel()->getCategoryTypeList(),
+            ],
+        )->layout('layouts.admin-layout');
     }
 
-    public function update()
+    public function store()
     {
         $this->validate([
             'title' => 'required',
             'seoTitle' => 'required',
-            'type' => 'required',
+            'type' => 'required|numeric',
             'enTitle' => 'required',
         ]);
-
         $data = [
             'title' => $this->title,
-            'parent_id' => ($this->parentId == 0) ? null : $this->parentId,
+            'parent_id' => $this->parentId,
             'description' => $this->description,
             'seo_title' => $this->seoTitle,
             'type' => $this->type,
             'en_title' => $this->enTitle,
             'slug' => makeSlug($this->enTitle),
         ];
-
         DB::beginTransaction();
         try {
-            $this->category->update($data);
+            $this->categoryRepository->create($data);
             DB::commit();
+            $this->reset(['title', 'seoTitle', 'type', 'description']);
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.category.index');
         } catch (Exception) {

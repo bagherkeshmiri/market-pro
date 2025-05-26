@@ -2,22 +2,22 @@
 
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\MainMenuController;
-use App\Http\Livewire\Admin\Account\CreateAccount;
-use App\Http\Livewire\Admin\Account\ListAccount;
-use App\Http\Livewire\Admin\Account\ShowAccount;
-use App\Http\Livewire\Admin\Auth\Login;
-use App\Http\Livewire\Admin\Category\CreateCategory;
-use App\Http\Livewire\Admin\Category\ListCategory;
-use App\Http\Livewire\Admin\Category\ShowCategory;
-use App\Http\Livewire\Admin\Dashboard\AdminDashboard;
-use App\Http\Livewire\Admin\MainMenu\CreateMainMenu;
-use App\Http\Livewire\Admin\MainMenu\ListMainMenu;
-use App\Http\Livewire\Admin\MainMenu\ShowMainMenu;
-use App\Http\Livewire\Admin\Profile\ChangePassword;
-use App\Http\Livewire\Admin\Profile\ShowProfile;
-use App\Http\Livewire\Admin\Role\CreateRole;
-use App\Http\Livewire\Admin\Role\ListRole;
-use App\Http\Livewire\Admin\Role\ShowRole;
+use App\Livewire\Admin\Account\CreateAccount;
+use App\Livewire\Admin\Account\ListAccount;
+use App\Livewire\Admin\Account\ShowAccount;
+use App\Livewire\Admin\Auth\Login;
+use App\Livewire\Admin\Category\CreateCategory;
+use App\Livewire\Admin\Category\ListCategory;
+use App\Livewire\Admin\Category\ShowCategory;
+use App\Livewire\Admin\Dashboard\AdminDashboard;
+use App\Livewire\Admin\MainMenu\CreateMainMenu;
+use App\Livewire\Admin\MainMenu\ListMainMenu;
+use App\Livewire\Admin\MainMenu\ShowMainMenu;
+use App\Livewire\Admin\Profile\ChangePassword;
+use App\Livewire\Admin\Profile\ShowProfile;
+use App\Livewire\Admin\Role\CreateRole;
+use App\Livewire\Admin\Role\ListRole;
+use App\Livewire\Admin\Role\ShowRole;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\RoleController;
@@ -33,13 +33,13 @@ Route::prefix('auth')
     ->group(function () {
         Route::get('/management', Login::class)->name('login');
 
-        Route::controller(AuthController::Class)->group(function () {
+        Route::controller(AuthController::class)->group(function () {
             Route::get('/logout', 'logout')->name('logout');
         });
     });
 
 Route::prefix('dashboard')->group(function () {
-    Route::get('/', AdminDashboard::Class)->name('dashboard');
+    Route::get('/', AdminDashboard::class)->name('dashboard');
 
     Route::name('role.')->prefix('role')->group(function () {
         Route::get('/', ListRole::class)->middleware('CheckListPermission')->name('index');

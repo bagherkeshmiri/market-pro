@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Livewire\Admin\MainMenu;
+namespace App\Livewire\Admin\MainMenu;
 
-use App\Models\MainMenu;
+use App\Repositories\Article\ArticleRepositoryInterface;
+use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Repositories\MainMenu\MainMenuRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
-class ShowMainMenu extends Component
+class CreateMainMenu extends Component
 {
-    public object $main_menu;
     public $title;
     public $address;
     protected object $mainMenuRepository;
@@ -20,20 +21,14 @@ class ShowMainMenu extends Component
         $this->mainMenuRepository = $mainMenuRepo;
     }
 
-    public function mount(MainMenu $main_menu)
-    {
-        $this->title = $main_menu->key;
-        $this->address = $main_menu->value;
-    }
-
     public function render()
     {
-        return view('livewire.admin.mainMenu.show-main-menu')->layout(
+        return view('livewire.admin.mainMenu.create-main-menu')->layout(
             'layouts.admin-layout'
         );
     }
 
-    public function update()
+    public function store()
     {
         $this->validate([
             'title' => 'required',
@@ -45,14 +40,15 @@ class ShowMainMenu extends Component
         ];
         DB::beginTransaction();
         try {
-            $this->main_menu->update($data);
+            $this->mainMenuRepository->create($data);
             DB::commit();
+            $this->reset(['title', 'address']);
             session()->flash('success', __('global.success_message'));
-            return redirect()->route('admin.main_menu.show', ['main_menu' => $this->main_menu->id]);
+            return redirect()->back();
         } catch (Exception) {
             DB::rollBack();
             session()->flash('error', __('global.error_message'));
-            return redirect()->route('admin.main_menu.show', ['main_menu' => $this->main_menu->id]);
+            return redirect()->route('admin.main_menu.create');
         }
     }
 }

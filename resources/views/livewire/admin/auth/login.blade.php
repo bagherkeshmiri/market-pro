@@ -34,9 +34,9 @@
 
 
                     <form wire:submit.prevent="login">
-                        @csrf
+
                         <div class="form-group mb-50">
-                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'email' , 'content' =>__('login.email')] )
+                            @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'email' , 'content' => __('login.email')] )
                             @include('frest-components.tags.required-tag')
                             @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'email' , 'classes' => 'text-left' , 'id' => 'email' , 'dir' => 'ltr' , 'icon' => emailIcon() , 'attributes' => 'required' ])
                             @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'email' ])

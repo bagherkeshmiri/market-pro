@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Role;
+namespace App\Livewire\Admin\Role;
 
 use App\Repositories\Permission\PermissionRepositoryInterface;
 use App\Repositories\Role\RoleRepositoryInterface;

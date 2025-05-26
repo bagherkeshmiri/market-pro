@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Auth;
+namespace App\Livewire\Admin\Auth;
 
 use App\Models\User;
 use Exception;
@@ -20,6 +20,12 @@ class Login extends Component
             'email' => 'required|email',
             'password' => 'required|min:8'
         ]);
+
+
+        dd(
+            $this->email
+        );
+
 
         try {
             $admin = User::IsAdmin()
