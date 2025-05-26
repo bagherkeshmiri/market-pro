@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Admin\Auth;
 
-use App\Models\User;
 use Exception;
-use Illuminate\Http\RedirectResponse;
+use App\Models\User;
+use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Livewire\Component;
+use Illuminate\Http\RedirectResponse;
 
 class Login extends Component
 {
@@ -20,12 +20,6 @@ class Login extends Component
             'email' => 'required|email',
             'password' => 'required|min:8'
         ]);
-
-
-        dd(
-            $this->email
-        );
-
 
         try {
             $admin = User::IsAdmin()
