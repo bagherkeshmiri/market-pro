@@ -50,7 +50,7 @@
                                         </li>
                                         <li class="nav-item pb-0">
                                             <a class="nav-link d-flex px-1 align-items-center" id="password-tab"
-                                               href="{{ route('admin.profile.changePassword') }}">
+                                               href="{{ route('admin.profile.change-password') }}">
                                                 <i class="bx bx-lock"></i><span
                                                     class="d-none d-md-block">تغییر رمز عبور</span></a>
                                         </li>

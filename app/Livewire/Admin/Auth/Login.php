@@ -14,7 +14,7 @@ class Login extends Component
     public $email;
     public $password;
 
-    public function login(): RedirectResponse
+    public function login()
     {
         $this->validate([
             'email' => 'required|email',
