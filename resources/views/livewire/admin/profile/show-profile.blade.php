@@ -36,7 +36,7 @@
                                          width="140">
                                 </div>
                                 <div class="user-profile-text">
-                                    <h4 class="mb-0 text-bold-500 profile-text-color">{{ $admin->full_name }}</h4>
+                                    <h4 class="mb-0 text-bold-500 profile-text-color">{{ $admin->name }}</h4>
                                 </div>
                                 <!-- user profile nav tabs start -->
                                 <div class="card-body px-0">
@@ -78,9 +78,9 @@
                                                         <h5 class="card-title">اطلاعات کامل</h5>
                                                         <div class="row">
                                                             <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                                                                <h6 class="mb-0"><small class="text-muted">نام و نام
-                                                                        خانوادگی</small></h6>
-                                                                <p><span class="ltr-text">{{ $admin->full_name }}</span>
+                                                                <h6 class="mb-0"><small class="text-muted"> نام
+                                                                    </small></h6>
+                                                                <p><span class="ltr-text">{{ $admin->name }}</span>
                                                                 </p>
                                                             </div>
                                                             <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
@@ -100,7 +100,7 @@
                                                                         نام</small>
                                                                 </h6>
                                                                 <p><span
-                                                                        class="ltr-text">{{ $admin->created_at }}</span>
+                                                                        class="ltr-text">{{ jalali($admin->created_at) }}</span>
                                                                 </p>
                                                             </div>
                                                             <div class="col-12">

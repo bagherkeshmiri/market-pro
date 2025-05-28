@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Morilog\Jalali\Jalalian;
 
 /**
- * 
+ *
  *
  * @property-read mixed $created_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Role> $roles
@@ -48,10 +48,4 @@ class Permission extends Model
         return $this->belongsToMany(Role::class, 'role_permission');
     }
 
-    public function createdAt(): Attribute
-    {
-        return Attribute::make(
-            get: fn($value) => Jalalian::forge($value)->format('Y/m/d H:i:s'),
-        );
-    }
 }

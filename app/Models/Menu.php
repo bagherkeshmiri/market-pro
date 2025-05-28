@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Morilog\Jalali\Jalalian;
 
 /**
- * 
+ *
  *
  * @property IsActive $is_active
  * @property-read mixed $created_at
@@ -33,10 +33,4 @@ class Menu extends Model
         'is_active' => IsActive::class,
     ];
 
-    public function createdAt(): Attribute
-    {
-        return Attribute::make(
-            get: fn($value) => Jalalian::forge($value)->format('Y/m/d H:i:s'),
-        );
-    }
 }
