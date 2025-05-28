@@ -191,7 +191,7 @@
                         <a class="dropdown-toggle nav-link dropdown-user-link"
                                                                    href="#" data-toggle="dropdown">
                             <div class="user-nav d-lg-flex d-none"><span
-                                    class="user-name">{{ auth('admin')->user()->full_name  }}</span><span
+                                    class="user-name">{{ auth()->user()->full_name  }}</span><span
                                     class="user-status"></span></div>
                             <span>
                                 <img class="round" src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"

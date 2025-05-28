@@ -31,56 +31,58 @@ use App\Http\Controllers\admin\AccountController;
 
 Route::prefix('auth')
     ->group(function () {
-        Route::get('/management', Login::class)->name('login');
+        Route::middleware('ValidAdmin')->get('/management', Login::class)->name('login');
 
         Route::controller(AuthController::class)->group(function () {
             Route::get('/logout', 'logout')->name('logout');
         });
     });
 
-Route::prefix('dashboard')->group(function () {
-    Route::get('/', AdminDashboard::class)->name('dashboard');
+Route::prefix('dashboard')
+    ->middleware('InvalidAdmin')
+    ->group(function () {
+        Route::get('/', AdminDashboard::class)->name('dashboard');
 
-    Route::name('role.')->prefix('role')->group(function () {
-        Route::get('/', ListRole::class)->middleware('CheckListPermission')->name('index');
-        Route::get('/create', CreateRole::class)->middleware('CheckCreatePermission')->name('create');
-        Route::get('/show/{role}', ShowRole::class)->middleware('CheckEditPermission')->name('show');
-        Route::get('/delete/{role}', [RoleController::class, 'delete'])->middleware('CheckDeletePermission')->name('delete');
+        Route::name('role.')->prefix('role')->group(function () {
+            Route::get('/', ListRole::class)->middleware('CheckListPermission')->name('index');
+            Route::get('/create', CreateRole::class)->middleware('CheckCreatePermission')->name('create');
+            Route::get('/show/{role}', ShowRole::class)->middleware('CheckEditPermission')->name('show');
+            Route::get('/delete/{role}', [RoleController::class, 'delete'])->middleware('CheckDeletePermission')->name('delete');
+        });
+
+        Route::name('user.')
+            ->prefix('users')
+            ->group(function () {
+                Route::get('/', ListAccount::class)->middleware('CheckListPermission')->name('index');
+                Route::get('/create', CreateAccount::class)->middleware('CheckCreatePermission')->name('create');
+                Route::get('/show/{admin}', ShowAccount::class)->middleware('CheckEditPermission')->name('show');
+                Route::get('/delete/{admin}', [AccountController::class, 'delete'])->middleware('CheckDeletePermission')->name('delete');
+            });
+
+        Route::name('profile.')
+            ->prefix('profile')
+            ->group(function () {
+                Route::get('/', ShowProfile::class)->name('index');
+                Route::get('/changePass', ChangePassword::class)->name('change-password');
+            });
+
+        Route::name('category.')
+            ->prefix('category')
+            ->group(function () {
+                Route::get('/', ListCategory::class)->middleware('CheckListPermission')->name('index');
+                Route::get('/create', CreateCategory::class)->middleware('CheckCreatePermission')->name('create');
+                Route::get('/show/{category}', ShowCategory::class)->middleware('CheckEditPermission')->name('show');
+                Route::get('/delete/{category}', [CategoryController::class, 'delete'])->middleware('CheckDeletePermission')->name('delete');
+            });
+
+        Route::name('menu.')
+            ->prefix('menu')
+            ->group(function () {
+                Route::get('/', ListMainMenu::class)->middleware('CheckListPermission')->name('index');
+                Route::get('/create', CreateMainMenu::class)->middleware('CheckCreatePermission')->name('create');
+                Route::get('/show/{main_menu}', ShowMainMenu::class)->middleware('CheckEditPermission')->name('show');
+                Route::get('/delete/{main_menu}', [MainMenuController::class, 'delete'])->middleware('CheckDeletePermission')->name('delete');
+                Route::get('/enable/{main_menu}', [MainMenuController::class, 'enable'])->middleware('CheckEnablePermission')->name('enable');
+                Route::get('/disable/{main_menu}', [MainMenuController::class, 'disable'])->middleware('CheckDisablePermission')->name('disable');
+            });
     });
-
-    Route::name('user.')
-        ->prefix('users')
-        ->group(function () {
-            Route::get('/', ListAccount::class)->middleware('CheckListPermission')->name('index');
-            Route::get('/create', CreateAccount::class)->middleware('CheckCreatePermission')->name('create');
-            Route::get('/show/{admin}', ShowAccount::class)->middleware('CheckEditPermission')->name('show');
-            Route::get('/delete/{admin}', [AccountController::class, 'delete'])->middleware('CheckDeletePermission')->name('delete');
-        });
-
-    Route::name('profile.')
-        ->prefix('profile')
-        ->group(function () {
-            Route::get('/', ShowProfile::class)->name('index');
-            Route::get('/changePass', ChangePassword::class)->name('change-password');
-        });
-
-    Route::name('category.')
-        ->prefix('category')
-        ->group(function () {
-            Route::get('/', ListCategory::class)->middleware('CheckListPermission')->name('index');
-            Route::get('/create', CreateCategory::class)->middleware('CheckCreatePermission')->name('create');
-            Route::get('/show/{category}', ShowCategory::class)->middleware('CheckEditPermission')->name('show');
-            Route::get('/delete/{category}', [CategoryController::class, 'delete'])->middleware('CheckDeletePermission')->name('delete');
-        });
-
-    Route::name('menu.')
-        ->prefix('menu')
-        ->group(function () {
-            Route::get('/', ListMainMenu::class)->middleware('CheckListPermission')->name('index');
-            Route::get('/create', CreateMainMenu::class)->middleware('CheckCreatePermission')->name('create');
-            Route::get('/show/{main_menu}', ShowMainMenu::class)->middleware('CheckEditPermission')->name('show');
-            Route::get('/delete/{main_menu}', [MainMenuController::class, 'delete'])->middleware('CheckDeletePermission')->name('delete');
-            Route::get('/enable/{main_menu}', [MainMenuController::class, 'enable'])->middleware('CheckEnablePermission')->name('enable');
-            Route::get('/disable/{main_menu}', [MainMenuController::class, 'disable'])->middleware('CheckDisablePermission')->name('disable');
-        });
-});

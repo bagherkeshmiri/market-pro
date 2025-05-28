@@ -17,7 +17,7 @@ class ChangePassword extends Component
 
     public function boot()
     {
-        $this->admin = Auth::guard('admin')->user();
+        $this->admin = auth()->user();
     }
 
     public function render()
@@ -29,7 +29,7 @@ class ChangePassword extends Component
     {
         if (!Hash::check($this->oldPass, $this->admin->password)) {
             session()->flash('error', 'رمز عبور قبلی نادرست وارد شده است');
-            return redirect()->route('admin.profile.changePassword');
+            return redirect()->route('admin.profile.change-password');
         }
         DB::beginTransaction();
         try {
@@ -38,11 +38,11 @@ class ChangePassword extends Component
             ]);
             DB::commit();
             session()->flash('success', __('global.success_message'));
-            return redirect()->route('admin.profile.changePassword');
+            return redirect()->route('admin.profile.change-password');
         } catch (Exception) {
             DB::rollBack();
             session()->flash('error', __('global.error_message'));
-            return redirect()->route('admin.profile.changePassword');
+            return redirect()->route('admin.profile.change-password');
         }
     }
 }

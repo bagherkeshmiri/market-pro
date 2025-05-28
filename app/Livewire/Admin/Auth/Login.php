@@ -2,19 +2,18 @@
 
 namespace App\Livewire\Admin\Auth;
 
-use Exception;
 use App\Models\User;
-use Livewire\Component;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
+use Livewire\Component;
 
 class Login extends Component
 {
     public $email;
     public $password;
 
-    public function login(): RedirectResponse
+    public function login()
     {
         $this->validate([
             'email' => 'required|email',
