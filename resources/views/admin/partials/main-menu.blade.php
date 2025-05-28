@@ -26,25 +26,21 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
-                    @can('create')
                         <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.admin.create') }}"
+                            <a class="dropdown-item align-items-center" href="{{ route('admin.user.create') }}"
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
                                 ایجاد مدیر
                             </a>
                         </li>
-                    @endcan
 
-                    @can('show')
                         <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.admin.index') }}"
+                            <a class="dropdown-item align-items-center" href="{{ route('admin.user.index') }}"
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
                                 لیست مدیران
                             </a>
                         </li>
-                    @endcan
 
 
                 </ul>
@@ -56,7 +52,6 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
-                    @can('create')
                         <li data-menu="">
                             <a class="dropdown-item align-items-center" href="{{ route('admin.role.create') }}"
                                data-toggle="dropdown">
@@ -64,9 +59,7 @@
                                 ایجاد نقش
                             </a>
                         </li>
-                    @endcan
 
-                    @can('show')
                         <li data-menu="">
                             <a class="dropdown-item align-items-center" href="{{ route('admin.role.index') }}"
                                data-toggle="dropdown">
@@ -74,7 +67,6 @@
                                 لیست نقش ها
                             </a>
                         </li>
-                    @endcan
 
                 </ul>
             </li>
@@ -85,7 +77,6 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
-                    @can('create')
                         <li data-menu="">
                             <a class="dropdown-item align-items-center" href="{{ route('admin.category.create') }}"
                                data-toggle="dropdown">
@@ -93,9 +84,7 @@
                                 ایجاد دسته بندی
                             </a>
                         </li>
-                    @endcan
 
-                    @can('show')
                         <li data-menu="">
                             <a class="dropdown-item align-items-center" href="{{ route('admin.category.index') }}"
                                data-toggle="dropdown">
@@ -103,7 +92,6 @@
                                 لیست دسته بندی
                             </a>
                         </li>
-                    @endcan
 
                 </ul>
             </li>
@@ -115,25 +103,21 @@
                 <ul class="dropdown-menu dropdown-menu-right">
 
 
-                    @can('create')
                         <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.article.create') }}"
+                            <a class="dropdown-item align-items-center" href=""
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
                                 ایجاد محصول
                             </a>
                         </li>
-                    @endcan
 
-                    @can('show')
                         <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.article.index') }}"
+                            <a class="dropdown-item align-items-center" href=""
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
                                 لیست محصولات
                             </a>
                         </li>
-                    @endcan
 
 
                 </ul>
@@ -147,25 +131,21 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
-                    @can('create')
                         <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.main_menu.create') }}"
+                            <a class="dropdown-item align-items-center" href=""
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
                                 ایجاد منو
                             </a>
                         </li>
-                    @endcan
 
-                    @can('show')
                         <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.main_menu.index') }}"
+                            <a class="dropdown-item align-items-center" href=""
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
                                 لیست منو
                             </a>
                         </li>
-                    @endcan
 
                 </ul>
             </li>
