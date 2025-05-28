@@ -11,9 +11,7 @@
         </ul>
     </div>
     <div class="shadow-bottom"></div>
-    <!-- Horizontal menu content-->
     <div class="navbar-container main-menu-content" data-menu="menu-container">
-        <!-- include ../../includes/mixins-->
         <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
             <li class=" nav-item">
                 <a class="nav-link" href="{{ route('admin.dashboard') }}">
@@ -112,7 +110,7 @@
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
                     <i class="bx bx-book"></i>
-                    <span>راهنما</span>
+                    <span>محصولات</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
@@ -122,7 +120,7 @@
                             <a class="dropdown-item align-items-center" href="{{ route('admin.article.create') }}"
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
-                                ایجاد راهنما
+                                ایجاد محصول
                             </a>
                         </li>
                     @endcan
@@ -132,40 +130,11 @@
                             <a class="dropdown-item align-items-center" href="{{ route('admin.article.index') }}"
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
-                                لیست راهنما
+                                لیست محصولات
                             </a>
                         </li>
                     @endcan
 
-
-                </ul>
-            </li>
-            <li class="dropdown nav-item" data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
-                    <i class="bx bx-question-mark"></i>
-                    <span> سوالات متداول  </span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right">
-
-                    @can('create')
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.faq.create') }}"
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                ایجاد سوال متداول
-                            </a>
-                        </li>
-                    @endcan
-
-                    @can('show')
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.faq.index') }}"
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                لیست سوال متداول
-                            </a>
-                        </li>
-                    @endcan
 
                 </ul>
             </li>
@@ -174,7 +143,7 @@
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
                     <i class="bx bx-menu"></i>
-                    <span> منو اصلی  </span>
+                    <span> وب سایت  </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
@@ -200,20 +169,6 @@
 
                 </ul>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.profile.index') }}">
-                    <i class="bx bx-cog"></i>
-                    <span data-i18n="Dashboard">پروفایل</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.logout') }}">
-                    <i class="bx bx-exit"></i>
-                    <span data-i18n="Dashboard">خروج</span>
-                </a>
-            </li>
         </ul>
     </div>
-    <!-- /horizontal menu content-->
 </div>
