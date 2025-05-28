@@ -4,7 +4,6 @@ namespace App\Livewire\Admin\Auth;
 
 use App\Models\User;
 use Exception;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
