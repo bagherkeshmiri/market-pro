@@ -2,11 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Enums\UserRole;
+use App\Enums\UserType;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -15,10 +13,11 @@ class UserSeeder extends Seeder
         User::updateOrCreate(
             ['email' => 'admin@gmail.com'],
             [
-                'name' => 'super admin',
-                'role' => UserRole::Admin,
+                'name' => 'مدیر اصلی',
+                'role_id' => 1,
+                'type' => UserType::Admin,
                 'email' => 'admin@gmail.com',
-                'password' => Hash::make('12345678'),
+                'password' => '12345678',
                 'email_verified_at' => now(),
             ]
         );

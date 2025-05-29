@@ -3,7 +3,7 @@
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item">
                 <a class="navbar-brand" href="#">
-                    <h2 class="brand-text mb-0">اناردونی</h2>
+                    <h2 class="brand-text mb-0">پیکسل دونی</h2>
                 </a>
             </li>
         </ul>
@@ -18,24 +18,34 @@
                     </ul>
                 </div>
                 <ul class="nav navbar-nav float-right d-flex align-items-center">
-                    <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link"
-                                                                       id="dropdown-flag" href="#"
-                                                                       data-toggle="dropdown" aria-haspopup="true"
-                                                                       aria-expanded="false"><i
-                                class="flag-icon flag-icon-ir"></i><span class="selected-language d-lg-inline d-none">فارسی</span></a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-flag"><a
-                                class="dropdown-item" href="#" data-language="fa"><i
-                                    class="flag-icon flag-icon-ir mr-50"></i>فارسی</a><a class="dropdown-item" href="#"
-                                                                                         data-language="en"><i
-                                    class="flag-icon flag-icon-us mr-50"></i>انگلیسی</a><a class="dropdown-item"
-                                                                                           href="#"
-                                                                                           data-language="fr"><i
-                                    class="flag-icon flag-icon-fr mr-50"></i>فرانسوی</a><a class="dropdown-item"
-                                                                                           href="#"
-                                                                                           data-language="de"><i
-                                    class="flag-icon flag-icon-de mr-50"></i>آلمانی</a><a class="dropdown-item" href="#"
-                                                                                          data-language="pt"><i
-                                    class="flag-icon flag-icon-pt mr-50"></i>پرتغالی</a></div>
+                    <li class="dropdown dropdown-language nav-item">
+                        <a class="dropdown-toggle nav-link"
+                           id="dropdown-flag" href="#"
+                           data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
+                            <i class="flag-icon flag-icon-ir"></i>
+                            <span class="selected-language d-lg-inline d-none">
+                                فارسی
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-flag">
+                            <a class="dropdown-item" href="#" data-language="fa" aria-label="فارسی">
+                                <i class="flag-icon flag-icon-ir mr-50"></i> فارسی
+                            </a>
+                            <a class="dropdown-item" href="#" data-language="en" aria-label="English">
+                                <i class="flag-icon flag-icon-us mr-50"></i> English
+                            </a>
+                            <a class="dropdown-item" href="#" data-language="fr" aria-label="Français">
+                                <i class="flag-icon flag-icon-fr mr-50"></i> Français
+                            </a>
+                            <a class="dropdown-item" href="#" data-language="de" aria-label="Deutsch">
+                                <i class="flag-icon flag-icon-de mr-50"></i> Deutsch
+                            </a>
+                            <a class="dropdown-item" href="#" data-language="pt" aria-label="Português">
+                                <i class="flag-icon flag-icon-pt mr-50"></i> Português
+                            </a>
+
+                        </div>
                     </li>
                     <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i
                                 class="ficon bx bx-fullscreen"></i></a></li>
@@ -189,38 +199,26 @@
                     </li>
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link"
-                                                                   href="#" data-toggle="dropdown">
+                           href="#" data-toggle="dropdown">
                             <div class="user-nav d-lg-flex d-none"><span
-                                    class="user-name">{{ auth()->user()->full_name  }}</span><span
+                                    class="user-name">{{ auth()->user()->name  }}</span><span
                                     class="user-status"></span></div>
                             <span>
                                 <img class="round" src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
-                                       alt="avatar" height="40" width="40">
+                                     alt="avatar" height="40" width="40">
                             </span>
                         </a>
-                        {{--                        <div class="dropdown-menu pb-0">--}}
-                        {{--                            <a class="dropdown-item" href="#">--}}
-                        {{--                                <i class="bx bx-user mr-50"></i>--}}
-                        {{--                                ویرایش پروفایل--}}
-                        {{--                            </a>--}}
-                        {{--                            <a class="dropdown-item" href="#">--}}
-                        {{--                                <i class="bx bx-envelope mr-50"></i>--}}
-                        {{--                                صندوق ورودی من--}}
-                        {{--                            </a>--}}
-                        {{--                            <a class="dropdown-item" href="#">--}}
-                        {{--                                <i class="bx bx-check-square mr-50"></i>--}}
-                        {{--                                وظیفه--}}
-                        {{--                            </a>--}}
-                        {{--                            <a class="dropdown-item"--}}
-                        {{--                               href="#"><i class="bx bx-message mr-50"></i>--}}
-                        {{--                                گفتگو ها--}}
-                        {{--                            </a>--}}
-                        {{--                            <div class="dropdown-divider mb-0"></div>--}}
-                        {{--                            <a class="dropdown-item" href="{{ route('admin.logout') }}">--}}
-                        {{--                                <i class="bx bx-power-off mr-50"></i>--}}
-                        {{--                                خروج--}}
-                        {{--                            </a>--}}
-                        {{--                        </div>--}}
+                                                <div class="dropdown-menu pb-0">
+                                                    <a class="dropdown-item" href="{{ route('admin.profile.index') }}">
+                                                        <i class="bx bx-user mr-50"></i>
+                                                         پروفایل
+                                                    </a>
+                                                    <div class="dropdown-divider mb-0"></div>
+                                                    <a class="dropdown-item" href="{{ route('admin.logout') }}">
+                                                        <i class="bx bx-power-off mr-50"></i>
+                                                        خروج
+                                                    </a>
+                                                </div>
                     </li>
                 </ul>
             </div>

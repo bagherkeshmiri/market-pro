@@ -11,9 +11,7 @@
         </ul>
     </div>
     <div class="shadow-bottom"></div>
-    <!-- Horizontal menu content-->
     <div class="navbar-container main-menu-content" data-menu="menu-container">
-        <!-- include ../../includes/mixins-->
         <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
             <li class=" nav-item">
                 <a class="nav-link" href="{{ route('admin.dashboard') }}">
@@ -28,25 +26,21 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
-                    @can('create')
                         <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.admin.create') }}"
+                            <a class="dropdown-item align-items-center" href="{{ route('admin.user.create') }}"
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
                                 ایجاد مدیر
                             </a>
                         </li>
-                    @endcan
 
-                    @can('show')
                         <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.admin.index') }}"
+                            <a class="dropdown-item align-items-center" href="{{ route('admin.user.index') }}"
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
                                 لیست مدیران
                             </a>
                         </li>
-                    @endcan
 
 
                 </ul>
@@ -58,7 +52,6 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
-                    @can('create')
                         <li data-menu="">
                             <a class="dropdown-item align-items-center" href="{{ route('admin.role.create') }}"
                                data-toggle="dropdown">
@@ -66,9 +59,7 @@
                                 ایجاد نقش
                             </a>
                         </li>
-                    @endcan
 
-                    @can('show')
                         <li data-menu="">
                             <a class="dropdown-item align-items-center" href="{{ route('admin.role.index') }}"
                                data-toggle="dropdown">
@@ -76,7 +67,6 @@
                                 لیست نقش ها
                             </a>
                         </li>
-                    @endcan
 
                 </ul>
             </li>
@@ -87,7 +77,6 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
-                    @can('create')
                         <li data-menu="">
                             <a class="dropdown-item align-items-center" href="{{ route('admin.category.create') }}"
                                data-toggle="dropdown">
@@ -95,9 +84,7 @@
                                 ایجاد دسته بندی
                             </a>
                         </li>
-                    @endcan
 
-                    @can('show')
                         <li data-menu="">
                             <a class="dropdown-item align-items-center" href="{{ route('admin.category.index') }}"
                                data-toggle="dropdown">
@@ -105,67 +92,33 @@
                                 لیست دسته بندی
                             </a>
                         </li>
-                    @endcan
 
                 </ul>
             </li>
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
                     <i class="bx bx-book"></i>
-                    <span>راهنما</span>
+                    <span>محصولات</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
 
-                    @can('create')
                         <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.article.create') }}"
+                            <a class="dropdown-item align-items-center" href=""
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
-                                ایجاد راهنما
+                                ایجاد محصول
                             </a>
                         </li>
-                    @endcan
 
-                    @can('show')
                         <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.article.index') }}"
+                            <a class="dropdown-item align-items-center" href=""
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
-                                لیست راهنما
+                                لیست محصولات
                             </a>
                         </li>
-                    @endcan
 
-
-                </ul>
-            </li>
-            <li class="dropdown nav-item" data-menu="dropdown">
-                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
-                    <i class="bx bx-question-mark"></i>
-                    <span> سوالات متداول  </span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right">
-
-                    @can('create')
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.faq.create') }}"
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                ایجاد سوال متداول
-                            </a>
-                        </li>
-                    @endcan
-
-                    @can('show')
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.faq.index') }}"
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                لیست سوال متداول
-                            </a>
-                        </li>
-                    @endcan
 
                 </ul>
             </li>
@@ -174,46 +127,28 @@
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
                     <i class="bx bx-menu"></i>
-                    <span> منو اصلی  </span>
+                    <span> وب سایت  </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
-                    @can('create')
                         <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.main_menu.create') }}"
+                            <a class="dropdown-item align-items-center" href=""
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
                                 ایجاد منو
                             </a>
                         </li>
-                    @endcan
 
-                    @can('show')
                         <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.main_menu.index') }}"
+                            <a class="dropdown-item align-items-center" href=""
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
                                 لیست منو
                             </a>
                         </li>
-                    @endcan
 
                 </ul>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.profile.index') }}">
-                    <i class="bx bx-cog"></i>
-                    <span data-i18n="Dashboard">پروفایل</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.logout') }}">
-                    <i class="bx bx-exit"></i>
-                    <span data-i18n="Dashboard">خروج</span>
-                </a>
-            </li>
         </ul>
     </div>
-    <!-- /horizontal menu content-->
 </div>

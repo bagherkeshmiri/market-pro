@@ -5,10 +5,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    public function up()
+    public function up(): void
     {
-        Schema::create('main_menu', function (Blueprint $table) {
+        Schema::create('site_menus', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->string('key');
             $table->string('value');
             $table->unsignedTinyInteger('is_active')->default(0)->comment(' 0 => no , 1 => yes ');
@@ -16,8 +17,8 @@ return new class extends Migration {
         });
     }
 
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('main_menu');
+        Schema::dropIfExists('site_menus');
     }
 };
