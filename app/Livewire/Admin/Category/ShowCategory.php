@@ -2,14 +2,14 @@
 
 namespace App\Livewire\Admin\Category;
 
+use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
 use App\Repositories\Category\CategoryRepositoryInterface;
 use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 
-class ShowCategory extends Component
+class ShowCategory extends AdminComponent
 {
     public object $category;
     public $title;
@@ -41,10 +41,10 @@ class ShowCategory extends Component
     {
         $allCategories = $this->categoryRepository->all()->pluck('id', 'title')->toArray();
         Arr::forget($allCategories, $this->category->title);
-        return view('livewire.admin.category.show-category', [
+        return $this->renderView('livewire.admin.category.show-category', [
             'allCategories' => $allCategories,
             'categoryType' => $this->categoryRepository->getModel()->getCategoryTypeList(),
-        ])->layout('layouts.admin-layout');
+        ]);
     }
 
     public function update()

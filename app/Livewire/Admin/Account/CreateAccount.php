@@ -2,14 +2,14 @@
 
 namespace App\Livewire\Admin\Account;
 
+use App\Livewire\BaseComponents\AdminComponent;
 use App\Repositories\Admin\AdminRepositoryInterface;
 use App\Repositories\Role\RoleRepositoryInterface;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 
-class CreateAccount extends Component
+class CreateAccount extends AdminComponent
 {
     public $name;
     public $family;
@@ -31,7 +31,7 @@ class CreateAccount extends Component
     public function render()
     {
         $roles = $this->roleRepository->all()->pluck('id', 'fa_name')->toArray();
-        return view('livewire.admin.account.create-account', ['roles' => $roles])->layout('layouts.admin-layout');
+        return $this->renderView('livewire.admin.account.create-account', ['roles' => $roles]);
     }
 
     public function store(): RedirectResponse

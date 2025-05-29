@@ -2,13 +2,12 @@
 
 namespace App\Livewire\Admin\Profile;
 
+use App\Livewire\BaseComponents\AdminComponent;
 use Exception;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Livewire\Component;
 
-class ChangePassword extends Component
+class ChangePassword extends AdminComponent
 {
     protected $admin;
     public $oldPass;
@@ -22,7 +21,7 @@ class ChangePassword extends Component
 
     public function render()
     {
-        return view('livewire.admin.profile.change-password', ['admin' => $this->admin])->layout('layouts.admin-layout');
+        return $this->renderView('livewire.admin.profile.change-password', ['admin' => $this->admin]);
     }
 
     public function change()

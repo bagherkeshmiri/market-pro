@@ -2,14 +2,13 @@
 
 namespace App\Livewire\Admin\Auth;
 
+use App\Livewire\BaseComponents\AuthComponent;
 use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
-use Livewire\Component;
 
-class Login extends Component
+class Login extends AuthComponent
 {
     public $email;
     public $password;
@@ -41,6 +40,6 @@ class Login extends Component
 
     public function render()
     {
-        return view('livewire.admin.auth.login')->layout('layouts.admin-auth-layout');
+        return $this->renderView('livewire.admin.auth.login');
     }
 }

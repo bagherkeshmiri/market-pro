@@ -3,11 +3,11 @@
 namespace App\Livewire\Admin\MainMenu;
 
 use App\Enums\IsActive;
+use App\Livewire\BaseComponents\AdminComponent;
 use App\Repositories\MainMenu\MainMenuRepositoryInterface;
-use Livewire\Component;
 use Livewire\WithPagination;
 
-class ListMainMenu extends Component
+class ListMainMenu extends AdminComponent
 {
     use WithPagination;
 
@@ -23,6 +23,6 @@ class ListMainMenu extends Component
     public function render()
     {
         $allmainMenus = $this->mainMenuRepository->paginate();
-        return view('livewire.admin.mainMenu.list-main-menu', ['allmainMenus' => $allmainMenus])->layout('layouts.admin-layout');
+        return $this->renderView('livewire.admin.mainMenu.list-main-menu', ['allmainMenus' => $allmainMenus]);
     }
 }
