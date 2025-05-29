@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\MainMenuController;
-use App\Livewire\Admin\Account\CreateAccount;
+use App\Livewire\Admin\Account\CreateUser;
 use App\Livewire\Admin\Account\ListAccount;
-use App\Livewire\Admin\Account\ShowAccount;
+use App\Livewire\Admin\Account\ListUser;
+use App\Livewire\Admin\Account\ShowUser;
 use App\Livewire\Admin\Auth\Login;
 use App\Livewire\Admin\Category\CreateCategory;
 use App\Livewire\Admin\Category\ListCategory;
@@ -53,9 +54,9 @@ Route::prefix('dashboard')
         Route::name('user.')
             ->prefix('users')
             ->group(function () {
-                Route::get('/', ListAccount::class)->name('index');
-                Route::get('/create', CreateAccount::class)->name('create');
-                Route::get('/show/{admin}', ShowAccount::class)->name('show');
+                Route::get('/', ListUser::class)->name('index');
+                Route::get('/create', CreateUser::class)->name('create');
+                Route::get('/show/{admin}', ShowUser::class)->name('show');
                 Route::get('/delete/{admin}', [AccountController::class, 'delete'])->name('delete');
             });
 

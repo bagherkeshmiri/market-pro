@@ -9,7 +9,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
-class CreateAccount extends AdminComponent
+class CreateUser extends AdminComponent
 {
     public $name;
     public $family;

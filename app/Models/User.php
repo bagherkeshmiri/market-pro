@@ -11,7 +11,11 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 /**
+ *
+ *
  * @property int $id
+ * @property int $role_id
+ * @property UserType $type  1 : user , 2 : admin
  * @property string $name
  * @property string $email
  * @property Carbon|null $email_verified_at
@@ -19,6 +23,7 @@ use Illuminate\Support\Facades\Hash;
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property-read Role|null $role
  * @method static Builder<static>|User isAdmin()
  * @method static Builder<static>|User newModelQuery()
  * @method static Builder<static>|User newQuery()
@@ -30,7 +35,8 @@ use Illuminate\Support\Facades\Hash;
  * @method static Builder<static>|User whereName($value)
  * @method static Builder<static>|User wherePassword($value)
  * @method static Builder<static>|User whereRememberToken($value)
- * @method static Builder<static>|User whereRole($value)
+ * @method static Builder<static>|User whereRoleId($value)
+ * @method static Builder<static>|User whereType($value)
  * @method static Builder<static>|User whereUpdatedAt($value)
  * @mixin Eloquent
  */

@@ -22,7 +22,7 @@
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
                     <i class="bx bx-group"></i>
-                    <span>مدیران </span>
+                    <span>کاربران </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
@@ -30,7 +30,7 @@
                             <a class="dropdown-item align-items-center" href="{{ route('admin.user.create') }}"
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
-                                ایجاد مدیر
+                                ایجاد کاربر
                             </a>
                         </li>
 
@@ -38,7 +38,7 @@
                             <a class="dropdown-item align-items-center" href="{{ route('admin.user.index') }}"
                                data-toggle="dropdown">
                                 <i class="bx bx-left-arrow-alt"></i>
-                                لیست مدیران
+                                لیست کاربران
                             </a>
                         </li>
 

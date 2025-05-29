@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
 /**
+ * 
+ *
  * @property-read mixed $created_at
  * @property-read Collection<int, Permission> $permissions
  * @property-read int|null $permissions_count

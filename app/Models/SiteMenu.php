@@ -6,13 +6,28 @@ use App\Enums\IsActive;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
+ * 
+ *
  * @property IsActive $is_active
  * @property-read mixed $created_at
  * @method static Builder<static>|SiteMenu newModelQuery()
  * @method static Builder<static>|SiteMenu newQuery()
  * @method static Builder<static>|SiteMenu query()
+ * @property int $id
+ * @property int|null $parent_id
+ * @property string $key
+ * @property string $value
+ * @property Carbon|null $updated_at
+ * @method static Builder<static>|SiteMenu whereCreatedAt($value)
+ * @method static Builder<static>|SiteMenu whereId($value)
+ * @method static Builder<static>|SiteMenu whereIsActive($value)
+ * @method static Builder<static>|SiteMenu whereKey($value)
+ * @method static Builder<static>|SiteMenu whereParentId($value)
+ * @method static Builder<static>|SiteMenu whereUpdatedAt($value)
+ * @method static Builder<static>|SiteMenu whereValue($value)
  * @mixin Eloquent
  */
 class SiteMenu extends Model

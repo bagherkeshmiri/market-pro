@@ -1,4 +1,4 @@
-@section('title',' لیست مدیران')
+@section('title',' لیست کاربران')
 
 
 @section('styles')
@@ -14,7 +14,7 @@
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
                         <h5 class="content-header-title float-left pr-1 text-success "
-                            style=" border-left: 0 !important;"> لیست مدیران</h5>
+                            style=" border-left: 0 !important;"> لیست کاربران</h5>
                     </div>
                 </div>
             </div>
@@ -35,36 +35,38 @@
                                             <thead>
                                             <tr>
                                                 <th>نام</th>
-                                                <th>فامیل</th>
-                                                <th>نام کاربری</th>
+                                                <th> ایمیل</th>
                                                 <th>موبایل</th>
-                                                <th>نقش</th>
+                                                @if($isAdmin)
+                                                    <th>دسترسی ها</th>
+                                                @endif
                                                 <th>تاریخ ایجاد</th>
                                                 <th>عملیات</th>
                                             </tr>
                                             </thead>
                                             <tbody>
 
-                                            @forelse ($admins as $admin)
+                                            @forelse ($users as $user)
                                                 <tr>
-                                                    <td>{{ $admin->name }}</td>
-                                                    <td>{{ $admin->family }}</td>
-                                                    <td>{{ $admin->username }}</td>
-                                                    <td>{{ $admin->mobile }}</td>
+                                                    <td>{{ $user->name }}</td>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td></td>
+                                                    @if($isAdmin)
+                                                        <td>
+                                                            @foreach($user->permissions as $permission)
+                                                                {{ $permission->fa_name }}
+                                                            @endforeach
+                                                        </td>
+                                                    @endif
+                                                    <td>{{ jalali($user->created_at) }}</td>
                                                     <td>
-                                                        @foreach($admin->roles as $role)
-                                                            {{ $role->fa_name }}
-                                                        @endforeach
-                                                    </td>
-                                                    <td>{{ $admin->created_at }}</td>
-                                                    <td>
-                                                        @can('edit')
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.admin.show',[ 'admin' => $admin->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
-                                                        @endcan
-                                                        @if($admin->id != $mainAdminId)
-                                                            @can('delete')
-                                                                @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=account_delete(this,event)  data-url='.route('admin.admin.delete',[ 'admin' => $admin->id ]) ])
-                                                            @endcan
+                                                        {{--                                                        @can('edit')--}}
+                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.user.show',[ 'admin' => $user->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        {{--                                                        @endcan--}}
+                                                        @if($user->id != $mainAdminId)
+                                                            {{--                                                            @can('delete')--}}
+                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=account_delete(this,event)  data-url='.route('admin.user.delete',[ 'admin' => $user->id ]) ])
+                                                            {{--                                                            @endcan--}}
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -77,7 +79,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.paginators.bootstrap',['model' => $admins] )
+                                        @include('frest-components.paginators.bootstrap',['model' => $users] )
 
                                     </div>
 

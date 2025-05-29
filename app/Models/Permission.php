@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 
 /**
- *
+ * 
  *
  * @property-read mixed $created_at
  * @property-read Collection<int, Role> $roles
