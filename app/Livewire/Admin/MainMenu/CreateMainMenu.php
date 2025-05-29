@@ -2,15 +2,14 @@
 
 namespace App\Livewire\Admin\MainMenu;
 
+use App\Livewire\BaseComponents\AdminComponent;
 use App\Repositories\Article\ArticleRepositoryInterface;
 use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Repositories\MainMenu\MainMenuRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use Livewire\Component;
 
-class CreateMainMenu extends Component
+class CreateMainMenu extends AdminComponent
 {
     public $title;
     public $address;
@@ -23,9 +22,7 @@ class CreateMainMenu extends Component
 
     public function render()
     {
-        return view('livewire.admin.mainMenu.create-main-menu')->layout(
-            'layouts.admin-layout'
-        );
+        return $this->renderView('livewire.admin.mainMenu.create-main-menu');
     }
 
     public function store()

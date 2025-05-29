@@ -2,14 +2,14 @@
 
 namespace App\Livewire\Admin\Role;
 
+use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Role;
 use App\Repositories\Permission\PermissionRepositoryInterface;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 
-class ShowRole extends Component
+class ShowRole extends AdminComponent
 {
     public Role $role;
     public $faName;
@@ -35,11 +35,9 @@ class ShowRole extends Component
     public function render()
     {
         $this->allPermissions = $this->permissionRepository->all();
-        return view(
+        return $this->renderView(
             'livewire.admin.role.show-role',
             ['allPermissions' => $this->allPermissions]
-        )->layout(
-            'layouts.admin-layout'
         );
     }
 

@@ -2,14 +2,14 @@
 
 namespace App\Livewire\Admin\Role;
 
+use App\Livewire\BaseComponents\AdminComponent;
 use App\Repositories\Permission\PermissionRepositoryInterface;
 use App\Repositories\Role\RoleRepositoryInterface;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 
-class CreateRole extends Component
+class CreateRole extends AdminComponent
 {
     public $faName;
     public $enName;
@@ -30,9 +30,7 @@ class CreateRole extends Component
     public function render()
     {
         $this->allPermissions = $this->permissionRepository->all();
-        return view('livewire.admin.role.create-role', ['allPermissions' => $this->allPermissions])->layout(
-            'layouts.admin-layout'
-        );
+        return $this->renderView('livewire.admin.role.create-role', ['allPermissions' => $this->allPermissions]);
     }
 
     public function updatedSelectAll($value)

@@ -2,13 +2,13 @@
 
 namespace App\Livewire\Admin\MainMenu;
 
+use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\MainMenu;
 use App\Repositories\MainMenu\MainMenuRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 
-class ShowMainMenu extends Component
+class ShowMainMenu extends AdminComponent
 {
     public object $main_menu;
     public $title;
@@ -28,9 +28,7 @@ class ShowMainMenu extends Component
 
     public function render()
     {
-        return view('livewire.admin.mainMenu.show-main-menu')->layout(
-            'layouts.admin-layout'
-        );
+        return $this->renderView('livewire.admin.mainMenu.show-main-menu');
     }
 
     public function update()
