@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Permission;
 use App\Models\Role;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
@@ -12,9 +13,11 @@ class RoleSeeder extends Seeder
     {
         $permissions = Permission::all();
 
-        $adminRole = Role::query()->create([
+        $adminRole = Role::create([
             'fa_name' => 'ادمین',
             'en_name' => 'admin',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
         $adminRole->permissions()->attach($permissions);
     }

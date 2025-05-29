@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 class PermissionSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         Permission::query()->create([
             'fa_name' => 'ویرایش',

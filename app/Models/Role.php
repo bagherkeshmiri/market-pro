@@ -37,9 +37,9 @@ class Role extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'roles';
+    public const string TABLE_NAME = 'roles';
+    protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
-
 
     protected $fillable = [
         'fa_name',
@@ -48,8 +48,17 @@ class Role extends Model
 
     protected $hidden = [];
 
+    protected $casts = [];
+
+    /*------------ Relations ------------*/
+
     public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(Permission::class, 'role_permission');
     }
+
+    /*-------------- Scopes -------------*/
+
+    /*---------- Other Functions --------*/
+
 }

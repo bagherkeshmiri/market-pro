@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\UserType;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -55,6 +56,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'type' => UserType::class,
     ];
 
     /*------------ Relations ------------*/
@@ -70,6 +72,11 @@ class User extends Authenticatable
     }
 
     /*-------------- Scopes -------------*/
+
+    public function scopeIsAdmin(Builder $query): Builder
+    {
+        return $query->where('type', UserType::Admin);
+    }
 
     /*---------- Other Functions --------*/
 
