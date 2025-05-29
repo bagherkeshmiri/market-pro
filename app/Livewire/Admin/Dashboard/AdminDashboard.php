@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Admin\Dashboard;
 
-use Livewire\Component;
+use App\Livewire\BaseComponents\AdminComponent;
 
-class AdminDashboard extends Component
+class AdminDashboard extends AdminComponent
 {
     public function render()
     {
-        return view('livewire.admin.dashboard.admin-dashboard')->layout('layouts.admin-layout');
+        return $this->renderView('livewire.admin.dashboard.admin-dashboard');
     }
 }

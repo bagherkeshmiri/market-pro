@@ -2,14 +2,14 @@
 
 namespace App\Livewire\Admin\Account;
 
+use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Admin;
 use App\Repositories\Role\RoleRepositoryInterface;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 
-class ShowAccount extends Component
+class ShowAccount extends AdminComponent
 {
     public object $admin;
     public $name;
@@ -40,10 +40,10 @@ class ShowAccount extends Component
         $roles = $this->roleRepository->all()->pluck('id', 'fa_name')->toArray();
         $this->adminRole = $this->admin->roles->pluck('id')->toArray()[0];
         $this->fill([$this->adminRole]);
-        return view(
+        return $this->renderView(
             'livewire.admin.account.show-account',
             ['admins' => $this->admin, 'roles' => $roles]
-        )->layout('layouts.admin-layout');
+        );
     }
 
     public function update(): RedirectResponse

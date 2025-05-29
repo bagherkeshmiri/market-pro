@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Admin\Category;
 
+use App\Livewire\BaseComponents\AdminComponent;
 use App\Repositories\Category\CategoryRepositoryInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 
-class CreateCategory extends Component
+class CreateCategory extends AdminComponent
 {
     public $title;
     public $seoTitle;
@@ -26,13 +26,13 @@ class CreateCategory extends Component
     public function render()
     {
         $allCategories = $this->categoryRepository->all()->pluck('id', 'title')->toArray();
-        return view(
+        return $this->renderView(
             'livewire.admin.category.create-category',
             [
                 'allCategories' => $allCategories,
                 'categoryType' => $this->categoryRepository->getModel()->getCategoryTypeList(),
             ],
-        )->layout('layouts.admin-layout');
+        );
     }
 
     public function store()

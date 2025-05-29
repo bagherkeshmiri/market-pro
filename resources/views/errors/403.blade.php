@@ -1,4 +1,4 @@
-@extends('layouts.errors-master')
+@extends('layouts.admin.admin-errors-layout')
 
 @section('title', __('Forbidden'))
 

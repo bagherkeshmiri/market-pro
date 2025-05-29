@@ -2,11 +2,11 @@
 
 namespace App\Livewire\Admin\Category;
 
+use App\Livewire\BaseComponents\AdminComponent;
 use App\Repositories\Category\CategoryRepositoryInterface;
-use Livewire\Component;
 use Livewire\WithPagination;
 
-class ListCategory extends Component
+class ListCategory extends AdminComponent
 {
     use WithPagination;
 
@@ -21,6 +21,6 @@ class ListCategory extends Component
     public function render()
     {
         $categories = $this->categoryRepository->paginate();
-        return view('livewire.admin.category.list-category', ['categories' => $categories])->layout('layouts.admin-layout');
+        return $this->renderView('livewire.admin.category.list-category', ['categories' => $categories]);
     }
 }

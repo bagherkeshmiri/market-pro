@@ -2,14 +2,14 @@
 
 namespace App\Livewire\Admin\Profile;
 
-use Illuminate\Support\Facades\Auth;
-use Livewire\Component;
 
-class ShowProfile extends Component
+use App\Livewire\BaseComponents\AdminComponent;
+
+class ShowProfile extends AdminComponent
 {
     public function render()
     {
         $admin = auth()->user();
-        return view('livewire.admin.profile.show-profile', ['admin' => $admin])->layout('layouts.admin-layout');
+        return $this->renderView('livewire.admin.profile.show-profile', ['admin' => $admin]);
     }
 }

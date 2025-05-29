@@ -2,11 +2,11 @@
 
 namespace App\Livewire\Admin\Role;
 
+use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Role;
-use Livewire\Component;
 use Livewire\WithPagination;
 
-class ListRole extends Component
+class ListRole extends AdminComponent
 {
     use WithPagination;
 
@@ -16,6 +16,12 @@ class ListRole extends Component
     {
         $roles = Role::paginate();
         $mainRoleId = Role::first()->id;
-        return view('livewire.admin.role.list-role',['roles' => $roles , 'mainRoleId' => $mainRoleId])->layout('layouts.admin-layout');
+        return $this->renderView(
+            'livewire.admin.role.list-role',
+            [
+                'roles' => $roles,
+                'mainRoleId' => $mainRoleId,
+            ]
+        );
     }
 }

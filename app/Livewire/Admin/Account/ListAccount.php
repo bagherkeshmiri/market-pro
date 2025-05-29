@@ -2,11 +2,11 @@
 
 namespace App\Livewire\Admin\Account;
 
+use App\Livewire\BaseComponents\AdminComponent;
 use App\Repositories\Admin\AdminRepositoryInterface;
-use Livewire\Component;
 use Livewire\WithPagination;
 
-class ListAccount extends Component
+class ListAccount extends AdminComponent
 {
     use WithPagination;
 
@@ -22,6 +22,6 @@ class ListAccount extends Component
     {
         $mainAdminId = $this->adminRepository->first()->id;
         $admins = $this->adminRepository->paginate();
-        return view('livewire.admin.account.list-account', ['admins' => $admins , 'mainAdminId' => $mainAdminId])->layout('layouts.admin-layout');
+        return $this->renderView('livewire.admin.account.list-account', ['admins' => $admins , 'mainAdminId' => $mainAdminId]);
     }
 }

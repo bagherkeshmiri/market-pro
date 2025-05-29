@@ -1,4 +1,4 @@
-@extends('layouts.errors-master')
+@extends('layouts.admin.admin-errors-layout')
 
 @section('title', __('Server Error'))
 
@@ -16,12 +16,12 @@
                         <div class="card bg-transparent shadow-none">
                             <div class="card-content">
                                 <div class="card-body text-center bg-transparent miscellaneous">
-                                    <img src="../../assets/images/pages/500.png" class="img-fluid my-3" alt="branding logo">
+                                    <img src="{{ asset('frest/images/pages/500.png') }}" class="img-fluid my-3" alt="branding logo">
                                     <h1 class="error-title mt-1">خطای داخلی سرور!</h1>
                                     <p class="p-2">
                                         پس از پاکسازی حافظه کش و حذف کوکی ها مرورگر را ریستارت کنید. <br> ایراد ها توسط دسترسی های نادرست فایل ها و پوشه ها به وجود آمده اند.
                                     </p>
-                                    <a href="index.html" class="btn btn-primary round glow">بازگشت به خانه</a>
+                                    <a href="#" class="btn btn-primary round glow">بازگشت به خانه</a>
                                 </div>
                             </div>
                         </div>
