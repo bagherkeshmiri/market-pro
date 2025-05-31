@@ -20,7 +20,7 @@
 >
 
     @isset($defaultOption)
-        <option  @isset($defaultValue) value="0" @endisset> -- انتخاب کنید -- </option>
+        <option  @isset($defaultValue) @endisset> -- انتخاب کنید -- </option>
     @endisset
 
     @isset($data)

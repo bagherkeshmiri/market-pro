@@ -36,7 +36,8 @@
                                             <tr>
                                                 <th>نام</th>
                                                 <th> ایمیل</th>
-                                                <th>موبایل</th>
+                                                <th>نقش</th>
+                                                <th>نوع کاربر</th>
                                                 @if($isAdmin)
                                                     <th>دسترسی ها</th>
                                                 @endif
@@ -50,7 +51,8 @@
                                                 <tr>
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->email }}</td>
-                                                    <td></td>
+                                                    <td>{{ $user->role->fa_name }}</td>
+                                                    <td>{{ convertUserTypeToString($user->type) }}</td>
                                                     @if($isAdmin)
                                                         <td>
                                                             @foreach($user->permissions as $permission)

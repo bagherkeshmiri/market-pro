@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\MainMenuController;
-use App\Livewire\Admin\Account\CreateUser;
-use App\Livewire\Admin\Account\ListUser;
-use App\Livewire\Admin\Account\ShowUser;
+use App\Livewire\Admin\User\CreateUser;
+use App\Livewire\Admin\User\ListUser;
+use App\Livewire\Admin\User\ShowUser;
 use App\Livewire\Admin\Auth\Login;
 use App\Livewire\Admin\Category\CreateCategory;
 use App\Livewire\Admin\Category\ListCategory;

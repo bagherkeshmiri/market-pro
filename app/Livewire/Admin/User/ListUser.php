@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin\Account;
+namespace App\Livewire\Admin\User;
 
 use App\Enums\UserType;
 use App\Livewire\BaseComponents\AdminComponent;

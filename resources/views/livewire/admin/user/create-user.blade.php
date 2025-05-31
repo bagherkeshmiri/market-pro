@@ -52,51 +52,42 @@
 
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'family' , 'content' => 'نام خانوادگی'] )
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'email' , 'content' => 'ایمیل '] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'family' , 'classes' => 'text-left' , 'id' => 'family' , 'dir' => 'ltr' , 'icon' => userIcon() , 'tabindex' => '2' , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'family' ])
+                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'email' , 'classes' => 'text-left' , 'id' => 'email' , 'dir' => 'ltr' , 'icon' => emailIcon() , 'tabindex' => '4' , 'attributes' => 'required' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'email' ])
                                                     </div>
                                                 </div>
-
 
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'mobile' , 'content' => 'موبایل'] )
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'type' , 'content' => 'نوع کاربری'] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'number' , 'wire' => 'mobile' , 'classes' => 'text-left' , 'id' => 'mobile' , 'dir' => 'ltr' , 'icon' => mobileIcon() , 'tabindex' => '3' , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'mobile' ])
+                                                        @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $types , 'id' => 'type' , 'wire' => 'type'  , 'defaultOption' => ''])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'type' ])
                                                     </div>
+
                                                 </div>
-
-
-                                                <div class="col-md-6 col-12">
-                                                    <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'userName' , 'content' => 'نام کاربری'] )
-                                                        @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'userName' , 'classes' => 'text-left' , 'id' => 'userName' , 'dir' => 'ltr' , 'icon' => userIcon() , 'tabindex' => '4' , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'userName' ])
-                                                    </div>
-                                                </div>
-
 
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'password' , 'content' => 'رمز عبور '] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'password' , 'wire' => 'password' , 'classes' => 'text-left' , 'id' => 'password' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'tabindex' => '5' , 'attributes' => 'required' ])
+                                                        @include('frest-components.inputs.input',[ 'type' => 'password' , 'wire' => 'password' , 'classes' => 'text-left' , 'id' => 'password' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'tabindex' => '5' ])
                                                         @include('frest-components.form-validations.small-tag-error',[ 'name' => 'password' ])
                                                     </div>
                                                 </div>
+
 
 
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'role' , 'content' => 'نقش'] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $roles , 'id' => 'role' , 'wire' => 'role' ])
+                                                        @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $roles , 'id' => 'role' , 'wire' => 'role' , 'defaultOption' => ''])
                                                         @include('frest-components.form-validations.small-tag-error',[ 'name' => 'role' ])
                                                     </div>
+
                                                 </div>
 
                                                 <div class="col-12 d-flex justify-content-end">

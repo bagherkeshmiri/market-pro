@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin\Account;
+namespace App\Livewire\Admin\User;
 
 use App\Enums\UserType;
 use App\Livewire\BaseComponents\AdminComponent;
@@ -12,38 +12,24 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
 use Throwable;
 
-class ShowUser extends AdminComponent
+class CreateUser extends AdminComponent
 {
-    public object $admin;
     public $name;
-    public $mobile;
     public $email;
     public $type;
-    public $role;
     public $password;
-    public $adminRole;
-
-    public function mount(User $admin): void
-    {
-        $this->name = $admin->name;
-        $this->email = $admin->email;
-        $this->type = $admin->type;
-        $this->role = $this->admin->permissions->pluck('id')->toArray()[0];
-    }
+    public $role;
 
     public function render()
     {
-        $pageTitle  = 'ویرایش کاربر';
+        $pageTile = 'ایجاد کاربر';
         $roles = Role::pluck('id', 'fa_name')->toArray();
-        $this->adminRole = auth()->user()->role_id;
-        $this->fill([$this->adminRole]);
         return $this->renderView(
-            'livewire.admin.user.show-user',
+            'livewire.admin.user.create-user',
             [
-                'admins' => $this->admin,
                 'roles' => $roles,
                 'types' => showEnumLabels(UserType::class),
-                'pageTitle' => $pageTitle,
+                'pageTitle' => $pageTile,
             ]
         );
     }
@@ -51,12 +37,12 @@ class ShowUser extends AdminComponent
     /**
      * @throws Throwable
      */
-    public function update(): RedirectResponse
+    public function store(): RedirectResponse
     {
         $this->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $this->admin->id,
-            'role' => 'required|integer',
+            'email' => 'required|email|unique:users,email,',
+//            'role' => 'required|integer',
             'type' => [
                 'required',
                 new Enum(UserType::class),
@@ -67,13 +53,15 @@ class ShowUser extends AdminComponent
             'name' => $this->name,
             'email' => $this->email,
             'role_id' => $this->role,
-            'type' => $this->type->value,
+            'type' => $this->type,
+            'password' => $this->password,
         ];
 
         DB::beginTransaction();
         try {
-            $this->admin->update($data);
+            User::create($data);
             DB::commit();
+            $this->reset(['name', 'email', 'password', 'role', 'type']);
             session()->flash('success', __('global.success_message'));
             return redirect()->back();
         } catch (Exception) {

@@ -14,7 +14,7 @@ class RoleSeeder extends Seeder
         $permissions = Permission::all();
 
         $adminRole = Role::create([
-            'fa_name' => 'ادمین',
+            'fa_name' => 'مدیر',
             'en_name' => 'admin',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
