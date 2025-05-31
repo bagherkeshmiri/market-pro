@@ -56,8 +56,7 @@
                                                     @if($isAdmin)
                                                         <td>
                                                             @foreach($user->permissions as $permission)
-                                                                @include('frest-components.badges.secondary-badge' , [ 'content' => $permission->fa_name ])
-
+                                                                @include('frest-components.badges.badge' , [ 'badgeClass' => 'badge-secondary',  'content' => $permission->fa_name ])
                                                             @endforeach
                                                         </td>
                                                     @endif

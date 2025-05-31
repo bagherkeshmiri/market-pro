@@ -50,17 +50,17 @@
                                                     <td>{{ $role->en_name }}</td>
                                                     <td>
                                                         @foreach($role->permissions as $permission )
-                                                            @include('frest-components.badges.danger-badge' , [ 'content' => $permission->fa_name ])
+                                                            @include('frest-components.badges.badge' , ['badgeClass' => 'badge-danger', 'content' => $permission->fa_name ])
                                                         @endforeach
                                                     </td>
                                                     <td>
-                                                        @can('edit')
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.role.show',[ 'role' => $role->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
-                                                        @endcan
+                                                        {{--                                                        @can('edit')--}}
+                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.role.show',[ 'role' => $role->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        {{--                                                        @endcan--}}
                                                         @if($role->id !== $mainRoleId)
-                                                            @can('delete')
-                                                                @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=role_delete(this,event)  data-url='.route('admin.role.delete',[ 'role' => $role->id ]) ])
-                                                            @endcan
+                                                            {{--                                                            @can('delete')--}}
+                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=role_delete(this,event)  data-url='.route('admin.role.delete',[ 'role' => $role->id ]) ])
+                                                            {{--                                                            @endcan--}}
                                                         @endif
                                                     </td>
                                                 </tr>
