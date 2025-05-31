@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Collection;
 use Morilog\Jalali\Jalalian;
 use Carbon\Carbon;
 
@@ -15,5 +16,15 @@ if (!function_exists('jalali')) {
         }
 
         return Jalalian::fromCarbon($date)->format($format);
+    }
+}
+
+
+if (!function_exists('user_type_labels')) {
+    function showEnumLabels(string|int $enum): Collection
+    {
+        return collect($enum::cases())->mapWithKeys(fn($status) => [
+            $status->label() => $status->value
+        ]);
     }
 }

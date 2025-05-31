@@ -2,70 +2,75 @@
 
 namespace App\Livewire\Admin\Account;
 
+use App\Enums\UserType;
 use App\Livewire\BaseComponents\AdminComponent;
-use App\Models\Admin;
-use App\Repositories\Role\RoleRepositoryInterface;
+use App\Models\Role;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Enum;
+use Throwable;
 
 class ShowUser extends AdminComponent
 {
     public object $admin;
     public $name;
-    public $family;
     public $mobile;
-    public $username;
-    public $password;
+    public $email;
+    public $type;
     public $role;
+    public $password;
     public $adminRole;
-    protected object $roleRepository;
 
-    public function boot(RoleRepositoryInterface $roleRepo)
-    {
-        $this->roleRepository = $roleRepo;
-    }
-
-    public function mount(Admin $admin)
+    public function mount(User $admin): void
     {
         $this->name = $admin->name;
-        $this->family = $admin->family;
-        $this->mobile = $admin->mobile;
-        $this->username = $admin->username;
-        $this->role = $this->admin->roles->pluck('id')->toArray()[0];
+        $this->email = $admin->email;
+        $this->type = $admin->type;
+        $this->role = $this->admin->permissions->pluck('id')->toArray()[0];
     }
 
     public function render()
     {
-        $roles = $this->roleRepository->all()->pluck('id', 'fa_name')->toArray();
-        $this->adminRole = $this->admin->roles->pluck('id')->toArray()[0];
+        $roles = Role::all()->pluck('id', 'fa_name')->toArray();
+        $this->adminRole = auth()->user()->role_id;
         $this->fill([$this->adminRole]);
         return $this->renderView(
-            'livewire.admin.account.show-account',
-            ['admins' => $this->admin, 'roles' => $roles]
+            'livewire.admin.user.show-user',
+            [
+                'admins' => $this->admin,
+                'roles' => $roles,
+                'types' => showEnumLabels(UserType::class),
+            ]
         );
     }
 
+    /**
+     * @throws Throwable
+     */
     public function update(): RedirectResponse
     {
         $this->validate([
             'name' => 'required',
-            'family' => 'required',
-            'username' => 'required|min:8|unique:admins,username,' . $this->admin->id,
-            'role' => 'numeric',
-            'mobile' => 'required|numeric|digits:11|unique:admins,mobile,' . $this->admin->id,
+            'email' => 'required|email|unique:users,email,' . $this->admin->id,
+            'role' => 'required|integer',
+            'type' => [
+                'required',
+                new Enum(UserType::class),
+            ],
         ]);
 
         $data = [
             'name' => $this->name,
-            'family' => $this->family,
-            'username' => $this->username,
-            'mobile' => $this->mobile,
+            'email' => $this->email,
+            'role_id' => $this->role,
+            'type' => $this->type->value,
         ];
+
         DB::beginTransaction();
         try {
             $this->admin->update($data);
-            $this->admin->roles()->sync($this->role);
             DB::commit();
             session()->flash('success', __('global.success_message'));
             return redirect()->back();

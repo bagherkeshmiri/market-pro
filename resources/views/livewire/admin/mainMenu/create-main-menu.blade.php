@@ -42,7 +42,7 @@
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'عنوان '] )
                                                         @include('frest-components.tags.required-tag')
                                                         @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'title' , 'classes' => 'text-left' , 'id' => 'title' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'title' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'title' ])
                                                     </div>
                                                 </div>
 
@@ -51,7 +51,7 @@
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'address' , 'content' => 'آدرس '] )
                                                         @include('frest-components.tags.required-tag')
                                                         @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'address' , 'classes' => 'text-left' , 'id' => 'address' , 'dir' => 'ltr' , 'icon' => linkIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'address' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'address' ])
                                                     </div>
                                                 </div>
 

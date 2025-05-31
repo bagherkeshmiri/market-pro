@@ -42,7 +42,7 @@
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'سوال '] )
                                                         @include('frest-components.tags.required-tag')
                                                         @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'question' , 'classes' => 'text-left' , 'id' => 'question' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'question' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'question' ])
                                                     </div>
                                                 </div>
 
@@ -50,7 +50,7 @@
                                                     @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'answer' , 'content' => 'پاسخ ' ] )
                                                     @include('frest-components.tags.required-tag')
                                                     @include('frest-components.inputs.ckEditor')
-                                                    @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'answer' ])
+                                                    @include('frest-components.form-validations.small-tag-error',[ 'name' => 'answer' ])
                                                 </div>
 
 

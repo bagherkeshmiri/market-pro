@@ -1,4 +1,4 @@
-@section('title','ویرایش مدیر')
+@section('title','ویرایش کاربر')
 
 
 @section('styles')
@@ -13,7 +13,7 @@
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
                         <h5 class="content-header-title float-left pr-1 text-success "
-                            style=" border-left: 0 !important;">ویرایش مدیر</h5>
+                            style=" border-left: 0 !important;">ویرایش کاربر</h5>
                     </div>
                 </div>
             </div>
@@ -43,63 +43,44 @@
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام '] )
                                                         @include('frest-components.tags.required-tag')
                                                         @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'name' , 'classes' => 'text-left' , 'id' => 'name' , 'dir' => 'ltr' , 'icon' => userIcon() , 'tabindex' => '1' , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'name' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'name' ])
                                                     </div>
                                                 </div>
 
 
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'family' , 'content' => 'نام خانوادگی'] )
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'email' , 'content' => 'ایمیل '] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'family' , 'classes' => 'text-left' , 'id' => 'family' , 'dir' => 'ltr' , 'icon' => userIcon() , 'tabindex' => '2' , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'family' ])
+                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'email' , 'classes' => 'text-left' , 'id' => 'email' , 'dir' => 'ltr' , 'icon' => emailIcon() , 'tabindex' => '4' , 'attributes' => 'required' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'email' ])
                                                     </div>
                                                 </div>
-
 
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'mobile' , 'content' => 'موبایل'] )
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'type' , 'content' => 'نوع کاربری'] )
                                                         @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'number' , 'wire' => 'mobile' , 'classes' => 'text-left' , 'id' => 'mobile' , 'dir' => 'ltr' , 'icon' => mobileIcon() , 'tabindex' => '3' , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'mobile' ])
+                                                        @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $types , 'id' => 'type' , 'wire' => 'type' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'type' ])
                                                     </div>
+
                                                 </div>
 
-
-                                                <div class="col-md-6 col-12">
-                                                    <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'username' , 'content' => 'نام کاربری'] )
-                                                        @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'username' , 'classes' => 'text-left' , 'id' => 'username' , 'dir' => 'ltr' , 'icon' => userIcon() , 'tabindex' => '4' , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'username' ])
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-md-6 col-12">
-                                                    <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'password' , 'content' => 'رمز عبور '] )
-                                                        @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'password' , 'wire' => 'password' , 'classes' => 'text-left' , 'id' => 'password' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'tabindex' => '5' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'password' ])
-                                                    </div>
-                                                </div>
 
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'role' , 'content' => 'نقش'] )
                                                         @include('frest-components.tags.required-tag')
                                                         @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $roles , 'id' => 'role' , 'wire' => 'role' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'role' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'role' ])
                                                     </div>
 
                                                 </div>
 
                                                 <div class="col-12 d-flex justify-content-end">
                                                     @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
-                                                    @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.admin.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
+                                                    @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.user.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                 </div>
                                             </div>
                                         </div>

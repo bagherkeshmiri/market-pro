@@ -8,6 +8,7 @@ use App\Repositories\Role\RoleRepositoryInterface;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class CreateUser extends AdminComponent
 {
@@ -17,23 +18,16 @@ class CreateUser extends AdminComponent
     public $userName;
     public $password;
     public $role;
-    protected object $roleRepository;
-    protected object $adminRepository;
-
-    public function boot(
-        AdminRepositoryInterface $adminRepo,
-        RoleRepositoryInterface $roleRepo,
-    ) {
-        $this->roleRepository = $roleRepo;
-        $this->adminRepository = $adminRepo;
-    }
 
     public function render()
     {
-        $roles = $this->roleRepository->all()->pluck('id', 'fa_name')->toArray();
+        $roles = auth()->user()->permissions->pluck('id', 'fa_name')->toArray();
         return $this->renderView('livewire.admin.account.create-account', ['roles' => $roles]);
     }
 
+    /**
+     * @throws Throwable
+     */
     public function store(): RedirectResponse
     {
         $this->validate([

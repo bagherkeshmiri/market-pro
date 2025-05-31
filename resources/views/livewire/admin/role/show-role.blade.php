@@ -44,7 +44,7 @@
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام نقش '] )
                                                         @include('frest-components.tags.required-tag')
                                                         @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'faName' , 'wire' => 'faName' , 'classes' => 'text-left' , 'id' => 'faName' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'faName' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'faName' ])
                                                     </div>
                                                 </div>
 
@@ -54,7 +54,7 @@
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام نقش '] )
                                                         @include('frest-components.tags.required-tag')
                                                         @include('frest-components.inputs.input',[ 'type' => 'text' , 'name' => 'enName' , 'wire' => 'enName' , 'classes' => 'text-left' , 'id' => 'enName' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'enName' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'enName' ])
                                                     </div>
                                                 </div>
 
@@ -69,7 +69,7 @@
 
                                                 @error('permissions[]')
                                                 <div class="col-md-12 col-12 text-center mb-2">
-                                                    @include('frest-components.form-valiations.small-tag-error',['name' => 'permissions[]'])
+                                                    @include('frest-components.form-validations.small-tag-error',['name' => 'permissions[]'])
                                                 </div>
                                                 @enderror
 

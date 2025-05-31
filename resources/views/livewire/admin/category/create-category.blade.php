@@ -42,7 +42,7 @@
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'title' , 'content' => 'عنوان '] )
                                                         @include('frest-components.tags.required-tag')
                                                         @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'title' , 'classes' => 'text-left' , 'id' => 'title' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'title' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'title' ])
                                                     </div>
                                                 </div>
 
@@ -51,7 +51,7 @@
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'عنوان سئو '] )
                                                         @include('frest-components.tags.required-tag')
                                                         @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'seoTitle' , 'classes' => 'text-left' , 'id' => 'seoTitle' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required'])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'seoTitle' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'seoTitle' ])
                                                     </div>
                                                 </div>
 
@@ -61,7 +61,7 @@
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'enTitle' , 'content' => 'عنوان لاتین '] )
                                                         @include('frest-components.tags.required-tag')
                                                         @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'enTitle' , 'classes' => 'text-left' , 'id' => 'enTitle' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required'])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'enTitle' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'enTitle' ])
                                                     </div>
                                                 </div>
 
@@ -69,7 +69,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'parentId' , 'content' => 'دسته پدر'] )
                                                         @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $allCategories , 'id' => 'parentId' , 'wire' => 'parentId'  , 'defaultOption' => true , 'defaultValue' => true])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'parentId' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'parentId' ])
                                                     </div>
                                                 </div>
 
@@ -78,7 +78,7 @@
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'type' , 'content' => 'نوع دسته بندی'] )
                                                         @include('frest-components.tags.required-tag')
                                                         @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $categoryType , 'id' => 'type' , 'wire' => 'type', 'defaultOption' => true ])
-                                                        @include('frest-components.form-valiations.small-tag-error',[ 'name' => 'type' ])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'type' ])
                                                     </div>
                                                 </div>
 
