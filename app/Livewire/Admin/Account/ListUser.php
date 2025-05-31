@@ -15,6 +15,7 @@ class ListUser extends AdminComponent
 
     public function render()
     {
+        $pageTile = 'لیست کاربران';
         $userQuery = User::query();
         $mainAdminId = (clone $userQuery)->isAdmin()->first()->id;
         $users = (clone $userQuery)->paginate();
@@ -25,6 +26,7 @@ class ListUser extends AdminComponent
                 'users' => $users,
                 'mainAdminId' => $mainAdminId,
                 'isAdmin' => auth()->user()->type == UserType::Admin,
+                'pageTitle' => $pageTile,
             ]
         );
     }

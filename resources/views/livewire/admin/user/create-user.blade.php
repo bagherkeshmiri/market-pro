@@ -1,4 +1,4 @@
-@section('title','ایجاد مدیر')
+@section('title',$pageTitle)
 
 
 @section('styles')
@@ -15,7 +15,7 @@
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
                         <h5 class="content-header-title float-left pr-1 text-success "
-                            style=" border-left: 0 !important;">ایجاد مدیر</h5>
+                            style=" border-left: 0 !important;">{{ $pageTitle }}</h5>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
 
                                                 <div class="col-12 d-flex justify-content-end">
                                                     @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
-                                                    @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.admin.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
+                                                    @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.user.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                 </div>
                                             </div>
                                         </div>

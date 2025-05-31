@@ -3,8 +3,7 @@
 namespace App\Livewire\Admin\Account;
 
 use App\Livewire\BaseComponents\AdminComponent;
-use App\Repositories\Admin\AdminRepositoryInterface;
-use App\Repositories\Role\RoleRepositoryInterface;
+use App\Models\Role;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -21,8 +20,15 @@ class CreateUser extends AdminComponent
 
     public function render()
     {
-        $roles = auth()->user()->permissions->pluck('id', 'fa_name')->toArray();
-        return $this->renderView('livewire.admin.account.create-account', ['roles' => $roles]);
+        $pageTile = 'ایجاد کاربر';
+        $roles = Role::pluck('id', 'fa_name')->toArray();
+        return $this->renderView(
+            'livewire.admin.user.create-user',
+            [
+                'roles' => $roles,
+                'pageTitle' => $pageTile,
+            ]
+        );
     }
 
     /**

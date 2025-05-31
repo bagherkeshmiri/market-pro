@@ -33,7 +33,8 @@ class ShowUser extends AdminComponent
 
     public function render()
     {
-        $roles = Role::all()->pluck('id', 'fa_name')->toArray();
+        $pageTitle  = 'ویرایش کاربر';
+        $roles = Role::pluck('id', 'fa_name')->toArray();
         $this->adminRole = auth()->user()->role_id;
         $this->fill([$this->adminRole]);
         return $this->renderView(
@@ -42,6 +43,7 @@ class ShowUser extends AdminComponent
                 'admins' => $this->admin,
                 'roles' => $roles,
                 'types' => showEnumLabels(UserType::class),
+                'pageTitle' => $pageTitle,
             ]
         );
     }

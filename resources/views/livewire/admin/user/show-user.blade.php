@@ -1,4 +1,4 @@
-@section('title','ویرایش کاربر')
+@section('title',$pageTitle)
 
 
 @section('styles')
@@ -13,7 +13,7 @@
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
                         <h5 class="content-header-title float-left pr-1 text-success "
-                            style=" border-left: 0 !important;">ویرایش کاربر</h5>
+                            style=" border-left: 0 !important;">{{ $pageTitle }}</h5>
                     </div>
                 </div>
             </div>
