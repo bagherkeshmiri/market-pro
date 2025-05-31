@@ -14,11 +14,15 @@ class ListRole extends AdminComponent
 
     public function render()
     {
+        $pageTile = 'لیست نقش ها';
+        $tableHeads = ['نام فارسی','نام لاتین' , 'سطوح دسترسی' , 'عملیات'];
         $roles = Role::paginate();
         $mainRoleId = Role::first()->id;
         return $this->renderView(
             'livewire.admin.role.list-role',
             [
+                'pageTile' => $pageTile,
+                'tableHeads' => $tableHeads,
                 'roles' => $roles,
                 'mainRoleId' => $mainRoleId,
             ]

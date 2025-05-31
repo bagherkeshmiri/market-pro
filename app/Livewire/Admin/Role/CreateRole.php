@@ -3,45 +3,49 @@
 namespace App\Livewire\Admin\Role;
 
 use App\Livewire\BaseComponents\AdminComponent;
-use App\Repositories\Permission\PermissionRepositoryInterface;
-use App\Repositories\Role\RoleRepositoryInterface;
+use App\Models\Permission;
+use App\Models\Role;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class CreateRole extends AdminComponent
 {
     public $faName;
     public $enName;
-    public $allPermissions;
-    public $permissions = [];
+    public $permissions;
     public $selectAll = false;
-    protected object $permissionRepository;
-    protected object $roleRepository;
 
-    public function boot(
-        PermissionRepositoryInterface $permissionRepo,
-        RoleRepositoryInterface $roleRepo,
-    ) {
-        $this->permissionRepository = $permissionRepo;
-        $this->roleRepository = $roleRepo;
+    public function boot(): void
+    {
+        $this->permissions = Permission::all();
     }
 
     public function render()
     {
-        $this->allPermissions = $this->permissionRepository->all();
-        return $this->renderView('livewire.admin.role.create-role', ['allPermissions' => $this->allPermissions]);
+        $pageTile = 'ایجاد نقش';
+        return $this->renderView(
+            'livewire.admin.role.create-role',
+            [
+                'pageTile' => $pageTile,
+                'allPermissions' => $this->permissions,
+            ]
+        );
     }
 
-    public function updatedSelectAll($value)
+    public function updatedSelectAll($value): void
     {
         if ($value) {
-            $this->permissions = $this->permissionRepository->all()->pluck('id');
+            $this->permissions = $this->permissions->pluck('id');
         } else {
             $this->permissions = [];
         }
     }
 
+    /**
+     * @throws Throwable
+     */
     public function store(): RedirectResponse
     {
         $data = [
@@ -50,7 +54,7 @@ class CreateRole extends AdminComponent
         ];
         DB::beginTransaction();
         try {
-            $role = $this->roleRepository->create($data);
+            $role = Role::create($data);
             $role->permissions()->attach($this->permissions);
             DB::commit();
             $this->reset(['faName', 'enName', 'permissions']);

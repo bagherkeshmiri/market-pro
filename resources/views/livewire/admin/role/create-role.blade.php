@@ -1,4 +1,4 @@
-@section('title','ایجاد نقش')
+@section('title',$pageTile)
 
 
 @section('styles')
@@ -15,7 +15,7 @@
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
                         <h5 class="content-header-title float-left pr-1 text-success "
-                            style=" border-left: 0 !important;">ایجاد نقش</h5>
+                            style=" border-left: 0 !important;">{{ $pageTile }}</h5>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                                                 @foreach($allPermissions as $permission)
                                                     <div class="col-md-3 col-12">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.checkboxs.success-sm-checkbox',[ 'name' => 'permissions[]', 'label_content' => $permission->fa_name  , 'id' => 'permission'.$permission->id , 'for' => 'permission'.$permission->id  , 'wire' => 'permissions' , 'value' => $permission->id ])
+                                                            @include('frest-components.inputs.checkboxs.success-sm-checkbox',[ 'name' => 'permission'.$permission->id, 'label_content' => $permission->fa_name  , 'id' => 'permission'.$permission->id , 'for' => 'permission'.$permission->id  , 'wire' => 'permissions' , 'value' => $permission->id ])
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -94,7 +94,6 @@
                     </div>
                 </div>
             </section>
-            <!-- // Basic multiple Column Form section end -->
 
         </div>
     </div>

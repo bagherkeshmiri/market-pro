@@ -30,7 +30,6 @@
 
         >
         <label @isset($label_classes) {{$label_classes}}  @endisset
-
                 for="{{ $for }}"
         >
             {{ $label_content }}

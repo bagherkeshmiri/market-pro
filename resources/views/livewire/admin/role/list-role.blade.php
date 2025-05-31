@@ -1,11 +1,9 @@
-@section('title',' لیست نقش ها')
+@section('title',$pageTile)
 
 
 @section('styles')
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/extensions/sweetalert2.min.css') }}">
 @endsection
-
-
 
 
 <div class="app-content content">
@@ -16,14 +14,13 @@
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
                         <h5 class="content-header-title float-left pr-1 text-success "
-                            style=" border-left: 0 !important;"> لیست نقش ها </h5>
+                            style=" border-left: 0 !important;">{{ $pageTile }}</h5>
                     </div>
                 </div>
             </div>
         </div>
         <div class="content-body">
 
-            <!-- // Basic multiple Column Form section start -->
             <section id="multiple-column-form">
                 <div class="row match-height">
                     <div class="col-12">
@@ -31,15 +28,13 @@
                             <div class="card-content">
                                 <div class="card-body">
 
-                                    <!-- Table with no outer spacing -->
                                     <div class="table-responsive">
                                         <table class="table mb-0 table-hover">
                                             <thead>
                                             <tr>
-                                                <th style="width: 120px;"> نام فارسی</th>
-                                                <th style="width: 120px;"> نام لاتین</th>
-                                                <th>سطوح دسترسی</th>
-                                                <th>عملیات</th>
+                                                @foreach($tableHeads as $tableHead)
+                                                    <th>{{ $tableHead }}</th>
+                                                @endforeach
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -54,13 +49,9 @@
                                                         @endforeach
                                                     </td>
                                                     <td>
-                                                        {{--                                                        @can('edit')--}}
                                                         @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.role.show',[ 'role' => $role->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
-                                                        {{--                                                        @endcan--}}
                                                         @if($role->id !== $mainRoleId)
-                                                            {{--                                                            @can('delete')--}}
                                                             @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=role_delete(this,event)  data-url='.route('admin.role.delete',[ 'role' => $role->id ]) ])
-                                                            {{--                                                            @endcan--}}
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -83,7 +74,6 @@
                     </div>
                 </div>
             </section>
-            <!-- // Basic multiple Column Form section end -->
 
         </div>
     </div>
