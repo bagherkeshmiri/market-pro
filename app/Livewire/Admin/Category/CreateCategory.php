@@ -3,64 +3,58 @@
 namespace App\Livewire\Admin\Category;
 
 use App\Livewire\BaseComponents\AdminComponent;
-use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Models\Category;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class CreateCategory extends AdminComponent
 {
-    public $title;
-    public $seoTitle;
+    public $name;
     public $parentId;
-    public $description;
-    public $enTitle;
-    public $slug;
-    public $type = [];
-    protected object $categoryRepository;
-
-    public function boot(CategoryRepositoryInterface $categoryRepo)
-    {
-        $this->categoryRepository = $categoryRepo;
-    }
 
     public function render()
     {
-        $allCategories = $this->categoryRepository->all()->pluck('id', 'title')->toArray();
+        $pageTile = 'ایجاد دسته بندی';
+        $allCategories = Category::pluck('id', 'name')->toArray();
         return $this->renderView(
             'livewire.admin.category.create-category',
             [
+                'pageTitle' => $pageTile,
                 'allCategories' => $allCategories,
-                'categoryType' => $this->categoryRepository->getModel()->getCategoryTypeList(),
             ],
         );
     }
 
+    /**
+     * @throws Throwable
+     */
     public function store()
     {
         $this->validate([
-            'title' => 'required',
-            'seoTitle' => 'required',
-            'type' => 'required|numeric',
-            'enTitle' => 'required',
+            'name' => 'required',
+            'parentId' => 'nullable|exists:categories,id',
         ]);
+
         $data = [
-            'title' => $this->title,
+            'name' => $this->name,
             'parent_id' => $this->parentId,
-            'description' => $this->description,
-            'seo_title' => $this->seoTitle,
-            'type' => $this->type,
-            'en_title' => $this->enTitle,
-            'slug' => makeSlug($this->enTitle),
         ];
+
         DB::beginTransaction();
         try {
-            $this->categoryRepository->create($data);
+            Category::create($data);
             DB::commit();
-            $this->reset(['title', 'seoTitle', 'type', 'description']);
+            $this->reset(['name']);
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.category.index');
-        } catch (Exception) {
+        } catch (Exception $e) {
             DB::rollBack();
+
+            dd(
+                $e->getMessage()
+            );
+
             session()->flash('error', __('global.error_message'));
             return redirect()->route('admin.category.create');
         }

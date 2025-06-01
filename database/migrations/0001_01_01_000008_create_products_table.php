@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->decimal('price')->default(0.0);
             $table->unsignedMediumInteger('stock')->default(0);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

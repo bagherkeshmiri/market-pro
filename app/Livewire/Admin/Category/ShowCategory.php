@@ -8,62 +8,49 @@ use App\Repositories\Category\CategoryRepositoryInterface;
 use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class ShowCategory extends AdminComponent
 {
     public object $category;
-    public $title;
+    public $name;
     public $parentId;
-    public $type;
-    public $description;
-    public $seoTitle;
-    public $enTitle;
-    public $slug;
-    protected object $categoryRepository;
 
-    public function boot(CategoryRepositoryInterface $categoryRepo)
+    public function mount(Category $category): void
     {
-        $this->categoryRepository = $categoryRepo;
-    }
-
-    public function mount(Category $category)
-    {
-        $this->title = $category->title;
+        $this->name = $category->name;
         $this->parentId = $category->parent_id;
-        $this->type = $category->type;
-        $this->description = $category->description;
-        $this->seoTitle = $category->seo_title;
-        $this->enTitle = $category->en_title;
-        $this->slug = $category->slug;
     }
 
     public function render()
     {
-        $allCategories = $this->categoryRepository->all()->pluck('id', 'title')->toArray();
+        $pageTile = 'ویرایش دسته بندی';
+        $allCategories = Category::where('id', '!=', $this->category->id)
+            ->pluck('id', 'name')
+            ->toArray();
         Arr::forget($allCategories, $this->category->title);
-        return $this->renderView('livewire.admin.category.show-category', [
-            'allCategories' => $allCategories,
-            'categoryType' => $this->categoryRepository->getModel()->getCategoryTypeList(),
-        ]);
+        return $this->renderView(
+            'livewire.admin.category.show-category',
+            [
+                'pageTitle' => $pageTile,
+                'allCategories' => $allCategories,
+            ]
+        );
     }
 
+    /**
+     * @throws Throwable
+     */
     public function update()
     {
         $this->validate([
-            'title' => 'required',
-            'seoTitle' => 'required',
-            'type' => 'required',
-            'enTitle' => 'required',
+            'name' => 'required',
+            'parentId' => 'nullable|exists:categories,id',
         ]);
 
         $data = [
-            'title' => $this->title,
-            'parent_id' => ($this->parentId == 0) ? null : $this->parentId,
-            'description' => $this->description,
-            'seo_title' => $this->seoTitle,
-            'type' => $this->type,
-            'en_title' => $this->enTitle,
-            'slug' => makeSlug($this->enTitle),
+            'name' => $this->name,
+            'parent_id' => $this->parentId,
         ];
 
         DB::beginTransaction();

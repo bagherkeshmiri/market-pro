@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $name
@@ -35,6 +36,8 @@ use Illuminate\Support\Carbon;
  */
 class Category extends Authenticatable
 {
+    use SoftDeletes;
+
     public const string TABLE_NAME = 'categories';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';

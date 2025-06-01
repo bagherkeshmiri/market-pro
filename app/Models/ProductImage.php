@@ -5,6 +5,7 @@ namespace App\Models;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 
@@ -33,6 +34,8 @@ use Illuminate\Support\Carbon;
  */
 class ProductImage extends Authenticatable
 {
+    use SoftDeletes;
+
     public const string TABLE_NAME = 'product_images';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';

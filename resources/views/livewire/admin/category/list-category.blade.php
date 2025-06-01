@@ -44,21 +44,12 @@
 
                                             @forelse ($categories as $category)
                                                 <tr>
-                                                    <td>{{ $category->title }}</td>
-                                                    <td>{{ $category->seo_title }}</td>
-                                                    <td>{{ $category->en_title }}</td>
-                                                    <td id="copyLink{{$category->id}}" data-value="{{$category->slug}}" data-type="{{$category->type}}">{{ $category->slug }}</td>
+                                                    <td>{{ $category->name }}</td>
+                                                    <td>{{ $category->parent->name ?? ' - ' }}</td>
+                                                    <td>{{ jalali($category->created_at) }}</td>
                                                     <td>
-                                                        @if($category->parent != null)
-                                                            {{ $category->parent->title }}
-                                                        @endif
-                                                    </td>
-                                                    <td>{!! $category->getBadgeType() !!}</td>
-                                                    <td>{{ $category->created_at }}</td>
-                                                    <td>
-                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.category.show',[ 'category' => $category->slug ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
-                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=category_delete(this,event)  data-url='.route('admin.category.delete',[ 'category' => $category->slug ]) ])
-                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.copy_link') , 'icon' => copyIcon() , 'attributes' => ' onclick=copyLink("copyLink'.$category->id.'") ' ])
+                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.category.show',[ 'category' => $category->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=category_delete(this,event)  data-url='.route('admin.category.delete',[ 'category' => $category->id ]) ])
                                                     </td>
                                                 </tr>
                                             @empty
@@ -92,33 +83,12 @@
     <script type="text/javascript" src="{{ asset('frest/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/swal-functions.js') }}"></script>
     <script src="{{ asset('frest/vendors/js/extensions/toastr.min.js') }}"></script>
-{{--    <script type="text/javascript">--}}
+        <script type="text/javascript">
 
-        {{--let userPolicy = @js(\App\Enums\Categories\CategoryType::userPolicy),--}}
-        {{--    userGuide = @js(\App\Enums\Categories\CategoryType::userGuide),--}}
-        {{--    developerGuide = @js(\App\Enums\Categories\CategoryType::developerGuide),--}}
-        {{--    developerPolicy = @js(\App\Enums\Categories\CategoryType::developerPolicy),--}}
-        {{--    url = '';--}}
+    function category_delete(element, event) {
+        event.preventDefault()
+        mboxDelete(element.getAttribute('data-url'));
+    }
 
-        {{--function category_delete(element, event) {--}}
-        {{--    event.preventDefault()--}}
-        {{--    mboxDelete(element.getAttribute('data-url'));--}}
-        {{--}--}}
-
-        {{--const copyLink = (inputId) => {--}}
-        {{--    let element = document.getElementById(inputId);--}}
-        {{--    let type = Number(element.getAttribute('data-type'));--}}
-
-        {{--    url = (type === developerPolicy || type === developerGuide)--}}
-        {{--        ? window.location.origin + '/developer/' + element.getAttribute('data-value')--}}
-        {{--        : window.location.origin + '/' + element.getAttribute('data-value');--}}
-
-        {{--    navigator.clipboard.writeText(url);--}}
-        {{--    toastr.success('لینک کوتاه کپی شد', {--}}
-        {{--        rtl: true,--}}
-        {{--        positionClass: 'toast-top-right'--}}
-        {{--    });--}}
-        {{--}--}}
-
-{{--    </script>--}}
+        </script>
 @endsection
