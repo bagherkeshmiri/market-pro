@@ -27,6 +27,8 @@ use LaravelIdea\Helper\App\Models\_IH_Permission_QB;
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Order> $Orders
+ * @property-read int|null $orders_count
  * @property-read Role|null $role
  * @method static Builder<static>|User isAdmin()
  * @method static Builder<static>|User newModelQuery()

@@ -4,9 +4,36 @@ namespace App\Models;
 
 use App\Enums\OrderStatus;
 use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Carbon;
 
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $order_id
+ * @property int $product_id
+ * @property int $quantity
+ * @property string $price
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property OrderStatus $status
+ * @property-read Order|null $order
+ * @property-read Product|null $product
+ * @method static Builder<static>|OrderItem newModelQuery()
+ * @method static Builder<static>|OrderItem newQuery()
+ * @method static Builder<static>|OrderItem query()
+ * @method static Builder<static>|OrderItem whereCreatedAt($value)
+ * @method static Builder<static>|OrderItem whereId($value)
+ * @method static Builder<static>|OrderItem whereOrderId($value)
+ * @method static Builder<static>|OrderItem wherePrice($value)
+ * @method static Builder<static>|OrderItem whereProductId($value)
+ * @method static Builder<static>|OrderItem whereQuantity($value)
+ * @method static Builder<static>|OrderItem whereUpdatedAt($value)
+ * @mixin Eloquent
+ */
 class OrderItem extends Authenticatable
 {
     public const string TABLE_NAME = 'order_items';

@@ -11,16 +11,16 @@ use Illuminate\Support\Carbon;
 /**
  * 
  *
- * @property IsActive $is_active
- * @property-read mixed $created_at
- * @method static Builder<static>|SiteMenu newModelQuery()
- * @method static Builder<static>|SiteMenu newQuery()
- * @method static Builder<static>|SiteMenu query()
  * @property int $id
  * @property int|null $parent_id
  * @property string $key
  * @property string $value
+ * @property IsActive $is_active  0 => no , 1 => yes
+ * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @method static Builder<static>|SiteMenu newModelQuery()
+ * @method static Builder<static>|SiteMenu newQuery()
+ * @method static Builder<static>|SiteMenu query()
  * @method static Builder<static>|SiteMenu whereCreatedAt($value)
  * @method static Builder<static>|SiteMenu whereId($value)
  * @method static Builder<static>|SiteMenu whereIsActive($value)

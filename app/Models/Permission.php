@@ -10,19 +10,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 
 /**
- * 
  *
- * @property-read mixed $created_at
+ *
+ * @property int $id
+ * @property string $fa_name
+ * @property string $en_name
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string|null $deleted_at
  * @property-read Collection<int, Role> $roles
  * @property-read int|null $roles_count
  * @method static Builder<static>|Permission newModelQuery()
  * @method static Builder<static>|Permission newQuery()
  * @method static Builder<static>|Permission query()
- * @property int $id
- * @property string $fa_name
- * @property string $en_name
- * @property string|null $deleted_at
- * @property Carbon|null $updated_at
  * @method static Builder<static>|Permission whereCreatedAt($value)
  * @method static Builder<static>|Permission whereDeletedAt($value)
  * @method static Builder<static>|Permission whereEnName($value)

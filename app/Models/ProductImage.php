@@ -3,9 +3,34 @@
 namespace App\Models;
 
 use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Carbon;
 
+/**
+ *
+ *
+ * @property int $id
+ * @property int $product_id
+ * @property string $image_url
+ * @property bool $is_main
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string|null $deleted_at
+ * @property-read Product|null $product
+ * @method static Builder<static>|ProductImage newModelQuery()
+ * @method static Builder<static>|ProductImage newQuery()
+ * @method static Builder<static>|ProductImage query()
+ * @method static Builder<static>|ProductImage whereCreatedAt($value)
+ * @method static Builder<static>|ProductImage whereDeletedAt($value)
+ * @method static Builder<static>|ProductImage whereId($value)
+ * @method static Builder<static>|ProductImage whereImageUrl($value)
+ * @method static Builder<static>|ProductImage whereIsMain($value)
+ * @method static Builder<static>|ProductImage whereProductId($value)
+ * @method static Builder<static>|ProductImage whereUpdatedAt($value)
+ * @mixin Eloquent
+ */
 class ProductImage extends Authenticatable
 {
     public const string TABLE_NAME = 'product_images';
