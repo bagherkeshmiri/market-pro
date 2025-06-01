@@ -1,4 +1,4 @@
-@section('title',' لیست دسته بندی')
+@section('title',$pageTitle)
 
 
 @section('styles')
@@ -15,7 +15,7 @@
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
                         <h5 class="content-header-title float-left pr-1 text-success "
-                            style=" border-left: 0 !important;"> لیست دسته بندی</h5>
+                            style=" border-left: 0 !important;">{{ $pageTitle }}</h5>
                     </div>
                 </div>
             </div>
@@ -35,14 +35,9 @@
                                         <table class="table mb-0 table-hover">
                                             <thead>
                                             <tr>
-                                                <th>عنوان</th>
-                                                <th>عنوان سئو</th>
-                                                <th>عنوان لاتین</th>
-                                                <th>اسلاگ</th>
-                                                <th>دسته پدر</th>
-                                                <th>نوع دسته بندی</th>
-                                                <th>تاریخ ایجاد</th>
-                                                <th>عملیات</th>
+                                                @foreach($tableHeads as $tableHead)
+                                                    <th>{{ $tableHead }}</th>
+                                                @endforeach
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -61,17 +56,9 @@
                                                     <td>{!! $category->getBadgeType() !!}</td>
                                                     <td>{{ $category->created_at }}</td>
                                                     <td>
-                                                        @can('edit')
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.category.show',[ 'category' => $category->slug ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
-                                                        @endcan
-
-                                                        @can('delete')
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=category_delete(this,event)  data-url='.route('admin.category.delete',[ 'category' => $category->slug ]) ])
-                                                        @endcan
-
-                                                        @if($category->type != \App\Enums\Categories\CategoryType::userSupport )
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.copy_link') , 'icon' => copyIcon() , 'attributes' => ' onclick=copyLink("copyLink'.$category->id.'") ' ])
-                                                        @endif
+                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.category.show',[ 'category' => $category->slug ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=category_delete(this,event)  data-url='.route('admin.category.delete',[ 'category' => $category->slug ]) ])
+                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.copy_link') , 'icon' => copyIcon() , 'attributes' => ' onclick=copyLink("copyLink'.$category->id.'") ' ])
                                                     </td>
                                                 </tr>
                                             @empty
@@ -105,33 +92,33 @@
     <script type="text/javascript" src="{{ asset('frest/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/swal-functions.js') }}"></script>
     <script src="{{ asset('frest/vendors/js/extensions/toastr.min.js') }}"></script>
-    <script type="text/javascript">
+{{--    <script type="text/javascript">--}}
 
-        let userPolicy = @js(\App\Enums\Categories\CategoryType::userPolicy),
-            userGuide = @js(\App\Enums\Categories\CategoryType::userGuide),
-            developerGuide = @js(\App\Enums\Categories\CategoryType::developerGuide),
-            developerPolicy = @js(\App\Enums\Categories\CategoryType::developerPolicy),
-            url = '';
+        {{--let userPolicy = @js(\App\Enums\Categories\CategoryType::userPolicy),--}}
+        {{--    userGuide = @js(\App\Enums\Categories\CategoryType::userGuide),--}}
+        {{--    developerGuide = @js(\App\Enums\Categories\CategoryType::developerGuide),--}}
+        {{--    developerPolicy = @js(\App\Enums\Categories\CategoryType::developerPolicy),--}}
+        {{--    url = '';--}}
 
-        function category_delete(element, event) {
-            event.preventDefault()
-            mboxDelete(element.getAttribute('data-url'));
-        }
+        {{--function category_delete(element, event) {--}}
+        {{--    event.preventDefault()--}}
+        {{--    mboxDelete(element.getAttribute('data-url'));--}}
+        {{--}--}}
 
-        const copyLink = (inputId) => {
-            let element = document.getElementById(inputId);
-            let type = Number(element.getAttribute('data-type'));
+        {{--const copyLink = (inputId) => {--}}
+        {{--    let element = document.getElementById(inputId);--}}
+        {{--    let type = Number(element.getAttribute('data-type'));--}}
 
-            url = (type === developerPolicy || type === developerGuide)
-                ? window.location.origin + '/developer/' + element.getAttribute('data-value')
-                : window.location.origin + '/' + element.getAttribute('data-value');
+        {{--    url = (type === developerPolicy || type === developerGuide)--}}
+        {{--        ? window.location.origin + '/developer/' + element.getAttribute('data-value')--}}
+        {{--        : window.location.origin + '/' + element.getAttribute('data-value');--}}
 
-            navigator.clipboard.writeText(url);
-            toastr.success('لینک کوتاه کپی شد', {
-                rtl: true,
-                positionClass: 'toast-top-right'
-            });
-        }
+        {{--    navigator.clipboard.writeText(url);--}}
+        {{--    toastr.success('لینک کوتاه کپی شد', {--}}
+        {{--        rtl: true,--}}
+        {{--        positionClass: 'toast-top-right'--}}
+        {{--    });--}}
+        {{--}--}}
 
-    </script>
+{{--    </script>--}}
 @endsection
