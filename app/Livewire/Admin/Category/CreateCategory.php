@@ -48,13 +48,8 @@ class CreateCategory extends AdminComponent
             $this->reset(['name']);
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.category.index');
-        } catch (Exception $e) {
+        } catch (Exception) {
             DB::rollBack();
-
-            dd(
-                $e->getMessage()
-            );
-
             session()->flash('error', __('global.error_message'));
             return redirect()->route('admin.category.create');
         }
