@@ -8,7 +8,7 @@
     <meta name="robots" content="index"/>
     {!! SEO::generate() !!}
     <title>  @yield('title') | اناردونی</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frest/images/ico/favicon.ico') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/vendors.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frest/css/font/primary-yekan.css') }}">

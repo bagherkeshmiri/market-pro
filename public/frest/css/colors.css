@@ -1,31 +1,3 @@
-/* Colors CSS */
-/* --------- */
-/*------------------------------------------------------------------
-[Table of contents for each color options]
-
-- Text Color
-- Background Color
-- Alert
-- Border
-- Badges
-- Buttons
-- Dropdowns
-- Bullet
-- Pagination
-- Progress bars
-- Chips
-- Divider
-- Timeline
-- Checkboxes & Radio
-- Custom Switches
-- Touchspin
-- Scrumboard
-- Select2
--------------------------------------------------------------------*/
-/* white Color Style */
-/* ----------------------- */
-/* Text color */
-/* ---------- */
 .white {
 	color: #FFFFFF !important;
 }

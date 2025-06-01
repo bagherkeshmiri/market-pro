@@ -2,7 +2,7 @@
     <div class="navbar-header d-xl-block d-none">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="">
                     <h2 class="brand-text mb-0">پیکسل دونی</h2>
                 </a>
             </li>

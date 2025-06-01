@@ -70,3 +70,15 @@ function copyIcon(): string
 {
     return '<i class="bx bx-copy bx-sm bx-tada-hover"></i>';
 }
+
+
+function dollarIcon(): string
+{
+    return '<i class="bx bx-dollar"></i>';
+}
+
+
+function packageIcon(): string
+{
+    return '<i class="bx bx-package"></i>';
+}

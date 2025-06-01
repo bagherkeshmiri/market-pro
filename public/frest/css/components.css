@@ -1,41 +1,3 @@
-/*------------------------------------------------------------------
-
-[Table of contents]
-- Layout CSS
-- Responsive Layout CSS
-- Sidebar
-- Footer CSS
-- Main Menu
-- Content Helpers
--   Display
--   Borders
--   Box Shadow
--   Width
--   Height
--   Line Height
--   Transformations
-- Image
-- Bullets
-- Avatar CSS
-- Search
-- Apex Chart CSS
-- Bootstrap Social
-- Demo CSS
-- Customizer CSS
-- Chips CSS
-- Divider CSS
-- Error CSS
-- widget chat
-- Timeline
-- CSS Breakpoints
-- Basic Input CSS
-- Font Sizing
-- Select2 CSS
-- Datatables CSS
-- Pick A Date CSS
-- Daterange CSS
--------------------------------------------------------------------*/
-
 @import url(font/primary-iran-sans.css);
 /*@import url(font/secondary-iran-sans.css);*/
 
@@ -50,7 +12,7 @@ html body {
 	height: 100%;
 	background-color: #F2F4F4;
 	direction: rtl;
-	font-family: "primary-font", "segoe ui", "tahoma";
+    font-family: "primary-font", "segoe ui", "tahoma", sans-serif;
 }
 
 .ltr-text,
@@ -60,11 +22,11 @@ code {
 }
 
 .primary-font {
-	font-family: "primary-font", "segoe ui", "tahoma" !important;
+    font-family: "primary-font", "segoe ui", "tahoma", serif !important;
 }
 
 .secondary-font {
-	font-family: "secondary-font", "primary-font", "segoe ui", "tahoma" !important;
+    font-family: "secondary-font", "primary-font", "segoe ui", "tahoma", serif !important;
 }
 
 * {

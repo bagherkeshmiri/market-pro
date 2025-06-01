@@ -42,14 +42,16 @@
                                             </thead>
                                             <tbody>
 
-                                            @forelse ($categories as $category)
+                                            @forelse ($products as $product)
                                                 <tr>
-                                                    <td>{{ $category->name }}</td>
-                                                    <td>{{ $category->parent->name ?? ' - ' }}</td>
-                                                    <td>{{ jalali($category->created_at) }}</td>
+                                                    <td>{{ $product->name }}</td>
+                                                    <td>{{ $product->category->name ?? ' - ' }}</td>
+                                                    <td>{{ number_format($product->price) }}</td>
+                                                    <td>{{ $product->stock }}</td>
+                                                    <td>{{ jalali($product->created_at) }}</td>
                                                     <td>
-                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.category.show',[ 'category' => $category->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
-                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=category_delete(this,event)  data-url='.route('admin.category.delete',[ 'category' => $category->id ]) ])
+                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.category.show',[ 'category' => $product->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=category_delete(this,event)  data-url='.route('admin.category.delete',[ 'category' => $product->id ]) ])
                                                     </td>
                                                 </tr>
                                             @empty
@@ -61,7 +63,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.paginators.bootstrap',['model' => $categories] )
+                                        @include('frest-components.paginators.bootstrap',['model' => $products] )
 
                                     </div>
 
