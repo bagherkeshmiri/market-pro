@@ -44,6 +44,9 @@
 
                                             @forelse ($products as $product)
                                                 <tr>
+                                                    <td>
+                                                        <img src="{{ $product->images()->where('is_main',true)->first()->image_url ?? asset('images/sample/sample-product.png')  }}" alt="{{ 'product-image-' . $product->id }}" width="30" height="30"/>
+                                                    </td>
                                                     <td>{{ $product->name }}</td>
                                                     <td>{{ $product->category->name ?? ' - ' }}</td>
                                                     <td>{{ number_format($product->price) }}</td>
@@ -85,12 +88,12 @@
     <script type="text/javascript" src="{{ asset('frest/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/swal-functions.js') }}"></script>
     <script src="{{ asset('frest/vendors/js/extensions/toastr.min.js') }}"></script>
-        <script type="text/javascript">
+    <script type="text/javascript">
 
-    function category_delete(element, event) {
-        event.preventDefault()
-        mboxDelete(element.getAttribute('data-url'));
-    }
+        function category_delete(element, event) {
+            event.preventDefault()
+            mboxDelete(element.getAttribute('data-url'));
+        }
 
-        </script>
+    </script>
 @endsection

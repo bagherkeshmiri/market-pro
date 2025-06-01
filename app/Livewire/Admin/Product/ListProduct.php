@@ -16,13 +16,15 @@ class ListProduct extends AdminComponent
     public function render()
     {
         $pageTitle = 'لیست‌ محصولات';
-        $tableHeads = ['نام', 'دسته محصول', 'قیمت ( تومان )','تعداد موجودی ','تاریخ ایجاد', 'عملیات'];
+        $tableHeads = ['تصویر', 'نام', 'دسته محصول', 'قیمت ( تومان )', 'تعداد موجودی ', 'تاریخ ایجاد', 'عملیات'];
         return $this->renderView(
             'livewire.admin.product.list-product',
             [
                 'pageTitle' => $pageTitle,
                 'tableHeads' => $tableHeads,
-                'products' => Product::paginate(),
+                'products' => Product::with([
+                    'images',
+                ])->paginate(),
             ]
         );
     }
