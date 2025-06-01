@@ -6,9 +6,13 @@ use App\Enums\UserType;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
+use LaravelIdea\Helper\App\Models\_IH_Permission_QB;
 
 /**
  *
@@ -72,9 +76,14 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, self::COLUMN_ROLE_ID, Role::COLUMN_ID);
     }
 
-    public function permissions()
+    public function permissions(): _IH_Permission_QB|BelongsToMany|Collection
     {
         return $this->role?->permissions() ?? collect();
+    }
+
+    public function Orders(): HasMany
+    {
+        return $this->hasMany(Order::class, Order::COLUMN_USER_ID, self::COLUMN_ID);
     }
 
     /*-------------- Scopes -------------*/
