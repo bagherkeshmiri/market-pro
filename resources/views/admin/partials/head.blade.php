@@ -8,6 +8,8 @@
     <meta name="theme-color" content="#5A8DEE">
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/ck-editor.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/vendors.min.css') }}">
+    <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/ui/prism.min.css') }}">
+{{--    <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/file-uploaders/dropzone.min.css') }}">--}}
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/css/bootstrap-extended.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/css/colors.css') }}">
@@ -15,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/css/themes/dark-layout.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/css/themes/semi-dark-layout.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/css/core/menu/menu-types/horizontal-menu.css') }}">
+{{--    <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/css/plugins/file-uploaders/dropzone.css') }}">--}}
 
     <style>
         textarea {

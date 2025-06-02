@@ -7,15 +7,20 @@ use App\Models\Category;
 use App\Models\Product;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Livewire\WithFileUploads;
 use Throwable;
 
 class CreateProduct extends AdminComponent
 {
+    use WithFileUploads;
+
     public $name;
     public $categoryId;
     public $description;
     public $price;
     public $stock;
+    public $mainImage;
+    public $galleryImages;
 
     public function render()
     {
@@ -38,6 +43,11 @@ class CreateProduct extends AdminComponent
      */
     public function store()
     {
+
+        dd(
+            $this
+        );
+
         $this->validate([
             'name' => 'required',
             'categoryId' => 'required|exists:categories,id',

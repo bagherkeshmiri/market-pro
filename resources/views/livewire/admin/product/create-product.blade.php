@@ -20,10 +20,10 @@
         </div>
         <div class="content-body">
 
-            <!-- // Basic multiple Column Form section start -->
             <section id="multiple-column-form">
                 <div class="row match-height">
                     <div class="col-12">
+
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
@@ -62,7 +62,6 @@
                                                     </div>
                                                 </div>
 
-
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'stock' , 'content' => ' تعداد موجودی'] )
@@ -72,9 +71,29 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                                                    <div class="form-group">
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'mainImage' , 'content' => 'آپلود تصویر اصلی'] )
+                                                        @include('frest-components.tags.required-tag')
+                                                        @include('frest-components.inputs.file-upload.simple-file-upload', ['wire' => 'mainImage' , 'id' => 'mainImage'])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'mainImage' ])
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                                                    <div class="form-group">
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'galleryImages' , 'content' => 'آپلود گالری تصاویر '] )
+                                                        @include('frest-components.tags.required-tag')
+                                                        @include('frest-components.inputs.file-upload.simple-file-upload', ['wire' => 'galleryImages' , 'id' => 'galleryImages' , 'isMultiple' => true])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'galleryImages' ])
+                                                    </div>
+                                                </div>
+
+
                                                 <div class="col-md-12 col-12 mb-2">
                                                     @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات '] )
-                                                    @include('frest-components.inputs.ckEditor')
+                                                    @include('frest-components.inputs.ckEditor',[ 'wire' => 'description'])
                                                 </div>
 
                                                 <div class="col-12 d-flex justify-content-end mt-2">
@@ -89,9 +108,9 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </section>
-            <!-- // Basic multiple Column Form section end -->
 
         </div>
     </div>
@@ -101,11 +120,14 @@
 @section('scripts')
     <script src="{{ asset('js/axios.min.js') }}"></script>
     <script src="{{ asset('ckeditor5-35.3.2/build/ckeditor.js') }}"></script>
+
+
     <script>
 
         let saveBtn = document.querySelector('#save_btn');
 
         function MyCustomUploadAdapterPlugin(editor) {
+
             editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                 return {
                     upload() {
@@ -156,7 +178,6 @@
             let value = input.value.replace(/[^0-9]/g, '').replace(/^0+/, '');
             input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
-
 
     </script>
 @endsection
