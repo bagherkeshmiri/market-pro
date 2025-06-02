@@ -84,17 +84,12 @@
                                                                 </p>
                                                             </div>
                                                             <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                                                                <h6 class="mb-0"><small class="text-muted">موبایل
+                                                                <h6 class="mb-0"><small class="text-muted">ایمیل
                                                                     </small></h6>
-                                                                <p><span class="ltr-text">{{ $admin->mobile }}</span>
+                                                                <p><span class="ltr-text">{{ $admin->email }}</span>
                                                                 </p>
                                                             </div>
-                                                            <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                                                                <h6 class="mb-0"><small class="text-muted">نام کاربری
-                                                                    </small></h6>
-                                                                <p><span class="ltr-text">{{ $admin->username }}</span>
-                                                                </p>
-                                                            </div>
+
                                                             <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                                 <h6 class="mb-0"><small class="text-muted">تاریخ ثبت
                                                                         نام</small>
