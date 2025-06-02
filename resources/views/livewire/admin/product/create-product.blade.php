@@ -91,7 +91,7 @@
                                                 </div>
 
 
-                                                <div class="col-md-12 col-12 mb-2">
+                                                <div class="col-md-12 col-12 mb-2"  wire:ignore>
                                                     @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات '] )
                                                     @include('frest-components.inputs.ckEditor',[ 'wire' => 'description'])
                                                 </div>
