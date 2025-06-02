@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $order_id
@@ -54,6 +54,13 @@ class OrderItem extends Authenticatable
     protected $casts = [
         'status' => OrderStatus::class,
     ];
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
+            $builder->orderByDesc('id');
+        });
+    }
 
     /*------------ Relations ------------*/
 

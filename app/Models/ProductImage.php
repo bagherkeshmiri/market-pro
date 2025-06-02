@@ -53,6 +53,13 @@ class ProductImage extends Authenticatable
         'is_main' => 'boolean',
     ];
 
+    protected static function booted(): void
+    {
+        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
+            $builder->orderByDesc('id');
+        });
+    }
+
     /*------------ Relations ------------*/
 
     public function product(): BelongsTo

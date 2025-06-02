@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('category_id')->index();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->decimal('price')->default(0.0);
             $table->unsignedMediumInteger('stock')->default(0);
             $table->timestamps();

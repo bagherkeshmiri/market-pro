@@ -52,6 +52,13 @@ class Role extends Model
 
     protected $casts = [];
 
+    protected static function booted(): void
+    {
+        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
+            $builder->orderByDesc('id');
+        });
+    }
+
     /*------------ Relations ------------*/
 
     public function permissions(): BelongsToMany

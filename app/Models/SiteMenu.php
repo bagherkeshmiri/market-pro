@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int|null $parent_id
@@ -47,6 +47,13 @@ class SiteMenu extends Model
     protected $casts = [
         'is_active' => IsActive::class,
     ];
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
+            $builder->orderByDesc('id');
+        });
+    }
 
     /*------------ Relations ------------*/
 

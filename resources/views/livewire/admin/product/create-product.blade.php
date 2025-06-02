@@ -72,6 +72,11 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="col-md-12 col-12 mb-2">
+                                                    @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات '] )
+                                                    @include('frest-components.inputs.ckEditor')
+                                                </div>
+
                                                 <div class="col-12 d-flex justify-content-end mt-2">
                                                     @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
                                                     @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.category.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
@@ -98,54 +103,53 @@
     <script src="{{ asset('ckeditor5-35.3.2/build/ckeditor.js') }}"></script>
     <script>
 
-        {{--        let saveBtn = document.querySelector('#save_btn');--}}
+        let saveBtn = document.querySelector('#save_btn');
 
-        {{--        function MyCustomUploadAdapterPlugin(editor) {--}}
-        {{--            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {--}}
-        {{--                return {--}}
-        {{--                    upload() {--}}
-        {{--                        return loader.file.then(file => new Promise((resolve, reject) => {--}}
-        {{--                                let formData = new FormData();--}}
-        {{--                                formData.append('image', file)--}}
-        {{--                                axios.post('{{ route('api.upload') }}', formData, {--}}
-        {{--                                    headers: {'Content_type': 'multipart/form-data'}--}}
-        {{--                                }).then(response => {--}}
-        {{--                                    resolve({--}}
-        {{--                                        default: response.data--}}
-        {{--                                    })--}}
-        {{--                                })--}}
-        {{--                            }--}}
-        {{--                        ))--}}
-        {{--                    },--}}
-        {{--                    abort() {--}}
-        {{--                    },--}}
-        {{--                }--}}
-        {{--            }--}}
-        {{--        }--}}
+        function MyCustomUploadAdapterPlugin(editor) {
+            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                return {
+                    upload() {
+                        return loader.file.then(file => new Promise((resolve, reject) => {
+                                let formData = new FormData();
+                                formData.append('image', file)
+                                axios.post('{{ route('api.upload') }}', formData, {
+                                    headers: {'Content_type': 'multipart/form-data'}
+                                }).then(response => {
+                                    resolve({
+                                        default: response.data
+                                    })
+                                })
+                            }
+                        ))
+                    },
+                    abort() {
+                    },
+                }
+            }
+        }
 
-        {{--        const myEditor =--}}
-        {{--            DecoupledDocumentEditor--}}
-        {{--                .create(document.querySelector('#editor'), {--}}
-        {{--                    extraPlugins: [MyCustomUploadAdapterPlugin],--}}
-        {{--                    language: {--}}
-        {{--                        ui: 'fa',--}}
-        {{--                        content: 'fa',--}}
-        {{--                    },--}}
-        {{--                })--}}
-        {{--                .then(editor => {--}}
-        {{--                    const toolbarContainer = document.querySelector('#toolbar-container');--}}
-        {{--                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);--}}
-        {{--                })--}}
-        {{--                .catch(error => {--}}
-        {{--                    console.error(error);--}}
-        {{--                });--}}
+        const myEditor =
+            DecoupledDocumentEditor
+                .create(document.querySelector('#editor'), {
+                    extraPlugins: [MyCustomUploadAdapterPlugin],
+                    language: {
+                        ui: 'fa',
+                        content: 'fa',
+                    },
+                })
+                .then(editor => {
+                    const toolbarContainer = document.querySelector('#toolbar-container');
+                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
 
 
-        {{--        saveBtn.addEventListener('click', function () {--}}
-        {{--            @this.--}}
-        {{--            set('description', document.querySelector('#editor').innerHTML);--}}
-        {{--        });--}}
-
+        saveBtn.addEventListener('click', function () {
+            @this.
+            set('description', document.querySelector('#editor').innerHTML);
+        });
 
 
         function formatPrice(input) {

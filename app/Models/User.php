@@ -71,6 +71,13 @@ class User extends Authenticatable
         'type' => UserType::class,
     ];
 
+    protected static function booted(): void
+    {
+        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
+            $builder->orderByDesc('id');
+        });
+    }
+
     /*------------ Relations ------------*/
 
     public function role(): BelongsTo
