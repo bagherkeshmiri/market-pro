@@ -31,7 +31,7 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->render(function (HttpException $e, Request $request) {
-            if ($request->is('api/*') or $request->is('app/*')) {
+            if ($request->is('api/*')) {
                 $httpErrors = [
                     404 => __('errors.not_found'),
                     422 => __('errors.The_given_data_was_invalid'),
