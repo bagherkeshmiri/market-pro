@@ -49,7 +49,7 @@ class CreateProduct extends AdminComponent
             'description' => 'nullable|string',
             'price' => 'required|string',
             'mainImage' => 'required|file',
-            'galleryImages' => 'required|array',
+            'galleryImages' => 'nullable|array',
         ]);
 
         $data = [
@@ -65,8 +65,17 @@ class CreateProduct extends AdminComponent
             $storedProduct = Product::create($data);
             $storedProduct->images()->create([
                 'image_url' => storeImage($this->mainImage, 'products'),
-                'is-main' => true,
+                'is_main' => true,
             ]);
+
+            if (!empty($this->galleryImages)) {
+                foreach ($this->galleryImages as $galleryImage) {
+                    $storedProduct->images()->create([
+                        'image_url' => storeImage($galleryImage, 'products'),
+                        'is_main' => false,
+                    ]);
+                }
+            }
 
             DB::commit();
             $this->reset(['name', 'description', 'price', 'stock']);

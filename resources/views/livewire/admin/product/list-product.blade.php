@@ -22,7 +22,6 @@
         </div>
         <div class="content-body">
 
-            <!-- // Basic multiple Column Form section start -->
             <section id="multiple-column-form">
                 <div class="row match-height">
                     <div class="col-12">
@@ -30,7 +29,6 @@
                             <div class="card-content">
                                 <div class="card-body">
 
-                                    <!-- Table with no outer spacing -->
                                     <div class="table-responsive">
                                         <table class="table mb-0 table-hover">
                                             <thead>
@@ -43,9 +41,16 @@
                                             <tbody>
 
                                             @forelse ($products as $product)
+
+                                                @php
+                                                    $mainImage = $product->images()->where('is_main', true)->first();
+                                                    $mainImageUrl = $mainImage->image_url ?? asset('images/sample/sample-product.png');
+                                                    $modalId = 'mainImageModal' . $product->id;
+                                                @endphp
+
                                                 <tr>
-                                                    <td>
-                                                        <img src="{{ $product->images()->where('is_main',true)->first()->image_url ?? asset('images/sample/sample-product.png')  }}" alt="{{ 'product-image-' . $product->id }}" width="30" height="30"/>
+                                                    <td data-toggle="tooltip" data-placement="top" title="  برای نمایش تصویر روی آن کلیک کنید">
+                                                        <img data-toggle="modal" data-target="#{{ $modalId }}" src="{{ $mainImageUrl }}" alt="product-image-{{ $product->id }}" width="40" height="40"/>
                                                     </td>
                                                     <td>{{ $product->name }}</td>
                                                     <td>{{ $product->category->name ?? ' - ' }}</td>
@@ -57,6 +62,9 @@
                                                         @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=category_delete(this,event)  data-url='.route('admin.category.delete',[ 'category' => $product->id ]) ])
                                                     </td>
                                                 </tr>
+
+                                                @include('frest-components.inputs.modal',['modalTitle' => 'تصویر اصلی', 'modalId' =>$modalId ])
+
                                             @empty
                                                 <tr>
                                                     <td colspan="100" class="text-center"> {{ __('global.no_information_found') }}</td>
@@ -76,7 +84,7 @@
                     </div>
                 </div>
             </section>
-            <!-- // Basic multiple Column Form section end -->
+
 
         </div>
     </div>
