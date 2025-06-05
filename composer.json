@@ -32,7 +32,8 @@
         },
         "files": [
             "app/Helpers/BoxIconsHelper.php",
-            "app/Helpers/CommonHelper.php"
+            "app/Helpers/CommonHelper.php",
+            "app/Helpers/ResponseHelper.php"
         ]
     },
     "autoload-dev": {

@@ -32,3 +32,17 @@ function convertUserTypeToString(UserType $type): string
         UserType::Admin => 'مدیر',
     };
 }
+
+
+function storeImage(Request $request): string
+{
+
+    dd(
+        $request
+    );
+
+    $date = Carbon::now();
+    $originalPath = 'uploads/images/' . $date->year . '/' . $date->week;
+    $path = Storage::disk('public')->put($originalPath, $request->file('image'));
+    return '/storage/' . $path;
+}
