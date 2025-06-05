@@ -1,5 +1,5 @@
 <a
-    class="mr-1 mb-1 @isset($classes)  {{ $classes }} @endisset"
+    class="@isset($classes)  {{ $classes }} @endisset"
 
     @isset($id)
         id="{{ $id }}"
