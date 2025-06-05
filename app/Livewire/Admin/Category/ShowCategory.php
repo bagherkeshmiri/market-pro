@@ -58,7 +58,7 @@ class ShowCategory extends AdminComponent
             $this->category->update($data);
             DB::commit();
             session()->flash('success', __('global.success_message'));
-            return redirect()->route('admin.category.index');
+            return redirect()->route('admin.category.show', ['category' => $this->category->id]);
         } catch (Exception) {
             DB::rollBack();
             session()->flash('error', __('global.error_message'));

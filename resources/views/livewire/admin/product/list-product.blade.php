@@ -58,8 +58,8 @@
                                                     <td>{{ $product->stock }}</td>
                                                     <td>{{ jalali($product->created_at) }}</td>
                                                     <td>
-                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.category.show',[ 'category' => $product->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
-                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=category_delete(this,event)  data-url='.route('admin.category.delete',[ 'category' => $product->id ]) ])
+                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.product.show',[ 'product' => $product->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=product_delete(this,event)  data-url='.route('admin.product.delete',[ 'product' => $product->id ]) ])
                                                     </td>
                                                 </tr>
 
@@ -98,7 +98,7 @@
     <script src="{{ asset('frest/vendors/js/extensions/toastr.min.js') }}"></script>
     <script type="text/javascript">
 
-        function category_delete(element, event) {
+        function product_delete(element, event) {
             event.preventDefault()
             mboxDelete(element.getAttribute('data-url'));
         }

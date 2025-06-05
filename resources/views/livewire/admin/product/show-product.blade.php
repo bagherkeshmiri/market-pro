@@ -20,7 +20,6 @@
         </div>
         <div class="content-body">
 
-            <!-- // Basic multiple Column Form section start -->
             <section id="multiple-column-form">
                 <div class="row match-height">
                     <div class="col-12">
@@ -33,7 +32,6 @@
                                     <!--  End Flash Message -->
 
                                     <form class="form" wire:submit.prevent="update">
-                                        @csrf
                                         <div class="form-body">
                                             <div class="row">
 
@@ -48,15 +46,57 @@
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'parentId' , 'content' => 'دسته پدر'] )
-                                                        @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $allCategories , 'id' => 'parentId' , 'wire' => 'parentId'  , 'defaultOption' => true , 'defaultValue' => true ])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'parentId' ])
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'categoryId' , 'content' => 'دسته محصول'] )
+                                                        @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $allCategories , 'id' => 'categoryId' , 'wire' => 'categoryId'  , 'defaultOption' => true , 'defaultValue' => true])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'categoryId' ])
                                                     </div>
+                                                </div>
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                                                    <div class="form-group">
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'price' , 'content' => 'قیمت ( تومان )'] )
+                                                        @include('frest-components.tags.required-tag')
+                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'price' , 'classes' => 'text-left' , 'id' => 'price' , 'dir' => 'ltr' , 'icon' => dollarIcon() , 'attributes' => 'required' , 'isPriceInput' => true])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'price' ])
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                                                    <div class="form-group">
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'stock' , 'content' => ' تعداد موجودی'] )
+                                                        @include('frest-components.tags.required-tag')
+                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'stock' , 'classes' => 'text-left' , 'id' => 'stock' , 'dir' => 'ltr' , 'icon' => packageIcon() , 'attributes' => 'required'])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'stock' ])
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
+                                                    <div class="form-group">
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'mainImage' , 'content' => 'آپلود تصویر اصلی'] )
+                                                        @include('frest-components.tags.required-tag')
+                                                        @include('frest-components.inputs.file-upload.simple-file-upload', ['wire' => 'mainImage' , 'id' => 'mainImage'])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'mainImage' ])
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
+                                                    <div class="form-group">
+                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'galleryImages' , 'content' => 'آپلود گالری تصاویر '] )
+                                                        @include('frest-components.inputs.file-upload.simple-file-upload', ['wire' => 'galleryImages' , 'id' => 'galleryImages' , 'isMultiple' => true])
+                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'galleryImages' ])
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
+                                                    @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات '] )
+                                                    @include('frest-components.inputs.ckEditor',[ 'wire' => 'description'])
                                                 </div>
 
                                                 <div class="col-12 d-flex justify-content-end mt-2">
                                                     @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
-                                                    @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.category.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
+                                                    @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.product.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                 </div>
                                             </div>
                                         </div>
@@ -68,7 +108,6 @@
                     </div>
                 </div>
             </section>
-            <!-- // Basic multiple Column Form section end -->
 
         </div>
     </div>
@@ -76,59 +115,65 @@
 
 
 @section('scripts')
-{{--    <script src="{{ asset('js/axios.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('ckeditor5-35.3.2/build/ckeditor.js') }}"></script>--}}
-{{--    <script>--}}
+    <script src="{{ asset('js/axios.min.js') }}"></script>
+    <script src="{{ asset('ckeditor5-35.3.2/build/ckeditor.js') }}"></script>
 
-{{--        let description = @js($description);--}}
-{{--        let saveBtn = document.querySelector('#save_btn');--}}
+    <script>
 
-{{--        function MyCustomUploadAdapterPlugin(editor) {--}}
-{{--            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {--}}
-{{--                return {--}}
-{{--                    upload() {--}}
-{{--                        return loader.file.then(file => new Promise((resolve, reject) => {--}}
-{{--                                let formData = new FormData();--}}
-{{--                                formData.append('image', file)--}}
-{{--                                axios.post('{{ route('api.upload') }}', formData, {--}}
-{{--                                    headers: {'Content_type': 'multipart/form-data'}--}}
-{{--                                }).then(response => {--}}
-{{--                                    resolve({--}}
-{{--                                        default: response.data--}}
-{{--                                    })--}}
-{{--                                })--}}
-{{--                            }--}}
-{{--                        ))--}}
-{{--                    },--}}
-{{--                    abort() {--}}
-{{--                    },--}}
-{{--                }--}}
-{{--            }--}}
-{{--        }--}}
+        let saveBtn = document.querySelector('#save_btn');
 
-{{--        const myEditor =--}}
-{{--            DecoupledDocumentEditor--}}
-{{--                .create(document.querySelector('#editor'), {--}}
-{{--                    extraPlugins: [MyCustomUploadAdapterPlugin],--}}
-{{--                    language: {--}}
-{{--                        ui: 'fa',--}}
-{{--                        content: 'fa',--}}
-{{--                    },--}}
-{{--                })--}}
-{{--                .then(editor => {--}}
-{{--                    const toolbarContainer = document.querySelector('#toolbar-container');--}}
-{{--                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);--}}
-{{--                    editor.setData(description);--}}
-{{--                })--}}
-{{--                .catch(error => {--}}
-{{--                    console.error(error);--}}
-{{--                });--}}
+        function MyCustomUploadAdapterPlugin(editor) {
+
+            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                return {
+                    upload() {
+                        return loader.file.then(file => new Promise((resolve, reject) => {
+                                let formData = new FormData();
+                                formData.append('image', file)
+                                axios.post('{{ route('api.upload') }}', formData, {
+                                    headers: {'Content_type': 'multipart/form-data'}
+                                }).then(response => {
+                                    resolve({
+                                        default: response.data
+                                    })
+                                })
+                            }
+                        ))
+                    },
+                    abort() {
+                    },
+                }
+            }
+        }
+
+        const myEditor =
+            DecoupledDocumentEditor
+                .create(document.querySelector('#editor'), {
+                    extraPlugins: [MyCustomUploadAdapterPlugin],
+                    language: {
+                        ui: 'fa',
+                        content: 'fa',
+                    },
+                })
+                .then(editor => {
+                    const toolbarContainer = document.querySelector('#toolbar-container');
+                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
 
 
-{{--        saveBtn.addEventListener('click', function () {--}}
-{{--            @this.--}}
-{{--            set('description', document.querySelector('#editor').innerHTML);--}}
-{{--        });--}}
+        saveBtn.addEventListener('click', function () {
+            @this.
+            set('description', document.querySelector('#editor').innerHTML);
+        });
 
-{{--    </script>--}}
+
+        function formatPrice(input) {
+            let value = input.value.replace(/[^0-9]/g, '').replace(/^0+/, '');
+            input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+    </script>
 @endsection
