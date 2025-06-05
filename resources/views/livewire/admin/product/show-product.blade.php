@@ -22,7 +22,7 @@
 
             <section id="multiple-column-form">
                 <div class="row match-height">
-                    <div class="col-12">
+                    <div class="col-10">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
@@ -89,6 +89,11 @@
                                                 </div>
 
 
+                                                {{--                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">--}}
+                                                {{--                                                   <img src="{{ asset($mainImage) }}" width="50" height="50" alt="product-image"/>--}}
+                                                {{--                                                </div>--}}
+
+
                                                 <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
                                                     @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات '] )
                                                     @include('frest-components.inputs.ckEditor',[ 'wire' => 'description'])
@@ -106,11 +111,68 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
 
+
+                    <div class="col-2">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+
+                                    <div>
+                                        @include('frest-components.dividers.warning-divider' , ['title' => 'تصویر اصلی' , 'isString' => true])
+                                        <img src="{{ asset($mainImage) }}" width="100%" alt="product-image"/>
+                                    </div>
+
+
+                                    <div class="mt-4">
+                                        @include('frest-components.dividers.danger-divider' , ['title' => 'گالری تصاویر' , 'isString' => true])
+                                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-touch="false">
+
+                                            <ol class="carousel-indicators">
+                                                @foreach ($galleryImages as $galleryImage)
+                                                    <li data-target="#carousel-example-generic" data-slide-to="{{ $galleryImage->id }}" class="active"></li>
+                                                @endforeach
+                                            </ol>
+
+                                            <div class="carousel-inner" role="listbox">
+
+                                                @forelse ($galleryImages as $galleryImage)
+                                                    <div class="carousel-item active">
+                                                        <img class="img-fluid" src="{{ asset($galleryImage->image_url) }}" alt="First slide">
+                                                    </div>
+                                                @empty
+                                                    <div class="carousel-item active">
+                                                        <img class="img-fluid" src="{{ asset('images/sample/sample-product.png') }}" alt="First slide">
+                                                    </div>
+                                                @endforelse
+
+
+                                            </div>
+
+                                            <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">قبلی</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carousel-example-generic" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">بعدی</span>
+                                            </a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
         </div>
+        </section>
+
     </div>
+</div>
 </div>
 
 

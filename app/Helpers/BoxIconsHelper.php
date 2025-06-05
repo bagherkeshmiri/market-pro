@@ -82,3 +82,8 @@ function packageIcon(): string
 {
     return '<i class="bx bx-package"></i>';
 }
+
+function starIcon(): string
+{
+    return '<i class="bx bx-star"></i>';
+}

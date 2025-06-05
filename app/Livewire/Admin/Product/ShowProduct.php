@@ -32,6 +32,8 @@ class ShowProduct extends AdminComponent
         $this->description = $product->description;
         $this->price = $product->price;
         $this->stock = $product->stock;
+        $this->mainImage = $product->images->where('is_main',true)->first()->image_url ?? '';
+        $this->galleryImages = $product->images->where('is_main',false);
     }
 
     public function render()
