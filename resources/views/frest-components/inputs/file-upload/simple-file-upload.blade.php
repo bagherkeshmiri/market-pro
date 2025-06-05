@@ -1,4 +1,4 @@
-<fieldset class="form-group">
+<fieldset class="form-group mb-0">
     <div class="custom-file">
         <input type="file" class="custom-file-input"
                @isset($wire)

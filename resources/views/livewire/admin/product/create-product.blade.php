@@ -71,7 +71,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'mainImage' , 'content' => 'آپلود تصویر اصلی'] )
                                                         @include('frest-components.tags.required-tag')
@@ -81,7 +81,7 @@
                                                 </div>
 
 
-                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
                                                     <div class="form-group">
                                                         @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'galleryImages' , 'content' => 'آپلود گالری تصاویر '] )
                                                         @include('frest-components.tags.required-tag')
@@ -91,7 +91,7 @@
                                                 </div>
 
 
-                                                <div class="col-md-12 col-12 mb-2"  wire:ignore>
+                                                <div class="col-md-12 col-12 mb-2 my-2"  wire:ignore>
                                                     @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات '] )
                                                     @include('frest-components.inputs.ckEditor',[ 'wire' => 'description'])
                                                 </div>

@@ -43,17 +43,13 @@ class CreateProduct extends AdminComponent
      */
     public function store()
     {
-
-        dd(
-            $this
-        );
-
         $this->validate([
             'name' => 'required',
             'categoryId' => 'required|exists:categories,id',
             'description' => 'nullable|string',
             'price' => 'required|string',
-            'stock' => 'required|integer',
+            'mainImage' => 'required|file',
+            'galleryImages' => 'required|array',
         ]);
 
         $data = [
@@ -66,9 +62,14 @@ class CreateProduct extends AdminComponent
 
         DB::beginTransaction();
         try {
-            Product::create($data);
+            $storedProduct = Product::create($data);
+            $storedProduct->images()->create([
+                'image_url' => storeImage($this->mainImage, 'products'),
+                'is-main' => true,
+            ]);
+
             DB::commit();
-            $this->reset(['name','description', 'price', 'stock']);
+            $this->reset(['name', 'description', 'price', 'stock']);
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.product.index');
         } catch (Exception $e) {

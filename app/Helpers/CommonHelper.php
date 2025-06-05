@@ -2,6 +2,7 @@
 
 use App\Enums\UserType;
 use Illuminate\Support\Collection;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Morilog\Jalali\Jalalian;
 use Carbon\Carbon;
 
@@ -34,15 +35,10 @@ function convertUserTypeToString(UserType $type): string
 }
 
 
-function storeImage(Request $request): string
+function storeImage(Request|TemporaryUploadedFile $image, string $folder): string
 {
-
-    dd(
-        $request
-    );
-
     $date = Carbon::now();
-    $originalPath = 'uploads/images/' . $date->year . '/' . $date->week;
-    $path = Storage::disk('public')->put($originalPath, $request->file('image'));
+    $originalPath = 'uploads/images/' . $folder . '/' . $date->year . '/' . $date->week . '/' . $date->day;
+    $path = Storage::disk('public')->put($originalPath, $image);
     return '/storage/' . $path;
 }

@@ -140,5 +140,9 @@ return [
         'category' => 'دسته بندی',
         'category_id' => 'دسته بندی',
         'categoryId' => 'دسته بندی',
+        'mainImage' => 'تصویر اصلی ',
+        'main_image' => 'تصویر اصلی ',
+        'galleryImages' => ' گالری تصاویر ',
+        'gallery_images' => ' گالری تصاویر ',
     ],
 ];
