@@ -34,8 +34,6 @@ use Illuminate\Support\Carbon;
  */
 class ProductImage extends Authenticatable
 {
-    use SoftDeletes;
-
     public const string TABLE_NAME = 'product_images';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';

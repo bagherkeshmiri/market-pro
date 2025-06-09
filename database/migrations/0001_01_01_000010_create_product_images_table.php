@@ -13,7 +13,6 @@ return new class extends Migration {
             $table->string('image_url');
             $table->boolean('is_main')->default(false);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

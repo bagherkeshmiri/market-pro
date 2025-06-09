@@ -88,12 +88,6 @@
                                                     </div>
                                                 </div>
 
-
-                                                {{--                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">--}}
-                                                {{--                                                   <img src="{{ asset($mainImage) }}" width="50" height="50" alt="product-image"/>--}}
-                                                {{--                                                </div>--}}
-
-
                                                 <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
                                                     @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات '] )
                                                     @include('frest-components.inputs.ckEditor',[ 'wire' => 'description'])
@@ -120,7 +114,11 @@
 
                                     <div>
                                         @include('frest-components.dividers.warning-divider' , ['title' => 'تصویر اصلی' , 'isString' => true])
-                                        <img src="{{ asset($mainImage) }}" width="100%" alt="product-image"/>
+                                        @if ($mainImage)
+                                            <img src="{{ is_object($mainImage) && method_exists($mainImage, 'temporaryUrl') ? $mainImage->temporaryUrl() : (file_exists(public_path($mainImage)) ? asset($mainImage) : asset('images/sample/sample-product.png')) }}" width="100%" alt="product-image"/>
+                                        @else
+                                            <img src="{{ asset('images/sample/sample-product.png') }}" width="100%" alt="default-image"/>
+                                        @endif
                                     </div>
 
 
@@ -130,22 +128,29 @@
 
                                             <ol class="carousel-indicators">
                                                 @foreach ($galleryImages as $galleryImage)
-                                                    <li data-target="#carousel-example-generic" data-slide-to="{{ $galleryImage->id }}" class="active"></li>
+                                                    <li data-target="#carousel-example-generic" data-slide-to="{{ $galleryImage->id ?? '' }}" @if($loop->first) class="active" @endif>
+                                                    </li>
                                                 @endforeach
                                             </ol>
 
                                             <div class="carousel-inner" role="listbox">
 
                                                 @forelse ($galleryImages as $galleryImage)
-                                                    <div class="carousel-item active">
-                                                        <img class="img-fluid" src="{{ asset($galleryImage->image_url) }}" alt="First slide">
+
+                                                    <div class="carousel-item @if($loop->first) active @endif">
+                                                        <img class="img-fluid"
+                                                             src="{{
+                                                                    is_object($galleryImage) && method_exists($galleryImage, 'temporaryUrl')
+                                                                    ? $galleryImage->temporaryUrl()
+                                                                    : asset($galleryImage->image_url)
+                                                                 }}"
+                                                             alt="gallery-image" />
                                                     </div>
                                                 @empty
                                                     <div class="carousel-item active">
-                                                        <img class="img-fluid" src="{{ asset('images/sample/sample-product.png') }}" alt="First slide">
+                                                        <img class="img-fluid" src="{{ asset('images/sample/sample-product.png') }}" alt="default-image">
                                                     </div>
                                                 @endforelse
-
 
                                             </div>
 
@@ -168,11 +173,10 @@
 
 
                 </div>
-        </div>
-        </section>
+            </section>
 
+        </div>
     </div>
-</div>
 </div>
 
 
