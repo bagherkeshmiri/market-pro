@@ -27,7 +27,7 @@
                             <div class="card-content">
                                 <div class="card-body">
 
-                                    @include('alerts.flash-message')
+                                    @include('frest-components.flash-message')
 
                                     <form class="form" wire:submit.prevent="update">
                                         @csrf
@@ -36,24 +36,24 @@
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام '] )
-                                                        @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'name' , 'classes' => 'text-left' , 'id' => 'name' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'name' ])
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام '] )
+                                                        @include('frest-components.required-tag')
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'name' , 'classes' => 'text-left' , 'id' => 'name' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.small-tag-error',[ 'name' => 'name' ])
                                                     </div>
                                                 </div>
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'parentId' , 'content' => 'دسته پدر'] )
-                                                        @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $allCategories , 'id' => 'parentId' , 'wire' => 'parentId'  , 'defaultOption' => true , 'defaultValue' => true ])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'parentId' ])
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'parentId' , 'content' => 'دسته پدر'] )
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'parentId' , 'wire' => 'parentId'  , 'defaultOption' => true , 'defaultValue' => true ])
+                                                        @include('frest-components.small-tag-error',[ 'name' => 'parentId' ])
                                                     </div>
                                                 </div>
 
                                                 <div class="col-12 d-flex justify-content-end mt-2">
-                                                    @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
-                                                    @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.category.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
+                                                    @include('frest-components.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
+                                                    @include('frest-components.link-button',[ 'href' => route('admin.category.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                 </div>
                                             </div>
                                         </div>
@@ -72,59 +72,59 @@
 
 
 @section('scripts')
-{{--    <script src="{{ asset('js/axios.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('ckeditor5-35.3.2/build/ckeditor.js') }}"></script>--}}
-{{--    <script>--}}
+    {{--    <script src="{{ asset('js/axios.min.js') }}"></script>--}}
+    {{--    <script src="{{ asset('ckeditor5-35.3.2/build/ckeditor.js') }}"></script>--}}
+    {{--    <script>--}}
 
-{{--        let description = @js($description);--}}
-{{--        let saveBtn = document.querySelector('#save_btn');--}}
+    {{--        let description = @js($description);--}}
+    {{--        let saveBtn = document.querySelector('#save_btn');--}}
 
-{{--        function MyCustomUploadAdapterPlugin(editor) {--}}
-{{--            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {--}}
-{{--                return {--}}
-{{--                    upload() {--}}
-{{--                        return loader.file.then(file => new Promise((resolve, reject) => {--}}
-{{--                                let formData = new FormData();--}}
-{{--                                formData.append('image', file)--}}
-{{--                                axios.post('{{ route('api.upload') }}', formData, {--}}
-{{--                                    headers: {'Content_type': 'multipart/form-data'}--}}
-{{--                                }).then(response => {--}}
-{{--                                    resolve({--}}
-{{--                                        default: response.data--}}
-{{--                                    })--}}
-{{--                                })--}}
-{{--                            }--}}
-{{--                        ))--}}
-{{--                    },--}}
-{{--                    abort() {--}}
-{{--                    },--}}
-{{--                }--}}
-{{--            }--}}
-{{--        }--}}
+    {{--        function MyCustomUploadAdapterPlugin(editor) {--}}
+    {{--            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {--}}
+    {{--                return {--}}
+    {{--                    upload() {--}}
+    {{--                        return loader.file.then(file => new Promise((resolve, reject) => {--}}
+    {{--                                let formData = new FormData();--}}
+    {{--                                formData.append('image', file)--}}
+    {{--                                axios.post('{{ route('api.upload') }}', formData, {--}}
+    {{--                                    headers: {'Content_type': 'multipart/form-data'}--}}
+    {{--                                }).then(response => {--}}
+    {{--                                    resolve({--}}
+    {{--                                        default: response.data--}}
+    {{--                                    })--}}
+    {{--                                })--}}
+    {{--                            }--}}
+    {{--                        ))--}}
+    {{--                    },--}}
+    {{--                    abort() {--}}
+    {{--                    },--}}
+    {{--                }--}}
+    {{--            }--}}
+    {{--        }--}}
 
-{{--        const myEditor =--}}
-{{--            DecoupledDocumentEditor--}}
-{{--                .create(document.querySelector('#editor'), {--}}
-{{--                    extraPlugins: [MyCustomUploadAdapterPlugin],--}}
-{{--                    language: {--}}
-{{--                        ui: 'fa',--}}
-{{--                        content: 'fa',--}}
-{{--                    },--}}
-{{--                })--}}
-{{--                .then(editor => {--}}
-{{--                    const toolbarContainer = document.querySelector('#toolbar-container');--}}
-{{--                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);--}}
-{{--                    editor.setData(description);--}}
-{{--                })--}}
-{{--                .catch(error => {--}}
-{{--                    console.error(error);--}}
-{{--                });--}}
+    {{--        const myEditor =--}}
+    {{--            DecoupledDocumentEditor--}}
+    {{--                .create(document.querySelector('#editor'), {--}}
+    {{--                    extraPlugins: [MyCustomUploadAdapterPlugin],--}}
+    {{--                    language: {--}}
+    {{--                        ui: 'fa',--}}
+    {{--                        content: 'fa',--}}
+    {{--                    },--}}
+    {{--                })--}}
+    {{--                .then(editor => {--}}
+    {{--                    const toolbarContainer = document.querySelector('#toolbar-container');--}}
+    {{--                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);--}}
+    {{--                    editor.setData(description);--}}
+    {{--                })--}}
+    {{--                .catch(error => {--}}
+    {{--                    console.error(error);--}}
+    {{--                });--}}
 
 
-{{--        saveBtn.addEventListener('click', function () {--}}
-{{--            @this.--}}
-{{--            set('description', document.querySelector('#editor').innerHTML);--}}
-{{--        });--}}
+    {{--        saveBtn.addEventListener('click', function () {--}}
+    {{--            @this.--}}
+    {{--            set('description', document.querySelector('#editor').innerHTML);--}}
+    {{--        });--}}
 
-{{--    </script>--}}
+    {{--    </script>--}}
 @endsection

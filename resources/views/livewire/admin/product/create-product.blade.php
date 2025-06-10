@@ -28,7 +28,7 @@
                             <div class="card-content">
                                 <div class="card-body">
 
-                                    @include('alerts.flash-message')
+                                    @include('frest-components.flash-message')
 
                                     <form class="form" wire:submit.prevent="store">
                                         <div class="form-body">
@@ -36,66 +36,66 @@
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام '] )
-                                                        @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'name' , 'classes' => 'text-left' , 'id' => 'name' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'name' ])
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام '] )
+                                                        @include('frest-components.required-tag')
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'name' , 'classes' => 'text-left' , 'id' => 'name' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.small-tag-error',[ 'name' => 'name' ])
                                                     </div>
                                                 </div>
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'categoryId' , 'content' => 'دسته محصول'] )
-                                                        @include('frest-components.inputs.simple-selectbox.simple-selectbox',[ 'data' => $allCategories , 'id' => 'categoryId' , 'wire' => 'categoryId'  , 'defaultOption' => true , 'defaultValue' => true])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'categoryId' ])
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'categoryId' , 'content' => 'دسته محصول'] )
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'categoryId' , 'wire' => 'categoryId'  , 'defaultOption' => true , 'defaultValue' => true])
+                                                        @include('frest-components.small-tag-error',[ 'name' => 'categoryId' ])
                                                     </div>
                                                 </div>
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'price' , 'content' => 'قیمت ( تومان )'] )
-                                                        @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'price' , 'classes' => 'text-left' , 'id' => 'price' , 'dir' => 'ltr' , 'icon' => dollarIcon() , 'attributes' => 'required' , 'isPriceInput' => true])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'price' ])
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'price' , 'content' => 'قیمت ( تومان )'] )
+                                                        @include('frest-components.required-tag')
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'price' , 'classes' => 'text-left' , 'id' => 'price' , 'dir' => 'ltr' , 'icon' => dollarIcon() , 'attributes' => 'required' , 'isPriceInput' => true])
+                                                        @include('frest-components.small-tag-error',[ 'name' => 'price' ])
                                                     </div>
                                                 </div>
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'stock' , 'content' => ' تعداد موجودی'] )
-                                                        @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'stock' , 'classes' => 'text-left' , 'id' => 'stock' , 'dir' => 'ltr' , 'icon' => packageIcon() , 'attributes' => 'required'])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'stock' ])
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'stock' , 'content' => ' تعداد موجودی'] )
+                                                        @include('frest-components.required-tag')
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'stock' , 'classes' => 'text-left' , 'id' => 'stock' , 'dir' => 'ltr' , 'icon' => packageIcon() , 'attributes' => 'required'])
+                                                        @include('frest-components.small-tag-error',[ 'name' => 'stock' ])
                                                     </div>
                                                 </div>
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'mainImage' , 'content' => 'آپلود تصویر اصلی'] )
-                                                        @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.file-upload.simple-file-upload', ['wire' => 'mainImage' , 'id' => 'mainImage'])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'mainImage' ])
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'mainImage' , 'content' => 'آپلود تصویر اصلی'] )
+                                                        @include('frest-components.required-tag')
+                                                        @include('frest-components.simple-file-upload', ['wire' => 'mainImage' , 'id' => 'mainImage'])
+                                                        @include('frest-components.small-tag-error',[ 'name' => 'mainImage' ])
                                                     </div>
                                                 </div>
 
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'galleryImages' , 'content' => 'آپلود گالری تصاویر '] )
-                                                        @include('frest-components.inputs.file-upload.simple-file-upload', ['wire' => 'galleryImages' , 'id' => 'galleryImages' , 'isMultiple' => true])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'galleryImages' ])
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'galleryImages' , 'content' => 'آپلود گالری تصاویر '] )
+                                                        @include('frest-components.simple-file-upload', ['wire' => 'galleryImages' , 'id' => 'galleryImages' , 'isMultiple' => true])
+                                                        @include('frest-components.small-tag-error',[ 'name' => 'galleryImages' ])
                                                     </div>
                                                 </div>
 
 
                                                 <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
-                                                    @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات '] )
-                                                    @include('frest-components.inputs.ckEditor',[ 'wire' => 'description'])
+                                                    @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات '] )
+                                                    @include('frest-components.ckEditor',[ 'wire' => 'description'])
                                                 </div>
 
                                                 <div class="col-12 d-flex justify-content-end mt-2">
-                                                    @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
-                                                    @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.category.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
+                                                    @include('frest-components.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
+                                                    @include('frest-components.link-button',[ 'href' => route('admin.product.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                 </div>
                                             </div>
                                         </div>

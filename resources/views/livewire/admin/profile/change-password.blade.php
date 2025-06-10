@@ -74,7 +74,7 @@
                                             <div class="card-content">
                                                 <div class="card-body">
 
-                                                    @include('alerts.flash-message')
+                                                    @include('frest-components.flash-message')
 
 
                                                     <form class="form" wire:submit.prevent="change">
@@ -84,37 +84,37 @@
 
                                                                 <div class="col-md-4 col-12">
                                                                     <div class="form-group">
-                                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'old_pass' , 'content' => 'رمز عبور قبلی'] )
-                                                                        @include('frest-components.tags.required-tag')
-                                                                        @include('frest-components.inputs.input',[ 'type' => 'password' , 'wire' => 'oldPass' , 'classes' => 'text-left' , 'id' => 'oldPass' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
-                                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'oldPass' ])
+                                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'old_pass' , 'content' => 'رمز عبور قبلی'] )
+                                                                        @include('frest-components.required-tag')
+                                                                        @include('frest-components.input',[ 'type' => 'password' , 'wire' => 'oldPass' , 'classes' => 'text-left' , 'id' => 'oldPass' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
+                                                                        @include('frest-components.small-tag-error',[ 'name' => 'oldPass' ])
                                                                     </div>
                                                                 </div>
 
 
                                                                 <div class="col-md-4 col-12">
                                                                     <div class="form-group">
-                                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'password' , 'content' => 'رمز عبور جدید'] )
-                                                                        @include('frest-components.tags.required-tag')
-                                                                        @include('frest-components.inputs.input',[ 'type' => 'password' , 'wire' => 'password' , 'classes' => 'text-left' , 'id' => 'password' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
-                                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'password' ])
+                                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'password' , 'content' => 'رمز عبور جدید'] )
+                                                                        @include('frest-components.required-tag')
+                                                                        @include('frest-components.input',[ 'type' => 'password' , 'wire' => 'password' , 'classes' => 'text-left' , 'id' => 'password' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
+                                                                        @include('frest-components.small-tag-error',[ 'name' => 'password' ])
                                                                     </div>
                                                                 </div>
 
 
                                                                 <div class="col-md-4 col-12">
                                                                     <div class="form-group">
-                                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'password_confirmation' , 'content' => ' تکرار رمز عبور جدید'] )
-                                                                        @include('frest-components.tags.required-tag')
-                                                                        @include('frest-components.inputs.input',[ 'type' => 'password' , 'wire' => 'password_confirmation' , 'classes' => 'text-left' , 'id' => 'password_confirmation' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
-                                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'password_confirmation' ])
+                                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'password_confirmation' , 'content' => ' تکرار رمز عبور جدید'] )
+                                                                        @include('frest-components.required-tag')
+                                                                        @include('frest-components.input',[ 'type' => 'password' , 'wire' => 'password_confirmation' , 'classes' => 'text-left' , 'id' => 'password_confirmation' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
+                                                                        @include('frest-components.small-tag-error',[ 'name' => 'password_confirmation' ])
                                                                     </div>
                                                                 </div>
 
 
                                                                 <div class="col-12 d-flex justify-content-end">
-                                                                    @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => 'تغییر'  , 'icon' => saveIcon() ])
-                                                                    @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.profile.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
+                                                                    @include('frest-components.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => 'تغییر'  , 'icon' => saveIcon() ])
+                                                                    @include('frest-components.link-button',[ 'href' => route('admin.profile.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                                 </div>
                                                             </div>
                                                         </div>

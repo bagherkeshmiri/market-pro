@@ -55,18 +55,18 @@
                                                     <td>{{ $product->name }}</td>
                                                     <td>{{ $product->category->name ?? ' - ' }}</td>
                                                     <td>
-                                                        @include('frest-components.badges.badge' , [ 'badgeClass' => $product->status_badge_class,  'content' => $product->status_label ])
+                                                        @include('frest-components.badge' , [ 'badgeClass' => $product->status_badge_class,  'content' => $product->status_label ])
                                                     </td>
                                                     <td>{{ $product->formatted_price }}</td>
                                                     <td>{{ $product->stock }}</td>
                                                     <td>{{ $product->jalali_created_at }}</td>
                                                     <td>
-                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.product.show',[ 'product' => $product->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
-                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=product_delete(this,event)  data-url='.route('admin.product.delete',[ 'product' => $product->id ]) ])
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.product.show',[ 'product' => $product->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=product_delete(this,event)  data-url='.route('admin.product.delete',[ 'product' => $product->id ]) ])
                                                     </td>
                                                 </tr>
 
-                                                @include('frest-components.inputs.modal',['modalTitle' => 'تصویر اصلی', 'modalId' =>$modalId ])
+                                                @include('frest-components.modal',['modalTitle' => 'تصویر اصلی', 'modalId' =>$modalId ])
 
                                             @empty
                                                 <tr>
@@ -77,7 +77,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.paginators.bootstrap',['model' => $products] )
+                                        @include('frest-components.bootstrap',['model' => $products] )
 
                                     </div>
 

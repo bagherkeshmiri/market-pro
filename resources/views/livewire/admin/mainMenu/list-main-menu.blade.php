@@ -46,9 +46,9 @@
                                                     <td>{{ $menu->value }}</td>
                                                     <td>
                                                         @if($menu->is_active == $active)
-                                                            @include('frest-components.badges.badge' , [ 'badgeClass' => 'badge-success' ,'content' => __('global.active') ])
+                                                            @include('frest-components.badge' , [ 'badgeClass' => 'badge-success' ,'content' => __('global.active') ])
                                                         @else
-                                                            @include('frest-components.badges.badge' , ['badgeClass' => 'badge-danger' , 'content' => __('global.in_active') ])
+                                                            @include('frest-components.badge' , ['badgeClass' => 'badge-danger' , 'content' => __('global.in_active') ])
                                                         @endif
                                                     </td>
                                                     <td>{{ $menu->created_at }}</td>
@@ -56,19 +56,19 @@
 
                                                         @if($menu->is_active == $active)
                                                             @can('disable')
-                                                                @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => 'غیرفعالسازی' , 'icon' => dangerXIcon() , 'attributes' => 'onclick=menu_disable(this,event)  data-url='.route('admin.main_menu.disable',[ 'main_menu' =>  $menu->id  ]) ])
+                                                                @include('frest-components.icon-btn',[ 'tooltip_title' => 'غیرفعالسازی' , 'icon' => dangerXIcon() , 'attributes' => 'onclick=menu_disable(this,event)  data-url='.route('admin.main_menu.disable',[ 'main_menu' =>  $menu->id  ]) ])
                                                             @endcan
                                                         @else
                                                             @can('enable')
-                                                                @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => 'فعالسازی' , 'icon' => successCheckIcon() , 'attributes' => 'onclick=menu_enable(this,event)  data-url='.route('admin.main_menu.enable',[ 'main_menu' =>  $menu->id  ]) ])
+                                                                @include('frest-components.icon-btn',[ 'tooltip_title' => 'فعالسازی' , 'icon' => successCheckIcon() , 'attributes' => 'onclick=menu_enable(this,event)  data-url='.route('admin.main_menu.enable',[ 'main_menu' =>  $menu->id  ]) ])
                                                             @endcan
                                                         @endif
 
                                                         @can('edit')
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.main_menu.show',[ 'main_menu' => $menu->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                            @include('frest-components.icon-btn',[  'href' => route('admin.main_menu.show',[ 'main_menu' => $menu->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                         @endcan
                                                         @can('delete')
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=menu_delete(this,event)  data-url='.route('admin.main_menu.delete',[ 'main_menu' =>  $menu->id  ]) ])
+                                                            @include('frest-components.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=menu_delete(this,event)  data-url='.route('admin.main_menu.delete',[ 'main_menu' =>  $menu->id  ]) ])
                                                         @endcan
 
                                                     </td>
@@ -82,7 +82,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.paginators.bootstrap',['model' => $allmainMenus] )
+                                        @include('frest-components.bootstrap',['model' => $allmainMenus] )
 
                                     </div>
 

@@ -29,7 +29,7 @@
                             <div class="card-content">
                                 <div class="card-body">
 
-                                @include('alerts.flash-message')
+                                    @include('frest-components.flash-message')
 
                                     <form class="form" wire:submit.prevent="store">
                                         @csrf
@@ -38,25 +38,25 @@
 
                                                 <div class="col-md-5 col-12">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام فارسی نقش '] )
-                                                        @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'faName' , 'classes' => 'text-left' , 'id' => 'faName' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'faName' ])
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام فارسی نقش '] )
+                                                        @include('frest-components.required-tag')
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'faName' , 'classes' => 'text-left' , 'id' => 'faName' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.small-tag-error',[ 'name' => 'faName' ])
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-5 col-12">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام لاتین نقش '] )
-                                                        @include('frest-components.tags.required-tag')
-                                                        @include('frest-components.inputs.input',[ 'type' => 'text' , 'wire' => 'enName' , 'classes' => 'text-left' , 'id' => 'enName' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.form-validations.small-tag-error',[ 'name' => 'enName' ])
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام لاتین نقش '] )
+                                                        @include('frest-components.required-tag')
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'enName' , 'classes' => 'text-left' , 'id' => 'enName' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.small-tag-error',[ 'name' => 'enName' ])
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-2 col-12 align-self-end">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.checkboxes.sm-checkbox',[ 'checkboxClass' => 'checkbox-success','label_content' => 'انتخاب همه'  , 'id' => 'selectAll' , 'for' => 'selectAll'  , 'wireSimple' => 'selectAll' , 'value' => ''])
+                                                        @include('frest-components.sm-checkbox',[ 'checkboxClass' => 'checkbox-success','label_content' => 'انتخاب همه'  , 'id' => 'selectAll' , 'for' => 'selectAll'  , 'wireSimple' => 'selectAll' , 'value' => ''])
 
                                                     </div>
                                                 </div>
@@ -65,7 +65,7 @@
 
                                                 @error('permissions[]')
                                                 <div class="col-md-12 col-12 text-center mb-2">
-                                                    @include('frest-components.form-validations.small-tag-error',['name' => 'permissions[]'])
+                                                    @include('frest-components.small-tag-error',['name' => 'permissions[]'])
                                                 </div>
                                                 @enderror
 
@@ -73,14 +73,14 @@
                                                 @foreach($allPermissions as $permission)
                                                     <div class="col-md-3 col-12">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.checkboxes.sm-checkbox',[ 'checkboxClass'=> 'checkbox-success','name' => 'permission'.$permission->id, 'label_content' => $permission->fa_name  , 'id' => 'permission'.$permission->id , 'for' => 'permission'.$permission->id  , 'wire' => 'permissions' , 'value' => $permission->id ])
+                                                            @include('frest-components.sm-checkbox',[ 'checkboxClass'=> 'checkbox-success','name' => 'permission'.$permission->id, 'label_content' => $permission->fa_name  , 'id' => 'permission'.$permission->id , 'for' => 'permission'.$permission->id  , 'wire' => 'permissions' , 'value' => $permission->id ])
                                                         </div>
                                                     </div>
                                                 @endforeach
 
                                                 <div class="col-12 d-flex justify-content-end mt-2">
-                                                    @include('frest-components.inputs.buttons.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
-                                                    @include('frest-components.inputs.buttons.link-button',[ 'href' => route('admin.role.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
+                                                    @include('frest-components.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
+                                                    @include('frest-components.link-button',[ 'href' => route('admin.role.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                 </div>
                                             </div>
                                         </div>

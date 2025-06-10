@@ -44,23 +44,23 @@
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->email }}</td>
                                                     <td>
-                                                        @include('frest-components.badges.badge' , [ 'badgeClass' => 'badge-danger',  'content' => $user->role->fa_name ])
+                                                        @include('frest-components.badge' , [ 'badgeClass' => 'badge-danger',  'content' => $user->role->fa_name ])
                                                     </td>
                                                     <td>
-                                                        @include('frest-components.badges.badge' , [ 'badgeClass' => 'badge-success',  'content' => $user->type_label ])
+                                                        @include('frest-components.badge' , [ 'badgeClass' => 'badge-success',  'content' => $user->type_label ])
                                                     </td>
                                                     @if($isAdmin)
                                                         <td>
                                                             @foreach($user->permissions as $permission)
-                                                                @include('frest-components.badges.badge' , [ 'badgeClass' => 'badge-secondary',  'content' => $permission->fa_name ])
+                                                                @include('frest-components.badge' , [ 'badgeClass' => 'badge-secondary',  'content' => $permission->fa_name ])
                                                             @endforeach
                                                         </td>
                                                     @endif
                                                     <td>{{ $user->jalali_created_at }}</td>
                                                     <td>
-                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.user.show',[ 'admin' => $user->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.user.show',[ 'admin' => $user->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                         @if($user->id != $mainAdminId)
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=account_delete(this,event)  data-url='.route('admin.user.delete',[ 'admin' => $user->id ]) ])
+                                                            @include('frest-components.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=account_delete(this,event)  data-url='.route('admin.user.delete',[ 'admin' => $user->id ]) ])
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -73,7 +73,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.paginators.bootstrap',['model' => $users] )
+                                        @include('frest-components.bootstrap',['model' => $users] )
 
                                     </div>
 

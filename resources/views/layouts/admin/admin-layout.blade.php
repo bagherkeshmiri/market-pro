@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="loading" lang="fa" data-textdirection="rtl" dir="rtl">
 
-@include('admin.partials.head')
+@include('partials.admin.head')
 
 <body class="horizontal-layout horizontal-menu navbar-static dark-layout 2-columns   footer-static " data-open="hover"
       data-menu="horizontal-menu" data-col="2-columns" data-layout="dark-layout" style="overflow-x: hidden;">
@@ -12,13 +12,13 @@
     </div>
 </div>
 
-@include('admin.partials.header')
+@include('partials.admin.header')
 
-@include('admin.partials.main-menu')
+@include('partials.admin.main-menu')
 
 {{ $slot }}
 
-@include('admin.partials.footer')
+@include('partials.admin.footer')
 
 <script src="{{ asset('/frest/vendors/js/vendors.min.js') }}"></script>
 <script src="{{ asset('/frest/fonts/LivIconsEvo/js/LivIconsEvo.tools.min.js') }}"></script>

@@ -46,8 +46,8 @@
                                                     <td>{{ $category->parent->name ?? ' - ' }}</td>
                                                     <td>{{ $category->jalali_created_at }}</td>
                                                     <td>
-                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.category.show',[ 'category' => $category->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
-                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=category_delete(this,event)  data-url='.route('admin.category.delete',[ 'category' => $category->id ]) ])
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.category.show',[ 'category' => $category->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=category_delete(this,event)  data-url='.route('admin.category.delete',[ 'category' => $category->id ]) ])
                                                     </td>
                                                 </tr>
                                             @empty
@@ -59,7 +59,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.paginators.bootstrap',['model' => $categories] )
+                                        @include('frest-components.bootstrap',['model' => $categories] )
 
                                     </div>
 

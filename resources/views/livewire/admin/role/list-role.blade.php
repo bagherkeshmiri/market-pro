@@ -45,14 +45,14 @@
                                                     <td>{{ $role->en_name }}</td>
                                                     <td>
                                                         @foreach($role->permissions as $permission )
-                                                            @include('frest-components.badges.badge' , ['badgeClass' => 'badge-danger', 'content' => $permission->fa_name ])
+                                                            @include('frest-components.badge' , ['badgeClass' => 'badge-danger', 'content' => $permission->fa_name ])
                                                         @endforeach
                                                     </td>
                                                     <td>{{ $role->jalali_created_at }}</td>
                                                     <td>
-                                                        @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.role.show',[ 'role' => $role->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.role.show',[ 'role' => $role->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                         @if($role->id !== $mainRoleId)
-                                                            @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=role_delete(this,event)  data-url='.route('admin.role.delete',[ 'role' => $role->id ]) ])
+                                                            @include('frest-components.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=role_delete(this,event)  data-url='.route('admin.role.delete',[ 'role' => $role->id ]) ])
                                                         @endif
                                                     </td>
                                                 </tr>
@@ -65,7 +65,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.paginators.bootstrap',['model' => $roles])
+                                        @include('frest-components.bootstrap',['model' => $roles])
 
                                     </div>
 
