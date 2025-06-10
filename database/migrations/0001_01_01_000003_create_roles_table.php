@@ -14,10 +14,28 @@ return new class extends Migration {
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::create('permissions', function (Blueprint $table) {
+            $table->id();
+            $table->string('fa_name');
+            $table->string('en_name');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+
+        Schema::create('role_permission', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('role_id')->constrained('roles');
+            $table->foreignId('permission_id')->constrained('permissions');
+            $table->timestamps();
+        });
     }
 
     public function down(): void
     {
+        Schema::dropIfExists('role_permission');
+        Schema::dropIfExists('permissions');
         Schema::dropIfExists('roles');
     }
 };

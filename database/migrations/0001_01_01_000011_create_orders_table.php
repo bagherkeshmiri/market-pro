@@ -14,10 +14,20 @@ return new class extends Migration {
             $table->decimal('total_price');
             $table->timestamps();
         });
+
+        Schema::create('order_items', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('order_id')->index();
+            $table->unsignedBigInteger('product_id')->index();
+            $table->unsignedInteger('quantity');
+            $table->decimal('price');
+            $table->timestamps();
+        });
     }
 
     public function down(): void
     {
+        Schema::dropIfExists('order_items');
         Schema::dropIfExists('orders');
     }
 };

@@ -43,8 +43,12 @@
                                                 <tr>
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->email }}</td>
-                                                    <td>{{ $user->role->fa_name }}</td>
-                                                    <td>{{ convertUserTypeToString($user->type) }}</td>
+                                                    <td>
+                                                        @include('frest-components.badges.badge' , [ 'badgeClass' => 'badge-danger',  'content' => $user->role->fa_name ])
+                                                    </td>
+                                                    <td>
+                                                        @include('frest-components.badges.badge' , [ 'badgeClass' => 'badge-success',  'content' => convertUserTypeToString($user->type) ])
+                                                    </td>
                                                     @if($isAdmin)
                                                         <td>
                                                             @foreach($user->permissions as $permission)
@@ -54,13 +58,9 @@
                                                     @endif
                                                     <td>{{ jalali($user->created_at) }}</td>
                                                     <td>
-                                                        {{--                                                        @can('edit')--}}
                                                         @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.user.show',[ 'admin' => $user->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
-                                                        {{--                                                        @endcan--}}
                                                         @if($user->id != $mainAdminId)
-                                                            {{--                                                            @can('delete')--}}
                                                             @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=account_delete(this,event)  data-url='.route('admin.user.delete',[ 'admin' => $user->id ]) ])
-                                                            {{--                                                            @endcan--}}
                                                         @endif
                                                     </td>
                                                 </tr>
