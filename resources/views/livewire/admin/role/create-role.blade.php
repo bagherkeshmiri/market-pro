@@ -56,7 +56,8 @@
 
                                                 <div class="col-md-2 col-12 align-self-end">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.checkboxs.success-sm-checkbox',[ 'label_content' => 'انتخاب همه'  , 'id' => 'selectAll' , 'for' => 'selectAll'  , 'wireSimple' => 'selectAll' , 'value' => ''])
+                                                        @include('frest-components.inputs.checkboxes.sm-checkbox',[ 'checkboxClass' => 'checkbox-success','label_content' => 'انتخاب همه'  , 'id' => 'selectAll' , 'for' => 'selectAll'  , 'wireSimple' => 'selectAll' , 'value' => ''])
+
                                                     </div>
                                                 </div>
 
@@ -72,7 +73,7 @@
                                                 @foreach($allPermissions as $permission)
                                                     <div class="col-md-3 col-12">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.checkboxs.success-sm-checkbox',[ 'name' => 'permission'.$permission->id, 'label_content' => $permission->fa_name  , 'id' => 'permission'.$permission->id , 'for' => 'permission'.$permission->id  , 'wire' => 'permissions' , 'value' => $permission->id ])
+                                                            @include('frest-components.inputs.checkboxes.sm-checkbox',[ 'checkboxClass'=> 'checkbox-success','name' => 'permission'.$permission->id, 'label_content' => $permission->fa_name  , 'id' => 'permission'.$permission->id , 'for' => 'permission'.$permission->id  , 'wire' => 'permissions' , 'value' => $permission->id ])
                                                         </div>
                                                     </div>
                                                 @endforeach

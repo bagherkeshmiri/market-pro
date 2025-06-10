@@ -29,8 +29,8 @@
                             <div class="card-content">
                                 <div class="card-body">
 
-                                @include('alerts.flash-message')
-                                <!--  End Flash Message -->
+                                    @include('alerts.flash-message')
+                                    <!--  End Flash Message -->
 
                                     <form class="form" wire:submit.prevent="update">
                                         @csrf
@@ -58,7 +58,7 @@
 
                                                 <div class="col-md-2 col-12 align-self-end">
                                                     <div class="form-group">
-                                                        @include('frest-components.inputs.checkboxs.warning-sm-checkbox',[ 'label_content' => 'انتخاب همه'  , 'id' => 'selectAll' , 'for' => 'selectAll' , 'wireSimple' => 'selectAll' ])
+                                                        @include('frest-components.inputs.checkboxes.sm-checkbox',['checkboxClass'=>'checkbox-warning', 'label_content' => 'انتخاب همه'  , 'id' => 'selectAll' , 'for' => 'selectAll' , 'wireSimple' => 'selectAll' ])
                                                     </div>
                                                 </div>
 
@@ -75,7 +75,7 @@
                                                 @foreach($allPermissions as $permission)
                                                     <div class="col-md-3 col-12">
                                                         <div class="form-group">
-                                                            @include('frest-components.inputs.checkboxs.warning-sm-checkbox',[ 'label_content' => $permission->fa_name  , 'id' => 'permission'.$permission->id , 'for' => 'permission'.$permission->id  , 'wire' => 'permissions' , 'value' => $permission->id ])
+                                                            @include('frest-components.inputs.checkboxes.sm-checkbox',[ 'checkboxClass'=> 'checkbox-warning','label_content' => $permission->fa_name  , 'id' => 'permission'.$permission->id , 'for' => 'permission'.$permission->id  , 'wire' => 'permissions' , 'value' => $permission->id ])
                                                         </div>
                                                     </div>
                                                 @endforeach

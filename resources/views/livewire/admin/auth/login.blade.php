@@ -75,10 +75,10 @@
 
                 <div class="form-group d-flex flex-md-row flex-column justify-content-between align-items-center">
                     <div class="text-left">
-                        @include('frest-components.inputs.checkboxs.defualt-sm-checkbox', [
+                        @include('frest-components.inputs.checkboxes.sm-checkbox', [
+                            'checkboxClass' => 'checkbox-success',
                             'id' => 'remember',
                             'for' => 'remember',
-                            'main_classes' => 'checkbox-sm',
                             'label_content' => __('login.remember_me'),
                             'name' => 'remember',
                             'value' => '',
