@@ -38,7 +38,7 @@ function convertUserTypeToString(UserType $type): string
 function storeImage(TemporaryUploadedFile $image, string $folder): string
 {
     $date = Carbon::now();
-    $originalPath = 'uploads/images/' . $folder . '/' . $date->year . '/' . $date->week . '/' . $date->day;
+    $originalPath = 'uploads/images/' . $folder . '/' . $date->year . '/' . $date->month . '/' . $date->day;
     $path = Storage::disk('public')->put($originalPath, $image);
     return '/storage/' . $path;
 }

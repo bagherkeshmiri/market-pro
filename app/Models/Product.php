@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ProductStatus;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -16,6 +17,7 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property int $category_id
  * @property string $name
+ * @property ProductStatus $status
  * @property string|null $description
  * @property string $price
  * @property int $stock
@@ -51,6 +53,7 @@ class Product extends Authenticatable
     protected $fillable = [
         'category_id',
         'name',
+        'status',
         'description',
         'price',
         'stock',
@@ -58,7 +61,9 @@ class Product extends Authenticatable
 
     protected $hidden = [];
 
-    protected $casts = [];
+    protected $casts = [
+        'status' => ProductStatus::class
+    ];
 
     protected static function booted(): void
     {
