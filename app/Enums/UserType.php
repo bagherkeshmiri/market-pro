@@ -7,12 +7,19 @@ enum UserType: int
     case User = 1;
     case Admin = 2;
 
-
     public function label(): string
     {
-        return match($this) {
-            self::User => 'کاربر',
-            self::Admin => 'ادمین',
+        return match ($this) {
+            self::User => __('global.user'),
+            self::Admin => __('global.admin'),
+        };
+    }
+
+    public function badgeClass(): string
+    {
+        return match ($this) {
+            self::User => 'badge-info',
+            default => 'badge-secondary',
         };
     }
 }

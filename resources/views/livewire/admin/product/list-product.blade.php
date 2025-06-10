@@ -54,9 +54,12 @@
                                                     </td>
                                                     <td>{{ $product->name }}</td>
                                                     <td>{{ $product->category->name ?? ' - ' }}</td>
-                                                    <td>{{ number_format($product->price) }}</td>
+                                                    <td>
+                                                        @include('frest-components.badges.badge' , [ 'badgeClass' => $product->status_badge_class,  'content' => $product->status_label ])
+                                                    </td>
+                                                    <td>{{ $product->formatted_price }}</td>
                                                     <td>{{ $product->stock }}</td>
-                                                    <td>{{ jalali($product->created_at) }}</td>
+                                                    <td>{{ $product->jalali_created_at }}</td>
                                                     <td>
                                                         @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.product.show',[ 'product' => $product->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                         @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=product_delete(this,event)  data-url='.route('admin.product.delete',[ 'product' => $product->id ]) ])

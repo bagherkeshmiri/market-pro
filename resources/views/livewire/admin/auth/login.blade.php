@@ -30,9 +30,7 @@
             </div>
 
 
-            {{-- Start Flash Message --}}
             @include('alerts.flash-message')
-            {{-- End Flash Message --}}
 
 
             <form wire:submit.prevent="login">

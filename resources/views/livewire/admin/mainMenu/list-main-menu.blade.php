@@ -20,7 +20,6 @@
         </div>
         <div class="content-body">
 
-            <!-- // Basic multiple Column Form section start -->
             <section id="multiple-column-form">
                 <div class="row match-height">
                     <div class="col-12">
@@ -28,7 +27,6 @@
                             <div class="card-content">
                                 <div class="card-body">
 
-                                    <!-- Table with no outer spacing -->
                                     <div class="table-responsive">
                                         <table class="table mb-0 table-hover">
                                             <thead>
@@ -94,7 +92,6 @@
                     </div>
                 </div>
             </section>
-            <!-- // Basic multiple Column Form section end -->
 
         </div>
     </div>

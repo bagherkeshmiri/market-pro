@@ -47,7 +47,7 @@
                                                         @include('frest-components.badges.badge' , [ 'badgeClass' => 'badge-danger',  'content' => $user->role->fa_name ])
                                                     </td>
                                                     <td>
-                                                        @include('frest-components.badges.badge' , [ 'badgeClass' => 'badge-success',  'content' => convertUserTypeToString($user->type) ])
+                                                        @include('frest-components.badges.badge' , [ 'badgeClass' => 'badge-success',  'content' => $user->type_label ])
                                                     </td>
                                                     @if($isAdmin)
                                                         <td>
@@ -56,7 +56,7 @@
                                                             @endforeach
                                                         </td>
                                                     @endif
-                                                    <td>{{ jalali($user->created_at) }}</td>
+                                                    <td>{{ $user->jalali_created_at }}</td>
                                                     <td>
                                                         @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.user.show',[ 'admin' => $user->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                         @if($user->id != $mainAdminId)

@@ -48,6 +48,7 @@
                                                             @include('frest-components.badges.badge' , ['badgeClass' => 'badge-danger', 'content' => $permission->fa_name ])
                                                         @endforeach
                                                     </td>
+                                                    <td>{{ $role->jalali_created_at }}</td>
                                                     <td>
                                                         @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.role.show',[ 'role' => $role->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                         @if($role->id !== $mainRoleId)

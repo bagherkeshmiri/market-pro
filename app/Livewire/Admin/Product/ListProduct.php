@@ -16,7 +16,7 @@ class ListProduct extends AdminComponent
     public function render()
     {
         $pageTitle = 'لیست‌ محصولات';
-        $tableHeads = ['تصویر', 'نام', 'دسته محصول', 'قیمت ( تومان )', 'تعداد موجودی ', 'تاریخ ایجاد', 'عملیات'];
+        $tableHeads = ['تصویر', 'نام', 'دسته محصول','وضعیت', 'قیمت ( تومان )', 'تعداد موجودی ', 'تاریخ ایجاد', 'عملیات'];
         return $this->renderView(
             'livewire.admin.product.list-product',
             [

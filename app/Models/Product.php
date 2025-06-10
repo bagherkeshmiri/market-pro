@@ -5,11 +5,13 @@ namespace App\Models;
 use App\Enums\ProductStatus;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
+use Morilog\Jalali\Jalalian;
 
 /**
  *
@@ -70,6 +72,26 @@ class Product extends Authenticatable
         static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
             $builder->orderByDesc('id');
         });
+    }
+
+    public function getStatusLabelAttribute(): string
+    {
+        return $this->status->label();
+    }
+
+    public function getStatusBadgeClassAttribute(): string
+    {
+        return $this->status->badgeClass();
+    }
+
+    public function getFormattedPriceAttribute(): string
+    {
+        return number_format($this->price);
+    }
+
+    public function getJalaliCreatedAtAttribute(): string
+    {
+        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
     /*------------ Relations ------------*/

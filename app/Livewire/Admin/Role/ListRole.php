@@ -15,7 +15,7 @@ class ListRole extends AdminComponent
     public function render()
     {
         $pageTile = 'لیست نقش ها';
-        $tableHeads = ['نام فارسی','نام لاتین' , 'سطوح دسترسی' , 'عملیات'];
+        $tableHeads = ['نام فارسی','نام لاتین' , 'سطوح دسترسی' ,'تاریخ ایجاد', 'عملیات'];
         $roles = Role::paginate();
         $mainRoleId = Role::first()->id;
         return $this->renderView(

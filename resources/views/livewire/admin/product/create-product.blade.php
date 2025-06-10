@@ -28,9 +28,7 @@
                             <div class="card-content">
                                 <div class="card-body">
 
-                                    <!-- Start Flash Message -->
                                     @include('alerts.flash-message')
-                                    <!--  End Flash Message -->
 
                                     <form class="form" wire:submit.prevent="store">
                                         <div class="form-body">

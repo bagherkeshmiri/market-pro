@@ -15,4 +15,12 @@ return [
     'in_active' =>  'غیرفعال',
     'delete' =>  'حذف',
     'no_information_found' =>  'هیچ اطلاعاتی یافت نشد',
+    'exist' =>  'موجود',
+    'not_exist' =>  'ناموجود',
+    'pending' =>  'در انتظار',
+    'paid' =>  'پرداخت شده',
+    'shipped' =>  'ارسال شده',
+    'cancelled' =>  'لغو شده',
+    'user' =>  'کاربر',
+    'admin' =>  'مدیر',
 ];

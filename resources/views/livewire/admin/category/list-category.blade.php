@@ -22,7 +22,6 @@
         </div>
         <div class="content-body">
 
-            <!-- // Basic multiple Column Form section start -->
             <section id="multiple-column-form">
                 <div class="row match-height">
                     <div class="col-12">
@@ -30,7 +29,6 @@
                             <div class="card-content">
                                 <div class="card-body">
 
-                                    <!-- Table with no outer spacing -->
                                     <div class="table-responsive">
                                         <table class="table mb-0 table-hover">
                                             <thead>
@@ -46,7 +44,7 @@
                                                 <tr>
                                                     <td>{{ $category->name }}</td>
                                                     <td>{{ $category->parent->name ?? ' - ' }}</td>
-                                                    <td>{{ jalali($category->created_at) }}</td>
+                                                    <td>{{ $category->jalali_created_at }}</td>
                                                     <td>
                                                         @include('frest-components.inputs.buttons.tiny.link.icon-btn',[  'href' => route('admin.category.show',[ 'category' => $category->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                         @include('frest-components.inputs.buttons.tiny.link.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=category_delete(this,event)  data-url='.route('admin.category.delete',[ 'category' => $category->id ]) ])
@@ -71,7 +69,6 @@
                     </div>
                 </div>
             </section>
-            <!-- // Basic multiple Column Form section end -->
 
         </div>
     </div>
@@ -83,12 +80,12 @@
     <script type="text/javascript" src="{{ asset('frest/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/swal-functions.js') }}"></script>
     <script src="{{ asset('frest/vendors/js/extensions/toastr.min.js') }}"></script>
-        <script type="text/javascript">
+    <script type="text/javascript">
 
-    function category_delete(element, event) {
-        event.preventDefault()
-        mboxDelete(element.getAttribute('data-url'));
-    }
+        function category_delete(element, event) {
+            event.preventDefault()
+            mboxDelete(element.getAttribute('data-url'));
+        }
 
-        </script>
+    </script>
 @endsection

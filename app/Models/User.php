@@ -13,6 +13,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
 use LaravelIdea\Helper\App\Models\_IH_Permission_QB;
+use Morilog\Jalali\Jalalian;
 
 /**
  *
@@ -76,6 +77,21 @@ class User extends Authenticatable
         static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
             $builder->orderByDesc('id');
         });
+    }
+
+    public function getTypeLabelAttribute(): string
+    {
+        return $this->type->label();
+    }
+
+    public function getStatusBadgeClassAttribute(): string
+    {
+        return $this->type->badgeClass();
+    }
+
+    public function getJalaliCreatedAtAttribute(): string
+    {
+        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
     /*------------ Relations ------------*/

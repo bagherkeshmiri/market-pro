@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use Morilog\Jalali\Jalalian;
 
 /**
  *
@@ -57,6 +58,11 @@ class Role extends Model
         static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
             $builder->orderByDesc('id');
         });
+    }
+
+    public function getJalaliCreatedAtAttribute(): string
+    {
+        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
     /*------------ Relations ------------*/

@@ -22,7 +22,6 @@
         </div>
         <div class="content-body">
 
-            <!-- // Basic multiple Column Form section start -->
             <section id="multiple-column-form">
                 <div class="row match-height">
                     <div class="col-12">
@@ -30,7 +29,6 @@
                             <div class="card-content">
                                 <div class="card-body">
 
-                                    <!-- Start Flash Message -->
                                 @include('alerts.flash-message')
                                 <!--  End Flash Message -->
 
@@ -96,7 +94,6 @@
                     </div>
                 </div>
             </section>
-            <!-- // Basic multiple Column Form section end -->
 
         </div>
     </div>
