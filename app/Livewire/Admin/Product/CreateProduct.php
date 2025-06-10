@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Product;
 
+use App\Enums\ProductStatus;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
 use App\Models\Product;
@@ -34,6 +35,7 @@ class CreateProduct extends AdminComponent
             [
                 'pageTitle' => $pageTile,
                 'allCategories' => $allCategories,
+                'statuses' => showEnumLabels(ProductStatus::class),
             ],
         );
     }

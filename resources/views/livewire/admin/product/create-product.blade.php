@@ -51,6 +51,15 @@
                                                     </div>
                                                 </div>
 
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                                                    <div class="form-group">
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'status' , 'content' => 'وضعیت'] )
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'status' , 'wire' => 'status'  , 'defaultOption' => true , 'defaultValue' => true])
+                                                        @include('frest-components.small-tag-error',[ 'name' => 'status' ])
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'price' , 'content' => 'قیمت ( تومان )'] )
@@ -60,7 +69,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'stock' , 'content' => ' تعداد موجودی'] )
                                                         @include('frest-components.required-tag')

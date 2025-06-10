@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Admin\Product;
 
+use App\Enums\ProductStatus;
 use App\Jobs\DeleteImageJob;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
 use App\Models\Product;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Enum;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 use Throwable;
@@ -22,6 +24,7 @@ class ShowProduct extends AdminComponent
     public $description;
     public $price;
     public $stock;
+    public $status;
     public $mainImage;
     public $galleryImages;
 
@@ -33,6 +36,7 @@ class ShowProduct extends AdminComponent
         $this->description = $product->description;
         $this->price = $product->price;
         $this->stock = $product->stock;
+        $this->status = $product->status;
         $this->mainImage = $product->images->where('is_main', true)->first()->image_url ?? '';
         $this->galleryImages = $product->images->where('is_main', false);
     }
@@ -47,6 +51,7 @@ class ShowProduct extends AdminComponent
             [
                 'pageTitle' => $pageTile,
                 'allCategories' => $allCategories,
+                'statuses' => showEnumLabels(ProductStatus::class),
             ]
         );
     }
@@ -61,6 +66,10 @@ class ShowProduct extends AdminComponent
             'categoryId' => 'required|exists:categories,id',
             'description' => 'nullable|string',
             'price' => 'required|string',
+            'status' => [
+                'required',
+                new Enum(ProductStatus::class)
+            ],
             'mainImage' => $this->mainImage instanceof TemporaryUploadedFile
                 ? 'file|mimes:jpg,png,jpeg,webp|max:500' // TODO reduce image size
                 : 'nullable',
@@ -73,6 +82,7 @@ class ShowProduct extends AdminComponent
             'description' => $this->description ?? null,
             'price' => str_replace(',', '', $this->price),
             'stock' => $this->stock,
+            'status' => $this->status,
         ];
 
         DB::beginTransaction();
