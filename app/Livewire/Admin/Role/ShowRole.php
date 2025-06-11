@@ -3,11 +3,12 @@
 namespace App\Livewire\Admin\Role;
 
 use App\Livewire\BaseComponents\AdminComponent;
+use App\Models\Permission;
 use App\Models\Role;
-use App\Repositories\Permission\PermissionRepositoryInterface;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class ShowRole extends AdminComponent
 {
@@ -17,9 +18,14 @@ class ShowRole extends AdminComponent
     public $allPermissions;
     public $selectAll = false;
     public $permissions = [];
-    protected object $permissionRepository;
 
-    public function mount(Role $role)
+
+    public function boot(): void
+    {
+        $this->allPermissions = Permission::all();
+    }
+
+    public function mount(Role $role): void
     {
         $this->role = $role;
         $this->faName = $role->fa_name;
@@ -27,29 +33,30 @@ class ShowRole extends AdminComponent
         $this->permissions = $this->role->permissions->pluck('id')->toArray();
     }
 
-    public function boot(PermissionRepositoryInterface $permissionRepo)
-    {
-        $this->permissionRepository = $permissionRepo;
-    }
-
     public function render()
     {
-        $this->allPermissions = $this->permissionRepository->all();
+        $pageTitle = 'ویرایش نقش';
         return $this->renderView(
             'livewire.admin.role.show-role',
-            ['allPermissions' => $this->allPermissions]
+            [
+                'pageTitle' => $pageTitle,
+                'allPermissions' => $this->allPermissions
+            ]
         );
     }
 
-    public function updatedSelectAll($value)
+    public function updatedSelectAll($value): void
     {
         if ($value) {
-            $this->permissions = $this->permissionRepository->all()->pluck('id');
+            $this->permissions = $this->allPermissions->pluck('id');
         } else {
             $this->permissions = [];
         }
     }
 
+    /**
+     * @throws Throwable
+     */
     public function update(): RedirectResponse
     {
         $data = [
