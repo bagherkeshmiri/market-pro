@@ -62,7 +62,7 @@
                                                     </div>
                                                 </div>
 
-                                                @include('frest-components.dividers.warning-divider',['title' => 'سطوح دسترسی'])
+                                                @include('frest-components.dividers.text-divider',['dividerClass'=> 'divider-warning','title' => 'سطوح دسترسی'])
 
 
                                                 @error('permissions[]')

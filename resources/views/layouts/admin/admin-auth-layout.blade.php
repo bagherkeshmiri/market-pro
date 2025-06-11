@@ -60,9 +60,7 @@
     <script src="{{ asset('frest/fonts/LivIconsEvo/js/LivIconsEvo.tools.min.js') }} "></script>
     <script src="{{ asset('frest/fonts/LivIconsEvo/js/LivIconsEvo.defaults.js') }} "></script>
     <script src="{{ asset('frest/fonts/LivIconsEvo/js/LivIconsEvo.min.js') }} "></script>
-
     <script src="{{ asset('frest/vendors/js/ui/jquery.sticky.js') }} "></script>
-
     <script src="{{ asset('frest/js/scripts/configs/horizontal-menu.js') }} "></script>
     <script src="{{ asset('frest/js/scripts/configs/vertical-menu-dark.js') }} "></script>
     <script src="{{ asset('frest/js/core/app-menu.js') }} "></script>
