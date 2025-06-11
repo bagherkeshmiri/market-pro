@@ -24,11 +24,11 @@ class CreateRole extends AdminComponent
 
     public function render()
     {
-        $pageTile = 'ایجاد نقش';
+        $pageTitle = 'ایجاد نقش';
         return $this->renderView(
             'livewire.admin.role.create-role',
             [
-                'pageTile' => $pageTile,
+                'pageTitle' => $pageTitle,
                 'allPermissions' => $this->permissions,
             ]
         );

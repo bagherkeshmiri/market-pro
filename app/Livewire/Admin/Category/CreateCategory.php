@@ -15,12 +15,12 @@ class CreateCategory extends AdminComponent
 
     public function render()
     {
-        $pageTile = 'ایجاد دسته بندی';
+        $pageTitle = 'ایجاد دسته بندی';
         $allCategories = Category::pluck('id', 'name')->toArray();
         return $this->renderView(
             'livewire.admin.category.create-category',
             [
-                'pageTitle' => $pageTile,
+                'pageTitle' => $pageTitle,
                 'allCategories' => $allCategories,
             ],
         );

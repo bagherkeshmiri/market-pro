@@ -22,14 +22,14 @@ class CreateUser extends AdminComponent
 
     public function render()
     {
-        $pageTile = 'ایجاد کاربر';
+        $pageTitle = 'ایجاد کاربر';
         $roles = Role::pluck('id', 'fa_name')->toArray();
         return $this->renderView(
             'livewire.admin.user.create-user',
             [
                 'roles' => $roles,
                 'types' => showEnumLabels(UserType::class),
-                'pageTitle' => $pageTile,
+                'pageTitle' => $pageTitle,
             ]
         );
     }

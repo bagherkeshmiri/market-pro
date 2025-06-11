@@ -7,17 +7,9 @@
 
 <div class="app-content content">
     <div class="content-overlay"></div>
+
     <div class="content-wrapper">
-        <div class="content-header row">
-            <div class="content-header-left col-12 mb-2 mt-1">
-                <div class="row breadcrumbs-top">
-                    <div class="col-12">
-                        <h5 class="content-header-title float-left pr-1 text-success "
-                            style=" border-left: 0 !important;">{{ $pageTitle }}</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @include('custom-components.admin.page-title',['pageTitle' => $pageTitle,])
         <div class="content-body">
 
             <section id="multiple-column-form">
@@ -64,64 +56,10 @@
                     </div>
                 </div>
             </section>
-
         </div>
     </div>
 </div>
 
 
 @section('scripts')
-    <script src="{{ asset('js/axios.min.js') }}"></script>
-    <script src="{{ asset('ckeditor5-35.3.2/build/ckeditor.js') }}"></script>
-    {{--    <script>--}}
-
-    {{--        let saveBtn = document.querySelector('#save_btn');--}}
-
-    {{--        function MyCustomUploadAdapterPlugin(editor) {--}}
-    {{--            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {--}}
-    {{--                return {--}}
-    {{--                    upload() {--}}
-    {{--                        return loader.file.then(file => new Promise((resolve, reject) => {--}}
-    {{--                                let formData = new FormData();--}}
-    {{--                                formData.append('image', file)--}}
-    {{--                                axios.post('{{ route('api.upload') }}', formData, {--}}
-    {{--                                    headers: {'Content_type': 'multipart/form-data'}--}}
-    {{--                                }).then(response => {--}}
-    {{--                                    resolve({--}}
-    {{--                                        default: response.data--}}
-    {{--                                    })--}}
-    {{--                                })--}}
-    {{--                            }--}}
-    {{--                        ))--}}
-    {{--                    },--}}
-    {{--                    abort() {--}}
-    {{--                    },--}}
-    {{--                }--}}
-    {{--            }--}}
-    {{--        }--}}
-
-    {{--        const myEditor =--}}
-    {{--            DecoupledDocumentEditor--}}
-    {{--                .create(document.querySelector('#editor'), {--}}
-    {{--                    extraPlugins: [MyCustomUploadAdapterPlugin],--}}
-    {{--                    language: {--}}
-    {{--                        ui: 'fa',--}}
-    {{--                        content: 'fa',--}}
-    {{--                    },--}}
-    {{--                })--}}
-    {{--                .then(editor => {--}}
-    {{--                    const toolbarContainer = document.querySelector('#toolbar-container');--}}
-    {{--                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);--}}
-    {{--                })--}}
-    {{--                .catch(error => {--}}
-    {{--                    console.error(error);--}}
-    {{--                });--}}
-
-
-    {{--        saveBtn.addEventListener('click', function () {--}}
-    {{--            @this.--}}
-    {{--            set('description', document.querySelector('#editor').innerHTML);--}}
-    {{--        });--}}
-
-    {{--    </script>--}}
 @endsection

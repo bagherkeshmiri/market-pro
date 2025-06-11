@@ -25,7 +25,7 @@ class CreateProduct extends AdminComponent
 
     public function render()
     {
-        $pageTile = 'ایجاد محصول';
+        $pageTitle = 'ایجاد محصول';
         $allCategories = Category::withoutTrashed()
             ->pluck('id', 'name')
             ->toArray();
@@ -33,7 +33,7 @@ class CreateProduct extends AdminComponent
         return $this->renderView(
             'livewire.admin.product.create-product',
             [
-                'pageTitle' => $pageTile,
+                'pageTitle' => $pageTitle,
                 'allCategories' => $allCategories,
                 'statuses' => showEnumLabels(ProductStatus::class),
             ],
