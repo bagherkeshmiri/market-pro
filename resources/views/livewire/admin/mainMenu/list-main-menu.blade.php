@@ -2,7 +2,6 @@
 
 
 @section('styles')
-    <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/extensions/sweetalert2.min.css') }}">
 @endsection
 
 <div class="app-content content">
