@@ -122,7 +122,7 @@
                                 <div class="card-body">
 
                                     <div>
-                                        @include('frest-components.dividers.text-divider' , ['dividerClass' => 'divider-warning' ,'title' => 'تصویر اصلی'])
+                                        @include('frest-components.text-divider' , ['dividerClass' => 'divider-warning' ,'title' => 'تصویر اصلی'])
                                         @if ($mainImage)
                                             <img src="{{ is_object($mainImage) && method_exists($mainImage, 'temporaryUrl') ? $mainImage->temporaryUrl() : (file_exists(public_path($mainImage)) ? asset($mainImage) : asset('images/sample/sample-product.png')) }}" width="100%" alt="product-image"/>
                                         @else
@@ -132,7 +132,7 @@
 
 
                                     <div class="mt-4">
-                                        @include('frest-components.dividers.text-divider' , ['dividerClass' => 'divider-danger' ,'title' => 'گالری تصاویر'])
+                                        @include('frest-components.text-divider' , ['dividerClass' => 'divider-danger' ,'title' => 'گالری تصاویر'])
 
                                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-touch="false">
 

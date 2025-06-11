@@ -61,7 +61,7 @@
                                                     </div>
                                                 </div>
 
-                                                @include('frest-components.dividers.text-divider',['dividerClass'=>'divider-success','title' => 'سطوح دسترسی'])
+                                                @include('frest-components.text-divider',['dividerClass'=>'divider-success','title' => 'سطوح دسترسی'])
 
                                                 @error('permissions[]')
                                                 <div class="col-md-12 col-12 text-center mb-2">
