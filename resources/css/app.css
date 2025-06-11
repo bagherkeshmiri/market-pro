@@ -1,0 +1,10 @@
+@import './ck-editor.css';
+@import './frest/vendors/vendors.min.css';
+@import './frest/vendors/ui/prism.min.css';
+@import './frest/bootstrap.min.css';
+@import './frest/bootstrap-extended.css';
+@import './frest/colors.css';
+@import './frest/components.css';
+@import './frest/themes/dark-layout.css';
+@import './frest/themes/semi-dark-layout.css';
+@import './frest/core/menu/menu-types/horizontal-menu.css';

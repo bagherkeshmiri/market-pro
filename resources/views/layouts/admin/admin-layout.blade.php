@@ -20,21 +20,6 @@
 
 @include('partials.admin.footer')
 
-<script src="{{ asset('/frest/vendors/js/vendors.min.js') }}"></script>
-<script src="{{ asset('/frest/fonts/LivIconsEvo/js/LivIconsEvo.tools.min.js') }}"></script>
-<script src="{{ asset('/frest/fonts/LivIconsEvo/js/LivIconsEvo.defaults.js') }}"></script>
-<script src="{{ asset('/frest/fonts/LivIconsEvo/js/LivIconsEvo.min.js') }}"></script>
-<script src="{{ asset('/frest/vendors/js/ui/jquery.sticky.js') }}"></script>
-<script src="{{ asset('/frest/vendors/js/ui/prism.min.js') }}"></script>
-
-<script src="{{ asset('/frest/js/scripts/configs/horizontal-menu.js') }}"></script>
-<script src="{{ asset('/frest/js/scripts/configs/vertical-menu-dark.js') }}"></script>
-<script src="{{ asset('/frest/js/core/app-menu.js') }}"></script>
-<script src="{{ asset('/frest/js/core/app.js') }}"></script>
-<script src="{{ asset('/frest/js/scripts/components.js') }}"></script>
-<script src="{{ asset('/frest/js/scripts/footer.js') }}"></script>
-<script src="{{ asset('/frest/js/scripts/customizer.js') }}"></script>
-
 @yield('scripts')
 @livewireScripts
 
