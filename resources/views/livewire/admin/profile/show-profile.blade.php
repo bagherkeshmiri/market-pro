@@ -2,7 +2,8 @@
 
 @section('styles')
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/pages/page-user-profile.css') }}">
+    @vite(['resources/css/frest/pages/page-user-profile.css'])
+
     <style>
         body {
             overflow-x: hidden;

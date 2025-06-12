@@ -32,7 +32,7 @@
             background-color: #a8bbbf;
         }
     </style>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/admin-panel.css', 'resources/js/admin-panel.js'])
     @yield('styles')
     @livewireStyles
 

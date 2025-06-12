@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/frest/images/favicon.ico') }} ">
     <meta name="theme-color" content="#5A8DEE">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/admin-panel.css', 'resources/js/admin-panel.js'])
 
 </head>
 
