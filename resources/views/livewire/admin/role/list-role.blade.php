@@ -55,7 +55,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.bootstrap',['model' => $roles])
+                                        @include('frest-components.pagination',['model' => $roles])
 
                                     </div>
 

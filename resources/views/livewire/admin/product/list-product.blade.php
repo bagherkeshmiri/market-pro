@@ -54,7 +54,7 @@
                                                     </td>
                                                 </tr>
 
-                                                @include('frest-components.modal',['modalTitle' => 'تصویر اصلی', 'modalId' =>$modalId ])
+                                                @include('frest-components.modal',['modalTitle' => ' تصویر اصلی ' . $product->name, 'modalId' =>$modalId ])
 
                                             @empty
                                                 <tr>
@@ -65,7 +65,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.bootstrap',['model' => $products] )
+                                        @include('frest-components.pagination',['model' => $products] )
 
                                     </div>
 
