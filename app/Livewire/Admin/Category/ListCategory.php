@@ -8,10 +8,6 @@ use Livewire\WithPagination;
 
 class ListCategory extends AdminComponent
 {
-    use WithPagination;
-
-    protected $paginationTheme = 'bootstrap';
-
     public function render()
     {
         $pageTitle = 'لیست دسته بندی ها';
@@ -21,7 +17,7 @@ class ListCategory extends AdminComponent
             [
                 'pageTitle' => $pageTitle,
                 'tableHeads' => $tableHeads,
-                'categories' => Category::paginate(),
+                'categories' => Category::paginate($this->perPage),
             ]
         );
     }

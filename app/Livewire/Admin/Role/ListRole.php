@@ -8,9 +8,6 @@ use Livewire\WithPagination;
 
 class ListRole extends AdminComponent
 {
-    use WithPagination;
-
-    protected $paginationTheme = 'bootstrap';
 
     public function render()
     {

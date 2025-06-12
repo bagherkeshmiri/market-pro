@@ -90,7 +90,7 @@
 
                                                 <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
                                                     @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات '] )
-                                                    @include('frest-components.ckEditor',[ 'wire' => 'description'])
+                                                    @include('frest-components.ckEditor')
                                                 </div>
 
                                                 <div class="col-12 d-flex justify-content-end mt-2">

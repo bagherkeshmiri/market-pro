@@ -9,9 +9,6 @@ use Livewire\WithPagination;
 
 class ListMainMenu extends AdminComponent
 {
-    use WithPagination;
-
-    protected $paginationTheme = 'bootstrap';
     protected object $mainMenuRepository;
     public IsActive $active = IsActive::Yes;
 
