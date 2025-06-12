@@ -79,8 +79,9 @@
 
 @section('scripts')
     <script type="text/javascript" src="{{ asset('frest/js/scripts/extensions/sweet-alerts.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('frest/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/swal-functions.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frest/js/vendors/extensions/sweetalert2.all.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frest//js/vendors/extensions/toastr.min.js') }}"></script>
+
     <script type="text/javascript">
 
         function account_delete(element, event) {

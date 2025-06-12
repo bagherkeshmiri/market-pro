@@ -81,6 +81,10 @@
 
 
 @section('scripts')
+    <script type="text/javascript" src="{{ asset('frest/js/scripts/extensions/sweet-alerts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frest/js/vendors/extensions/sweetalert2.all.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frest//js/vendors/extensions/toastr.min.js') }}"></script>
+
     <script type="text/javascript">
 
         function product_delete(element, event) {

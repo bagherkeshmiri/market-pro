@@ -15,7 +15,6 @@ function mboxDelete(url) {
     })
 }
 
-
 function mboxActive(url) {
 
     Swal.fire({
@@ -119,3 +118,11 @@ function toastAlert(message, icon = 'success') {
     })
 }
 
+window.mboxDelete = mboxDelete;
+window.mboxActive = mboxActive;
+window.mboxInActive = mboxInActive;
+window.mbox = mbox;
+window.mboxQuestion = mboxQuestion;
+window.mboxHtml = mboxHtml;
+window.mboxAlert = mboxAlert;
+window.toastAlert = toastAlert;
