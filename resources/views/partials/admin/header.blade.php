@@ -91,7 +91,7 @@
                                 <div class="d-flex justify-content-between cursor-pointer">
                                     <div class="media d-flex align-items-center py-0">
                                         <div class="media-left pr-0"><img class="mr-1"
-                                                                          src="{{ asset('frest/images/icon/sketch-mac-icon.png') }}"
+{{--                                                                          src="{{ asset('frest/images/icon/sketch-mac-icon.png') }}"--}}
                                                                           alt="avatar" height="39" width="39"></div>
                                         <div class="media-body">
                                             <h6 class="media-heading"><span
