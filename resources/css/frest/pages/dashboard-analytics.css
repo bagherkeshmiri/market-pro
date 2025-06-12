@@ -23,7 +23,6 @@
 }
 
 .widget-todo .dropdown .dropdown-toggle:after {
-	/* widget todo-task list - dropdown arrow position */
 	right: 0.1rem;
 	color: #B3C0CE;
 }

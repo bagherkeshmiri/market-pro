@@ -184,13 +184,13 @@
                         //                                                    NUMBER
                         // ---------------------------------------------------------
                         if ($this.attr("type") !== undefined && $this.attr("type").toLowerCase() === "number") {
-                            message = settings.validatorTypes.number.message; // TODO: fix this
+                            message = settings.validatorTypes.number.message;
                             if ($this.data("validationNumberMessage")) {
                                 message = $this.data("validationNumberMessage");
                             }
                             $this.data("validationNumberMessage", message);
 
-                            var step = settings.validatorTypes.number.step; // TODO: and this
+                            var step = settings.validatorTypes.number.step;
                             if ($this.data("validationNumberStep")) {
                                 step = $this.data("validationNumberStep");
                             }

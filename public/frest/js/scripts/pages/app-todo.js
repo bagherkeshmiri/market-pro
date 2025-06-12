@@ -1,8 +1,3 @@
-/*=========================================================================================
-    File Name: app-todo.js
-    Description: app-todo
-==========================================================================================*/
-// Todo App variables
 var todoNewTasksidebar = $(".todo-new-task-sidebar"),
 	appContentOverlay = $(".app-content-overlay"),
 	sideBarLeft = $(".sidebar-left"),
@@ -150,7 +145,6 @@ $(function () {
 		//select2 value null assign
 		selectUsersName.val(null).trigger('change');
 		selectAssignLable.val(null).trigger('change');
-		//update button has add class d-none remove from add TODO
 		updateTodo.addClass("d-none");
 		addTodo.removeClass("d-none");
 		//mark complete btn should hide & new task title will visible
@@ -291,7 +285,6 @@ $(function () {
 			}
 		}
 	});
-	// on Todo Item click show data in sidebar
 	var globalThis = ""; // Global variable use in multiple function
 	todoTaskListWrapper.on('click', '.todo-item', function (e) {
 		var $this = $(this);
@@ -335,7 +328,6 @@ $(function () {
 		} else {
 			selectAssignLable.val(null).trigger("change");
 		}
-		// update button has remove class d-none & add class d-none in add todo button
 		updateTodo.removeClass("d-none");
 		addTodo.addClass("d-none");
 		markCompleteBtn.removeClass("d-none");
@@ -364,7 +356,6 @@ $(function () {
 		selectAssignLable.attr("disabled", "true");
 	});
 
-	// Todo sidebar toggle
 	$('.sidebar-toggle').on('click', function (e) {
 		e.stopPropagation();
 		sideBarLeft.toggleClass('show');
