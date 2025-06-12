@@ -113,8 +113,14 @@
     </div>
 </div>
 
+@vite(['resources/js/axios.min.js'])
+@vite(['resources/js/ckeditor.js'])
+
 
 @section('scripts')
+{{--    <script src="{{ asset('js/axios.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('ckeditor5-35.3.2/build/ckeditor.js') }}"></script>--}}
+
     <script>
 
         let saveBtn = document.querySelector('#save_btn');

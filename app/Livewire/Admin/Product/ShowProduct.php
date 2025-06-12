@@ -66,6 +66,7 @@ class ShowProduct extends AdminComponent
             'categoryId' => 'required|exists:categories,id',
             'description' => 'nullable|string',
             'price' => 'required|string',
+            'stock' => 'required|integer',
             'status' => [
                 'required',
                 new Enum(ProductStatus::class)
@@ -118,9 +119,6 @@ class ShowProduct extends AdminComponent
             return redirect()->route('admin.product.show', ['product' => $this->product->id]);
         } catch (Exception $e) {
             DB::rollBack();
-            dd(
-                $e->getMessage()
-            );
             session()->flash('error', __('global.error_message'));
             return redirect()->route('admin.product.create');
         }

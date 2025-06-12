@@ -182,8 +182,12 @@
 
 
 @section('scripts')
-    <script>
 
+    <script src="{{ asset('frest/js/axios.min.js') }}"></script>
+    <script src="{{ asset('ckeditor5-35.3.2/build/ckeditor.js') }}"></script>
+
+
+    <script>
         let saveBtn = document.querySelector('#save_btn');
 
         function MyCustomUploadAdapterPlugin(editor) {
