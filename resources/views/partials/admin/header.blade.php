@@ -35,15 +35,6 @@
                             <a class="dropdown-item" href="#" data-language="en" aria-label="English">
                                 <i class="flag-icon flag-icon-us mr-50"></i> English
                             </a>
-                            <a class="dropdown-item" href="#" data-language="fr" aria-label="Français">
-                                <i class="flag-icon flag-icon-fr mr-50"></i> Français
-                            </a>
-                            <a class="dropdown-item" href="#" data-language="de" aria-label="Deutsch">
-                                <i class="flag-icon flag-icon-de mr-50"></i> Deutsch
-                            </a>
-                            <a class="dropdown-item" href="#" data-language="pt" aria-label="Português">
-                                <i class="flag-icon flag-icon-pt mr-50"></i> Português
-                            </a>
 
                         </div>
                     </li>
@@ -64,7 +55,7 @@
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
+                                                    src="{{ asset('/build/images/avatar-s-16.png') }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">
@@ -78,7 +69,7 @@
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.png')  }}"
+                                                    src="{{ asset('/build/images/avatar-s-16.png')  }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">
@@ -155,7 +146,7 @@
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
+                                                    src="{{ asset('/build/images/avatar-s-16.png') }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">
@@ -182,7 +173,7 @@
                                     <div class="media d-flex align-items-center border-0">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
+                                                    src="{{ asset('/build/images/avatar-s-16.png') }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">
@@ -204,7 +195,7 @@
                                     class="user-name">{{ auth()->user()->name  }}</span><span
                                     class="user-status"></span></div>
                             <span>
-                                <img class="round" src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
+                                <img class="round" src="{{ asset('/build/images/avatar-s-16.png') }}"
                                      alt="avatar" height="40" width="40">
                             </span>
                         </a>

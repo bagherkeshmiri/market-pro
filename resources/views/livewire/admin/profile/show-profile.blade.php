@@ -25,10 +25,10 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="user-profile-images">
-                                    <img src="{{ asset('frest/images/profile/post-media/profile-banner.jpg') }}"
+                                    <img src="{{ asset('/build/images/profile-banner.jpg') }}"
                                          class="img-fluid rounded-top user-timeline-image"
                                          alt="user timeline image">
-                                    <img src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
+                                    <img src="{{ asset('/build/images/avatar-s-16.png') }}"
                                          class="user-profile-image rounded-circle" alt="user profile image" height="140"
                                          width="140">
                                 </div>

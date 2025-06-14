@@ -1,8 +1,9 @@
 import {defineConfig} from 'vite';
 import laravel from 'laravel-vite-plugin';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
+import {viteStaticCopy} from 'vite-plugin-static-copy';
 
 export default defineConfig({
+    publicDir: 'public',
     plugins: [
         laravel({
             input: [
@@ -10,20 +11,9 @@ export default defineConfig({
                 'resources/js/admin-panel.js',
                 'resources/css/admin-auth.css',
                 'resources/js/admin-auth.js',
+                'resources/css/frest/pages/page-user-profile.css',
             ],
             refresh: true,
-        }),
-        viteStaticCopy({
-            targets: [
-                {
-                    src: 'resources/fonts/**/*',
-                    dest: 'fonts',
-                },
-                {
-                    src: 'resources/images/**/*',
-                    dest: 'images',
-                },
-            ],
         }),
     ],
     server: {

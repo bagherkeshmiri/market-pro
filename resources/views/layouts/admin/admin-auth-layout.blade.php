@@ -34,7 +34,7 @@
 
                             <div class="col-md-6 d-md-block d-none text-center align-self-center p-3">
                                 <div class="card-content">
-                                    <img class="img-fluid" src="{{ asset('build/images/login.png') }} "
+                                    <img class="img-fluid" src="{{ asset('/build/images/login.png') }} "
                                          alt="branding logo">
                                 </div>
                             </div>

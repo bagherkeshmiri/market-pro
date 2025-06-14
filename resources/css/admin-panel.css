@@ -8,18 +8,17 @@
 @import './frest/themes/dark-layout.css';
 @import './frest/themes/semi-dark-layout.css';
 @import './frest/core/menu/menu-types/horizontal-menu.css';
-@import './frest/pages/authentication.css';
 @import './frest/vendors/extensions/sweetalert2.min.css';
 @import './frest/vendors/extensions/toastr.css';
 @import './frest/plugins/extensions/toastr.css';
 
 @font-face {
     font-family: "primary-font";
-    src: url("/build/fonts/iran-sans-300.eot");
-    src: url("/build/fonts/iran-sans-300.eot?#iefix") format("embedded-opentype"),
-    url("/build/fonts/iran-sans-300.woff2") format("woff2"),
-    url("/build/fonts/iran-sans-300.woff") format("woff"),
-    url("/build/fonts/iran-sans-300.ttf") format("truetype");
+    src: url("/fonts/iran-sans-300.eot");
+    src: url("/fonts/iran-sans-300.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/iran-sans-300.woff2") format("woff2"),
+    url("/fonts/iran-sans-300.woff") format("woff"),
+    url("/fonts/iran-sans-300.ttf") format("truetype");
     font-weight: 300;
 }
 
