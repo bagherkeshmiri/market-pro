@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Enum;
 use Livewire\WithFileUploads;
 use Throwable;
 
@@ -20,6 +21,7 @@ class CreateProduct extends AdminComponent
     public $description;
     public $price;
     public $stock;
+    public $status;
     public $mainImage;
     public $galleryImages;
 
@@ -50,8 +52,13 @@ class CreateProduct extends AdminComponent
             'categoryId' => 'required|exists:categories,id',
             'description' => 'nullable|string',
             'price' => 'required|string',
-            'mainImage' => 'required|file',
-            'galleryImages' => 'nullable|array',
+            'stock' => 'required|integer',
+            'status' => [
+                'required',
+                new Enum(ProductStatus::class)
+            ],
+            'mainImage' => 'required|file|mimes:jpg,png,jpeg,webp|max:500', // TODO reduce image size and width and height
+            'galleryImages' => 'nullable|array', // if array file has file|mimes:jpg,png,jpeg,webp|max:500 validation
         ]);
 
         $data = [
@@ -60,6 +67,7 @@ class CreateProduct extends AdminComponent
             'description' => $this->description ?? null,
             'price' => str_replace(',', '', $this->price),
             'stock' => $this->stock,
+            'status' => $this->status,
         ];
 
         DB::beginTransaction();

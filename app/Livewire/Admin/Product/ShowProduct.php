@@ -66,14 +66,15 @@ class ShowProduct extends AdminComponent
             'categoryId' => 'required|exists:categories,id',
             'description' => 'nullable|string',
             'price' => 'required|string',
+            'stock' => 'required|integer',
             'status' => [
                 'required',
                 new Enum(ProductStatus::class)
             ],
             'mainImage' => $this->mainImage instanceof TemporaryUploadedFile
-                ? 'file|mimes:jpg,png,jpeg,webp|max:500' // TODO reduce image size
+                ? 'file|mimes:jpg,png,jpeg,webp|max:500' // TODO reduce image size and width and height
                 : 'nullable',
-            'galleryImages' => 'nullable|array',
+            'galleryImages' => 'nullable|array', // if array file has file|mimes:jpg,png,jpeg,webp|max:500 validation
         ]);
 
         $data = [
