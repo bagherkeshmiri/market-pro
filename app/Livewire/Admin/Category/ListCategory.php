@@ -21,7 +21,7 @@ class ListCategory extends AdminComponent
             [
                 'pageTitle' => $pageTitle,
                 'tableHeads' => $tableHeads,
-                'categories' => Category::paginate(),
+                'categories' => Category::paginate($this->perPage),
             ]
         );
     }

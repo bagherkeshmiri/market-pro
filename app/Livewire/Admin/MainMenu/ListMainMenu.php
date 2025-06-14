@@ -22,7 +22,7 @@ class ListMainMenu extends AdminComponent
 
     public function render()
     {
-        $allmainMenus = $this->mainMenuRepository->paginate();
+        $allmainMenus = $this->mainMenuRepository->paginate($this->perPage);
         return $this->renderView('livewire.admin.mainMenu.list-main-menu', ['allmainMenus' => $allmainMenus]);
     }
 }
