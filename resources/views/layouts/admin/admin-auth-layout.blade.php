@@ -9,15 +9,15 @@
     <title>@yield('title') </title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frest/images/ico/favicon.ico') }}">
     <meta name="theme-color" content="#5A8DEE">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/vendors/css/vendors.min.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/bootstrap.min.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/bootstrap-extended.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/colors.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/components.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/themes/dark-layout.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/themes/semi-dark-layout.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/core/menu/menu-types/horizontal-menu.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/pages/authentication.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/vendors/vendors.min.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/bootstrap.min.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/bootstrap-extended.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/colors.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/components.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/themes/dark-layout.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/themes/semi-dark-layout.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/core/menu/menu-types/horizontal-menu.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/pages/authentication.css') }} ">
 
     @yield('styles')
     @livewireStyles
@@ -42,7 +42,7 @@
 
                                 <div class="col-md-6 d-md-block d-none text-center align-self-center p-3">
                                     <div class="card-content">
-                                        <img class="img-fluid" src="{{ asset('frest/images/pages/login.png') }} "
+                                        <img class="img-fluid" src="{{ asset('images/frest/login.png') }} "
                                             alt="branding logo">
                                     </div>
                                 </div>
@@ -56,17 +56,13 @@
     </div>
 
 
-    <script src="{{ asset('frest/vendors/js/vendors.min.js') }} "></script>
-    <script src="{{ asset('frest/fonts/LivIconsEvo/js/LivIconsEvo.tools.min.js') }} "></script>
-    <script src="{{ asset('frest/fonts/LivIconsEvo/js/LivIconsEvo.defaults.js') }} "></script>
-    <script src="{{ asset('frest/fonts/LivIconsEvo/js/LivIconsEvo.min.js') }} "></script>
-    <script src="{{ asset('frest/vendors/js/ui/jquery.sticky.js') }} "></script>
-    <script src="{{ asset('frest/js/scripts/configs/horizontal-menu.js') }} "></script>
-    <script src="{{ asset('frest/js/scripts/configs/vertical-menu-dark.js') }} "></script>
-    <script src="{{ asset('frest/js/core/app-menu.js') }} "></script>
-    <script src="{{ asset('frest/js/core/app.js') }} "></script>
-    <script src="{{ asset('frest/js/scripts/components.js') }}"></script>
-    <script src="{{ asset('frest/js/scripts/footer.js') }} "></script>
+    <script src="{{ asset('js/frest/vendors/vendors.min.js') }} "></script>
+    <script src="{{ asset('js/frest/vendors/ui/jquery.sticky.js') }} "></script>
+    <script src="{{ asset('js/frest/scripts/configs/horizontal-menu.js') }} "></script>
+    <script src="{{ asset('js/frest/core/app-menu.js') }} "></script>
+    <script src="{{ asset('js/frest/core/app.js') }} "></script>
+    <script src="{{ asset('js/frest/scripts/components.js') }}"></script>
+    <script src="{{ asset('js/frest/scripts/footer.js') }} "></script>
 
 
     @yield('scripts')
