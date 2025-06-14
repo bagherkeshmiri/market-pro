@@ -27,7 +27,7 @@
                                     <img src="{{ asset('frest/images/profile/post-media/profile-banner.jpg') }}"
                                          class="img-fluid rounded-top user-timeline-image"
                                          alt="user timeline image">
-                                    <img src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
+                                    <img src="{{ asset('images/frest/avatar-s-16.png') }}"
                                          class="user-profile-image rounded-circle" alt="user profile image" height="140"
                                          width="140">
                                 </div>

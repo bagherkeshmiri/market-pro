@@ -35,16 +35,6 @@
                             <a class="dropdown-item" href="#" data-language="en" aria-label="English">
                                 <i class="flag-icon flag-icon-us mr-50"></i> English
                             </a>
-                            <a class="dropdown-item" href="#" data-language="fr" aria-label="Français">
-                                <i class="flag-icon flag-icon-fr mr-50"></i> Français
-                            </a>
-                            <a class="dropdown-item" href="#" data-language="de" aria-label="Deutsch">
-                                <i class="flag-icon flag-icon-de mr-50"></i> Deutsch
-                            </a>
-                            <a class="dropdown-item" href="#" data-language="pt" aria-label="Português">
-                                <i class="flag-icon flag-icon-pt mr-50"></i> Português
-                            </a>
-
                         </div>
                     </li>
                     <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i
@@ -52,11 +42,11 @@
                     <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#"
                                                                            data-toggle="dropdown"><i
                                 class="ficon bx bx-bell bx-tada bx-flip-horizontal"></i><span
-                                class="badge badge-pill badge-danger badge-up">5</span></a>
+                                class="badge badge-pill badge-danger badge-up">2</span></a>
                         <ul class="dropdown-menu dropdown-menu-media">
                             <li class="dropdown-menu-header">
                                 <div class="dropdown-header px-1 py-75 d-flex justify-content-between"><span
-                                        class="notification-title">7 اعلان جدید</span><span
+                                        class="notification-title">2 اعلان جدید</span><span
                                         class="text-bold-400 cursor-pointer">علامت خوانده شده به همه</span></div>
                             </li>
                             <li class="scrollable-container media-list"><a class="d-flex justify-content-between"
@@ -64,7 +54,7 @@
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
+                                                    src="{{ asset('images/frest/avatar-s-16.png') }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">
@@ -78,116 +68,13 @@
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.png')  }}"
+                                                    src="{{ asset('images/frest/avatar-s-16.png')  }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">
                                             <h6 class="media-heading"><span class="text-bold-500">پیام جدید</span>
                                                 دریافت شد</h6><small class="notification-text">شما 18 پیام خوانده نشده
                                                 دارید</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between cursor-pointer">
-                                    <div class="media d-flex align-items-center py-0">
-                                        <div class="media-left pr-0"><img class="mr-1"
-                                                                          src="{{ asset('frest/images/icon/sketch-mac-icon.png') }}"
-                                                                          alt="avatar" height="39" width="39"></div>
-                                        <div class="media-body">
-                                            <h6 class="media-heading"><span
-                                                    class="text-bold-500">به روز رسانی آماده است</span></h6><small
-                                                class="notification-text">لورم ایپسوم متن ساختگی با تولید سادگی</small>
-                                        </div>
-                                        <div class="media-right pl-0">
-                                            <div class="row border-left text-center">
-                                                <div class="col-12 px-50 py-50 border-bottom">
-                                                    <h6 class="media-heading text-bold-500 mb-0">به‌روزرسانی</h6>
-                                                </div>
-                                                <div class="col-12 px-50 py-50">
-                                                    <h6 class="media-heading mb-0">بستن</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between cursor-pointer">
-                                    <div class="media d-flex align-items-center">
-                                        <div class="media-left pr-0">
-                                            <div class="avatar bg-primary bg-lighten-5 mr-1 m-0 p-25"><span
-                                                    class="avatar-content text-primary font-medium-2">ل‌د</span></div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="media-heading"><span class="text-bold-500">مشتری جدید</span> ثبت
-                                                نام کرد</h6><small class="notification-text">1 ساعت پیش</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cursor-pointer">
-                                    <div class="media d-flex align-items-center justify-content-between">
-                                        <div class="media-left pr-0">
-                                            <div class="media-body">
-                                                <h6 class="media-heading">پیشنهاد های جدید</h6>
-                                            </div>
-                                        </div>
-                                        <div class="media-right">
-                                            <div class="custom-control custom-switch">
-                                                <input class="custom-control-input" type="checkbox" checked
-                                                       id="notificationSwtich">
-                                                <label class="custom-control-label" for="notificationSwtich"></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between cursor-pointer">
-                                    <div class="media d-flex align-items-center">
-                                        <div class="media-left pr-0">
-                                            <div class="avatar bg-danger bg-lighten-5 mr-1 m-0 p-25"><span
-                                                    class="avatar-content"><i
-                                                        class="bx bxs-heart text-danger"></i></span></div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="media-heading"><span class="text-bold-500">نرم افزار</span> تایید
-                                                شد</h6><small class="notification-text">6 ساعت پیش</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between read-notification cursor-pointer">
-                                    <div class="media d-flex align-items-center">
-                                        <div class="media-left pr-0">
-                                            <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
-                                                    alt="avatar" height="39" width="39"></div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="media-heading"><span class="text-bold-500">فایل جدید</span> ارسال
-                                                شد</h6><small class="notification-text">4 ساعت پیش</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between cursor-pointer">
-                                    <div class="media d-flex align-items-center">
-                                        <div class="media-left pr-0">
-                                            <div class="avatar bg-rgba-danger m-0 mr-1 p-25">
-                                                <div class="avatar-content"><i class="bx bx-detail text-danger"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="media-heading"><span class="text-bold-500">گزارش بودجه</span>
-                                                ایجاد شد</h6><small class="notification-text">25 ساعت پیش</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between cursor-pointer">
-                                    <div class="media d-flex align-items-center border-0">
-                                        <div class="media-left pr-0">
-                                            <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
-                                                    alt="avatar" height="39" width="39"></div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="media-heading"><span class="text-bold-500">مشتری جدید</span>
-                                                دیدگاهی ارسال کرد</h6><small class="notification-text">2 روز پیش</small>
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +91,7 @@
                                     class="user-name">{{ auth()->user()->name  }}</span><span
                                     class="user-status"></span></div>
                             <span>
-                                <img class="round" src="{{ asset('frest/images/portrait/small/avatar-s-16.png') }}"
+                                <img class="round" src="{{ asset('images/frest/avatar-s-16.png') }}"
                                      alt="avatar" height="40" width="40">
                             </span>
                         </a>
