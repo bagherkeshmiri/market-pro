@@ -55,7 +55,7 @@
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('/build/images/avatar-s-16.png') }}"
+                                                    src="{{ asset('/images/avatar-s-16.png') }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">
@@ -69,7 +69,7 @@
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('/build/images/avatar-s-16.png')  }}"
+                                                    src="{{ asset('/images/avatar-s-16.png')  }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">
@@ -146,7 +146,7 @@
                                     <div class="media d-flex align-items-center">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('/build/images/avatar-s-16.png') }}"
+                                                    src="{{ asset('/images/avatar-s-16.png') }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">
@@ -173,7 +173,7 @@
                                     <div class="media d-flex align-items-center border-0">
                                         <div class="media-left pr-0">
                                             <div class="avatar mr-1 m-0"><img
-                                                    src="{{ asset('/build/images/avatar-s-16.png') }}"
+                                                    src="{{ asset('/images/avatar-s-16.png') }}"
                                                     alt="avatar" height="39" width="39"></div>
                                         </div>
                                         <div class="media-body">
@@ -195,7 +195,7 @@
                                     class="user-name">{{ auth()->user()->name  }}</span><span
                                     class="user-status"></span></div>
                             <span>
-                                <img class="round" src="{{ asset('/build/images/avatar-s-16.png') }}"
+                                <img class="round" src="{{ asset('/images/avatar-s-16.png') }}"
                                      alt="avatar" height="40" width="40">
                             </span>
                         </a>
