@@ -20,22 +20,14 @@
 
 @include('partials.admin.footer')
 
-<script src="{{ asset('/frest/vendors/js/vendors.min.js') }}"></script>
-<script src="{{ asset('/frest/fonts/LivIconsEvo/js/LivIconsEvo.tools.min.js') }}"></script>
-<script src="{{ asset('/frest/fonts/LivIconsEvo/js/LivIconsEvo.defaults.js') }}"></script>
-<script src="{{ asset('/frest/fonts/LivIconsEvo/js/LivIconsEvo.min.js') }}"></script>
-<script src="{{ asset('/frest/vendors/js/ui/jquery.sticky.js') }}"></script>
-{{--<script src="{{ asset('/frest/vendors/js/extensions/dropzone.min.js') }}"></script>--}}
-<script src="{{ asset('/frest/vendors/js/ui/prism.min.js') }}"></script>
-
-<script src="{{ asset('/frest/js/scripts/configs/horizontal-menu.js') }}"></script>
-<script src="{{ asset('/frest/js/scripts/configs/vertical-menu-dark.js') }}"></script>
-<script src="{{ asset('/frest/js/core/app-menu.js') }}"></script>
-<script src="{{ asset('/frest/js/core/app.js') }}"></script>
-<script src="{{ asset('/frest/js/scripts/components.js') }}"></script>
-<script src="{{ asset('/frest/js/scripts/footer.js') }}"></script>
-<script src="{{ asset('/frest/js/scripts/customizer.js') }}"></script>
-{{--<script src="{{ asset('/frest/js/scripts/extensions/dropzone.js') }}"></script>--}}
+<script src="{{ asset('js/frest/vendors/vendors.min.js') }}"></script>
+<script src="{{ asset('js/frest/vendors/ui/jquery.sticky.js') }}"></script>
+<script src="{{ asset('js/frest/vendors/ui/prism.min.js') }}"></script>
+<script src="{{ asset('js/frest/scripts/configs/horizontal-menu.js') }}"></script>
+<script src="{{ asset('js/frest/core/app-menu.js') }}"></script>
+<script src="{{ asset('js/frest/core/app.js') }}"></script>
+<script src="{{ asset('js/frest/scripts/components.js') }}"></script>
+<script src="{{ asset('js/frest/scripts/footer.js') }}"></script>
 
 @yield('scripts')
 @livewireScripts
