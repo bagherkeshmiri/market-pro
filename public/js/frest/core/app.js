@@ -584,7 +584,7 @@
 				debug: false,
 				fallbackLng: "fa",
 				backend: {
-					loadPath: "../../assets/data/locales/{{lng}}.json"
+					loadPath: "../../{{lng}}.json"
 				},
 				returnObjects: true
 			},
@@ -752,7 +752,7 @@
 					a = 0;
 
 				// getting json data from file for search results
-				$.getJSON("../../assets/data/" + $filename + ".json", function (
+				$.getJSON("../../" + $filename + ".json", function (
 					data
 				) {
 					for (var i = 0; i < data.listItems.length; i++) {
