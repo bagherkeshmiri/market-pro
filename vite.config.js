@@ -16,8 +16,12 @@ export default defineConfig({
         viteStaticCopy({
             targets: [
                 {
-                    src: 'resources/fonts',
+                    src: 'resources/fonts/**/*',
                     dest: 'fonts',
+                },
+                {
+                    src: 'resources/images/**/*',
+                    dest: 'images',
                 },
             ],
         }),
