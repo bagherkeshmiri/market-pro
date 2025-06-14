@@ -2,9 +2,9 @@
 
 
 @section('styles')
-    <link rel="stylesheet" type="text/css" href=" {{ asset('/frest/vendors/css/extensions/sweetalert2.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/vendors/css/extensions/toastr.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/plugins/extensions/toastr.css') }}">
+    <link rel="stylesheet" type="text/css" href=" {{ asset('css/frest/vendors/extensions/sweetalert2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/vendors/extensions/toastr.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/plugins/extensions/toastr.css') }}">
 @endsection
 
 <div class="app-content content">
@@ -65,10 +65,10 @@
 
 
 @section('scripts')
-    <script type="text/javascript" src="{{ asset('frest/js/scripts/extensions/sweet-alerts.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('frest/vendors/js/extensions/sweetalert2.all.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/frest/scripts/extensions/sweet-alerts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/frest/vendors/extensions/sweetalert2.all.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/swal-functions.js') }}"></script>
-    <script src="{{ asset('frest/vendors/js/extensions/toastr.min.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/extensions/toastr.min.js') }}"></script>
     <script type="text/javascript">
 
         function category_delete(element, event) {
