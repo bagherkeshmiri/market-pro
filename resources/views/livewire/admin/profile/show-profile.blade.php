@@ -2,7 +2,7 @@
 
 @section('styles')
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/pages/page-user-profile.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/pages/page-user-profile.css') }}">
     <style>
         body {
             overflow-x: hidden;
@@ -24,7 +24,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="user-profile-images">
-                                    <img src="{{ asset('frest/images/profile/post-media/profile-banner.jpg') }}"
+                                    <img src="{{ asset('images/frest/profile-banner.jpg') }}"
                                          class="img-fluid rounded-top user-timeline-image"
                                          alt="user timeline image">
                                     <img src="{{ asset('images/frest/avatar-s-16.png') }}"
