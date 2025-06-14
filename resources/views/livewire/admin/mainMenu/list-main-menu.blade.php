@@ -73,7 +73,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.bootstrap',['model' => $allmainMenus] )
+                                        @include('frest-components.pagination',['model' => $allmainMenus] )
 
                                     </div>
 

@@ -68,7 +68,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.bootstrap',['model' => $products] )
+                                        @include('frest-components.pagination',['model' => $products] )
 
                                     </div>
 

@@ -19,7 +19,7 @@ class ListUser extends AdminComponent
         $tableHeads = ['نام', 'ایمیل', 'نقش', 'نوع کاربر', 'دسترسی ها', 'تاریخ ایجاد', 'عملیات'];
         $userQuery = User::query();
         $mainAdminId = (clone $userQuery)->isAdmin()->first()->id;
-        $users = (clone $userQuery)->paginate();
+        $users = (clone $userQuery)->paginate($this->perPage);
 
         return $this->renderView(
             'livewire.admin.user.list-user',

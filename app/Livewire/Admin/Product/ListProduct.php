@@ -3,20 +3,14 @@
 namespace App\Livewire\Admin\Product;
 
 use App\Livewire\BaseComponents\AdminComponent;
-use App\Models\Category;
 use App\Models\Product;
-use Livewire\WithPagination;
 
 class ListProduct extends AdminComponent
 {
-    use WithPagination;
-
-    protected $paginationTheme = 'bootstrap';
-
     public function render()
     {
         $pageTitle = 'لیست‌ محصولات';
-        $tableHeads = ['تصویر', 'نام', 'دسته محصول','وضعیت', 'قیمت ( تومان )', 'تعداد موجودی ', 'تاریخ ایجاد', 'عملیات'];
+        $tableHeads = ['تصویر', 'نام', 'دسته محصول', 'وضعیت', 'قیمت ( تومان )', 'تعداد موجودی ', 'تاریخ ایجاد', 'عملیات'];
         return $this->renderView(
             'livewire.admin.product.list-product',
             [
@@ -24,7 +18,7 @@ class ListProduct extends AdminComponent
                 'tableHeads' => $tableHeads,
                 'products' => Product::with([
                     'images',
-                ])->paginate(),
+                ])->paginate($this->perPage),
             ]
         );
     }

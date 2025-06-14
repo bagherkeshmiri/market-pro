@@ -50,7 +50,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.bootstrap',['model' => $categories] )
+                                        @include('frest-components.pagination',['model' => $categories] )
 
                                     </div>
 
