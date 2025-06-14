@@ -148,9 +148,7 @@
                                                              alt="gallery-image"/>
                                                     </div>
                                                 @empty
-                                                    <div class="carousel-item active">
-                                                        <img class="img-fluid" src="{{ asset('images/sample/sample-product.png') }}" alt="default-image">
-                                                    </div>
+                                                    @include('custom-components.admin.empty-table')
                                                 @endforelse
 
                                             </div>

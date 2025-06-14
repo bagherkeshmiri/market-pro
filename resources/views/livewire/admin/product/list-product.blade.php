@@ -60,9 +60,7 @@
                                                 @include('frest-components.modal',['modalTitle' => 'تصویر اصلی', 'modalId' =>$modalId ])
 
                                             @empty
-                                                <tr>
-                                                    <td colspan="100" class="text-center"> {{ __('global.no_information_found') }}</td>
-                                                </tr>
+                                                @include('custom-components.admin.empty-table')
                                             @endforelse
 
                                             </tbody>
