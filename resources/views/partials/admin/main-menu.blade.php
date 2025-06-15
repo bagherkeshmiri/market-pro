@@ -26,21 +26,21 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.user.create') }}"
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                ایجاد کاربر
-                            </a>
-                        </li>
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.user.create') }}"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            ایجاد کاربر
+                        </a>
+                    </li>
 
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.user.index') }}"
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                لیست کاربران
-                            </a>
-                        </li>
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.user.index') }}"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            لیست کاربران
+                        </a>
+                    </li>
 
 
                 </ul>
@@ -52,21 +52,21 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.role.create') }}"
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                ایجاد نقش
-                            </a>
-                        </li>
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.role.create') }}"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            ایجاد نقش
+                        </a>
+                    </li>
 
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.role.index') }}"
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                لیست نقش ها
-                            </a>
-                        </li>
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.role.index') }}"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            لیست نقش ها
+                        </a>
+                    </li>
 
                 </ul>
             </li>
@@ -77,75 +77,127 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.category.create') }}"
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                ایجاد دسته بندی
-                            </a>
-                        </li>
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.category.create') }}"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            ایجاد دسته بندی
+                        </a>
+                    </li>
 
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.category.index') }}"
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                لیست دسته بندی
-                            </a>
-                        </li>
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.category.index') }}"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            لیست دسته بندی
+                        </a>
+                    </li>
 
                 </ul>
             </li>
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
-                    <i class="bx bx-book"></i>
+                    <i class="bx bx-package"></i>
                     <span>محصولات</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
 
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.product.create') }}"
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                ایجاد محصول
-                            </a>
-                        </li>
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.product.create') }}"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            ایجاد محصول
+                        </a>
+                    </li>
 
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href="{{ route('admin.product.index') }}"
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                لیست محصولات
-                            </a>
-                        </li>
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="{{ route('admin.product.index') }}"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            لیست محصولات
+                        </a>
+                    </li>
 
 
                 </ul>
             </li>
-
-
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
-                    <i class="bx bx-menu"></i>
+                    <i class="bx bx-money"></i>
+                    <span>سفارشات</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+
+
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="#"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            سفارش ‌ها امروز
+                        </a>
+                    </li>
+
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="#"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            لیست سفارش ‌ها
+                        </a>
+                    </li>
+
+
+                </ul>
+            </li>
+            <li class="dropdown nav-item" data-menu="dropdown">
+                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
+                    <i class="bx bx-receipt"></i>
+                    <span>فاکتور ها</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+
+
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="#"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            ایجاد فاکتور
+                        </a>
+                    </li>
+
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href="#"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            لیست فاکتور ها
+                        </a>
+                    </li>
+
+
+                </ul>
+            </li>
+            <li class="dropdown nav-item" data-menu="dropdown">
+                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
+                    <i class="bx bx-globe"></i>
                     <span> وب سایت  </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
 
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href=""
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                ایجاد منو
-                            </a>
-                        </li>
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href=""
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            ایجاد منو
+                        </a>
+                    </li>
 
-                        <li data-menu="">
-                            <a class="dropdown-item align-items-center" href=""
-                               data-toggle="dropdown">
-                                <i class="bx bx-left-arrow-alt"></i>
-                                لیست منو
-                            </a>
-                        </li>
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center" href=""
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            لیست منو
+                        </a>
+                    </li>
 
                 </ul>
             </li>
