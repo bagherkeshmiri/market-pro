@@ -4,14 +4,9 @@ namespace App\Livewire\Admin\Category;
 
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
-use Livewire\WithPagination;
 
 class ListCategory extends AdminComponent
 {
-    use WithPagination;
-
-    protected $paginationTheme = 'bootstrap';
-
     public function render()
     {
         $pageTitle = 'لیست دسته بندی ها';
