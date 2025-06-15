@@ -22,13 +22,13 @@ class AdminDashboard extends AdminComponent
             ],
             'allProducts' => [
                 'کل محصولات',
-                'bg-rgba-warning text-warning',
+                'bg-rgba-primary text-primary',
                 'bx-package',
                 Product::count('id'),
             ],
             'allOrders' => [
                 'کل سفارشات',
-                'bg-rgba-primary text-primary',
+                'bg-rgba-warning text-warning',
                 'bx-money',
                 Order::count('id'),
             ],
@@ -43,6 +43,12 @@ class AdminDashboard extends AdminComponent
                 'bg-rgba-danger text-danger',
                 'bx-shopping-bag',
                 Order::whereDate('created_at', Carbon::today())->count(),
+            ],
+            'todayFactors' => [
+                'فاکتور های امروز',
+                'bg-rgba-success text-success',
+                'bx-receipt',
+                500,
             ],
         ];
         return $this->renderView(
