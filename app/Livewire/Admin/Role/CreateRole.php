@@ -17,6 +17,7 @@ class CreateRole extends AdminComponent
     public $permissions;
     public $selectAll = false;
 
+
     public function boot(): void
     {
         $this->permissions = Permission::all();
@@ -25,12 +26,10 @@ class CreateRole extends AdminComponent
     public function render()
     {
         $pageTitle = 'ایجاد نقش';
+        $allPermissions = $this->permissions;
         return $this->renderView(
             'livewire.admin.role.create-role',
-            [
-                'pageTitle' => $pageTitle,
-                'allPermissions' => $this->permissions,
-            ]
+            compact('pageTitle', 'allPermissions')
         );
     }
 

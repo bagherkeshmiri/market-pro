@@ -20,16 +20,10 @@ class ListUser extends AdminComponent
         $userQuery = User::query();
         $mainAdminId = (clone $userQuery)->isAdmin()->first()->id;
         $users = (clone $userQuery)->paginate($this->perPage);
-
+        $isAdmin = auth()->user()->type == UserType::Admin;
         return $this->renderView(
             'livewire.admin.user.list-user',
-            [
-                'pageTitle' => $pageTitle,
-                'tableHeads' => $tableHeads,
-                'users' => $users,
-                'mainAdminId' => $mainAdminId,
-                'isAdmin' => auth()->user()->type == UserType::Admin,
-            ]
+            compact('pageTitle', 'tableHeads', 'users', 'mainAdminId', 'isAdmin')
         );
     }
 }

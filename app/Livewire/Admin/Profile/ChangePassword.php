@@ -21,7 +21,12 @@ class ChangePassword extends AdminComponent
 
     public function render()
     {
-        return $this->renderView('livewire.admin.profile.change-password', ['admin' => $this->admin]);
+        $pageTitle = ' تغییر رمز عبور';
+        $admin = $this->admin;
+        return $this->renderView(
+            'livewire.admin.profile.change-password',
+            compact('pageTitle', 'admin')
+        );
     }
 
     public function change()

@@ -31,14 +31,10 @@ class CreateProduct extends AdminComponent
         $allCategories = Category::withoutTrashed()
             ->pluck('id', 'name')
             ->toArray();
-
+        $statuses = showEnumLabels(ProductStatus::class);
         return $this->renderView(
             'livewire.admin.product.create-product',
-            [
-                'pageTitle' => $pageTitle,
-                'allCategories' => $allCategories,
-                'statuses' => showEnumLabels(ProductStatus::class),
-            ],
+            compact('pageTitle', 'allCategories', 'statuses')
         );
     }
 

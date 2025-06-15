@@ -32,18 +32,15 @@ class ShowUser extends AdminComponent
 
     public function render()
     {
-        $pageTitle  = 'ویرایش کاربر';
+        $pageTitle = 'ویرایش کاربر';
         $roles = Role::pluck('id', 'fa_name')->toArray();
         $this->adminRole = auth()->user()->role_id;
         $this->fill([$this->adminRole]);
+        $types = showEnumLabels(UserType::class);
+        $admins = $this->admin;
         return $this->renderView(
             'livewire.admin.user.show-user',
-            [
-                'admins' => $this->admin,
-                'roles' => $roles,
-                'types' => showEnumLabels(UserType::class),
-                'pageTitle' => $pageTitle,
-            ]
+            compact('pageTitle', 'roles', 'types', 'admins')
         );
     }
 

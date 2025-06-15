@@ -1,4 +1,4 @@
-@section('title','تغییر رمز عبور')
+@section('title',$pageTitle)
 
 @section('styles')
 

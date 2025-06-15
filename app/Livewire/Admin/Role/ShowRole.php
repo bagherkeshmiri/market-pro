@@ -36,12 +36,10 @@ class ShowRole extends AdminComponent
     public function render()
     {
         $pageTitle = 'ویرایش نقش';
+        $allPermissions = $this->permissions;
         return $this->renderView(
             'livewire.admin.role.show-role',
-            [
-                'pageTitle' => $pageTitle,
-                'allPermissions' => $this->allPermissions
-            ]
+            compact('pageTitle', 'allPermissions')
         );
     }
 

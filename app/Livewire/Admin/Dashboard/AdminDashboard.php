@@ -3,6 +3,10 @@
 namespace App\Livewire\Admin\Dashboard;
 
 use App\Livewire\BaseComponents\AdminComponent;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\User;
+use Carbon\Carbon;
 
 class AdminDashboard extends AdminComponent
 {
@@ -14,19 +18,19 @@ class AdminDashboard extends AdminComponent
                 'کل کاربران',
                 'bg-rgba-success text-success',
                 'bxs-group',
-                20,
+                User::count('id'),
             ],
             'allProducts' => [
                 'کل محصولات',
                 'bg-rgba-warning text-warning',
                 'bx-package',
-                200,
+                Product::count('id'),
             ],
             'allOrders' => [
                 'کل سفارشات',
                 'bg-rgba-primary text-primary',
                 'bx-money',
-                450,
+                Order::count('id'),
             ],
             'allFactors' => [
                 'کل فاکتور ها',
@@ -38,13 +42,12 @@ class AdminDashboard extends AdminComponent
                 'سفارشات امروز',
                 'bg-rgba-danger text-danger',
                 'bx-shopping-bag',
-                4,
+                Order::whereDate('created_at', Carbon::today())->count(),
             ],
         ];
-        return $this->renderView('livewire.admin.dashboard.admin-dashboard', [
-            'pageTitle' => $pageTitle,
-            'widgetsStatistics' => $widgetsStatistics,
-
-        ]);
+        return $this->renderView(
+            'livewire.admin.dashboard.admin-dashboard',
+            compact('pageTitle', 'widgetsStatistics')
+        );
     }
 }

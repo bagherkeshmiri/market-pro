@@ -31,10 +31,7 @@ class ShowCategory extends AdminComponent
         Arr::forget($allCategories, $this->category->title);
         return $this->renderView(
             'livewire.admin.category.show-category',
-            [
-                'pageTitle' => $pageTitle,
-                'allCategories' => $allCategories,
-            ]
+            compact('pageTitle', 'allCategories')
         );
     }
 
