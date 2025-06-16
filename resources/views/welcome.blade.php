@@ -467,7 +467,6 @@
 <!--Start Footer-->
 <footer class="ftco-footer ftco-section">
     <div class="container">
-
         <div class="row">
             <div class="mouse">
                 <a href="#" class="mouse-icon">
@@ -475,12 +474,11 @@
                 </a>
             </div>
         </div>
-
         <div class="row">
-            <div class="col-md">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">غذاهای گیاهی</h2>
-                    <p>یکی از بهترین راهها انتخاب درست مسیر زندگی هست با ما بسلامتی خود اهمیت بدین</p>
+                    <h2 class="ftco-heading-2"> پیکسل دونی</h2>
+                    <p>پیکسل‌های خمیری دست‌ساز با طراحی منحصربه‌فرد، ساخته‌شده با دقت و عشق. مناسب برای تزئین کوله، لباس، دفتر و هدیه دادن به عزیزان. ثبت سفارش آسان و ارسال سریع به سراسر کشور.</p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                         <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -488,7 +486,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
                 <div class="ftco-footer-widget mb-4 ml-md-5">
                     <h2 class="ftco-heading-2">منو</h2>
                     <ul class="list-unstyled">
@@ -499,30 +497,39 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
                 <div class="ftco-footer-widget mb-4">
                     <h2 class="ftco-heading-2">سوالی هست؟</h2>
                     <div class="d-flex">
                         <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-                            <li><a href="#" class="py-2 d-block">اطلاعات حمل و نقل</a></li>
-                            <li><a href="#" class="py-2 d-block">شرایط بازگشت و تعویض</a></li>
+                            <li><a href="#" class="py-2 d-block">شرایط بازگشت</a></li>
                             <li><a href="#" class="py-2 d-block">شرایط و ضوابط</a></li>
                             <li><a href="#" class="py-2 d-block">سیاست حفظ حریم خصوصی</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-md">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">وب روبیک</h2>
+                    <h2 class="ftco-heading-2"> ارتباط با ما</h2>
                     <div class="block-23 mb-3">
                         <ul>
-                            <li><span class="icon icon-map-marker"></span><span class="text">ایران - شیراز - بلوار جمهوری</span>
+                            <li class="mb-3">
+                                <span class="icon icon-map-marker"></span>
+                                <span class="text">ایران - مشهد - بلوار ابوطالب</span>
                             </li>
-                            <li><a href="#"><span class="icon icon-phone"></span><span
-                                        class="text">02112345678</span></a></li>
-                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">email@website.com</span></a>
+
+                            <li class="mb-3">
+                                <span class="icon icon-phone"></span>
+                                <span class="text">37574592 - 051</span>
                             </li>
+
+                            <li class="mb-3">
+                                <span class="icon icon-envelope"></span>
+                                <span class="text"> info@pixeldooni.ir </span>
+                            </li>
+
+
                         </ul>
                     </div>
                 </div>
