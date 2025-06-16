@@ -480,10 +480,26 @@
                     <h2 class="ftco-heading-2"> پیکسل دونی</h2>
                     <p>پیکسل‌های خمیری دست‌ساز با طراحی خاص و کیفیت عالی | سفارش آنلاین، ارسال به سراسر کشور
                     </p>
-                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                    <ul class="ftco-footer-social list-unstyled mt-5">
+
+                        <li class="ftco-animate">
+                            <a href="#">
+                                <span class="icon-twitter"></span>
+                            </a>
+                        </li>
+
+                        <li class="ftco-animate">
+                            <a href="#">
+                                <span class="icon-facebook"></span>
+                            </a>
+                        </li>
+
+                        <li class="ftco-animate">
+                            <a href="#">
+                                <span class="icon-instagram"></span>
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
