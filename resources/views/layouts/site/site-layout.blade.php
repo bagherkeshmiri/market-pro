@@ -34,5 +34,8 @@
 <script src="{{ asset('js/site/scrollax.min.js') }}"></script>
 <script src="{{ asset('js/site/main.js') }}"></script>
 
+
+@yield('scripts')
+@livewireScripts
 </body>
 </html>

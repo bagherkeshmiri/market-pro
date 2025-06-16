@@ -15,4 +15,8 @@
     <link rel="stylesheet" href="{{ asset('css/site/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/bootstrap-rtl.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/style.css') }}">
+
+
+    @yield('styles')
+    @livewireStyles
 </head>

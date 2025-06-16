@@ -14,7 +14,7 @@
 
 @include('partials.admin.header')
 
-@include('partials.admin.main-menu')
+@include('partials.admin.menu')
 
 {{ $slot }}
 

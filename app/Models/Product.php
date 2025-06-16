@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
@@ -106,10 +107,23 @@ class Product extends Authenticatable
         return $this->hasMany(ProductImage::class, ProductImage::COLUMN_PRODUCT_ID, self::COLUMN_ID);
     }
 
+    public function mainImage(): HasOne
+    {
+        return $this->hasOne(ProductImage::class)->where('is_main', true);
+    }
+
+    public function galleryImages(): HasOne
+    {
+        return $this->hasOne(ProductImage::class)->where('is_main', false);
+    }
+
     public function orderItems(): HasMany
     {
         return $this->hasMany(OrderItem::class, OrderItem::COLUMN_PRODUCT_ID, self::COLUMN_ID);
     }
+
+
+
 
     /*-------------- Scopes -------------*/
 

@@ -35,7 +35,7 @@
 
                                                 @php
                                                     $mainImage = $product->images()->where('is_main', true)->first();
-                                                    $mainImageUrl = $mainImage->image_url ?? asset('images/sample/sample-product.png');
+                                                    $mainImageUrl = $mainImage->image_url ?? asset('images/frest/sample-product.png');
                                                     $modalId = 'mainImageModal' . $product->id;
                                                 @endphp
 
