@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/site/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/bootstrap-rtl.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/style.css') }}">
+
 </head>
 
 <body class="goto-here">
@@ -56,35 +57,37 @@
 <!-- END nav -->
 
 <!--Start Slider-->
-{{--<section id="home-section" class="hero">--}}
-{{--    <div class="home-slider owl-carousel">--}}
-{{--        <div class="slider-item" style="background-image: url('images/site/bg_1.jpg');">--}}
-{{--            <div class="overlay"></div>--}}
-{{--            <div class="container">--}}
-{{--                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">--}}
+<section id="home-section" class="hero">
+    <div class="home-slider owl-carousel">
 
-{{--                    <div class="col-md-12 ftco-animate text-center">--}}
-{{--                        <h1 class="mb-2">زیبا ترین پیکسل ها در پیکسل دونی</h1>--}}
-{{--                    </div>--}}
+        <div class="slider-item" style="background-image: url('images/site/bg_1.jpg');">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+                    <div class="col-md-12 ftco-animate text-center">
+                        <h1 class="mb-2">زیبا ترین پیکسل ها در پیکسل دونی</h1>
+                    </div>
 
-{{--        <div class="slider-item" style="background-image: url('images/site/bg_2.jpg');">--}}
-{{--            <div class="overlay"></div>--}}
-{{--            <div class="container">--}}
-{{--                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">--}}
+                </div>
+            </div>
+        </div>
 
-{{--                    <div class="col-sm-12 ftco-animate text-center">--}}
-{{--                        <h1 class="mb-2">ساخت پیکسل خمیری به سفارش شما</h1>--}}
-{{--                    </div>--}}
+        <div class="slider-item" style="background-image: url('images/site/bg_2.jpg');">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</section>--}}
+                    <div class="col-sm-12 ftco-animate text-center">
+                        <h1 class="mb-2">ساخت پیکسل خمیری به سفارش شما</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 <!--End Slider-->
 
 <section class="ftco-section">
