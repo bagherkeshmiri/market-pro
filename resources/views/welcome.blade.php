@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="{{ asset('css/site/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/bootstrap-datepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/jquery.timepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/site/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/bootstrap-rtl.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/style.css') }}">
@@ -86,7 +85,6 @@
 </section>
 <!--End Slider-->
 
-<!--Tozihat-->
 <section class="ftco-section">
     <div class="container">
         <div class="row no-gutters ftco-services">
@@ -137,7 +135,6 @@
         </div>
     </div>
 </section>
-<!--End Tozihat-->
 
 <section class="ftco-section ftco-category ftco-no-pt">
     <div class="container">
@@ -473,6 +470,7 @@
 <!--Start Footer-->
 <footer class="ftco-footer ftco-section">
     <div class="container">
+
         <div class="row">
             <div class="mouse">
                 <a href="#" class="mouse-icon">
@@ -480,7 +478,8 @@
                 </a>
             </div>
         </div>
-        <div class="row mb-5">
+
+        <div class="row">
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
                     <h2 class="ftco-heading-2">غذاهای گیاهی</h2>
@@ -539,7 +538,7 @@
                     <script>
                         document.write(new Date().getFullYear());
                     </script>
-                    تمامی حقوق محفوظ است </br>
+                    تمامی حقوق برای پیکسل دونی محفوظ است </br>
                 </p>
             </div>
         </div>
