@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-                <img src="{{ $mainImageUrl }}" alt="product-image-{{ $product->id }}" class="img-fluid"/>
+                <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset('images/frest/sample-product.png') }}" alt="product-image-{{ $product->id }}" class="img-fluid"/>
             </div>
         </div>
     </div>
