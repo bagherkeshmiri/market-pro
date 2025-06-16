@@ -1,7 +1,10 @@
+* {
+    font-family: 'primary-font', sans-serif !important;
+}
+
 body {
     direction: rtl;
     text-align: right;
-    font-family: 'primary-font', sans-serif;
     background: #fff;
     font-size: 15px;
     line-height: 1.8;
@@ -134,9 +137,9 @@ h1, h2, h3, h4, h5,
 }
 
 @media (max-width: 991px) {
-  #top-dropdown-menu {
-    display: block;
-  }
+    #top-dropdown-menu {
+        display: block;
+    }
 }
 
 .ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu {

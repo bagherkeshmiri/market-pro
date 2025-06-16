@@ -93,7 +93,7 @@
             <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
                 <div class="media block-6 services mb-md-0 mb-4">
                     <div class="icon bg-color-1 active d-flex justify-content-center align-items-center mb-2">
-                        <span class="flaticon-shipped"></span>
+                        <img src="{{ asset('/images/site/shipped.png') }}" alt="shipped"/>
                     </div>
                     <div class="media-body">
                         <h3 class="heading">ارسال رایگان</h3>
@@ -104,7 +104,7 @@
             <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
                 <div class="media block-6 services mb-md-0 mb-4">
                     <div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">
-                        <span class="flaticon-diet"></span>
+                        <img src="{{ asset('/images/site/glitter.png') }}" alt="glitter"/>
                     </div>
                     <div class="media-body">
                         <h3 class="heading">خمیرِ دست‌ساز، طرحِ خاص</h3>
@@ -115,7 +115,7 @@
             <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
                 <div class="media block-6 services mb-md-0 mb-4">
                     <div class="icon bg-color-3 d-flex justify-content-center align-items-center mb-2">
-                        <span class="flaticon-award"></span>
+                        <img src="{{ asset('/images/site/award.png') }}" alt="award"/>
                     </div>
                     <div class="media-body">
                         <h3 class="heading">کیفیت برتر</h3>
@@ -126,7 +126,7 @@
             <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
                 <div class="media block-6 services mb-md-0 mb-4">
                     <div class="icon bg-color-4 d-flex justify-content-center align-items-center mb-2">
-                        <span class="flaticon-customer-service"></span>
+                        <img src="{{ asset('/images/site/support.png') }}" alt="support"/>
                     </div>
                     <div class="media-body">
                         <h3 class="heading">پشتیبانی</h3>
@@ -571,7 +571,7 @@
 <script src="{{ asset('js/site/bootstrap-datepicker.js') }}"></script>
 <script src="{{ asset('js/site/scrollax.min.js') }}"></script>
 {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>--}}
-<script src="{{ asset('js/site/google-map.js') }}"></script>
+{{--<script src="{{ asset('js/site/google-map.js') }}"></script>--}}
 <script src="{{ asset('js/site/main.js') }}"></script>
 
 </body>
