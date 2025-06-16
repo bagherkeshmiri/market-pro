@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <title>پیکسل دونی | مرجع خرید انواع پیکسل خمیری</title>
     <meta charset="utf-8">
@@ -27,62 +27,64 @@
         <a class="navbar-brand" href="#">پیکسل دونی</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="oi oi-menu"></span>
+            <span class="icon icon-menu"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="" class="nav-link">خانه</a></li>
+                <li class="nav-item active"><a href="#" class="nav-link">خانه</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">خرید</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">محصولات</a>
                     <div class="dropdown-menu" id="top-dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="#">خرید</a>
-                        <a class="dropdown-item" href="#">محصولات مورد علاقه</a>
-                        <a class="dropdown-item" href="#">محصولات تکی</a>
-                        <a class="dropdown-item" href="#">اشتراک</a>
-                        <a class="dropdown-item" href="#">سبد خرید</a>
+                        <a class="dropdown-item" href="#"> پیکسل خمیری</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link">فروت لند</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">بلاگ فروت لند</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">درباره با ما</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">تماس با ما</a></li>
-                <li class="nav-item cta cta-colored"><a href="#" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
             </ul>
+
+            <ul class="navbar-nav ">
+                <li class="nav-item cta cta-colored"><a href="#" class="nav-link"><span class="icon-shopping_cart"></span></a></li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"> ورود / عضویت</a>
+                </li>
+            </ul>
+
         </div>
     </div>
 </nav>
 <!-- END nav -->
 
 <!--Start Slider-->
-<section id="home-section" class="hero">
-    <div class="home-slider owl-carousel">
-        <div class="slider-item" style="background-image: url('images/site/bg_1.jpg');">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+{{--<section id="home-section" class="hero">--}}
+{{--    <div class="home-slider owl-carousel">--}}
+{{--        <div class="slider-item" style="background-image: url('images/site/bg_1.jpg');">--}}
+{{--            <div class="overlay"></div>--}}
+{{--            <div class="container">--}}
+{{--                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">--}}
 
-                    <div class="col-md-12 ftco-animate text-center">
-                        <h1 class="mb-2">زیبا ترین پیکسل ها در پیکسل دونی</h1>
-                    </div>
+{{--                    <div class="col-md-12 ftco-animate text-center">--}}
+{{--                        <h1 class="mb-2">زیبا ترین پیکسل ها در پیکسل دونی</h1>--}}
+{{--                    </div>--}}
 
-                </div>
-            </div>
-        </div>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
-        <div class="slider-item" style="background-image: url('images/site/bg_2.jpg');">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+{{--        <div class="slider-item" style="background-image: url('images/site/bg_2.jpg');">--}}
+{{--            <div class="overlay"></div>--}}
+{{--            <div class="container">--}}
+{{--                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">--}}
 
-                    <div class="col-sm-12 ftco-animate text-center">
-                        <h1 class="mb-2">ساخت پیکسل خمیری به سفارش شما</h1>
-                    </div>
+{{--                    <div class="col-sm-12 ftco-animate text-center">--}}
+{{--                        <h1 class="mb-2">ساخت پیکسل خمیری به سفارش شما</h1>--}}
+{{--                    </div>--}}
 
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</section>--}}
 <!--End Slider-->
 
 <section class="ftco-section">
@@ -136,54 +138,54 @@
     </div>
 </section>
 
-<section class="ftco-section ftco-category ftco-no-pt" style="padding-top: 5rem !important;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-6 order-md-last align-items-stretch d-flex">
-                        <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex"
-                             style="background-image: url(images/site/category.jpg);">
-                            <div class="text text-center">
-                                <h2 style="margin-bottom: 2rem !important;">انواع پیکسل</h2>
-                                <a href="#" class="btn btn-primary">خرید آنی</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end"
-                             style="background-image: url(images/site/category-1.jpg);">
-                            <div class="text px-3 py-1">
-                                <h2 class="mb-0"><a href="#">پیکسل سفارشی </a></h2>
-                            </div>
-                        </div>
-                        <div class="category-wrap ftco-animate img d-flex align-items-end"
-                             style="background-image: url(images/site/category-2.jpg);">
-                            <div class="text px-3 py-1">
-                                <h2 class="mb-0"><a href="#">پیکسل شکلی</a></h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+{{--<section class="ftco-section ftco-category ftco-no-pt" style="padding-top: 5rem !important;">--}}
+{{--    <div class="container">--}}
+{{--        <div class="row">--}}
+{{--            <div class="col-md-8">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-6 order-md-last align-items-stretch d-flex">--}}
+{{--                        <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex"--}}
+{{--                             style="background-image: url(images/site/category.jpg);">--}}
+{{--                            <div class="text text-center">--}}
+{{--                                <h2 style="margin-bottom: 2rem !important;">انواع پیکسل</h2>--}}
+{{--                                <a href="#" class="btn btn-primary">خرید آنی</a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-6">--}}
+{{--                        <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end"--}}
+{{--                             style="background-image: url(images/site/category-1.jpg);">--}}
+{{--                            <div class="text px-3 py-1">--}}
+{{--                                <h2 class="mb-0"><a href="#">پیکسل سفارشی </a></h2>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="category-wrap ftco-animate img d-flex align-items-end"--}}
+{{--                             style="background-image: url(images/site/category-2.jpg);">--}}
+{{--                            <div class="text px-3 py-1">--}}
+{{--                                <h2 class="mb-0"><a href="#">پیکسل شکلی</a></h2>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div class="col-md-4">
-                <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end"
-                     style="background-image: url(images/site/category-3.jpg);">
-                    <div class="text px-3 py-1">
-                        <h2 class="mb-0"><a href="#">پیکسل عروسکی</a></h2>
-                    </div>
-                </div>
-                <div class="category-wrap ftco-animate img d-flex align-items-end"
-                     style="background-image: url(images/site/category-4.jpg);">
-                    <div class="text px-3 py-1">
-                        <h2 class="mb-0"><a href="#"> پیکسل خاص</a></h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{{--            <div class="col-md-4">--}}
+{{--                <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end"--}}
+{{--                     style="background-image: url(images/site/category-3.jpg);">--}}
+{{--                    <div class="text px-3 py-1">--}}
+{{--                        <h2 class="mb-0"><a href="#">پیکسل عروسکی</a></h2>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="category-wrap ftco-animate img d-flex align-items-end"--}}
+{{--                     style="background-image: url(images/site/category-4.jpg);">--}}
+{{--                    <div class="text px-3 py-1">--}}
+{{--                        <h2 class="mb-0"><a href="#"> پیکسل خاص</a></h2>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</section>--}}
 
 <section class="ftco-section" style="padding-bottom: 3rem !important;">
     <div class="container">
@@ -207,19 +209,13 @@
                         <div class="d-flex">
                             <div class="pricing">
                                 <p class="price">
-                                    <span class="mr-2 price-dc"> 120.00</span>
-                                    <span class="price-dc"> تومان</span>
-                                    <span class="price-sale"> 80.00</span>
-                                    <span class="price-sale"> تومان</span>
+                                    <span class="me-4 price-dc"> 120.000تومان</span>
+                                    <span class="price-sale"> 80.000 تومان</span>
                                 </p>
                             </div>
                         </div>
                         <div class="bottom-area d-flex px-3">
                             <div class="m-auto d-flex">
-                                <a href="#"
-                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                     <span><i class="ion-ios-cart"></i></span>
                                 </a>
@@ -248,9 +244,6 @@
                         </div>
                         <div class="bottom-area d-flex px-3">
                             <div class="m-auto d-flex">
-                                <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                     <span><i class="ion-ios-cart"></i></span>
                                 </a>
@@ -279,10 +272,6 @@
                         </div>
                         <div class="bottom-area d-flex px-3">
                             <div class="m-auto d-flex">
-                                <a href="#"
-                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                     <span><i class="ion-ios-cart"></i></span>
                                 </a>
@@ -311,10 +300,6 @@
                         </div>
                         <div class="bottom-area d-flex px-3">
                             <div class="m-auto d-flex">
-                                <a href="#"
-                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                     <span><i class="ion-ios-cart"></i></span>
                                 </a>
@@ -347,10 +332,6 @@
                         </div>
                         <div class="bottom-area d-flex px-3">
                             <div class="m-auto d-flex">
-                                <a href="#"
-                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                     <span><i class="ion-ios-cart"></i></span>
                                 </a>
@@ -379,10 +360,6 @@
                         </div>
                         <div class="bottom-area d-flex px-3">
                             <div class="m-auto d-flex">
-                                <a href="#"
-                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                     <span><i class="ion-ios-cart"></i></span>
                                 </a>
@@ -411,10 +388,6 @@
                         </div>
                         <div class="bottom-area d-flex px-3">
                             <div class="m-auto d-flex">
-                                <a href="#"
-                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                     <span><i class="ion-ios-cart"></i></span>
                                 </a>
@@ -444,10 +417,6 @@
                         </div>
                         <div class="bottom-area d-flex px-3">
                             <div class="m-auto d-flex">
-                                <a href="#"
-                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
                                 <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                     <span><i class="ion-ios-cart"></i></span>
                                 </a>
@@ -504,7 +473,6 @@
                             </a>
 
 
-
                     </ul>
                 </div>
             </div>
@@ -522,14 +490,12 @@
                             </li>
 
                             <li class="mb-3">
-                                <a href="#" class="text">    کاتالوگ محصولات </a>
+                                <a href="#" class="text"> کاتالوگ محصولات </a>
                             </li>
 
                             <li class="mb-3">
-                                <a href="#" class="text">     ارتباط با ما </a>
+                                <a href="#" class="text"> ارتباط با ما </a>
                             </li>
-
-
 
 
                         </ul>
@@ -595,7 +561,7 @@
                     کپی رایت &copy;
                     <script>
                         const today = new Date();
-                        const faYear = new Intl.DateTimeFormat('fa-IR-u-ca-persian', { year: 'numeric' }).format(today);
+                        const faYear = new Intl.DateTimeFormat('fa-IR-u-ca-persian', {year: 'numeric'}).format(today);
                         document.write(faYear);                    </script>
                     - 1400
                     |
