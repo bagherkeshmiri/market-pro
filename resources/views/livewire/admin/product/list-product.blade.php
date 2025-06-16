@@ -51,6 +51,7 @@
                                                     </td>
                                                     <td>{{ $product->formatted_discount }}</td>
                                                     <td>{{ $product->formatted_price }}</td>
+                                                    <td>{{ $product->formatted_final_price }}</td>
                                                     <td>{{ $product->stock }}</td>
                                                     <td>{{ $product->jalali_created_at }}</td>
                                                     <td>

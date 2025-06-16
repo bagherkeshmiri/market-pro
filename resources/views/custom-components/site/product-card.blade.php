@@ -2,9 +2,9 @@
     <div class="product">
         <a href="#" class="img-prod">
             <img class="img-fluid" src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" alt="{{ $product->name }}"/>
-            @isset($product->discount_percent)
-                <span class="status">30%</span>
-            @endisset
+            @if($product->discount > 0 && $product->discount_type == \App\Enums\DiscountType::Percent)
+                <span class="status">{{ $product->discount }}%</span>
+            @endif
             <div class="overlay"></div>
         </a>
         <div class="text py-3 pb-4 px-3 text-center">
@@ -12,10 +12,10 @@
             <div class="d-flex">
                 <div class="pricing">
                     <p class="price">
-                        @isset($product->discounted_price)
-                            <span class="me-4 price-dc">   80,000تومان</span>
-                        @endisset
-                        <span class="price-sale">   {{ number_format($product->price) }} تومان  </span>
+                        @if($product->discount > 0)
+                            <span class="me-4 price-dc">     {{ number_format($product->price) }} تومان  </span>
+                        @endif
+                        <span class="price-sale">   {{ $product->formatted_final_price }} تومان  </span>
                     </p>
                 </div>
             </div>

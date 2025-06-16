@@ -10,7 +10,7 @@ class ListProduct extends AdminComponent
     public function render()
     {
         $pageTitle = 'لیست‌ محصولات';
-        $tableHeads = ['تصویر', 'نام', 'دسته محصول', 'وضعیت', 'نوع تخفیف', 'تخفیف', 'قیمت ( تومان )', 'تعداد موجودی ', 'تاریخ ایجاد', 'عملیات'];
+        $tableHeads = ['تصویر', 'نام', 'دسته محصول', 'وضعیت', 'نوع تخفیف', 'تخفیف', 'قیمت اولیه ( تومان )','قیمت نهایی‌ ( تومان )', 'تعداد موجودی ', 'تاریخ ایجاد', 'عملیات'];
         $sampleProductImageUrl = $this->sampleProductImageUrl;
         $products = Product::with([
             'mainImage:id,product_id,image_url',

@@ -108,6 +108,20 @@ class Product extends Authenticatable
         return $this->discount_type == DiscountType::Amount ? number_format($this->discount) : $this->discount;
     }
 
+    public function getFormattedFinalPriceAttribute(): string
+    {
+        if ($this->discount_type === DiscountType::Amount) {
+            $finalPrice = $this->price - $this->discount;
+        } elseif ($this->discount_type === DiscountType::Percent) {
+            $finalPrice = $this->price - ($this->price * $this->discount / 100);
+        } else {
+            $finalPrice = $this->price;
+        }
+
+        return number_format($finalPrice);
+    }
+
+
     public function getJalaliCreatedAtAttribute(): string
     {
         return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
