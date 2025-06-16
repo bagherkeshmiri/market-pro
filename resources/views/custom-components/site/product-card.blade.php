@@ -2,9 +2,10 @@
     <div class="product">
         <a href="#" class="img-prod">
             <img class="img-fluid" src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" alt="{{ $product->name }}"/>
-            @if($product->discount > 0 && $product->discount_type == \App\Enums\DiscountType::Percent)
-                <span class="status">{{ $product->discount }}%</span>
+            @if($product->discount > 0)
+                <span class="status">% {{ $product->discount_percent }} </span>
             @endif
+
             <div class="overlay"></div>
         </a>
         <div class="text py-3 pb-4 px-3 text-center">

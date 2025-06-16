@@ -122,6 +122,25 @@ class Product extends Authenticatable
     }
 
 
+    public function getDiscountPercentAttribute(): int
+    {
+        if ($this->price <= 0) {
+            return 0;
+        }
+
+        if ($this->discount_type === DiscountType::Percent) {
+            return $this->discount;
+        }
+
+        if ($this->discount_type === DiscountType::Amount) {
+            return round(($this->discount / $this->price) * 100);
+        }
+
+        return 0;
+    }
+
+
+
     public function getJalaliCreatedAtAttribute(): string
     {
         return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
