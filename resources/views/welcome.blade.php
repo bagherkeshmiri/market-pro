@@ -498,7 +498,12 @@
                             <a href="#">
                                 <span class="icon-instagram"></span>
                             </a>
-                        </li>
+                        <li class="ftco-animate">
+                            <a href="#">
+                                <span class="icon-telegram"></span>
+                            </a>
+
+
 
                     </ul>
                 </div>
