@@ -46,6 +46,10 @@
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $product->status_badge_class,  'content' => $product->status_label ])
                                                     </td>
+                                                    <td>
+                                                        @include('frest-components.badge' , [ 'badgeClass' => $product->discount_type_badge_class,  'content' => $product->discount_type_label ])
+                                                    </td>
+                                                    <td>{{ $product->formatted_discount }}</td>
                                                     <td>{{ $product->formatted_price }}</td>
                                                     <td>{{ $product->stock }}</td>
                                                     <td>{{ $product->jalali_created_at }}</td>

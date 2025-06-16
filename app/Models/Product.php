@@ -103,10 +103,26 @@ class Product extends Authenticatable
         return number_format($this->price);
     }
 
+    public function getFormattedDiscountAttribute(): string
+    {
+        return $this->discount_type == DiscountType::Amount ? number_format($this->discount) : $this->discount;
+    }
+
     public function getJalaliCreatedAtAttribute(): string
     {
         return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
+
+    public function getDiscountTypeLabelAttribute(): string
+    {
+        return $this->discount_type->label();
+    }
+
+    public function getDiscountTypeBadgeClassAttribute(): string
+    {
+        return $this->discount_type->badgeClass();
+    }
+
 
     /*------------ Relations ------------*/
 
