@@ -136,7 +136,7 @@
     </div>
 </section>
 
-<section class="ftco-section ftco-category ftco-no-pt">
+<section class="ftco-section ftco-category ftco-no-pt" style="padding-top: 5rem !important;">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -145,9 +145,8 @@
                         <div class="category-wrap-2 ftco-animate img align-self-stretch d-flex"
                              style="background-image: url(images/site/category.jpg);">
                             <div class="text text-center">
-                                <h2>سبزیجات</h2>
-                                <p>حفاظت از سلامت هر خانه</p>
-                                <p><a href="#" class="btn btn-primary">خرید آنی</a></p>
+                                <h2 style="margin-bottom: 2rem !important;">انواع پیکسل</h2>
+                                <a href="#" class="btn btn-primary">خرید آنی</a>
                             </div>
                         </div>
                     </div>
@@ -155,13 +154,13 @@
                         <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end"
                              style="background-image: url(images/site/category-1.jpg);">
                             <div class="text px-3 py-1">
-                                <h2 class="mb-0"><a href="#">سرزمین میوه</a></h2>
+                                <h2 class="mb-0"><a href="#">پیکسل سفارشی </a></h2>
                             </div>
                         </div>
                         <div class="category-wrap ftco-animate img d-flex align-items-end"
                              style="background-image: url(images/site/category-2.jpg);">
                             <div class="text px-3 py-1">
-                                <h2 class="mb-0"><a href="#">توت فرنگی</a></h2>
+                                <h2 class="mb-0"><a href="#">پیکسل شکلی</a></h2>
                             </div>
                         </div>
                     </div>
@@ -172,13 +171,13 @@
                 <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end"
                      style="background-image: url(images/site/category-3.jpg);">
                     <div class="text px-3 py-1">
-                        <h2 class="mb-0"><a href="#">آب میوه های طبیعی</a></h2>
+                        <h2 class="mb-0"><a href="#">پیکسل عروسکی</a></h2>
                     </div>
                 </div>
                 <div class="category-wrap ftco-animate img d-flex align-items-end"
                      style="background-image: url(images/site/category-4.jpg);">
                     <div class="text px-3 py-1">
-                        <h2 class="mb-0"><a href="#">میوه خشک</a></h2>
+                        <h2 class="mb-0"><a href="#"> پیکسل خاص</a></h2>
                     </div>
                 </div>
             </div>
@@ -186,13 +185,12 @@
     </div>
 </section>
 
-<section class="ftco-section">
+<section class="ftco-section" style="padding-bottom: 3rem !important;">
     <div class="container">
         <div class="row justify-content-center mb-3 pb-3">
             <div class="col-md-12 heading-section text-center ftco-animate">
-                <span class="subheading"> انتخاب هوشمند محصولات ارگانیک</span>
-                <h2 class="mb-4">سرزمین میوه</h2>
-                <p>پیشنهاد ما به شما</p>
+                <h2 class="mb-4">سرزمین پیکسلی</h2>
+                <span class="subheading"> انتخاب هوشمند شما</span>
             </div>
         </div>
     </div>
@@ -328,7 +326,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6 col-lg-3 ftco-animate">
                 <div class="product">
                     <a href="#" class="img-prod"><img class="img-fluid" src="images/site/product-5.jpg"
@@ -536,8 +533,11 @@
                 <p class="copyright">
                     کپی رایت &copy;
                     <script>
-                        document.write(new Date().getFullYear());
-                    </script>
+                        const today = new Date();
+                        const faYear = new Intl.DateTimeFormat('fa-IR-u-ca-persian', { year: 'numeric' }).format(today);
+                        document.write(faYear);                    </script>
+                    - 1400
+                    |
                     تمامی حقوق برای پیکسل دونی محفوظ است </br>
                 </p>
             </div>
