@@ -70,6 +70,26 @@
                                                     </div>
                                                 </div>
 
+
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
+                                                    <div class="form-group">
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'discountType' , 'content' => 'نوع تخفیف'] )
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $discountTypes , 'id' => 'discountType' , 'wire' => 'discountType', 'defaultOption' => true , 'defaultValue' => true])
+                                                        @include('frest-components.small-tag-error',[ 'name' => 'discountType' ])
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
+                                                    <div class="form-group">
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'discount' , 'content' => ' تخفیف '] )
+                                                        @include('frest-components.input',[ 'type' => 'number' , 'wire' => 'discount' , 'classes' => 'text-left' , 'id' => 'discount' , 'dir' => 'ltr' , 'icon' => dollarIcon()])
+                                                        @include('frest-components.small-tag-error',[ 'name' => 'discount' ])
+                                                    </div>
+                                                </div>
+
+
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'mainImage' , 'content' => 'آپلود تصویر اصلی'] )

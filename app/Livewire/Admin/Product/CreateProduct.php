@@ -95,7 +95,7 @@ class CreateProduct extends AdminComponent
             }
 
             DB::commit();
-            $this->reset(['name', 'description', 'price', 'stock']);
+            $this->reset(['name', 'description', 'price', 'stock','discount']);
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.product.index');
         } catch (Exception $e) {
