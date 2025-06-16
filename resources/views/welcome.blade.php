@@ -478,7 +478,8 @@
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
                 <div class="ftco-footer-widget mb-4">
                     <h2 class="ftco-heading-2"> پیکسل دونی</h2>
-                    <p>پیکسل‌های خمیری دست‌ساز با طراحی منحصربه‌فرد، ساخته‌شده با دقت و عشق. مناسب برای تزئین کوله، لباس، دفتر و هدیه دادن به عزیزان. ثبت سفارش آسان و ارسال سریع به سراسر کشور.</p>
+                    <p>پیکسل‌های خمیری دست‌ساز با طراحی خاص و کیفیت عالی | سفارش آنلاین، ارسال به سراسر کشور
+                    </p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                         <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -487,24 +488,56 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
-                <div class="ftco-footer-widget mb-4 ml-md-5">
-                    <h2 class="ftco-heading-2">منو</h2>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">خرید</a></li>
-                        <li><a href="#" class="py-2 d-block">درباره ی ما </a></li>
-                        <li><a href="#" class="py-2 d-block">کاتالوگ</a></li>
-                        <li><a href="#" class="py-2 d-block">ارتباط با ما</a></li>
-                    </ul>
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">لینک های مفید</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <li class="mb-3">
+                                <a href="#" class="text"> خرید</a>
+                            </li>
+
+                            <li class="mb-3">
+                                <a href="#" class="text"> درباره ما </a>
+                            </li>
+
+                            <li class="mb-3">
+                                <a href="#" class="text">    کاتالوگ محصولات </a>
+                            </li>
+
+                            <li class="mb-3">
+                                <a href="#" class="text">     ارتباط با ما </a>
+                            </li>
+
+
+
+
+                        </ul>
+                    </div>
                 </div>
+
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">سوالی هست؟</h2>
-                    <div class="d-flex">
-                        <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-                            <li><a href="#" class="py-2 d-block">شرایط بازگشت</a></li>
-                            <li><a href="#" class="py-2 d-block">شرایط و ضوابط</a></li>
-                            <li><a href="#" class="py-2 d-block">سیاست حفظ حریم خصوصی</a></li>
+                    <h2 class="ftco-heading-2">سوالات متداول</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <li class="mb-3">
+                                <a href="#" class="text">شرایط بازگشت و تعویض</a>
+                            </li>
+
+                            <li class="mb-3">
+                                <a href="#" class="text">شرایط و ضوابط</a>
+                            </li>
+
+                            <li class="mb-3">
+                                <span class="text"> سیاست حفظ حریم خصوصی </span>
+                            </li>
+
+                            <li class="mb-3">
+                                <span class="text">  قوانین خرید   </span>
+                            </li>
+
+
                         </ul>
                     </div>
                 </div>
