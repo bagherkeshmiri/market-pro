@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html class="loading" lang="fa" data-textdirection="rtl" dir="rtl">
-<!-- BEGIN: Head-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,16 +15,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/components.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/themes/dark-layout.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset(' frest/css/themes/semi-dark-layout.css') }}">
+    <link rel="stylesheet" type="text/css" href=" {{ asset('css/global.css') }}">
+    <link rel="stylesheet" type="text/css" href=" {{ asset('css/global.css') }}">
 
 </head>
-<!-- END: Head-->
 
-<!-- BEGIN: Body-->
 <body class="horizontal-layout horizontal-menu navbar-static dark-layout 1-column   footer-static bg-full-screen-image  blank-page blank-page" data-open="hover" data-menu="horizontal-menu" data-col="1-column" data-layout="dark-layout">
-<!-- BEGIN: Content-->
 @yield('contents')
-<!-- END: Content-->
 
 </body>
-<!-- END: Body-->
 </html>

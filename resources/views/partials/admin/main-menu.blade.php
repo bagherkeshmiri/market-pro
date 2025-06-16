@@ -1,4 +1,4 @@
-<div class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-sticky navbar-dark navbar-without-dd-arrow"
+<div class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-sticky navbar-dark navbar-without-dd-arrow font-13"
      role="navigation" data-menu="menu-wrapper">
     <div class="navbar-header d-xl-none d-block">
         <ul class="nav navbar-nav flex-row">
@@ -27,7 +27,7 @@
                 <ul class="dropdown-menu dropdown-menu-right">
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.user.create') }}"
+                        <a class="dropdown-item align-items-center font-13" href="{{ route('admin.user.create') }}"
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             ایجاد کاربر
@@ -35,7 +35,7 @@
                     </li>
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.user.index') }}"
+                        <a class="dropdown-item align-items-center font-13" href="{{ route('admin.user.index') }}"
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             لیست کاربران
@@ -53,7 +53,7 @@
                 <ul class="dropdown-menu dropdown-menu-right">
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.role.create') }}"
+                        <a class="dropdown-item align-items-center font-13" href="{{ route('admin.role.create') }}"
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             ایجاد نقش
@@ -61,7 +61,7 @@
                     </li>
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.role.index') }}"
+                        <a class="dropdown-item align-items-center font-13" href="{{ route('admin.role.index') }}"
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             لیست نقش ها
@@ -78,7 +78,7 @@
                 <ul class="dropdown-menu dropdown-menu-right">
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.category.create') }}"
+                        <a class="dropdown-item align-items-center font-13" href="{{ route('admin.category.create') }}"
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             ایجاد دسته بندی
@@ -86,7 +86,7 @@
                     </li>
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.category.index') }}"
+                        <a class="dropdown-item align-items-center font-13" href="{{ route('admin.category.index') }}"
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             لیست دسته بندی
@@ -104,7 +104,7 @@
 
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.product.create') }}"
+                        <a class="dropdown-item align-items-center font-13" href="{{ route('admin.product.create') }}"
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             ایجاد محصول
@@ -112,7 +112,7 @@
                     </li>
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="{{ route('admin.product.index') }}"
+                        <a class="dropdown-item align-items-center font-13" href="{{ route('admin.product.index') }}"
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             لیست محصولات
@@ -131,7 +131,7 @@
 
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="#"
+                        <a class="dropdown-item align-items-center font-13" href="#"
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             سفارش ‌ها امروز
@@ -139,7 +139,7 @@
                     </li>
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="#"
+                        <a class="dropdown-item align-items-center font-13" href="#"
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             لیست سفارش ‌ها
@@ -158,7 +158,7 @@
 
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="#"
+                        <a class="dropdown-item align-items-center font-13" href="#"
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             ایجاد فاکتور
@@ -166,7 +166,7 @@
                     </li>
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href="#"
+                        <a class="dropdown-item align-items-center font-13" href="#"
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             لیست فاکتور ها
@@ -184,7 +184,7 @@
                 <ul class="dropdown-menu dropdown-menu-right">
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href=""
+                        <a class="dropdown-item align-items-center font-13" href=""
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             ایجاد منو
@@ -192,7 +192,7 @@
                     </li>
 
                     <li data-menu="">
-                        <a class="dropdown-item align-items-center" href=""
+                        <a class="dropdown-item align-items-center font-13" href=""
                            data-toggle="dropdown">
                             <i class="bx bx-left-arrow-alt"></i>
                             لیست منو

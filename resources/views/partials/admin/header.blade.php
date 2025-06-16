@@ -17,7 +17,7 @@
                                     class="bx bx-menu"></i></a></li>
                     </ul>
                 </div>
-                <ul class="nav navbar-nav float-right d-flex align-items-center">
+                <ul class="nav navbar-nav float-right d-flex align-items-center font-13">
                     <li class="dropdown dropdown-language nav-item">
                         <a class="dropdown-toggle nav-link"
                            id="dropdown-flag" href="#"

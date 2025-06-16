@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/themes/semi-dark-layout.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/core/menu/menu-types/horizontal-menu.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/pages/authentication.css') }} ">
+    <link rel="stylesheet" type="text/css" href=" {{ asset('css/global.css') }}">
 
     @yield('styles')
     @livewireStyles
