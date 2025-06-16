@@ -13,6 +13,7 @@ class AdminComponent extends Component
     public int $perPage = 10;
     protected $paginationTheme = 'bootstrap';
     protected $queryString = ['page'];
+    protected $sampleProductImageUrl = 'images/frest/sample-product.png';
 
     public function renderView(string $view, array $variables = [])
     {

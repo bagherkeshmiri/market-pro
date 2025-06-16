@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             @foreach($products as $product)
-                @include('custom-components.site.product-card',['product' => $product,])
+                @include('custom-components.site.product-card',['product' => $product, 'sampleProductImageUrl' => $sampleProductImageUrl])
             @endforeach
         </div>
     </div>

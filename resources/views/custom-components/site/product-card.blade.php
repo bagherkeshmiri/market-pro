@@ -1,7 +1,7 @@
 <div class="col-md-6 col-lg-3 ftco-animate">
     <div class="product">
         <a href="#" class="img-prod">
-            <img class="img-fluid" src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset('images/frest/sample-product.png') }}" alt="{{ $product->name }}"/>
+            <img class="img-fluid" src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" alt="{{ $product->name }}"/>
             @isset($product->discount_percent)
                 <span class="status">30%</span>
             @endisset
@@ -32,6 +32,3 @@
         </div>
     </div>
 </div>
-
-
-{{--@dd($product)--}}

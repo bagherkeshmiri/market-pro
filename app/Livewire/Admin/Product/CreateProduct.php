@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Product;
 
+use App\Enums\DiscountType;
 use App\Enums\ProductStatus;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
@@ -22,6 +23,8 @@ class CreateProduct extends AdminComponent
     public $price;
     public $stock;
     public $status;
+    public $discountType;
+    public $discount;
     public $mainImage;
     public $galleryImages;
 
@@ -32,9 +35,10 @@ class CreateProduct extends AdminComponent
             ->pluck('id', 'name')
             ->toArray();
         $statuses = showEnumLabels(ProductStatus::class);
+        $discountTypes = showEnumLabels(DiscountType::class);
         return $this->renderView(
             'livewire.admin.product.create-product',
-            compact('pageTitle', 'allCategories', 'statuses')
+            compact('pageTitle', 'allCategories', 'statuses', 'discountTypes')
         );
     }
 
@@ -53,6 +57,11 @@ class CreateProduct extends AdminComponent
                 'required',
                 new Enum(ProductStatus::class)
             ],
+            'discountType' => [
+                'nullable',
+                new Enum(DiscountType::class)
+            ],
+            'discount' => 'nullable|integer',
             'mainImage' => 'required|file|mimes:jpg,png,jpeg,webp|max:500', // TODO reduce image size and width and height
             'galleryImages' => 'nullable|array', // if array file has file|mimes:jpg,png,jpeg,webp|max:500 validation
         ]);
@@ -64,6 +73,8 @@ class CreateProduct extends AdminComponent
             'price' => str_replace(',', '', $this->price),
             'stock' => $this->stock,
             'status' => $this->status,
+            'discount_type' => $this->discountType,
+            'discount' => $this->discount,
         ];
 
         DB::beginTransaction();

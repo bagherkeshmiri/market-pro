@@ -39,7 +39,7 @@
 
                                                 <tr>
                                                     <td data-toggle="tooltip" data-placement="top" title="  برای نمایش تصویر روی آن کلیک کنید">
-                                                        <img data-toggle="modal" data-target="#{{ $modalId }}" src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset('images/frest/sample-product.png') }}" alt="product-image-{{ $product->id }}" width="40" height="40"/>
+                                                        <img data-toggle="modal" data-target="#{{ $modalId }}" src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" alt="product-image-{{ $product->id }}" width="40" height="40"/>
                                                     </td>
                                                     <td>{{ $product->name }}</td>
                                                     <td>{{ $product->category->name ?? ' - ' }}</td>
@@ -55,7 +55,7 @@
                                                     </td>
                                                 </tr>
 
-                                                @include('frest-components.modal',['modalTitle' => ' تصویر اصلی ' . $product->name , 'modalId' =>$modalId ])
+                                                @include('frest-components.modal',['modalTitle' => ' تصویر اصلی ' . $product->name , 'modalId' =>$modalId ,'sampleProductImageUrl' => $sampleProductImageUrl,])
 
                                             @empty
                                                 @include('custom-components.admin.empty-table')

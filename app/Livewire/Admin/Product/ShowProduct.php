@@ -47,9 +47,10 @@ class ShowProduct extends AdminComponent
         $allCategories = Category::pluck('id', 'name')
             ->toArray();
         $statuses = showEnumLabels(ProductStatus::class);
+        $sampleProductImageUrl = $this->sampleProductImageUrl;
         return $this->renderView(
             'livewire.admin.product.show-product',
-            compact('pageTitle', 'allCategories', 'statuses')
+            compact('pageTitle', 'allCategories', 'statuses','sampleProductImageUrl')
         );
     }
 

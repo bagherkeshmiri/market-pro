@@ -115,9 +115,9 @@
                                     <div>
                                         @include('frest-components.text-divider' , ['dividerClass' => 'divider-warning' ,'title' => 'تصویر اصلی'])
                                         @if ($mainImage)
-                                            <img src="{{ is_object($mainImage) && method_exists($mainImage, 'temporaryUrl') ? $mainImage->temporaryUrl() : (file_exists(public_path($mainImage)) ? asset($mainImage) : asset('images/frest/sample-product.png')) }}" width="100%" alt="product-image"/>
+                                            <img src="{{ is_object($mainImage) && method_exists($mainImage, 'temporaryUrl') ? $mainImage->temporaryUrl() : (file_exists(public_path($mainImage)) ? asset($mainImage) : asset($sampleProductImageUrl)) }}" width="100%" alt="product-image"/>
                                         @else
-                                            <img src="{{ asset('images/sample/sample-product.png') }}" width="100%" alt="default-image"/>
+                                            <img src="{{ asset($sampleProductImageUrl) }}" width="100%" alt="default-image"/>
                                         @endif
                                     </div>
 
@@ -148,7 +148,9 @@
                                                              alt="gallery-image"/>
                                                     </div>
                                                 @empty
-                                                    @include('custom-components.admin.empty-table')
+                                                    <div class="carousel-item active">
+                                                        <img class="img-fluid" src="{{ asset($sampleProductImageUrl) }}" alt="default-image">
+                                                    </div>
                                                 @endforelse
 
                                             </div>
