@@ -28,7 +28,7 @@
         <a class="navbar-brand" href="#">پیکسل دونی</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="oi oi-menu"></span> منو
+            <span class="oi oi-menu"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="ftco-nav">
@@ -63,9 +63,7 @@
                 <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
                     <div class="col-md-12 ftco-animate text-center">
-                        <h1 class="mb-2">تهیه میوه و سبزیجات تازه</h1>
-                        <h2 class="subheading mb-4">میوه و سبزیجات ارگانیک</h2>
-                        <p><a href="#" class="btn btn-primary">مشاهده جزئیات</a></p>
+                        <h1 class="mb-2">زیبا ترین پیکسل ها در پیکسل دونی</h1>
                     </div>
 
                 </div>
@@ -78,9 +76,7 @@
                 <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
                     <div class="col-sm-12 ftco-animate text-center">
-                        <h1 class="mb-2">میوه های 100 درصد تازه و ارگانیک</h1>
-                        <h2 class="subheading mb-4">تهیه میوه و سبزیجات ارگانیک</h2>
-                        <p><a href="#" class="btn btn-primary">مشاهده جزییات</a></p>
+                        <h1 class="mb-2">ساخت پیکسل خمیری به سفارش شما</h1>
                     </div>
 
                 </div>
@@ -101,7 +97,7 @@
                     </div>
                     <div class="media-body">
                         <h3 class="heading">ارسال رایگان</h3>
-                        <span>برای سفارش های بالای 100 هزارتومان</span>
+                        <span>برای سفارش های بالای 200 هزارتومان</span>
                     </div>
                 </div>
             </div>
@@ -111,8 +107,8 @@
                         <span class="flaticon-diet"></span>
                     </div>
                     <div class="media-body">
-                        <h3 class="heading">تازگی محصولات</h3>
-                        <span>بسته بندی مناسب</span>
+                        <h3 class="heading">خمیرِ دست‌ساز، طرحِ خاص</h3>
+                        <span>تمام پیکسل‌ها با دست، از خمیر ساخته می‌شن</span>
                     </div>
                 </div>
             </div>
