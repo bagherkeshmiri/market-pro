@@ -12,20 +12,23 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
+
 /**
  *
  *
  * @property int $id
  * @property string $name
- * @property int $parent_id
+ * @property int|null $parent_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property string|null $deleted_at
+ * @property Carbon|null $deleted_at
+ * @property-read string $jalali_created_at
  * @property-read Category|null $parent
  * @property-read Collection<int, Product> $products
  * @property-read int|null $products_count
  * @method static Builder<static>|Category newModelQuery()
  * @method static Builder<static>|Category newQuery()
+ * @method static Builder<static>|Category onlyTrashed()
  * @method static Builder<static>|Category query()
  * @method static Builder<static>|Category whereCreatedAt($value)
  * @method static Builder<static>|Category whereDeletedAt($value)
@@ -33,6 +36,8 @@ use Morilog\Jalali\Jalalian;
  * @method static Builder<static>|Category whereName($value)
  * @method static Builder<static>|Category whereParentId($value)
  * @method static Builder<static>|Category whereUpdatedAt($value)
+ * @method static Builder<static>|Category withTrashed()
+ * @method static Builder<static>|Category withoutTrashed()
  * @mixin Eloquent
  */
 class Category extends Authenticatable

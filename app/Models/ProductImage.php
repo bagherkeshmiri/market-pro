@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 
+
 /**
  *
  *
@@ -18,13 +19,11 @@ use Illuminate\Support\Carbon;
  * @property bool $is_main
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property string|null $deleted_at
  * @property-read Product|null $product
  * @method static Builder<static>|ProductImage newModelQuery()
  * @method static Builder<static>|ProductImage newQuery()
  * @method static Builder<static>|ProductImage query()
  * @method static Builder<static>|ProductImage whereCreatedAt($value)
- * @method static Builder<static>|ProductImage whereDeletedAt($value)
  * @method static Builder<static>|ProductImage whereId($value)
  * @method static Builder<static>|ProductImage whereImageUrl($value)
  * @method static Builder<static>|ProductImage whereIsMain($value)

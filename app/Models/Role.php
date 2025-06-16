@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
+
 /**
  *
  *
@@ -20,6 +21,7 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Carbon|null $deleted_at
+ * @property-read string $jalali_created_at
  * @property-read Collection<int, Permission> $permissions
  * @property-read int|null $permissions_count
  * @method static Builder<static>|Role newModelQuery()

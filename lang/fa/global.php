@@ -23,4 +23,6 @@ return [
     'cancelled' =>  'لغو شده',
     'user' =>  'کاربر',
     'admin' =>  'مدیر',
+    'percent' =>  'درصد',
+    'amount' =>  'مبلغ',
 ];

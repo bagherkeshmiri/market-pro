@@ -17,10 +17,13 @@ use Morilog\Jalali\Jalalian;
  *
  * @property int $id
  * @property int $user_id
- * @property OrderStatus $status
+ * @property OrderStatus $status  1:pending , 2:paid , 3:shipped , 4: cancelled
  * @property string $total_price
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property-read string $jalali_created_at
+ * @property-read string $status_badge_class
+ * @property-read string $status_label
  * @property-read Collection<int, OrderItem> $orderItems
  * @property-read int|null $order_items_count
  * @property-read User|null $user

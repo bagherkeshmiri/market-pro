@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use LaravelIdea\Helper\App\Models\_IH_Permission_QB;
 use Morilog\Jalali\Jalalian;
 
+
 /**
  *
  *
@@ -30,6 +31,9 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Order> $Orders
  * @property-read int|null $orders_count
+ * @property-read string $jalali_created_at
+ * @property-read string $status_badge_class
+ * @property-read string $type_label
  * @property-read Role|null $role
  * @method static Builder<static>|User isAdmin()
  * @method static Builder<static>|User newModelQuery()

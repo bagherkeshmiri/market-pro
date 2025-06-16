@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
+
 /**
- *
+ * 
  *
  * @property int $id
  * @property int|null $parent_id

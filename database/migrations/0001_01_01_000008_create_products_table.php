@@ -12,9 +12,11 @@ return new class extends Migration {
             $table->unsignedBigInteger('category_id')->index();
             $table->string('name');
             $table->unsignedTinyInteger('status')->default(1)->comment(' 1:not_exist , 2:exist ');
-            $table->longText('description')->nullable();
-            $table->decimal('price')->default(0.0);
+            $table->unsignedTinyInteger('discount_type')->default(1)->comment(' 1:percent , 2:amount ');
+            $table->decimal('price')->default(0);
+            $table->decimal('discount')->default(0);
             $table->unsignedMediumInteger('stock')->default(0);
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
 
