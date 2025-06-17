@@ -47,12 +47,12 @@ function titleIcon(): string
 
 function warningPencilIcon(): string
 {
-    return '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important;"></i>';
+    return '<i class="bx bx-pencil bx-sm bx-tada-hover" style="color:#FDAC41 !important; font-size: 19px !important;"></i>';
 }
 
 function dangerTrashIcon(): string
 {
-    return '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important;"></i>';
+    return '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important; font-size: 19px !important;"></i>';
 }
 
 

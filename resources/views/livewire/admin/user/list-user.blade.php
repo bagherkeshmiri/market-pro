@@ -9,7 +9,7 @@
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="content-wrapper">
-        @include('custom-components.admin.page-title',['pageTitle' => $pageTitle,])
+{{--        @include('custom-components.admin.page-title',['pageTitle' => $pageTitle,])--}}
         <div class="content-body">
 
             <section id="multiple-column-form">
@@ -28,7 +28,7 @@
                                                 @endforeach
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody class="font-13">
 
                                             @forelse ($users as $user)
                                                 <tr>

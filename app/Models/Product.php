@@ -26,6 +26,7 @@ use Morilog\Jalali\Jalalian;
  * @property string|null $description
  * @property string $price
  * @property string $discount
+ * @property string $final_price
  * @property int $stock
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -72,6 +73,7 @@ class Product extends Authenticatable
         'stock',
         'discount_type',
         'discount',
+        'final_price',
     ];
 
     protected $hidden = [];

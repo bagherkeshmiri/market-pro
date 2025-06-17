@@ -10,7 +10,7 @@
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="content-wrapper">
-        @include('custom-components.admin.page-title',['pageTitle' => $pageTitle,])
+{{--        @include('custom-components.admin.page-title',['pageTitle' => $pageTitle,])--}}
         <div class="content-body">
 
             <section id="multiple-column-form">
@@ -29,7 +29,7 @@
                                                 @endforeach
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody class="font-13">
 
                                             @forelse ($products as $product)
 
@@ -49,11 +49,10 @@
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $product->discount_type_badge_class,  'content' => $product->discount_type_label ])
                                                     </td>
-                                                    <td>{{ $product->formatted_discount }}</td>
                                                     <td>{{ $product->formatted_price }}</td>
+                                                    <td>{{ $product->formatted_discount }}</td>
                                                     <td>{{ $product->formatted_final_price }}</td>
                                                     <td>{{ $product->stock }}</td>
-                                                    <td>{{ $product->jalali_created_at }}</td>
                                                     <td>
                                                         @include('frest-components.icon-btn',[  'href' => route('admin.product.show',[ 'product' => $product->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                         @include('frest-components.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=product_delete(this,event)  data-url='.route('admin.product.delete',[ 'product' => $product->id ]) ])

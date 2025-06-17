@@ -75,7 +75,14 @@ class CreateProduct extends AdminComponent
             'status' => $this->status,
             'discount_type' => $this->discountType,
             'discount' => $this->discount,
+            'final_price' => calculateProductFinalPrice($this->discountType, $this->price, $this->discount),
         ];
+
+
+        dd(
+            $data
+        );
+
 
         DB::beginTransaction();
         try {
@@ -95,16 +102,11 @@ class CreateProduct extends AdminComponent
             }
 
             DB::commit();
-            $this->reset(['name', 'description', 'price', 'stock','discount']);
+            $this->reset(['name', 'description', 'price', 'stock', 'discount']);
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.product.index');
         } catch (Exception $e) {
             DB::rollBack();
-
-            dd(
-                $e->getMessage()
-            );
-
             session()->flash('error', __('global.error_message'));
             return redirect()->route('admin.product.create');
         }
