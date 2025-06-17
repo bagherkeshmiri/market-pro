@@ -28,6 +28,7 @@ class ShowProduct extends AdminComponent
     public $status;
     public $discountType;
     public $discount;
+    public $finalPrice;
     public $mainImage;
     public $galleryImages;
 
@@ -42,6 +43,7 @@ class ShowProduct extends AdminComponent
         $this->status = $product->status;
         $this->discountType = $product->discount_type;
         $this->discount = $product->discount;
+        $this->finalPrice = $product->final_price;
         $this->mainImage = $product->images->where('is_main', true)->first()->image_url ?? '';
         $this->galleryImages = $product->images->where('is_main', false);
     }
@@ -95,6 +97,7 @@ class ShowProduct extends AdminComponent
             'status' => $this->status,
             'discount_type' => $this->discountType,
             'discount' => $this->discount,
+            'final_price' => calculateProductFinalPrice($this->discountType, str_replace(',', '', $this->price), str_replace(',', '', $this->discount)),
         ];
 
         DB::beginTransaction();

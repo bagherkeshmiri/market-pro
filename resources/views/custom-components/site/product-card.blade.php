@@ -16,7 +16,7 @@
                         @if($product->discount > 0)
                             <span class="me-4 price-dc">     {{ number_format($product->price) }} تومان  </span>
                         @endif
-                        <span class="price-sale">   {{ $product->formatted_final_price }} تومان  </span>
+                        <span class="price-sale">   {{ number_format($product->final_price) }} تومان  </span>
                     </p>
                 </div>
             </div>

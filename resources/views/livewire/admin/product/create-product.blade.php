@@ -66,7 +66,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'stock' , 'content' => ' تعداد موجودی'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'stock' , 'classes' => 'text-left' , 'id' => 'stock' , 'dir' => 'ltr' , 'icon' => packageIcon() , 'attributes' => 'required'])
+                                                        @include('frest-components.input',[ 'type' => 'number' , 'wire' => 'stock' , 'classes' => 'text-left' , 'id' => 'stock' , 'dir' => 'ltr' , 'icon' => packageIcon() , 'attributes' => 'required'])
                                                         @include('frest-components.small-tag-error',[ 'name' => 'stock' ])
                                                     </div>
                                                 </div>

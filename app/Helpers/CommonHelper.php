@@ -1,7 +1,6 @@
 <?php
 
 use App\Enums\DiscountType;
-use App\Models\Product;
 use Illuminate\Support\Collection;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Carbon\Carbon;
@@ -21,15 +20,14 @@ function storeImage(TemporaryUploadedFile $image, string $folder): string
     return '/storage/' . $path;
 }
 
-function calculateProductFinalPrice(DiscountType $discountType, int|float $price, int $discount): float|int|string
+function calculateProductFinalPrice(string|int|DiscountType $discountType, int|string $price, int|string $discount): float|int|string
 {
-    if ($discountType === DiscountType::Amount) {
-        $finalPrice = $price - $discount;
-    } elseif ($discountType === DiscountType::Percent) {
-        $finalPrice = $price - ($price * $discount / 100);
+    if ($discountType == DiscountType::Amount->value) {
+        $finalPrice = (int)$price - $discount;
+    } elseif ($discountType == DiscountType::Percent->value) {
+        $finalPrice = (int)$price - ((int)$price * (int)$discount / 100);
     } else {
-        $finalPrice = $price;
+        $finalPrice = (int)$price;
     }
-
     return $finalPrice;
 }

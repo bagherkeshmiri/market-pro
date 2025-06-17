@@ -105,24 +105,15 @@ class Product extends Authenticatable
         return number_format($this->price);
     }
 
+    public function getFormattedFinalPriceAttribute(): string
+    {
+        return number_format($this->final_price);
+    }
+
     public function getFormattedDiscountAttribute(): string
     {
         return $this->discount_type == DiscountType::Amount ? number_format($this->discount) : $this->discount;
     }
-
-    public function getFormattedFinalPriceAttribute(): string
-    {
-        if ($this->discount_type === DiscountType::Amount) {
-            $finalPrice = $this->price - $this->discount;
-        } elseif ($this->discount_type === DiscountType::Percent) {
-            $finalPrice = $this->price - ($this->price * $this->discount / 100);
-        } else {
-            $finalPrice = $this->price;
-        }
-
-        return number_format($finalPrice);
-    }
-
 
     public function getDiscountPercentAttribute(): int
     {
@@ -140,8 +131,6 @@ class Product extends Authenticatable
 
         return 0;
     }
-
-
 
     public function getJalaliCreatedAtAttribute(): string
     {

@@ -70,19 +70,13 @@ class CreateProduct extends AdminComponent
             'name' => $this->name,
             'category_id' => $this->categoryId,
             'description' => $this->description ?? null,
-            'price' => str_replace(',', '', $this->price),
+            'price' => (int)str_replace(',', '', $this->price),
             'stock' => $this->stock,
             'status' => $this->status,
             'discount_type' => $this->discountType,
             'discount' => $this->discount,
-            'final_price' => calculateProductFinalPrice($this->discountType, $this->price, $this->discount),
+            'final_price' => calculateProductFinalPrice($this->discountType, str_replace(',', '', $this->price), str_replace(',', '', $this->discount)),
         ];
-
-
-        dd(
-            $data
-        );
-
 
         DB::beginTransaction();
         try {
