@@ -257,10 +257,33 @@
         });
 
 
+        // function formatPrice(input) {
+        //     let value = input.value.replace(/[^0-9]/g, '').replace(/^0+/, '');
+        //     input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        // }
+
+
+
         function formatPrice(input) {
+            let cursorPosition = input.selectionStart;
+
             let value = input.value.replace(/[^0-9]/g, '').replace(/^0+/, '');
-            input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            let formatted = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+            let diff = formatted.length - input.value.length;
+
+            input.value = formatted;
+
+            input.setSelectionRange(cursorPosition + diff, cursorPosition + diff);
         }
+
+        window.addEventListener('DOMContentLoaded', function () {
+            const input = document.getElementById('price');
+            if (input) {
+                formatPrice(input);
+            }
+        });
+
 
     </script>
 @endsection
