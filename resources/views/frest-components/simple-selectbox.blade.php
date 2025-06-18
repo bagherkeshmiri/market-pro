@@ -1,7 +1,7 @@
 <select class="form-control"
 
-        @isset($name)
-            name="{{ $name }}"
+        @isset($inputName)
+            name="{{ $inputName }}"
         @endisset
 
         @isset($wire)

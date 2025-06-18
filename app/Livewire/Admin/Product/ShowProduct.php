@@ -71,7 +71,6 @@ class ShowProduct extends AdminComponent
             'name' => 'required',
             'categoryId' => 'required|exists:categories,id',
             'description' => 'nullable|string',
-            'price' => 'required|integer',
             'stock' => 'required|integer',
             'status' => [
                 'required',
@@ -88,11 +87,18 @@ class ShowProduct extends AdminComponent
             'galleryImages' => 'nullable|array', // if array file has file|mimes:jpg,png,jpeg,webp|max:500 validation
         ]);
 
+
+        $this->price = (int)str_replace(',', '', $this->price);
+
+        $this->validate([
+            'price' => 'required|integer|min:0',
+        ]);
+
         $data = [
             'name' => $this->name,
             'category_id' => $this->categoryId,
             'description' => $this->description ?? null,
-            'price' => (int)str_replace(',', '', $this->price),
+            'price' => $this->price,
             'stock' => $this->stock,
             'status' => $this->status,
             'discount_type' => $this->discountType,
@@ -133,9 +139,6 @@ class ShowProduct extends AdminComponent
             return redirect()->route('admin.product.show', ['product' => $this->product->id]);
         } catch (Exception $e) {
             DB::rollBack();
-            dd(
-                $e->getMessage()
-            );
             session()->flash('error', __('global.error_message'));
             return redirect()->route('admin.product.create');
         }
