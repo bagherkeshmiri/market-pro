@@ -51,7 +51,6 @@ class CreateProduct extends AdminComponent
             'name' => 'required',
             'categoryId' => 'required|exists:categories,id',
             'description' => 'nullable|string',
-            'price' => 'required|string',
             'stock' => 'required|integer',
             'status' => [
                 'required',
@@ -61,21 +60,28 @@ class CreateProduct extends AdminComponent
                 'nullable',
                 new Enum(DiscountType::class)
             ],
-            'discount' => 'nullable|integer',
             'mainImage' => 'required|file|mimes:jpg,png,jpeg,webp|max:500', // TODO reduce image size and width and height
             'galleryImages' => 'nullable|array', // if array file has file|mimes:jpg,png,jpeg,webp|max:500 validation
+        ]);
+
+        $this->price = (int)str_replace(',', '', $this->price);
+        $this->discount = (int)str_replace(',', '', $this->discount);
+
+        $this->validate([
+            'price' => 'required|integer|min:0',
+            'discount' => 'required|integer',
         ]);
 
         $data = [
             'name' => $this->name,
             'category_id' => $this->categoryId,
             'description' => $this->description ?? null,
-            'price' => (int)str_replace(',', '', $this->price),
+            'price' => $this->price,
             'stock' => $this->stock,
             'status' => $this->status,
             'discount_type' => $this->discountType,
             'discount' => $this->discount,
-            'final_price' => calculateProductFinalPrice($this->discountType, str_replace(',', '', $this->price), str_replace(',', '', $this->discount)),
+            'final_price' => calculateProductFinalPrice($this->discountType, $this->price, $this->discount),
         ];
 
         DB::beginTransaction();
