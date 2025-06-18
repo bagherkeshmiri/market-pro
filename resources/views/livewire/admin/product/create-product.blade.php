@@ -240,6 +240,9 @@
                     discountInput.type = 'number';
                 }
             }
+
+            discountInput.value = 0;
+
         });
 
     </script>
