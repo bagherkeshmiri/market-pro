@@ -8,7 +8,6 @@
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="content-wrapper">
-{{--        @include('custom-components.admin.page-title',['pageTitle' => $pageTitle,])--}}
         <div class="content-body">
 
             <section id="multiple-column-form">
@@ -255,13 +254,6 @@
             @this.
             set('description', document.querySelector('#editor').innerHTML);
         });
-
-
-        // function formatPrice(input) {
-        //     let value = input.value.replace(/[^0-9]/g, '').replace(/^0+/, '');
-        //     input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        // }
-
 
 
         function formatPrice(input) {
