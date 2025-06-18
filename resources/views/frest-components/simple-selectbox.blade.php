@@ -1,4 +1,4 @@
-<select class="form-control"
+<select class="form-control font-13"
 
         @isset($inputName)
             name="{{ $inputName }}"
