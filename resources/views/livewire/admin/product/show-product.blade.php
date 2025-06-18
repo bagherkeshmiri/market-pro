@@ -171,6 +171,7 @@
         let jsAmountDiscountType = @json($amountDiscountType);
         let saveBtn = document.querySelector('#save_btn');
         let discountInput = document.getElementById('discount');
+        let discountTypeInput = document.getElementById('discountType');
 
         function MyCustomUploadAdapterPlugin(editor) {
 
@@ -241,6 +242,11 @@
             }
 
             if (discountInput) {
+
+                if (Number(discountType.value) === Number(jsAmountDiscountType)) {
+                    discountInput.type = 'text';
+                }
+
                 formatPrice(discountInput);
 
                 discountInput.addEventListener('input', function () {
@@ -254,10 +260,10 @@
         });
 
 
-        document.getElementById('discountType').addEventListener('change', function () {
-            let discountType = Number(this.value);
+        discountTypeInput.addEventListener('change', function () {
+            let discountTypeValue = Number(this.value);
 
-            if (discountType === jsAmountDiscountType) {
+            if (discountTypeValue === jsAmountDiscountType) {
                 if (discountInput.type === 'number') {
                     discountInput.type = 'text';
                 }
