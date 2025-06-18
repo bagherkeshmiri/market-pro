@@ -4,8 +4,8 @@
             type="{{ $type }}"
         @endisset
 
-        @isset($name)
-            name="{{ $name }}"
+        @isset($inputName)
+            name="{{ $inputName }}"
         @endisset
 
         @isset($wire)

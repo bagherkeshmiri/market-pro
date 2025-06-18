@@ -203,9 +203,15 @@
     <script src="{{ asset('js/axios.min.js') }}"></script>
     <script src="{{ asset('ckeditor5-35.3.2/build/ckeditor.js') }}"></script>
 
+    @php
+        $amountDiscountType = \App\Enums\DiscountType::Amount->value;
+    @endphp
+
     <script>
 
+        let jsAmountDiscountType = @json($amountDiscountType);
         let saveBtn = document.querySelector('#save_btn');
+        let discountInput = document.getElementById('discount');
 
         function MyCustomUploadAdapterPlugin(editor) {
 
@@ -256,25 +262,52 @@
 
 
         function formatPrice(input) {
+            if (input.type !== 'text' && input.tagName.toLowerCase() !== 'textarea') {
+                return;
+            }
             let cursorPosition = input.selectionStart;
-
             let value = input.value.replace(/[^0-9]/g, '').replace(/^0+/, '');
             let formatted = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
             let diff = formatted.length - input.value.length;
-
             input.value = formatted;
-
-            input.setSelectionRange(cursorPosition + diff, cursorPosition + diff);
+            if (typeof input.setSelectionRange === 'function') {
+                input.setSelectionRange(cursorPosition + diff, cursorPosition + diff);
+            }
         }
 
         window.addEventListener('DOMContentLoaded', function () {
-            const input = document.getElementById('price');
+            let input = document.getElementById('price');
             if (input) {
                 formatPrice(input);
             }
+
+            if (discountInput) {
+                formatPrice(discountInput);
+
+                discountInput.addEventListener('input', function () {
+                    const discountType = Number(document.getElementById('discountType').value);
+                    if (discountType === jsAmountDiscountType) {
+                        formatPrice(discountInput);
+                    }
+                });
+            }
+
         });
 
+
+        document.getElementById('discountType').addEventListener('change', function () {
+            let discountType = Number(this.value);
+
+            if (discountType === jsAmountDiscountType) {
+                if (discountInput.type === 'number') {
+                    discountInput.type = 'text';
+                }
+            } else {
+                if (discountInput.type === 'text') {
+                    discountInput.type = 'number';
+                }
+            }
+        });
 
     </script>
 @endsection

@@ -80,7 +80,6 @@ class ShowProduct extends AdminComponent
                 'nullable',
                 new Enum(DiscountType::class)
             ],
-            'discount' => 'nullable|integer',
             'mainImage' => $this->mainImage instanceof TemporaryUploadedFile
                 ? 'file|mimes:jpg,png,jpeg,webp|max:500' // TODO reduce image size and width and height
                 : 'nullable',
@@ -89,9 +88,11 @@ class ShowProduct extends AdminComponent
 
 
         $this->price = (int)str_replace(',', '', $this->price);
+        $this->discount = (int)str_replace(',', '', $this->discount);
 
         $this->validate([
             'price' => 'required|integer|min:0',
+            'discount' => 'required|integer',
         ]);
 
         $data = [
