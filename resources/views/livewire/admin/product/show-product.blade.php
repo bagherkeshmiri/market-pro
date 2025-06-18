@@ -220,7 +220,6 @@
             set('description', document.querySelector('#editor').innerHTML);
         });
 
-
         function formatPrice(input) {
             if (input.type !== 'text' && input.tagName.toLowerCase() !== 'textarea') {
                 return;
@@ -258,7 +257,6 @@
             }
 
         });
-
 
         discountTypeInput.addEventListener('change', function () {
             let discountTypeValue = Number(this.value);
