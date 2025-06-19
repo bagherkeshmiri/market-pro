@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
@@ -40,7 +39,7 @@ use Morilog\Jalali\Jalalian;
  * @method static Builder<static>|Category withoutTrashed()
  * @mixin Eloquent
  */
-class Category extends Authenticatable
+class Category extends Eloquent
 {
     use SoftDeletes;
 

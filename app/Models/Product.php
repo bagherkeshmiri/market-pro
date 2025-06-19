@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
@@ -55,9 +54,15 @@ use Morilog\Jalali\Jalalian;
  * @method static Builder<static>|Product whereStatus($value)
  * @method static Builder<static>|Product whereStock($value)
  * @method static Builder<static>|Product whereUpdatedAt($value)
+ * @property-read int $discount_percent
+ * @property-read string $discount_type_badge_class
+ * @property-read string $discount_type_label
+ * @property-read string $formatted_discount
+ * @property-read string $formatted_final_price
+ * @method static Builder<static>|Product whereFinalPrice($value)
  * @mixin Eloquent
  */
-class Product extends Authenticatable
+class Product extends Eloquent
 {
     public const string TABLE_NAME = 'products';
     protected $table = self::TABLE_NAME;

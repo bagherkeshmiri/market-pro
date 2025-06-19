@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
@@ -38,7 +37,7 @@ use Morilog\Jalali\Jalalian;
  * @method static Builder<static>|Order whereUserId($value)
  * @mixin Eloquent
  */
-class Order extends Authenticatable
+class Order extends Eloquent
 {
     public const string TABLE_NAME = 'orders';
     protected $table = self::TABLE_NAME;

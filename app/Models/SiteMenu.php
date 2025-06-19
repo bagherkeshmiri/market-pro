@@ -5,12 +5,11 @@ namespace App\Models;
 use App\Enums\IsActive;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int|null $parent_id
@@ -31,7 +30,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|SiteMenu whereValue($value)
  * @mixin Eloquent
  */
-class SiteMenu extends Model
+class SiteMenu extends Eloquent
 {
     public const string TABLE_NAME = 'site_menus';
     protected $table = self::TABLE_NAME;

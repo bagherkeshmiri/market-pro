@@ -5,8 +5,6 @@ namespace App\Models;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 
 
@@ -31,7 +29,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|ProductImage whereUpdatedAt($value)
  * @mixin Eloquent
  */
-class ProductImage extends Authenticatable
+class ProductImage extends Eloquent
 {
     public const string TABLE_NAME = 'product_images';
     protected $table = self::TABLE_NAME;

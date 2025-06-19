@@ -6,7 +6,6 @@ use App\Enums\OrderStatus;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 
 
@@ -35,7 +34,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|OrderItem whereUpdatedAt($value)
  * @mixin Eloquent
  */
-class OrderItem extends Authenticatable
+class OrderItem extends Eloquent
 {
     public const string TABLE_NAME = 'order_items';
     protected $table = self::TABLE_NAME;
