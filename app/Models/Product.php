@@ -180,7 +180,10 @@ class Product extends Eloquent
         return $this->hasMany(OrderItem::class, OrderItem::COLUMN_PRODUCT_ID, self::COLUMN_ID);
     }
 
-
+    public function collections(): HasMany
+    {
+        return $this->hasMany(CollectionProduct::class, CollectionProduct::COLUMN_PRODUCT_ID, self::COLUMN_ID);
+    }
 
 
     /*-------------- Scopes -------------*/

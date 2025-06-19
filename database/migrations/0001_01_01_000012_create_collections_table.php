@@ -9,7 +9,6 @@ return new class extends Migration {
     {
         Schema::create('collections', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id')->index()->nullable();
             $table->string('title')->nullable();
             $table->unsignedTinyInteger('type')->default(1)->comment(' 1 => product , 2 => banner , 3 => slider , 4 => box ');
             $table->unsignedTinyInteger('limitation')->nullable();

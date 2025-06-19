@@ -6,7 +6,7 @@ use App\Enums\CollectionType;
 use App\Enums\IsActive;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
@@ -15,7 +15,6 @@ use Morilog\Jalali\Jalalian;
  *
  *
  * @property int $id
- * @property int|null $category_id
  * @property string|null $title
  * @property CollectionType $type  1 => product , 2 => banner , 3 => slider , 4 => box
  * @property int|null $limitation
@@ -48,10 +47,8 @@ class Collection extends Eloquent
     public const string TABLE_NAME = 'collections';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
-    public const string COLUMN_CATEGORY_ID = 'category_id';
 
     protected $fillable = [
-        'category_id',
         'title',
         'type',
         'limitation',
@@ -91,9 +88,9 @@ class Collection extends Eloquent
 
     /*------------ Relations ------------*/
 
-    public function category(): BelongsTo
+    public function product(): HasOne
     {
-        return $this->belongsTo(Category::class, self::COLUMN_CATEGORY_ID, Category::COLUMN_ID);
+        return $this->hasOne(CollectionProduct::class, CollectionProduct::COLUMN_PRODUCT_ID, self::COLUMN_ID);
     }
 
 
