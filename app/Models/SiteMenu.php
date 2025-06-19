@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 
 
 /**
- *
+ * 
  *
  * @property int $id
  * @property int|null $parent_id

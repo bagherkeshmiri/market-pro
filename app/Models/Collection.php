@@ -11,6 +11,7 @@ use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
 
+
 /**
  *
  *
@@ -23,14 +24,13 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
- * @property-read Category|null $category
  * @property-read string $jalali_created_at
  * @property-read string $type_badge_class
  * @property-read string $type_label
+ * @property-read CollectionProduct|null $product
  * @method static Builder<static>|Collection newModelQuery()
  * @method static Builder<static>|Collection newQuery()
  * @method static Builder<static>|Collection query()
- * @method static Builder<static>|Collection whereCategoryId($value)
  * @method static Builder<static>|Collection whereCreatedAt($value)
  * @method static Builder<static>|Collection whereDeletedAt($value)
  * @method static Builder<static>|Collection whereId($value)

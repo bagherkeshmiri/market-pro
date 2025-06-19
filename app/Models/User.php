@@ -17,7 +17,7 @@ use Morilog\Jalali\Jalalian;
 
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $role_id

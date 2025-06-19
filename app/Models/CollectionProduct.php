@@ -5,9 +5,33 @@ namespace App\Models;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
 
+/**
+ *
+ *
+ * @property int $id
+ * @property int $collection_id
+ * @property int $product_id
+ * @property int|null $sort
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection|null $collection
+ * @property-read string $jalali_created_at
+ * @property-read Product|null $product
+ * @method static Builder<static>|CollectionProduct newModelQuery()
+ * @method static Builder<static>|CollectionProduct newQuery()
+ * @method static Builder<static>|CollectionProduct query()
+ * @method static Builder<static>|CollectionProduct whereCollectionId($value)
+ * @method static Builder<static>|CollectionProduct whereCreatedAt($value)
+ * @method static Builder<static>|CollectionProduct whereId($value)
+ * @method static Builder<static>|CollectionProduct whereProductId($value)
+ * @method static Builder<static>|CollectionProduct whereSort($value)
+ * @method static Builder<static>|CollectionProduct whereUpdatedAt($value)
+ * @mixin Eloquent
+ */
 class CollectionProduct extends Eloquent
 {
     public const string TABLE_NAME = 'collection_products';

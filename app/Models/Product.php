@@ -23,14 +23,21 @@ use Morilog\Jalali\Jalalian;
  * @property ProductStatus $status  1:not_exist , 2:exist
  * @property DiscountType $discount_type  1:percent , 2:amount
  * @property string|null $description
- * @property string $price
- * @property string $discount
- * @property string $final_price
+ * @property int $price
+ * @property int $discount
+ * @property int $final_price
  * @property int $stock
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Category|null $category
+ * @property-read Collection<int, CollectionProduct> $collections
+ * @property-read int|null $collections_count
  * @property-read ProductImage|null $galleryImages
+ * @property-read int $discount_percent
+ * @property-read string $discount_type_badge_class
+ * @property-read string $discount_type_label
+ * @property-read string $formatted_discount
+ * @property-read string $formatted_final_price
  * @property-read string $formatted_price
  * @property-read string $jalali_created_at
  * @property-read string $status_badge_class
@@ -48,18 +55,13 @@ use Morilog\Jalali\Jalalian;
  * @method static Builder<static>|Product whereDescription($value)
  * @method static Builder<static>|Product whereDiscount($value)
  * @method static Builder<static>|Product whereDiscountType($value)
+ * @method static Builder<static>|Product whereFinalPrice($value)
  * @method static Builder<static>|Product whereId($value)
  * @method static Builder<static>|Product whereName($value)
  * @method static Builder<static>|Product wherePrice($value)
  * @method static Builder<static>|Product whereStatus($value)
  * @method static Builder<static>|Product whereStock($value)
  * @method static Builder<static>|Product whereUpdatedAt($value)
- * @property-read int $discount_percent
- * @property-read string $discount_type_badge_class
- * @property-read string $discount_type_label
- * @property-read string $formatted_discount
- * @property-read string $formatted_final_price
- * @method static Builder<static>|Product whereFinalPrice($value)
  * @mixin Eloquent
  */
 class Product extends Eloquent
