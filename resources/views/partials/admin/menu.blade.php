@@ -124,6 +124,34 @@
             </li>
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
+                    <i class="bx bx-collection"></i>
+                    <span>کالکشن ها</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+
+
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center font-13" href="{{ route('admin.collection.create') }}"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            ایجاد کالکشن
+                        </a>
+                    </li>
+
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center font-13" href="{{ route('admin.collection.index') }}"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt"></i>
+                            لیست کالکشن ها
+                        </a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li class="dropdown nav-item" data-menu="dropdown">
+                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
                     <i class="bx bx-money"></i>
                     <span>سفارشات</span>
                 </a>

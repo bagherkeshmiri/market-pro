@@ -3,6 +3,8 @@
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\MainMenuController;
 use App\Http\Controllers\admin\ProductController;
+use App\Livewire\Admin\Collection\CreateCollection;
+use App\Livewire\Admin\Collection\ListCollection;
 use App\Livewire\Admin\Product\CreateProduct;
 use App\Livewire\Admin\Product\ListProduct;
 use App\Livewire\Admin\Product\ShowProduct;
@@ -85,6 +87,16 @@ Route::prefix('dashboard')
                 Route::get('/show/{product}', ShowProduct::class)->name('show');
                 Route::get('/delete/{product}', [ProductController::class, 'delete'])->name('delete');
             });
+
+
+        Route::name('collection.')
+            ->prefix('collection')
+            ->group(function () {
+                Route::get('/', ListCollection::class)->name('index');
+                Route::get('/create', CreateCollection::class)->name('create');
+//                Route::get('/show/{collection}', ShowProduct::class)->name('show');
+            });
+
 
 //        Route::name('menu.')
 //            ->prefix('menu')

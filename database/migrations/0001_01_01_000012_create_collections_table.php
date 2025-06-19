@@ -15,12 +15,21 @@ return new class extends Migration {
             $table->unsignedTinyInteger('sort')->nullable();
             $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
-            $table->softDeletes();
+        });
+
+
+        Schema::create('collection_products', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('collection_id')->index();
+            $table->unsignedBigInteger('product_id')->index();
+            $table->unsignedTinyInteger('sort')->nullable();
+            $table->timestamps();
         });
     }
 
     public function down(): void
     {
+        Schema::dropIfExists('collection_products');
         Schema::dropIfExists('collections');
     }
 };

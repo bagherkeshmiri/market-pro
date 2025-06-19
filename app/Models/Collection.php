@@ -70,6 +70,11 @@ class Collection extends Eloquent
         });
     }
 
+    public function getJalaliCreatedAtAttribute(): string
+    {
+        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
+    }
+
     public function getTypeLabelAttribute(): string
     {
         return $this->type->label();
@@ -80,10 +85,17 @@ class Collection extends Eloquent
         return $this->type->badgeClass();
     }
 
-    public function getJalaliCreatedAtAttribute(): string
+
+    public function getIsActiveLabelAttribute(): string
     {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
+        return $this->is_active->label();
     }
+
+    public function getIsActiveBadgeClassAttribute(): string
+    {
+        return $this->is_active->badgeClass();
+    }
+
 
 
     /*------------ Relations ------------*/
