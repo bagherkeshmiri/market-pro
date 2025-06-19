@@ -85,7 +85,6 @@ class Collection extends Eloquent
         return $this->type->badgeClass();
     }
 
-
     public function getIsActiveLabelAttribute(): string
     {
         return $this->is_active->label();
@@ -95,8 +94,6 @@ class Collection extends Eloquent
     {
         return $this->is_active->badgeClass();
     }
-
-
 
     /*------------ Relations ------------*/
 

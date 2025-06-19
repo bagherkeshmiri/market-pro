@@ -6,6 +6,7 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
+use Morilog\Jalali\Jalalian;
 
 
 /**
@@ -53,6 +54,11 @@ class ProductImage extends Eloquent
         static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
             $builder->orderByDesc('id');
         });
+    }
+
+    public function getJalaliCreatedAtAttribute(): string
+    {
+        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
     /*------------ Relations ------------*/

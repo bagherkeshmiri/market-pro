@@ -97,6 +97,11 @@ class Product extends Eloquent
         });
     }
 
+    public function getJalaliCreatedAtAttribute(): string
+    {
+        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
+    }
+
     public function getStatusLabelAttribute(): string
     {
         return $this->status->label();
@@ -137,11 +142,6 @@ class Product extends Eloquent
         }
 
         return 0;
-    }
-
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
     public function getDiscountTypeLabelAttribute(): string

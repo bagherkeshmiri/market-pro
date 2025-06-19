@@ -62,7 +62,6 @@ class CollectionProduct extends Eloquent
         return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
-
     /*------------ Relations ------------*/
 
     public function collection(): BelongsTo
@@ -74,7 +73,6 @@ class CollectionProduct extends Eloquent
     {
         return $this->belongsTo(Product::class, self::COLUMN_PRODUCT_ID, Product::COLUMN_ID);
     }
-
 
     /*-------------- Scopes -------------*/
 

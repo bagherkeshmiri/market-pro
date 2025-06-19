@@ -83,6 +83,11 @@ class User extends Authenticatable
         });
     }
 
+    public function getJalaliCreatedAtAttribute(): string
+    {
+        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
+    }
+
     public function getTypeLabelAttribute(): string
     {
         return $this->type->label();
@@ -91,11 +96,6 @@ class User extends Authenticatable
     public function getStatusBadgeClassAttribute(): string
     {
         return $this->type->badgeClass();
-    }
-
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
     /*------------ Relations ------------*/

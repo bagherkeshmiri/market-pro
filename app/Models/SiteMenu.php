@@ -6,10 +6,11 @@ use App\Enums\IsActive;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
+use Morilog\Jalali\Jalalian;
 
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int|null $parent_id
@@ -53,6 +54,11 @@ class SiteMenu extends Eloquent
         static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
             $builder->orderByDesc('id');
         });
+    }
+
+    public function getJalaliCreatedAtAttribute(): string
+    {
+        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
     /*------------ Relations ------------*/

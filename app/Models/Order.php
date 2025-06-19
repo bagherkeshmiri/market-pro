@@ -63,6 +63,11 @@ class Order extends Eloquent
         });
     }
 
+    public function getJalaliCreatedAtAttribute(): string
+    {
+        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
+    }
+
     public function getStatusLabelAttribute(): string
     {
         return $this->status->label();
@@ -71,11 +76,6 @@ class Order extends Eloquent
     public function getStatusBadgeClassAttribute(): string
     {
         return $this->status->badgeClass();
-    }
-
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
     /*------------ Relations ------------*/
