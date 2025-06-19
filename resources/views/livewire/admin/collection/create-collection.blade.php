@@ -55,7 +55,7 @@
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
-                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'limitation' , 'content' => ' تعداد محتوا'] )
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'limitation' , 'content' => ' تعداد آیتم ها'] )
                                                         @include('frest-components.required-tag')
                                                         @include('frest-components.input',[ 'type' => 'number' , 'wire' => 'limitation' , 'classes' => 'text-left' , 'id' => 'limitation' , 'dir' => 'ltr' , 'icon' => packageIcon() , 'attributes' => 'required'])
                                                         @include('frest-components.small-tag-error',[ 'name' => 'limitation' ])

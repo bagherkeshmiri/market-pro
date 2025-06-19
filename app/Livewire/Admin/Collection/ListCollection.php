@@ -10,7 +10,7 @@ class ListCollection extends AdminComponent
     public function render()
     {
         $pageTitle = 'لیست  کالکشن ها';
-        $tableHeads = ['نام', 'نوع', 'وضعیت', 'تعداد', ' مرتب سازی','تاریخ ایجاد', 'عملیات'];
+        $tableHeads = ['نام', 'نوع', 'وضعیت', 'تعداد آیتم ها', ' مرتب سازی','تاریخ ایجاد', 'عملیات'];
         $collections = Collection::paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.collection.list-collection',
