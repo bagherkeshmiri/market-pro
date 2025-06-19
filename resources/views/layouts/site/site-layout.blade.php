@@ -19,21 +19,20 @@
     </svg>
 </div>
 
-<script src="{{ asset('js/site/jquery.min.js') }}"></script>
-<script src="{{ asset('js/site/jquery-migrate-3.0.1.min.js') }}"></script>
-<script src="{{ asset('js/site/popper.min.js') }}"></script>
-<script src="{{ asset('js/site/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/site/jquery.easing.1.3.js') }}"></script>
-<script src="{{ asset('js/site/jquery.waypoints.min.js') }}"></script>
-<script src="{{ asset('js/site/jquery.stellar.min.js') }}"></script>
-<script src="{{ asset('js/site/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('js/site/jquery.magnific-popup.min.js') }}"></script>
-<script src="{{ asset('js/site/aos.js') }}"></script>
-<script src="{{ asset('js/site/jquery.animateNumber.min.js') }}"></script>
-<script src="{{ asset('js/site/bootstrap-datepicker.js') }}"></script>
-<script src="{{ asset('js/site/scrollax.min.js') }}"></script>
-<script src="{{ asset('js/site/main.js') }}"></script>
-
+<script type="text/javascript" src="{{ asset('js/site/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/jquery-migrate-3.0.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/popper.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/jquery.easing.1.3.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/jquery.waypoints.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/jquery.stellar.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/owl.carousel.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/jquery.magnific-popup.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/aos.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/jquery.animateNumber.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/bootstrap-datepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/scrollax.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/main.js') }}"></script>
 
 @yield('scripts')
 @livewireScripts
