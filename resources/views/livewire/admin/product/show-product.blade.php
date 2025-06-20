@@ -13,7 +13,7 @@
             <section id="multiple-column-form">
                 <div class="row match-height">
                     <div class="col-10">
-                        <div class="card">
+                        <div class="card border">
                             <div class="card-content">
                                 <div class="card-body">
 

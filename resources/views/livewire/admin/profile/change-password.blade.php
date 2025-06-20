@@ -21,7 +21,7 @@
             <section class="page-user-profile">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card border">
                             <div class="card-content">
                                 <div class="user-profile-images">
                                     <img src="{{ asset('images/frest/profile-banner.jpg') }}"
@@ -60,7 +60,7 @@
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="password" aria-labelledby="password-tab"
                                          role="tabpanel">
-                                        <div class="card">
+                                        <div class="card border">
                                             <div class="card-content">
                                                 <div class="card-body">
 
