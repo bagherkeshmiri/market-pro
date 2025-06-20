@@ -41,13 +41,16 @@
                                             <a class="nav-link d-flex px-1 active align-items-center" id="main-tab"
                                                data-toggle="tab" href="#main" aria-controls="main" role="tab"
                                                aria-selected="true"><i class="bx bx-home"></i><span
-                                                        class="d-none d-md-block">اصلی</span></a>
+                                                    class="d-none d-md-block">اصلی</span></a>
                                         </li>
                                         <li class="nav-item pb-0">
                                             <a class="nav-link d-flex px-1 align-items-center" id="password-tab"
                                                href="{{ route('admin.profile.change-password') }}">
-                                                <i class="bx bx-lock"></i><span
-                                                        class="d-none d-md-block">تغییر رمز عبور</span></a>
+                                                <i class="bx bx-lock text-white"></i>
+                                                <span class="d-none d-md-block text-white">
+                                                    تغییر رمز عبور
+                                                </span>
+                                            </a>
                                         </li>
 
                                     </ul>
@@ -65,33 +68,33 @@
                                             <div class="card border">
                                                 <div class="card-content">
                                                     <div class="card-body">
-                                                        <h5 class="card-title">اطلاعات کامل</h5>
+                                                        <h5 class="card-title text-white">اطلاعات کامل</h5>
                                                         <div class="row">
                                                             <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                                                                <h6 class="mb-0"><small class="text-muted"> نام
+                                                                <h6 class="mb-0"><small class="text-white"> نام
                                                                     </small></h6>
-                                                                <p><span class="ltr-text">{{ $admin->name }}</span>
+                                                                <p><span class="ltr-text text-white">{{ $admin->name }}</span>
                                                                 </p>
                                                             </div>
                                                             <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                                                                <h6 class="mb-0"><small class="text-muted">ایمیل
+                                                                <h6 class="mb-0"><small class="text-white">ایمیل
                                                                     </small></h6>
-                                                                <p><span class="ltr-text">{{ $admin->email }}</span>
+                                                                <p><span class="ltr-text text-white">{{ $admin->email }}</span>
                                                                 </p>
                                                             </div>
 
                                                             <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                                                                <h6 class="mb-0"><small class="text-muted">تاریخ ثبت
+                                                                <h6 class="mb-0"><small class="text-white">تاریخ ثبت
                                                                         نام</small>
                                                                 </h6>
                                                                 <p><span
-                                                                            class="ltr-text">{{ $admin->jalali_created_at }}</span>
+                                                                        class="ltr-text text-white">{{ $admin->jalali_created_at }}</span>
                                                                 </p>
                                                             </div>
                                                             <div class="col-12">
                                                                 <h6 class="mb-0"><small
-                                                                            class="text-muted">بیوگرافی</small></h6>
-                                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                                                        class="text-white">بیوگرافی</small></h6>
+                                                                <p class="text-white">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
                                                                     چاپ و با استفاده از طراحان گرافیک است. چاپگرها و
                                                                     متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم
                                                                     است و برای شرایط فعلی تکنولوژی مورد نیاز و

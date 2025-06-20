@@ -40,8 +40,8 @@
                                         <li class="nav-item pb-0">
                                             <a class="nav-link d-flex px-1 align-items-center" id="main-tab"
                                                href="{{ route('admin.profile.index') }}">
-                                                <i class="bx bx-home"></i><span
-                                                    class="d-none d-md-block">اصلی</span></a>
+                                                <i class="bx bx-home text-white"></i><span
+                                                    class="d-none d-md-block text-white">اصلی</span></a>
                                         </li>
                                         <li class="nav-item pb-0">
                                             <a class=" nav-link d-flex px-1 active align-items-center" id="password-tab"
