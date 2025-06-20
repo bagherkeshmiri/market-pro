@@ -25,9 +25,7 @@
             @endisset
 
         >
-        <label @isset($label_classes)
-                   {{$label_classes}}
-               @endisset
+        <label class="text-white"
 
                for="{{ $for }}"
         >

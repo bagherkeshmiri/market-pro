@@ -26,7 +26,7 @@
                                             <thead>
                                             <tr>
                                                 @foreach($tableHeads as $tableHead)
-                                                    <th>{{ $tableHead }}</th>
+                                                    <th class="text-white">{{ $tableHead }}</th>
                                                 @endforeach
                                             </tr>
                                             </thead>
@@ -34,8 +34,8 @@
 
                                             @forelse ($users as $user)
                                                 <tr>
-                                                    <td>{{ $user->name }}</td>
-                                                    <td>{{ $user->email }}</td>
+                                                    <td class="text-white">{{ $user->name }}</td>
+                                                    <td class="text-white">{{ $user->email }}</td>
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => 'bg-rgba-danger text-danger',  'content' => $user->role->fa_name ])
                                                     </td>
@@ -49,7 +49,7 @@
                                                             @endforeach
                                                         </td>
                                                     @endif
-                                                    <td>{{ $user->jalali_created_at }}</td>
+                                                    <td class="text-white">{{ $user->jalali_created_at }}</td>
                                                     <td>
                                                         @include('frest-components.icon-btn',[  'href' => route('admin.user.show',[ 'admin' => $user->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                         @if($user->id != $mainAdminId)
