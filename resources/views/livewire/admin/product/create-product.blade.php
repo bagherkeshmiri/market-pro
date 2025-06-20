@@ -29,7 +29,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام '] )
                                                         @include('frest-components.required-tag')
                                                         @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'name' , 'classes' => 'text-left' , 'id' => 'name' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'name' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'name' ])
                                                     </div>
                                                 </div>
 
@@ -38,7 +38,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'categoryId' , 'content' => 'دسته محصول'] )
                                                         @include('frest-components.required-tag')
                                                         @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'categoryId' , 'wire' => 'categoryId'  ,'attributes' => 'required', 'defaultOption' => true , 'defaultValue' => true])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'categoryId' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'categoryId' ])
                                                     </div>
                                                 </div>
 
@@ -48,7 +48,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'status' , 'content' => 'وضعیت'] )
                                                         @include('frest-components.required-tag')
                                                         @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'status' , 'wire' => 'status'  ,'attributes' => 'required', 'defaultOption' => true , 'defaultValue' => true])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'status' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'status' ])
                                                     </div>
                                                 </div>
 
@@ -57,7 +57,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'price' , 'content' => 'قیمت ( تومان )'] )
                                                         @include('frest-components.required-tag')
                                                         @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'price' , 'classes' => 'text-left' , 'id' => 'price' , 'dir' => 'ltr' , 'icon' => dollarIcon() , 'attributes' => 'required' , 'isPriceInput' => true])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'price' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'price' ])
                                                     </div>
                                                 </div>
 
@@ -66,7 +66,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'stock' , 'content' => ' تعداد موجودی'] )
                                                         @include('frest-components.required-tag')
                                                         @include('frest-components.input',[ 'type' => 'number' , 'wire' => 'stock' , 'classes' => 'text-left' , 'id' => 'stock' , 'dir' => 'ltr' , 'icon' => packageIcon() , 'attributes' => 'required'])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'stock' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'stock' ])
                                                     </div>
                                                 </div>
 
@@ -74,7 +74,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'discountType' , 'content' => 'نوع تخفیف'] )
                                                         @include('frest-components.simple-selectbox',[ 'data' => $discountTypes , 'id' => 'discountType' , 'wire' => 'discountType', 'defaultOption' => true , 'defaultValue' => true])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'discountType' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'discountType' ])
                                                     </div>
                                                 </div>
 
@@ -83,7 +83,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'discount' , 'content' => ' تخفیف '] )
                                                         @include('frest-components.input',[ 'type' => 'number' , 'wire' => 'discount' , 'classes' => 'text-left' , 'id' => 'discount' , 'dir' => 'ltr' , 'icon' => dollarIcon()])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'discount' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'discount' ])
                                                     </div>
                                                 </div>
 
@@ -92,7 +92,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'mainImage' , 'content' => 'آپلود تصویر اصلی'] )
                                                         @include('frest-components.required-tag')
                                                         @include('frest-components.simple-file-upload', ['wire' => 'mainImage' , 'id' => 'mainImage'])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'mainImage' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'mainImage' ])
                                                     </div>
                                                 </div>
 
@@ -101,7 +101,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'galleryImages' , 'content' => 'آپلود گالری تصاویر '] )
                                                         @include('frest-components.simple-file-upload', ['wire' => 'galleryImages' , 'id' => 'galleryImages' , 'isMultiple' => true])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'galleryImages' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'galleryImages' ])
                                                     </div>
                                                 </div>
 

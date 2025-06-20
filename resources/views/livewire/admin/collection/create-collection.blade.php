@@ -29,7 +29,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام '] )
                                                         @include('frest-components.required-tag')
                                                         @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'title' , 'classes' => 'text-left' , 'id' => 'title' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'title' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'title' ])
                                                     </div>
                                                 </div>
 
@@ -38,7 +38,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'isActive' , 'content' => 'وضعیت'] )
                                                         @include('frest-components.required-tag')
                                                         @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'isActive' , 'wire' => 'isActive'  ,'attributes' => 'required', 'defaultOption' => true , 'defaultValue' => true])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'isActive' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'isActive' ])
                                                     </div>
                                                 </div>
 
@@ -48,7 +48,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'type' , 'content' => 'نوع'] )
                                                         @include('frest-components.required-tag')
                                                         @include('frest-components.simple-selectbox',[ 'data' => $types , 'id' => 'type' , 'wire' => 'type'  ,'attributes' => 'required', 'defaultOption' => true , 'defaultValue' => true])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'type' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'type' ])
                                                     </div>
                                                 </div>
 
@@ -58,7 +58,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'limitation' , 'content' => ' تعداد آیتم ها'] )
                                                         @include('frest-components.required-tag')
                                                         @include('frest-components.input',[ 'type' => 'number' , 'wire' => 'limitation' , 'classes' => 'text-left' , 'id' => 'limitation' , 'dir' => 'ltr' , 'icon' => packageIcon() , 'attributes' => 'required'])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'limitation' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'limitation' ])
                                                     </div>
                                                 </div>
 
@@ -73,35 +73,20 @@
                                                                     @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'category' , 'content' => 'دسته بندی'] )
                                                                     @include('frest-components.required-tag')
                                                                     @include('frest-components.simple-selectbox',[ 'data' => $categories , 'id' => 'category' , 'wire' => 'category'  ,'attributes' => 'required', 'defaultOption' => true , 'defaultValue' => true , 'isLazy' => true])
-                                                                    @include('frest-components.small-tag-error',[ 'name' => 'category' ])
+                                                                    @include('frest-components.validation-error',[ 'name' => 'category' ])
+                                                                    @include('frest-components.small-tag',['classes' =>  'text-warning' , 'message' => 'جهت نمایش محصولات یک دسته را انتخاب کنید'])
                                                                 </div>
                                                             </div>
 
+                                                            @include('frest-components.text-divider',['dividerClass'=>'divider-warning','title' => ' لیست محصولات '  . $selectedCategory ?? '', 'classes' => 'mt-2'])
+                                                            @forelse($categoryProducts as $categoryProduct)
+                                                                @include('frest-components.simple-chip',['content' => $categoryProduct->name])
 
-                                                            @include('frest-components.text-divider',['dividerClass'=>'divider-warning','title' => ' لیست محصولات'])
-
-
-{{--                                                            @forelse($categoryProducts as $categoryProduct)--}}
-{{--                                                                @include('frest-components.simple-chip',['content' => $categoryProduct->name])--}}
-{{--                                                            @empty--}}
-{{--                                                                <div class="chip mr-1">--}}
-{{--                                                                    <div class="chip-body">--}}
-{{--                                                                        --}}{{--                                                                    <span class="chip-text"> {{ $category?->id ?? '' }}</span>--}}
-{{--                                                                        <span class="chip-text"> محصولی یافت نشد</span>--}}
-{{--                                                                    </div>--}}
-{{--                                                                </div>--}}
-{{--                                                            @endforelse--}}
-
-
-                                                            @include('frest-components.text-divider',['dividerClass'=>'divider-danger','title' => '  محصولات انتخاب شده در کالکشن'])
-
-                                                            <div class="chip mr-1">
-                                                                <div class="chip-body">
-                                                                    {{--                                                                    <span class="chip-text"> {{ $category?->id ?? '' }}</span>--}}
-                                                                    <span class="chip-text"> تست</span>
-                                                                </div>
-                                                            </div>
-
+                                                            @empty
+                                                                @include('frest-components.simple-chip',['content' => __('global.no_information_found')])
+                                                            @endforelse
+                                                            @include('frest-components.text-divider',['dividerClass'=>'divider-danger','title' => ' محصولات انتخاب شده در کالکشن', 'classes' => 'mt-2'])
+                                                            @include('frest-components.simple-chip',['content' => __('global.no_selected_product')])
 
                                                         </div>
                                                     </div>

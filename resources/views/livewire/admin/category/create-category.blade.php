@@ -29,7 +29,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام '] )
                                                         @include('frest-components.required-tag')
                                                         @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'name' , 'classes' => 'text-left' , 'id' => 'name' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'name' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'name' ])
                                                     </div>
                                                 </div>
 
@@ -37,7 +37,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'parentId' , 'content' => 'دسته پدر'] )
                                                         @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'parentId' , 'wire' => 'parentId'  , 'defaultOption' => true , 'defaultValue' => true])
-                                                        @include('frest-components.small-tag-error',[ 'name' => 'parentId' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'parentId' ])
                                                     </div>
                                                 </div>
 

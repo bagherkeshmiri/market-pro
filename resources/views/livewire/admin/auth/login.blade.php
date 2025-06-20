@@ -51,7 +51,7 @@
                             'icon' => emailIcon(),
                             'attributes' => 'required',
                         ])
-                        @include('frest-components.small-tag-error', ['name' => 'email'])
+                        @include('frest-components.validation-error', ['name' => 'email'])
                     </div>
 
                     <div class="form-group">
@@ -70,7 +70,7 @@
                             'icon' => lockIcon(),
                             'attributes' => 'required',
                         ])
-                        @include('frest-components.small-tag-error', ['name' => 'password'])
+                        @include('frest-components.validation-error', ['name' => 'password'])
                     </div>
 
                     <div class="form-group d-flex flex-md-row flex-column justify-content-between align-items-center">

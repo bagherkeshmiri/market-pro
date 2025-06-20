@@ -29,4 +29,5 @@ return [
     'banner' => 'بنر',
     'slider' => 'اسلایدر',
     'box' => 'جعبه',
+    'no_selected_product' => 'مصحولی انتخاب نشده است',
 ];

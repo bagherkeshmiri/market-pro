@@ -42,16 +42,16 @@ class CreateCollection extends AdminComponent
             $this->categoryProducts = Product::whereCategoryId($this->category)
                 ->select(['id', 'name'])
                 ->get();
+        } else {
+            $this->categoryProducts = [];
         }
 
-//        $categoryProducts = $this->categoryProducts ?? [];
-
-
+        $categoryProducts = $this->categoryProducts;
+        $selectedCategory = $categories->search($this->category);
 
         return $this->renderView(
             'livewire.admin.collection.create-collection',
-//            compact('pageTitle', 'statuses', 'types', 'categories', 'categoryProducts')
-            compact('pageTitle', 'statuses', 'types', 'categories')
+            compact('pageTitle', 'statuses', 'types', 'categories', 'categoryProducts', 'selectedCategory')
         );
     }
 
