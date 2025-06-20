@@ -40,18 +40,18 @@
                                                     <td data-toggle="tooltip" data-placement="top" title="  برای نمایش تصویر روی آن کلیک کنید">
                                                         <img data-toggle="modal" data-target="#{{ $modalId }}" src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" alt="product-image-{{ $product->id }}" width="40" height="40"/>
                                                     </td>
-                                                    <td>{{ $product->name }}</td>
-                                                    <td>{{ $product->category->name ?? ' - ' }}</td>
+                                                    <td class="text-white">{{ $product->name }}</td>
+                                                    <td class="text-white">{{ $product->category->name ?? ' - ' }}</td>
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $product->status_badge_class,  'content' => $product->status_label ])
                                                     </td>
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $product->discount_type_badge_class,  'content' => $product->discount_type_label ])
                                                     </td>
-                                                    <td>{{ $product->formatted_price }}</td>
-                                                    <td>{{ $product->formatted_discount }}</td>
-                                                    <td>{{ $product->formatted_final_price }}</td>
-                                                    <td>{{ $product->stock }}</td>
+                                                    <td class="text-white">{{ $product->formatted_price }}</td>
+                                                    <td class="text-white">{{ $product->formatted_discount }}</td>
+                                                    <td class="text-white">{{ $product->formatted_final_price }}</td>
+                                                    <td class="text-white">{{ $product->stock }}</td>
                                                     <td>
                                                         @include('frest-components.icon-btn',[  'href' => route('admin.product.show',[ 'product' => $product->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                         @include('frest-components.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=product_delete(this,event)  data-url='.route('admin.product.delete',[ 'product' => $product->id ]) ])

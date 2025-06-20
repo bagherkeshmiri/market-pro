@@ -33,16 +33,16 @@
                                             @forelse ($collections as $collection)
 
                                                 <tr>
-                                                    <td>{{ $collection->title }}</td>
+                                                    <td class="text-white">{{ $collection->title }}</td>
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $collection->type_badge_class,  'content' => $collection->type_label ])
                                                     </td>
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $collection->is_active_badge_class,  'content' => $collection->is_active_label ])
                                                     </td>
-                                                    <td>{{ $collection->limitation }}</td>
-                                                    <td>{{ $collection->sort }}</td>
-                                                    <td>{{ $collection->jalali_created_at }}</td>
+                                                    <td class="text-white">{{ $collection->limitation }}</td>
+                                                    <td class="text-white">{{ $collection->sort }}</td>
+                                                    <td class="text-white">{{ $collection->jalali_created_at }}</td>
                                                     <td>
                                                         @include('frest-components.icon-btn',[  'href' => route('admin.product.show',[ 'product' => $collection->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                     </td>

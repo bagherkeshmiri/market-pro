@@ -31,14 +31,14 @@
 
                                             @forelse ($roles as $role)
                                                 <tr>
-                                                    <td>{{ $role->fa_name }}</td>
-                                                    <td>{{ $role->en_name }}</td>
+                                                    <td class="text-white">{{ $role->fa_name }}</td>
+                                                    <td class="text-white">{{ $role->en_name }}</td>
                                                     <td>
                                                         @foreach($role->permissions as $permission )
                                                             @include('frest-components.badge' , ['badgeClass' => 'bg-rgba-danger text-danger', 'content' => $permission->fa_name ])
                                                         @endforeach
                                                     </td>
-                                                    <td>{{ $role->jalali_created_at }}</td>
+                                                    <td class="text-white">{{ $role->jalali_created_at }}</td>
                                                     <td>
                                                         @include('frest-components.icon-btn',[  'href' => route('admin.role.show',[ 'role' => $role->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                         @if($role->id !== $mainRoleId)
