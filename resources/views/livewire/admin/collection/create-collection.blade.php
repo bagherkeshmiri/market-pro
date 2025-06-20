@@ -78,7 +78,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            @include('frest-components.text-divider',['dividerClass'=>'divider-warning','title' => ' لیست محصولات '  . $selectedCategory ?? '', 'classes' => 'mt-2'])
+                                                            @include('frest-components.text-divider',['dividerClass'=>'divider-warning','title' => ' لیست محصولات دسته بندی '  . $selectedCategory ?? '', 'classes' => 'mt-2'])
                                                             @forelse($categoryProducts as $categoryProduct)
                                                                 @include('frest-components.simple-chip',['content' => $categoryProduct->name])
 

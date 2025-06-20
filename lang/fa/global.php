@@ -14,7 +14,7 @@ return [
     'active' => 'فعال',
     'in_active' => 'غیرفعال',
     'delete' => 'حذف',
-    'no_information_found' => 'هیچ اطلاعاتی یافت نشد',
+    'no_information_found' => ' اطلاعاتی یافت نشد',
     'exist' => 'موجود',
     'not_exist' => 'ناموجود',
     'pending' => 'در انتظار',
@@ -29,5 +29,5 @@ return [
     'banner' => 'بنر',
     'slider' => 'اسلایدر',
     'box' => 'جعبه',
-    'no_selected_product' => 'مصحولی انتخاب نشده است',
+    'no_selected_product' => 'محصولی انتخاب نشده است',
 ];
