@@ -2,47 +2,47 @@
 
 function timerIcon(): string
 {
-    return '<i class="bx bx-timer"></i>';
+    return '<i class="bx bx-timer text-white"></i>';
 }
 
 function linkIcon(): string
 {
-    return '<i class="bx bx-link"></i>';
+    return '<i class="bx bx-link  text-white"></i>';
 }
 
 function userIcon(): string
 {
-    return '<i class="bx bx-user"></i>';
+    return '<i class="bx bx-user  text-white"></i>';
 }
 
 function emailIcon(): string
 {
-    return '<i class="bx bx-mail-send"></i>';
+    return '<i class="bx bx-mail-send  text-white"></i>';
 }
 
 function arrowIcon(): string
 {
-    return '<i id="icon-arrow" class="bx bx-left-arrow-alt"></i>';
+    return '<i id="icon-arrow" class="bx bx-left-arrow-alt  text-white"></i>';
 }
 
 function lockIcon(): string
 {
-    return '<i class="bx bxs-lock"></i>';
+    return '<i class="bx bxs-lock text-white"></i>';
 }
 
 function mobileIcon(): string
 {
-    return '<i class="bx bx-mobile"></i>';
+    return '<i class="bx bx-mobile text-white"></i>';
 }
 
 function saveIcon(): string
 {
-    return '<i id="icon-arrow" class="bx bx-save"></i>';
+    return '<i id="icon-arrow text-white" class="bx bx-save"></i>';
 }
 
 function titleIcon(): string
 {
-    return '<i id="bx-text" class="bx bx-text"></i>';
+    return '<i id="bx-text" class="bx bx-text text-white"></i>';
 }
 
 function warningPencilIcon(): string
@@ -74,16 +74,16 @@ function copyIcon(): string
 
 function dollarIcon(): string
 {
-    return '<i class="bx bx-dollar"></i>';
+    return '<i class="bx bx-dollar text-white"></i>';
 }
 
 
 function packageIcon(): string
 {
-    return '<i class="bx bx-package"></i>';
+    return '<i class="bx bx-package text-white"></i>';
 }
 
 function starIcon(): string
 {
-    return '<i class="bx bx-star"></i>';
+    return '<i class="bx bx-star text-white"></i>';
 }
