@@ -96,12 +96,12 @@
                             </span>
                         </a>
                                                 <div class="dropdown-menu pb-0">
-                                                    <a class="dropdown-item" href="{{ route('admin.profile.index') }}">
+                                                    <a class="dropdown-item text-white" href="{{ route('admin.profile.index') }}">
                                                         <i class="bx bx-user mr-50"></i>
                                                          پروفایل
                                                     </a>
                                                     <div class="dropdown-divider mb-0"></div>
-                                                    <a class="dropdown-item" href="{{ route('admin.logout') }}">
+                                                    <a class="dropdown-item text-white" href="{{ route('admin.logout') }}">
                                                         <i class="bx bx-power-off mr-50"></i>
                                                         خروج
                                                     </a>
