@@ -18,9 +18,9 @@ enum ProductStatus: int
     public function badgeClass(): string
     {
         return match ($this) {
-            self::Exist => 'badge-success',
-            self::NotExist => 'badge-danger',
-            default => 'badge-secondary',
+            self::Exist => 'bg-rgba-success text-success',
+            self::NotExist => 'bg-rgba-danger text-danger',
+            default => 'bg-rgba-primary text-primary',
         };
     }
 }

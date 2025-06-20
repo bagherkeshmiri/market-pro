@@ -13,7 +13,7 @@
                 <div class="row">
                     @foreach($widgetsStatistics as $widgetsStatistic)
                         <div class="col-xl-2 col-md-4 col-sm-6">
-                            <div class="card text-center">
+                            <div class="card border text-center">
                                 <div class="card-content">
                                     <div class="card-body" style="padding:0.5rem !important;">
                                         <div class="badge-circle badge-circle-lg {{ $widgetsStatistic[1] }} mx-auto my-1">

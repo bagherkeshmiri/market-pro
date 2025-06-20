@@ -22,10 +22,10 @@ enum CollectionType: int
     public function badgeClass(): string
     {
         return match ($this) {
-            self::Banner => 'badge-danger',
-            self::Slider => 'badge-success',
-            self::Box => 'badge-warning',
-            default => 'badge-secondary',
+            self::Banner => 'bg-rgba-danger text-danger',
+            self::Slider => 'bg-rgba-success text-success',
+            self::Box => 'bg-rgba-warning text-warning',
+            default => 'bg-rgba-primary text-primary',
         };
     }
 }

@@ -18,8 +18,8 @@ enum UserType: int
     public function badgeClass(): string
     {
         return match ($this) {
-            self::User => 'badge-info',
-            default => 'badge-secondary',
+            self::User => 'bg-rgba-info text-info',
+            default => 'bg-rgba-primary text-primary',
         };
     }
 }

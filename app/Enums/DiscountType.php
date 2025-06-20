@@ -18,8 +18,8 @@ enum DiscountType: int
     public function badgeClass(): string
     {
         return match ($this) {
-            self::Percent => 'badge-info',
-            default => 'badge-secondary',
+            self::Percent => 'bg-rgba-info text-info',
+            default => 'bg-rgba-primary text-primary',
         };
     }
 }

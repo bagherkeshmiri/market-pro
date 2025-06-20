@@ -35,7 +35,7 @@
                                                     <td>{{ $role->en_name }}</td>
                                                     <td>
                                                         @foreach($role->permissions as $permission )
-                                                            @include('frest-components.badge' , ['badgeClass' => 'badge-danger', 'content' => $permission->fa_name ])
+                                                            @include('frest-components.badge' , ['badgeClass' => 'bg-rgba-danger text-danger', 'content' => $permission->fa_name ])
                                                         @endforeach
                                                     </td>
                                                     <td>{{ $role->jalali_created_at }}</td>

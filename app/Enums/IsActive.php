@@ -18,8 +18,8 @@ enum IsActive: int
     public function badgeClass(): string
     {
         return match ($this) {
-            self::No => 'badge-danger',
-            default => 'badge-success',
+            self::No => 'bg-rgba-danger text-danger',
+            default => 'bg-rgba-success text-success',
         };
     }
 }

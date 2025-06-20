@@ -36,9 +36,9 @@
                                                     <td>{{ $menu->value }}</td>
                                                     <td>
                                                         @if($menu->is_active == $active)
-                                                            @include('frest-components.badge' , [ 'badgeClass' => 'badge-success' ,'content' => __('global.active') ])
+                                                            @include('frest-components.badge' , [ 'badgeClass' => 'bg-rgba-success text-success' ,'content' => __('global.active') ])
                                                         @else
-                                                            @include('frest-components.badge' , ['badgeClass' => 'badge-danger' , 'content' => __('global.in_active') ])
+                                                            @include('frest-components.badge' , ['badgeClass' => 'bg-rgba-danger text-danger' , 'content' => __('global.in_active') ])
                                                         @endif
                                                     </td>
                                                     <td>{{ $menu->created_at }}</td>

@@ -22,10 +22,10 @@ enum OrderStatus: int
     public function badgeClass(): string
     {
         return match ($this) {
-            self::Pending => 'badge-warning',
-            self::Paid => 'badge-success',
-            self::Shipped => 'badge-info',
-            default => 'badge-danger',
+            self::Pending => 'bg-rgba-warning text-warning',
+            self::Paid => 'bg-rgba-success text-success',
+            self::Shipped => 'bg-rgba-info text-info',
+            default => 'bg-rgba-danger text-danger',
         };
     }
 }

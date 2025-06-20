@@ -11,10 +11,13 @@
     <div class="content-wrapper">
         <div class="content-body">
 
+
+            @include('frest-components.search')
+
             <section id="multiple-column-form">
-                <div class="row match-height">
+                <div class="row  match-height">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card ">
                             <div class="card-content">
                                 <div class="card-body">
 
@@ -34,15 +37,15 @@
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->email }}</td>
                                                     <td>
-                                                        @include('frest-components.badge' , [ 'badgeClass' => 'badge-danger',  'content' => $user->role->fa_name ])
+                                                        @include('frest-components.badge' , [ 'badgeClass' => 'bg-rgba-danger text-danger',  'content' => $user->role->fa_name ])
                                                     </td>
                                                     <td>
-                                                        @include('frest-components.badge' , [ 'badgeClass' => 'badge-success',  'content' => $user->type_label ])
+                                                        @include('frest-components.badge' , [ 'badgeClass' => 'bg-rgba-success text-success',  'content' => $user->type_label ])
                                                     </td>
                                                     @if($isAdmin)
                                                         <td>
                                                             @foreach($user->permissions as $permission)
-                                                                @include('frest-components.badge' , [ 'badgeClass' => 'badge-secondary',  'content' => $permission->fa_name ])
+                                                                @include('frest-components.badge' , [ 'badgeClass' => 'bg-rgba-primary text-primary',  'content' => $permission->fa_name ])
                                                             @endforeach
                                                         </td>
                                                     @endif
