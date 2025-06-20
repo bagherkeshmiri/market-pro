@@ -28,6 +28,7 @@
 <script src="{{ asset('js/frest/core/app.js') }}"></script>
 <script src="{{ asset('js/frest/scripts/components.js') }}"></script>
 <script src="{{ asset('js/frest/scripts/footer.js') }}"></script>
+<script src="{{ asset('js/frest/scripts/extensions/drag-drop.js') }}"></script>
 
 @yield('scripts')
 @livewireScripts

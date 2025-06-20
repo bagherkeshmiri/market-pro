@@ -5,6 +5,9 @@
         @endisset
 
         @isset($wire)
+            @isset($isLazy)
+                wire:model.lazy="{{$wire}}"
+           @endisset
             wire:model.defer="{{$wire}}"
         @endisset
 
@@ -20,7 +23,7 @@
 >
 
     @isset($defaultOption)
-        <option  @isset($defaultValue) @endisset> -- انتخاب کنید -- </option>
+        <option @isset($defaultValue) @endisset> -- انتخاب کنید --</option>
     @endisset
 
     @isset($data)

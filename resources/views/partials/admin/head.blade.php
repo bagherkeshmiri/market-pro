@@ -8,6 +8,8 @@
     <meta name="theme-color" content="#5A8DEE">
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/ck-editor.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/frest/vendors/vendors.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href=" {{ asset('css/frest/vendors/extensions/dragula.min.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/frest/vendors/ui/prism.min.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/frest/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/frest/bootstrap-extended.css') }}">
@@ -16,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/frest/themes/dark-layout.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/frest/themes/semi-dark-layout.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/frest/core/menu/menu-types/horizontal-menu.css') }}">
+    <link rel="stylesheet" type="text/css" href=" {{ asset('css/frest/plugins/extensions/drag-and-drop.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/global.css') }}">
 
     <style>

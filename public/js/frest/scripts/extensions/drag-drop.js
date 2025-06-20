@@ -1,29 +1,17 @@
-/*=========================================================================================
-    File Name: drag-drop.js
-    Description: drag & drop elements using dragula js
-==========================================================================================*/
-
-
 $(document).ready(function () {
 
-	// Draggable Cards
-	dragula([document.getElementById('card-drag-area')]);
+    dragula([document.getElementById('card-drag-area')]);
+    dragula([document.getElementById('basic-list-group')]);
+    dragula([document.getElementById('multiple-list-group-a'), document.getElementById('multiple-list-group-b')]);
 
-	// Sortable Lists
-	dragula([document.getElementById('basic-list-group')]);
-	dragula([document.getElementById('multiple-list-group-a'), document.getElementById('multiple-list-group-b')]);
+    dragula([document.getElementById('chips-list-1'), document.getElementById('chips-list-2')], {
+        copy: true
+    });
 
-	// Cloning
-	dragula([document.getElementById('chips-list-1'), document.getElementById('chips-list-2')], {
-		copy: true
-	});
-
-	// With Handles
-
-	dragula([document.getElementById("handle-list-1"), document.getElementById("handle-list-2")], {
-		moves: function (el, container, handle) {
-			return handle.classList.contains('handle');
-		}
-	});
+    dragula([document.getElementById("handle-list-1"), document.getElementById("handle-list-2")], {
+        moves: function (el, container, handle) {
+            return handle.classList.contains('handle');
+        }
+    });
 
 });
