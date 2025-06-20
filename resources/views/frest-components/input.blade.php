@@ -17,7 +17,7 @@
         @endisset
 
 
-        class="form-control @isset($classes)  {{$classes}} @endisset"
+        class="form-control  text-white @isset($classes)  {{$classes}} @endisset"
 
         @isset($placeholder)
             placeholder="{{ $placeholder }}"

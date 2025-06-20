@@ -1,7 +1,7 @@
 
 <label
     @isset($classes)
-        class="@isset($classes)  {{$classes}} @endisset"
+        class="text-white @isset($classes)  {{$classes}} @endisset"
     @endisset
 
     @isset($id)
