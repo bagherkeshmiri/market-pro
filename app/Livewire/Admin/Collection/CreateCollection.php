@@ -22,6 +22,7 @@ class CreateCollection extends AdminComponent
     public $isActive;
     public $category;
     public $categoryProducts;
+    public $selectedProducts = [];
 
     public function render()
     {
@@ -48,13 +49,22 @@ class CreateCollection extends AdminComponent
 
         $categoryProducts = $this->categoryProducts;
         $selectedCategory = $categories->search($this->category);
+        $selectedProducts = $this->selectedProducts;
+
 
         return $this->renderView(
             'livewire.admin.collection.create-collection',
-            compact('pageTitle', 'statuses', 'types', 'categories', 'categoryProducts', 'selectedCategory')
+            compact('pageTitle', 'statuses', 'types', 'categories', 'categoryProducts', 'selectedCategory', 'selectedProducts')
         );
     }
 
+
+    public function selectProduct($product): void
+    {
+        if (!in_array($product, $this->selectedProducts)) {
+            $this->selectedProducts[] = $product;
+        }
+    }
 
     /**
      * @throws Throwable

@@ -6,9 +6,12 @@
 
         @isset($wire)
             @isset($isLazy)
-                wire:model.lazy="{{$wire}}"
-           @endisset
-            wire:model.defer="{{$wire}}"
+                @if($isLazy)
+                    wire:model.lazy="{{$wire}}"
+                @else
+                    wire:model.defer="{{$wire}}"
+                @endif
+            @endisset
         @endisset
 
         @isset($id)

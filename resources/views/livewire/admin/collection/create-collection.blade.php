@@ -79,14 +79,62 @@
                                                             </div>
 
                                                             @include('frest-components.text-divider',['dividerClass'=>'divider-warning','title' => ' لیست محصولات دسته بندی '  . $selectedCategory ?? '', 'classes' => 'mt-2'])
-                                                            @forelse($categoryProducts as $categoryProduct)
-                                                                @include('frest-components.simple-chip',['content' => $categoryProduct->name])
 
-                                                            @empty
-                                                                @include('frest-components.simple-chip',['content' => __('global.no_information_found')])
-                                                            @endforelse
+                                                            <div class="col-12">
+                                                                @forelse($categoryProducts as $categoryProduct)
+                                                                    @include('frest-components.avatar-chip',['content' => $categoryProduct->name , 'avatarClass' => 'bg-success' , 'icon' => plusIcon() , 'wire' => "selectProduct('{$categoryProduct->id}')"])
+
+                                                                @empty
+                                                                    @include('frest-components.simple-chip',['content' => __('global.no_information_found') , 'id' => 'empty-chip'])
+
+                                                                @endforelse
+                                                            </div>
+
                                                             @include('frest-components.text-divider',['dividerClass'=>'divider-danger','title' => ' محصولات انتخاب شده در کالکشن', 'classes' => 'mt-2'])
-                                                            @include('frest-components.simple-chip',['content' => __('global.no_selected_product')])
+
+                                                            <div class="col-12">
+                                                                {{--                                                                @if(count($categoryProducts) > 0 )--}}
+                                                                {{--                                                                    @include('frest-components.avatar-chip',['content' =>  , 'avatarClass' => 'bg-danger' , 'icon' => minusIcon()])--}}
+                                                                {{--                                                                @else--}}
+                                                                {{--                                                                    @include('frest-components.simple-chip',['content' => __('global.no_selected_product')])--}}
+                                                                {{--                                                                @endif--}}
+
+
+
+
+                                                                {{--                                                                <div class="chip mr-1" >--}}
+                                                                {{--                                                                    <div class="chip-body">--}}
+                                                                {{--                                                                        <span class="chip-text">{{ $selectedProducts }}</span>--}}
+                                                                {{--                                                                    </div>--}}
+                                                                {{--                                                                </div>--}}
+
+
+                                                                <div class="chip mr-1">
+                                                                    <div class="chip-body">
+                                                                        <div class="avatar bg-warning"
+
+                                                                             wire:click="selectProduct('تست')"
+                                                                        >
+                                                                            <i class="bx bx-star text-white"></i>
+                                                                        </div>
+                                                                        <span class="chip-text" id="chip-id">تست</span>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <pre>{{ var_dump($selectedProducts) }}</pre>
+
+
+                                                                {{--                                                                @forelse($selectedProducts as $selectedProduct)--}}
+                                                                {{--                                                                    @include('frest-components.avatar-chip',['content' => $selectedProduct->name , 'avatarClass' => 'bg-success' , 'icon' => plusIcon()])--}}
+
+                                                                {{--                                                                @empty--}}
+                                                                {{--                                                                    @include('frest-components.simple-chip',['content' => __('global.no_selected_product')])--}}
+
+                                                                {{--                                                                @endforelse--}}
+
+
+                                                            </div>
 
                                                         </div>
                                                     </div>
@@ -105,6 +153,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </section>
 
