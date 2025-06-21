@@ -6,6 +6,7 @@ use App\Enums\CollectionType;
 use App\Enums\IsActive;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
@@ -97,9 +98,9 @@ class Collection extends Eloquent
 
     /*------------ Relations ------------*/
 
-    public function productCollection(): HasOne
+    public function productCollection(): HasMany
     {
-        return $this->hasOne(CollectionProduct::class, CollectionProduct::COLUMN_COLLECTION_ID, self::COLUMN_ID);
+        return $this->hasMany(CollectionProduct::class, CollectionProduct::COLUMN_COLLECTION_ID, self::COLUMN_ID);
     }
 
 

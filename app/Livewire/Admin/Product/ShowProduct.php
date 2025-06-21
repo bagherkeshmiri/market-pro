@@ -138,7 +138,7 @@ class ShowProduct extends AdminComponent
             DB::commit();
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.product.show', ['product' => $this->product->id]);
-        } catch (Exception $e) {
+        } catch (Exception) {
             DB::rollBack();
             session()->flash('error', __('global.error_message'));
             return redirect()->route('admin.product.create');
