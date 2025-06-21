@@ -87,3 +87,14 @@ function starIcon(): string
 {
     return '<i class="bx bx-star text-white"></i>';
 }
+
+
+function plusIcon(): string
+{
+    return '<i id="bx-plus" class="bx bx-plus text-white"></i>';
+}
+
+function minusIcon(): string
+{
+    return '<i id="bx-minus" class="bx bx-minus text-white"></i>';
+}

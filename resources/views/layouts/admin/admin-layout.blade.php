@@ -23,6 +23,7 @@
 <script src="{{ asset('js/frest/vendors/vendors.min.js') }}"></script>
 <script src="{{ asset('js/frest/vendors/ui/jquery.sticky.js') }}"></script>
 <script src="{{ asset('js/frest/vendors/ui/prism.min.js') }}"></script>
+<script src="{{ asset('js/frest/vendors/extensions/dragula.min.js') }}"></script>
 <script src="{{ asset('js/frest/scripts/configs/horizontal-menu.js') }}"></script>
 <script src="{{ asset('js/frest/core/app-menu.js') }}"></script>
 <script src="{{ asset('js/frest/core/app.js') }}"></script>

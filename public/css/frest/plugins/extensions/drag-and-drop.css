@@ -1,9 +1,8 @@
-/* For Drag And Drop css */
-/* --------------------- */
 #draggable-cards .card {
 	cursor: -webkit-grab;
 	cursor: grab;
 }
+
 
 #basic-list-group .list-group-item,
 #multiple-list-group-a .list-group-item,
