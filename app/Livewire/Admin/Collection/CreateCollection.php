@@ -85,6 +85,11 @@ class CreateCollection extends AdminComponent
      */
     public function store()
     {
+        if (count($this->selectedProducts) > $this->limitation) {
+            session()->flash('error', 'تعداد محصولات انتخاب شده نباید بیشتر از 20 عدد باشد');
+        };
+
+
         $this->validate([
             'title' => 'required',
             'type' => [
@@ -95,8 +100,14 @@ class CreateCollection extends AdminComponent
                 'required',
                 new Enum(IsActive::class),
             ],
-            'limitation' => 'required|min:0'
+            'limitation' => 'required|min:0|max:20'
         ]);
+
+
+        dd(
+            $this
+        );
+
 
         $data = [
             'title' => $this->title,
@@ -107,7 +118,17 @@ class CreateCollection extends AdminComponent
 
         DB::beginTransaction();
         try {
-            Collection::create($data);
+            $createdCollection = Collection::create($data);
+
+            $i = 1;
+            foreach ($this->selectedProducts as $selectedProduct) {
+                $createdCollection->product()->create([
+                    'product_id' => $selectedProduct['id'],
+                    'sort' => $i,
+                ]);
+                $i++;
+            }
+
             DB::commit();
             $this->reset(['title', 'limitation']);
             session()->flash('success', __('global.success_message'));

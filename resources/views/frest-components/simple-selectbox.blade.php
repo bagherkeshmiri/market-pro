@@ -5,14 +5,19 @@
         @endisset
 
         @isset($wire)
+
             @isset($isLazy)
-                @if($isLazy)
-                    wire:model.lazy="{{$wire}}"
-                @else
-                    wire:model.defer="{{$wire}}"
-                @endif
+                wire:model.lazy="{{ $wire }}"
             @endisset
+
+            @isset($isDefer)
+                wire:model.defer="{{ $wire }}"
+            @endisset
+
         @endisset
+
+
+
 
         @isset($id)
             id="{{ $id }}"

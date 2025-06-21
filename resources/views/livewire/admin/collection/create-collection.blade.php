@@ -37,7 +37,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'isActive' , 'content' => 'وضعیت'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'isActive' , 'wire' => 'isActive'  ,'attributes' => 'required', 'defaultOption' => true , 'defaultValue' => true])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'isActive' , 'wire' => 'isActive'  ,'attributes' => 'required', 'defaultOption' => true , 'defaultValue' => true, 'isDefer' => true])
                                                         @include('frest-components.validation-error',[ 'name' => 'isActive' ])
                                                     </div>
                                                 </div>
@@ -47,7 +47,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'type' , 'content' => 'نوع'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $types , 'id' => 'type' , 'wire' => 'type'  ,'attributes' => 'required', 'defaultOption' => true , 'defaultValue' => true])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $types , 'id' => 'type' , 'wire' => 'type'  ,'attributes' => 'required', 'defaultOption' => true , 'defaultValue' => true , 'isDefer' => true])
                                                         @include('frest-components.validation-error',[ 'name' => 'type' ])
                                                     </div>
                                                 </div>
