@@ -103,12 +103,6 @@ class CreateCollection extends AdminComponent
             'limitation' => 'required|min:0|max:20'
         ]);
 
-
-        dd(
-            $this
-        );
-
-
         $data = [
             'title' => $this->title,
             'type' => $this->type,
@@ -122,7 +116,7 @@ class CreateCollection extends AdminComponent
 
             $i = 1;
             foreach ($this->selectedProducts as $selectedProduct) {
-                $createdCollection->product()->create([
+                $createdCollection->productCollection()->create([
                     'product_id' => $selectedProduct['id'],
                     'sort' => $i,
                 ]);

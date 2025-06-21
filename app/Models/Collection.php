@@ -97,9 +97,9 @@ class Collection extends Eloquent
 
     /*------------ Relations ------------*/
 
-    public function product(): HasOne
+    public function productCollection(): HasOne
     {
-        return $this->hasOne(CollectionProduct::class, CollectionProduct::COLUMN_PRODUCT_ID, self::COLUMN_ID);
+        return $this->hasOne(CollectionProduct::class, CollectionProduct::COLUMN_COLLECTION_ID, self::COLUMN_ID);
     }
 
 
