@@ -21,7 +21,7 @@ class CreateCollection extends AdminComponent
     public $sort;
     public $isActive;
     public $category;
-    public $categoryProducts;
+    public $categoryProducts = [];
     public $selectedProducts = [];
 
     public function render()
@@ -42,7 +42,10 @@ class CreateCollection extends AdminComponent
         if (!is_null($this->category)) {
             $this->categoryProducts = Product::whereCategoryId($this->category)
                 ->select(['id', 'name'])
-                ->get();
+                ->get()
+                ->filter(fn($product) => !in_array($product->id, array_column($this->selectedProducts, 'id')))
+                ->values()
+                ->toArray();
         } else {
             $this->categoryProducts = [];
         }
@@ -51,19 +54,30 @@ class CreateCollection extends AdminComponent
         $selectedCategory = $categories->search($this->category);
         $selectedProducts = $this->selectedProducts;
 
-
         return $this->renderView(
             'livewire.admin.collection.create-collection',
             compact('pageTitle', 'statuses', 'types', 'categories', 'categoryProducts', 'selectedCategory', 'selectedProducts')
         );
     }
 
-
-    public function selectProduct($product): void
+    public function selectProduct(int|string $productId, string $productName): void
     {
-        if (!in_array($product, $this->selectedProducts)) {
-            $this->selectedProducts[] = $product;
+        if (!in_array($productId, array_column($this->selectedProducts, 'id'))) {
+            $this->selectedProducts[] = ['id' => $productId, 'name' => $productName];
+            $this->categoryProducts = collect($this->categoryProducts)
+                ->reject(fn($item) => $item['id'] == $productId)
+                ->values()
+                ->toArray();
         }
+    }
+
+    public function unselectProduct(int|string $productId, string $productName): void
+    {
+        $this->categoryProducts[] = ['id' => $productId, 'name' => $productName];
+        $this->selectedProducts = collect($this->selectedProducts)
+            ->reject(fn($item) => $item['id'] == $productId)
+            ->values()
+            ->toArray();
     }
 
     /**
