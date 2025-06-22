@@ -112,6 +112,11 @@
                                 <span class="icon icon-envelope"></span>
                                 <span class="text"> info@pixeldooni.ir </span>
                             </li>
+                            <li class="mb-3">
+                                <a href="https://enamad.ir/">
+                                    <img src="{{ asset('images/enamad.png') }}" width="100" height="100" alt="enemad"/>
+                                </a>
+                            </li>
 
 
                         </ul>
@@ -120,7 +125,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 text-center mb-2">
                 <p class="copyright">
                     کپی رایت &copy;
                     <script>
@@ -129,7 +134,7 @@
                         document.write(faYear);                    </script>
                     - 1400
                     |
-                    تمامی حقوق برای پیکسل دونی محفوظ است </br>
+                    تمامی حقوق برای پیکسل دونی محفوظ است
                 </p>
             </div>
         </div>
