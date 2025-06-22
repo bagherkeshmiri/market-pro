@@ -1,3 +1,7 @@
+@section('styles')
+@endsection
+
+
 <div>
     @include('custom-components.site.image-slider')
     @include('custom-components.site.slide-caption')
@@ -33,3 +37,5 @@
 
 
 
+@section('scripts')
+@endsection
