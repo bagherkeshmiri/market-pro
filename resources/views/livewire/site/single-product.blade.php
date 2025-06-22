@@ -22,7 +22,11 @@
                             <a href="#"><span class="ion-ios-star-outline"></span></a>
                         </p>
                     </div>
-                    <p class="price"><span>{{ $product->formatted_final_price }}  تومان </span></p>
+
+                    <div class="price">
+                        <span>{{ $product->formatted_final_price }}  تومان </span>
+                    </div>
+
                     <p> {!! $product->description ? $sampleProductDescription : $product->description !!} </p>
                     <div class="row mt-4">
                         <div class="w-100"></div>
@@ -78,10 +82,10 @@
 
 @section('scripts')
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
 
-            var quantitiy=0;
-            $('.quantity-right-plus').click(function(e){
+            var quantitiy = 0;
+            $('.quantity-right-plus').click(function (e) {
 
                 // Stop acting like a button
                 e.preventDefault();
@@ -97,7 +101,7 @@
 
             });
 
-            $('.quantity-left-minus').click(function(e){
+            $('.quantity-left-minus').click(function (e) {
                 // Stop acting like a button
                 e.preventDefault();
                 // Get the field name
@@ -106,7 +110,7 @@
                 // If is not undefined
 
                 // Increment
-                if(quantity>0){
+                if (quantity > 0) {
                     $('#quantity').val(quantity - 1);
                 }
             });
