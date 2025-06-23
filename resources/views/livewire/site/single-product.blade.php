@@ -16,13 +16,11 @@
                     <div class="rating d-flex">
                         <span>امتیاز محصول : </span>
                         <p class="text-left mr-4">
-                            <a href="#" class="mr-2 ml-1">5.0</a>
                             <a href="#"><span class="ion-ios-star-outline"></span></a>
                             <a href="#"><span class="ion-ios-star"></span></a>
                             <a href="#"><span class="ion-ios-star"></span></a>
                             <a href="#"><span class="ion-ios-star"></span></a>
                             <a href="#"><span class="ion-ios-star"></span></a>
-                            <a href="#" class="mr-2">0</a>
                         </p>
                     </div>
 
