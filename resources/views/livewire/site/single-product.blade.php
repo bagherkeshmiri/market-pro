@@ -6,9 +6,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-5 ftco-animate">
-                    <a href="#" class="image-popup">
-                        <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" class="img-fluid" alt="Colorlib Template">
-                    </a>
+                    <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" class="img-fluid" alt="{{ $product->name }}">
+
+
                 </div>
                 <div class="col-lg-6 product-details pl-md-5 ftco-animate">
                     <h3>{{ $product->name }}</h3>
@@ -16,22 +16,31 @@
                         <p class="text-left mr-4">
                             <a href="#" class="mr-2">5.0</a>
                             <a href="#"><span class="ion-ios-star-outline"></span></a>
-                            <a href="#"><span class="ion-ios-star-outline"></span></a>
-                            <a href="#"><span class="ion-ios-star-outline"></span></a>
-                            <a href="#"><span class="ion-ios-star-outline"></span></a>
-                            <a href="#"><span class="ion-ios-star-outline"></span></a>
+                            <a href="#"><span class="ion-ios-star"></span></a>
+                            <a href="#"><span class="ion-ios-star"></span></a>
+                            <a href="#"><span class="ion-ios-star"></span></a>
+                            <a href="#"><span class="ion-ios-star"></span></a>
                         </p>
                     </div>
 
-                    @if($product->discount > 0)
-                        <span class="me-4 mb-1 price-dc">     {{ number_format($product->price) }} تومان  </span>
+
+
+                    @if($product->status ==  \App\Enums\ProductStatus::Exist)
+                        <div>
+                            @if($product->discount > 0)
+                                <div class="d-flex flex-row align-content-center">
+                                    <h5 class=" ml-4 price-dc" >     {{ number_format($product->price) }} @lang('global.toman')  </h5>
+                                    <span class="text-white text-center p-2" style="background:#82ae46; border-radius: 20px; ">% {{ $product->discount_percent }} </span>
+                                </div>
+                            @endif
+                            <h3 class="price mb-2">{{ $product->formatted_final_price }}  @lang('global.toman') </h3>
+                        </div>
+                    @else
+                        <h5 class="mb-4 text-danger">ناموجود</h5>
                     @endif
 
-                    <div class="price">
-                        <span>{{ $product->formatted_final_price }}  تومان </span>
-                    </div>
 
-                    <p> {!! $product->description ? $sampleProductDescription : $product->description !!} </p>
+                    <p> {!! $product->description ?? $sampleProductDescription !!} </p>
                     <div class="row mt-4">
                         <div class="w-100"></div>
                         <div class="input-group col-md-6 d-flex mb-3">

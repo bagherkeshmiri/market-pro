@@ -30,4 +30,5 @@ return [
     'slider' => 'اسلایدر',
     'box' => 'جعبه',
     'no_selected_product' => 'محصولی انتخاب نشده است',
+    'toman' => 'تومان',
 ];
