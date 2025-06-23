@@ -172,9 +172,9 @@ class Product extends Eloquent
         return $this->hasOne(ProductImage::class)->where('is_main', true);
     }
 
-    public function galleryImages(): HasOne
+    public function galleryImages(): HasMany
     {
-        return $this->hasOne(ProductImage::class)->where('is_main', false);
+        return $this->hasMany(ProductImage::class)->where('is_main', false);
     }
 
     public function orderItems(): HasMany

@@ -91,7 +91,7 @@
 			rtl:true,
 			loop: true,
 			items:1,
-			margin: 20,
+			margin: 15,
 			stagePadding: 0,
 			nav: false,
             navText : ["<span class='ion-md-arrow-back'></span>","<span class='ion-chevron-right'></span>"],
@@ -108,7 +108,29 @@
 			}
 		});
 
-	};
+        $('.image-gallery-carousel').owlCarousel({
+            rtl:true,
+            loop: false,
+            items:1,
+            margin: 10,
+            stagePadding: 0,
+            nav: false,
+            navText : ["<span class='ion-md-arrow-back'></span>","<span class='ion-chevron-right'></span>"],
+            responsive:{
+                0:{
+                    items: 2
+                },
+                600:{
+                    items: 2
+                },
+                1000:{
+                    items: 3
+                }
+            }
+        });
+
+
+    };
 	carousel();
 
 	$('nav .dropdown').hover(function(){

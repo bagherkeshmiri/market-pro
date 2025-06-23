@@ -6,8 +6,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-5 ftco-animate">
-                    <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" class="img-fluid border" style="border-radius: 8px;" alt="{{ $product->name }}">
+                    <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" class="img-fluid" style="border-radius: 8px; border: 1px solid #82ae46" alt="{{ $product->name }}">
 
+                    <div class="image-gallery-carousel owl-carousel pt-3">
+
+                        @forelse($product->galleryImages as $imageGallery)
+                            <div class="item">
+                                <img src="{{ $imageGallery->image_url }}" style="width: 150px !important; border-radius: 8px; border: 1px solid #82ae46" alt=""/>
+                            </div>
+
+                        @empty
+                            <div class="item">
+                                <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" style="width: 150px !important; border-radius: 8px; border: 1px solid #82ae46" alt=""/>
+                            </div>
+                        @endforelse
+
+                    </div>
 
                 </div>
                 <div class="col-lg-6 product-details pl-md-5 ftco-animate">
@@ -25,12 +39,11 @@
                     </div>
 
 
-
                     @if($product->status ==  \App\Enums\ProductStatus::Exist)
                         <div>
                             @if($product->discount > 0)
                                 <div class="d-flex flex-row align-content-center">
-                                    <h5 class=" ml-4 price-dc" >     {{ number_format($product->price) }} @lang('global.toman')  </h5>
+                                    <h5 class=" ml-4 price-dc">     {{ number_format($product->price) }} @lang('global.toman')  </h5>
                                     <span class="text-white text-center p-2" style="background:#82ae46; border-radius: 20px; ">% {{ $product->discount_percent }} </span>
                                 </div>
                             @endif
