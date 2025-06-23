@@ -6,20 +6,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-5 ftco-animate">
-                    <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" class="img-fluid" alt="{{ $product->name }}">
+                    <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" class="img-fluid border" style="border-radius: 8px;" alt="{{ $product->name }}">
 
 
                 </div>
                 <div class="col-lg-6 product-details pl-md-5 ftco-animate">
                     <h3>{{ $product->name }}</h3>
+
                     <div class="rating d-flex">
+                        <span>امتیاز محصول : </span>
                         <p class="text-left mr-4">
-                            <a href="#" class="mr-2">5.0</a>
+                            <a href="#" class="mr-2 ml-1">5.0</a>
                             <a href="#"><span class="ion-ios-star-outline"></span></a>
                             <a href="#"><span class="ion-ios-star"></span></a>
                             <a href="#"><span class="ion-ios-star"></span></a>
                             <a href="#"><span class="ion-ios-star"></span></a>
                             <a href="#"><span class="ion-ios-star"></span></a>
+                            <a href="#" class="mr-2">0</a>
                         </p>
                     </div>
 
@@ -36,33 +39,37 @@
                             <h3 class="price mb-2">{{ $product->formatted_final_price }}  @lang('global.toman') </h3>
                         </div>
                     @else
-                        <h5 class="mb-4 text-danger">ناموجود</h5>
+                        <h5 class="mb-4 text-danger">@lang('global.not_exist')</h5>
                     @endif
 
 
                     <p> {!! $product->description ?? $sampleProductDescription !!} </p>
-                    <div class="row mt-4">
-                        <div class="w-100"></div>
-                        <div class="input-group col-md-6 d-flex mb-3">
+
+                    @if($product->status ==  \App\Enums\ProductStatus::Exist)
+                        <div class="row mt-4">
+                            <div class="w-100"></div>
+                            <div class="input-group col-md-6 d-flex mb-3">
 	             	<span class="input-group-btn mr-2">
 	                	<button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
 	                   <i class="ion-ios-remove"></i>
 
 	                	</button>
 	            		</span>
-                            <input type="text" id="quantity" name="quantity" class="form-control input-number" value="0" min="1" max="{{ $product->stock }}">
-                            <span class="input-group-btn ml-2">
+                                <input type="text" id="quantity" name="quantity" class="form-control input-number" value="0" min="1" max="{{ $product->stock }}">
+                                <span class="input-group-btn ml-2">
 	                	<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
 	                     <i class="bx bx-plus"></i>
 	                 </button>
 	             	</span>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-md-12">
+                                <p style="color: #000;">موجودی {{ $product->stock }} عدد</p>
+                            </div>
                         </div>
-                        <div class="w-100"></div>
-                        <div class="col-md-12">
-                            <p style="color: #000;">موجودی {{ $product->stock }} عدد</p>
-                        </div>
-                    </div>
-                    <p><a href="#" class="btn btn-black py-3 px-5">اضافه به سبد خرید </a></p>
+                        <p><a href="#" class="btn btn-black py-3 px-5">اضافه به سبد خرید </a></p>
+                    @endif
+
                 </div>
             </div>
         </div>

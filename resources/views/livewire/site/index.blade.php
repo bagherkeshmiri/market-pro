@@ -12,7 +12,7 @@
         <div class="container">
             <div class="row justify-content-center pb-3">
                 <div class="col-md-7 heading-section ftco-animate text-center">
-                    <h5 class="mb-4"> جاسوییچی</h5>
+                    <h5 class="mb-4"> محصولات پر فروش</h5>
                 </div>
             </div>
             <div class="row ftco-animate">
