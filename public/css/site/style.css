@@ -1087,6 +1087,11 @@ h1, h2, h3, h4, h5,
     color: #b3b3b3;
 }
 
+.price-dc {
+    text-decoration: line-through;
+    color: #b3b3b3;
+}
+
 .product .text p.price span.price-sale {
     color: #82ae46;
 }
