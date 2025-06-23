@@ -10,13 +10,20 @@
     <div class="text py-3 pb-4 px-3 text-center">
         <h3><a href="#">{{ $product->name }}</a></h3>
         <div class="d-flex">
+
             <div class="pricing">
-                <p class="price">
-                    @if($product->discount > 0)
-                        <span class="me-4 price-dc">     {{ number_format($product->price) }} @lang('global.toman')  </span>
-                    @endif
-                    <span class="price-sale">   {{ number_format($product->final_price) }} @lang('global.toman')  </span>
-                </p>
+
+                @if($product->status ==  \App\Enums\ProductStatus::Exist)
+
+                    <p class="price">
+                        @if($product->discount > 0)
+                            <span class="me-4 price-dc">     {{ number_format($product->price) }} @lang('global.toman')  </span>
+                        @endif
+                        <span class="price-sale">   {{ number_format($product->final_price) }} @lang('global.toman')  </span>
+                    </p>
+                @else
+                    <span class="text-danger text-center">@lang('global.not_exist')</span>
+                @endif
             </div>
         </div>
         <div class="bottom-area d-flex px-3">

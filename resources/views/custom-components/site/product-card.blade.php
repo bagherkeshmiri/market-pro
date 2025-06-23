@@ -12,21 +12,22 @@
             <h3><a href="#">{{ $product->name }}</a></h3>
             <div class="d-flex">
 
-                @if($product->status ==  \App\Enums\ProductStatus::Exist)
                     <div class="pricing">
-                        <p class="price">
-                            @if($product->discount > 0)
-                                <span class="me-4 price-dc">     {{ number_format($product->price) }} @lang('global.toman')  </span>
-                            @endif
-                            <span class="price-sale">   {{ number_format($product->final_price) }} @lang('global.toman')  </span>
-                        </p>
-                    </div>
 
-                @else
-                    <div class="pricing">
-                        <span class="text-danger text-center">@lang('global.not_exist')</span>
+                        @if($product->status ==  \App\Enums\ProductStatus::Exist)
+
+                            <p class="price">
+                                @if($product->discount > 0)
+                                    <span class="me-4 price-dc">     {{ number_format($product->price) }} @lang('global.toman')  </span>
+                                @endif
+                                <span class="price-sale">   {{ number_format($product->final_price) }} @lang('global.toman')  </span>
+                            </p>
+
+                        @else
+                            <span class="text-danger text-center">@lang('global.not_exist')</span>
+                        @endif
+
                     </div>
-                @endif
 
 
             </div>
