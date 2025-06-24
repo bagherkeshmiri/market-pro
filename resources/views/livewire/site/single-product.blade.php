@@ -30,11 +30,12 @@
                     <div class="rating d-flex">
                         <span>امتیاز محصول : </span>
                         <p class="text-left mr-4">
-                            <a href="#"><span class="ion-ios-star-outline"></span></a>
-                            <a href="#"><span class="ion-ios-star"></span></a>
-                            <a href="#"><span class="ion-ios-star"></span></a>
-                            <a href="#"><span class="ion-ios-star"></span></a>
-                            <a href="#"><span class="ion-ios-star"></span></a>
+                            @for ($i = 1; $i <= 5; $i++)
+                                <a href="#">
+                                    <span class="{{ $i <= $fakeRating ? 'ion-ios-star-outline' : 'ion-ios-star' }}"></span>
+                                </a>
+                            @endfor
+
                         </p>
                     </div>
 
@@ -58,14 +59,14 @@
 
                     @if($product->status ==  \App\Enums\ProductStatus::Exist)
                         <div class="row mt-4">
-                            <div class="w-100"></div>
-                            <div class="input-group col-md-6 d-flex mb-3">
+                            <div class="input-group col-6 d-flex mb-3">
 	             	<span class="input-group-btn mr-2">
 	                	<button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
 	                   <i class="ion-ios-remove"></i>
 
 	                	</button>
 	            		</span>
+                                <label for="quantity" hidden></label>
                                 <input type="text" id="quantity" name="quantity" class="form-control input-number" value="0" min="1" max="{{ $product->stock }}">
                                 <span class="input-group-btn ml-2">
 	                	<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
@@ -73,12 +74,11 @@
 	                 </button>
 	             	</span>
                             </div>
-                            <div class="w-100"></div>
-                            <div class="col-md-12">
+                            <div class="col-6">
                                 <p style="color: #000;">موجودی {{ $product->stock }} عدد</p>
                             </div>
                         </div>
-                        <p><a href="#" class="btn btn-black py-3 px-5">اضافه به سبد خرید </a></p>
+                        <p><a href="#" class="btn btn-black py-3 px-5 mt-4">اضافه به سبد خرید </a></p>
                     @endif
 
                 </div>
@@ -113,39 +113,25 @@
 
 @section('scripts')
     <script>
-        $(document).ready(function () {
+        document.addEventListener('DOMContentLoaded', function () {
+            const plusBtn = document.querySelector('.quantity-right-plus');
+            const minusBtn = document.querySelector('.quantity-left-minus');
+            const quantityInput = document.getElementById('quantity');
 
-            var quantitiy = 0;
-            $('.quantity-right-plus').click(function (e) {
-
-                // Stop acting like a button
+            plusBtn.addEventListener('click', function (e) {
                 e.preventDefault();
-                // Get the field name
-                var quantity = parseInt($('#quantity').val());
-
-                // If is not undefined
-
-                $('#quantity').val(quantity + 1);
-
-
-                // Increment
-
+                let quantity = parseInt(quantityInput.value) || 0;
+                quantityInput.value = quantity + 1;
             });
 
-            $('.quantity-left-minus').click(function (e) {
-                // Stop acting like a button
+            minusBtn.addEventListener('click', function (e) {
                 e.preventDefault();
-                // Get the field name
-                var quantity = parseInt($('#quantity').val());
-
-                // If is not undefined
-
-                // Increment
+                let quantity = parseInt(quantityInput.value) || 0;
                 if (quantity > 0) {
-                    $('#quantity').val(quantity - 1);
+                    quantityInput.value = quantity - 1;
                 }
             });
-
         });
     </script>
+
 @endsection
