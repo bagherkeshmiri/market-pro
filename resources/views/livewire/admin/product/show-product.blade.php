@@ -73,7 +73,7 @@
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'discountType' , 'content' => 'نوع تخفیف'] )
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $discountTypes , 'id' => 'discountType' , 'wire' => 'discountType', 'defaultOption' => true , 'defaultValue' => true])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $discountTypes , 'id' => 'discountType' ,'isDefer' => true, 'wire' => 'discountType'])
                                                         @include('frest-components.validation-error',[ 'name' => 'discountType' ])
                                                     </div>
                                                 </div>
