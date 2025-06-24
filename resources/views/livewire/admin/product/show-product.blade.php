@@ -36,7 +36,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'categoryId' , 'content' => 'دسته محصول'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'categoryId' , 'wire' => 'categoryId'  , 'defaultOption' => true , 'defaultValue' => true])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'categoryId' , 'wire' => 'categoryId'  ,'isDefer' => true])
                                                         @include('frest-components.validation-error',[ 'name' => 'categoryId' ])
                                                     </div>
                                                 </div>
@@ -45,7 +45,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'status' , 'content' => 'وضعیت'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'status' , 'wire' => 'status'  , 'defaultOption' => true , 'defaultValue' => true])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'status' , 'wire' => 'status' ,'isDefer' => true])
                                                         @include('frest-components.validation-error',[ 'name' => 'status' ])
                                                     </div>
                                                 </div>

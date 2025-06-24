@@ -36,7 +36,7 @@
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'parentId' , 'content' => 'دسته پدر'] )
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'parentId' , 'wire' => 'parentId'  , 'defaultOption' => true , 'defaultValue' => true ])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'parentId' , 'wire' => 'parentId'  ,'isDefer' => true, 'defaultOption' => true , 'defaultValue' => true ])
                                                         @include('frest-components.validation-error',[ 'name' => 'parentId' ])
                                                     </div>
                                                 </div>
@@ -62,59 +62,4 @@
 
 
 @section('scripts')
-    {{--    <script src="{{ asset('js/axios.min.js') }}"></script>--}}
-    {{--    <script src="{{ asset('ckeditor5-35.3.2/build/ckeditor.js') }}"></script>--}}
-    {{--    <script>--}}
-
-    {{--        let description = @js($description);--}}
-    {{--        let saveBtn = document.querySelector('#save_btn');--}}
-
-    {{--        function MyCustomUploadAdapterPlugin(editor) {--}}
-    {{--            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {--}}
-    {{--                return {--}}
-    {{--                    upload() {--}}
-    {{--                        return loader.file.then(file => new Promise((resolve, reject) => {--}}
-    {{--                                let formData = new FormData();--}}
-    {{--                                formData.append('image', file)--}}
-    {{--                                axios.post('{{ route('api.upload') }}', formData, {--}}
-    {{--                                    headers: {'Content_type': 'multipart/form-data'}--}}
-    {{--                                }).then(response => {--}}
-    {{--                                    resolve({--}}
-    {{--                                        default: response.data--}}
-    {{--                                    })--}}
-    {{--                                })--}}
-    {{--                            }--}}
-    {{--                        ))--}}
-    {{--                    },--}}
-    {{--                    abort() {--}}
-    {{--                    },--}}
-    {{--                }--}}
-    {{--            }--}}
-    {{--        }--}}
-
-    {{--        const myEditor =--}}
-    {{--            DecoupledDocumentEditor--}}
-    {{--                .create(document.querySelector('#editor'), {--}}
-    {{--                    extraPlugins: [MyCustomUploadAdapterPlugin],--}}
-    {{--                    language: {--}}
-    {{--                        ui: 'fa',--}}
-    {{--                        content: 'fa',--}}
-    {{--                    },--}}
-    {{--                })--}}
-    {{--                .then(editor => {--}}
-    {{--                    const toolbarContainer = document.querySelector('#toolbar-container');--}}
-    {{--                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);--}}
-    {{--                    editor.setData(description);--}}
-    {{--                })--}}
-    {{--                .catch(error => {--}}
-    {{--                    console.error(error);--}}
-    {{--                });--}}
-
-
-    {{--        saveBtn.addEventListener('click', function () {--}}
-    {{--            @this.--}}
-    {{--            set('description', document.querySelector('#editor').innerHTML);--}}
-    {{--        });--}}
-
-    {{--    </script>--}}
 @endsection

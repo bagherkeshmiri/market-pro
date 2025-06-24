@@ -95,6 +95,16 @@ class ShowProduct extends AdminComponent
             'discount' => 'required|integer',
         ]);
 
+        dd(
+            $this->status == ProductStatus::Exist && $this->stock <= 0
+
+        );
+
+//        if(
+//            $this->status == ProductStatus::Exist && $this->stock <= 0
+//        ){}
+
+
         $data = [
             'name' => $this->name,
             'category_id' => $this->categoryId,

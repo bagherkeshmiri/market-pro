@@ -36,7 +36,7 @@
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'parentId' , 'content' => 'دسته پدر'] )
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'parentId' , 'wire' => 'parentId'  , 'defaultOption' => true , 'defaultValue' => true])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'parentId' , 'wire' => 'parentId'  ,'isDefer' => true, 'defaultOption' => true , 'defaultValue' => true])
                                                         @include('frest-components.validation-error',[ 'name' => 'parentId' ])
                                                     </div>
                                                 </div>
