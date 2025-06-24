@@ -95,15 +95,11 @@ class ShowProduct extends AdminComponent
             'discount' => 'required|integer',
         ]);
 
-        dd(
-            $this->status == ProductStatus::Exist && $this->stock <= 0
 
-        );
-
-//        if(
-//            $this->status == ProductStatus::Exist && $this->stock <= 0
-//        ){}
-
+        if( $this->status == ProductStatus::Exist && $this->stock <= 0){
+            session()->flash('warning', 'امکان ثبت محصول موجود با موجودی صفر وجود ندارد');
+            return redirect()->route('admin.product.show', ['product' => $this->product->id]);
+        }
 
         $data = [
             'name' => $this->name,
