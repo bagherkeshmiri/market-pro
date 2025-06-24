@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
-@include('partials.site.head')
+@include('partials.site.head' , ['pageTitle' => $pageTitle])
 
 <body class="goto-here">
 

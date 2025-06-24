@@ -17,8 +17,8 @@ class SingleProduct extends SiteComponent
 
     public function render()
     {
-        $sampleProductImageUrl = $this->sampleProductImageUrl;
         $pageTitle = $this->product->name;
+        $sampleProductImageUrl = $this->sampleProductImageUrl;
         $product = $this->product;
         $products = Product::limit(8)
             ->with([
@@ -32,7 +32,8 @@ class SingleProduct extends SiteComponent
         $fakeRating = mt_rand(1,5);
         return $this->renderView(
             'livewire.site.single-product',
-            compact('pageTitle', 'sampleProductImageUrl', 'product', 'products', 'sampleProductDescription','fakeRating')
+            $pageTitle,
+            compact('sampleProductImageUrl', 'product', 'products', 'sampleProductDescription','fakeRating')
         );
     }
 }

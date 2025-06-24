@@ -16,7 +16,7 @@
                     </div>
                 </li>
                 <li class="nav-item"><a href="#" class="nav-link">درباره با ما</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">تماس با ما</a></li>
+                <li class="nav-item"><a href="{{ route('site.contact') }}" class="nav-link">تماس با ما</a></li>
             </ul>
 
             <ul class="navbar-nav ">

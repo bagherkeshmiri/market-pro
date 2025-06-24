@@ -1,5 +1,5 @@
 <head>
-    <title>پیکسل دونی | مرجع خرید انواع پیکسل خمیری</title>
+    <title>پیکسل دونی | {{ $pageTitle }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{{ asset('css/site/open-iconic-bootstrap.min.css') }}">
