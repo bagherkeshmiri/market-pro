@@ -37,7 +37,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'categoryId' , 'content' => 'دسته محصول'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'categoryId' , 'wire' => 'categoryId'  ,'attributes' => 'required', 'defaultOption' => true , 'defaultValue' => true])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'categoryId' , 'wire' => 'categoryId'  ,'isDefer' => true,'attributes' => 'required', 'defaultOption' => true , 'defaultValue' => true])
                                                         @include('frest-components.validation-error',[ 'name' => 'categoryId' ])
                                                     </div>
                                                 </div>
@@ -47,7 +47,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'status' , 'content' => 'وضعیت'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'status' , 'wire' => 'status'  ,'attributes' => 'required', 'defaultOption' => true , 'defaultValue' => true])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'status' , 'wire' => 'status'  ,'isDefer' => true,'attributes' => 'required', 'defaultOption' => true , 'defaultValue' => true])
                                                         @include('frest-components.validation-error',[ 'name' => 'status' ])
                                                     </div>
                                                 </div>
@@ -73,7 +73,7 @@
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'discountType' , 'content' => 'نوع تخفیف'] )
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $discountTypes , 'id' => 'discountType' , 'wire' => 'discountType', 'defaultOption' => true , 'defaultValue' => true])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $discountTypes , 'id' => 'discountType' , 'wire' => 'discountType','isDefer' => true, 'defaultOption' => true , 'defaultValue' => true])
                                                         @include('frest-components.validation-error',[ 'name' => 'discountType' ])
                                                     </div>
                                                 </div>
