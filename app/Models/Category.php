@@ -21,6 +21,8 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Carbon|null $deleted_at
+ * @property-read Collection<int, Category> $children
+ * @property-read int|null $children_count
  * @property-read string $jalali_created_at
  * @property-read Category|null $parent
  * @property-read Collection<int, Product> $products
@@ -74,6 +76,11 @@ class Category extends Eloquent
     public function parent(): BelongsTo
     {
         return $this->belongsTo(Category::class, self::COLUMN_PARENT_ID, self::COLUMN_ID);
+    }
+
+    public function children(): HasMany
+    {
+        return $this->hasMany(Category::class, self::COLUMN_PARENT_ID, self::COLUMN_ID);
     }
 
     public function products(): HasMany
