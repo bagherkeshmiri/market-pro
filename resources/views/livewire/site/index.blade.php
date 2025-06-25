@@ -5,7 +5,7 @@
 <div>
     @include('custom-components.site.image-slider')
     @include('custom-components.site.slide-caption')
-    @include('custom-components.site.spacial-products',['products' => $products , 'sampleProductImageUrl' => $sampleProductImageUrl])
+    @include('custom-components.site.spacial-products',['title' => 'سرزمین پیکسلی','products' => $products , 'sampleProductImageUrl' => $sampleProductImageUrl])
 
 
     <section class="ftco-section mb-5">

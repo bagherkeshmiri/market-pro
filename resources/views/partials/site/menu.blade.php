@@ -17,7 +17,7 @@
                         @foreach($menus as $menu)
                             @if($menu->children->isNotEmpty())
                                 <div class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" href="{{ route('site.products',['category' => $menu->id]) }}">{{ $menu->name }}</a>
+                                    <a class="dropdown-item dropdown-toggle" href="#">{{ $menu->name }}</a>
                                     <div class="dropdown-menu">
                                         @foreach($menu->children as $child)
                                             @if($child->children->isNotEmpty())

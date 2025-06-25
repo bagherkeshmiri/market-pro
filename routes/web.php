@@ -2,6 +2,7 @@
 
 use App\Livewire\Site\Contact;
 use App\Livewire\Site\Index;
+use App\Livewire\Site\Products;
 use App\Livewire\Site\SingleProduct;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +12,7 @@ Route::name('site.')
         Route::get('/', Index::class)->name('home');
         Route::get('/product/{product}', SingleProduct::class)->name('single-product');
         Route::get('/contact', Contact::class)->name('contact');
+        Route::get('/products/{category}', Products::class)->name('products');
     });
 
 
