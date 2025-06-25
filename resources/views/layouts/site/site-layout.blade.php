@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
-@include('partials.site.head' , ['pageTitle' => $pageTitle])
+@include('partials.site.head' , [ 'pageTitle' => $pageTitle,])
 
 <body class="goto-here">
 
-@include('partials.site.menu')
+@include('partials.site.menu',['menus' => $menus,])
 
 {{ $slot }}
 

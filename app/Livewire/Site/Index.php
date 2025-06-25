@@ -3,6 +3,7 @@
 namespace App\Livewire\Site;
 
 use App\Livewire\BaseComponents\SiteComponent;
+use App\Models\Category;
 use App\Models\Product;
 
 class Index extends SiteComponent
@@ -15,10 +16,12 @@ class Index extends SiteComponent
             ->with('mainImage:id,product_id,image_url')
             ->get();
 
+
+
         return $this->renderView(
             'livewire.site.index',
             $pageTitle,
-            compact('products','sampleProductImageUrl')
+            compact('products', 'sampleProductImageUrl')
         );
     }
 }

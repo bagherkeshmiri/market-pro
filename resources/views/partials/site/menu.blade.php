@@ -9,14 +9,42 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="{{ route('site.home') }}" class="nav-link">خانه</a></li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">محصولات</a>
-                    <div class="dropdown-menu" id="top-dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="#"> پیکسل خمیری</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">محصولات</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        <a class="dropdown-item" href="#">محصولات</a>
+                        @foreach($menus as $menu)
+                            @if($menu->children->isNotEmpty())
+                                <div class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">{{ $menu->name }}</a>
+                                    <div class="dropdown-menu">
+                                        @foreach($menu->children as $child)
+                                            @if($child->children->isNotEmpty())
+                                                <div class="dropdown-submenu">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">{{ $child->name }}</a>
+                                                    <div class="dropdown-menu">
+                                                        @foreach($child->children as $grandchild)
+                                                            <a class="dropdown-item" href="#">{{ $grandchild->name }}</a>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <a class="dropdown-item" href="#">{{ $child->name }}</a>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @else
+                                <a class="dropdown-item" href="#">{{ $menu->name }}</a>
+                            @endif
+                        @endforeach
                     </div>
                 </li>
                 <li class="nav-item"><a href="#" class="nav-link">درباره با ما</a></li>
                 <li class="nav-item"><a href="{{ route('site.contact') }}" class="nav-link">تماس با ما</a></li>
+
             </ul>
 
             <ul class="navbar-nav ">
