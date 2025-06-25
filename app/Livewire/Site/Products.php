@@ -21,7 +21,8 @@ class Products extends SiteComponent
         $pageTitle = 'محصولات دسته ' . $this->category->name;
         $sampleProductImageUrl = $this->sampleProductImageUrl;
         $category = $this->category;
-        $products = Product::whereCategoryId($this->category->id)->get();
+        $products = Product::whereCategoryId($this->category->id)
+            ->paginate($this->perPage);
         return $this->renderView(
             'livewire.site.products',
             $pageTitle,
