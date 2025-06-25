@@ -17,7 +17,7 @@
                         @foreach($menus as $menu)
                             @if($menu->children->isNotEmpty())
                                 <div class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" href="#">{{ $menu->name }}</a>
+                                    <a class="dropdown-item dropdown-toggle" href="{{ route('site.products',['category' => $menu->id]) }}">{{ $menu->name }}</a>
                                     <div class="dropdown-menu">
                                         @foreach($menu->children as $child)
                                             @if($child->children->isNotEmpty())
@@ -25,18 +25,18 @@
                                                     <a class="dropdown-item dropdown-toggle" href="#">{{ $child->name }}</a>
                                                     <div class="dropdown-menu">
                                                         @foreach($child->children as $grandchild)
-                                                            <a class="dropdown-item" href="#">{{ $grandchild->name }}</a>
+                                                            <a class="dropdown-item" href="{{ route('site.products',['category' => $menu->id]) }}">{{ $grandchild->name }}</a>
                                                         @endforeach
                                                     </div>
                                                 </div>
                                             @else
-                                                <a class="dropdown-item" href="#">{{ $child->name }}</a>
+                                                <a class="dropdown-item" href="{{ route('site.products',['category' => $menu->id]) }}">{{ $child->name }}</a>
                                             @endif
                                         @endforeach
                                     </div>
                                 </div>
                             @else
-                                <a class="dropdown-item" href="#">{{ $menu->name }}</a>
+                                <a class="dropdown-item" href="{{ route('site.products',['category' => $menu->id]) }}">{{ $menu->name }}</a>
                             @endif
                         @endforeach
                     </div>
