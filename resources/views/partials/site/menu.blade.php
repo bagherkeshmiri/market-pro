@@ -14,7 +14,6 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">محصولات</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="#">محصولات</a>
                         @foreach($menus as $menu)
                             @if($menu->children->isNotEmpty())
                                 <div class="dropdown-submenu">
