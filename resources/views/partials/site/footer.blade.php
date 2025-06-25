@@ -58,7 +58,7 @@
                             </li>
 
                             <li class="mb-3">
-                                <a href="#" class="text"> ارتباط با ما </a>
+                                <a href="{{ route('site.contact') }}" class="text"> ارتباط با ما </a>
                             </li>
 
 

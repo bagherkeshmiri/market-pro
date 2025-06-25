@@ -5,22 +5,41 @@
                 <div class="w-100"></div>
                 <div class="col-md-3 d-flex">
                     <div class="info bg-white p-4">
-                        <p><span>آدرس:</span> ایران - مشهد - بلوار ابوطالب</p>
+                        <div>
+                            <span class="icon icon-map-marker ml-2"></span>
+                            <span>آدرس :</span>
+                            <br/>
+                            ایران - مشهد - بلوار ابوطالب
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex">
                     <div class="info bg-white p-4">
-                        <p><span>تلفن:</span> <a href="tel://05137574592">37574592 - 051 </a></p>
+                        <div>
+                            <span class="icon icon-phone ml-2"></span>
+                            <span>تلفن :</span>
+                            <br/>
+                            <a href="tel://05137574592">37574592 - 051 </a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex">
                     <div class="info bg-white p-4">
-                        <p><span>ایمیل:</span> <a href="mailto:info@pixeldooni.ir">info@pixeldooni.ir</a></p>
+                        <div>
+                            <span class="icon icon-envelope ml-2"></span>
+                            <span>ایمیل :</span>
+                            <br/>
+                            <a href="mailto:info@pixeldooni.ir">info@pixeldooni.ir</a></div>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex">
                     <div class="info bg-white p-4">
-                        <p><span> تلگرام:</span> <a href="#">@pixeldooni</a></p>
+                        <div>
+                            <span class="icon icon-telegram ml-2"></span>
+                            <span> تلگرام :</span>
+                            <br/>
+                            <a href="#">pixeldooni@</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,11 +56,11 @@
                         </div>
                         <div class="form-group">
                             <label for="subject">موضوع</label>
-                            <input type="text" class="form-control" id="subject" >
+                            <input type="text" class="form-control" id="subject">
                         </div>
                         <div class="form-group">
                             <label for="">پیام</label>
-                            <textarea name="" id="" cols="30" rows="7" class="form-control" ></textarea>
+                            <textarea name="" id="" cols="30" rows="7" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="ارسال پیام" class="btn btn-primary py-3 px-5">
