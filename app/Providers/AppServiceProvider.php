@@ -10,9 +10,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        if ($this->app->isLocal()) {
-            $this->app->register(\App\Providers\TelescopeServiceProvider::class);
-        }
+       //
     }
 
     public function boot(): void
