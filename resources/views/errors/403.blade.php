@@ -15,7 +15,7 @@
                         <div class="card bg-transparent shadow-none">
                             <div class="card-content">
                                 <div class="card-body text-center bg-transparent miscellaneous">
-                                    <img src="{{ asset('frest/images/pages/not-authorized.png') }}" class="img-fluid" alt="not authorized" width="400">
+                                    <img src="{{ asset('images/frest/not-authorized.png') }}" class="img-fluid" alt="not authorized" width="400">
                                     <h1 class="my-2 error-title">شما مجاز به دسترسی نیستید!</h1>
                                     <p>
                                         شما مجوز لارم برای مشاهده این دایرکتوری یا صفحه را ندارید.

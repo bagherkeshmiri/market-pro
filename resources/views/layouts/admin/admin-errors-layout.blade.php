@@ -8,13 +8,13 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frest/images/ico/favicon.ico') }} ">
     <meta name="theme-color" content="#5A8DEE">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/vendors/css/vendors.min.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/bootstrap.min.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/bootstrap-extended.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/colors.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/components.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frest/css/themes/dark-layout.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ asset(' frest/css/themes/semi-dark-layout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/vendors/vendors.min.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/bootstrap.min.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/bootstrap-extended.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/colors.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/components.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/themes/dark-layout.css') }} ">
+    <link rel="stylesheet" type="text/css" href=" {{ asset('css/frest/themes/semi-dark-layout.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/global.css') }}">
     <link rel="stylesheet" type="text/css" href=" {{ asset('css/global.css') }}">
 

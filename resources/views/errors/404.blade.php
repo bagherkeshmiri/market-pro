@@ -19,15 +19,7 @@
                                     <h1 class="error-title">صفحه یافت نشد :(</h1>
                                     <p class="pb-3">
                                         صفحه ای که به دنبال آن هستید موجود نیست</p>
-                                    <img class="img-fluid" src="{{ asset('frest/images/pages/404.png') }} " alt="404 error">
-{{--                                    @auth('user')--}}
-{{--                                        <a href="{{ route('user.dashboard') }}" class="btn btn-primary round glow mt-3">بازگشت به خانه</a>--}}
-{{--                                    @endauth--}}
-
-{{--                                    @guest('user')--}}
-{{--                                        <a href="{{ route('home') }}" class="btn btn-primary round glow mt-3">بازگشت به خانه</a>--}}
-{{--                                    @endguest--}}
-
+                                    <img class="img-fluid" src="{{ asset('images/frest/404.png') }} " alt="404 error">
                                 </div>
                             </div>
                         </div>
