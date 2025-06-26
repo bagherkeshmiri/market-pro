@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin-errors-layout')
 
-@section('title', __('Forbidden'))
+@section('title', __('errors.unauthorized'))
 
 @section('contents')
 

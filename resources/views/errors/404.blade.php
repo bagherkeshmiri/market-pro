@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin-errors-layout')
 
-@section('title', __('Not Found'))
+@section('title', __('errors.not_found'))
 
 @section('contents')
 

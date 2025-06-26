@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin-errors-layout')
 
-@section('title', __('Server Error'))
+@section('title', __('errors.server_error'))
 
 
 @section('contents')
