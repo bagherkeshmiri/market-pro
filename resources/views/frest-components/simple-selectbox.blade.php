@@ -27,6 +27,10 @@
             {{ $attributes }}
         @endisset
 
+
+            style="	background-image: url({{ asset('images/frest/arrow-down.png') }});"
+
+
         required
 >
 
