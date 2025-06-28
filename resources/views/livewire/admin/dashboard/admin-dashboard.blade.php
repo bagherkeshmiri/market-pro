@@ -1,7 +1,6 @@
 @section('title',$pageTitle)
 
 @section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/frest/pages/widgets.css') }}">
 @endsection
 
 
@@ -34,5 +33,4 @@
 
 
 @section('scripts')
-    <script type="text/javascript" src="{{ asset('js/frest/scripts/cards/widgets.js') }}"></script>
 @endsection
