@@ -27,7 +27,7 @@
 <script src="{{ asset('js/frest/core/app-menu.js') }}"></script>
 <script src="{{ asset('js/frest/core/app.js') }}"></script>
 <script src="{{ asset('js/frest/scripts/components.js') }}"></script>
-{{--<script src="{{ asset('js/frest/scripts/footer.js') }}"></script>--}}
+<script src="{{ asset('js/frest/scripts/footer.js') }}"></script>
 
 @yield('scripts')
 @livewireScripts
