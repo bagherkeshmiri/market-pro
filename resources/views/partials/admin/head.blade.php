@@ -33,7 +33,7 @@
         }
     </style>
 
-    @vite(['resources/css/admin-panel-app.css', 'resources/js/app.js'])
+    @vite(['resources/css/admin-panel-app.css', 'resources/js/admin-panel-app.js'])
     @yield('styles')
     @livewireStyles
 

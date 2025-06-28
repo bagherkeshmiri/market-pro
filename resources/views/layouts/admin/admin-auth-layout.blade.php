@@ -10,7 +10,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frest/images/ico/favicon.ico') }}">
     <meta name="theme-color" content="#5A8DEE">
 
-    @vite(['resources/css/admin-auth-app.css', 'resources/js/app.js'])
+    @vite(['resources/css/admin-auth-app.css', 'resources/js/admin-auth-app.js'])
     @yield('styles')
     @livewireStyles
 </head>
