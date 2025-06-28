@@ -17,8 +17,8 @@
 
 
 <body
-    class="horizontal-layout horizontal-menu navbar-static dark-layout 1-column   footer-static bg-full-screen-image  blank-page blank-page"
-    data-open="hover" data-menu="horizontal-menu" data-col="1-column" data-layout="dark-layout">
+    class="horizontal-layout horizontal-menu navbar-static dark-layout 1-column   footer-static   blank-page blank-page"
+    data-open="hover" data-menu="horizontal-menu" data-col="1-column" data-layout="dark-layout" style="background-image: url({{ asset('images/frest/auth-bg-dark.jpg') }});">
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="content-wrapper">
