@@ -47,16 +47,6 @@
         </div>
     </div>
 
-
-    <script src="{{ asset('js/frest/vendors/vendors.min.js') }} "></script>
-    <script src="{{ asset('js/frest/vendors/ui/jquery.sticky.js') }} "></script>
-    <script src="{{ asset('js/frest/scripts/configs/horizontal-menu.js') }} "></script>
-    <script src="{{ asset('js/frest/core/app-menu.js') }} "></script>
-    <script src="{{ asset('js/frest/core/app.js') }} "></script>
-    <script src="{{ asset('js/frest/scripts/components.js') }}"></script>
-    <script src="{{ asset('js/frest/scripts/footer.js') }} "></script>
-
-
     @yield('scripts')
     @livewireScripts
 </body>
