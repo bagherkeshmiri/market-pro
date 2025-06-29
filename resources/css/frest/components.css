@@ -220,11 +220,6 @@ html body h6 {
 	font-family: "secondary-font", "primary-font", "segoe ui", "tahoma";
 }
 
-html body.bg-full-screen-image {
-	background: url(../../frest/images/pages/auth-bg.jpg) no-repeat center center;
-	background-size: cover;
-}
-
 html body.blank-page .content {
 	margin-right: 0;
 }
