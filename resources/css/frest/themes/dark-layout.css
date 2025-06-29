@@ -88,10 +88,6 @@ body.dark-layout .help-block ul li {
 	color: #FF5B5C !important;
 }
 
-body.dark-layout.bg-full-screen-image {
-	background: url(../../../images/frest/auth-bg-dark.jpg);
-}
-
 body.dark-layout .ps__rail-y,
 body.dark-layout .ps__rail-y:focus {
 	background-color: #EEEEEE0D !important;

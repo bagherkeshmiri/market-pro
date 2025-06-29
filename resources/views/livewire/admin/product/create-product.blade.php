@@ -133,7 +133,7 @@
 
 
 @section('scripts')
-    <script src="{{ asset('js/axios.min.js') }}"></script>
+{{--    <script src="{{ asset('js/axios.min.js') }}"></script>--}}
     <script src="{{ asset('ckeditor5-35.3.2/build/ckeditor.js') }}"></script>
 
     @php
