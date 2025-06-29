@@ -1,4 +1,4 @@
-@import './ck-editor.css';
+@import './frest/ck-editor.css';
 @import './frest/vendors/vendors.min.css';
 @import './frest/vendors/ui/prism.min.css';
 @import './frest/bootstrap.min.css';
@@ -12,7 +12,7 @@
 @import './frest/pages/authentication.css';
 @import './frest/pages/page-user-profile.css';
 @import './frest/pages/widgets.css';
-@import './global.css';
+@import './frest/global.css';
 @import './frest/vendors/extensions/sweetalert2.min.css';
 @import './frest/vendors/extensions/toastr.css';
 @import './frest/plugins/extensions/toastr.css';
