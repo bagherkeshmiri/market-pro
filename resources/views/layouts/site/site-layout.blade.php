@@ -110,7 +110,7 @@
             <div class="primary-header-inner">
                 <div class="header-logo mobile-logo">
                     <a href="{{ route('site.home') }}">
-                        <img src="{{ asset('images/site.logo-1.png') }}" alt="Logo">
+                        <img src="{{ asset('images/site/logo-1.png') }}" alt="Logo">
                     </a>
                 </div>
                 <div class="header-menu-wrap">
@@ -544,7 +544,7 @@
 </section>
 <!-- ./ collect-section -->
 
-<section class="cta-section pt-100 pb-100" data-background="assets/img/bg-img/cta-bg.jpg">
+<section class="cta-section pt-100 pb-100" data-background="{{ asset('images/site/cta-bg.jpg') }}">
     <div class="overlay"></div>
     <div class="container">
         <div class="cta-wrap text-center">

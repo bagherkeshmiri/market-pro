@@ -1,33 +1,4 @@
 @charset "UTF-8";
-/*-----------------------------------------------------------------------------------
-
-    Template Name: Roiser – Multipurpose eCommerce HTML5 Template
-    Author: RRDevs
-    Support: rubelmah55@gmail.com
-    Description: Roiser – Multipurpose eCommerce HTML5 Template
-    Version: 1.0
-
------------------------------------------------------------------------------------
-
-
-/************ TABLE OF CONTENTS ***************
-
-	01. Template Default CSS
-	02. background CSS
-	03. buttons css
-
-**********************************************/
-/**----------------------------------------
-START: Template Default CSS
-----------------------------------------*/
-@font-face {
-  font-family: "IRANSansweb";
-  src: url(../font/IRANSansWeb.eot),
-       url(../font/IRANSansWeb.svg),
-       url(../font/IRANSansWeb.ttf),
-       url(../font/IRANSansWeb.woff),
-       url(../font/IRANSansWeb.woff2);
-}
 
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&amp;display=swap");
 :root {
@@ -3967,7 +3938,7 @@ START: Header CSS
   }
   .mobile-side-menu .side-menu-list li i {
     margin-left: 10px;
-   
+
   }
   .mobile-side-menu-overlay {
     background-color: rgba(0, 0, 0, 0.7);
@@ -4032,7 +4003,7 @@ START: Header CSS
 @media only screen and (max-width: 767px) {
   .mean-bar .mean-nav.mean-nav > ul li a {
     font-size: 14px;
-    
+
   }
 }
 .mean-bar .mean-nav.mean-nav > ul li a.mean-expand {
@@ -5326,7 +5297,7 @@ START: Blog CSS
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
-  
+
 }
 .grid-post-wrap .inner-blog .post-content .blog-btn:hover {
   color: var(--rr-color-theme-primary);
@@ -5341,7 +5312,7 @@ START: Blog CSS
   border-radius: 50%;
   border: 1px solid var(--rr-color-border-1);
   box-shadow: 0px 12px 45px rgba(0, 0, 0, 0.09);
-  
+
 }
 
 .pagination-wrap {

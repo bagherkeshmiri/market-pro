@@ -5,3 +5,12 @@
 @import './site/nice-select.css';
 @import './site/swiper.min.css';
 @import './site/main.css';
+
+@font-face {
+    font-family: "IRANSansweb";
+    src: url(../fonts/IRANSansWeb.eot),
+    url(../fonts/IRANSansWeb.svg),
+    url(../fonts/IRANSansWeb.ttf),
+    url(../fonts/IRANSansWeb.woff),
+    url(../fonts/IRANSansWeb.woff2);
+}
