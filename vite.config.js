@@ -16,7 +16,14 @@ export default defineConfig({
         }),
     ],
     server: {
-        host: 'localhost',
-        port: 5173
+        host: true,
+        port: 5173,
+        strictPort: true,
+        cors: true,
+    },
+    esbuild: {
+        logOverride: {
+            'css-syntax-error': 'silent'
+        }
     }
 });

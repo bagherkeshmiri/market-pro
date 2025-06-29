@@ -3,52 +3,9 @@
 
 @include('partials.site.head' , [ 'pageTitle' => $pageTitle,])
 
-<body>
+<body style="overflow-x: hidden !important; ">
 <!-- header-area-start -->
 <header class="header sticky-active rtl">
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-inner">
-                <div class="top-bar-left">
-                    <ul class="top-left-list">
-                        <li><a href="#">درباره ما</a></li>
-                        <li><a href="#">حساب من</a></li>
-                        <li><a href="#">علاقه مندی ها</a></li>
-                        <li><a href="#">تسویه</a></li>
-                    </ul>
-                </div>
-                <div class="top-bar-middle">
-                    <span>ارسال رایگان برای تمامی سفارش‌ها بالای 150 تومان</span>
-                </div>
-                <div class="top-bar-right">
-                    <ul class="top-right-list">
-                        <li><a href="#">آدرس فروشگاه</a></li>
-                        <li>
-                            <div class="nice-select select-control country" tabindex="0">
-                                <span class="current">انتخاب زبان</span>
-                                <ul class="list">
-                                    <li data-value="" class="option selected focus">زبان</li>
-                                    <li data-value="vdt" class="option">انگلیسی</li>
-                                    <li data-value="can" class="option">فارسی</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="nice-select select-control select-2 country" tabindex="0">
-                                <span class="current">واحد پول</span>
-                                <ul class="list">
-                                    <li data-value="" class="option selected focus">نوع ارز</li>
-                                    <li data-value="vdt" class="option">دلار</li>
-                                    <li data-value="can" class="option">تومان</li>
-                                    <li data-value="uk" class="option">لیر</li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="header-middle">
         <div class="container rtl">
             <div class="header-middle-inner">
@@ -60,10 +17,9 @@
                     </div>
                     <div class="category-form-wrap">
                         <div class="nice-select select-control country" tabindex="0">
-                            <span class="current">کل دسته بندی ها</span>
+                            <span class="current"> دسته بندی ها</span>
                             <ul class="list">
-                                <li data-value="" class="option selected focus">همه دسته ها</li>
-                                <li data-value="vdt" class="option">مد و پوشاک</li>
+                                <li data-value="" class="option selected focus">مد و پوشاک</li>
                                 <li data-value="can" class="option">مواد غذایی</li>
                                 <li data-value="uk" class="option">مبلمان</li>
                             </ul>
@@ -79,7 +35,7 @@
                         <li>
                             <div class="content">
                                 <span>تماس با ما:</span>
-                                <a class="number" href="tel:+9127661646">09127661646</a>
+                                <a class="number" href="tel:+985112345678">12345678 - 051 </a>
                             </div>
                             <a href="#" class="icon">
                                 <i class="fa-regular fa-phone"></i>
@@ -118,11 +74,6 @@
                         <ul>
                             <li class="menu-item-has-children active">
                                 <a href="{{ route('site.home') }}">خانه</a>
-                                <ul>
-                                    <li><a href="#">دمو مد و پوشاک</a></li>
-                                    <li><a href="#">دمو مواد غذایی</a></li>
-                                    <li><a href="#">دمو مبلمان</a></li>
-                                </ul>
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="#">فروشگاه</a>
@@ -159,14 +110,13 @@
                                     <li><a href="#">جزئیات بلاگ</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">ارتباط با ما</a></li>
+                            <li><a href="{{ route('site.contact') }}">ارتباط با ما</a></li>
                         </ul>
                     </div>
                 </div>
                 <!-- /.header-menu-wrap -->
                 <div class="header-right-wrap">
                     <div class="header-right">
-                        <span>کد تخفیف 30 درصدی <span>Roz</span></span>
                         <div class="header-right-item">
                             <a href="javascript:void(0)" class="mobile-side-menu-toggle"
                             ><i class="fa-sharp fa-solid fa-bars"></i
@@ -200,23 +150,13 @@
         </div>
         <div class="side-menu-wrap"></div>
         <ul class="side-menu-list">
-            <li><i class="fa-light fa-location-dot"></i>آدرس : <span>کرج، عظیمیه، میدان مهران</span></li>
-            <li><i class="fa-light fa-phone"></i>شماره تماس : <a href="tel:+01569896654">026345879541</a></li>
-            <li><i class="fa-light fa-envelope"></i>آدرس ایمیل : <a href="mailto:info@example.com">اینجا وارد کنید</a></li>
+            <li><i class="fa-light fa-location-dot"></i>آدرس : <span>تهران ، خیابان گل ، پلاک ۱۲۳</span></li>
+            <li><i class="fa-light fa-phone"></i>شماره تماس : <a href="tel:+989127661646">12345678 - 051</a></li>
+            <li><i class="fa-light fa-envelope"></i>آدرس ایمیل : <a href="mailto:info@example.com">info@example.com</a></li>
         </ul>
     </div>
 </div>
 <!-- /.mobile-side-menu -->
-
-<div id="preloader">
-    <div class="preloader-close">X</div>
-    <div class="sk-three-bounce">
-        <div class="sk-child sk-bounce1"></div>
-        <div class="sk-child sk-bounce2"></div>
-        <div class="sk-child sk-bounce3"></div>
-    </div>
-</div>
-<!-- ./ preloader -->
 
 <section class="hero-section">
     <div class="overlay"></div>

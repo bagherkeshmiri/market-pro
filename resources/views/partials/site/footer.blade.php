@@ -7,7 +7,7 @@
                 </div>
                 <div class="content">
                     <h4 class="title">ارسال رایگان</h4>
-                    <span>سفارش بالای 65 تومان</span>
+                    <span>سفارش بالای 200 هزار تومان</span>
                 </div>
             </div>
             <div class="footer-item">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="content">
                     <h4 class="title">پرداخت های امن</h4>
-                    <span>تمام کارت ها</span>
+                    <span>تمام کارت های عضو شبکه شتاب</span>
                 </div>
             </div>
             <div class="footer-item item-2">
@@ -34,7 +34,7 @@
                 </div>
                 <div class="content">
                     <h4 class="title">خدمات مشتری</h4>
-                    <span>خدمات مشتری درجه یک</span>
+                    <span>خدمات مشتری 24/7 </span>
                 </div>
             </div>
         </div>
@@ -42,61 +42,61 @@
             <div class="col-lg-3 col-md-6">
                 <div class="footer-widget">
                     <div class="widget-header">
-                        <h3 class="widget-title">درباره فروشگاه</h3>
+                        <h3 class="widget-title"> تماس با ما</h3>
                     </div>
                     <div class="footer-contact">
                         <div class="icon"><i class="fa-sharp fa-solid fa-phone-rotary"></i></div>
                         <div class="content">
-                            <span>سوالی دارید؟ 24/7 با ما تماس بگیرید</span>
-                            <a href="tel:+989127661646">+989127661646</a>
+                            <span>سوالی دارید؟  با ما تماس بگیرید</span>
+                            <a href="tel:+989127661646">12345678 - 051</a>
                         </div>
                     </div>
                     <ul class="schedule-list">
-                        <li><span>دوشنبه تا جمعه:</span>8:00 صبح تا 6:00 بعد از ظهر</li>
-                        <li><span>شنبه:</span>8:00 صبح تا 6:00 بعد از ظهر</li>
-                        <li><span>یکشنبه:</span> سرویس بسته</li>
+                        <li><span> ساعات کاری :</span> همه روزه از ۸ صبح تا ۶ عصر</li>
+                        <li><span>ایمیل : </span> support@example.com</li>
+                        <li><span>آدرس  :</span> تهران ، خیابان گل ، پلاک ۱۲۳</li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-2 col-md-6">
                 <div class="footer-widget">
                     <div class="widget-header">
-                        <h3 class="widget-title">فروشگاه های ما</h3>
+                        <h3 class="widget-title">درباره ما</h3>
                     </div>
                     <ul class="footer-list">
-                        <li><a href="#">نیویورک</a></li>
-                        <li><a href="#">لوس آنجلس</a></li>
-                        <li><a href="#">شیکاکو</a></li>
-                        <li><a href="#">لاس وگاس</a></li>
-                        <li><a href="#">واشینگتن</a></li>
+                        <li><a href="#">درباره فروشگاه</a></li>
+                        <li><a href="{{ route('site.contact') }}"> ارتباط با ما</a></li>
+                        <li><a href="#"> وبلاگ</a></li>
+                        <li><a href="#"> فرصت های شغلی</a></li>
+                        <li><a href="#">‌همکاری با ما</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-2 col-md-6">
                 <div class="footer-widget">
                     <div class="widget-header">
-                        <h3 class="widget-title">دسته بندی های فروشگاه</h3>
+                        <h3 class="widget-title"> خدمات مشتریان</h3>
                     </div>
                     <ul class="footer-list">
-                        <li><a href="#">تازه رسیده ها</a></li>
-                        <li><a href="#">پرفروش ترین</a></li>
-                        <li><a href="#">سبزیجات</a></li>
-                        <li><a href="#">گوشت تازه</a></li>
-                        <li><a href="#">غذای دریایی تازه</a></li>
+                        <li><a href="#">راهنمای خرید</a></li>
+                        <li><a href="#">سوالات متداول</a></li>
+                        <li><a href="#">قوانین و مقررات</a></li>
+                        <li><a href="#">پیگیری سفارش</a></li>
+                        <li><a href="#">بازگشت کالا</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-2 col-md-6">
                 <div class="footer-widget">
                     <div class="widget-header">
-                        <h3 class="widget-title">لینک های مفید</h3>
+                        <h3 class="widget-title">دسته‌بندی‌های محبوب</h3>
                     </div>
                     <ul class="footer-list">
-                        <li><a href="#">سیاست حفظ حریم خصوصی</a></li>
-                        <li><a href="#">شرایط و ضوابط</a></li>
-                        <li><a href="#">با ما تماس بگیرید</a></li>
-                        <li><a href="#">آخرین خبرها</a></li>
-                        <li><a href="#">نقشه های سایت ما</a></li>
+                        <li><a href="#">لباس زنانه</a></li>
+                        <li><a href="#">لباس مردانه</a></li>
+                        <li><a href="#">لباس بچه گانه</a></li>
+                        <li><a href="#">کفش و کتانی</a></li>
+                        <li><a href="#">اکسسوری</a></li>
                     </ul>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                         <h3 class="widget-title">خبرنامه ما</h3>
                     </div>
                     <div class="news-form-wrap">
-                        <p class="mb-20">برای دریافت به‌روزرسانی‌ها از جمله ورودی‌های جدید و سایر تخفیف‌ها، در فهرست پستی مشترک شوید</p>
+                        <p class="mb-20">برای دریافت جدیدترین تخفیف ‌ها، در فهرست پستی مشترک شوید</p>
                         <div class="footer-form mb-20">
                             <form action="#" class="rr-subscribe-form">
                                 <input class="form-control" type="email" name="email" placeholder="آدرس ایمیل">
@@ -115,25 +115,27 @@
                                 <div class="clearfix"></div>
                             </form>
                         </div>
-                        <p class="mb-0">من می خواهم اخبار و پیشنهاد ویژه را دریافت کنم</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="copyright-area">
-        <div class="container">
-            <div class="row copyright-content">
-                <div class="col-lg-6">
-                    <div class="footer-img-wrap">
-                        <span>سیستم پرداخت:</span>
-                        <div class="footer-img"><a href="#"><img src="{{ asset('images/site/footer-img-1.png') }}" alt="img"></a></div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <p>طراحی و توسعه توسط <span>ایران کد</span></p>
-                </div>
-            </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6 mx-auto text-center px-3 pb-4">
+            <span >
+                    کپی رایت &copy;
+                <script>
+                        const today = new Date();
+                        const faYear = new Intl.DateTimeFormat('fa-IR-u-ca-persian', {year: 'numeric'}).format(today);
+                        document.write(faYear);
+                </script>
+                    - 1400
+                    |
+                    تمامی حقوق برای فروشگاه تست محفوظ است
+            </span>
         </div>
     </div>
+
+
 </footer>
