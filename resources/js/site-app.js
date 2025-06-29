@@ -1,0 +1,15 @@
+import './site/vendor/jquary-3.6.0.min.js';
+import './site/vendor/bootstrap-bundle.js';
+import './site/vendor/imagesloaded-pkgd.js';
+import './site/vendor/waypoints.min.js';
+import './site/vendor/venobox.min.js';
+import './site/vendor/odometer.min.js';
+import './site/vendor/meanmenu.js';
+import './site/vendor/smooth-scroll.js';
+import './site/vendor/jquery.isotope.js';
+import './site/vendor/countdown.js';
+import './site/vendor/swiper.min.js';
+import './site/vendor/nice-select.js';
+import './site/ajax-form.js';
+import './site/contact.js';
+import './site/main.js';

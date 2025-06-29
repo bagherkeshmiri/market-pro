@@ -1,40 +1,762 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html class="no-js" lang="en">
 
 @include('partials.site.head' , [ 'pageTitle' => $pageTitle,])
 
-<body class="goto-here">
+<body>
+<!-- header-area-start -->
+<header class="header sticky-active rtl">
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-inner">
+                <div class="top-bar-left">
+                    <ul class="top-left-list">
+                        <li><a href="#">درباره ما</a></li>
+                        <li><a href="#">حساب من</a></li>
+                        <li><a href="#">علاقه مندی ها</a></li>
+                        <li><a href="#">تسویه</a></li>
+                    </ul>
+                </div>
+                <div class="top-bar-middle">
+                    <span>ارسال رایگان برای تمامی سفارش‌ها بالای 150 تومان</span>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="top-right-list">
+                        <li><a href="#">آدرس فروشگاه</a></li>
+                        <li>
+                            <div class="nice-select select-control country" tabindex="0">
+                                <span class="current">انتخاب زبان</span>
+                                <ul class="list">
+                                    <li data-value="" class="option selected focus">زبان</li>
+                                    <li data-value="vdt" class="option">انگلیسی</li>
+                                    <li data-value="can" class="option">فارسی</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nice-select select-control select-2 country" tabindex="0">
+                                <span class="current">واحد پول</span>
+                                <ul class="list">
+                                    <li data-value="" class="option selected focus">نوع ارز</li>
+                                    <li data-value="vdt" class="option">دلار</li>
+                                    <li data-value="can" class="option">تومان</li>
+                                    <li data-value="uk" class="option">لیر</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-middle">
+        <div class="container rtl">
+            <div class="header-middle-inner">
+                <div class="header-middle-left">
+                    <div class="header-logo d-lg-block">
+                        <a href="{{ route('site.home') }}">
+                            <img src="{{ asset('images/site/logo-1.png') }}" alt="Logo">
+                        </a>
+                    </div>
+                    <div class="category-form-wrap">
+                        <div class="nice-select select-control country" tabindex="0">
+                            <span class="current">کل دسته بندی ها</span>
+                            <ul class="list">
+                                <li data-value="" class="option selected focus">همه دسته ها</li>
+                                <li data-value="vdt" class="option">مد و پوشاک</li>
+                                <li data-value="can" class="option">مواد غذایی</li>
+                                <li data-value="uk" class="option">مبلمان</li>
+                            </ul>
+                        </div>
+                        <form class="header-form" action="#">
+                            <input class="form-control" type="text" name="search" placeholder="دنبال چی هستی؟">
+                            <button class="submit rr-primary-btn">جستجو کنید</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="header-middle-right">
+                    <ul class="contact-item-list">
+                        <li>
+                            <div class="content">
+                                <span>تماس با ما:</span>
+                                <a class="number" href="tel:+9127661646">09127661646</a>
+                            </div>
+                            <a href="#" class="icon">
+                                <i class="fa-regular fa-phone"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="icon">
+                                <i class="fa-sharp fa-regular fa-heart"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="icon">
+                                <i class="fa-light fa-bag-shopping"></i>
+                                <span>2</span>
+                            </a>
+                            <div class="content">
+                                <span>سبد خرید شما.</span>
+                                <h5 class="number">13.758.000 تومان</h5>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="primary-header">
+        <div class="container">
+            <div class="primary-header-inner">
+                <div class="header-logo mobile-logo">
+                    <a href="{{ route('site.home') }}">
+                        <img src="{{ asset('images/site.logo-1.png') }}" alt="Logo">
+                    </a>
+                </div>
+                <div class="header-menu-wrap">
+                    <div class="mobile-menu-items">
+                        <ul>
+                            <li class="menu-item-has-children active">
+                                <a href="{{ route('site.home') }}">خانه</a>
+                                <ul>
+                                    <li><a href="#">دمو مد و پوشاک</a></li>
+                                    <li><a href="#">دمو مواد غذایی</a></li>
+                                    <li><a href="#">دمو مبلمان</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">فروشگاه</a>
+                                <ul>
+                                    <li><a href="#">فروشگاه اصلی</a></li>
+                                    <li><a href="#">فروشگاه گرید</a></li>
+                                    <li><a href="#">جزئیات فروشگاه</a></li>
+                                    <li><a href="#">سبد خرید</a></li>
+                                    <li><a href="#">لیست علاقه مندی ها</a></li>
+                                    <li><a href="#">صفحه پرداخت</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">زنانه</a>
+                            </li>
+                            <li>
+                                <a href="#">مردانه</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">صفحات</a>
+                                <ul>
+                                    <li><a href="#">درباره ما</a></li>
+                                    <li><a href="#">ورود</a></li>
+                                    <li><a href="#">عضویت</a></li>
+                                    <li><a href="#">سوالات متداول</a></li>
+                                    <li><a href="#">خطا 404</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">بلاگ ها</a>
+                                <ul>
+                                    <li><a href="#">بلاگ گرید</a></li>
+                                    <li><a href="#">بلاگ لیست</a></li>
+                                    <li><a href="#">جزئیات بلاگ</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">ارتباط با ما</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.header-menu-wrap -->
+                <div class="header-right-wrap">
+                    <div class="header-right">
+                        <span>کد تخفیف 30 درصدی <span>Roz</span></span>
+                        <div class="header-right-item">
+                            <a href="javascript:void(0)" class="mobile-side-menu-toggle"
+                            ><i class="fa-sharp fa-solid fa-bars"></i
+                                ></a>
+                        </div>
+                    </div>
+                    <!-- /.header-right -->
+                </div>
+            </div>
+            <!-- /.primary-header-inner -->
+        </div>
+    </div>
+</header>
+<!-- /.Main Header -->
 
-@include('partials.site.menu',['menus' => $menus,])
+<div id="popup-search-box">
+    <div class="box-inner-wrap d-flex align-items-center">
+        <form id="form" action="#" method="get" role="search">
+            <input id="popup-search" type="text" name="search" placeholder="Type keywords here...">
+        </form>
+        <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
+    </div>
+</div>
+<!-- /#popup-search-box -->
 
-{{ $slot }}
+<div class="mobile-side-menu rtl">
+    <div class="side-menu-content">
+        <div class="side-menu-head">
+            <a href='{{ route('site.home') }}'><img src="{{ asset('images/site/logo-1.png') }}" alt="logo"></a>
+            <button class="mobile-side-menu-close"><i class="fa-regular fa-xmark"></i></button>
+        </div>
+        <div class="side-menu-wrap"></div>
+        <ul class="side-menu-list">
+            <li><i class="fa-light fa-location-dot"></i>آدرس : <span>کرج، عظیمیه، میدان مهران</span></li>
+            <li><i class="fa-light fa-phone"></i>شماره تماس : <a href="tel:+01569896654">026345879541</a></li>
+            <li><i class="fa-light fa-envelope"></i>آدرس ایمیل : <a href="mailto:info@example.com">اینجا وارد کنید</a></li>
+        </ul>
+    </div>
+</div>
+<!-- /.mobile-side-menu -->
+
+<div id="preloader">
+    <div class="preloader-close">X</div>
+    <div class="sk-three-bounce">
+        <div class="sk-child sk-bounce1"></div>
+        <div class="sk-child sk-bounce2"></div>
+        <div class="sk-child sk-bounce3"></div>
+    </div>
+</div>
+<!-- ./ preloader -->
+
+<section class="hero-section">
+    <div class="overlay"></div>
+    <div class="hero-images">
+        <div class="hero-people"><img src="{{ asset('images/site/hero-peoples.png') }}" alt="img"></div>
+        <div class="hero-shape"><img src="{{ asset('images/site/hero-shape-1.png') }}" alt="shape"></div>
+        <div class="hero-shape-2"><img src="{{ asset('images/site/hero-shape-2.png') }}" alt="shape"></div>
+    </div>
+    <div class="container rtl">
+        <div class="row">
+            <div class="col-xl-8"></div>
+            <div class="col-xl-4 col-lg-12">
+                <div class="hero-content">
+                    <h4 class="sub-title">کالکشن فصل برند های روز</h4>
+                    <h2 class="title">مجموعه فوق‌العاده <br>برای زنان</h2>
+                    <h5 class="price"><span> شروع از </span>500 هزار تومان</h5>
+                    <a href="#" class="rr-primary-btn">مشاهده کالکشن</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ./ hero-section -->
+
+<section class="category-section pt-100 pb-100">
+    <div class="container rtl">
+        <div class="category-top heading-space space-border">
+            <div class="section-heading mb-0">
+                <h2 class="section-title">بهترین برای دسته های شما</h2>
+                <p>بیش از 29 دسته بندی و هزاران محصول </p>
+            </div>
+            <!-- Carousel Arrows -->
+            <div class="swiper-arrow">
+                <div class="swiper-nav swiper-next"><i class="fa-regular fa-arrow-right"></i></div>
+                <div class="swiper-nav swiper-prev"><i class="fa-regular fa-arrow-left"></i></div>
+            </div>
+        </div>
+        <div class="category-carousel swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="category-item">
+                        <div class="category-img">
+                            <img src="{{ asset('images/site/cate-1.png') }}" alt="category">
+                        </div>
+                        <h3 class="title"><a href="#">پوشاک زنانه</a></h3>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="category-item">
+                        <div class="category-img">
+                            <img src="{{ asset('images/site/cate-2.png') }}" alt="category">
+                        </div>
+                        <h3 class="title"><a href="#">کالکشن کفش</a></h3>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="category-item">
+                        <div class="category-img">
+                            <img src="{{ asset('images/site/cate-3.png') }}" alt="category">
+                        </div>
+                        <h3 class="title"><a href="#">کالکشن کیف</a></h3>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="category-item">
+                        <div class="category-img">
+                            <img src="{{ asset('images/site/cate-4.png') }}" alt="category">
+                        </div>
+                        <h3 class="title"><a href="#">مجموعه ساعت</a></h3>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="category-item">
+                        <div class="category-img">
+                            <img src="{{ asset('images/site/cate-5.png') }}" alt="category">
+                        </div>
+                        <h3 class="title"><a href="#">تجهیزات جانبی</a></h3>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="category-item">
+                        <div class="category-img">
+                            <img src="{{ asset('images/site/cate-6.png') }}" alt="category">
+                        </div>
+                        <h3 class="title"><a href="#">عینک آفتابی</a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ./ category-section -->
+
+<section class="discount-section overflow-hidden pb-100 rtl">
+    <div class="row gy-lg-0 gy-4">
+        <div class="col-lg-4 col-md-6">
+            <div class="discount-item item-1">
+                <div class="product-overlay"></div>
+                <div class="shape"><img src="{{ asset('images/site/dis-shape.png') }}" alt="shape"></div>
+                <div class="content">
+                    <span>50% تخفیف ویژه</span>
+                    <h3 class="title">آخرین ترندهای مردانه <br> این فصل</h3>
+                    <a href="#"><i class="fa-regular fa-plus"></i>مشاهده کالکشن</a>
+                </div>
+                <div class="men"><img src="{{ asset('images/site/discount-men-1.png') }}" alt="img"></div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="discount-item">
+                <div class="product-overlay"></div>
+                <div class="shape"><img src="{{ asset('images/site/dis-shape.png') }}" alt="shape"></div>
+                <div class="men"><img src="{{ asset('images/site/discount-men-2.png') }}" alt="img"></div>
+                <div class="content">
+                    <span>50% تخفیف ویژه</span>
+                    <h3 class="title">جدیدترین پوشاک گودکان <br>در این فصل</h3>
+                    <a href="#"><i class="fa-regular fa-plus"></i>مشاهده کالکشن</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="discount-item">
+                <div class="product-overlay"></div>
+                <div class="shape"><img src="{{ asset('images/site/dis-shape.png') }}" alt="shape"></div>
+                <div class="men"><img src="{{ asset('images/site/discount-men-3.png') }}" alt="img"></div>
+                <div class="content">
+                    <span>50% تخفیف ویژه</span>
+                    <h3 class="title">آخرین مد های زنانه <br>فصل جدید</h3>
+                    <a href="#"><i class="fa-regular fa-plus"></i>مشاهده کالکشن</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ./ discount-section -->
+
+<section class="fashion-section pb-100">
+    <div class="container rtl">
+        <div class="category-top heading-space space-border">
+            <div class="section-heading mb-0">
+                <h2 class="section-title">استایل مورد علاقتو ببین</h2>
+                <p>بیش از 29 دسته بندی و هزاران محصول</p>
+            </div>
+            <!-- Carousel Arrows -->
+            <div class="swiper-arrow">
+                <div class="swiper-nav swiper-next"><i class="fa-regular fa-arrow-right"></i></div>
+                <div class="swiper-nav swiper-prev"><i class="fa-regular fa-arrow-left"></i></div>
+            </div>
+        </div>
+        <div class="shop-carousel swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="shop-item">
+                        <div class="shop-thumb">
+                            <div class="overlay"></div>
+                            <img src="{{ asset('images/site/shop-1.png') }}" alt="shop">
+                            <span class="sale">جدید</span>
+                            <ul class="shop-list">
+                                <li><a href="#"><i class="fa-regular fa-cart-shopping"></i></a></li>
+                                <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa-light fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="shop-content">
+                            <span class="category">Levi’s برند</span>
+                            <h3 class="title"><a href="#">لباس مجلسی مونیکا دیارا</a></h3>
+                            <div class="review-wrap">
+                                <ul class="review">
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                </ul>
+                                <span>(15 نظرات)</span>
+                            </div>
+                            <span class="price"> <span class="offer">250 تومان</span>157 تومان</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="shop-item">
+                        <div class="shop-thumb">
+                            <div class="overlay"></div>
+                            <img src="{{ asset('images/site/shop-2.png') }}" alt="shop">
+                            <span class="sale">جدید</span>
+                            <ul class="shop-list">
+                                <li><a href="#"><i class="fa-regular fa-cart-shopping"></i></a></li>
+                                <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa-light fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="shop-content">
+                            <span class="category">Levi’s برند</span>
+                            <h3 class="title"><a href="#">صندل گل مشکی اونیما</a></h3>
+                            <div class="review-wrap">
+                                <ul class="review">
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                </ul>
+                                <span>(15 نظرات)</span>
+                            </div>
+                            <span class="price"> <span class="offer">450 تومان</span>257 تومان</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="shop-item">
+                        <div class="shop-thumb">
+                            <div class="overlay"></div>
+                            <img src="{{ asset('images/site/shop-3.png') }}" alt="shop">
+                            <span class="sale">جدید</span>
+                            <ul class="shop-list">
+                                <li><a href="#"><i class="fa-regular fa-cart-shopping"></i></a></li>
+                                <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa-light fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="shop-content">
+                            <span class="category">Levi’s برند</span>
+                            <h3 class="title"><a href="#">ژاکت پانچو بین المللی</a></h3>
+                            <div class="review-wrap">
+                                <ul class="review">
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                </ul>
+                                <span>(15 نظرات)</span>
+                            </div>
+                            <span class="price"> <span class="offer">550 تومان</span>427 تومان</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="shop-item">
+                        <div class="shop-thumb">
+                            <div class="overlay"></div>
+                            <img src="{{ asset('images/site/shop-4.png') }}" alt="shop">
+                            <span class="sale">جدید</span>
+                            <ul class="shop-list">
+                                <li><a href="#"><i class="fa-regular fa-cart-shopping"></i></a></li>
+                                <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa-light fa-eye"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="shop-content">
+                            <span class="category">Levi’s برند</span>
+                            <h3 class="title"><a href="#">کیف پنبه ای اداری ضد آب</a></h3>
+                            <div class="review-wrap">
+                                <ul class="review">
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                </ul>
+                                <span>(15 نظرات)</span>
+                            </div>
+                            <span class="price"> <span class="offer">350 تومان</span>250 تومان</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ./ fashion-section -->
+
+<section class="collect-section pb-100">
+    <div class="container rtl">
+        <div class="row gy-lg-0 gy-4">
+            <div class="col-lg-6">
+                <div class="collect-item">
+                    <span>+1500 محصول</span>
+                    <h3 class="title">مجموعه زنان</h3>
+                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ <br> لورم ایپسوم متن ساختگی با</p>
+                    <ul class="collect-list">
+                        <li><a href="#">بلیزر</a></li>
+                        <li><a href="#">بلوز و پیراهن</a></li>
+                        <li><a href="#">کلاه مجلسی</a></li>
+                        <li><a href="#">شولوار جین</a></li>
+                        <li><a href="#">بافتنی</a></li>
+                        <li><a href="#">شلوار</a></li>
+                        <li><a href="#">دامن</a></li>
+                        <li><a href="#">کت و شلوار</a></li>
+                        <li><a href="#">سویشرت و هودی</a></li>
+                        <li><a href="#">تی شرت</a></li>
+                        <li><a href="#">تاپ و بادی</a></li>
+                    </ul>
+                    <div class="men"><img src="{{ asset('images/site/discount-1.png') }}" alt="discount"></div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="collect-items">
+                    <div class="collect-item item-1">
+                        <span>+1500 محصول</span>
+                        <h3 class="title">کالکشن مردانه</h3>
+                        <ul class="collect-list">
+                            <li><a href="#">بلیزر</a></li>
+                            <li><a href="#">بلوز و پیراهن</a></li>
+                            <li><a href="#">کلاه</a></li>
+                            <li><a href="#">شلوار جین</a></li>
+                        </ul>
+                        <div class="men"><img src="{{ asset('images/site/discount-2.png') }}" alt="discount"></div>
+                    </div>
+                    <div class="collect-item item-2">
+                        <span>+1500 محصول</span>
+                        <h3 class="title">بهترین اکسسوری</h3>
+                        <ul class="collect-list">
+                            <li><a href="#">بلیزر</a></li>
+                            <li><a href="#">بلوز و پیراهن</a></li>
+                            <li><a href="#">کلاه</a></li>
+                            <li><a href="#">شلوار جین</a></li>
+                        </ul>
+                        <div class="men"><img src="{{ asset('images/site/discount-3.png') }}" alt="discount"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ./ collect-section -->
+
+<section class="cta-section pt-100 pb-100" data-background="assets/img/bg-img/cta-bg.jpg">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="cta-wrap text-center">
+            <span>مجموعه زنانه بهار تابستان 22</span>
+            <h2 class="title">-15% تخفیف <br>همه اینجا</h2>
+            <a href="#" class="rr-primary-btn cta-btn">مشاهده مجموعه ها</a>
+        </div>
+    </div>
+</section>
+<!-- ./ cta-section -->
+
+<div class="sponsor-section pt-100">
+    <div class="container">
+        <div class="row sponsor-wrap">
+            <div class="sponsor-item bd-right bd-bottom">
+                <a href="#"><img src="{{ asset('images/site/sponsor-1.png') }}" alt="img"></a>
+            </div>
+            <div class="sponsor-item bd-right bd-bottom">
+                <a href="#"><img src="{{ asset('images/site/sponsor-2.png') }}" alt="img"></a>
+            </div>
+            <div class="sponsor-item bd-right bd-bottom">
+                <a href="#"><img src="{{ asset('images/site/sponsor-3.png') }}" alt="img"></a>
+            </div>
+            <div class="sponsor-item bd-right bd-bottom">
+                <a href="#"><img src="{{ asset('images/site/sponsor-4.png') }}" alt="img"></a>
+            </div>
+            <div class="sponsor-item bd-bottom">
+                <a href="#"><img src="{{ asset('images/site/sponsor-5.png') }}" alt="img"></a>
+            </div>
+            <div class="sponsor-item bd-right">
+                <a href="#"><img src="{{ asset('images/site/sponsor-6.png') }}" alt="img"></a>
+            </div>
+            <div class="sponsor-item bd-right">
+                <a href="#"><img src="{{ asset('images/site/sponsor-7.png') }}" alt="img"></a>
+            </div>
+            <div class="sponsor-item bd-right">
+                <a href="#"><img src="{{ asset('images/site/sponsor-8.png') }}" alt="img"></a>
+            </div>
+            <div class="sponsor-item bd-right">
+                <a href="#"><img src="{{ asset('images/site/sponsor-9.png') }}" alt="img"></a>
+            </div>
+            <div class="sponsor-item">
+                <a href="#"><img src="{{ asset('images/site/sponsor-10.png') }}" alt="img"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./ sponsor-section -->
+
+<section class="deal-section pt-100 pb-100">
+    <div class="container rtl">
+        <div class="row deal-wrap align-items-center">
+            <div class="shape"><img src="{{ asset('images/site/deal-shape.png') }}" alt="shape"></div>
+            <div class="col-xl-5 col-lg-12">
+                <div class="deal-content">
+                    <div class="section-heading mb-0">
+                        <h2 class="section-title">پیشنهادها امروز</h2>
+                        <p>طرح اوریگامی صورتی شیک سه نوع نمای بعدی و <br>همکاری دکوراسیون عالی برای افزودن وسایل تزئینی...</p>
+                    </div>
+                    <div class="deal-info">
+                        <div class="icon">
+                            <img src="{{ asset('images/site/deal-icon.png') }}" alt="icon">
+                        </div>
+                        <div class="content">
+                            <p>پیشنهاد زمان محدود قرارداد منقضی خواهد شد <br> یک 18 اوت 2024 </p>
+                        </div>
+                    </div>
+                    <a href="#" class="rr-primary-btn deal-btn">مشاهده همه مجموعه ها</a>
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-12">
+                <div class="row gy-md-0 gy-4">
+                    <div class="col-md-6">
+                        <div class="shop-item deal-shop">
+                            <div class="shop-thumb">
+                                <div class="overlay"></div>
+                                <img src="{{ asset('images/site/shop-5.jpg') }}" alt="shop">
+                                <span class="sale">جدید</span>
+                                <ul class="shop-list">
+                                    <li><a href="#"><i class="fa-regular fa-cart-shopping"></i></a></li>
+                                    <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
+                                    <li><a href="#"><i class="fa-light fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="shop-content">
+                                <span class="category">Levi’s برند</span>
+                                <h3 class="title"><a href="#">لباس مجلسی مونیکا دیارا</a></h3>
+                                <div class="review-wrap">
+                                    <ul class="review">
+                                        <li><i class="fa-solid fa-star"></i></li>
+                                        <li><i class="fa-solid fa-star"></i></li>
+                                        <li><i class="fa-solid fa-star"></i></li>
+                                        <li><i class="fa-solid fa-star"></i></li>
+                                        <li><i class="fa-solid fa-star"></i></li>
+                                    </ul>
+                                    <span>(15 نظرات)</span>
+                                </div>
+                                <span class="price"> <span class="offer">250 تومان</span>157 تومان</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="shop-item deal-shop">
+                            <div class="shop-thumb">
+                                <div class="overlay"></div>
+                                <img src="{{ asset('images/site/shop-6.jpg') }}" alt="shop">
+                                <span class="sale">جدید</span>
+                                <ul class="shop-list">
+                                    <li><a href="#"><i class="fa-regular fa-cart-shopping"></i></a></li>
+                                    <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
+                                    <li><a href="#"><i class="fa-light fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="shop-content">
+                                <span class="category">Levi’s برند</span>
+                                <h3 class="title"><a href="#">صندل گل مشکی اونیما</a></h3>
+                                <div class="review-wrap">
+                                    <ul class="review">
+                                        <li><i class="fa-solid fa-star"></i></li>
+                                        <li><i class="fa-solid fa-star"></i></li>
+                                        <li><i class="fa-solid fa-star"></i></li>
+                                        <li><i class="fa-solid fa-star"></i></li>
+                                        <li><i class="fa-solid fa-star"></i></li>
+                                    </ul>
+                                    <span>(15 نظرات)</span>
+                                </div>
+                                <span class="price"> <span class="offer">450 تومان</span>257 تومان</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ./ deal-section -->
+
+<section class="blog-section pb-100">
+    <div class="container rtl">
+        <div class="section-heading text-center">
+            <h2 class="section-title mb-0">آخرین بینش خبری ما</h2>
+        </div>
+        <div class="row gy-lg-0 gy-4 justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="post-card">
+                    <div class="post-thumb">
+                        <img src="{{ asset('images/site/post-1.jpg') }}" alt="post">
+                    </div>
+                    <div class="post-content-wrap">
+                        <div class="post-content">
+                            <ul class="post-meta">
+                                <li><i class="fa-sharp fa-solid fa-calendar-days"></i>3 نظر</li>
+                                <li><i class="fa-regular fa-tag"></i>اخبار روز</li>
+                            </ul>
+                            <h3 class="title"><a href="#">مد در اطراف: بررسی تأثیرات فرهنگی</a></h3>
+                        </div>
+                        <div class="post-bottom">
+                            <a href="#" class="read-more">بیشتر بدانید<i class="fa-regular fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="post-card">
+                    <div class="post-thumb">
+                        <img src="{{ asset('images/site/post-2.jpg') }}" alt="post">
+                    </div>
+                    <div class="post-content-wrap">
+                        <div class="post-content">
+                            <ul class="post-meta">
+                                <li><i class="fa-sharp fa-solid fa-calendar-days"></i>3 نظر</li>
+                                <li><i class="fa-regular fa-tag"></i>اخبار روز</li>
+                            </ul>
+                            <h3 class="title"><a href="#">پذیرش مد اخلاقی و سازگار با محیط زیست</a></h3>
+                        </div>
+                        <div class="post-bottom">
+                            <a href="#" class="read-more">بیشتر بدانید<i class="fa-regular fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="post-card">
+                    <div class="post-thumb">
+                        <img src="{{ asset('images/site/post-3.jpg') }}" alt="post">
+                    </div>
+                    <div class="post-content-wrap">
+                        <div class="post-content">
+                            <ul class="post-meta">
+                                <li><i class="fa-sharp fa-solid fa-calendar-days"></i>3 نظر</li>
+                                <li><i class="fa-regular fa-tag"></i>اخبار روز</li>
+                            </ul>
+                            <h3 class="title"><a href="#">چگونه ماشین خود را برای هالووین تزئین کنیم</a></h3>
+                        </div>
+                        <div class="post-bottom">
+                            <a href="#" class="read-more">بیشتر بدانید<i class="fa-regular fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ./ blog-section -->
 
 @include('partials.site.footer')
 
-<div id="ftco-loader" class="show fullscreen">
-    <svg class="circular" width="48px" height="48px">
-        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
-        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-                stroke="#F96D00"/>
-    </svg>
-</div>
 
-<script type="text/javascript" src="{{ asset('js/site/jquery.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/jquery-migrate-3.0.1.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/popper.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/jquery.easing.1.3.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/jquery.waypoints.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/jquery.stellar.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/owl.carousel.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/jquery.magnific-popup.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/aos.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/jquery.animateNumber.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/bootstrap-datepicker.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/scrollax.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/main.js') }}"></script>
 
-@yield('scripts')
-@livewireScripts
+<div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
+
+
 </body>
+
 </html>
