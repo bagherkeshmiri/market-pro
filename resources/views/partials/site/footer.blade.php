@@ -66,7 +66,7 @@
                     <ul class="footer-list">
                         <li><a href="#">درباره فروشگاه</a></li>
                         <li><a href="{{ route('site.contact') }}"> ارتباط با ما</a></li>
-                        <li><a href="#"> وبلاگ</a></li>
+                        <li><a href="{{ route('site.blog') }}"> وبلاگ</a></li>
                         <li><a href="#"> فرصت های شغلی</a></li>
                         <li><a href="#">‌همکاری با ما</a></li>
                     </ul>

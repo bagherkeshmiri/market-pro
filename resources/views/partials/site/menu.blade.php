@@ -92,7 +92,7 @@
                                 <a href="#">سوالات متداول</a>
                             </li>
                             <li>
-                                <a href="#">وبلاگ</a>
+                                <a href="{{ route('site.blog') }}">وبلاگ</a>
                             </li>
 
                             <li><a href="{{ route('site.contact') }}">ارتباط با ما</a></li>
