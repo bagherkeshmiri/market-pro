@@ -52,7 +52,7 @@
                                 <span>2</span>
                             </a>
                             <div class="content">
-                                <span>سبد خرید شما.</span>
+                                <span>سبد خرید شما</span>
                                 <h5 class="number">13.758.000 تومان</h5>
                             </div>
                         </li>
@@ -617,7 +617,7 @@
 <section class="blog-section pb-100">
     <div class="container rtl">
         <div class="section-heading text-center">
-            <h2 class="section-title mb-0">آخرین بینش خبری ما</h2>
+            <h2 class="section-title mb-0">آخرین‌ اخبار ما</h2>
         </div>
         <div class="row gy-lg-0 gy-4 justify-content-center">
             <div class="col-lg-4 col-md-6">
@@ -688,6 +688,21 @@
 <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
 
 
-</body>
+<script src="{{ asset('js/site/vendor/jquary-3.6.0.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/bootstrap-bundle.js') }}"></script>
+<script src="{{ asset('js/site/vendor/imagesloaded-pkgd.js') }}"></script>
+<script src="{{ asset('js/site/vendor/waypoints.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/venobox.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/odometer.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/meanmenu.js') }}"></script>
+<script src="{{ asset('js/site/vendor/smooth-scroll.js') }}"></script>
+<script src="{{ asset('js/site/vendor/jquery.isotope.js') }}"></script>
+<script src="{{ asset('js/site/vendor/countdown.js') }}"></script>
+<script src="{{ asset('js/site/vendor/swiper.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/nice-select.js') }}"></script>
+<script src="{{ asset('js/site/ajax-form.js') }}"></script>
+<script src="{{ asset('js/site/contact.js') }}"></script>
+<script src="{{ asset('js/site/main.js') }}"></script>
 
+</body>
 </html>
