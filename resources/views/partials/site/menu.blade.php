@@ -96,6 +96,8 @@
                             </li>
 
                             <li><a href="{{ route('site.contact') }}">ارتباط با ما</a></li>
+                            <li><a href="{{ route('site.login') }}">ورود</a></li>
+                            <li><a href="#">عضویت</a></li>
                         </ul>
                     </div>
                 </div>
