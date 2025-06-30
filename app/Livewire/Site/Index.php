@@ -10,7 +10,7 @@ class Index extends SiteComponent
 {
     public function render()
     {
-        $pageTitle = 'مرجع خرید انواع پیکسل خمیری';
+        $pageTitle = 'فروشگاه اینترنتی رویسر';
         $sampleProductImageUrl = $this->sampleProductImageUrl;
         $products = Product::limit(8)
             ->with('mainImage:id,product_id,image_url')
