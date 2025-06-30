@@ -1,78 +1,76 @@
-<div>
-    <section class="ftco-section contact-section bg-light pb-5">
-        <div class="container">
-            <div class="row d-flex mb-5 contact-info">
-                <div class="w-100"></div>
-                <div class="col-md-3 d-flex">
-                    <div class="info bg-white p-4">
-                        <div>
-                            <span class="icon icon-map-marker ml-2"></span>
-                            <span>آدرس :</span>
-                            <br/>
-                            ایران - مشهد - بلوار ابوطالب
+<di>
+    <section class="contact-section pt-50 pb-50">
+        <div class="container rtl">
+            <div class="row contact-wrap">
+                <div class="col-lg-8 col-md-12">
+                    <div class="blog-contact-form form-2">
+                        <div class="request-form">
+                            <h2 class="form-title">با ما در تماس باشید</h2>
+                            <form action="#" method="post" id="ajax_contact" class="form-horizontal">
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <div class="form-item">
+                                            <label for="name" class="form-header"> نام</label>
+                                            <input type="text" id="name" name="name" class="form-control" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-item">
+                                            <label for="email" class="form-header"> ایمیل</label>
+                                            <input type="text" id="email" name="email" class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <div class="form-item">
+                                            <label for="subject" class="form-header">موضوع</label>
+                                            <input type="text" id="subject" name="subject" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <div class="form-item message-item">
+                                            <label for="message" class="form-header">پیام خود را بنویسید</label>
+                                            <textarea id="message" name="message" cols="30" rows="5" class="form-control address" ></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="submit-btn">
+                                    <button id="submit" class="rr-primary-btn" type="submit">ارسال پیام</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 d-flex">
-                    <div class="info bg-white p-4">
-                        <div>
-                            <span class="icon icon-phone ml-2"></span>
-                            <span>تلفن :</span>
-                            <br/>
-                            <a href="tel://05137574592">37574592 - 051 </a>
+                <div class="col-lg-4 col-md-12">
+                    <div class="contact-content">
+                        <div class="contact-img"><img src="{{ asset('images/site/contact-img.png') }}" alt=""></div>
+                        <div class="contact-info-box">
+                            <h3 class="title">فروشگاه پوشاک</h3>
+                            <ul>
+                                <li>تهران، تجریش، مرکز خرید ارگ <br> طبقه پنجم واحد 157</li>
+                                <li>شماره تماس: <a href="tel:+1123456788">+989127661646</a></li>
+                                <li>ایمیل: <a href="mailto:contact@example.com">contact@example.com</a></li>
+                            </ul>
+                        </div>
+                        <div class="contact-info-box">
+                            <h3 class="title">ساعت کاری</h3>
+                            <ul>
+                                <li>از شنبه تا چهارشنبه 10 صبح تا 10 شب <br>آخر هفته تعطیل</li>
+                            </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 d-flex">
-                    <div class="info bg-white p-4">
-                        <div>
-                            <span class="icon icon-envelope ml-2"></span>
-                            <span>ایمیل :</span>
-                            <br/>
-                            <a href="mailto:info@pixeldooni.ir">info@pixeldooni.ir</a></div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex">
-                    <div class="info bg-white p-4">
-                        <div>
-                            <span class="icon icon-telegram ml-2"></span>
-                            <span> تلگرام :</span>
-                            <br/>
-                            <a href="#">pixeldooni@</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row block-9">
-                <div class="col-md-6 order-md-last d-flex">
-                    <form action="#" class="bg-white p-5 contact-form">
-                        <div class="form-group">
-                            <label for="name">نام</label>
-                            <input type="text" class="form-control" id="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">ایمیل</label>
-                            <input type="text" class="form-control" id="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">موضوع</label>
-                            <input type="text" class="form-control" id="subject">
-                        </div>
-                        <div class="form-group">
-                            <label for="">پیام</label>
-                            <textarea name="" id="" cols="30" rows="7" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="ارسال پیام" class="btn btn-primary py-3 px-5">
-                        </div>
-                    </form>
-
-                </div>
-
-                <div class="col-md-6 d-flex">
-                    <div id="map" class="bg-white"></div>
                 </div>
             </div>
         </div>
     </section>
-</div>
+
+    <div class="map-wrapper pb-50">
+        <div class="container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8826.923787362664!2d-118.27754354757262!3d34.03471770929568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20California%2C%20Hoa%20K%E1%BB%B3!5e0!3m2!1svi!2s!4v1566525118697!5m2!1svi!2s" width="100%" height="600" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+    </div>
+
+</di>
