@@ -4,151 +4,8 @@
 @include('partials.site.head' , [ 'pageTitle' => $pageTitle,])
 
 <body style="overflow-x: hidden !important; ">
-<!-- header-area-start -->
-<header class="header sticky-active rtl">
-    <div class="header-middle">
-        <div class="container rtl">
-            <div class="header-middle-inner">
-                <div class="header-middle-left">
-                    <div class="header-logo d-lg-block">
-                        <a href="{{ route('site.home') }}">
-                            <img src="{{ asset('images/site/logo-1.png') }}" alt="Logo">
-                        </a>
-                    </div>
-                    <div class="category-form-wrap">
-                        <div class="nice-select select-control country" tabindex="0">
-                            <span class="current"> دسته بندی ها</span>
-                            <ul class="list">
-                                <li data-value="" class="option selected focus">مد و پوشاک</li>
-                                <li data-value="can" class="option">مواد غذایی</li>
-                                <li data-value="uk" class="option">مبلمان</li>
-                            </ul>
-                        </div>
-                        <form class="header-form" action="#">
-                            <input class="form-control" type="text" name="search" placeholder="دنبال چی هستی؟">
-                            <button class="submit rr-primary-btn">جستجو کنید</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="header-middle-right">
-                    <ul class="contact-item-list">
-                        <li>
-                            <div class="content">
-                                <span>تماس با ما:</span>
-                                <a class="number" href="tel:+985112345678">12345678 - 051 </a>
-                            </div>
-                            <a href="#" class="icon">
-                                <i class="fa-regular fa-phone"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="icon">
-                                <i class="fa-sharp fa-regular fa-heart"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="icon">
-                                <i class="fa-light fa-bag-shopping"></i>
-                                <span>2</span>
-                            </a>
-                            <div class="content">
-                                <span>سبد خرید شما</span>
-                                <h5 class="number">13.758.000 تومان</h5>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="primary-header">
-        <div class="container">
-            <div class="primary-header-inner">
-                <div class="header-logo mobile-logo">
-                    <a href="{{ route('site.home') }}">
-                        <img src="{{ asset('images/site/logo-1.png') }}" alt="Logo">
-                    </a>
-                </div>
-                <div class="header-menu-wrap">
-                    <div class="mobile-menu-items">
-                        <ul>
-                            <li class="menu-item-has-children active">
-                                <a href="{{ route('site.home') }}">خانه</a>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">محصولات</a>
-                                <ul>
-                                    <li><a href="#">پیراهن</a></li>
-                                    <li><a href="#">شلوار</a></li>
-                                    <li><a href="#">لباس مجلسی</a></li>
-                                    <li><a href="#">لباس راحتی </a></li>
-                                    <li><a href="#">کفش و کیف</a></li>
-                                    <li><a href="#">اکسسوری زنانه</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">پرفروش‌ترین‌ها</a>
-                            </li>
-                            <li>
-                                <a href="#">جدیدترین‌ها</a>
-                            </li>
-                            <li>
-                                <a href="#">پیگیری سفارش</a>
-                            </li>
-                            <li>
-                                <a href="#">سوالات متداول</a>
-                            </li>
-                            <li>
-                                <a href="#">وبلاگ</a>
-                            </li>
 
-                            <li><a href="{{ route('site.contact') }}">ارتباط با ما</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /.header-menu-wrap -->
-                <div class="header-right-wrap">
-                    <div class="header-right">
-                        <div class="header-right-item">
-                            <a href="javascript:void(0)" class="mobile-side-menu-toggle">
-                                <i class="fa-sharp fa-solid fa-bars"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- /.header-right -->
-                </div>
-            </div>
-            <!-- /.primary-header-inner -->
-        </div>
-    </div>
-</header>
-<!-- /.Main Header -->
-
-<div id="popup-search-box">
-    <div class="box-inner-wrap d-flex align-items-center">
-        <form id="form" action="#" method="get" role="search">
-            <input id="popup-search" type="text" name="search" placeholder="Type keywords here...">
-        </form>
-        <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
-    </div>
-</div>
-<!-- /#popup-search-box -->
-
-<div class="mobile-side-menu rtl">
-    <div class="side-menu-content">
-        <div class="side-menu-head">
-            <a href='{{ route('site.home') }}'><img src="{{ asset('images/site/logo-1.png') }}" alt="logo"></a>
-            <button class="mobile-side-menu-close"><i class="fa-regular fa-xmark"></i></button>
-        </div>
-        <div class="side-menu-wrap"></div>
-        <ul class="side-menu-list">
-            <li><i class="fa-light fa-location-dot"></i>آدرس : <span>تهران ، خیابان گل ، پلاک ۱۲۳</span></li>
-            <li><i class="fa-light fa-phone"></i>شماره تماس : <a href="tel:+989127661646">12345678 - 051</a></li>
-            <li><i class="fa-light fa-envelope"></i>آدرس ایمیل : <a href="mailto:info@example.com">info@example.com</a></li>
-        </ul>
-    </div>
-</div>
-<!-- /.mobile-side-menu -->
+@include('partials.site.menu')
 
 <section class="hero-section">
     <div class="overlay"></div>
@@ -164,14 +21,13 @@
                 <div class="hero-content">
                     <h4 class="sub-title">کالکشن فصل برند های روز</h4>
                     <h2 class="title">مجموعه فوق‌العاده <br>برای زنان</h2>
-                    <h5 class="price"><span> شروع از </span>500 هزار تومان</h5>
+                    <h5 class="price"><span> شروع از </span>500.000  تومان</h5>
                     <a href="#" class="rr-primary-btn">مشاهده کالکشن</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- ./ hero-section -->
 
 <section class="category-section pt-100 pb-100">
     <div class="container rtl">
@@ -240,7 +96,6 @@
         </div>
     </div>
 </section>
-<!-- ./ category-section -->
 
 <section class="discount-section overflow-hidden pb-100 rtl">
     <div class="row gy-lg-0 gy-4">
@@ -324,7 +179,7 @@
                                 </ul>
                                 <span>(15 نظرات)</span>
                             </div>
-                            <span class="price"> <span class="offer">250 تومان</span>157 تومان</span>
+                            <span class="price"> <span class="offer">250.000 تومان</span>157.000 تومان</span>
                         </div>
                     </div>
                 </div>
@@ -353,7 +208,7 @@
                                 </ul>
                                 <span>(15 نظرات)</span>
                             </div>
-                            <span class="price"> <span class="offer">450 تومان</span>257 تومان</span>
+                            <span class="price"> <span class="offer">450.000 تومان</span>257.000 تومان</span>
                         </div>
                     </div>
                 </div>
@@ -382,7 +237,7 @@
                                 </ul>
                                 <span>(15 نظرات)</span>
                             </div>
-                            <span class="price"> <span class="offer">550 تومان</span>427 تومان</span>
+                            <span class="price"> <span class="offer">550.000 تومان</span>427.000 تومان</span>
                         </div>
                     </div>
                 </div>
@@ -411,7 +266,7 @@
                                 </ul>
                                 <span>(15 نظرات)</span>
                             </div>
-                            <span class="price"> <span class="offer">350 تومان</span>250 تومان</span>
+                            <span class="price"> <span class="offer">350.000 تومان</span>250.000 تومان</span>
                         </div>
                     </div>
                 </div>
@@ -574,7 +429,7 @@
                                     </ul>
                                     <span>(15 نظرات)</span>
                                 </div>
-                                <span class="price"> <span class="offer">250 تومان</span>157 تومان</span>
+                                <span class="price"> <span class="offer">250.000 تومان</span>157.000 تومان</span>
                             </div>
                         </div>
                     </div>
@@ -603,7 +458,7 @@
                                     </ul>
                                     <span>(15 نظرات)</span>
                                 </div>
-                                <span class="price"> <span class="offer">450 تومان</span>257 تومان</span>
+                                <span class="price"> <span class="offer">520.000 تومان</span>257.000 تومان</span>
                             </div>
                         </div>
                     </div>

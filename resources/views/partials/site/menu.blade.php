@@ -1,58 +1,145 @@
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
-        <a class="navbar-brand" href="{{ route('site.home') }}">پیکسل دونی</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon icon-menu"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="ftco-nav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="{{ route('site.home') }}" class="nav-link">خانه</a></li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">محصولات</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        @foreach($menus as $menu)
-                            @if($menu->children->isNotEmpty())
-                                <div class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" href="#">{{ $menu->name }}</a>
-                                    <div class="dropdown-menu">
-                                        @foreach($menu->children as $child)
-                                            @if($child->children->isNotEmpty())
-                                                <div class="dropdown-submenu">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">{{ $child->name }}</a>
-                                                    <div class="dropdown-menu">
-                                                        @foreach($child->children as $grandchild)
-                                                            <a class="dropdown-item" href="{{ route('site.products',['category' => $menu->id]) }}">{{ $grandchild->name }}</a>
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            @else
-                                                <a class="dropdown-item" href="{{ route('site.products',['category' => $menu->id]) }}">{{ $child->name }}</a>
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @else
-                                <a class="dropdown-item" href="{{ route('site.products',['category' => $menu->id]) }}">{{ $menu->name }}</a>
-                            @endif
-                        @endforeach
+<header class="header sticky-active rtl">
+    <div class="header-middle">
+        <div class="container rtl">
+            <div class="header-middle-inner">
+                <div class="header-middle-left">
+                    <div class="header-logo d-lg-block">
+                        <a href="{{ route('site.home') }}">
+                            <img src="{{ asset('images/site/logo-1.png') }}" alt="Logo">
+                        </a>
                     </div>
-                </li>
-                <li class="nav-item"><a href="#" class="nav-link">درباره با ما</a></li>
-                <li class="nav-item"><a href="{{ route('site.contact') }}" class="nav-link">تماس با ما</a></li>
-
-            </ul>
-
-            <ul class="navbar-nav ">
-                <li class="nav-item cta cta-colored"><a href="#" class="nav-link"><span class="icon-shopping_cart"></span></a></li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link"> ورود / عضویت</a>
-                </li>
-            </ul>
-
+                    <div class="category-form-wrap">
+                        <div class="nice-select select-control country" tabindex="0">
+                            <span class="current"> دسته بندی ها</span>
+                            <ul class="list">
+                                <li data-value="" class="option selected focus">مد و پوشاک</li>
+                                <li data-value="can" class="option">مواد غذایی</li>
+                                <li data-value="uk" class="option">مبلمان</li>
+                            </ul>
+                        </div>
+                        <form class="header-form" action="#">
+                            <input class="form-control" type="text" name="search" placeholder="دنبال چی هستی؟">
+                            <button class="submit rr-primary-btn">جستجو کنید</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="header-middle-right">
+                    <ul class="contact-item-list">
+                        <li>
+                            <div class="content">
+                                <span>تماس با ما:</span>
+                                <a class="number" href="tel:+985112345678">12345678 - 051 </a>
+                            </div>
+                            <a href="#" class="icon">
+                                <i class="fa-regular fa-phone"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="icon">
+                                <i class="fa-sharp fa-regular fa-heart"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="icon">
+                                <i class="fa-light fa-bag-shopping"></i>
+                                <span>2</span>
+                            </a>
+                            <div class="content">
+                                <span>سبد خرید شما</span>
+                                <h5 class="number">13.758.000 تومان</h5>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-</nav>
+    <div class="primary-header">
+        <div class="container">
+            <div class="primary-header-inner">
+                <div class="header-logo mobile-logo">
+                    <a href="{{ route('site.home') }}">
+                        <img src="{{ asset('images/site/logo-1.png') }}" alt="Logo">
+                    </a>
+                </div>
+                <div class="header-menu-wrap">
+                    <div class="mobile-menu-items">
+                        <ul>
+                            <li class="menu-item-has-children active">
+                                <a href="{{ route('site.home') }}">خانه</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">محصولات</a>
+                                <ul>
+                                    <li><a href="#">پیراهن</a></li>
+                                    <li><a href="#">شلوار</a></li>
+                                    <li><a href="#">لباس مجلسی</a></li>
+                                    <li><a href="#">لباس راحتی </a></li>
+                                    <li><a href="#">کفش و کیف</a></li>
+                                    <li><a href="#">اکسسوری زنانه</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">پرفروش‌ترین‌ها</a>
+                            </li>
+                            <li>
+                                <a href="#">جدیدترین‌ها</a>
+                            </li>
+                            <li>
+                                <a href="#">پیگیری سفارش</a>
+                            </li>
+                            <li>
+                                <a href="#">سوالات متداول</a>
+                            </li>
+                            <li>
+                                <a href="#">وبلاگ</a>
+                            </li>
+
+                            <li><a href="{{ route('site.contact') }}">ارتباط با ما</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.header-menu-wrap -->
+                <div class="header-right-wrap">
+                    <div class="header-right">
+                        <div class="header-right-item">
+                            <a href="javascript:void(0)" class="mobile-side-menu-toggle">
+                                <i class="fa-sharp fa-solid fa-bars"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /.header-right -->
+                </div>
+            </div>
+            <!-- /.primary-header-inner -->
+        </div>
+    </div>
+</header>
+
+
+
+<div id="popup-search-box">
+    <div class="box-inner-wrap d-flex align-items-center">
+        <form id="form" action="#" method="get" role="search">
+            <input id="popup-search" type="text" name="search" placeholder="Type keywords here...">
+        </form>
+        <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
+    </div>
+</div>
+
+
+
+<div class="mobile-side-menu rtl">
+    <div class="side-menu-content">
+        <div class="side-menu-head">
+            <a href='{{ route('site.home') }}'><img src="{{ asset('images/site/logo-1.png') }}" alt="logo"></a>
+            <button class="mobile-side-menu-close"><i class="fa-regular fa-xmark"></i></button>
+        </div>
+        <div class="side-menu-wrap"></div>
+        <ul class="side-menu-list">
+            <li><i class="fa-light fa-location-dot"></i>آدرس : <span>تهران ، خیابان گل ، پلاک ۱۲۳</span></li>
+            <li><i class="fa-light fa-phone"></i>شماره تماس : <a href="tel:+989127661646">12345678 - 051</a></li>
+            <li><i class="fa-light fa-envelope"></i>آدرس ایمیل : <a href="mailto:info@example.com">info@example.com</a></li>
+        </ul>
+    </div>
+</div>
