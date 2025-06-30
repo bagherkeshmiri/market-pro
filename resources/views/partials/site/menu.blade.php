@@ -99,7 +99,6 @@
                         </ul>
                     </div>
                 </div>
-                <!-- /.header-menu-wrap -->
                 <div class="header-right-wrap">
                     <div class="header-right">
                         <div class="header-right-item">
@@ -108,10 +107,8 @@
                             </a>
                         </div>
                     </div>
-                    <!-- /.header-right -->
                 </div>
             </div>
-            <!-- /.primary-header-inner -->
         </div>
     </div>
 </header>
