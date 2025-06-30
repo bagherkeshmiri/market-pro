@@ -89,7 +89,7 @@
                                 <a href="#">پیگیری سفارش</a>
                             </li>
                             <li>
-                                <a href="#">سوالات متداول</a>
+                                <a href="{{ route('site.faq') }}">سوالات متداول</a>
                             </li>
                             <li>
                                 <a href="{{ route('site.blog') }}">وبلاگ</a>

@@ -2,6 +2,7 @@
 
 use App\Livewire\Site\Blog;
 use App\Livewire\Site\Contact;
+use App\Livewire\Site\Faq;
 use App\Livewire\Site\Index;
 use App\Livewire\Site\Login;
 use App\Livewire\Site\Products;
@@ -19,6 +20,7 @@ Route::name('site.')
         Route::get('/blog', Blog::class)->name('blog');
         Route::get('/login', Login::class)->name('login');
         Route::get('/register', Register::class)->name('register');
+        Route::get('/faq', Faq::class)->name('faq');
     });
 
 

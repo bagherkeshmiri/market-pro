@@ -79,7 +79,7 @@
                     </div>
                     <ul class="footer-list">
                         <li><a href="#">راهنمای خرید</a></li>
-                        <li><a href="#">سوالات متداول</a></li>
+                        <li><a href="{{ route('site.faq') }}">سوالات متداول</a></li>
                         <li><a href="#">قوانین و مقررات</a></li>
                         <li><a href="#">پیگیری سفارش</a></li>
                         <li><a href="#">بازگشت کالا</a></li>
