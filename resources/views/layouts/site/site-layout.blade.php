@@ -76,40 +76,32 @@
                                 <a href="{{ route('site.home') }}">خانه</a>
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="#">فروشگاه</a>
+                                <a href="#">محصولات</a>
                                 <ul>
-                                    <li><a href="#">فروشگاه اصلی</a></li>
-                                    <li><a href="#">فروشگاه گرید</a></li>
-                                    <li><a href="#">جزئیات فروشگاه</a></li>
-                                    <li><a href="#">سبد خرید</a></li>
-                                    <li><a href="#">لیست علاقه مندی ها</a></li>
-                                    <li><a href="#">صفحه پرداخت</a></li>
+                                    <li><a href="#">پیراهن</a></li>
+                                    <li><a href="#">شلوار</a></li>
+                                    <li><a href="#">لباس مجلسی</a></li>
+                                    <li><a href="#">لباس راحتی </a></li>
+                                    <li><a href="#">کفش و کیف</a></li>
+                                    <li><a href="#">اکسسوری زنانه</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">زنانه</a>
+                                <a href="#">پرفروش‌ترین‌ها</a>
                             </li>
                             <li>
-                                <a href="#">مردانه</a>
+                                <a href="#">جدیدترین‌ها</a>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">صفحات</a>
-                                <ul>
-                                    <li><a href="#">درباره ما</a></li>
-                                    <li><a href="#">ورود</a></li>
-                                    <li><a href="#">عضویت</a></li>
-                                    <li><a href="#">سوالات متداول</a></li>
-                                    <li><a href="#">خطا 404</a></li>
-                                </ul>
+                            <li>
+                                <a href="#">پیگیری سفارش</a>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">بلاگ ها</a>
-                                <ul>
-                                    <li><a href="#">بلاگ گرید</a></li>
-                                    <li><a href="#">بلاگ لیست</a></li>
-                                    <li><a href="#">جزئیات بلاگ</a></li>
-                                </ul>
+                            <li>
+                                <a href="#">سوالات متداول</a>
                             </li>
+                            <li>
+                                <a href="#">وبلاگ</a>
+                            </li>
+
                             <li><a href="{{ route('site.contact') }}">ارتباط با ما</a></li>
                         </ul>
                     </div>
@@ -118,9 +110,9 @@
                 <div class="header-right-wrap">
                     <div class="header-right">
                         <div class="header-right-item">
-                            <a href="javascript:void(0)" class="mobile-side-menu-toggle"
-                            ><i class="fa-sharp fa-solid fa-bars"></i
-                                ></a>
+                            <a href="javascript:void(0)" class="mobile-side-menu-toggle">
+                                <i class="fa-sharp fa-solid fa-bars"></i>
+                            </a>
                         </div>
                     </div>
                     <!-- /.header-right -->
@@ -691,7 +683,6 @@
 <!-- ./ blog-section -->
 
 @include('partials.site.footer')
-
 
 
 <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
