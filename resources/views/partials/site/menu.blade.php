@@ -73,13 +73,15 @@
                             <li class="menu-item-has-children">
                                 <a href="#">محصولات</a>
                                 <ul>
-                                    <li><a href="#">پیراهن</a></li>
-                                    <li><a href="#">شلوار</a></li>
-                                    <li><a href="#">لباس مجلسی</a></li>
-                                    <li><a href="#">لباس راحتی </a></li>
-                                    <li><a href="#">کفش و کیف</a></li>
-                                    <li><a href="#">اکسسوری زنانه</a></li>
+                                    @foreach($menus as $menu)
+                                        <li><a href="#">{{ $menu->name }}</a></li>
+                                    @endforeach
                                 </ul>
+
+
+
+
+
                             </li>
                             <li>
                                 <a href="#">پرفروش‌ترین‌ها</a>

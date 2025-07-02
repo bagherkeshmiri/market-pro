@@ -11,4 +11,5 @@
     @vite(['resources/css/site-app.css', 'resources/js/site-app.js'])
     @yield('styles')
     @livewireStyles
+
 </head>

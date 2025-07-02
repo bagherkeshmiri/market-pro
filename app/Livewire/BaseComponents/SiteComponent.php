@@ -24,11 +24,11 @@ class SiteComponent extends Component
                 'name',
             ])
             ->whereNull('parent_id')
-            ->with([
-                'children',
-                'children.children',
-                'children.children.children',
-            ])
+//            ->with([
+//                'children',
+//                'children.children',
+//                'children.children.children',
+//            ])
             ->get();
 
 
@@ -38,6 +38,8 @@ class SiteComponent extends Component
         ])
             ->whereNull('parent_id')
             ->get();
+
+
 
         return view($view, $variables)->layout('layouts.site.site-layout', [
             'pageTitle' => $pageTitle,
