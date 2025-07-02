@@ -9118,13 +9118,13 @@ blockquote .content p {
   margin-top: 10px;
 }
 .product-info .item-left-line .line:before {
-  background-color: var(--rr-color-theme-primary);
-  content: "";
-  width: 40%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+    background-color: var(--rr-color-theme-primary);
+    content: "";
+    width: var(--line-width, 0%);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 .product-info .details-list {
   list-style: none;

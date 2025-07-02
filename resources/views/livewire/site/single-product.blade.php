@@ -13,7 +13,7 @@
         }
 
         .qty-btn {
-            background: #f44336; /* قرمز اصلی */
+            background: #f44336;
             color: #fff;
             border: none;
             padding: 10px 14px;
@@ -148,14 +148,17 @@
 
                                 <div class="product-desc-wrap">
                                     <p class="desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
-                                    <span class="view-text"><i class="fa-sharp fa-regular fa-eye"></i>28 نفر در حال مشاهده این هستند</span>
+                                    <span class="view-text">
+                                        <i class="fa-sharp fa-regular fa-eye"></i>
+                                        {{ mt_rand(1,100) }} نفر در حال مشاهده این هستند
+                                    </span>
                                 </div>
 
 
                                 @if($product->status ==  \App\Enums\ProductStatus::Exist)
                                     <div class="item-left-line">
                                         <span>فقط {{ $product->stock }} کالا در انبار باقی مانده است!</span>
-                                        <div class="line"></div>
+                                        <div class="line" id="progress-line"></div>
                                     </div>
                                 @endif
 
@@ -357,27 +360,39 @@
 @section('scripts')
 
     <script>
+
+        const maxStock = @json($product->stock);
+        const input = document.getElementById("qty-input");
+        const line = document.querySelector('.product-info .item-left-line .line');
+
+
+        function updateLineProgress() {
+            const value = parseInt(input.value) || 0;
+            const percent = Math.min((value / maxStock) * 100, 100);
+            line.style.setProperty('--line-width', percent + '%');
+
+        }
+
         function changeQty(amount) {
-            const input = document.getElementById("qty-input");
             const min = parseInt(input.min);
             const max = parseInt(input.max);
             let current = parseInt(input.value) || min;
             let next = current + amount;
-
             if (next >= min && next <= max) {
                 input.value = next;
+                updateLineProgress();
             }
         }
 
-        document.getElementById("qty-input").addEventListener("input", function () {
-            const min = parseInt(this.min);
-            const max = parseInt(this.max);
-            let value = parseInt(this.value);
-
-            if (value > max) this.value = max;
-            if (value < min || isNaN(value)) this.value = min;
+        input.addEventListener("input", () => {
+            const value = parseInt(input.value);
+            if (value > maxStock) input.value = maxStock;
+            if (value < 1 || isNaN(value)) input.value = 1;
+            updateLineProgress();
         });
 
+        // مقدار اولیه
+        updateLineProgress();
 
 
     </script>
