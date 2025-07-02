@@ -1,137 +1,321 @@
 @section('styles')
+
+    <style>
+
+
+        .styled-number-input {
+            width: 70px;
+            padding: 8px 12px;
+            font-size: 16px;
+            font-family: inherit;
+            border: 1px solid #d1d1d1;
+            border-radius: 8px;
+            outline: none;
+            text-align: center;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: #fff;
+        }
+
+        .styled-number-input:focus {
+            border-color: #f44336; /* رنگ قرمز قالب */
+            box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2);
+        }
+
+    </style>
+
 @endsection
 
 <div>
-    <section class="ftco-section">
-        <div class="container">
+    <section class="shop-section single pt-100 pb-100">
+        <div class="container rtl">
             <div class="row">
-                <div class="col-lg-6 mb-5 ftco-animate">
-                    <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" class="img-fluid" style="border-radius: 8px; border: 1px solid #82ae46" alt="{{ $product->name }}">
+                <div class="col-lg-6 product-details-wrap">
+                    <div class="product-slider-wrap">
+                        <div class="swiper product-gallary-thumb">
+                            <div class="swiper-wrapper">
 
-                    <div class="image-gallery-carousel owl-carousel pt-3">
+                                @forelse($product->galleryImages as $imageGallery)
 
-                        @forelse($product->galleryImages as $imageGallery)
-                            <div class="item">
-                                <img src="{{ $imageGallery->image_url }}" style="width: 150px !important; border-radius: 8px; border: 1px solid #82ae46" alt=""/>
+                                    <div class="swiper-slide">
+                                        <div class="thumb-item">
+                                            <img src="{{ $imageGallery->image_url }}" alt="">
+                                        </div>
+                                    </div>
+
+                                @empty
+
+                                    <div class="swiper-slide">
+                                        <div class="thumb-item">
+                                            <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" alt="">
+                                        </div>
+                                    </div>
+
+                                @endforelse
+
                             </div>
-
-                        @empty
-                            <div class="item">
-                                <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" style="width: 150px !important; border-radius: 8px; border: 1px solid #82ae46" alt=""/>
-                            </div>
-                        @endforelse
-
-                    </div>
-
-                </div>
-                <div class="col-lg-6 product-details pl-md-5 ftco-animate">
-                    <h3>{{ $product->name }}</h3>
-
-                    <div class="rating d-flex">
-                        <span>امتیاز محصول : </span>
-                        <p class="text-left mr-4">
-                            @for ($i = 1; $i <= 5; $i++)
-                                <a href="#">
-                                    <span class="{{ $i <= $fakeRating ? 'ion-ios-star-outline' : 'ion-ios-star' }}"></span>
-                                </a>
-                            @endfor
-
-                        </p>
-                    </div>
-
-
-                    @if($product->status ==  \App\Enums\ProductStatus::Exist)
-                        <div>
-                            @if($product->discount > 0)
-                                <div class="d-flex flex-row align-content-center">
-                                    <h5 class=" ml-4 price-dc">     {{ number_format($product->price) }} @lang('global.toman')  </h5>
-                                    <span class="text-white text-center p-2" style="background:#82ae46; border-radius: 20px; ">% {{ $product->discount_percent }} </span>
-                                </div>
+                        </div>
+                        <div class="swiper product-gallary">
+                            @if($product->status ==  \App\Enums\ProductStatus::Exist && $product->discount > 0)
+                                <span class="sale">{{ $product->discount_percent }} %</span>
                             @endif
-                            <h3 class="price mb-2">{{ $product->formatted_final_price }}  @lang('global.toman') </h3>
+                            <div class="swiper-wrapper">
+
+
+                                <div class="swiper-slide">
+                                    <div class="gallary-item">
+                                        <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" alt="shop">
+                                    </div>
+                                </div>
+
+
+                                @foreach($product->galleryImages as $imageGallery)
+                                    <div class="swiper-slide">
+                                        <div class="gallary-item">
+                                            <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" alt="shop">
+                                        </div>
+                                    </div>
+                                @endforeach
+
+
+
+                                {{--                                <div class="swiper-slide">--}}
+                                {{--                                    <div class="gallary-item">--}}
+                                {{--                                        <img src="{{ asset('images/site/shop-slider-2.jpg') }}" alt="shop">--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                                {{--                                <div class="swiper-slide">--}}
+                                {{--                                    <div class="gallary-item">--}}
+                                {{--                                        <img src="{{ asset('images/site/shop-slider-3.jpg') }}" alt="shop">--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                            </div>
+                            <div class="swiper-nav-next"><i class="las la-arrow-right"></i></div>
+                            <div class="swiper-nav-prev"><i class="las la-arrow-left"></i></div>
                         </div>
-                    @else
-                        <h5 class="mb-4 text-danger">@lang('global.not_exist')</h5>
-                    @endif
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="product-details">
+                        <div class="product-info">
+                            <div class="product-inner">
+                                <span class="category">{{ $product->category->name }}</span>
+                                <h3 class="title">{{ $product->name }}</h3>
+                                <div class="rating-wrap">
+                                    <ul class="rating">
+                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    </ul>
+                                    <span>(1 نظر مشتریان)</span>
+                                </div>
 
+                                @if($product->status ==  \App\Enums\ProductStatus::Exist)
+                                    <h4 class="price">{{ $product->formatted_final_price }}  @lang('global.toman')<span>{{ $product->formatted_price }}  @lang('global.toman')</span></h4>
+                                @else
+                                    <h5 class="mb-4 text-danger">@lang('global.not_exist')</h5>
+                                @endif
 
-                    <p> {!! $product->description ?? $sampleProductDescription !!} </p>
-
-                    @if($product->status ==  \App\Enums\ProductStatus::Exist)
-                        <div class="row mt-4">
-                            <div class="input-group col-6 d-flex mb-3">
-	             	<span class="input-group-btn mr-2">
-	                	<button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
-	                   <i class="ion-ios-remove"></i>
-
-	                	</button>
-	            		</span>
-                                <label for="quantity" hidden></label>
-                                <input type="text" id="quantity" name="quantity" class="form-control input-number" value="0" min="1" max="{{ $product->stock }}">
-                                <span class="input-group-btn ml-2">
-	                	<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
-	                     <i class="bx bx-plus"></i>
-	                 </button>
-	             	</span>
+                                <div class="product-desc-wrap">
+                                    <p class="desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ<br> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                    <span class="view-text"><i class="fa-sharp fa-regular fa-eye"></i>28 نفر در حال مشاهده این هستند</span>
+                                </div>
+                                <div class="item-left-line">
+                                    <span>فقط 15 کالا در انبار باقی مانده است!</span>
+                                    <div class="line"></div>
+                                </div>
+                                <ul class="details-list">
+                                    <li><i class="fa-light fa-arrow-right-arrow-left"></i>گارانتی بازگشت</li>
+                                    <li><i class="fa-light fa-truck"></i>ارسال رایگان محصول</li>
+                                    <li><i class="fa-light fa-circle-check"></i>کلیه مالیات ها و عوارض گمرکی شامل می شود</li>
+                                </ul>
                             </div>
-                            <div class="col-6">
-                                <p style="color: #000;">موجودی {{ $product->stock }} عدد</p>
+                            <div class="product-btn">
+                                <form>
+                                    {{--                                    <input type="number" name="age" id="age" min="1" max="100" step="1" value="1">--}}
+                                    <input type="number" name="age" id="age" min="1" max="100" step="1" value="1" class="styled-number-input">
+
+                                </form>
+                                <div class="cart-btn-wrap-2"><a href="#" class="rr-primary-btn cart-btn">افزودن به سبد خرید</a></div>
                             </div>
+                            <a href="#" class="shop-details-btn rr-primary-btn">اکنون مورد را بخرید</a>
                         </div>
-                        <p><a href="#" class="btn btn-black py-3 px-5 mt-4">اضافه به سبد خرید </a></p>
-                    @endif
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-section mb-5">
-        <div class="container">
-            <div class="row justify-content-center pb-3">
-                <div class="col-md-7 heading-section ftco-animate text-center">
-                    <h5 class="mb-4"> محصولات مشابه</h5>
-                </div>
-            </div>
-            <div class="row ftco-animate">
-                <div class="col-md-12">
-                    <div class="product-carousel owl-carousel">
-
-                        @foreach($products as $product)
-                            <div class="item">
-                                @include('custom-components.site.slider-product-card',['product' => $product, 'sampleProductImageUrl' => $sampleProductImageUrl])
-                            </div>
-                        @endforeach
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <!--Shop Section-->
+
+    <section class="product-description pb-100">
+        <div class="container rtl">
+            <ul class="nav tab-navigation" id="product-tab-navigation" role="tablist">
+                <li role="presentation">
+                    <button class="active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                            role="tab" aria-controls="home" aria-selected="true">توضیحات
+                    </button>
+                </li>
+                <li role="presentation">
+                    <button id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab"
+                            aria-controls="profile" aria-selected="false">اطلاعات تکمیلی
+                    </button>
+                </li>
+                <li role="presentation">
+                    <button id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab"
+                            aria-controls="contact" aria-selected="false">نظرات (3)
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content" id="product-tab-content">
+                <div class="tab-pane fade show active description" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="desc-wrap">
+                        <div class="left-content">
+                            <p class="mb-30">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
+                            <p class="mb-0">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
+                        </div>
+                        <div class="right-content">
+                            <img src="{{ asset('images/site/shop-details-img.jpg') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <table class="table product-table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Size</th>
+                            <th scope="col">Bust</th>
+                            <th scope="col">Waist</th>
+                            <th scope="col">Hip</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>S</td>
+                            <td>34 -36</td>
+                            <td>28-30</td>
+                            <td>38-40</td>
+                        </tr>
+                        <tr>
+                            <td>M</td>
+                            <td>36 -38</td>
+                            <td>30-32.5</td>
+                            <td>40-43</td>
+                        </tr>
+                        <tr>
+                            <td>L</td>
+                            <td>38-40</td>
+                            <td>32-34.5</td>
+                            <td>42-45.5</td>
+                        </tr>
+                        <tr>
+                            <td>XL</td>
+                            <td>40-42</td>
+                            <td>35-37</td>
+                            <td>46-38</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade review" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="row product-review gy-lg-0 gy-4">
+                        <div class="col-lg-5 col-md-12">
+                            <div class="reviewr-wrap">
+                                <div class="review-list">
+                                    <div class="review-item">
+                                        <div class="review-thumb">
+                                            <img src="{{ asset('images/site/review-list-1.jpg') }}" alt="img">
+                                        </div>
+                                        <div class="content">
+                                            <div class="content-top">
+                                                <h4 class="name">عباس بوعذار<span>سه‌شنبه 10 تیر 1404 - 11:20 </span></h4>
+                                                <ul class="review">
+                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                                </ul>
+                                            </div>
+                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-item">
+                                        <div class="review-thumb">
+                                            <img src="{{ asset('images/site/review-list-2.jpg') }}" alt="img">
+                                        </div>
+                                        <div class="content">
+                                            <div class="content-top">
+                                                <h4 class="name">عباس بوعذار<span>چهارشنبه 10 تیر 1404 - 02:20 </span></h4>
+                                                <ul class="review">
+                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                                </ul>
+                                            </div>
+                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-12">
+                            <div class="review-form-wrap">
+                                <h4 class="title">نقد و بررسی این محصول</h4>
+                                <span class="publish">آدرس ایمیل شما منتشر نخواهد شد. فیلدهای ضروری با * مشخص شده‌اند.</span>
+                                <div class="review-box">
+                                    <span>امتیاز شما:</span>
+                                    <ul class="review">
+                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    </ul>
+                                </div>
+                                <div class="blog-contact-form form-2 review-form">
+                                    <div class="request-form">
+                                        <form action="#" method="post" id="ajax_contact" class="form-horizontal">
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <div class="form-item">
+                                                        <label for="name">نام شما</label>
+                                                        <input type="text" id="name" name="name" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-item">
+                                                        <label for="email">ایمیل شما</label>
+                                                        <input type="email" id="email" name="email" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <div class="form-item message-item">
+                                                        <label for="message">نظر شما</label>
+                                                        <textarea id="message" name="message" cols="30" rows="5" class="form-control address"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="submit-btn">
+                                                <button id="submit" class="rr-primary-btn" type="submit">ثبت نظر</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Product Description-->
 </div>
 
 
 @section('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const plusBtn = document.querySelector('.quantity-right-plus');
-            const minusBtn = document.querySelector('.quantity-left-minus');
-            const quantityInput = document.getElementById('quantity');
-
-            plusBtn.addEventListener('click', function (e) {
-                e.preventDefault();
-                let quantity = parseInt(quantityInput.value) || 0;
-                quantityInput.value = quantity + 1;
-            });
-
-            minusBtn.addEventListener('click', function (e) {
-                e.preventDefault();
-                let quantity = parseInt(quantityInput.value) || 0;
-                if (quantity > 0) {
-                    quantityInput.value = quantity - 1;
-                }
-            });
-        });
-    </script>
-
 @endsection
