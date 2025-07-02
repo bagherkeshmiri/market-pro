@@ -864,7 +864,7 @@ svg {
   }
 }
 .sticky-widget {
-  position: -webkit-sticky;
+  /*position: -webkit-sticky;*/
   position: sticky;
   top: 120px;
 }
@@ -3068,7 +3068,7 @@ START: Header CSS
 @media only screen and (max-width: 992px) {
   .header .primary-header-inner {
     background-color: var(--rr-color-common-white);
-    padding: 0;
+    /*padding: 0;*/
     border-top: 1px solid var(--rr-color-border-1);
     padding: 15px 0;
     border-radius: 0;
@@ -3081,7 +3081,7 @@ START: Header CSS
   }
 }
 .header .primary-header-inner:before {
-  background-color: var(--rr-color-heading-primary));
+  background-color: var(--rr-color-heading-primary);
   content: "";
   width: 21%;
   height: 100%;
@@ -6988,7 +6988,7 @@ START: Sidebar CSS
 
 .side-menu-header h3 {
   font-size: 30px;
-  font-weight: 600px;
+  /*font-weight: 600px;*/
   line-height: 1;
   font-weight: 600;
 }
