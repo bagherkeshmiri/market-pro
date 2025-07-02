@@ -147,7 +147,7 @@
                                 @endif
 
                                 <div class="product-desc-wrap">
-                                    <p class="desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ<br> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                    <p class="desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
                                     <span class="view-text"><i class="fa-sharp fa-regular fa-eye"></i>28 نفر در حال مشاهده این هستند</span>
                                 </div>
 
@@ -170,7 +170,7 @@
                                 <form>
                                     <div class="quantity-selector">
                                         <button type="button" class="qty-btn" onclick="changeQty(-1)">−</button>
-                                        <input type="number" id="qty-input" value="1" min="1" max="100">
+                                        <input type="number" id="qty-input" value="1" min="1" max="{{ $product->stock }}">
                                         <button type="button" class="qty-btn" onclick="changeQty(1)">+</button>
                                     </div>
 
@@ -359,14 +359,25 @@
     <script>
         function changeQty(amount) {
             const input = document.getElementById("qty-input");
-            let current = parseInt(input.value) || 1;
             const min = parseInt(input.min);
             const max = parseInt(input.max);
+            let current = parseInt(input.value) || min;
             let next = current + amount;
+
             if (next >= min && next <= max) {
                 input.value = next;
             }
         }
+
+        document.getElementById("qty-input").addEventListener("input", function () {
+            const min = parseInt(this.min);
+            const max = parseInt(this.max);
+            let value = parseInt(this.value);
+
+            if (value > max) this.value = max;
+            if (value < min || isNaN(value)) this.value = min;
+        });
+
 
 
     </script>
