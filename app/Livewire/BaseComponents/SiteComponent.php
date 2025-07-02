@@ -12,7 +12,6 @@ class SiteComponent extends Component
 
     public int $page = 1;
     public int $perPage = 8;
-//    protected $paginationTheme = 'bootstrap';
     protected $queryString = ['page'];
     protected $sampleProductImageUrl = 'images/frest/sample-product.png';
 
@@ -31,9 +30,19 @@ class SiteComponent extends Component
                 'children.children.children',
             ])
             ->get();
+
+
+        $searchMenuCategories = Category::select([
+            'id',
+            'name',
+        ])
+            ->whereNull('parent_id')
+            ->get();
+
         return view($view, $variables)->layout('layouts.site.site-layout', [
             'pageTitle' => $pageTitle,
             'menus' => $menus,
+            'searchMenuCategories' => $searchMenuCategories,
         ]);
     }
 

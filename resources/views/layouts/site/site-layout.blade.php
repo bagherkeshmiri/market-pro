@@ -5,7 +5,7 @@
 
 <body style="overflow-x: hidden !important; ">
 
-@include('partials.site.menu')
+@include('partials.site.menu' , ['searchMenuCategories' => $searchMenuCategories , 'menus' => $menus])
 
 {{ $slot }}
 

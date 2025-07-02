@@ -12,7 +12,7 @@
                 <div class="hero-content">
                     <h4 class="sub-title">کالکشن فصل برند های روز</h4>
                     <h2 class="title">مجموعه فوق‌العاده <br>برای زنان</h2>
-                    <h5 class="price"><span> شروع از </span>500.000 تومان</h5>
+                    <h5 class="price"><span> شروع از </span>500,000 تومان</h5>
                     <a href="#" class="rr-primary-btn">مشاهده کالکشن</a>
                 </div>
             </div>

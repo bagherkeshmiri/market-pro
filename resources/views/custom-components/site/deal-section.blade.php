@@ -46,7 +46,7 @@
                                     </ul>
                                     <span>(15 نظرات)</span>
                                 </div>
-                                <span class="price"> <span class="offer">250.000 تومان</span>157.000 تومان</span>
+                                <span class="price"> <span class="offer">250,000 تومان</span>157,000 تومان</span>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                                     </ul>
                                     <span>(15 نظرات)</span>
                                 </div>
-                                <span class="price"> <span class="offer">520.000 تومان</span>257.000 تومان</span>
+                                <span class="price"> <span class="offer">520,000 تومان</span>257,000 تومان</span>
                             </div>
                         </div>
                     </div>

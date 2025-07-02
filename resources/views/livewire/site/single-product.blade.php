@@ -213,7 +213,6 @@
                     <div class="desc-wrap">
                         <div class="left-content">
                             <p class="mb-30">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
-                            <p class="mb-0">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
                         </div>
                         <div class="right-content">
                             <img src="{{ asset('images/site/shop-details-img.jpg') }}" alt="">
@@ -265,7 +264,7 @@
                                 <div class="review-list">
                                     <div class="review-item">
                                         <div class="review-thumb">
-                                            <img src="{{ asset('images/site/review-list-1.jpg') }}" alt="img">
+                                            <img src="{{ asset('images/frest/avatar-s-16.png') }}" alt="img">
                                         </div>
                                         <div class="content">
                                             <div class="content-top">
@@ -283,7 +282,7 @@
                                     </div>
                                     <div class="review-item">
                                         <div class="review-thumb">
-                                            <img src="{{ asset('images/site/review-list-2.jpg') }}" alt="img">
+                                            <img src="{{ asset('images/frest/avatar-s-16.png') }}" alt="img">
                                         </div>
                                         <div class="content">
                                             <div class="content-top">
@@ -355,7 +354,6 @@
         </div>
     </section>
 </div>
-
 
 @section('scripts')
 

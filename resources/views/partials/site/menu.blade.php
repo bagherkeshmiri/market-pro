@@ -12,9 +12,11 @@
                         <div class="nice-select select-control country" tabindex="0">
                             <span class="current"> دسته بندی ها</span>
                             <ul class="list">
-                                <li data-value="" class="option selected focus">مد و پوشاک</li>
-                                <li data-value="can" class="option">مواد غذایی</li>
-                                <li data-value="uk" class="option">مبلمان</li>
+
+                                @foreach($searchMenuCategories as $searchMenuCategory)
+                                    <li data-value="" class="option {{ $loop->first ? 'selected focus' : '' }} ">{{ $searchMenuCategory->name }}</li>
+                                @endforeach
+
                             </ul>
                         </div>
                         <form class="header-form" action="#">
@@ -46,7 +48,7 @@
                             </a>
                             <div class="content">
                                 <span>سبد خرید شما</span>
-                                <h5 class="number">13.758.000 تومان</h5>
+                                <h5 class="number">13,758,000 تومان</h5>
                             </div>
                         </li>
                     </ul>
@@ -116,7 +118,6 @@
 </header>
 
 
-
 <div id="popup-search-box">
     <div class="box-inner-wrap d-flex align-items-center">
         <form id="form" action="#" method="get" role="search">
@@ -125,7 +126,6 @@
         <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
     </div>
 </div>
-
 
 
 <div class="mobile-side-menu rtl">
