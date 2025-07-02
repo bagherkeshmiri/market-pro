@@ -35,5 +35,8 @@
 <script src="{{ asset('js/site/contact.js') }}"></script>
 <script src="{{ asset('js/site/main.js') }}"></script>
 
+@yield('scripts')
+@livewireScripts
+
 </body>
 </html>

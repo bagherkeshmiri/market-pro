@@ -3,23 +3,52 @@
     <style>
 
 
-        .styled-number-input {
-            width: 70px;
-            padding: 8px 12px;
-            font-size: 16px;
-            font-family: inherit;
-            border: 1px solid #d1d1d1;
+        .quantity-selector {
+            display: inline-flex;
+            align-items: center;
             border-radius: 8px;
-            outline: none;
-            text-align: center;
-            transition: border-color 0.3s, box-shadow 0.3s;
-            background-color: #fff;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 0 0 1px #ddd;
         }
 
-        .styled-number-input:focus {
-            border-color: #f44336; /* رنگ قرمز قالب */
-            box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2);
+        .qty-btn {
+            background: #f44336; /* قرمز اصلی */
+            color: #fff;
+            border: none;
+            padding: 10px 14px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.2s ease;
         }
+
+        .qty-btn:hover {
+            background: #d32f2f;
+        }
+
+        #qty-input {
+            width: 60px;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            border: none;
+            outline: none;
+            background-color: #fff;
+            color: #000;
+            font-family: inherit;
+        }
+
+
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
 
     </style>
 
@@ -121,10 +150,16 @@
                                     <p class="desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ<br> لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
                                     <span class="view-text"><i class="fa-sharp fa-regular fa-eye"></i>28 نفر در حال مشاهده این هستند</span>
                                 </div>
-                                <div class="item-left-line">
-                                    <span>فقط 15 کالا در انبار باقی مانده است!</span>
-                                    <div class="line"></div>
-                                </div>
+
+
+                                @if($product->status ==  \App\Enums\ProductStatus::Exist)
+                                    <div class="item-left-line">
+                                        <span>فقط {{ $product->stock }} کالا در انبار باقی مانده است!</span>
+                                        <div class="line"></div>
+                                    </div>
+                                @endif
+
+
                                 <ul class="details-list">
                                     <li><i class="fa-light fa-arrow-right-arrow-left"></i>گارانتی بازگشت</li>
                                     <li><i class="fa-light fa-truck"></i>ارسال رایگان محصول</li>
@@ -133,8 +168,12 @@
                             </div>
                             <div class="product-btn">
                                 <form>
-                                    {{--                                    <input type="number" name="age" id="age" min="1" max="100" step="1" value="1">--}}
-                                    <input type="number" name="age" id="age" min="1" max="100" step="1" value="1" class="styled-number-input">
+                                    <div class="quantity-selector">
+                                        <button type="button" class="qty-btn" onclick="changeQty(-1)">−</button>
+                                        <input type="number" id="qty-input" value="1" min="1" max="100">
+                                        <button type="button" class="qty-btn" onclick="changeQty(1)">+</button>
+                                    </div>
+
 
                                 </form>
                                 <div class="cart-btn-wrap-2"><a href="#" class="rr-primary-btn cart-btn">افزودن به سبد خرید</a></div>
@@ -146,7 +185,6 @@
             </div>
         </div>
     </section>
-    <!--Shop Section-->
 
     <section class="product-description pb-100">
         <div class="container rtl">
@@ -313,9 +351,23 @@
             </div>
         </div>
     </section>
-    <!--Product Description-->
 </div>
 
 
 @section('scripts')
+
+    <script>
+        function changeQty(amount) {
+            const input = document.getElementById("qty-input");
+            let current = parseInt(input.value) || 1;
+            const min = parseInt(input.min);
+            const max = parseInt(input.max);
+            let next = current + amount;
+            if (next >= min && next <= max) {
+                input.value = next;
+            }
+        }
+
+
+    </script>
 @endsection
