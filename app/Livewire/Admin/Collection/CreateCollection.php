@@ -98,6 +98,13 @@ class CreateCollection extends AdminComponent
      */
     public function store()
     {
+
+
+        dd(
+            $this->type
+        );
+
+
         if (count($this->selectedProducts) > $this->limitation) {
             session()->flash('error', 'تعداد محصولات انتخاب شده نباید بیشتر از 20 عدد باشد');
         };

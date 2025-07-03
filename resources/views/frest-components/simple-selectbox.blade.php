@@ -7,16 +7,11 @@
         @isset($wire)
             @isset($isLazy)
                 wire:model.lazy="{{ $wire }}"
-        @endisset
+            @endisset
 
-        @isset($isDefer)
-            wire:model.defer="{{ $wire }}"
-        @endisset
-
-        @isset($isWire)
-            wire:model="{{ $wire }}"
-        @endisset
-
+            @isset($isDefer)
+                wire:model.defer="{{ $wire }}"
+            @endisset
         @endisset
 
 
