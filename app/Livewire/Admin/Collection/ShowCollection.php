@@ -19,7 +19,6 @@ class ShowCollection extends AdminComponent
     public $title;
     public $type;
     public $limitation;
-    public $sort;
     public $isActive;
     public $category;
     public $categoryProducts = [];
@@ -31,11 +30,19 @@ class ShowCollection extends AdminComponent
         $this->type = $collection->type;
         $this->limitation = $collection->limitation;
         $this->isActive = $collection->is_active;
+
+        $this->selectedProducts = $collection->productCollection->load('product')
+            ->map(fn($item) => [
+                'id' => $item->product->id,
+                'name' => $item->product->name,
+            ])
+            ->toArray();
+
     }
 
     public function render()
     {
-        $pageTitle = 'ویرایش  کالکشن';
+        $pageTitle = 'ویرایش  کالکشن ' . $this->title;
         $statuses = showEnumLabels(IsActive::class);
         $types = showEnumLabels(CollectionType::class);
         $categories = Category::withoutTrashed()
@@ -61,12 +68,6 @@ class ShowCollection extends AdminComponent
 
         $categoryProducts = $this->categoryProducts;
         $selectedCategory = $categories->search($this->category);
-        $this->selectedProducts = $this->collection->productCollection->load('product')
-            ->map(fn($item) => [
-                'id' => $item->product->id,
-                'name' => $item->product->name,
-            ]);
-
         $selectedProducts = $this->selectedProducts;
 
         return $this->renderView(
@@ -77,7 +78,7 @@ class ShowCollection extends AdminComponent
 
     public function selectProduct(int|string $productId, string $productName): void
     {
-        if (!in_array($productId, array_column((array)$this->selectedProducts, 'id'))) {
+        if (!in_array($productId, array_column($this->selectedProducts, 'id'))) {
             $this->selectedProducts[] = ['id' => $productId, 'name' => $productName];
             $this->categoryProducts = collect($this->categoryProducts)
                 ->reject(fn($item) => $item['id'] == $productId)
