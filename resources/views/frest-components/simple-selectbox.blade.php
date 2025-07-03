@@ -14,6 +14,10 @@
                 wire:model.defer="{{ $wire }}"
             @endisset
 
+            @isset($isWire)
+                wire:model="{{ $wire }}"
+            @endisset
+
         @endisset
 
 
@@ -33,10 +37,6 @@
 
         required
 >
-
-    @isset($defaultOption)
-        <option @isset($defaultValue) @endisset> -- انتخاب کنید --</option>
-    @endisset
 
     @isset($data)
         @foreach($data as $key => $value)

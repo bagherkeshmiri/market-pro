@@ -24,6 +24,19 @@ class CreateCollection extends AdminComponent
     public $categoryProducts = [];
     public $selectedProducts = [];
 
+
+    public function mount(): void
+    {
+        $this->type = CollectionType::Product;
+    }
+
+    public function updatedType(): void
+    {
+        $this->category = null;
+        $this->categoryProducts = [];
+        $this->selectedProducts = [];
+    }
+
     public function render()
     {
         $pageTitle = 'ایجاد  کالکشن';
