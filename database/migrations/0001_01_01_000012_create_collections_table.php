@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('collections', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
-            $table->unsignedTinyInteger('type')->default(1)->comment(' 1 => product , 2 => banner , 3 => slider , 4 => box ');
+            $table->unsignedTinyInteger('type')->default(1)->comment(' 1:product , 2:category');
             $table->unsignedTinyInteger('limitation')->nullable();
             $table->unsignedTinyInteger('sort')->nullable();
             $table->tinyInteger('is_active')->default(1);
@@ -22,13 +22,22 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('collection_id')->index();
             $table->unsignedBigInteger('product_id')->index();
-            $table->unsignedTinyInteger('sort')->nullable();
             $table->timestamps();
         });
+
+
+        Schema::create('collection_categories', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('collection_id')->index();
+            $table->unsignedBigInteger('category_id')->index();
+            $table->timestamps();
+        });
+
     }
 
     public function down(): void
     {
+        Schema::dropIfExists('collection_categories');
         Schema::dropIfExists('collection_products');
         Schema::dropIfExists('collections');
     }

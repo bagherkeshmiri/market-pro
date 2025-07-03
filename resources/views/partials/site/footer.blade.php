@@ -1,142 +1,141 @@
-<footer class="ftco-footer ftco-section">
-    <div class="container">
-        <div class="row">
-            <div class="mouse">
-                <a href="#" class="mouse-icon">
-                    <div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
-                </a>
+<footer class="footer-section bg-grey pt-60">
+    <div class="container rtl">
+        <div class="footer-items">
+            <div class="footer-item">
+                <div class="icon">
+                    <img src="{{ asset('images/site/footer-1.png') }}" alt="icon">
+                </div>
+                <div class="content">
+                    <h4 class="title">ارسال رایگان</h4>
+                    <span>سفارش بالای 200 هزار تومان</span>
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="icon">
+                    <img src="{{ asset('images/site/footer-2.png') }}" alt="icon">
+                </div>
+                <div class="content">
+                    <h4 class="title">بازگشت رایگان</h4>
+                    <span>سیاست بازگشت رایگان 30 روزه</span>
+                </div>
+            </div>
+            <div class="footer-item">
+                <div class="icon">
+                    <img src="{{ asset('images/site/footer-3.png') }}" alt="icon">
+                </div>
+                <div class="content">
+                    <h4 class="title">پرداخت های امن</h4>
+                    <span>تمام کارت های عضو شبکه شتاب</span>
+                </div>
+            </div>
+            <div class="footer-item item-2">
+                <div class="icon">
+                    <img src="{{ asset('images/site/footer-4.png') }}" alt="icon">
+                </div>
+                <div class="content">
+                    <h4 class="title">خدمات مشتری</h4>
+                    <span>خدمات مشتری 24/7 </span>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2"> پیکسل دونی</h2>
-                    <p>پیکسل‌های خمیری دست‌ساز با طراحی خاص و کیفیت عالی | سفارش آنلاین، ارسال به سراسر کشور
-                    </p>
-                    <ul class="ftco-footer-social list-unstyled mt-5">
-
-                        <li class="ftco-animate">
-                            <a href="#">
-                                <span class="icon-twitter"></span>
-                            </a>
-                        </li>
-
-                        <li class="ftco-animate">
-                            <a href="#">
-                                <span class="icon-facebook"></span>
-                            </a>
-                        </li>
-
-                        <li class="ftco-animate">
-                            <a href="#">
-                                <span class="icon-instagram"></span>
-                            </a>
-                        <li class="ftco-animate">
-                            <a href="#">
-                                <span class="icon-telegram"></span>
-                            </a>
-
-
+        <div class="row footer-widget-wrap pb-60">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <div class="widget-header">
+                        <h3 class="widget-title"> تماس با ما</h3>
+                    </div>
+                    <div class="footer-contact">
+                        <div class="icon"><i class="fa-sharp fa-solid fa-phone-rotary"></i></div>
+                        <div class="content">
+                            <span>سوالی دارید؟  با ما تماس بگیرید</span>
+                            <a href="tel:+989127661646">12345678 - 051</a>
+                        </div>
+                    </div>
+                    <ul class="schedule-list">
+                        <li><span> ساعات کاری :</span> همه روزه از ۸ صبح تا ۶ عصر</li>
+                        <li><span>ایمیل : </span> support@example.com</li>
+                        <li><span>آدرس  :</span> تهران ، خیابان گل ، پلاک ۱۲۳</li>
                     </ul>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">لینک های مفید</h2>
-                    <div class="block-23 mb-3">
-                        <ul>
-                            <li class="mb-3">
-                                <a href="#" class="text"> خرید</a>
-                            </li>
-
-                            <li class="mb-3">
-                                <a href="#" class="text"> درباره ما </a>
-                            </li>
-
-                            <li class="mb-3">
-                                <a href="#" class="text"> کاتالوگ محصولات </a>
-                            </li>
-
-                            <li class="mb-3">
-                                <a href="{{ route('site.contact') }}" class="text"> ارتباط با ما </a>
-                            </li>
-
-
-                        </ul>
+            <div class="col-lg-2 col-md-6">
+                <div class="footer-widget">
+                    <div class="widget-header">
+                        <h3 class="widget-title">درباره ما</h3>
                     </div>
-                </div>
-
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">سوالات متداول</h2>
-                    <div class="block-23 mb-3">
-                        <ul>
-                            <li class="mb-3">
-                                <a href="#" class="text">شرایط بازگشت و تعویض</a>
-                            </li>
-
-                            <li class="mb-3">
-                                <a href="#" class="text">شرایط و ضوابط</a>
-                            </li>
-
-                            <li class="mb-3">
-                                <span class="text"> سیاست حفظ حریم خصوصی </span>
-                            </li>
-
-                            <li class="mb-3">
-                                <span class="text">  قوانین خرید   </span>
-                            </li>
-
-
-                        </ul>
-                    </div>
+                    <ul class="footer-list">
+                        <li><a href="#">درباره فروشگاه</a></li>
+                        <li><a href="{{ route('site.contact') }}"> ارتباط با ما</a></li>
+                        <li><a href="{{ route('site.blog') }}"> وبلاگ</a></li>
+                        <li><a href="#"> فرصت های شغلی</a></li>
+                        <li><a href="#">‌همکاری با ما</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2"> ارتباط با ما</h2>
-                    <div class="block-23 mb-3">
-                        <ul>
-                            <li class="mb-3">
-                                <span class="icon icon-map-marker"></span>
-                                <span class="text">ایران - مشهد - بلوار ابوطالب</span>
-                            </li>
-
-                            <li class="mb-3">
-                                <span class="icon icon-phone"></span>
-                                <span class="text">37574592 - 051</span>
-                            </li>
-
-                            <li class="mb-3">
-                                <span class="icon icon-envelope"></span>
-                                <span class="text"> info@pixeldooni.ir </span>
-                            </li>
-                            <li class="mb-3">
-                                <a href="https://enamad.ir/">
-                                    <img src="{{ asset('images/enamad.png') }}" width="100" height="100" alt="enemad"/>
-                                </a>
-                            </li>
-
-
-                        </ul>
+            <div class="col-lg-2 col-md-6">
+                <div class="footer-widget">
+                    <div class="widget-header">
+                        <h3 class="widget-title"> خدمات مشتریان</h3>
                     </div>
+                    <ul class="footer-list">
+                        <li><a href="#">راهنمای خرید</a></li>
+                        <li><a href="{{ route('site.faq') }}">سوالات متداول</a></li>
+                        <li><a href="#">قوانین و مقررات</a></li>
+                        <li><a href="#">پیگیری سفارش</a></li>
+                        <li><a href="#">بازگشت کالا</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center mb-2">
-                <p class="copyright">
-                    کپی رایت &copy;
-                    <script>
-                        const today = new Date();
-                        const faYear = new Intl.DateTimeFormat('fa-IR-u-ca-persian', {year: 'numeric'}).format(today);
-                        document.write(faYear);                    </script>
-                    - 1400
-                    |
-                    تمامی حقوق برای پیکسل دونی محفوظ است
-                </p>
+            <div class="col-lg-2 col-md-6">
+                <div class="footer-widget">
+                    <div class="widget-header">
+                        <h3 class="widget-title">دسته‌بندی‌های محبوب</h3>
+                    </div>
+                    <ul class="footer-list">
+                        <li><a href="#">لباس زنانه</a></li>
+                        <li><a href="#">لباس مردانه</a></li>
+                        <li><a href="#">لباس بچه گانه</a></li>
+                        <li><a href="#">کفش و کتانی</a></li>
+                        <li><a href="#">اکسسوری</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <div class="widget-header">
+                        <h3 class="widget-title">خبرنامه ما</h3>
+                    </div>
+                    <div class="news-form-wrap">
+                        <p class="mb-20">برای دریافت جدیدترین تخفیف ‌ها، در فهرست پستی مشترک شوید</p>
+                        <div class="footer-form mb-20">
+                            <form action="#" class="rr-subscribe-form">
+                                <input class="form-control" type="email" name="email" placeholder="آدرس ایمیل">
+                                <input type="hidden" name="action" value="mailchimpsubscribe">
+                                <button class="submit">عضویت</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6 mx-auto text-center px-3 pb-4">
+            <span >
+                    کپی رایت &copy;
+                <script>
+                        const today = new Date();
+                        const faYear = new Intl.DateTimeFormat('fa-IR-u-ca-persian', {year: 'numeric'}).format(today);
+                        document.write(faYear);
+                </script>
+                    - 1400
+                    |
+                    تمامی حقوق برای فروشگاه تست محفوظ است
+            </span>
+        </div>
+    </div>
+
+
 </footer>

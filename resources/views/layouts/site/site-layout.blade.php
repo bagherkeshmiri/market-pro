@@ -1,40 +1,42 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html class="no-js" lang="fa">
 
 @include('partials.site.head' , [ 'pageTitle' => $pageTitle,])
 
-<body class="goto-here">
+<body style="overflow-x: hidden !important; ">
 
-@include('partials.site.menu',['menus' => $menus,])
+@include('partials.site.menu' , ['searchMenuCategories' => $searchMenuCategories , 'menus' => $menus])
 
 {{ $slot }}
 
 @include('partials.site.footer')
 
-<div id="ftco-loader" class="show fullscreen">
-    <svg class="circular" width="48px" height="48px">
-        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
-        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-                stroke="#F96D00"/>
-    </svg>
-</div>
 
-<script type="text/javascript" src="{{ asset('js/site/jquery.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/jquery-migrate-3.0.1.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/popper.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/jquery.easing.1.3.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/jquery.waypoints.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/jquery.stellar.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/owl.carousel.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/jquery.magnific-popup.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/aos.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/jquery.animateNumber.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/bootstrap-datepicker.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/scrollax.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/main.js') }}"></script>
+<div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
+
+
+<script src="{{ asset('js/site/vendor/jquary-3.6.0.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/bootstrap-bundle.js') }}"></script>
+<script src="{{ asset('js/site/vendor/imagesloaded-pkgd.js') }}"></script>
+<script src="{{ asset('js/site/vendor/waypoints.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/venobox.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/odometer.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/meanmenu.js') }}"></script>
+<script src="{{ asset('js/site/vendor/smooth-scroll.js') }}"></script>
+<script src="{{ asset('js/site/vendor/jquery.isotope.js') }}"></script>
+<script src="{{ asset('js/site/vendor/wow.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/swiper.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/split-type.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/gsap.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/scroll-trigger.min.js') }}"></script>
+<script src="{{ asset('js/site/vendor/countdown.js') }}"></script>
+<script src="{{ asset('js/site/vendor/nice-select.js') }}"></script>
+<script src="{{ asset('js/site/ajax-form.js') }}"></script>
+<script src="{{ asset('js/site/contact.js') }}"></script>
+<script src="{{ asset('js/site/main.js') }}"></script>
 
 @yield('scripts')
 @livewireScripts
+
 </body>
 </html>

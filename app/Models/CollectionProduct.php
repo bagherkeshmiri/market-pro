@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
-
 /**
  *
  *
@@ -43,7 +42,6 @@ class CollectionProduct extends Eloquent
     protected $fillable = [
         'collection_id',
         'product_id',
-        'sort',
     ];
 
     protected $hidden = [];

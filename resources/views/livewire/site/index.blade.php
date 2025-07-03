@@ -3,38 +3,26 @@
 
 
 <div>
-    @include('custom-components.site.image-slider')
-    @include('custom-components.site.slide-caption')
-    @include('custom-components.site.spacial-products',['title' => 'سرزمین پیکسلی','products' => $products , 'sampleProductImageUrl' => $sampleProductImageUrl])
 
+    @include('custom-components.site.hero-section')
 
-    <section class="ftco-section mb-5">
-        <div class="container">
-            <div class="row justify-content-center pb-3">
-                <div class="col-md-7 heading-section ftco-animate text-center">
-                    <h5 class="mb-4"> محصولات پر فروش</h5>
-                </div>
-            </div>
-            <div class="row ftco-animate">
-                <div class="col-md-12">
-                    <div class="product-carousel owl-carousel">
+    @include('custom-components.site.category-section')
 
-                        @foreach($products as $product)
-                            <div class="item">
-                                @include('custom-components.site.slider-product-card',['product' => $product, 'sampleProductImageUrl' => $sampleProductImageUrl])
-                            </div>
-                        @endforeach
+    @include('custom-components.site.discount-section')
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('custom-components.site.fashion-section')
+
+    @include('custom-components.site.collect-section')
+
+    @include('custom-components.site.cta-section')
+
+    @include('custom-components.site.sponsor-section')
+
+    @include('custom-components.site.deal-section')
+
+    @include('custom-components.site.blog-section')
 
 </div>
-
-
-
 
 
 @section('scripts')

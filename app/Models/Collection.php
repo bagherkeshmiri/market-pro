@@ -7,33 +7,33 @@ use App\Enums\IsActive;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
-
-
 
 /**
  *
  *
  * @property int $id
  * @property string|null $title
- * @property CollectionType $type  1 => product , 2 => banner , 3 => slider , 4 => box
+ * @property CollectionType $type 1:product , 2:category
  * @property int|null $limitation
  * @property int|null $sort
  * @property IsActive $is_active
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property string|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, CollectionCategory> $categoryCollection
+ * @property-read int|null $category_collection_count
+ * @property-read string $is_active_badge_class
+ * @property-read string $is_active_label
  * @property-read string $jalali_created_at
  * @property-read string $type_badge_class
  * @property-read string $type_label
- * @property-read CollectionProduct|null $product
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, CollectionProduct> $productCollection
+ * @property-read int|null $product_collection_count
  * @method static Builder<static>|Collection newModelQuery()
  * @method static Builder<static>|Collection newQuery()
  * @method static Builder<static>|Collection query()
  * @method static Builder<static>|Collection whereCreatedAt($value)
- * @method static Builder<static>|Collection whereDeletedAt($value)
  * @method static Builder<static>|Collection whereId($value)
  * @method static Builder<static>|Collection whereIsActive($value)
  * @method static Builder<static>|Collection whereLimitation($value)
@@ -101,6 +101,11 @@ class Collection extends Eloquent
     public function productCollection(): HasMany
     {
         return $this->hasMany(CollectionProduct::class, CollectionProduct::COLUMN_COLLECTION_ID, self::COLUMN_ID);
+    }
+
+    public function categoryCollection(): HasMany
+    {
+        return $this->hasMany(CollectionCategory::class, CollectionCategory::COLUMN_COLLECTION_ID, self::COLUMN_ID);
     }
 
 
