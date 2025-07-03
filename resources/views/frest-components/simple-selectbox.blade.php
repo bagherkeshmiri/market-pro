@@ -5,22 +5,19 @@
         @endisset
 
         @isset($wire)
-
             @isset($isLazy)
                 wire:model.lazy="{{ $wire }}"
-            @endisset
-
-            @isset($isDefer)
-                wire:model.defer="{{ $wire }}"
-            @endisset
-
-            @isset($isWire)
-                wire:model="{{ $wire }}"
-            @endisset
-
         @endisset
 
+        @isset($isDefer)
+            wire:model.defer="{{ $wire }}"
+        @endisset
 
+        @isset($isWire)
+            wire:model="{{ $wire }}"
+        @endisset
+
+        @endisset
 
 
         @isset($id)
@@ -31,9 +28,7 @@
             {{ $attributes }}
         @endisset
 
-
-            style="	background-image: url({{ asset('images/frest/arrow-down.png') }});"
-
+        style="	background-image: url({{ asset('images/frest/arrow-down.png') }});"
 
         required
 >
