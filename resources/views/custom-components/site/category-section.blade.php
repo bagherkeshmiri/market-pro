@@ -3,7 +3,6 @@
         <div class="category-top heading-space space-border">
             <div class="section-heading mb-0">
                 <h2 class="section-title">بهترین برای دسته های شما</h2>
-                <p>بیش از 29 دسته بندی و هزاران محصول </p>
             </div>
             <!-- Carousel Arrows -->
             <div class="swiper-arrow">

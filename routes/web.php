@@ -24,3 +24,19 @@ Route::name('site.')
     });
 
 
+
+
+//Route::get('/create-new-table', function () {
+//    if (!Schema::hasTable('collection_categories')) {
+//        Schema::create('collection_categories', function (Illuminate\Database\Schema\Blueprint $table) {
+//            $table->id();
+//            $table->unsignedBigInteger('collection_id')->index();
+//            $table->unsignedBigInteger('category_id')->index();
+//            $table->timestamps();
+//        });
+//
+//        return 'collection_categories table created successfully.';
+//    } else {
+//        return 'collection_categories table already exists.';
+//    }
+//});

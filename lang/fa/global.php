@@ -31,4 +31,5 @@ return [
     'box' => 'جعبه',
     'no_selected_product' => 'محصولی انتخاب نشده است',
     'toman' => 'تومان',
+    'category' => 'دسته بندی',
 ];
