@@ -30,6 +30,7 @@ return [
     'slider' => 'اسلایدر',
     'box' => 'جعبه',
     'no_selected_product' => 'محصولی انتخاب نشده است',
+    'no_selected_category' => 'دسته بندی انتخاب نشده است',
     'toman' => 'تومان',
     'category' => 'دسته بندی',
 ];

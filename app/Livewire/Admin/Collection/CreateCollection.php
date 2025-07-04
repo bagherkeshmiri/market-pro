@@ -23,11 +23,13 @@ class CreateCollection extends AdminComponent
     public $category;
     public $categoryProducts = [];
     public $selectedProducts = [];
+    public $selectedCategories = [];
 
 
     public function mount(): void
     {
         $this->type = CollectionType::Product;
+        $this->isActive = IsActive::No;
     }
 
     public function updatedType(): void
@@ -35,6 +37,7 @@ class CreateCollection extends AdminComponent
         $this->category = null;
         $this->categoryProducts = [];
         $this->selectedProducts = [];
+        $this->selectedCategories = [];
     }
 
     public function render()
@@ -63,13 +66,26 @@ class CreateCollection extends AdminComponent
             $this->categoryProducts = [];
         }
 
-        $categoryProducts = $this->categoryProducts;
-        $selectedCategory = $categories->search($this->category);
-        $selectedProducts = $this->selectedProducts;
+        $viewData = [
+            'pageTitle' => $pageTitle,
+            'statuses' => $statuses,
+            'types' => $types,
+            'categories' => $categories,
+        ];
+
+        if ($this->type == CollectionType::Product) {
+            $viewData['categoryProducts'] = $this->categoryProducts;
+            $viewData['selectedCategory'] = $categories->search($this->category);
+            $viewData['selectedProducts'] = $this->selectedProducts;
+        }
+
+        if ($this->type == CollectionType::Category) {
+            $viewData['selectedCategories'] = $this->selectedCategories;
+        }
 
         return $this->renderView(
             'livewire.admin.collection.create-collection',
-            compact('pageTitle', 'statuses', 'types', 'categories', 'categoryProducts', 'selectedCategory', 'selectedProducts')
+            $viewData
         );
     }
 
@@ -98,17 +114,9 @@ class CreateCollection extends AdminComponent
      */
     public function store()
     {
-
-
-        dd(
-            $this->type
-        );
-
-
         if (count($this->selectedProducts) > $this->limitation) {
             session()->flash('error', 'تعداد محصولات انتخاب شده نباید بیشتر از 20 عدد باشد');
         };
-
 
         $this->validate([
             'title' => 'required',

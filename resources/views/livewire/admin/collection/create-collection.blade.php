@@ -62,12 +62,6 @@
                                                     </div>
                                                 </div>
 
-
-
-
-                                                <span>{{ $type }}</span>
-
-
                                                 @if($type == \App\Enums\CollectionType::Product)
                                                     <div class="col-12">
                                                         <div class="form-group">
@@ -125,7 +119,48 @@
 
                                                 @if($type == \App\Enums\CollectionType::Category)
                                                     <div class="col-12">
-                                                        انتخاب دسته بندی
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'limitation' , 'content' => ' انتخاب دسته بندی'] )
+                                                                @include('frest-components.required-tag')
+                                                                <div class="border p-2">
+
+                                                                    @include('frest-components.text-divider',['dividerClass'=>'divider-warning','title' => ' لیست  دسته بندی ها '])
+
+                                                                    <div class="col-12">
+                                                                        @forelse($categories as $categoryKey => $categoryValue)
+                                                                            @include('frest-components.avatar-chip', [
+                                                                               'content' => $categoryKey,
+                                                                               'avatarClass' => 'bg-success',
+                                                                               'icon' => plusIcon(),
+                                                                               'wire' => "selectCategory({$categoryKey},'{$categoryValue}')"
+                                                                           ])
+                                                                        @empty
+                                                                            @include('frest-components.simple-chip',['content' => __('global.no_information_found') , 'id' => 'empty-chip'])
+
+                                                                        @endforelse
+                                                                    </div>
+
+                                                                    @include('frest-components.text-divider',['dividerClass'=>'divider-danger','title' => ' دسته بندی های انتخاب شده در کالکشن', 'classes' => 'mt-2'])
+
+                                                                    <div class="col-12">
+                                                                        @forelse($selectedProducts as $selectedProduct)
+                                                                            @include('frest-components.avatar-chip', [
+                                                                                   'content' => $selectedProduct['name'],
+                                                                                   'avatarClass' => 'bg-danger',
+                                                                                   'icon' => minusIcon(),
+                                                                                   'wire' => "unselectCategory({$selectedProduct['id']},'{$selectedProduct['name']}')"
+                                                                               ])
+                                                                        @empty
+                                                                            @include('frest-components.simple-chip',['content' => __('global.no_selected_category')])
+
+                                                                        @endforelse
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 @endif
 
