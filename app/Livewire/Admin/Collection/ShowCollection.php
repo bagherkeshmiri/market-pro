@@ -8,6 +8,7 @@ use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
 use App\Models\Collection;
 use App\Models\Product;
+use App\Traits\HandlesCollectionRelations;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
@@ -15,6 +16,8 @@ use Throwable;
 
 class ShowCollection extends AdminComponent
 {
+    use HandlesCollectionRelations;
+
     public object $collection;
     public $title;
     public $type;
@@ -163,7 +166,6 @@ class ShowCollection extends AdminComponent
             ->toArray();
     }
 
-
     /**
      * @throws Throwable
      */
@@ -197,32 +199,7 @@ class ShowCollection extends AdminComponent
         try {
             $this->collection->update($data);
 
-            if ($this->type == CollectionType::Product) {
-                $this->collection->productCollection()->delete();
-
-                $i = 1;
-                foreach ($this->selectedProducts as $selectedProduct) {
-                    $this->collection->productCollection()->create([
-                        'product_id' => $selectedProduct['id'],
-                        'sort' => $i,
-                    ]);
-                    $i++;
-                }
-            }
-
-            if ($this->type == CollectionType::Category) {
-                $this->collection->categoryCollection()->delete();
-
-                $i = 1;
-                foreach ($this->selectedCategories as $selectedCategory) {
-                    $this->collection->categoryCollection()->create([
-                        'category_id' => $selectedCategory['id'],
-                        'sort' => $i,
-                    ]);
-                    $i++;
-                }
-            }
-
+            $this->syncItemsToCollection($this->collection);
 
             DB::commit();
             $this->reset(['title', 'limitation']);
