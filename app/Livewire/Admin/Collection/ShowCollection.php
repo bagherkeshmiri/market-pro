@@ -40,7 +40,7 @@ class ShowCollection extends AdminComponent
             ])
             ->get();
 
-        if($this->type == CollectionType::Product){
+        if ($this->type == CollectionType::Product) {
             $this->selectedProducts = $collection->productCollection->load('product')
                 ->map(fn($item) => [
                     'id' => $item->product->id,
@@ -50,7 +50,7 @@ class ShowCollection extends AdminComponent
         }
 
 
-        if($this->type == CollectionType::Category){
+        if ($this->type == CollectionType::Category) {
             $this->selectedCategories = $collection->categoryCollection->load('category')
                 ->map(fn($item) => [
                     'id' => $item->category->id,
@@ -58,12 +58,14 @@ class ShowCollection extends AdminComponent
                 ])
                 ->toArray();
 
-            $this->unselectedCategories = $this->categories->whereNotIn('id', collect($this->selectedCategories)->pluck('id'))->values();
-
+            $this->unselectedCategories = $this->categories->whereNotIn('id', collect($this->selectedCategories)->pluck('id'))
+                ->map(fn($item) => [
+                    'id' => $item->id,
+                    'name' => $item->name,
+                ])
+                ->toArray();
         }
-
     }
-
 
     public function updatedType(): void
     {
@@ -116,7 +118,8 @@ class ShowCollection extends AdminComponent
 
         return $this->renderView(
             'livewire.admin.collection.show-collection',
-            $viewData        );
+            $viewData
+        );
     }
 
     public function selectProduct(int|string $productId, string $productName): void
@@ -194,7 +197,7 @@ class ShowCollection extends AdminComponent
         try {
             $this->collection->update($data);
 
-            if($this->type == CollectionType::Product){
+            if ($this->type == CollectionType::Product) {
                 $this->collection->productCollection()->delete();
 
                 $i = 1;
@@ -207,7 +210,7 @@ class ShowCollection extends AdminComponent
                 }
             }
 
-            if($this->type == CollectionType::Category){
+            if ($this->type == CollectionType::Category) {
                 $this->collection->categoryCollection()->delete();
 
                 $i = 1;
