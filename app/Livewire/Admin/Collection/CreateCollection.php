@@ -24,6 +24,7 @@ class CreateCollection extends AdminComponent
     public $unselectedProducts = [];
     public $selectedProducts = [];
     public $selectedCategories = [];
+    public $unselectedCategories = [];
     public $categories = [];
 
 
@@ -31,7 +32,12 @@ class CreateCollection extends AdminComponent
     {
         $this->type = CollectionType::Product;
         $this->isActive = IsActive::No;
-
+        $this->categories = Category::withoutTrashed()
+            ->select([
+                'id',
+                'name',
+            ])
+            ->get();
     }
 
     public function updatedType(): void
@@ -40,6 +46,8 @@ class CreateCollection extends AdminComponent
         $this->unselectedProducts = [];
         $this->selectedProducts = [];
         $this->selectedCategories = [];
+        $this->unselectedCategories = $this->categories->values()
+            ->toArray();
     }
 
     public function render()
@@ -47,15 +55,9 @@ class CreateCollection extends AdminComponent
         $pageTitle = 'ایجاد  کالکشن';
         $statuses = showEnumLabels(IsActive::class);
         $types = showEnumLabels(CollectionType::class);
-        $this->categories = Category::withoutTrashed()
-            ->select([
-                'id',
-                'name',
-            ])
-            ->get()
-            ->mapWithKeys(fn($item) => [
-                $item->name => $item->id,
-            ]);
+        $selectBoxCategories = $this->categories->mapWithKeys(fn($item) => [
+            $item->name => $item->id,
+        ]);
 
         if (!is_null($this->category)) {
             $this->unselectedProducts = Product::whereCategoryId($this->category)
@@ -72,17 +74,18 @@ class CreateCollection extends AdminComponent
             'pageTitle' => $pageTitle,
             'statuses' => $statuses,
             'types' => $types,
-            'categories' => $this->categories,
+            'selectBoxCategories' => $selectBoxCategories,
         ];
 
         if ($this->type == CollectionType::Product) {
             $viewData['unselectedProducts'] = $this->unselectedProducts;
-            $viewData['selectedCategory'] = $this->categories->search($this->category);
+            $viewData['selectedCategory'] = $selectBoxCategories->search($this->category);
             $viewData['selectedProducts'] = $this->selectedProducts;
         }
 
         if ($this->type == CollectionType::Category) {
             $viewData['selectedCategories'] = $this->selectedCategories;
+            $viewData['unselectedCategories'] = $this->unselectedCategories;
         }
 
         return $this->renderView(
@@ -117,21 +120,21 @@ class CreateCollection extends AdminComponent
         if (!in_array($categoryId, array_column($this->selectedCategories, 'id'))) {
             $this->selectedCategories[] = ['id' => $categoryId, 'name' => $categoryName];
 
-            $this->categories = $this->categories
-                ->reject(fn($item) => $item == $categoryId)
+            $this->unselectedCategories = collect($this->unselectedCategories)
+                ->reject(fn($item) => $item['id'] == $categoryId)
                 ->values()
                 ->toArray();
         }
     }
 
-//    public function unselectCategory(int|string $productId, string $productName): void
-//    {
-//        $this->categoryProducts[] = ['id' => $productId, 'name' => $productName];
-//        $this->selectedProducts = collect($this->selectedProducts)
-//            ->reject(fn($item) => $item['id'] == $productId)
-//            ->values()
-//            ->toArray();
-//    }
+    public function unselectCategory(int|string $categoryId, string $categoryName): void
+    {
+        $this->unselectedCategories[] = ['id' => $categoryId, 'name' => $categoryName];
+        $this->selectedCategories = collect($this->selectedCategories)
+            ->reject(fn($item) => $item['id'] == $categoryId)
+            ->values()
+            ->toArray();
+    }
 
     /**
      * @throws Throwable
@@ -140,7 +143,7 @@ class CreateCollection extends AdminComponent
     {
         if (count($this->selectedProducts) > $this->limitation) {
             session()->flash('error', 'تعداد محصولات انتخاب شده نباید بیشتر از 20 عدد باشد');
-        };
+        }
 
         $this->validate([
             'title' => 'required',

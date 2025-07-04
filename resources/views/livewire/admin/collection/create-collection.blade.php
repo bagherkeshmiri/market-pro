@@ -72,7 +72,7 @@
                                                                     <div class="form-group">
                                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'category' , 'content' => 'دسته بندی'] )
                                                                         @include('frest-components.required-tag')
-                                                                        @include('frest-components.simple-selectbox',[ 'data' => $categories , 'id' => 'category' , 'wire' => 'category'  ,'attributes' => 'required', 'isLazy' => true])
+                                                                        @include('frest-components.simple-selectbox',[ 'data' => $selectBoxCategories , 'id' => 'category' , 'wire' => 'category'  ,'attributes' => 'required', 'isLazy' => true])
                                                                         @include('frest-components.validation-error',[ 'name' => 'category' ])
                                                                         @include('frest-components.small-tag',['classes' =>  'text-warning' , 'message' => 'جهت نمایش محصولات یک دسته را انتخاب کنید'])
                                                                     </div>
@@ -128,12 +128,13 @@
                                                                     @include('frest-components.text-divider',['dividerClass'=>'divider-warning','title' => ' لیست  دسته بندی ها '])
 
                                                                     <div class="col-12">
-                                                                        @forelse($categories as $categoryKey => $categoryValue)
+                                                                        @forelse($unselectedCategories as $unselectedCategory)
                                                                             @include('frest-components.avatar-chip', [
-                                                                               'content' => $categoryKey,
+                                                                               'content' => $unselectedCategory['name'],
                                                                                'avatarClass' => 'bg-success',
                                                                                'icon' => plusIcon(),
-                                                                               'wire' => "selectCategory($categoryValue,'$categoryKey')"
+                                                                               'wire' => "selectCategory({$unselectedCategory['id']},'{$unselectedCategory['name']}')"
+
                                                                            ])
                                                                         @empty
                                                                             @include('frest-components.simple-chip',['content' => __('global.no_information_found') , 'id' => 'empty-chip'])
