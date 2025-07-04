@@ -133,7 +133,7 @@
                                                                                'content' => $categoryKey,
                                                                                'avatarClass' => 'bg-success',
                                                                                'icon' => plusIcon(),
-                                                                               'wire' => "selectCategory({$categoryKey},'{$categoryValue}')"
+                                                                               'wire' => "selectCategory($categoryValue,'$categoryKey')"
                                                                            ])
                                                                         @empty
                                                                             @include('frest-components.simple-chip',['content' => __('global.no_information_found') , 'id' => 'empty-chip'])
@@ -144,12 +144,12 @@
                                                                     @include('frest-components.text-divider',['dividerClass'=>'divider-danger','title' => ' دسته بندی های انتخاب شده در کالکشن', 'classes' => 'mt-2'])
 
                                                                     <div class="col-12">
-                                                                        @forelse($selectedProducts as $selectedProduct)
+                                                                        @forelse($selectedCategories as $categoryKey => $categoryValue)
                                                                             @include('frest-components.avatar-chip', [
-                                                                                   'content' => $selectedProduct['name'],
+                                                                                   'content' => $categoryKey,
                                                                                    'avatarClass' => 'bg-danger',
                                                                                    'icon' => minusIcon(),
-                                                                                   'wire' => "unselectCategory({$selectedProduct['id']},'{$selectedProduct['name']}')"
+                                                                                   'wire' => "unselectCategory($categoryKey,'$categoryValue')"
                                                                                ])
                                                                         @empty
                                                                             @include('frest-components.simple-chip',['content' => __('global.no_selected_category')])

@@ -30,6 +30,14 @@ class CreateCollection extends AdminComponent
     {
         $this->type = CollectionType::Product;
         $this->isActive = IsActive::No;
+
+
+        $categories = Category::withoutTrashed()
+            ->select([
+                'id',
+                'name',
+            ])
+            ->get();
     }
 
     public function updatedType(): void
@@ -51,6 +59,8 @@ class CreateCollection extends AdminComponent
                 'name',
             ])
             ->get()
+
+
             ->mapWithKeys(fn($item) => [
                 $item->name => $item->id,
             ]);
@@ -101,6 +111,43 @@ class CreateCollection extends AdminComponent
     }
 
     public function unselectProduct(int|string $productId, string $productName): void
+    {
+        $this->categoryProducts[] = ['id' => $productId, 'name' => $productName];
+        $this->selectedProducts = collect($this->selectedProducts)
+            ->reject(fn($item) => $item['id'] == $productId)
+            ->values()
+            ->toArray();
+    }
+
+
+    public function selectCategory(int|string $categoryId, string $categoryName): void
+    {
+
+//        dd(
+//            $this->categories
+//
+//        );
+
+
+        if (!in_array($categoryId, array_column($this->selectedCategories, 'id'))) {
+            $this->selectedCategories[] = ['id' => $categoryId, 'name' => $categoryName];
+
+//            $this->categories = $this->categories
+//                ->reject(fn($item) => $item == $categoryId)
+//                ->values()
+//                ->toArray();
+        }
+
+
+
+        dd(
+            $this->selectedCategories,
+        );
+
+
+    }
+
+    public function unselectCategory(int|string $productId, string $productName): void
     {
         $this->categoryProducts[] = ['id' => $productId, 'name' => $productName];
         $this->selectedProducts = collect($this->selectedProducts)
