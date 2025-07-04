@@ -27,7 +27,6 @@ class CreateCollection extends AdminComponent
     public $unselectedCategories = [];
     public $categories = [];
 
-
     public function mount(): void
     {
         $this->type = CollectionType::Product;
@@ -114,7 +113,6 @@ class CreateCollection extends AdminComponent
             ->toArray();
     }
 
-
     public function selectCategory(int|string $categoryId, string $categoryName): void
     {
         if (!in_array($categoryId, array_column($this->selectedCategories, 'id'))) {
@@ -167,15 +165,30 @@ class CreateCollection extends AdminComponent
 
         DB::beginTransaction();
         try {
+
             $createdCollection = Collection::create($data);
 
-            $i = 1;
-            foreach ($this->selectedProducts as $selectedProduct) {
-                $createdCollection->productCollection()->create([
-                    'product_id' => $selectedProduct['id'],
-                    'sort' => $i,
-                ]);
-                $i++;
+            if($this->type == CollectionType::Product){
+                $i = 1;
+                foreach ($this->selectedProducts as $selectedProduct) {
+                    $createdCollection->productCollection()->create([
+                        'product_id' => $selectedProduct['id'],
+                        'sort' => $i,
+                    ]);
+                    $i++;
+                }
+            }
+
+            if($this->type == CollectionType::Category){
+
+                $i = 1;
+                foreach ($this->selectedCategories as $selectedCategory) {
+                    $createdCollection->categoryCollection()->create([
+                        'category_id' => $selectedCategory['id'],
+                        'sort' => $i,
+                    ]);
+                    $i++;
+                }
             }
 
             DB::commit();

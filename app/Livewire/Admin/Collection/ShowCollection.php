@@ -21,8 +21,11 @@ class ShowCollection extends AdminComponent
     public $limitation;
     public $isActive;
     public $category;
-    public $categoryProducts = [];
+    public $unselectedProducts = [];
     public $selectedProducts = [];
+    public $selectedCategories = [];
+    public $unselectedCategories = [];
+    public $categories = [];
 
     public function mount(Collection $collection): void
     {
@@ -30,14 +33,46 @@ class ShowCollection extends AdminComponent
         $this->type = $collection->type;
         $this->limitation = $collection->limitation;
         $this->isActive = $collection->is_active;
-
-        $this->selectedProducts = $collection->productCollection->load('product')
-            ->map(fn($item) => [
-                'id' => $item->product->id,
-                'name' => $item->product->name,
+        $this->categories = Category::withoutTrashed()
+            ->select([
+                'id',
+                'name',
             ])
-            ->toArray();
+            ->get();
 
+        if($this->type == CollectionType::Product){
+            $this->selectedProducts = $collection->productCollection->load('product')
+                ->map(fn($item) => [
+                    'id' => $item->product->id,
+                    'name' => $item->product->name,
+                ])
+                ->toArray();
+        }
+
+
+        if($this->type == CollectionType::Category){
+            $this->selectedCategories = $collection->categoryCollection->load('category')
+                ->map(fn($item) => [
+                    'id' => $item->category->id,
+                    'name' => $item->category->name,
+                ])
+                ->toArray();
+
+            $this->unselectedCategories = $this->categories->whereNotIn('id', collect($this->selectedCategories)->pluck('id'))->values();
+
+        }
+
+    }
+
+
+    public function updatedType(): void
+    {
+        $this->category = null;
+        $this->unselectedProducts = [];
+        $this->selectedProducts = [];
+        $this->selectedCategories = [];
+        $this->unselectedCategories = $this->categories->values()
+            ->toArray();
     }
 
     public function render()
@@ -45,42 +80,50 @@ class ShowCollection extends AdminComponent
         $pageTitle = 'ویرایش  کالکشن ' . $this->title;
         $statuses = showEnumLabels(IsActive::class);
         $types = showEnumLabels(CollectionType::class);
-        $categories = Category::withoutTrashed()
-            ->select([
-                'id',
-                'name',
-            ])
-            ->get()
-            ->mapWithKeys(fn($item) => [
-                $item->name => $item->id,
-            ]);
+        $selectBoxCategories = $this->categories->mapWithKeys(fn($item) => [
+            $item->name => $item->id,
+        ]);
 
         if (!is_null($this->category)) {
-            $this->categoryProducts = Product::whereCategoryId($this->category)
+            $this->unselectedProducts = Product::whereCategoryId($this->category)
                 ->select(['id', 'name'])
                 ->get()
                 ->filter(fn($product) => !in_array($product->id, array_column((array)$this->selectedProducts, 'id')))
                 ->values()
                 ->toArray();
         } else {
-            $this->categoryProducts = [];
+            $this->unselectedProducts = [];
         }
 
-        $categoryProducts = $this->categoryProducts;
-        $selectedCategory = $categories->search($this->category);
-        $selectedProducts = $this->selectedProducts;
+        $viewData = [
+            'pageTitle' => $pageTitle,
+            'statuses' => $statuses,
+            'types' => $types,
+            'selectBoxCategories' => $selectBoxCategories,
+        ];
+
+        if ($this->type == CollectionType::Product) {
+            $viewData['unselectedProducts'] = $this->unselectedProducts;
+            $viewData['selectedCategory'] = $selectBoxCategories->search($this->category);
+            $viewData['selectedProducts'] = $this->selectedProducts;
+        }
+
+        if ($this->type == CollectionType::Category) {
+            $viewData['selectedCategories'] = $this->selectedCategories;
+            $viewData['unselectedCategories'] = $this->unselectedCategories;
+        }
+
 
         return $this->renderView(
             'livewire.admin.collection.show-collection',
-            compact('pageTitle', 'statuses', 'types', 'categories', 'categoryProducts', 'selectedCategory', 'selectedProducts')
-        );
+            $viewData        );
     }
 
     public function selectProduct(int|string $productId, string $productName): void
     {
         if (!in_array($productId, array_column($this->selectedProducts, 'id'))) {
             $this->selectedProducts[] = ['id' => $productId, 'name' => $productName];
-            $this->categoryProducts = collect($this->categoryProducts)
+            $this->unselectedProducts = collect($this->selectedProducts)
                 ->reject(fn($item) => $item['id'] == $productId)
                 ->values()
                 ->toArray();
@@ -89,12 +132,34 @@ class ShowCollection extends AdminComponent
 
     public function unselectProduct(int|string $productId, string $productName): void
     {
-        $this->categoryProducts[] = ['id' => $productId, 'name' => $productName];
+        $this->unselectedProducts[] = ['id' => $productId, 'name' => $productName];
         $this->selectedProducts = collect($this->selectedProducts)
             ->reject(fn($item) => $item['id'] == $productId)
             ->values()
             ->toArray();
     }
+
+    public function selectCategory(int|string $categoryId, string $categoryName): void
+    {
+        if (!in_array($categoryId, array_column($this->selectedCategories, 'id'))) {
+            $this->selectedCategories[] = ['id' => $categoryId, 'name' => $categoryName];
+
+            $this->unselectedCategories = collect($this->unselectedCategories)
+                ->reject(fn($item) => $item['id'] == $categoryId)
+                ->values()
+                ->toArray();
+        }
+    }
+
+    public function unselectCategory(int|string $categoryId, string $categoryName): void
+    {
+        $this->unselectedCategories[] = ['id' => $categoryId, 'name' => $categoryName];
+        $this->selectedCategories = collect($this->selectedCategories)
+            ->reject(fn($item) => $item['id'] == $categoryId)
+            ->values()
+            ->toArray();
+    }
+
 
     /**
      * @throws Throwable
@@ -129,16 +194,32 @@ class ShowCollection extends AdminComponent
         try {
             $this->collection->update($data);
 
-            $this->collection->productCollection()->delete();
+            if($this->type == CollectionType::Product){
+                $this->collection->productCollection()->delete();
 
-            $i = 1;
-            foreach ($this->selectedProducts as $selectedProduct) {
-                $this->collection->productCollection()->create([
-                    'product_id' => $selectedProduct['id'],
-                    'sort' => $i,
-                ]);
-                $i++;
+                $i = 1;
+                foreach ($this->selectedProducts as $selectedProduct) {
+                    $this->collection->productCollection()->create([
+                        'product_id' => $selectedProduct['id'],
+                        'sort' => $i,
+                    ]);
+                    $i++;
+                }
             }
+
+            if($this->type == CollectionType::Category){
+                $this->collection->categoryCollection()->delete();
+
+                $i = 1;
+                foreach ($this->selectedCategories as $selectedCategory) {
+                    $this->collection->categoryCollection()->create([
+                        'category_id' => $selectedCategory['id'],
+                        'sort' => $i,
+                    ]);
+                    $i++;
+                }
+            }
+
 
             DB::commit();
             $this->reset(['title', 'limitation']);
