@@ -21,9 +21,10 @@ class CreateCollection extends AdminComponent
     public $sort;
     public $isActive;
     public $category;
-    public $categoryProducts = [];
+    public $unselectedProducts = [];
     public $selectedProducts = [];
     public $selectedCategories = [];
+    public $categories = [];
 
 
     public function mount(): void
@@ -31,19 +32,12 @@ class CreateCollection extends AdminComponent
         $this->type = CollectionType::Product;
         $this->isActive = IsActive::No;
 
-
-        $categories = Category::withoutTrashed()
-            ->select([
-                'id',
-                'name',
-            ])
-            ->get();
     }
 
     public function updatedType(): void
     {
         $this->category = null;
-        $this->categoryProducts = [];
+        $this->unselectedProducts = [];
         $this->selectedProducts = [];
         $this->selectedCategories = [];
     }
@@ -53,39 +47,37 @@ class CreateCollection extends AdminComponent
         $pageTitle = 'ایجاد  کالکشن';
         $statuses = showEnumLabels(IsActive::class);
         $types = showEnumLabels(CollectionType::class);
-        $categories = Category::withoutTrashed()
+        $this->categories = Category::withoutTrashed()
             ->select([
                 'id',
                 'name',
             ])
             ->get()
-
-
             ->mapWithKeys(fn($item) => [
                 $item->name => $item->id,
             ]);
 
         if (!is_null($this->category)) {
-            $this->categoryProducts = Product::whereCategoryId($this->category)
+            $this->unselectedProducts = Product::whereCategoryId($this->category)
                 ->select(['id', 'name'])
                 ->get()
                 ->filter(fn($product) => !in_array($product->id, array_column($this->selectedProducts, 'id')))
                 ->values()
                 ->toArray();
         } else {
-            $this->categoryProducts = [];
+            $this->unselectedProducts = [];
         }
 
         $viewData = [
             'pageTitle' => $pageTitle,
             'statuses' => $statuses,
             'types' => $types,
-            'categories' => $categories,
+            'categories' => $this->categories,
         ];
 
         if ($this->type == CollectionType::Product) {
-            $viewData['categoryProducts'] = $this->categoryProducts;
-            $viewData['selectedCategory'] = $categories->search($this->category);
+            $viewData['unselectedProducts'] = $this->unselectedProducts;
+            $viewData['selectedCategory'] = $this->categories->search($this->category);
             $viewData['selectedProducts'] = $this->selectedProducts;
         }
 
@@ -103,7 +95,7 @@ class CreateCollection extends AdminComponent
     {
         if (!in_array($productId, array_column($this->selectedProducts, 'id'))) {
             $this->selectedProducts[] = ['id' => $productId, 'name' => $productName];
-            $this->categoryProducts = collect($this->categoryProducts)
+            $this->unselectedProducts = collect($this->unselectedProducts)
                 ->reject(fn($item) => $item['id'] == $productId)
                 ->values()
                 ->toArray();
@@ -112,7 +104,7 @@ class CreateCollection extends AdminComponent
 
     public function unselectProduct(int|string $productId, string $productName): void
     {
-        $this->categoryProducts[] = ['id' => $productId, 'name' => $productName];
+        $this->unselectedProducts[] = ['id' => $productId, 'name' => $productName];
         $this->selectedProducts = collect($this->selectedProducts)
             ->reject(fn($item) => $item['id'] == $productId)
             ->values()
@@ -122,39 +114,24 @@ class CreateCollection extends AdminComponent
 
     public function selectCategory(int|string $categoryId, string $categoryName): void
     {
-
-//        dd(
-//            $this->categories
-//
-//        );
-
-
         if (!in_array($categoryId, array_column($this->selectedCategories, 'id'))) {
             $this->selectedCategories[] = ['id' => $categoryId, 'name' => $categoryName];
 
-//            $this->categories = $this->categories
-//                ->reject(fn($item) => $item == $categoryId)
-//                ->values()
-//                ->toArray();
+            $this->categories = $this->categories
+                ->reject(fn($item) => $item == $categoryId)
+                ->values()
+                ->toArray();
         }
-
-
-
-        dd(
-            $this->selectedCategories,
-        );
-
-
     }
 
-    public function unselectCategory(int|string $productId, string $productName): void
-    {
-        $this->categoryProducts[] = ['id' => $productId, 'name' => $productName];
-        $this->selectedProducts = collect($this->selectedProducts)
-            ->reject(fn($item) => $item['id'] == $productId)
-            ->values()
-            ->toArray();
-    }
+//    public function unselectCategory(int|string $productId, string $productName): void
+//    {
+//        $this->categoryProducts[] = ['id' => $productId, 'name' => $productName];
+//        $this->selectedProducts = collect($this->selectedProducts)
+//            ->reject(fn($item) => $item['id'] == $productId)
+//            ->values()
+//            ->toArray();
+//    }
 
     /**
      * @throws Throwable

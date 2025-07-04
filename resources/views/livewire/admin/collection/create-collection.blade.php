@@ -81,12 +81,12 @@
                                                                 @include('frest-components.text-divider',['dividerClass'=>'divider-warning','title' => ' لیست محصولات دسته بندی '  . $selectedCategory ?? '', 'classes' => 'mt-2'])
 
                                                                 <div class="col-12">
-                                                                    @forelse($categoryProducts as $categoryProduct)
+                                                                    @forelse($unselectedProducts as $unselectedProduct)
                                                                         @include('frest-components.avatar-chip', [
-                                                                           'content' => $categoryProduct['name'],
+                                                                           'content' => $unselectedProduct['name'],
                                                                            'avatarClass' => 'bg-success',
                                                                            'icon' => plusIcon(),
-                                                                           'wire' => "selectProduct({$categoryProduct['id']},'{$categoryProduct['name']}')"
+                                                                           'wire' => "selectProduct({$unselectedProduct['id']},'{$unselectedProduct['name']}')"
                                                                        ])
                                                                     @empty
                                                                         @include('frest-components.simple-chip',['content' => __('global.no_information_found') , 'id' => 'empty-chip'])
@@ -144,12 +144,12 @@
                                                                     @include('frest-components.text-divider',['dividerClass'=>'divider-danger','title' => ' دسته بندی های انتخاب شده در کالکشن', 'classes' => 'mt-2'])
 
                                                                     <div class="col-12">
-                                                                        @forelse($selectedCategories as $categoryKey => $categoryValue)
+                                                                        @forelse($selectedCategories as  $selectedCategory)
                                                                             @include('frest-components.avatar-chip', [
-                                                                                   'content' => $categoryKey,
+                                                                                   'content' => $selectedCategory['name'],
                                                                                    'avatarClass' => 'bg-danger',
                                                                                    'icon' => minusIcon(),
-                                                                                   'wire' => "unselectCategory($categoryKey,'$categoryValue')"
+                                                                                   'wire' => "unselectCategory({$selectedCategory['id']},'{$selectedCategory['name']}')"
                                                                                ])
                                                                         @empty
                                                                             @include('frest-components.simple-chip',['content' => __('global.no_selected_category')])
