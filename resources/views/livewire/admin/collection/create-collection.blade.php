@@ -166,10 +166,6 @@
                                                 @endif
 
 
-
-
-
-
                                                 <div class="col-12 d-flex justify-content-end mt-2">
                                                     @include('frest-components.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
                                                     @include('frest-components.link-button',[ 'href' => route('admin.collection.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
