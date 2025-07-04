@@ -8,6 +8,7 @@ use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
 use App\Models\Collection;
 use App\Models\Product;
+use App\Traits\HandlesCollectionItemsSelection;
 use App\Traits\HandlesCollectionRelations;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,7 @@ use Throwable;
 class ShowCollection extends AdminComponent
 {
     use HandlesCollectionRelations;
+    use HandlesCollectionItemsSelection;
 
     public object $collection;
     public $title;
@@ -127,43 +129,22 @@ class ShowCollection extends AdminComponent
 
     public function selectProduct(int|string $productId, string $productName): void
     {
-        if (!in_array($productId, array_column($this->selectedProducts, 'id'))) {
-            $this->selectedProducts[] = ['id' => $productId, 'name' => $productName];
-            $this->unselectedProducts = collect($this->selectedProducts)
-                ->reject(fn($item) => $item['id'] == $productId)
-                ->values()
-                ->toArray();
-        }
+        $this->selectItem($productId, $productName, 'selectedProducts', 'unselectedProducts');
     }
 
     public function unselectProduct(int|string $productId, string $productName): void
     {
-        $this->unselectedProducts[] = ['id' => $productId, 'name' => $productName];
-        $this->selectedProducts = collect($this->selectedProducts)
-            ->reject(fn($item) => $item['id'] == $productId)
-            ->values()
-            ->toArray();
+        $this->unselectItem($productId, $productName, 'selectedProducts', 'unselectedProducts');
     }
 
     public function selectCategory(int|string $categoryId, string $categoryName): void
     {
-        if (!in_array($categoryId, array_column($this->selectedCategories, 'id'))) {
-            $this->selectedCategories[] = ['id' => $categoryId, 'name' => $categoryName];
-
-            $this->unselectedCategories = collect($this->unselectedCategories)
-                ->reject(fn($item) => $item['id'] == $categoryId)
-                ->values()
-                ->toArray();
-        }
+        $this->selectItem($categoryId, $categoryName, 'selectedCategories', 'unselectedCategories');
     }
 
     public function unselectCategory(int|string $categoryId, string $categoryName): void
     {
-        $this->unselectedCategories[] = ['id' => $categoryId, 'name' => $categoryName];
-        $this->selectedCategories = collect($this->selectedCategories)
-            ->reject(fn($item) => $item['id'] == $categoryId)
-            ->values()
-            ->toArray();
+        $this->unselectItem($categoryId, $categoryName, 'selectedCategories', 'unselectedCategories');
     }
 
     /**
@@ -198,7 +179,6 @@ class ShowCollection extends AdminComponent
         DB::beginTransaction();
         try {
             $this->collection->update($data);
-
             $this->syncItemsToCollection($this->collection);
 
             DB::commit();
