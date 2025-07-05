@@ -12,14 +12,9 @@ class ListCollection extends AdminComponent
 
     public function updateOrder(array $orderedIds): void
     {
-
-        dd(
-            $orderedIds
-        );
-
         foreach ($orderedIds as $index => $id) {
             Collection::where('id', $id)
-                ->update(['sort' => $index]);
+                ->update(['sort' => ++$index]);
         }
 
         session()->flash('success', 'ترتیب کالکشن ها با موفقیت ذخیره شد.');
