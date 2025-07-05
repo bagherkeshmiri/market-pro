@@ -12,8 +12,10 @@ use App\Traits\Collection\CollectionValidation;
 use App\Traits\Collection\HandlesCollectionItemsSelection;
 use App\Traits\Collection\HandlesCollectionRelations;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
+use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
 class ShowCollection extends AdminComponent
@@ -152,26 +154,12 @@ class ShowCollection extends AdminComponent
     /**
      * @throws Throwable
      */
-    public function update()
+    public function update(): RedirectResponse|Redirector
     {
-//        $items = $this->type == CollectionType::Product ? $this->selectedProducts : $this->selectedCategories;
-//        $typeName = $this->type == CollectionType::Product ? 'محصول' : 'دسته بندی';
-//
-//        if (count($items) > $this->limitation) {
-//            session()->flash('error', "تعداد {$typeName}‌های انتخاب شده نباید بیشتر از {$this->limitation} عدد باشد");
-//            return redirect()->route('admin.collection.show', ['collection' => $this->collection->id]);
-//        }
-//
-//        if (empty($items)) {
-//            session()->flash('error', "کالکشن نباید بدون {$typeName} ذخیره شود");
-//            return redirect()->route('admin.collection.show', ['collection' => $this->collection->id]);
-//        }
 
         if ($redirect = $this->validateCollectionSelection()) {
             return $redirect;
         }
-
-
 
         $this->validate([
             'title' => 'required',
