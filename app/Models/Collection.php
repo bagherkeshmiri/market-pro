@@ -66,9 +66,9 @@ class Collection extends Eloquent
 
     protected static function booted(): void
     {
-//        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-//            $builder->orderByDesc('id');
-//        });
+        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
+            $builder->orderByDesc('id');
+        });
     }
 
     public function getJalaliCreatedAtAttribute(): string
