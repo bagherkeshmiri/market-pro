@@ -7,8 +7,16 @@ use App\Models\Collection;
 
 class ListCollection extends AdminComponent
 {
-    public function saveOrder(array $orderedIds): void
+    protected $listeners = ['updateOrder'];
+
+
+    public function updateOrder(array $orderedIds): void
     {
+
+        dd(
+            $orderedIds
+        );
+
         foreach ($orderedIds as $index => $id) {
             Collection::where('id', $id)
                 ->update(['sort' => $index]);

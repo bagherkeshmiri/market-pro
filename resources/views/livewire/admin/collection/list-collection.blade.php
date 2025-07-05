@@ -17,7 +17,7 @@
                                 <div class="card-body">
 
                                     <div class=" justify-content-end mb-1 d-none" style="gap: 0.5rem;" id="sort-actions">
-                                        <button wire:click="saveOrder" id="save-order-btn" class="btn btn-warning btn-sm">ذخیره ترتیب</button>
+                                        <button id="save-order-btn" class="btn btn-warning btn-sm">ذخیره ترتیب</button>
                                         <button id="cancel-order-btn" class="btn btn-danger btn-sm">انصراف</button>
                                     </div>
 
@@ -75,8 +75,8 @@
 
 @section('scripts')
 
-
     <script type="text/javascript">
+
         document.addEventListener('DOMContentLoaded', function () {
             const container = document.getElementById('collection-list-table');
             const saveBtn = document.getElementById('save-order-btn');
@@ -107,7 +107,7 @@
                     ids.push(tr.getAttribute('data-id'));
                 });
 
-                Livewire.emit('updateOrder', ids);
+                @this.call('updateOrder', ids);
 
                 actionsDiv.classList.add('d-none');
                 actionsDiv.classList.remove('d-flex');
