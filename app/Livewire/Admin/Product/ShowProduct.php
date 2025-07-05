@@ -9,9 +9,11 @@ use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
 use App\Models\Product;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Livewire\Features\SupportRedirects\Redirector;
 use Livewire\WithFileUploads;
 use Throwable;
 
@@ -31,7 +33,6 @@ class ShowProduct extends AdminComponent
     public $finalPrice;
     public $mainImage;
     public $galleryImages;
-
 
     public function mount(Product $product): void
     {
@@ -65,7 +66,7 @@ class ShowProduct extends AdminComponent
     /**
      * @throws Throwable
      */
-    public function update()
+    public function update(): RedirectResponse|Redirector
     {
         $this->validate([
             'name' => 'required',
@@ -86,7 +87,6 @@ class ShowProduct extends AdminComponent
             'galleryImages' => 'nullable|array', // if array file has file|mimes:jpg,png,jpeg,webp|max:500 validation
         ]);
 
-
         $this->price = (int)str_replace(',', '', $this->price);
         $this->discount = (int)str_replace(',', '', $this->discount);
 
@@ -94,7 +94,6 @@ class ShowProduct extends AdminComponent
             'price' => 'required|integer|min:0',
             'discount' => 'required|integer',
         ]);
-
 
         if( $this->status == ProductStatus::Exist && $this->stock <= 0){
             session()->flash('warning', 'امکان ثبت محصول موجود با موجودی صفر وجود ندارد');

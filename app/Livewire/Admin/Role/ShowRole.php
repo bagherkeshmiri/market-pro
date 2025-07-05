@@ -8,6 +8,7 @@ use App\Models\Role;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
 class ShowRole extends AdminComponent
@@ -55,7 +56,7 @@ class ShowRole extends AdminComponent
     /**
      * @throws Throwable
      */
-    public function update(): RedirectResponse
+    public function update(): RedirectResponse|Redirector
     {
         $data = [
             'fa_name' => $this->faName,

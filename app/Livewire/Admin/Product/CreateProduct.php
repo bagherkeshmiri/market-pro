@@ -8,8 +8,10 @@ use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
 use App\Models\Product;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
+use Livewire\Features\SupportRedirects\Redirector;
 use Livewire\WithFileUploads;
 use Throwable;
 
@@ -45,7 +47,7 @@ class CreateProduct extends AdminComponent
     /**
      * @throws Throwable
      */
-    public function store()
+    public function store(): RedirectResponse|Redirector
     {
         $this->validate([
             'name' => 'required',
@@ -105,7 +107,7 @@ class CreateProduct extends AdminComponent
             $this->reset(['name', 'description', 'price', 'stock', 'discount']);
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.product.index');
-        } catch (Exception $e) {
+        } catch (Exception) {
             DB::rollBack();
             session()->flash('error', __('global.error_message'));
             return redirect()->route('admin.product.create');
