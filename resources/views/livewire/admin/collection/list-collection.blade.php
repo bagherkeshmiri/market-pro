@@ -16,6 +16,12 @@
                             <div class="card-content">
                                 <div class="card-body">
 
+                                    <div class="row">
+                                        <div class="col-sm-12 col-xs-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4">
+                                            @include('frest-components.rgba-alert',['classes' => 'bg-rgba-success' , 'icon' => starIcon()])
+                                        </div>
+                                    </div>
+
                                     <div class=" justify-content-end mb-1 d-none" style="gap: 0.5rem;" id="sort-actions">
                                         <button id="save-order-btn" class="btn btn-warning btn-sm">ذخیره ترتیب</button>
                                         <button id="cancel-order-btn" class="btn btn-danger btn-sm">انصراف</button>
@@ -107,7 +113,8 @@
                     ids.push(tr.getAttribute('data-id'));
                 });
 
-                @this.call('updateOrder', ids);
+                @this.
+                call('updateOrder', ids);
 
                 actionsDiv.classList.add('d-none');
                 actionsDiv.classList.remove('d-flex');
