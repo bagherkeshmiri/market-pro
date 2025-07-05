@@ -8,8 +8,9 @@ use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
 use App\Models\Collection;
 use App\Models\Product;
-use App\Traits\HandlesCollectionItemsSelection;
-use App\Traits\HandlesCollectionRelations;
+use App\Traits\Collection\CollectionValidation;
+use App\Traits\Collection\HandlesCollectionItemsSelection;
+use App\Traits\Collection\HandlesCollectionRelations;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
@@ -19,6 +20,7 @@ class ShowCollection extends AdminComponent
 {
     use HandlesCollectionRelations;
     use HandlesCollectionItemsSelection;
+    use CollectionValidation;
 
     public object $collection;
     public $title;
@@ -152,9 +154,24 @@ class ShowCollection extends AdminComponent
      */
     public function update()
     {
-        if (count($this->selectedProducts) > $this->limitation) {
-            session()->flash('error', 'تعداد محصولات انتخاب شده نباید بیشتر از 20 عدد باشد');
-        };
+//        $items = $this->type == CollectionType::Product ? $this->selectedProducts : $this->selectedCategories;
+//        $typeName = $this->type == CollectionType::Product ? 'محصول' : 'دسته بندی';
+//
+//        if (count($items) > $this->limitation) {
+//            session()->flash('error', "تعداد {$typeName}‌های انتخاب شده نباید بیشتر از {$this->limitation} عدد باشد");
+//            return redirect()->route('admin.collection.show', ['collection' => $this->collection->id]);
+//        }
+//
+//        if (empty($items)) {
+//            session()->flash('error', "کالکشن نباید بدون {$typeName} ذخیره شود");
+//            return redirect()->route('admin.collection.show', ['collection' => $this->collection->id]);
+//        }
+
+        if ($redirect = $this->validateCollectionSelection()) {
+            return $redirect;
+        }
+
+
 
         $this->validate([
             'title' => 'required',
@@ -178,6 +195,13 @@ class ShowCollection extends AdminComponent
 
         DB::beginTransaction();
         try {
+            if ($this->collection->type != $this->type) {
+                match ($this->collection->type) {
+                    CollectionType::Product => $this->collection->productCollection()->delete(),
+                    CollectionType::Category => $this->collection->categoryCollection()->delete(),
+                };
+            }
+
             $this->collection->update($data);
             $this->syncItemsToCollection($this->collection);
 

@@ -8,17 +8,21 @@ use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
 use App\Models\Collection;
 use App\Models\Product;
-use App\Traits\HandlesCollectionItemsSelection;
-use App\Traits\HandlesCollectionRelations;
+use App\Traits\Collection\CollectionValidation;
+use App\Traits\Collection\HandlesCollectionItemsSelection;
+use App\Traits\Collection\HandlesCollectionRelations;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
+use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
 class CreateCollection extends AdminComponent
 {
     use HandlesCollectionRelations;
     use HandlesCollectionItemsSelection;
+    use CollectionValidation;
 
     public $title;
     public $type;
@@ -121,10 +125,10 @@ class CreateCollection extends AdminComponent
     /**
      * @throws Throwable
      */
-    public function store()
+    public function store(): RedirectResponse|Redirector
     {
-        if (count($this->selectedProducts) > $this->limitation) {
-            session()->flash('error', 'تعداد محصولات انتخاب شده نباید بیشتر از 20 عدد باشد');
+        if ($redirect = $this->validateCollectionSelection()) {
+            return $redirect;
         }
 
         $this->validate([
