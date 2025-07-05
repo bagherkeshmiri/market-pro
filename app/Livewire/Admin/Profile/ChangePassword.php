@@ -4,8 +4,11 @@ namespace App\Livewire\Admin\Profile;
 
 use App\Livewire\BaseComponents\AdminComponent;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Features\SupportRedirects\Redirector;
+use Throwable;
 
 class ChangePassword extends AdminComponent
 {
@@ -14,7 +17,7 @@ class ChangePassword extends AdminComponent
     public $password;
     public $password_confirmation;
 
-    public function boot()
+    public function boot(): void
     {
         $this->admin = auth()->user();
     }
@@ -29,7 +32,10 @@ class ChangePassword extends AdminComponent
         );
     }
 
-    public function change()
+    /**
+     * @throws Throwable
+     */
+    public function change(): RedirectResponse|Redirector
     {
         if (!Hash::check($this->oldPass, $this->admin->password)) {
             session()->flash('error', 'رمز عبور قبلی نادرست وارد شده است');

@@ -5,15 +5,17 @@ namespace App\Livewire\Admin\Auth;
 use App\Livewire\BaseComponents\AuthComponent;
 use App\Models\User;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class Login extends AuthComponent
 {
     public $email;
     public $password;
 
-    public function login()
+    public function login(): RedirectResponse|Redirector
     {
         $this->validate([
             'email' => 'required|email',

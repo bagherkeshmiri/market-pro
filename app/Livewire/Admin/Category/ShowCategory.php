@@ -4,10 +4,11 @@ namespace App\Livewire\Admin\Category;
 
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
-use App\Repositories\Category\CategoryRepositoryInterface;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
 class ShowCategory extends AdminComponent
@@ -38,7 +39,7 @@ class ShowCategory extends AdminComponent
     /**
      * @throws Throwable
      */
-    public function update()
+    public function update(): RedirectResponse|Redirector
     {
         $this->validate([
             'name' => 'required',

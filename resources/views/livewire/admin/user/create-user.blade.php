@@ -50,7 +50,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'type' , 'content' => 'نوع کاربری'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $types , 'id' => 'type' , 'wire' => 'type'  ,'isDefer' => true, 'defaultOption' => true,])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $types , 'id' => 'type' , 'wire' => 'type'  ,'isDefer' => true,])
                                                         @include('frest-components.validation-error',[ 'name' => 'type' ])
                                                     </div>
 
@@ -70,7 +70,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'role' , 'content' => 'نقش'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $roles , 'id' => 'role' , 'wire' => 'role' ,'isDefer' => true, 'defaultOption' => true])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $roles , 'id' => 'role' , 'wire' => 'role' ,'isDefer' => true,])
                                                         @include('frest-components.validation-error',[ 'name' => 'role' ])
                                                     </div>
 

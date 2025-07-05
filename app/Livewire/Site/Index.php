@@ -3,8 +3,6 @@
 namespace App\Livewire\Site;
 
 use App\Livewire\BaseComponents\SiteComponent;
-use App\Models\Category;
-use App\Models\Product;
 
 class Index extends SiteComponent
 {

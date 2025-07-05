@@ -5,7 +5,9 @@ namespace App\Livewire\Admin\Category;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
 class CreateCategory extends AdminComponent
@@ -26,7 +28,7 @@ class CreateCategory extends AdminComponent
     /**
      * @throws Throwable
      */
-    public function store()
+    public function store(): RedirectResponse|Redirector
     {
         $this->validate([
             'name' => 'required',

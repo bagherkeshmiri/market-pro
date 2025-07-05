@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\CollectionType;
 use App\Livewire\Site\Blog;
 use App\Livewire\Site\Contact;
 use App\Livewire\Site\Faq;
@@ -40,3 +41,9 @@ Route::name('site.')
 //        return 'collection_categories table already exists.';
 //    }
 //});
+
+
+
+Route::get('test',function(){
+    dd(CollectionType::Product->name);
+});

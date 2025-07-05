@@ -8,22 +8,33 @@ use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
 use App\Models\Collection;
 use App\Models\Product;
+use App\Traits\Collection\CollectionValidation;
+use App\Traits\Collection\HandlesCollectionItemsSelection;
+use App\Traits\Collection\HandlesCollectionRelations;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
+use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
 class ShowCollection extends AdminComponent
 {
+    use HandlesCollectionRelations;
+    use HandlesCollectionItemsSelection;
+    use CollectionValidation;
+
     public object $collection;
     public $title;
     public $type;
     public $limitation;
-    public $sort;
     public $isActive;
     public $category;
-    public $categoryProducts = [];
+    public $unselectedProducts = [];
     public $selectedProducts = [];
+    public $selectedCategories = [];
+    public $unselectedCategories = [];
+    public $categories = [];
 
     public function mount(Collection $collection): void
     {
@@ -31,78 +42,124 @@ class ShowCollection extends AdminComponent
         $this->type = $collection->type;
         $this->limitation = $collection->limitation;
         $this->isActive = $collection->is_active;
-    }
-
-    public function render()
-    {
-        $pageTitle = 'ویرایش  کالکشن';
-        $statuses = showEnumLabels(IsActive::class);
-        $types = showEnumLabels(CollectionType::class);
-        $categories = Category::withoutTrashed()
+        $this->categories = Category::withoutTrashed()
             ->select([
                 'id',
                 'name',
             ])
-            ->get()
-            ->mapWithKeys(fn($item) => [
-                $item->name => $item->id,
-            ]);
+            ->get();
+
+        if ($this->type == CollectionType::Product) {
+            $this->selectedProducts = $collection->productCollection->load('product')
+                ->map(fn($item) => [
+                    'id' => $item->product->id,
+                    'name' => $item->product->name,
+                ])
+                ->toArray();
+        }
+
+
+        if ($this->type == CollectionType::Category) {
+            $this->selectedCategories = $collection->categoryCollection->load('category')
+                ->map(fn($item) => [
+                    'id' => $item->category->id,
+                    'name' => $item->category->name,
+                ])
+                ->toArray();
+
+            $this->unselectedCategories = $this->categories->whereNotIn('id', collect($this->selectedCategories)->pluck('id'))
+                ->map(fn($item) => [
+                    'id' => $item->id,
+                    'name' => $item->name,
+                ])
+                ->toArray();
+        }
+    }
+
+    public function updatedType(): void
+    {
+        $this->category = null;
+        $this->unselectedProducts = [];
+        $this->selectedProducts = [];
+        $this->selectedCategories = [];
+        $this->unselectedCategories = $this->categories->values()
+            ->toArray();
+    }
+
+    public function render()
+    {
+        $pageTitle = 'ویرایش  کالکشن ' . $this->title;
+        $statuses = showEnumLabels(IsActive::class);
+        $types = showEnumLabels(CollectionType::class);
+        $selectBoxCategories = $this->categories->mapWithKeys(fn($item) => [
+            $item->name => $item->id,
+        ]);
 
         if (!is_null($this->category)) {
-            $this->categoryProducts = Product::whereCategoryId($this->category)
+            $this->unselectedProducts = Product::whereCategoryId($this->category)
                 ->select(['id', 'name'])
                 ->get()
                 ->filter(fn($product) => !in_array($product->id, array_column((array)$this->selectedProducts, 'id')))
                 ->values()
                 ->toArray();
         } else {
-            $this->categoryProducts = [];
+            $this->unselectedProducts = [];
         }
 
-        $categoryProducts = $this->categoryProducts;
-        $selectedCategory = $categories->search($this->category);
-        $this->selectedProducts = $this->collection->productCollection->load('product')
-            ->map(fn($item) => [
-                'id' => $item->product->id,
-                'name' => $item->product->name,
-            ]);
+        $viewData = [
+            'pageTitle' => $pageTitle,
+            'statuses' => $statuses,
+            'types' => $types,
+            'selectBoxCategories' => $selectBoxCategories,
+        ];
 
-        $selectedProducts = $this->selectedProducts;
+        if ($this->type == CollectionType::Product) {
+            $viewData['unselectedProducts'] = $this->unselectedProducts;
+            $viewData['selectedCategory'] = $selectBoxCategories->search($this->category);
+            $viewData['selectedProducts'] = $this->selectedProducts;
+        }
+
+        if ($this->type == CollectionType::Category) {
+            $viewData['selectedCategories'] = $this->selectedCategories;
+            $viewData['unselectedCategories'] = $this->unselectedCategories;
+        }
+
 
         return $this->renderView(
             'livewire.admin.collection.show-collection',
-            compact('pageTitle', 'statuses', 'types', 'categories', 'categoryProducts', 'selectedCategory', 'selectedProducts')
+            $viewData
         );
     }
 
     public function selectProduct(int|string $productId, string $productName): void
     {
-        if (!in_array($productId, array_column((array)$this->selectedProducts, 'id'))) {
-            $this->selectedProducts[] = ['id' => $productId, 'name' => $productName];
-            $this->categoryProducts = collect($this->categoryProducts)
-                ->reject(fn($item) => $item['id'] == $productId)
-                ->values()
-                ->toArray();
-        }
+        $this->selectItem($productId, $productName, 'selectedProducts', 'unselectedProducts');
     }
 
     public function unselectProduct(int|string $productId, string $productName): void
     {
-        $this->categoryProducts[] = ['id' => $productId, 'name' => $productName];
-        $this->selectedProducts = collect($this->selectedProducts)
-            ->reject(fn($item) => $item['id'] == $productId)
-            ->values()
-            ->toArray();
+        $this->unselectItem($productId, $productName, 'selectedProducts', 'unselectedProducts');
+    }
+
+    public function selectCategory(int|string $categoryId, string $categoryName): void
+    {
+        $this->selectItem($categoryId, $categoryName, 'selectedCategories', 'unselectedCategories');
+    }
+
+    public function unselectCategory(int|string $categoryId, string $categoryName): void
+    {
+        $this->unselectItem($categoryId, $categoryName, 'selectedCategories', 'unselectedCategories');
     }
 
     /**
      * @throws Throwable
      */
-    public function update()
+    public function update(): RedirectResponse|Redirector
     {
-        if (count($this->selectedProducts) > $this->limitation) {
-            session()->flash('error', 'تعداد محصولات انتخاب شده نباید بیشتر از 20 عدد باشد');
-        };
+
+        if ($redirect = $this->validateCollectionSelection()) {
+            return $redirect;
+        }
 
         $this->validate([
             'title' => 'required',
@@ -126,18 +183,15 @@ class ShowCollection extends AdminComponent
 
         DB::beginTransaction();
         try {
-            $this->collection->update($data);
-
-            $this->collection->productCollection()->delete();
-
-            $i = 1;
-            foreach ($this->selectedProducts as $selectedProduct) {
-                $this->collection->productCollection()->create([
-                    'product_id' => $selectedProduct['id'],
-                    'sort' => $i,
-                ]);
-                $i++;
+            if ($this->collection->type != $this->type) {
+                match ($this->collection->type) {
+                    CollectionType::Product => $this->collection->productCollection()->delete(),
+                    CollectionType::Category => $this->collection->categoryCollection()->delete(),
+                };
             }
+
+            $this->collection->update($data);
+            $this->syncItemsToCollection($this->collection);
 
             DB::commit();
             $this->reset(['title', 'limitation']);

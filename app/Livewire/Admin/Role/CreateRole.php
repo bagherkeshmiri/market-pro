@@ -8,6 +8,7 @@ use App\Models\Role;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
 class CreateRole extends AdminComponent
@@ -45,7 +46,7 @@ class CreateRole extends AdminComponent
     /**
      * @throws Throwable
      */
-    public function store(): RedirectResponse
+    public function store(): RedirectResponse|Redirector
     {
         $data = [
             'fa_name' => $this->faName,

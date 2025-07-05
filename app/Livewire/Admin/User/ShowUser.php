@@ -10,6 +10,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
+use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
 class ShowUser extends AdminComponent
@@ -47,7 +48,7 @@ class ShowUser extends AdminComponent
     /**
      * @throws Throwable
      */
-    public function update(): RedirectResponse
+    public function update(): RedirectResponse|Redirector
     {
         $this->validate([
             'name' => 'required',
