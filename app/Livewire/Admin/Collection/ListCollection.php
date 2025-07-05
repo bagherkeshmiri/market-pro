@@ -7,11 +7,22 @@ use App\Models\Collection;
 
 class ListCollection extends AdminComponent
 {
+    public function saveOrder(array $orderedIds): void
+    {
+        foreach ($orderedIds as $index => $id) {
+            Collection::where('id', $id)
+                ->update(['sort' => $index]);
+        }
+
+        session()->flash('success', 'ترتیب کالکشن ها با موفقیت ذخیره شد.');
+    }
+
     public function render()
     {
         $pageTitle = 'لیست  کالکشن ها';
-        $tableHeads = ['نام', 'نوع', 'وضعیت', 'تعداد آیتم ها', ' مرتب سازی','تاریخ ایجاد', 'عملیات'];
-        $collections = Collection::paginate($this->perPage);
+        $tableHeads = ['نام', 'نوع', 'وضعیت', 'تعداد آیتم ها', 'تاریخ ایجاد', 'عملیات'];
+        $collections = Collection::orderBy('sort')
+            ->paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.collection.list-collection',
             compact('pageTitle', 'tableHeads', 'collections')

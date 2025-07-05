@@ -16,8 +16,13 @@
                             <div class="card-content">
                                 <div class="card-body">
 
+                                    <div class=" justify-content-end mb-1 d-none" style="gap: 0.5rem;" id="sort-actions">
+                                        <button wire:click="saveOrder" id="save-order-btn" class="btn btn-warning btn-sm">ذخیره ترتیب</button>
+                                        <button id="cancel-order-btn" class="btn btn-danger btn-sm">انصراف</button>
+                                    </div>
+
                                     <div class="table-responsive">
-                                        <table class="table mb-0 table-hover">
+                                        <table class="table mb-0 table-hover" style="cursor:pointer;">
                                             <thead>
                                             <tr>
                                                 @foreach($tableHeads as $tableHead)
@@ -25,11 +30,11 @@
                                                 @endforeach
                                             </tr>
                                             </thead>
-                                            <tbody class="font-13">
+                                            <tbody class="font-13" id="collection-list-table">
 
                                             @forelse ($collections as $collection)
 
-                                                <tr>
+                                                <tr data-id="{{ $collection->id }}">
                                                     <td class="text-white">{{ $collection->title }}</td>
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $collection->type_badge_class,  'content' => $collection->type_label ])
@@ -38,7 +43,6 @@
                                                         @include('frest-components.badge' , [ 'badgeClass' => $collection->is_active_badge_class,  'content' => $collection->is_active_label ])
                                                     </td>
                                                     <td class="text-white">{{ $collection->limitation }}</td>
-                                                    <td class="text-white">{{ $collection->sort }}</td>
                                                     <td class="text-white">{{ $collection->jalali_created_at }}</td>
                                                     <td>
                                                         @include('frest-components.icon-btn',[  'href' => route('admin.collection.show',[ 'collection' => $collection->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
@@ -70,8 +74,53 @@
 
 
 @section('scripts')
-{{--    <script type="text/javascript" src="{{ asset('js/frest/scripts/extensions/sweet-alerts.js') }}"></script>--}}
-{{--    <script type="text/javascript" src="{{ asset('js/frest/vendors/extensions/sweetalert2.all.min.js') }}"></script>--}}
-{{--    <script type="text/javascript" src="{{ asset('/js/swal-functions.js') }}"></script>--}}
-{{--    <script type="text/javascript" src="{{ asset('js/frest/vendors/extensions/toastr.min.js') }}"></script>--}}
+
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.getElementById('collection-list-table');
+            const saveBtn = document.getElementById('save-order-btn');
+            const cancelBtn = document.getElementById('cancel-order-btn');
+            const actionsDiv = document.getElementById('sort-actions');
+
+            let originalOrder = [];
+
+            function captureOriginalOrder() {
+                originalOrder = Array.from(container.querySelectorAll('tr')).map(tr => tr);
+            }
+
+            function restoreOriginalOrder() {
+                container.innerHTML = '';
+                originalOrder.forEach(tr => container.appendChild(tr));
+            }
+
+            captureOriginalOrder();
+
+            dragula([container]).on('drop', function () {
+                actionsDiv.classList.remove('d-none');
+                actionsDiv.classList.add('d-flex');
+            });
+
+            saveBtn.addEventListener('click', function () {
+                let ids = [];
+                container.querySelectorAll('tr').forEach(tr => {
+                    ids.push(tr.getAttribute('data-id'));
+                });
+
+                Livewire.emit('updateOrder', ids);
+
+                actionsDiv.classList.add('d-none');
+                actionsDiv.classList.remove('d-flex');
+                captureOriginalOrder();
+            });
+
+            cancelBtn.addEventListener('click', function () {
+                restoreOriginalOrder();
+
+                actionsDiv.classList.add('d-none');
+                actionsDiv.classList.remove('d-flex');
+            });
+        });
+
+    </script>
 @endsection
