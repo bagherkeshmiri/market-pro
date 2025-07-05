@@ -47,8 +47,8 @@
         </div>
     </div>
 
-    @livewireScripts
     @yield('scripts')
+    @livewireScripts
 </body>
 
 </html>
