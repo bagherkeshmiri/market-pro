@@ -37,7 +37,7 @@ class CreateCategory extends AdminComponent
         $this->validate([
             'name' => 'required',
             'parentId' => 'nullable|exists:categories,id',
-            'image' => 'sometimes|file|mimes:jpg,png,jpeg,webp|max:500', // TODO reduce image size and width and height
+            'image' => 'nullable|file|mimes:jpg,png,jpeg,webp|max:500', // TODO reduce image size and width and height
         ]);
 
         $data = [
@@ -47,10 +47,14 @@ class CreateCategory extends AdminComponent
         DB::beginTransaction();
         try {
             $createdCategory = Category::create($data);
-            $createdCategory->image()->create([
-                'url' => storeImage($this->image, 'categories'),
-                'is_main' => true,
-            ]);
+
+            if(!is_null($this->image)){
+                $createdCategory->image()->create([
+                    'url' => storeImage($this->image, 'categories'),
+                    'is_main' => true,
+                ]);
+            }
+
             DB::commit();
             $this->reset(['name']);
             session()->flash('success', __('global.success_message'));
