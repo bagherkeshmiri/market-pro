@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
-
 
 /**
  *
@@ -32,7 +32,8 @@ use Morilog\Jalali\Jalalian;
  * @property-read Category|null $category
  * @property-read Collection<int, CollectionProduct> $collections
  * @property-read int|null $collections_count
- * @property-read ProductImage|null $galleryImages
+ * @property-read Collection<int, Image> $galleryImages
+ * @property-read int|null $gallery_images_count
  * @property-read int $discount_percent
  * @property-read string $discount_type_badge_class
  * @property-read string $discount_type_label
@@ -42,10 +43,11 @@ use Morilog\Jalali\Jalalian;
  * @property-read string $jalali_created_at
  * @property-read string $status_badge_class
  * @property-read string $status_label
- * @property-read Collection<int, ProductImage> $images
+ * @property-read Collection<int, Image> $images
  * @property-read int|null $images_count
- * @property-read ProductImage|null $mainImage
- * @property-read Collection<int, OrderItem> $orderItems
+ * @property-read Collection<int, Image> $mainImage
+ * @property-read int|null $main_image_count
+ * @property-read Collection<int, \App\Models\OrderItem> $orderItems
  * @property-read int|null $order_items_count
  * @method static Builder<static>|Product newModelQuery()
  * @method static Builder<static>|Product newQuery()
@@ -162,19 +164,19 @@ class Product extends Eloquent
         return $this->belongsTo(Category::class, self::COLUMN_CATEGORY_ID, Category::COLUMN_ID);
     }
 
-    public function images(): HasMany
+    public function images(): MorphMany
     {
-        return $this->hasMany(ProductImage::class, ProductImage::COLUMN_PRODUCT_ID, self::COLUMN_ID);
+        return $this->morphMany(Image::class, 'imageable');
     }
 
-    public function mainImage(): HasOne
+    public function mainImage(): MorphMany
     {
-        return $this->hasOne(ProductImage::class)->where('is_main', true);
+        return $this->morphMany(Image::class, 'imageable')->where('is_main', true);
     }
 
-    public function galleryImages(): HasMany
+    public function galleryImages(): MorphMany
     {
-        return $this->hasMany(ProductImage::class)->where('is_main', false);
+        return $this->morphMany(Image::class, 'imageable')->where('is_main', false);
     }
 
     public function orderItems(): HasMany

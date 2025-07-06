@@ -21,10 +21,6 @@ class Index extends SiteComponent
             ])
             ->get();
 
-//        dd(
-//            $collections->first()
-//        );
-
         return $this->renderView(
             'livewire.site.index',
             $pageTitle,

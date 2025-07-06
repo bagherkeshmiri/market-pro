@@ -9,6 +9,7 @@ use App\Livewire\Site\Login;
 use App\Livewire\Site\Products;
 use App\Livewire\Site\Register;
 use App\Livewire\Site\SingleProduct;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,25 +26,25 @@ Route::name('site.')
     });
 
 
-
-
 //Route::get('/create-new-table', function () {
-//    if (!Schema::hasTable('collection_categories')) {
-//        Schema::create('collection_categories', function (Illuminate\Database\Schema\Blueprint $table) {
+//    if (!Schema::hasTable('images')) {
+//        Schema::create('images', function (Blueprint $table) {
 //            $table->id();
-//            $table->unsignedBigInteger('collection_id')->index();
-//            $table->unsignedBigInteger('category_id')->index();
+//            $table->unsignedBigInteger('imageable_id');
+//            $table->string('imageable_type');
+//            $table->boolean('is_main')->default(false);
+//            $table->string('url');
 //            $table->timestamps();
 //        });
 //
-//        return 'collection_categories table created successfully.';
+//        return 'images table created successfully.';
 //    } else {
-//        return 'collection_categories table already exists.';
+//        return 'images table already exists.';
 //    }
 //});
 
 
 
-Route::get('test',function(){
-    dd(CollectionType::Product->name);
-});
+//Route::get('test',function(){
+//    dd(CollectionType::Product->name);
+//});

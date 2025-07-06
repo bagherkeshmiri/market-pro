@@ -21,14 +21,6 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-
-        Schema::create('product_images', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('product_id')->index();
-            $table->string('image_url');
-            $table->boolean('is_main')->default(false);
-            $table->timestamps();
-        });
     }
 
     public function down(): void
