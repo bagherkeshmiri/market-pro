@@ -3,6 +3,7 @@
 namespace App\Livewire\Site;
 
 use App\Livewire\BaseComponents\SiteComponent;
+use App\Models\Collection;
 
 class Index extends SiteComponent
 {
@@ -11,10 +12,23 @@ class Index extends SiteComponent
         $pageTitle = 'فروشگاه اینترنتی رویسر';
         $sampleProductImageUrl = $this->sampleProductImageUrl;
 
+        $collections = Collection::whereIsActive(true)
+            ->orderBy('sort')
+            ->with([
+                'productCollection',
+                'categoryCollection:id,collection_id,category_id',
+                'categoryCollection.category:id,name',
+            ])
+            ->get();
+
+//        dd(
+//            $collections->first()
+//        );
+
         return $this->renderView(
             'livewire.site.index',
             $pageTitle,
-            compact('sampleProductImageUrl')
+            compact('sampleProductImageUrl', 'collections')
         );
     }
 }

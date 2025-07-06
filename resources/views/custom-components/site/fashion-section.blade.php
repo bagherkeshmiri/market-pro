@@ -1,9 +1,8 @@
-<section class="fashion-section pb-100">
+<section class="fashion-section pb-50">
     <div class="container rtl">
         <div class="category-top heading-space space-border">
             <div class="section-heading mb-0">
-                <h2 class="section-title">استایل مورد علاقتو ببین</h2>
-                <p>بیش از 29 دسته بندی و هزاران محصول</p>
+                <h2 class="section-title">{{ $title }}</h2>
             </div>
             <!-- Carousel Arrows -->
             <div class="swiper-arrow">
