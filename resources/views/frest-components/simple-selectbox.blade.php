@@ -29,6 +29,10 @@
 >
 
     @isset($data)
+        @isset($defualtValue)
+            <option>-- انتخاب کنید --</option>
+        @endisset
+
         @foreach($data as $key => $value)
             <option
                 value="{{ $value }}"
