@@ -13,7 +13,11 @@
             <div class="swiper-wrapper">
 
                 @foreach($items as $item)
-                    @include('custom-components.site.category-slider-item',['title' => $item->category->name])
+                    @include('custom-components.site.category-slider-item', [
+                        'title' => $item->category->name,
+                        'category' => $item->category,
+                        'sampleProductImageUrl' => $sampleProductImageUrl,
+                    ])
                 @endforeach
 
             </div>

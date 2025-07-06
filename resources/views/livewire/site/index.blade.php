@@ -12,7 +12,11 @@
     @foreach($collections as $collection)
 
         @if($collection->type == \App\Enums\CollectionType::Category)
-            @include('custom-components.site.category-section' , ['title' => $collection->title , 'items' => $collection->categoryCollection])
+            @include('custom-components.site.category-section', [
+                'title' => $collection->title,
+                'items' => $collection->categoryCollection,
+                'sampleProductImageUrl' => $sampleProductImageUrl,
+            ])
         @endif
 
         @if($collection->type == \App\Enums\CollectionType::Product)

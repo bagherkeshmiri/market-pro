@@ -18,6 +18,7 @@ class Index extends SiteComponent
                 'productCollection',
                 'categoryCollection:id,collection_id,category_id',
                 'categoryCollection.category:id,name',
+                'categoryCollection.category.image:id,imageable_id,imageable_type,url',
             ])
             ->get();
 
