@@ -1,5 +1,6 @@
 @import './frest/ck-editor.css';
 @import './frest/vendors/vendors.min.css';
+@import './frest/vendors/extensions/dragula.min.css';
 @import './frest/vendors/ui/prism.min.css';
 @import './frest/bootstrap.min.css';
 @import './frest/bootstrap-extended.css';
@@ -9,6 +10,7 @@
 @import './frest/themes/semi-dark-layout.css';
 @import './frest/themes/semi-dark-layout.css';
 @import './frest/core/menu/menu-types/horizontal-menu.css';
+@import './frest/plugins/extensions/drag-and-drop.css';
 @import './frest/pages/authentication.css';
 @import './frest/pages/page-user-profile.css';
 @import './frest/pages/widgets.css';

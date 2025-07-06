@@ -83,9 +83,13 @@ function packageIcon(): string
     return '<i class="bx bx-package text-white"></i>';
 }
 
-function starIcon(): string
+function starIcon(bool $isWhite = false): string
 {
-    return '<i class="bx bx-star text-white"></i>';
+    if ($isWhite) {
+        return '<i class="bx bx-star text-white"></i>';
+    } else {
+        return '<i class="bx bx-star"></i>';
+    }
 }
 
 
