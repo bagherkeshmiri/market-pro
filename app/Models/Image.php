@@ -42,6 +42,7 @@ class Image extends Eloquent
 
     protected $fillable = [
         'url',
+        'is_main',
     ];
 
     protected $hidden = [];

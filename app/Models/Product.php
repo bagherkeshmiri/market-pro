@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
@@ -169,9 +170,9 @@ class Product extends Eloquent
         return $this->morphMany(Image::class, 'imageable');
     }
 
-    public function mainImage(): MorphMany
+    public function mainImage(): MorphOne
     {
-        return $this->morphMany(Image::class, 'imageable')->where('is_main', true);
+        return $this->morphOne(Image::class, 'imageable')->where('is_main', true);
     }
 
     public function galleryImages(): MorphMany

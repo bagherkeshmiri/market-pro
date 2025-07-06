@@ -45,8 +45,8 @@ class ShowProduct extends AdminComponent
         $this->discountType = $product->discount_type;
         $this->discount = $product->discount;
         $this->finalPrice = $product->final_price;
-        $this->mainImage = $product->images->where('is_main', true)->first()->image_url ?? '';
-        $this->galleryImages = $product->images->where('is_main', false);
+        $this->mainImage = $product->mainImage->url ?? '';
+        $this->galleryImages = $product->galleryImages;
     }
 
     public function render()
@@ -84,7 +84,7 @@ class ShowProduct extends AdminComponent
             'mainImage' => $this->mainImage instanceof TemporaryUploadedFile
                 ? 'file|mimes:jpg,png,jpeg,webp|max:500' // TODO reduce image size and width and height
                 : 'nullable',
-            'galleryImages' => 'nullable|array', // if array file has file|mimes:jpg,png,jpeg,webp|max:500 validation
+            'galleryImages' => 'nullable|array', // TODO if array file has file|mimes:jpg,png,jpeg,webp|max:500 validation
         ]);
 
         $this->price = (int)str_replace(',', '', $this->price);
@@ -95,7 +95,7 @@ class ShowProduct extends AdminComponent
             'discount' => 'required|integer',
         ]);
 
-        if( $this->status == ProductStatus::Exist && $this->stock <= 0){
+        if ($this->status == ProductStatus::Exist && $this->stock <= 0) {
             session()->flash('warning', 'امکان ثبت محصول موجود با موجودی صفر وجود ندارد');
             return redirect()->route('admin.product.show', ['product' => $this->product->id]);
         }
@@ -117,25 +117,25 @@ class ShowProduct extends AdminComponent
             $this->product->update($data);
 
             if (!empty($this->mainImage) and $this->mainImage instanceof TemporaryUploadedFile) {
-                $productImage = $this->product->images()->where('is_main', true)->first();
+                $productImage = $this->product->mainImage;
                 if (!is_null($productImage)) {
-                    DeleteImageJob::dispatch($productImage->image_url);
+                    DeleteImageJob::dispatch($productImage->url);
                     $productImage->delete();
                 }
 
                 $this->product->images()->create([
-                    'image_url' => storeImage($this->mainImage, 'products'),
+                    'url' => storeImage($this->mainImage, 'products'),
                     'is_main' => true,
                 ]);
             }
 
             if (!empty($this->galleryImages) and is_array($this->galleryImages)) {
 //                DeleteImageJob::dispatch($address); // TODO
-                $this->product->images()->where('is_main', false)->delete(); // TODO replace by mainImage relation for delete main image
+                $this->product->galleryImages->delete(); // TODO check delete galley images successfully
 
                 foreach ($this->galleryImages as $galleryImage) {
                     $this->product->images()->create([
-                        'image_url' => storeImage($galleryImage, 'products'),
+                        'url' => storeImage($galleryImage, 'products'),
                         'is_main' => false,
                     ]);
                 }

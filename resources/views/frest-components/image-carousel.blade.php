@@ -16,7 +16,7 @@
                      src="{{
                                                                     is_object($galleryImage) && method_exists($galleryImage, 'temporaryUrl')
                                                                     ? $galleryImage->temporaryUrl()
-                                                                    : asset($galleryImage->image_url)
+                                                                    : asset($galleryImage->url)
                                                                  }}"
                      alt="gallery-image"/>
             </div>

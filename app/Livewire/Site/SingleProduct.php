@@ -22,8 +22,8 @@ class SingleProduct extends SiteComponent
         $product = $this->product;
         $products = Product::limit(8)
             ->with([
-                'mainImage:id,product_id,image_url',
-                'galleryImages:id,product_id,image_url',
+                'mainImage:id,url',
+                'galleryImages:id,url',
             ])
             ->where('category_id', $product->category_id)
             ->get();
