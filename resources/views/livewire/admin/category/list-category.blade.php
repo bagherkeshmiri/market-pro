@@ -46,7 +46,7 @@
                                                     </td>
                                                 </tr>
 
-                                                @include('frest-components.modal', [
+                                                @include('frest-components.image-preview-modal', [
                                                     'modelImageRelation'    => $category->image,
                                                     'modelImageUrl'         => $category->image->url ?? '',
                                                     'modalTitle'            => 'تصویر اصلی دسته بندی ' . $category->name,

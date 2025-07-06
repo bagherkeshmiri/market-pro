@@ -55,7 +55,7 @@
                                                     </td>
                                                 </tr>
 
-                                                @include('frest-components.modal', [
+                                                @include('frest-components.image-preview-modal', [
                                                    'modelImageRelation'    => $product->mainImage,
                                                    'modelImageUrl'         => $product->mainImage->url ?? '',
                                                    'modalTitle'            => 'تصویر اصلی  محصول ' . $product->name,
