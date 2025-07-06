@@ -28,7 +28,15 @@
                                             <tbody class="font-13">
 
                                             @forelse ($categories as $category)
+                                                @php
+                                                    $modalId = 'mainImageModal' . $category->id;
+                                                @endphp
+
+
                                                 <tr>
+                                                    <td data-toggle="tooltip" data-placement="top" title="  برای نمایش تصویر روی آن کلیک کنید">
+                                                        <img data-toggle="modal" data-target="#{{ $modalId }}" src="{{ $category->image ? asset($category->image->url) : asset($sampleProductImageUrl) }}" alt="product-image-{{ $category->id }}" width="40" height="40"/>
+                                                    </td>
                                                     <td class="text-white">{{ $category->name }}</td>
                                                     <td class="text-white">{{ $category->parent->name ?? ' - ' }}</td>
                                                     <td class="text-white">{{ $category->jalali_created_at }}</td>
@@ -37,6 +45,15 @@
                                                         @include('frest-components.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=category_delete(this,event)  data-url='.route('admin.category.delete',[ 'category' => $category->id ]) ])
                                                     </td>
                                                 </tr>
+
+                                                @include('frest-components.modal', [
+                                                    'modelImageRelation'    => $category->image,
+                                                    'modelImageUrl'         => $category->image->url ?? '',
+                                                    'modalTitle'            => 'تصویر اصلی دسته بندی ' . $category->name,
+                                                    'modalId'               => $modalId,
+                                                    'sampleProductImageUrl' => $sampleProductImageUrl,
+                                                ])
+
                                             @empty
                                                 @include('custom-components.admin.empty-table')
                                             @endforelse

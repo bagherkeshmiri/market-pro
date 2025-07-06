@@ -55,7 +55,13 @@
                                                     </td>
                                                 </tr>
 
-                                                @include('frest-components.modal',['modalTitle' => ' تصویر اصلی ' . $product->name , 'modalId' =>$modalId ,'sampleProductImageUrl' => $sampleProductImageUrl,])
+                                                @include('frest-components.modal', [
+                                                   'modelImageRelation'    => $product->mainImage,
+                                                   'modelImageUrl'         => $product->mainImage->url ?? '',
+                                                   'modalTitle'            => 'تصویر اصلی  محصول ' . $product->name,
+                                                   'modalId'               => $modalId,
+                                                   'sampleProductImageUrl' => $sampleProductImageUrl,
+                                               ])
 
                                             @empty
                                                 @include('custom-components.admin.empty-table')

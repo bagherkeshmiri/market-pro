@@ -36,8 +36,17 @@
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'parentId' , 'content' => 'دسته پدر'] )
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'parentId' , 'wire' => 'parentId'  ,'isDefer' => true])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'parentId' , 'wire' => 'parentId'  ,'isDefer' => true , 'defualtValue' => true])
                                                         @include('frest-components.validation-error',[ 'name' => 'parentId' ])
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                                                    <div class="form-group">
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'image' , 'content' => 'آپلود تصویر '] )
+                                                        @include('frest-components.simple-file-upload', ['wire' => 'image' , 'id' => 'image'])
+                                                        @include('frest-components.validation-error',[ 'name' => 'image' ])
                                                     </div>
                                                 </div>
 
