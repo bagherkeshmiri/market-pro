@@ -16,16 +16,22 @@
                             <div class="card-content">
                                 <div class="card-body">
 
-                                    <div class="row">
-                                        <div class="col-sm-12 col-xs-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4">
-                                            @include('frest-components.rgba-alert',['classes' => 'bg-rgba-success' , 'icon' => starIcon()])
+                                    @if($collections->isNotEmpty())
+                                        <div class="row">
+                                            <div class="col-sm-12 col-xs-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4">
+                                                @include('frest-components.rgba-alert',['classes' => 'bg-rgba-success' , 'icon' => starIcon()])
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class=" justify-content-end mb-1 d-none" style="gap: 0.5rem;" id="sort-actions">
-                                        <button id="save-order-btn" class="btn btn-warning btn-sm">ذخیره ترتیب</button>
-                                        <button id="cancel-order-btn" class="btn btn-danger btn-sm">انصراف</button>
-                                    </div>
+
+                                        <div class=" justify-content-end mb-1 d-none" style="gap: 0.5rem;" id="sort-actions">
+                                            <button id="save-order-btn" class="btn btn-warning btn-sm">ذخیره ترتیب</button>
+                                            <button id="cancel-order-btn" class="btn btn-danger btn-sm">انصراف</button>
+                                        </div>
+
+                                    @endif
+
+
 
                                     <div class="table-responsive">
                                         <table class="table mb-0 table-hover" style="cursor:pointer;">
