@@ -6,9 +6,9 @@
 
     @include('custom-components.site.hero-section')
 
-    @include('custom-components.site.category-section')
-
     @include('custom-components.site.discount-section')
+
+    @include('custom-components.site.category-section')
 
     @include('custom-components.site.fashion-section')
 
