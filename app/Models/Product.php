@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Carbon;
@@ -23,11 +22,13 @@ use Morilog\Jalali\Jalalian;
  * @property string $name
  * @property ProductStatus $status  1:not_exist , 2:exist
  * @property DiscountType $discount_type  1:percent , 2:amount
- * @property string|null $description
  * @property int $price
  * @property int $discount
  * @property int $final_price
  * @property int $stock
+ * @property string|null $long_description
+ * @property string|null $short_description
+ * @property string|null $additional_information
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Category|null $category
@@ -46,22 +47,23 @@ use Morilog\Jalali\Jalalian;
  * @property-read string $status_label
  * @property-read Collection<int, Image> $images
  * @property-read int|null $images_count
- * @property-read Collection<int, Image> $mainImage
- * @property-read int|null $main_image_count
- * @property-read Collection<int, \App\Models\OrderItem> $orderItems
+ * @property-read Image|null $mainImage
+ * @property-read Collection<int, OrderItem> $orderItems
  * @property-read int|null $order_items_count
  * @method static Builder<static>|Product newModelQuery()
  * @method static Builder<static>|Product newQuery()
  * @method static Builder<static>|Product query()
+ * @method static Builder<static>|Product whereAdditionalInformation($value)
  * @method static Builder<static>|Product whereCategoryId($value)
  * @method static Builder<static>|Product whereCreatedAt($value)
- * @method static Builder<static>|Product whereDescription($value)
  * @method static Builder<static>|Product whereDiscount($value)
  * @method static Builder<static>|Product whereDiscountType($value)
  * @method static Builder<static>|Product whereFinalPrice($value)
  * @method static Builder<static>|Product whereId($value)
+ * @method static Builder<static>|Product whereLongDescription($value)
  * @method static Builder<static>|Product whereName($value)
  * @method static Builder<static>|Product wherePrice($value)
+ * @method static Builder<static>|Product whereShortDescription($value)
  * @method static Builder<static>|Product whereStatus($value)
  * @method static Builder<static>|Product whereStock($value)
  * @method static Builder<static>|Product whereUpdatedAt($value)
@@ -78,12 +80,14 @@ class Product extends Eloquent
         'category_id',
         'name',
         'status',
-        'description',
         'price',
         'stock',
         'discount_type',
         'discount',
         'final_price',
+        'long_description',
+        'short_description',
+        'additional_information',
     ];
 
     protected $hidden = [];
