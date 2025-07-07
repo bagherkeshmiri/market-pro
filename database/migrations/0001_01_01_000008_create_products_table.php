@@ -17,7 +17,9 @@ return new class extends Migration {
             $table->unsignedBigInteger('discount')->default(0);
             $table->unsignedBigInteger('final_price')->default(0);
             $table->unsignedMediumInteger('stock')->default(0);
-            $table->longText('description')->nullable();
+            $table->longText('long_description')->nullable();
+            $table->text('short_description')->nullable();
+            $table->longText('additional_information')->nullable();
             $table->timestamps();
         });
 
@@ -25,7 +27,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('product_images');
         Schema::dropIfExists('products');
     }
 };

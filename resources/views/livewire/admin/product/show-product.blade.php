@@ -32,6 +32,7 @@
                                                     </div>
                                                 </div>
 
+
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'categoryId' , 'content' => 'دسته محصول'] )
@@ -40,6 +41,7 @@
                                                         @include('frest-components.validation-error',[ 'name' => 'categoryId' ])
                                                     </div>
                                                 </div>
+
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
@@ -59,6 +61,7 @@
                                                         @include('frest-components.validation-error',[ 'name' => 'price' ])
                                                     </div>
                                                 </div>
+
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
                                                     <div class="form-group">
@@ -106,10 +109,24 @@
                                                     </div>
                                                 </div>
 
+
                                                 <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
-                                                    @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات '] )
-                                                    @include('frest-components.ckEditor',[ 'content' => $product->description])
+                                                    @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات طولانی '] )
+                                                    @include('frest-components.ckEditor',['id'=> 'long-description', 'content' => $product->long_description])
                                                 </div>
+
+
+                                                <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
+                                                    @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => ' شرح مختصر '] )
+                                                    @include('frest-components.ckEditor',[ 'id'=> 'short-description','content' => $product->short_description])
+                                                </div>
+
+
+                                                <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
+                                                    @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => ' توضیحات تکمیلی  '] )
+                                                    @include('frest-components.ckEditor',[ 'id'=> 'additional-information','content' => $product->additional_information])
+                                                </div>
+
 
                                                 <div class="col-12 d-flex justify-content-end mt-2">
                                                     @include('frest-components.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
@@ -171,6 +188,7 @@
         let saveBtn = document.querySelector('#save_btn');
         let discountInput = document.getElementById('discount');
         let discountTypeInput = document.getElementById('discountType');
+        let longEditor, shortEditor, additionalEditor;
 
         function MyCustomUploadAdapterPlugin(editor) {
 
@@ -196,27 +214,31 @@
             }
         }
 
-        const myEditor =
-            DecoupledDocumentEditor
-                .create(document.querySelector('#editor'), {
-                    extraPlugins: [MyCustomUploadAdapterPlugin],
-                    language: {
-                        ui: 'fa',
-                        content: 'fa',
-                    },
-                })
-                .then(editor => {
-                    const toolbarContainer = document.querySelector('#toolbar-container');
-                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+        DecoupledDocumentEditor
+            .create(document.querySelector('#long-description'), { extraPlugins: [MyCustomUploadAdapterPlugin], language: { ui: 'fa', content: 'fa' } })
+            .then(editor => {
+                longEditor = editor;
+                document.querySelector('#toolbar-container-long-description').appendChild(editor.ui.view.toolbar.element);
+            });
 
+        DecoupledDocumentEditor
+            .create(document.querySelector('#short-description'), { extraPlugins: [MyCustomUploadAdapterPlugin], language: { ui: 'fa', content: 'fa' } })
+            .then(editor => {
+                shortEditor = editor;
+                document.querySelector('#toolbar-container-short-description').appendChild(editor.ui.view.toolbar.element);
+            });
+
+        DecoupledDocumentEditor
+            .create(document.querySelector('#additional-information'), { extraPlugins: [MyCustomUploadAdapterPlugin], language: { ui: 'fa', content: 'fa' } })
+            .then(editor => {
+                additionalEditor = editor;
+                document.querySelector('#toolbar-container-additional-information').appendChild(editor.ui.view.toolbar.element);
+            });
 
         saveBtn.addEventListener('click', function () {
-            @this.
-            set('description', document.querySelector('#editor').innerHTML);
+            @this.set('longDescription', longEditor.getData());
+            @this.set('shortDescription', shortEditor.getData());
+            @this.set('additionalInformation', additionalEditor.getData());
         });
 
         function formatPrice(input) {

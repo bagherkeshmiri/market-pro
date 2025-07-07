@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.10.1",
         "league/flysystem-aws-s3-v3": "^3.29",
         "livewire/livewire": "^3.6",
+        "mews/purifier": "^3.4",
         "morilog/jalali": "3.*",
         "opcodesio/log-viewer": "^3.17"
     },

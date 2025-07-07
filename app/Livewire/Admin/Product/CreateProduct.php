@@ -21,7 +21,6 @@ class CreateProduct extends AdminComponent
 
     public $name;
     public $categoryId;
-    public $description;
     public $price;
     public $stock;
     public $status;
@@ -29,6 +28,9 @@ class CreateProduct extends AdminComponent
     public $discount;
     public $mainImage;
     public $galleryImages;
+    public $longDescription;
+    public $shortDescription;
+    public $additionalInformation;
 
     public function mount(): void
     {
@@ -61,7 +63,9 @@ class CreateProduct extends AdminComponent
         $this->validate([
             'name' => 'required',
             'categoryId' => 'required|exists:categories,id',
-            'description' => 'nullable|string',
+            'longDescription' => 'nullable|string|max:4294967295',
+            'shortDescription' => 'nullable|string|max:65535',
+            'additionalInformation' => 'nullable|string|max:5000',
             'stock' => 'required|integer',
             'status' => [
                 'required',
@@ -86,13 +90,15 @@ class CreateProduct extends AdminComponent
         $data = [
             'name' => $this->name,
             'category_id' => $this->categoryId,
-            'description' => $this->description ?? null,
             'price' => $this->price,
             'stock' => $this->stock,
             'status' => $this->status,
             'discount_type' => $this->discountType,
             'discount' => $this->discount,
             'final_price' => calculateProductFinalPrice($this->discountType, $this->price, $this->discount),
+            'long_description' => $this->longDescription ?? null,
+            'short_description' => $this->shortDescription ?? null,
+            'additional_information' => $this->additionalInformation ?? null,
         ];
 
         DB::beginTransaction();
@@ -113,7 +119,7 @@ class CreateProduct extends AdminComponent
             }
 
             DB::commit();
-            $this->reset(['name', 'description', 'price', 'stock', 'discount']);
+            $this->reset(['name', 'price', 'stock', 'discount']);
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.product.index');
         } catch (Exception) {
