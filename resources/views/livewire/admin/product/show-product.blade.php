@@ -188,6 +188,7 @@
         let saveBtn = document.querySelector('#save_btn');
         let discountInput = document.getElementById('discount');
         let discountTypeInput = document.getElementById('discountType');
+        let longEditor, shortEditor, additionalEditor;
 
         function MyCustomUploadAdapterPlugin(editor) {
 
@@ -213,65 +214,31 @@
             }
         }
 
-        const longDescriptionEditor =
-            DecoupledDocumentEditor
-                .create(document.querySelector('#long-description'), {
-                    extraPlugins: [MyCustomUploadAdapterPlugin],
-                    language: {
-                        ui: 'fa',
-                        content: 'fa',
-                    },
-                })
-                .then(editor => {
-                    const toolbarContainer = document.querySelector('#toolbar-container-long-description');
-                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+        DecoupledDocumentEditor
+            .create(document.querySelector('#long-description'), { extraPlugins: [MyCustomUploadAdapterPlugin], language: { ui: 'fa', content: 'fa' } })
+            .then(editor => {
+                longEditor = editor;
+                document.querySelector('#toolbar-container-long-description').appendChild(editor.ui.view.toolbar.element);
+            });
 
+        DecoupledDocumentEditor
+            .create(document.querySelector('#short-description'), { extraPlugins: [MyCustomUploadAdapterPlugin], language: { ui: 'fa', content: 'fa' } })
+            .then(editor => {
+                shortEditor = editor;
+                document.querySelector('#toolbar-container-short-description').appendChild(editor.ui.view.toolbar.element);
+            });
 
-        const shortDescriptionEditor =
-            DecoupledDocumentEditor
-                .create(document.querySelector('#short-description'), {
-                    extraPlugins: [MyCustomUploadAdapterPlugin],
-                    language: {
-                        ui: 'fa',
-                        content: 'fa',
-                    },
-                })
-                .then(editor => {
-                    const toolbarContainer = document.querySelector('#toolbar-container-short-description');
-                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-                })
-                .catch(error => {
-                    console.error(error);
-                })
-
-
-
-        const additionalInformationEditor =
-            DecoupledDocumentEditor
-                .create(document.querySelector('#additional-information'), {
-                    extraPlugins: [MyCustomUploadAdapterPlugin],
-                    language: {
-                        ui: 'fa',
-                        content: 'fa',
-                    },
-                })
-                .then(editor => {
-                    const toolbarContainer = document.querySelector('#toolbar-container-additional-information');
-                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-
+        DecoupledDocumentEditor
+            .create(document.querySelector('#additional-information'), { extraPlugins: [MyCustomUploadAdapterPlugin], language: { ui: 'fa', content: 'fa' } })
+            .then(editor => {
+                additionalEditor = editor;
+                document.querySelector('#toolbar-container-additional-information').appendChild(editor.ui.view.toolbar.element);
+            });
 
         saveBtn.addEventListener('click', function () {
-            @this.set('longDescription', document.querySelector('#long-description').innerHTML);
-            @this.set('shortDescription', document.querySelector('#short-description').innerHTML);
-            @this.set('additionalInformation', document.querySelector('#additional-information').innerHTML);
+            @this.set('longDescription', longEditor.getData());
+            @this.set('shortDescription', shortEditor.getData());
+            @this.set('additionalInformation', additionalEditor.getData());
         });
 
         function formatPrice(input) {

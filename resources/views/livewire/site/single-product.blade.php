@@ -49,6 +49,18 @@
             -moz-appearance: textfield;
         }
 
+        .product-description table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .product-description th,
+        .product-description td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
 
     </style>
 
@@ -134,7 +146,7 @@
                                 @endif
 
                                 <div class="product-desc-wrap">
-                                    <p class="desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                    <p class="desc">{!! $product->short_description !!}</p>
                                     <span class="view-text">
                                         <i class="fa-sharp fa-regular fa-eye"></i>
                                         {{ mt_rand(1,100) }} نفر در حال مشاهده این هستند
@@ -204,7 +216,7 @@
                 <div class="tab-pane fade show active description" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="desc-wrap">
                         <div class="left-content">
-                            <p class="mb-30">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
+                            <p class="mb-30">{!! $product->long_description !!} </p>
                         </div>
                         <div class="right-content">
                             <img src="{{ asset('images/site/shop-details-img.jpg') }}" alt="">
@@ -212,42 +224,7 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <table class="table product-table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Size</th>
-                            <th scope="col">Bust</th>
-                            <th scope="col">Waist</th>
-                            <th scope="col">Hip</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>S</td>
-                            <td>34 -36</td>
-                            <td>28-30</td>
-                            <td>38-40</td>
-                        </tr>
-                        <tr>
-                            <td>M</td>
-                            <td>36 -38</td>
-                            <td>30-32.5</td>
-                            <td>40-43</td>
-                        </tr>
-                        <tr>
-                            <td>L</td>
-                            <td>38-40</td>
-                            <td>32-34.5</td>
-                            <td>42-45.5</td>
-                        </tr>
-                        <tr>
-                            <td>XL</td>
-                            <td>40-42</td>
-                            <td>35-37</td>
-                            <td>46-38</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    {!! $product->additional_information !!}
                 </div>
                 <div class="tab-pane fade review" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="row product-review gy-lg-0 gy-4">

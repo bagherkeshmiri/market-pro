@@ -122,13 +122,8 @@ class CreateProduct extends AdminComponent
             $this->reset(['name', 'price', 'stock', 'discount']);
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.product.index');
-        } catch (Exception $e) {
+        } catch (Exception) {
             DB::rollBack();
-
-            dd(
-                $e->getMessage()
-            );
-
             session()->flash('error', __('global.error_message'));
             return redirect()->route('admin.product.create');
         }
