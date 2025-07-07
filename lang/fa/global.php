@@ -33,4 +33,6 @@ return [
     'no_selected_category' => 'دسته بندی انتخاب نشده است',
     'toman' => 'تومان',
     'category' => 'دسته بندی',
+    'approved' => 'تایید شده',
+    'rejected' => 'رد شده',
 ];
