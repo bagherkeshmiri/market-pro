@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
-
 
 /**
  *
@@ -24,6 +24,7 @@ use Morilog\Jalali\Jalalian;
  * @property-read Collection<int, Category> $children
  * @property-read int|null $children_count
  * @property-read string $jalali_created_at
+ * @property-read Image|null $image
  * @property-read Category|null $parent
  * @property-read Collection<int, Product> $products
  * @property-read int|null $products_count
@@ -87,6 +88,12 @@ class Category extends Eloquent
     {
         return $this->hasMany(Product::class, Product::COLUMN_CATEGORY_ID, self::COLUMN_ID);
     }
+
+    public function image(): MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
 
     /*-------------- Scopes -------------*/
 

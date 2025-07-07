@@ -1,4 +1,4 @@
-<section class="deal-section pt-100 pb-100">
+<section class="deal-section pt-50 pb-50">
     <div class="container rtl">
         <div class="row deal-wrap align-items-center">
             <div class="shape"><img src="{{ asset('images/site/deal-shape.png') }}" alt="shape"></div>

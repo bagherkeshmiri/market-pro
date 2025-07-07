@@ -1,4 +1,4 @@
-<section class="collect-section pb-100">
+<section class="collect-section pb-50">
     <div class="container rtl">
         <div class="row gy-lg-0 gy-4">
             <div class="col-lg-6">

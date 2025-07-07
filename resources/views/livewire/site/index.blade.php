@@ -8,9 +8,25 @@
 
     @include('custom-components.site.discount-section')
 
-    @include('custom-components.site.category-section')
+    @foreach($collections as $collection)
 
-    @include('custom-components.site.fashion-section')
+        @if($collection->type == \App\Enums\CollectionType::Category)
+            @include('custom-components.site.category-section', [
+                'title' => $collection->title,
+                'items' => $collection->categoryCollection,
+                'sampleProductImageUrl' => $sampleProductImageUrl,
+            ])
+        @endif
+
+        @if($collection->type == \App\Enums\CollectionType::Product)
+            @include('custom-components.site.fashion-section', [
+                'title' => $collection->title,
+                'items' => $collection->productCollection,
+                'sampleProductImageUrl' => $sampleProductImageUrl,
+            ])
+        @endif
+
+    @endforeach
 
     @include('custom-components.site.collect-section')
 

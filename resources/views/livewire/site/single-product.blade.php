@@ -67,7 +67,7 @@
 
                                     <div class="swiper-slide">
                                         <div class="thumb-item">
-                                            <img src="{{ $imageGallery->image_url }}" alt="">
+                                            <img src="{{ $imageGallery->url }}" alt="">
                                         </div>
                                     </div>
 
@@ -75,7 +75,7 @@
 
                                     <div class="swiper-slide">
                                         <div class="thumb-item">
-                                            <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" alt="">
+                                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleProductImageUrl) }}" alt="">
                                         </div>
                                     </div>
 
@@ -92,7 +92,7 @@
 
                                 <div class="swiper-slide">
                                     <div class="gallary-item">
-                                        <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" alt="shop">
+                                        <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleProductImageUrl) }}" alt="shop">
                                     </div>
                                 </div>
 
@@ -100,23 +100,10 @@
                                 @foreach($product->galleryImages as $imageGallery)
                                     <div class="swiper-slide">
                                         <div class="gallary-item">
-                                            <img src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" alt="shop">
+                                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleProductImageUrl) }}" alt="shop">
                                         </div>
                                     </div>
                                 @endforeach
-
-
-
-                                {{--                                <div class="swiper-slide">--}}
-                                {{--                                    <div class="gallary-item">--}}
-                                {{--                                        <img src="{{ asset('images/site/shop-slider-2.jpg') }}" alt="shop">--}}
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
-                                {{--                                <div class="swiper-slide">--}}
-                                {{--                                    <div class="gallary-item">--}}
-                                {{--                                        <img src="{{ asset('images/site/shop-slider-3.jpg') }}" alt="shop">--}}
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
                             </div>
                             <div class="swiper-nav-next"><i class="las la-arrow-right"></i></div>
                             <div class="swiper-nav-prev"><i class="las la-arrow-left"></i></div>
@@ -169,19 +156,24 @@
                                     <li><i class="fa-light fa-circle-check"></i>کلیه مالیات ها و عوارض گمرکی شامل می شود</li>
                                 </ul>
                             </div>
-                            <div class="product-btn">
-                                <form>
-                                    <div class="quantity-selector">
-                                        <button type="button" class="qty-btn" onclick="changeQty(-1)">−</button>
-                                        <input type="number" id="qty-input" value="1" min="1" max="{{ $product->stock }}">
-                                        <button type="button" class="qty-btn" onclick="changeQty(1)">+</button>
-                                    </div>
 
 
-                                </form>
-                                <div class="cart-btn-wrap-2"><a href="#" class="rr-primary-btn cart-btn">افزودن به سبد خرید</a></div>
-                            </div>
-                            <a href="#" class="shop-details-btn rr-primary-btn">اکنون مورد را بخرید</a>
+                            @if($product->status ==  \App\Enums\ProductStatus::Exist)
+                                <div class="product-btn">
+                                    <form>
+                                        <div class="quantity-selector">
+                                            <button type="button" class="qty-btn" onclick="changeQty(-1)">−</button>
+                                            <input type="number" id="qty-input" value="1" min="1" max="{{ $product->stock }}">
+                                            <button type="button" class="qty-btn" onclick="changeQty(1)">+</button>
+                                        </div>
+
+
+                                    </form>
+                                    <div class="cart-btn-wrap-2"><a href="#" class="rr-primary-btn cart-btn">افزودن به سبد خرید</a></div>
+                                </div>
+                                <a href="#" class="shop-details-btn rr-primary-btn">اکنون مورد را بخرید</a>
+                            @endif
+
                         </div>
                     </div>
                 </div>

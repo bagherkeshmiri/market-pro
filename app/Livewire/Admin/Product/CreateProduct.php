@@ -30,6 +30,15 @@ class CreateProduct extends AdminComponent
     public $mainImage;
     public $galleryImages;
 
+    public function mount(): void
+    {
+        $this->categoryId = Category::withoutTrashed()
+            ->first()->id;
+
+        $this->status = ProductStatus::NotExist;
+        $this->discountType = DiscountType::Percent;
+    }
+
     public function render()
     {
         $pageTitle = 'ایجاد محصول';
@@ -90,14 +99,14 @@ class CreateProduct extends AdminComponent
         try {
             $storedProduct = Product::create($data);
             $storedProduct->images()->create([
-                'image_url' => storeImage($this->mainImage, 'products'),
+                'url' => storeImage($this->mainImage, 'products'),
                 'is_main' => true,
             ]);
 
             if (!empty($this->galleryImages)) {
                 foreach ($this->galleryImages as $galleryImage) {
                     $storedProduct->images()->create([
-                        'image_url' => storeImage($galleryImage, 'products'),
+                        'url' => storeImage($galleryImage, 'products'),
                         'is_main' => false,
                     ]);
                 }

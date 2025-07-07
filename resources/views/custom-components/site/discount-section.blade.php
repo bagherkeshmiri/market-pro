@@ -1,4 +1,4 @@
-<section class="discount-section overflow-hidden pb-100 rtl">
+<section class="discount-section overflow-hidden rtl">
     <div class="row gy-lg-0 gy-4">
         <div class="col-lg-4 col-md-6">
             <div class="discount-item item-1">

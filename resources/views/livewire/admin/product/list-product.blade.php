@@ -35,7 +35,7 @@
 
                                                 <tr>
                                                     <td data-toggle="tooltip" data-placement="top" title="  برای نمایش تصویر روی آن کلیک کنید">
-                                                        <img data-toggle="modal" data-target="#{{ $modalId }}" src="{{ $product->mainImage ? asset($product->mainImage->image_url) : asset($sampleProductImageUrl) }}" alt="product-image-{{ $product->id }}" width="40" height="40"/>
+                                                        <img data-toggle="modal" data-target="#{{ $modalId }}" src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleProductImageUrl) }}" alt="product-image-{{ $product->id }}" width="40" height="40"/>
                                                     </td>
                                                     <td class="text-white">{{ $product->name }}</td>
                                                     <td class="text-white">{{ $product->category->name ?? ' - ' }}</td>
@@ -55,7 +55,13 @@
                                                     </td>
                                                 </tr>
 
-                                                @include('frest-components.modal',['modalTitle' => ' تصویر اصلی ' . $product->name , 'modalId' =>$modalId ,'sampleProductImageUrl' => $sampleProductImageUrl,])
+                                                @include('frest-components.image-preview-modal', [
+                                                   'modelImageRelation'    => $product->mainImage,
+                                                   'modelImageUrl'         => $product->mainImage->url ?? '',
+                                                   'modalTitle'            => 'تصویر اصلی  محصول ' . $product->name,
+                                                   'modalId'               => $modalId,
+                                                   'sampleProductImageUrl' => $sampleProductImageUrl,
+                                               ])
 
                                             @empty
                                                 @include('custom-components.admin.empty-table')
