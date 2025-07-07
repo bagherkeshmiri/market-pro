@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\CleanHtml;
 use App\Enums\DiscountType;
 use App\Enums\ProductStatus;
 use Eloquent;
@@ -94,7 +95,10 @@ class Product extends Eloquent
 
     protected $casts = [
         'status' => ProductStatus::class,
-        'discount_type' => DiscountType::class
+        'discount_type' => DiscountType::class,
+        'long_description' => CleanHtml::class,
+        'short_description' => CleanHtml::class,
+        'additional_information' => CleanHtml::class,
     ];
 
     protected static function booted(): void
