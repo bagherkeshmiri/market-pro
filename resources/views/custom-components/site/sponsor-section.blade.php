@@ -1,4 +1,4 @@
-<div class="sponsor-section">
+<div class="sponsor-section pt-50">
     <div class="container">
         <div class="row sponsor-wrap">
             <div class="sponsor-item bd-right bd-bottom">

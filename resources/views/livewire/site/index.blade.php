@@ -8,7 +8,6 @@
 
     @include('custom-components.site.discount-section')
 
-
     @foreach($collections as $collection)
 
         @if($collection->type == \App\Enums\CollectionType::Category)
@@ -20,12 +19,14 @@
         @endif
 
         @if($collection->type == \App\Enums\CollectionType::Product)
-            @include('custom-components.site.fashion-section' , ['title' => $collection->title])
+            @include('custom-components.site.fashion-section', [
+                'title' => $collection->title,
+                'items' => $collection->productCollection,
+                'sampleProductImageUrl' => $sampleProductImageUrl,
+            ])
         @endif
 
     @endforeach
-
-
 
     @include('custom-components.site.collect-section')
 
