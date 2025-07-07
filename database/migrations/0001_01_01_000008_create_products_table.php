@@ -17,7 +17,9 @@ return new class extends Migration {
             $table->unsignedBigInteger('discount')->default(0);
             $table->unsignedBigInteger('final_price')->default(0);
             $table->unsignedMediumInteger('stock')->default(0);
-            $table->longText('description')->nullable();
+            $table->longText('long_description')->nullable();
+            $table->string('short_description')->nullable();
+            $table->longText('additional_information')->nullable();
             $table->timestamps();
         });
 
