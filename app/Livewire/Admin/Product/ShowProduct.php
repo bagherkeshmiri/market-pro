@@ -24,7 +24,6 @@ class ShowProduct extends AdminComponent
     public object $product;
     public $name;
     public $categoryId;
-    public $description;
     public $price;
     public $stock;
     public $status;
@@ -33,12 +32,14 @@ class ShowProduct extends AdminComponent
     public $finalPrice;
     public $mainImage;
     public $galleryImages;
+    public $longDescription;
+    public $shortDescription;
+    public $additionalInformation;
 
     public function mount(Product $product): void
     {
         $this->name = $product->name;
         $this->categoryId = $product->category_id;
-        $this->description = $product->description;
         $this->price = $product->price;
         $this->stock = $product->stock;
         $this->status = $product->status;
@@ -47,6 +48,9 @@ class ShowProduct extends AdminComponent
         $this->finalPrice = $product->final_price;
         $this->mainImage = $product->mainImage->url ?? '';
         $this->galleryImages = $product->galleryImages;
+        $this->longDescription = $product->long_description;
+        $this->shortDescription = $product->short_description;
+        $this->additionalInformation = $product->additional_information;
     }
 
     public function render()
@@ -71,7 +75,9 @@ class ShowProduct extends AdminComponent
         $this->validate([
             'name' => 'required',
             'categoryId' => 'required|exists:categories,id',
-            'description' => 'nullable|string',
+            'longDescription' => 'nullable|string|max:4294967295',
+            'shortDescription' => 'nullable|string|max:65535',
+            'additionalInformation' => 'nullable|string|max:5000',
             'stock' => 'required|integer',
             'status' => [
                 'required',
@@ -103,17 +109,20 @@ class ShowProduct extends AdminComponent
         $data = [
             'name' => $this->name,
             'category_id' => $this->categoryId,
-            'description' => $this->description ?? null,
             'price' => $this->price,
             'stock' => $this->stock,
             'status' => $this->status,
             'discount_type' => $this->discountType,
             'discount' => $this->discount,
             'final_price' => calculateProductFinalPrice($this->discountType, $this->price, $this->discount),
+            'long_description' => $this->longDescription ?? null,
+            'short_description' => $this->shortDescription ?? null,
+            'additional_information' => $this->additionalInformation ?? null,
         ];
 
         DB::beginTransaction();
         try {
+
             $this->product->update($data);
 
             if (!empty($this->mainImage) and $this->mainImage instanceof TemporaryUploadedFile) {
@@ -143,10 +152,11 @@ class ShowProduct extends AdminComponent
             DB::commit();
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.product.show', ['product' => $this->product->id]);
-        } catch (Exception) {
+        } catch (Exception $e) {
             DB::rollBack();
-            session()->flash('error', __('global.error_message'));
-            return redirect()->route('admin.product.create');
+//            session()->flash('error', __('global.error_message'));
+            session()->flash('error', $e->getMessage());
+            return redirect()->route('admin.product.show', ['product' => $this->product->id]);
         }
     }
 }

@@ -32,6 +32,7 @@
                                                     </div>
                                                 </div>
 
+
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'categoryId' , 'content' => 'دسته محصول'] )
@@ -40,6 +41,7 @@
                                                         @include('frest-components.validation-error',[ 'name' => 'categoryId' ])
                                                     </div>
                                                 </div>
+
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
@@ -59,6 +61,7 @@
                                                         @include('frest-components.validation-error',[ 'name' => 'price' ])
                                                     </div>
                                                 </div>
+
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-2">
                                                     <div class="form-group">
@@ -106,10 +109,24 @@
                                                     </div>
                                                 </div>
 
+
                                                 <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
-                                                    @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات '] )
-                                                    @include('frest-components.ckEditor',[ 'content' => $product->description])
+                                                    @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => 'توضیحات طولانی '] )
+                                                    @include('frest-components.ckEditor',['id'=> 'long-description', 'content' => $product->long_description])
                                                 </div>
+
+
+                                                <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
+                                                    @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => ' شرح مختصر '] )
+                                                    @include('frest-components.ckEditor',[ 'id'=> 'short-description','content' => $product->short_description])
+                                                </div>
+
+
+                                                <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
+                                                    @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => ' توضیحات تکمیلی  '] )
+                                                    @include('frest-components.ckEditor',[ 'id'=> 'additional-information','content' => $product->additional_information])
+                                                </div>
+
 
                                                 <div class="col-12 d-flex justify-content-end mt-2">
                                                     @include('frest-components.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
@@ -196,9 +213,9 @@
             }
         }
 
-        const myEditor =
+        const longDescriptionEditor =
             DecoupledDocumentEditor
-                .create(document.querySelector('#editor'), {
+                .create(document.querySelector('#long-description'), {
                     extraPlugins: [MyCustomUploadAdapterPlugin],
                     language: {
                         ui: 'fa',
@@ -206,7 +223,44 @@
                     },
                 })
                 .then(editor => {
-                    const toolbarContainer = document.querySelector('#toolbar-container');
+                    const toolbarContainer = document.querySelector('#toolbar-container-long-description');
+                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+
+        const shortDescriptionEditor =
+            DecoupledDocumentEditor
+                .create(document.querySelector('#short-description'), {
+                    extraPlugins: [MyCustomUploadAdapterPlugin],
+                    language: {
+                        ui: 'fa',
+                        content: 'fa',
+                    },
+                })
+                .then(editor => {
+                    const toolbarContainer = document.querySelector('#toolbar-container-short-description');
+                    toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+
+
+
+        const additionalInformationEditor =
+            DecoupledDocumentEditor
+                .create(document.querySelector('#additional-information'), {
+                    extraPlugins: [MyCustomUploadAdapterPlugin],
+                    language: {
+                        ui: 'fa',
+                        content: 'fa',
+                    },
+                })
+                .then(editor => {
+                    const toolbarContainer = document.querySelector('#toolbar-container-additional-information');
                     toolbarContainer.appendChild(editor.ui.view.toolbar.element);
                 })
                 .catch(error => {
@@ -215,8 +269,9 @@
 
 
         saveBtn.addEventListener('click', function () {
-            @this.
-            set('description', document.querySelector('#editor').innerHTML);
+            @this.set('longDescription', document.querySelector('#long-description').innerHTML);
+            @this.set('shortDescription', document.querySelector('#short-description').innerHTML);
+            @this.set('additionalInformation', document.querySelector('#additional-information').innerHTML);
         });
 
         function formatPrice(input) {
