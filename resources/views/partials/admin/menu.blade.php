@@ -228,7 +228,6 @@
 
                 </ul>
             </li>
-
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
                     <i class="bx bx-message text-white"></i>
@@ -245,7 +244,6 @@
 
                 </ul>
             </li>
-
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
                     <i class="bx bx-line-chart text-white"></i>
@@ -264,8 +262,6 @@
 
                 </ul>
             </li>
-
-
         </ul>
     </div>
 </div>
