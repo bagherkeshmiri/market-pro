@@ -198,6 +198,10 @@ class Product extends Eloquent
         return $this->hasMany(CollectionProduct::class, CollectionProduct::COLUMN_PRODUCT_ID, self::COLUMN_ID);
     }
 
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 
     /*-------------- Scopes -------------*/
 

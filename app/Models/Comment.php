@@ -1,0 +1,102 @@
+<?php
+
+namespace App\Models;
+
+use App\Enums\CommentStatus;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Carbon;
+use Morilog\Jalali\Jalalian;
+
+/**
+ *
+ *
+ * @property int $id
+ * @property int|null $user_id
+ * @property int|null $commentable_id
+ * @property string|null $commentable_type
+ * @property CommentStatus $status  1:pending , 2:approved , 3:rejected
+ * @property string $body
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Model|Eloquent|null $commentable
+ * @property-read string $jalali_created_at
+ * @property-read string $status_badge_class
+ * @property-read string $status_label
+ * @property-read User|null $user
+ * @method static Builder<static>|Comment newModelQuery()
+ * @method static Builder<static>|Comment newQuery()
+ * @method static Builder<static>|Comment query()
+ * @method static Builder<static>|Comment whereBody($value)
+ * @method static Builder<static>|Comment whereCommentableId($value)
+ * @method static Builder<static>|Comment whereCommentableType($value)
+ * @method static Builder<static>|Comment whereCreatedAt($value)
+ * @method static Builder<static>|Comment whereId($value)
+ * @method static Builder<static>|Comment whereStatus($value)
+ * @method static Builder<static>|Comment whereUpdatedAt($value)
+ * @method static Builder<static>|Comment whereUserId($value)
+ * @mixin Eloquent
+ */
+class Comment extends Eloquent
+{
+    public const string TABLE_NAME = 'comments';
+    protected $table = self::TABLE_NAME;
+    public const string COLUMN_ID = 'id';
+    public const string COLUMN_USER_ID = 'user_id';
+
+    protected $fillable = [
+        'user_id',
+        'commentable_id',
+        'commentable_type',
+        'status',
+        'body',
+    ];
+
+    protected $hidden = [];
+
+    protected $casts = [
+        'status' => CommentStatus::class,
+    ];
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
+            $builder->orderByDesc('id');
+        });
+    }
+
+    public function getJalaliCreatedAtAttribute(): string
+    {
+        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
+    }
+
+    public function getStatusLabelAttribute(): string
+    {
+        return $this->status->label();
+    }
+
+    public function getStatusBadgeClassAttribute(): string
+    {
+        return $this->status->badgeClass();
+    }
+
+    /*------------ Relations ------------*/
+
+    public function commentable(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, self::COLUMN_USER_ID, User::COLUMN_ID);
+    }
+
+    /*-------------- Scopes -------------*/
+
+    /*---------- Other Functions --------*/
+
+}
