@@ -17,7 +17,8 @@ class AdminComponent extends Component
 
     public function renderView(string $view, array $variables = [])
     {
-        return view($view, $variables)->layout('layouts.admin.admin-layout');
+//        return view($view, $variables)->layout('layouts.admin.admin-layout');
+        return view($view, $variables)->layout('layouts.admin.admin-layout-vertical');
     }
 
 }
