@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\ProductController;
 use App\Livewire\Admin\Collection\CreateCollection;
 use App\Livewire\Admin\Collection\ListCollection;
 use App\Livewire\Admin\Collection\ShowCollection;
+use App\Livewire\Admin\Comment\ListComment;
 use App\Livewire\Admin\Product\CreateProduct;
 use App\Livewire\Admin\Product\ListProduct;
 use App\Livewire\Admin\Product\ShowProduct;
@@ -96,6 +97,15 @@ Route::prefix('dashboard')
                 Route::get('/', ListCollection::class)->name('index');
                 Route::get('/create', CreateCollection::class)->name('create');
                 Route::get('/show/{collection}', ShowCollection::class)->name('show');
+            });
+
+
+        Route::name('comment.')
+            ->prefix('comment')
+            ->group(function () {
+                Route::get('/', ListComment::class)->name('index');
+//                Route::get('/create', CreateCollection::class)->name('create');
+//                Route::get('/show/{collection}', ShowCollection::class)->name('show');
             });
 
 

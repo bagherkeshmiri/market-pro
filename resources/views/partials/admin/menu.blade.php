@@ -149,7 +149,6 @@
 
                 </ul>
             </li>
-
             <li class="dropdown nav-item" data-menu="dropdown">
                 <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
                     <i class="bx bx-money text-white"></i>
@@ -229,6 +228,44 @@
 
                 </ul>
             </li>
+
+            <li class="dropdown nav-item" data-menu="dropdown">
+                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
+                    <i class="bx bx-message text-white"></i>
+                    <span class="text-white">  نظرات  </span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center font-13 text-white" href="{{ route('admin.comment.index') }}"
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            لیست نظرات
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="dropdown nav-item" data-menu="dropdown">
+                <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
+                    <i class="bx bx-line-chart text-white"></i>
+                    <span class="text-white">  گزارشات  </span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+
+                    <li data-menu="">
+                        <a class="dropdown-item align-items-center font-13 text-white" href=""
+                           data-toggle="dropdown">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            فروش امروز
+                        </a>
+                    </li>
+
+
+                </ul>
+            </li>
+
+
         </ul>
     </div>
 </div>
