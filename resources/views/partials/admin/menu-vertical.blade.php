@@ -36,7 +36,6 @@
 
                 </ul>
             </li>
-
             <li class=" nav-item">
                 <a href="#">
                     <i class="bx bx-check-shield text-white"></i>
@@ -52,6 +51,47 @@
                     <li ><a href="{{ route('admin.role.index') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
                             <span class="menu-item  text-white"  data-i18n="roles-list">   لیست نقش ها </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="#">
+                    <i class="bx bx-folder text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles">دسته بندی ها</span>
+                </a>
+                <ul class="menu-content">
+                    <li ><a href="{{ route('admin.category.create') }}">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white"  data-i18n="create-role">  ایجاد دسته</span>
+                        </a>
+                    </li>
+
+                    <li ><a href="{{ route('admin.category.index') }}">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white"  data-i18n="roles-list">   لیست دسته بندی ها </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class=" nav-item">
+                <a href="#">
+                    <i class="bx  bx-package text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles">محصولات</span>
+                </a>
+                <ul class="menu-content">
+                    <li ><a href="{{ route('admin.product.create') }}">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white"  data-i18n="create-role">  ایجاد محصول</span>
+                        </a>
+                    </li>
+
+                    <li ><a href="{{ route('admin.product.index') }}">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white"  data-i18n="roles-list">   لیست محصولات </span>
                         </a>
                     </li>
 
