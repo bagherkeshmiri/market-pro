@@ -7,7 +7,7 @@
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="content-wrapper">
-        <div class="content-body">
+        <div class="content-body font-13">
             <section id="widgets-Statistics">
                 <div class="row">
                     @foreach($widgetsStatistics as $widgetsStatistic)
@@ -19,7 +19,7 @@
                                             <i class="bx {{ $widgetsStatistic[2] }}  font-medium-5"></i>
                                         </div>
                                         <p class="text-white mb-0 line-ellipsis mb-1">{{ $widgetsStatistic[0] }}</p>
-                                        <h4 class="mb-0 primary-font">{{ $widgetsStatistic[3] }}</h4>
+                                        <h5 class="mb-0 primary-font">{{ $widgetsStatistic[3] }}</h5>
                                     </div>
                                 </div>
                             </div>

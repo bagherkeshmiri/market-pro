@@ -8,7 +8,7 @@
         </ul>
     </div>
     <div class="shadow-bottom"></div>
-    <div class="main-menu-content">
+    <div class="main-menu-content font-13 ">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
             <li class=" nav-item">
                 <a href="{{ route('admin.dashboard') }}">
@@ -16,6 +16,15 @@
                     <span class="menu-title text-white" data-i18n="Email">داشبورد</span>
                 </a>
             </li>
+            <li class=" nav-item"><a href="#">
+                    <i class="bx bx-group text-white"></i>
+                    <span class="menu-title text-white" data-i18n="Invoice">صورتحساب</span></a>
+                <ul class="menu-content">
+                    <li><a href="app-invoice-list.html"><i class="bx bx-left-arrow-alt"></i><span class="menu-item" data-i18n="Invoice List">لیست صورتحساب ها</span></a>
+                    </li>
+                </ul>
+            </li>
+
         </ul>
     </div>
 </div>
