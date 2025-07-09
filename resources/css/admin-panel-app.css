@@ -9,7 +9,8 @@
 @import './frest/themes/dark-layout.css';
 @import './frest/themes/semi-dark-layout.css';
 @import './frest/themes/semi-dark-layout.css';
-@import './frest/core/menu/menu-types/horizontal-menu.css';
+/*@import './frest/core/menu/menu-types/horizontal-menu.css';*/
+@import './frest/core/menu/menu-types/vertical-menu.css';
 @import './frest/plugins/extensions/drag-and-drop.css';
 @import './frest/pages/authentication.css';
 @import './frest/pages/page-user-profile.css';

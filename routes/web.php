@@ -45,6 +45,8 @@ Route::name('site.')
 
 
 
-//Route::get('test',function(){
-//    dd(CollectionType::Product->name);
-//});
+Route::get('test',function(){
+
+    return view();
+
+});
