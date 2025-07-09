@@ -3,7 +3,7 @@
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('admin.dashboard') }}">
                     <div class="brand-logo"><img class="logo" src="{{ asset('images/frest/logo.png') }}" alt=""></div>
-                    <h5 class="brand-text mb-0">پیکسل دونی</h5></a></li>
+                    <h5 class="brand-text mb-0">رویسر</h5></a></li>
             <li class="nav-item nav-toggle">
                 <a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse">
                     <i class="bx bx-x d-block d-xl-none font-medium-4 primary"></i>

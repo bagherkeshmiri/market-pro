@@ -3,7 +3,7 @@
 
 @include('partials.admin.head')
 
-<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-sticky footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-sticky footer-static font-13" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
 
 <div class="d-flex position-absolute justify-content-center mx-auto vh-100 vw-100"
      style="background-color: #0000009e; z-index: 999;" id="loading">
