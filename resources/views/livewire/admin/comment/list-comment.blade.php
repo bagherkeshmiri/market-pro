@@ -31,15 +31,19 @@
 
                                                 <tr>
                                                     <td class="text-white">{{ $comment->user->name }}</td>
-                                                    <td class="text-white">{{ $comment->commentable_type }}</td>
+                                                    <td>
+                                                        @include('frest-components.badge' , [ 'badgeClass' => $comment->Commentable_type_badge_class ,  'content' => $comment->Commentable_type_label  ])
+                                                    </td>
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $comment->status_badge_class,  'content' => $comment->status_label ])
                                                     </td>
 
                                                     <td class="text-white">{{ $comment->jalali_created_at }}</td>
-{{--                                                    <td>--}}
-{{--                                                        @include('frest-components.icon-btn',[  'href' => route('admin.comment.show',[ 'collection' => $comment->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])--}}
-{{--                                                    </td>--}}
+                                                    <td>
+                                                        @include('frest-components.icon-btn',[  'href' => ''  , 'tooltip_title' => 'نمایش' , 'icon' => showIcon() ])
+                                                        @include('frest-components.icon-btn',[  'href' => ''  , 'tooltip_title' => 'تایید' , 'icon' => successCheckIcon() ])
+                                                        @include('frest-components.icon-btn',[  'href' => ''  , 'tooltip_title' => 'رد' , 'icon' => dangerXIcon() ])
+                                                    </td>
                                                 </tr>
 
                                             @empty

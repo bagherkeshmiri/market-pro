@@ -55,7 +55,6 @@ function dangerTrashIcon(): string
     return '<i class="bx bx-trash bx-sm bx-tada-hover" style="color:#FF5B5C !important; font-size: 19px !important;"></i>';
 }
 
-
 function dangerXIcon(): string
 {
     return '<i class="bx bx-x bx-sm bx-tada-hover" style="color:#FF5B5C !important;"></i>';
@@ -71,12 +70,10 @@ function copyIcon(): string
     return '<i class="bx bx-copy bx-sm bx-tada-hover"></i>';
 }
 
-
 function dollarIcon(): string
 {
     return '<i class="bx bx-dollar text-white"></i>';
 }
-
 
 function packageIcon(): string
 {
@@ -92,7 +89,6 @@ function starIcon(bool $isWhite = false): string
     }
 }
 
-
 function plusIcon(): string
 {
     return '<i id="bx-plus" class="bx bx-plus text-white"></i>';
@@ -101,4 +97,9 @@ function plusIcon(): string
 function minusIcon(): string
 {
     return '<i id="bx-minus" class="bx bx-minus text-white"></i>';
+}
+
+function showIcon(): string
+{
+    return '<i id="bx-show" class="bx bx-show"></i>';
 }

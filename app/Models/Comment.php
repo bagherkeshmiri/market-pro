@@ -83,6 +83,24 @@ class Comment extends Eloquent
         return $this->status->badgeClass();
     }
 
+    public function getCommentableTypeLabelAttribute(): string
+    {
+        return match ($this->commentable_type) {
+            Product::class => 'محصول',
+            Category::class => 'دسته‌بندی',
+            default => 'نامشخص',
+        };
+    }
+
+    public function getCommentableTypeBadgeClassAttribute(): string
+    {
+        return match ($this->commentable_type) {
+            Product::class => 'bg-rgba-info text-info',
+            Category::class => 'bg-rgba-success text-success',
+            default => 'bg-rgba-danger text-danger',
+        };
+    }
+
     /*------------ Relations ------------*/
 
     public function commentable(): MorphTo

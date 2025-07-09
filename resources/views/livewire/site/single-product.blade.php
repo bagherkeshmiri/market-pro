@@ -270,53 +270,37 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-7 col-md-12">
                             <div class="review-form-wrap">
                                 <h4 class="title">نقد و بررسی این محصول</h4>
                                 <span class="publish">آدرس ایمیل شما منتشر نخواهد شد. فیلدهای ضروری با * مشخص شده‌اند.</span>
-                                <div class="review-box">
-                                    <span>امتیاز شما:</span>
-                                    <ul class="review">
-                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                        <li><i class="fa-sharp fa-solid fa-star"></i></li>
-                                    </ul>
-                                </div>
-                                <div class="blog-contact-form form-2 review-form">
-                                    <div class="request-form">
-                                        <form action="#" method="post" id="ajax_contact" class="form-horizontal">
-                                            <div class="form-group row">
-                                                <div class="col-md-12">
-                                                    <div class="form-item">
-                                                        <label for="name">نام شما</label>
-                                                        <input type="text" id="name" name="name" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-item">
-                                                        <label for="email">ایمیل شما</label>
-                                                        <input type="email" id="email" name="email" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-12">
-                                                    <div class="form-item message-item">
-                                                        <label for="message">نظر شما</label>
-                                                        <textarea id="message" name="message" cols="30" rows="5" class="form-control address"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="submit-btn">
-                                                <button id="submit" class="rr-primary-btn" type="submit">ثبت نظر</button>
-                                            </div>
-                                        </form>
+
+                                @auth
+                                    <div class="review-box">
+                                        <span>امتیاز شما:</span>
+                                        <ul class="review">
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                        </ul>
                                     </div>
-                                </div>
+
+                                    @include('custom-components.site.flash-message')
+
+                                    @livewire('site.product-review-form',['productId' => $product->id])
+
+                                @else
+                                    <div class="alert alert-warning mt-3">
+                                        برای ثبت نظر لطفاً <a href="{{ route('site.login') }}" class="text-primary">وارد حساب کاربری خود شوید</a>.
+                                    </div>
+                                @endauth
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
@@ -325,7 +309,6 @@
 </div>
 
 @section('scripts')
-
     <script>
 
         const maxStock = @json($product->stock);

@@ -6260,7 +6260,7 @@ START: Blog CSS
   max-width: 725px;
   width: 100%;
   margin: 0 auto;
-  padding: 100px 120px;
+  padding: 50px 120px;
   border-radius: 6px;
 }
 @media only screen and (max-width: 767px) {
