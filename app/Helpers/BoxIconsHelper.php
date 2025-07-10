@@ -10,10 +10,12 @@ function linkIcon(): string
     return '<i class="bx bx-link  text-white"></i>';
 }
 
-function userIcon(): string
+function userIcon(string $toolTipTitle = ''): string
 {
-    return '<i class="bx bx-user  text-white"></i>';
+//    return '<i class="bx bx-user text-white"></i>';
+    return '<i id="bx-show" class="bx bx-show" data-toggle="tooltip" data-placement="top" title="' . $toolTipTitle . '"></i>';
 }
+
 
 function emailIcon(): string
 {
@@ -99,7 +101,7 @@ function minusIcon(): string
     return '<i id="bx-minus" class="bx bx-minus text-white"></i>';
 }
 
-function showIcon(): string
+function showIcon(string $toolTipTitle = ''): string
 {
-    return '<i id="bx-show" class="bx bx-show"></i>';
+    return '<i id="bx-show" class="bx bx-show" data-toggle="tooltip" data-placement="top" title="' . $toolTipTitle . '"></i>';
 }

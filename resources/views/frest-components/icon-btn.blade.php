@@ -1,5 +1,7 @@
 <a
-    class="@isset($classes)  {{ $classes }} @endisset"
+    @isset($classes)
+        class="{{ $classes }}"
+    @endisset
 
     @isset($id)
         id="{{ $id }}"
@@ -9,11 +11,10 @@
         href="{{ $href }}"
     @endisset
 
-    data-toggle="tooltip"
-    data-placement="top"
-
-    @isset($tooltip_title)
-    title="" data-original-title="{{ $tooltip_title }}"
+    @isset($tooltipTitle)
+        data-toggle="tooltip"
+        data-placement="top"
+        data-original-title="{{ $tooltipTitle }}"
     @endisset
 
     @isset($attributes)
