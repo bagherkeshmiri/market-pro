@@ -16,9 +16,9 @@
         </div>
 
         <p>
-            {{ $expanded ? $comment->body : \Illuminate\Support\Str::limit($comment->body, 100) }}
+            {{ $expanded ? $comment->body : \Illuminate\Support\Str::limit($comment->body) }}
             @if (strlen($comment->body) > 100)
-                <a wire:click="toggle" style="color: blue; cursor: pointer;">
+                <a wire:click="toggle" style="color: blue; cursor: pointer; margin-right:15px;">
                     {{ $expanded ? 'کمتر' : 'بیشتر' }}
                 </a>
             @endif
