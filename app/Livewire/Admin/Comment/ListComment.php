@@ -2,8 +2,14 @@
 
 namespace App\Livewire\Admin\Comment;
 
+use App\Enums\CommentStatus;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Comment;
+use Exception;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
+use Livewire\Features\SupportRedirects\Redirector;
+use Throwable;
 
 class ListComment extends AdminComponent
 {
@@ -31,18 +37,45 @@ class ListComment extends AdminComponent
     }
 
 
-    public function approve()
+    /**
+     * @throws Throwable
+     */
+    public function approve(Comment $comment): RedirectResponse|Redirector
     {
-        dd(
-            'approve'
-        );
+        DB::beginTransaction();
+        try {
+            $comment->update([
+                'status' => CommentStatus::Approved,
+            ]);
+
+            DB::commit();
+            session()->flash('success', __('global.success_message'));
+            return redirect()->route('admin.comment.index');
+        } catch (Exception) {
+            DB::rollBack();
+            session()->flash('error', __('global.error_message'));
+            return redirect()->route('admin.comment.index');
+        }
     }
 
-
-    public function reject()
+    /**
+     * @throws Throwable
+     */
+    public function reject(Comment $comment): RedirectResponse|Redirector
     {
-        dd(
-            'reject'
-        );
+        DB::beginTransaction();
+        try {
+            $comment->update([
+                'status' => CommentStatus::Rejected,
+            ]);
+
+            DB::commit();
+            session()->flash('success', __('global.success_message'));
+            return redirect()->route('admin.comment.index');
+        } catch (Exception) {
+            DB::rollBack();
+            session()->flash('error', __('global.error_message'));
+            return redirect()->route('admin.comment.index');
+        }
     }
 }

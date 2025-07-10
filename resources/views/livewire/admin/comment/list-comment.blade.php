@@ -47,20 +47,21 @@
                                                        ])
 
 
-                                                        @include('frest-components.icon-btn', [
-                                                            'tooltipTitle'=> __('global.approve'),
-                                                            'icon'         => successCheckIcon(),
-                                                            'isClick' => true,
-                                                            'wire' => 'approve'
-                                                        ])
+                                                        @if($comment->status == \App\Enums\CommentStatus::Pending)
+                                                            @include('frest-components.icon-btn', [
+                                                                'tooltipTitle'=> __('global.approve'),
+                                                                'icon'         => successCheckIcon(),
+                                                                'isClick' => true,
+                                                                'wire' => "approve($comment->id)"
+                                                            ])
 
-
-                                                        @include('frest-components.icon-btn', [
-                                                         'tooltipTitle'=> __('global.reject'),
-                                                         'icon'         => dangerXIcon(),
-                                                         'isClick' => true,
-                                                         'wire' => 'reject'
-                                                     ])
+                                                            @include('frest-components.icon-btn', [
+                                                                 'tooltipTitle'=> __('global.reject'),
+                                                                 'icon'         => dangerXIcon(),
+                                                                 'isClick' => true,
+                                                                 'wire' =>  "reject($comment->id)"
+                                                            ])
+                                                        @endif
 
                                                     </td>
                                                 </tr>
