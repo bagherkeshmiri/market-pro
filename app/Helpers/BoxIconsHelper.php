@@ -12,7 +12,6 @@ function linkIcon(): string
 
 function userIcon(string $toolTipTitle = ''): string
 {
-//    return '<i class="bx bx-user text-white"></i>';
     return '<i id="bx-show" class="bx bx-show" data-toggle="tooltip" data-placement="top" title="' . $toolTipTitle . '"></i>';
 }
 

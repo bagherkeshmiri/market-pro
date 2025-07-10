@@ -29,4 +29,20 @@ class ListComment extends AdminComponent
             compact('pageTitle', 'tableHeads', 'comments')
         );
     }
+
+
+    public function approve()
+    {
+        dd(
+            'approve'
+        );
+    }
+
+
+    public function reject()
+    {
+        dd(
+            'reject'
+        );
+    }
 }
