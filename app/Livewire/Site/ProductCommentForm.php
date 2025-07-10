@@ -15,7 +15,7 @@ use Livewire\Component;
 use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
-class ProductReviewForm extends Component
+class ProductCommentForm extends Component
 {
     public $productId;
     public $name;
@@ -32,7 +32,7 @@ class ProductReviewForm extends Component
 
     public function render(): View
     {
-        return view('livewire.site.product-review-form');
+        return view('livewire.site.product-comment-form');
     }
 
     private function checkIfUserCanSubmit(): void
