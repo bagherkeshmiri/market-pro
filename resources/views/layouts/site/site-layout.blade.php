@@ -15,6 +15,7 @@
 <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
 
 @livewireScripts
+<script type="text/javascript" src="{{ asset('js/site/vendor/sweetalert2.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/site/vendor/jquary-3.6.0.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/site/vendor/bootstrap-bundle.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/site/vendor/imagesloaded-pkgd.js') }}"></script>
@@ -34,6 +35,7 @@
 <script type="text/javascript" src="{{ asset('js/site/ajax-form.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/site/contact.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/site/main.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/site/cart.js') }}"></script>
 @yield('scripts')
 
 </body>

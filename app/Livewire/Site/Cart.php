@@ -14,9 +14,6 @@ class Cart extends SiteComponent
     public function setCart($data): void
     {
         $this->items = $data['items'] ?? [];
-
-//        \Log::info('items: ' . json_encode($this->items));
-
     }
 
     public function render(): View
