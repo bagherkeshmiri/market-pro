@@ -13,7 +13,8 @@ class ShowProfile extends AdminComponent
         $admin = auth()->user();
         return $this->renderView(
             'livewire.admin.profile.show-profile',
-            compact('pageTitle', 'admin')
+            $pageTitle,
+            compact('admin')
         );
     }
 }
