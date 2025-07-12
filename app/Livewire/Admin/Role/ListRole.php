@@ -15,7 +15,8 @@ class ListRole extends AdminComponent
         $mainRoleId = Role::first()->id;
         return $this->renderView(
             'livewire.admin.role.list-role',
-            compact('pageTitle', 'tableHeads', 'roles', 'mainRoleId')
+            $pageTitle,
+            compact('tableHeads', 'roles', 'mainRoleId')
         );
     }
 }

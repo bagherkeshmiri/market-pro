@@ -40,7 +40,8 @@ class ShowRole extends AdminComponent
         $allPermissions = $this->permissions;
         return $this->renderView(
             'livewire.admin.role.show-role',
-            compact('pageTitle', 'allPermissions')
+            $pageTitle,
+            compact('allPermissions')
         );
     }
 

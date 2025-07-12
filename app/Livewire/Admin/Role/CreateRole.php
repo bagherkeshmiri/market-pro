@@ -30,7 +30,8 @@ class CreateRole extends AdminComponent
         $allPermissions = $this->permissions;
         return $this->renderView(
             'livewire.admin.role.create-role',
-            compact('pageTitle', 'allPermissions')
+            $pageTitle,
+            compact('allPermissions')
         );
     }
 
