@@ -5,6 +5,7 @@ namespace App\Livewire\Site;
 use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\View\View;
 
 class Products extends SiteComponent
 {
@@ -16,7 +17,7 @@ class Products extends SiteComponent
         $this->id = $category->id;
     }
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'محصولات دسته ' . $this->category->name;
         $sampleProductImageUrl = $this->sampleProductImageUrl;

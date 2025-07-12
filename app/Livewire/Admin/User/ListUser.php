@@ -5,10 +5,11 @@ namespace App\Livewire\Admin\User;
 use App\Enums\UserType;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\User;
+use Illuminate\View\View;
 
 class ListUser extends AdminComponent
 {
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'لیست کاربران';
         $tableHeads = ['نام', 'ایمیل', 'نقش', 'نوع کاربر', 'دسترسی ها', 'تاریخ ایجاد', 'عملیات'];

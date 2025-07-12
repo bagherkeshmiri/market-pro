@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Collection;
 
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Collection;
+use Illuminate\View\View;
 
 class ListCollection extends AdminComponent
 {
@@ -20,7 +21,7 @@ class ListCollection extends AdminComponent
         session()->flash('success', 'ترتیب کالکشن ها با موفقیت ذخیره شد.');
     }
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'لیست  کالکشن ها';
         $tableHeads = ['نام', 'نوع', 'وضعیت', 'تعداد آیتم ها', 'تاریخ ایجاد', 'عملیات'];

@@ -4,10 +4,11 @@ namespace App\Livewire\Admin\Role;
 
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Role;
+use Illuminate\View\View;
 
 class ListRole extends AdminComponent
 {
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'لیست نقش ها';
         $tableHeads = ['نام فارسی', 'نام لاتین', 'سطوح دسترسی', 'تاریخ ایجاد', 'عملیات'];

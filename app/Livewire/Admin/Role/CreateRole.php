@@ -8,6 +8,7 @@ use App\Models\Role;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
@@ -24,7 +25,7 @@ class CreateRole extends AdminComponent
         $this->permissions = Permission::all();
     }
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'ایجاد نقش';
         $allPermissions = $this->permissions;

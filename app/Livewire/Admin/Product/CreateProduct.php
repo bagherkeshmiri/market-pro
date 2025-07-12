@@ -11,6 +11,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
+use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 use Livewire\WithFileUploads;
 use Throwable;
@@ -41,7 +42,7 @@ class CreateProduct extends AdminComponent
         $this->discountType = DiscountType::Percent;
     }
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'ایجاد محصول';
         $allCategories = Category::withoutTrashed()

@@ -12,6 +12,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
+use Illuminate\View\View;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\Features\SupportRedirects\Redirector;
 use Livewire\WithFileUploads;
@@ -53,7 +54,7 @@ class ShowProduct extends AdminComponent
         $this->additionalInformation = $product->additional_information;
     }
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'ویرایش  محصول';
         $allCategories = Category::pluck('id', 'name')
