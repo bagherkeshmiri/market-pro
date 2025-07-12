@@ -2,6 +2,7 @@
 
 use App\Enums\CollectionType;
 use App\Livewire\Site\Blog;
+use App\Livewire\Site\Cart;
 use App\Livewire\Site\Contact;
 use App\Livewire\Site\Faq;
 use App\Livewire\Site\Index;
@@ -23,6 +24,7 @@ Route::name('site.')
         Route::get('/login', Login::class)->name('login');
         Route::get('/register', Register::class)->name('register');
         Route::get('/faq', Faq::class)->name('faq');
+        Route::get('/cart', Cart::class)->name('cart');
     });
 
 

@@ -42,7 +42,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="icon">
+                            <a href="{{ route('site.cart') }}" class="icon">
                                 <i class="fa-light fa-bag-shopping"></i>
                                 <span>2</span>
                             </a>
