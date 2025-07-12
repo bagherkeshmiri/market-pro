@@ -40,7 +40,8 @@ class ShowCategory extends AdminComponent
         Arr::forget($allCategories, $this->category->title);
         return $this->renderView(
             'livewire.admin.category.show-category',
-            compact('pageTitle', 'sampleProductImageUrl', 'allCategories')
+            $pageTitle,
+            compact('sampleProductImageUrl', 'allCategories')
         );
     }
 

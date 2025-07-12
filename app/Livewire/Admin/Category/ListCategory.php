@@ -15,7 +15,8 @@ class ListCategory extends AdminComponent
         $categories = Category::paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.category.list-category',
-            compact('pageTitle', 'tableHeads','sampleProductImageUrl', 'categories')
+            $pageTitle,
+            compact('tableHeads','sampleProductImageUrl', 'categories')
         );
     }
 }

@@ -25,7 +25,8 @@ class CreateCategory extends AdminComponent
         $allCategories = Category::pluck('id', 'name')->toArray();
         return $this->renderView(
             'livewire.admin.category.create-category',
-            compact('pageTitle', 'allCategories')
+            $pageTitle,
+            compact('allCategories')
         );
     }
 
