@@ -58,42 +58,46 @@
                         <div class="checkout-top checkout-item item-1">
                             <h4 class="title">کل سبد خرید</h4>
                         </div>
-                        <div class="checkout-top checkout-item">
 
-                            <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <h4 class="title">جمع کل</h4>
-                                <span class="price">1,459,000 تومان</span>
+
+                        <div style="border-bottom: 1px solid var(--rr-color-border-1);">
+                            <div class="d-flex justify-content-between mb-4">
+                                <h4 class="cart-title">
+                                    جمع سبد خرید
+                                </h4>
+                                <span class="cart-price">724,000 تومان</span>
                             </div>
 
-
-                        </div>
-
-                        <div class="checkout-shipping checkout-item">
-                            <h4 class="title">ارسال</h4>
-                            <div class="shipping-right">
-                                <div class="checkout-option-wrapper">
-                                    <div class="shipping-option">
-                                        <input id="flat_rate" type="radio" name="shipping">
-                                        <label for="flat_rate">ارسال رایگان</label>
-                                    </div>
-                                    <div class="shipping-option">
-                                        <input id="local_pickup" type="radio" name="shipping">
-                                        <label for="local_pickup">نرخ ثابت</label>
-                                    </div>
-                                    <div class="shipping-option">
-                                        <input id="free_shipping" type="radio" name="shipping">
-                                        <label for="free_shipping">وانت محلی</label>
-                                    </div>
-                                </div>
-                                <p>گزینه های حمل و نقل به روز می شود <br> در هنگام تسویه حساب</p>
-                                <span>محاسبه حمل و نقل</span>
+                            <div class="d-flex justify-content-between mb-4">
+                                <h4 class="cart-title">
+                                    تخفیفات
+                                </h4>
+                                <span class="cart-price">200,000 تومان</span>
                             </div>
+
+                            <div class="d-flex justify-content-between mb-4">
+                                <h4 class="cart-title">
+                                    هزینه ارسال
+                                </h4>
+                                <span class="cart-price">10,000 تومان</span>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-4">
+                                <h4 class="cart-title">
+                                    مالیات
+                                </h4>
+                                <span class="cart-price">105,000 تومان</span>
+                            </div>
+
                         </div>
-                        <div class="checkout-total checkout-item">
-                            <h4 class="title">جمع</h4>
-                            <span>724 هزا تومان</span>
+                        <div class="checkout-total checkout-item pt-4">
+                            <h4 style="color:#E53E3E !important;">مبلغ قابل پرداخت</h4>
+                            <h4>724,000 تومان</h4>
                         </div>
+
                     </div>
+
+
                     <div class="checkout-proceed">
                         <a href="#" class="rr-primary-btn checkout-btn">به تسویه حساب بروید</a>
                     </div>
