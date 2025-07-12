@@ -120,7 +120,6 @@
 @section('scripts')
     <script type="text/javascript">
 
-
         window.addEventListener('DOMContentLoaded', () => {
             Cart.load();
 
@@ -132,7 +131,6 @@
             }
 
         });
-
 
     </script>
 
