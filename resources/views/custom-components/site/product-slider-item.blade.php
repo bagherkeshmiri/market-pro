@@ -7,7 +7,13 @@
                 <span class="sale">{{ $product->discount_percent }} %</span>
             @endif
             <ul class="shop-list">
-                <li><a href="#"><i class="fa-regular fa-cart-shopping"></i></a></li>
+                @if($product->status == \App\Enums\ProductStatus::Exist)
+                    <li>
+                        <a onclick="Cart.add({ id: {{ $product->id }}, name: '{{ $product->name }}', price: {{ $product->final_price }} })">
+                            <i class="fa-regular fa-cart-shopping"></i>
+                        </a>
+                    </li>
+                @endif
                 <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
                 <li><a href="#"><i class="fa-light fa-eye"></i></a></li>
             </ul>

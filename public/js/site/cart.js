@@ -23,6 +23,10 @@ const Cart = {
         }
         this.saveCart(cart);
         this.updateCountUI();
+
+
+        console.log('nagher')
+
     },
 
     remove(productId) {
