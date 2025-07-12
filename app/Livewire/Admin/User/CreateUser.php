@@ -28,7 +28,8 @@ class CreateUser extends AdminComponent
         $types = showEnumLabels(UserType::class);
         return $this->renderView(
             'livewire.admin.user.create-user',
-            compact('pageTitle', 'roles', 'types')
+            $pageTitle,
+            compact('roles', 'types')
         );
     }
 

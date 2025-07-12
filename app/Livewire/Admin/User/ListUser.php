@@ -18,7 +18,8 @@ class ListUser extends AdminComponent
         $isAdmin = auth()->user()->type == UserType::Admin;
         return $this->renderView(
             'livewire.admin.user.list-user',
-            compact('pageTitle', 'tableHeads', 'users', 'mainAdminId', 'isAdmin')
+            $pageTitle,
+            compact('tableHeads', 'users', 'mainAdminId', 'isAdmin')
         );
     }
 }

@@ -41,7 +41,8 @@ class ShowUser extends AdminComponent
         $admins = $this->admin;
         return $this->renderView(
             'livewire.admin.user.show-user',
-            compact('pageTitle', 'roles', 'types', 'admins')
+            $pageTitle,
+            compact('roles', 'types', 'admins')
         );
     }
 

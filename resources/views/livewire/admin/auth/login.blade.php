@@ -1,10 +1,6 @@
-@section('title', 'ورود مدیران')
-
 
 @section('styles')
 @endsection
-
-
 
 
 <div class="col-md-6 col-12 px-0">

@@ -53,7 +53,8 @@ class AdminDashboard extends AdminComponent
         ];
         return $this->renderView(
             'livewire.admin.dashboard.admin-dashboard',
-            compact('pageTitle', 'widgetsStatistics')
+            $pageTitle,
+            compact('widgetsStatistics')
         );
     }
 }

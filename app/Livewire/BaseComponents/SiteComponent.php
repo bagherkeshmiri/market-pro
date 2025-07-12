@@ -40,7 +40,6 @@ class SiteComponent extends Component
             ->get();
 
 
-
         return view($view, $variables)->layout('layouts.site.site-layout', [
             'pageTitle' => $pageTitle,
             'menus' => $menus,
