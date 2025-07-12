@@ -17,7 +17,8 @@ class ListProduct extends AdminComponent
         ])->paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.product.list-product',
-            compact('pageTitle', 'tableHeads', 'products', 'sampleProductImageUrl')
+            $pageTitle,
+            compact('tableHeads', 'products', 'sampleProductImageUrl')
         );
     }
 }

@@ -28,7 +28,8 @@ class ListCollection extends AdminComponent
             ->paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.collection.list-collection',
-            compact('pageTitle', 'tableHeads', 'collections')
+            $pageTitle,
+            compact('tableHeads', 'collections')
         );
     }
 }

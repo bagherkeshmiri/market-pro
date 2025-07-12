@@ -51,7 +51,8 @@ class CreateProduct extends AdminComponent
         $discountTypes = showEnumLabels(DiscountType::class);
         return $this->renderView(
             'livewire.admin.product.create-product',
-            compact('pageTitle', 'allCategories', 'statuses', 'discountTypes')
+            $pageTitle,
+            compact('allCategories', 'statuses', 'discountTypes')
         );
     }
 

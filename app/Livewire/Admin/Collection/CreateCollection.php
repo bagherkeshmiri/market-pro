@@ -79,7 +79,6 @@ class CreateCollection extends AdminComponent
         }
 
         $viewData = [
-            'pageTitle' => $pageTitle,
             'statuses' => $statuses,
             'types' => $types,
             'selectBoxCategories' => $selectBoxCategories,
@@ -98,6 +97,7 @@ class CreateCollection extends AdminComponent
 
         return $this->renderView(
             'livewire.admin.collection.create-collection',
+            $pageTitle,
             $viewData
         );
     }

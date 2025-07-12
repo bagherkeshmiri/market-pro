@@ -63,7 +63,8 @@ class ShowProduct extends AdminComponent
         $sampleProductImageUrl = $this->sampleProductImageUrl;
         return $this->renderView(
             'livewire.admin.product.show-product',
-            compact('pageTitle', 'allCategories', 'statuses', 'discountTypes', 'sampleProductImageUrl')
+            $pageTitle,
+            compact('allCategories', 'statuses', 'discountTypes', 'sampleProductImageUrl')
         );
     }
 
