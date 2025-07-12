@@ -1,76 +1,55 @@
-
 const Cart = {
-    storageKey: 'cart',
+    items: [],
 
-    getCart() {
-        return JSON.parse(localStorage.getItem(this.storageKey)) || {};
+    load() {
+        const data = localStorage.getItem('cart_items');
+        if (data) {
+            this.items = JSON.parse(data);
+        } else {
+            this.items = [];
+        }
+        this.updateCount();
+        this.updateTotalPrice();
     },
 
-    saveCart(cart) {
-        localStorage.setItem(this.storageKey, JSON.stringify(cart));
+    save() {
+        localStorage.setItem('cart_items', JSON.stringify(this.items));
     },
 
     add(product) {
-        let cart = this.getCart();
-        if (cart[product.id]) {
-            cart[product.id].quantity += 1;
-        } else {
-            cart[product.id] = {
-                name: product.name,
-                price: product.price,
-                quantity: 1,
-            };
-        }
-        this.saveCart(cart);
-        this.updateCountUI();
-
-
-        console.log('nagher')
-
-    },
-
-    remove(productId) {
-        let cart = this.getCart();
-        delete cart[productId];
-        this.saveCart(cart);
-        this.updateCountUI();
-    },
-
-    updateQuantity(productId, quantity) {
-        let cart = this.getCart();
-        if (cart[productId]) {
-            cart[productId].quantity = quantity;
-            this.saveCart(cart);
-            this.updateCountUI();
-        }
-    },
-
-    clear() {
-        localStorage.removeItem(this.storageKey);
-        this.updateCountUI();
+        this.items.push(product);
+        this.save();
+        this.updateCount();
+        this.updateTotalPrice();
     },
 
     getTotalCount() {
-        let cart = this.getCart();
-        return Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+        return this.items.length;
     },
 
-    updateCountUI() {
+    getTotalPrice() {
+        return this.items.reduce((sum, item) => sum + item.price, 0);
+    },
+
+    updateCount() {
         const countElement = document.getElementById('cart-count');
+        const sumElement = document.getElementById('cart-sum');
         if (countElement) {
             countElement.textContent = this.getTotalCount();
         }
+        if (sumElement) {
+            sumElement.textContent = this.getTotalPrice().toLocaleString('fa-IR') + ' تومان';
+        }
     },
 
-    sendToLivewire() {
-        let cart = this.getCart();
-        if (window.Livewire) {
-            Livewire.dispatch('sendCartToServer', { cart });
+    updateTotalPrice() {
+        const priceElement = document.getElementById('cart-total');
+        if (priceElement) {
+            priceElement.textContent = this.getTotalPrice().toLocaleString() + ' تومان';
         }
     }
 };
 
-// مقداردهی اولیه پس از بارگذاری صفحه
-document.addEventListener('DOMContentLoaded', () => {
-    Cart.updateCountUI();
+window.addEventListener('DOMContentLoaded', () => {
+    Cart.load();
 });

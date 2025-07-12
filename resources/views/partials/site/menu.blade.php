@@ -44,11 +44,11 @@
                         <li>
                             <a href="{{ route('site.cart') }}" class="icon">
                                 <i class="fa-light fa-bag-shopping"></i>
-                                <span>2</span>
+                                <span id="cart-count">0</span>
                             </a>
                             <div class="content">
                                 <span>سبد خرید شما</span>
-                                <h5 class="number">13,758,000 تومان</h5>
+                                <h5 id="cart-sum" class="number">0</h5>
                             </div>
                         </li>
                     </ul>
