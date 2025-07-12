@@ -106,3 +106,10 @@
         </div>
     </section>
 </div>
+
+
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('js/site/cart.js') }}"></script>
+@endsection
+
+
