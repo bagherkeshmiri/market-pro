@@ -31,16 +31,46 @@
 
                                                 <tr>
                                                     <td class="text-white">{{ $comment->user->name }}</td>
-                                                    <td class="text-white">{{ $comment->commentable_type }}</td>
+                                                    <td>
+                                                        @include('frest-components.badge' , [ 'badgeClass' => $comment->Commentable_type_badge_class ,  'content' => $comment->Commentable_type_label  ])
+                                                    </td>
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $comment->status_badge_class,  'content' => $comment->status_label ])
                                                     </td>
 
                                                     <td class="text-white">{{ $comment->jalali_created_at }}</td>
-{{--                                                    <td>--}}
-{{--                                                        @include('frest-components.icon-btn',[  'href' => route('admin.comment.show',[ 'collection' => $comment->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])--}}
-{{--                                                    </td>--}}
+                                                    <td>
+
+                                                        @include('frest-components.icon-btn-with-modal', [
+                                                           'modalId'               => 'comment'.$comment->id,
+                                                           'icon'               => showIcon(__('global.show')),
+                                                       ])
+
+
+                                                        @if($comment->status == \App\Enums\CommentStatus::Pending)
+                                                            @include('frest-components.icon-btn', [
+                                                                'tooltipTitle'=> __('global.approve'),
+                                                                'icon'         => successCheckIcon(),
+                                                                'isClick' => true,
+                                                                'wire' => "approve($comment->id)"
+                                                            ])
+
+                                                            @include('frest-components.icon-btn', [
+                                                                 'tooltipTitle'=> __('global.reject'),
+                                                                 'icon'         => dangerXIcon(),
+                                                                 'isClick' => true,
+                                                                 'wire' =>  "reject($comment->id)"
+                                                            ])
+                                                        @endif
+
+                                                    </td>
                                                 </tr>
+
+                                                @include('frest-components.text-preview-modal', [
+                                                  'modalTitle'            => 'متن نظر',
+                                                  'modalId'               => 'comment'.$comment->id,
+                                                  'content'               => $comment->body,
+                                              ])
 
                                             @empty
                                                 @include('custom-components.admin.empty-table')

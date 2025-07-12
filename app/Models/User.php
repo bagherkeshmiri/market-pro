@@ -29,7 +29,7 @@ use Morilog\Jalali\Jalalian;
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Order> $Orders
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Order> $orders
  * @property-read int|null $orders_count
  * @property-read string $jalali_created_at
  * @property-read string $status_badge_class
@@ -110,10 +110,16 @@ class User extends Authenticatable
         return $this->role?->permissions() ?? collect();
     }
 
-    public function Orders(): HasMany
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class, Order::COLUMN_USER_ID, self::COLUMN_ID);
     }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class, Comment::COLUMN_USER_ID, self::COLUMN_ID);
+    }
+
 
     /*-------------- Scopes -------------*/
 

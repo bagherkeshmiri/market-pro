@@ -42,7 +42,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="icon">
+                            <a href="{{ route('site.cart') }}" class="icon">
                                 <i class="fa-light fa-bag-shopping"></i>
                                 <span>2</span>
                             </a>
@@ -100,8 +100,17 @@
                             </li>
 
                             <li><a href="{{ route('site.contact') }}">ارتباط با ما</a></li>
-                            <li><a href="{{ route('site.login') }}">ورود</a></li>
-                            <li><a href="{{ route('site.register') }}">عضویت</a></li>
+
+
+                            @guest
+                                <li><a href="{{ route('site.login') }}">ورود</a></li>
+                                <li><a href="{{ route('site.register') }}">عضویت</a></li>
+                            @endguest
+
+                            @auth
+                                <li><a href="#">پروفایل من</a></li>
+                            @endauth
+
                         </ul>
                     </div>
                 </div>

@@ -35,4 +35,7 @@ return [
     'category' => 'دسته بندی',
     'approved' => 'تایید شده',
     'rejected' => 'رد شده',
+    'approve' => 'تایید',
+    'reject' => 'رد',
+    'show' => 'نمایش',
 ];
