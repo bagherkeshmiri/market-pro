@@ -1,3 +1,5 @@
+@section('body-class', 'cart-page')
+
 <div>
     <section class="cart-section pt-130 pb-130">
         <div class="container rtl">
@@ -19,38 +21,46 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="product-remove">
-                                    <button>
-                                        <i class="fa-sharp fa-regular fa-trash" style="color:#FF5B5C !important;"></i>
-                                    </button>
-                                </td>
 
-                                <td class="product-thumbnail">
-                                    <a href="#">
-                                        <img src="{{ asset('images/site/cart-img-1.png') }}" alt="img">
-                                    </a>
-                                    <div class="product-thumbnail">
-                                        <h4 class="title">کفش مجلسی مدل لارا</h4>
-                                    </div>
-                                </td>
-                                <td class="product-price "><span class="amount">555,000 تومان</span></td>
-                                <td class="product-quantity">
-                                    <div class="quantity__group">
-                                        <input type="number" class="input-text qty text" name="quantity" value="1" min="1" max="100" step="1" autocomplete="off">
-                                    </div>
-                                </td>
-                                <td class="product-subtotal"><span class="amount">989,000  تومان</span></td>
-                            </tr>
+
+                            @foreach($items as $item)
+                                <tr>
+                                    <td class="product-remove">
+                                        <button>
+                                            <i class="fa-sharp fa-regular fa-trash" style="color:#FF5B5C !important;"></i>
+                                        </button>
+                                    </td>
+                                    <td class="product-thumbnail">
+                                        <a href="#">
+                                            <img src="{{ asset($item['image']) }}" alt="img">
+                                        </a>
+                                        <div class="product-thumbnail">
+                                            <h4 class="title">{{ $item['name'] }}</h4>
+                                        </div>
+                                    </td>
+                                    <td class="product-price "><span class="amount">{{ number_format($item['price']) }}  تومان</span></td>
+                                    <td class="product-quantity">
+                                        <div class="quantity__group">
+                                            <label for="quantity" hidden></label>
+                                            <input type="number" class="input-text qty text" id="quantity" name="quantity" value="1" min="1" max="100" step="1" autocomplete="off">
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal"><span class="amount">989,000  تومان</span></td>
+                                </tr>
+                            @endforeach
+
+
+
                             </tbody>
                         </table>
                     </div>
                     <div class="cart-btn-wrap">
                         <div class="left-item">
-                            <input type="text" class="form-control" placeholder="کد را وارد کنید">
+                            <label for="discount-code" hidden></label>
+                            <input type="text" id="discount-code" class="form-control" placeholder="کد را وارد کنید">
                             <button class="rr-primary-btn">تایید کد تخفیف</button>
                         </div>
-                        <button class="rr-primary-btn update-btn">به روزرسانی سبد خرید</button>
+                        <button class="rr-primary-btn update-btn">بروزرسانی سبد خرید</button>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -107,8 +117,77 @@
     </section>
 </div>
 
-
 @section('scripts')
+    <script type="text/javascript">
+        const Cart = {
+            items: [],
+
+            load() {
+                const data = localStorage.getItem('cart_items');
+                if (data) {
+                    this.items = JSON.parse(data);
+                } else {
+                    this.items = [];
+                }
+                this.updateCount();
+                this.updateTotalPrice();
+            },
+
+            save() {
+                localStorage.setItem('cart_items', JSON.stringify(this.items));
+            },
+
+            add(product) {
+                this.items.push(product);
+                this.save();
+                this.updateCount();
+                this.updateTotalPrice();
+            },
+
+            getTotalCount() {
+                return this.items.length;
+            },
+
+            getTotalPrice() {
+                return this.items.reduce((sum, item) => sum + item.price, 0);
+            },
+
+            updateCount() {
+                const countElement = document.getElementById('cart-count');
+                const sumElement = document.getElementById('cart-sum');
+                if (countElement) {
+                    countElement.textContent = this.getTotalCount();
+                }
+                if (sumElement) {
+                    sumElement.textContent = this.getTotalPrice().toLocaleString('fa-IR') + ' تومان';
+                }
+            },
+
+            updateTotalPrice() {
+                const priceElement = document.getElementById('cart-total');
+                if (priceElement) {
+                    priceElement.textContent = this.getTotalPrice().toLocaleString() + ' تومان';
+                }
+            }
+        };
+
+
+        window.addEventListener('DOMContentLoaded', () => {
+            Cart.load();
+
+            let items = localStorage.getItem('cart_items');
+
+            if (items) {
+                items = JSON.parse(items);
+                @this.call('setCart', { items });
+            }
+
+        });
+
+
+    </script>
+
+
 @endsection
 
 
