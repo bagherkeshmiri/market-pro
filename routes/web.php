@@ -12,6 +12,7 @@ use App\Livewire\Site\Register;
 use App\Livewire\Site\SingleProduct;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 
 Route::name('site.')
@@ -49,6 +50,5 @@ Route::name('site.')
 
 Route::get('test',function(){
 
-    return view();
-
+    Session::forget('cart');
 });

@@ -35,7 +35,6 @@
 <script type="text/javascript" src="{{ asset('js/site/ajax-form.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/site/contact.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/site/main.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/site/cart.js') }}"></script>
 @yield('scripts')
 
 </body>

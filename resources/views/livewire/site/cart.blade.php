@@ -23,10 +23,10 @@
                             <tbody>
 
 
-                            @foreach($items as $item)
+                            @foreach($cart as $item)
                                 <tr id="cart-item-{{ $item['id'] }}">
                                     <td class="product-remove">
-                                        <button onclick="Cart.remove({{ $item['id'] }})">
+                                        <button wire:click="removeFromCart({{ $item['product_id'] }})">
                                             <i class="fa-sharp fa-regular fa-trash" style="color:#FF5B5C !important;"></i>
                                         </button>
                                     </td>
@@ -118,23 +118,6 @@
 </div>
 
 @section('scripts')
-    <script type="text/javascript">
-
-        window.addEventListener('DOMContentLoaded', () => {
-            Cart.load();
-
-            let items = localStorage.getItem('cart_items');
-
-            if (items) {
-                items = JSON.parse(items);
-                @this.call('setCart', { items });
-            }
-
-        });
-
-    </script>
-
-
 @endsection
 
 

@@ -9,7 +9,7 @@
             <ul class="shop-list">
                 @if($product->status == \App\Enums\ProductStatus::Exist)
                     <li>
-                        <a onclick="Cart.add({ id: {{ $product->id }}, quantity: 1, name: '{{ $product->name }}', price: {{ $product->final_price }} , image: '{{ $product->mainImage ? $product->mainImage->url : $sampleProductImageUrl }}' })">
+                        <a href="javascript:void(0);" wire:click="addToCart({{ $product->id }},'{{ $product->name }}',{{ $product->final_price }},'{{ $product->mainImage ? $product->mainImage->url : $sampleProductImageUrl }}')">
                             <i class="fa-regular fa-cart-shopping"></i>
                         </a>
                     </li>
