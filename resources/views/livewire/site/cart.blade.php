@@ -24,9 +24,9 @@
 
 
                             @foreach($items as $item)
-                                <tr>
+                                <tr id="cart-item-{{ $item['id'] }}">
                                     <td class="product-remove">
-                                        <button>
+                                        <button onclick="Cart.remove({{ $item['id'] }})">
                                             <i class="fa-sharp fa-regular fa-trash" style="color:#FF5B5C !important;"></i>
                                         </button>
                                     </td>
@@ -41,11 +41,11 @@
                                     <td class="product-price "><span class="amount">{{ number_format($item['price']) }}  تومان</span></td>
                                     <td class="product-quantity">
                                         <div class="quantity__group">
-                                            <label for="quantity" hidden></label>
-                                            <input type="number" class="input-text qty text" id="quantity" name="quantity" value="1" min="1" max="100" step="1" autocomplete="off">
+                                            <label for="quantity-item-{{ $item['id'] }}" hidden></label>
+                                            <input type="number" class="input-text qty text" id="quantity-item-{{ $item['id'] }}" name="quantity" value="1" min="1" max="100" step="1" autocomplete="off">
                                         </div>
                                     </td>
-                                    <td class="product-subtotal"><span class="amount">989,000  تومان</span></td>
+                                    <td class="product-subtotal" id="product-subtotal-{{ $item['id'] }}"><span class="amount">0</span></td>
                                 </tr>
                             @endforeach
 
@@ -75,7 +75,7 @@
                                 <h4 class="cart-title">
                                     جمع سبد خرید
                                 </h4>
-                                <span class="cart-price">724,000 تومان</span>
+                                <span class="cart-price" >1,000,000 تومان</span>
                             </div>
 
                             <div class="d-flex justify-content-between mb-4">
