@@ -10,6 +10,7 @@ const Cart = {
         }
         this.updateCount();
         this.updateTotalPrice();
+
     },
 
     save() {
@@ -41,6 +42,16 @@ const Cart = {
         this.updateTotalPrice();
     },
 
+    remove(productId) {
+        this.items = this.items.filter(item => item.id !== productId);
+        this.save();
+        this.updateCount();
+        this.updateTotalPrice();
+        const itemElement = document.getElementById(`cart-item-${productId}`);
+        if (itemElement) {
+            itemElement.remove();
+        }
+    },
 
     getTotalCount() {
         return this.items.length;
@@ -62,9 +73,14 @@ const Cart = {
     },
 
     updateTotalPrice() {
-        const priceElement = document.getElementById('cart-total');
-        if (priceElement) {
-            priceElement.textContent = this.getTotalPrice().toLocaleString() + ' تومان';
+        const cartTotalElement = document.getElementById('cart-total');
+        if (cartTotalElement) {
+            cartTotalElement.textContent = this.getTotalPrice().toLocaleString() + ' تومان';
         }
-    }
+
+    },
+
 };
+
+
+
