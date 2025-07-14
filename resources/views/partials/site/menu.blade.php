@@ -20,7 +20,8 @@
                             </ul>
                         </div>
                         <form class="header-form" action="#">
-                            <input class="form-control" type="text" name="search" placeholder="دنبال چی هستی؟">
+                            <label for="search" hidden></label>
+                            <input class="form-control" type="text" id="search" name="search" placeholder="دنبال چی هستی؟">
                             <button class="submit rr-primary-btn">جستجو کنید</button>
                         </form>
                     </div>
@@ -77,11 +78,6 @@
                                         <li><a href="#">{{ $menu->name }}</a></li>
                                     @endforeach
                                 </ul>
-
-
-
-
-
                             </li>
                             <li>
                                 <a href="#">پرفروش‌ترین‌ها</a>
@@ -127,17 +123,6 @@
         </div>
     </div>
 </header>
-
-
-<div id="popup-search-box">
-    <div class="box-inner-wrap d-flex align-items-center">
-        <form id="form" action="#" method="get" role="search">
-            <input id="popup-search" type="text" name="search" placeholder="Type keywords here...">
-        </form>
-        <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
-    </div>
-</div>
-
 
 <div class="mobile-side-menu rtl">
     <div class="side-menu-content">
