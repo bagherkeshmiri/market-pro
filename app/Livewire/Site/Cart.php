@@ -75,6 +75,7 @@ class Cart extends SiteComponent
 
     protected function calculateUsedFreeShippingProgressLine(): void
     {
+
         $total = collect($this->cart)->sum(function ($item) {
             return $item['qty'] * $item['unit_price'];
         });

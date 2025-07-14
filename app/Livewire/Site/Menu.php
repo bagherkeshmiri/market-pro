@@ -38,8 +38,8 @@ class Menu extends Component
             ->whereNull('parent_id')
             ->get();
 
-        $this->cartCount = session('cart.count', 0);
-        $this->cartTotal = session('cart.total', 0);
+        $this->cartCount = session('cart_summary.count', 0);
+        $this->cartTotal = session('cart_summary.total', 0);
 
     }
 

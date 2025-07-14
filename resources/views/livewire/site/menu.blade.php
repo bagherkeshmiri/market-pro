@@ -50,7 +50,7 @@
                                 </a>
                                 <div class="content">
                                     <span>سبد خرید شما</span>
-                                    <h5 id="cart-sum" class="number">{{ $cartTotal }}</h5>
+                                    <h5 id="cart-sum" class="number">{{ number_format($cartTotal) }} تومان</h5>
                                 </div>
                             </li>
                         </ul>
