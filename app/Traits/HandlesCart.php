@@ -12,14 +12,14 @@ trait HandlesCart
 
         $productId = $productData['id'];
 
-        if (isset($cart[$productId])) {
-            $cart[$productId]['qty']++;
-        } else {
+        if (!isset($cart[$productId])) {
             $cart[$productId] = [
                 'id' => $productData['id'],
                 'name' => $productData['name'],
                 'image' => $productData['image'] ?? ($this->sampleProductImageUrl ?? null),
-                'qty' => 1,
+                'unit_price' => $productData['unit_price'],
+                'final_price' => $productData['qty'] * $productData['unit_price'],
+                'qty' => $productData['qty'],
             ];
         }
 
@@ -29,7 +29,6 @@ trait HandlesCart
             $this->cart = $cart;
         }
     }
-
 
     public function removeFromCart($productId): void
     {
@@ -45,5 +44,20 @@ trait HandlesCart
         }
     }
 
+    public function updateCartQty($productId, $newQty): void
+    {
+        $cart = Session::get('cart', []);
+
+        if (isset($cart[$productId])) {
+            $cart[$productId]['qty'] = $newQty;
+            $cart[$productId]['final_price'] = $cart[$productId]['unit_price'] * $newQty;
+
+            Session::put('cart', $cart);
+
+            if (property_exists($this, 'cart')) {
+                $this->cart = $cart;
+            }
+        }
+    }
 
 }

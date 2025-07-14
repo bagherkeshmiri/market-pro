@@ -29,6 +29,8 @@ class FashionSection extends Component
             'id' => $product->id,
             'name' => $product->name,
             'image' => $product->mainImage->url,
+            'unit_price' => $product->final_price,
+            'qty' => 1,
         ]);
     }
 

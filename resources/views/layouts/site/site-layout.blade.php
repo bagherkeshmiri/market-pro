@@ -3,7 +3,7 @@
 
 @include('partials.site.head' , [ 'pageTitle' => $pageTitle,])
 
-<body class="@yield('body-class')" style="overflow-x: hidden !important; " >
+<body style="overflow-x: hidden !important; " >
 
 @include('partials.site.menu' , ['searchMenuCategories' => $searchMenuCategories , 'menus' => $menus])
 

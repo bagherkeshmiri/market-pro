@@ -1,4 +1,3 @@
-@section('body-class', 'cart-page')
 
 <div>
     <section class="cart-section pt-130 pb-130">
@@ -23,29 +22,29 @@
                             <tbody>
 
 
-                            @foreach($cart as $item)
-                                <tr id="cart-item-{{ $item['id'] }}">
+                                @foreach($cart as $key => $value)
+                                <tr id="cart-item-{{ $key }}">
                                     <td class="product-remove">
-                                        <button wire:click="removeFromCart({{ $item['product_id'] }})">
+                                        <button wire:click="removeProductFromCart({{ $key }})">
                                             <i class="fa-sharp fa-regular fa-trash" style="color:#FF5B5C !important;"></i>
                                         </button>
                                     </td>
                                     <td class="product-thumbnail">
                                         <a href="#">
-                                            <img src="{{ asset($item['image']) }}" alt="img">
+                                            <img src="{{ asset($value['image']) }}" alt="img">
                                         </a>
                                         <div class="product-thumbnail">
-                                            <h4 class="title">{{ $item['name'] }}</h4>
+                                            <h4 class="title">{{ $value['name'] }}</h4>
                                         </div>
                                     </td>
-                                    <td class="product-price "><span class="amount">{{ number_format($item['price']) }}  تومان</span></td>
+                                    <td class="product-price "><span class="amount">{{ number_format($value['unit_price']) }}  تومان</span></td>
                                     <td class="product-quantity">
                                         <div class="quantity__group">
-                                            <label for="quantity-item-{{ $item['id'] }}" hidden></label>
-                                            <input type="number" class="input-text qty text" id="quantity-item-{{ $item['id'] }}" name="quantity" value="1" min="1" max="100" step="1" autocomplete="off">
+                                            <label for="qty" hidden></label>
+                                            <input type="number" class="input-text qty text" id="qty" value="{{ $value['qty'] }}" min="1" max="100" step="1" autocomplete="off" wire:model.defer="cart.{{ $key }}.qty">
                                         </div>
                                     </td>
-                                    <td class="product-subtotal" id="product-subtotal-{{ $item['id'] }}"><span class="amount">0</span></td>
+                                    <td class="product-subtotal"><span class="amount"> {{ number_format($value['final_price']) }} تومان </span></td>
                                 </tr>
                             @endforeach
 
