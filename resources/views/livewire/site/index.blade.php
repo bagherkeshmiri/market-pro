@@ -15,8 +15,7 @@
                 :title="$collection->title"
                 :items="$collection->categoryCollection"
                 :sample-product-image-url="$sampleProductImageUrl"
-                wire:key="'category-section-'.$collection->id"
-
+                wire:key="category-section-{{ $collection->id }}"
             />
 
         @endif
@@ -26,7 +25,7 @@
                 :title="$collection->title"
                 :items="$collection->productCollection"
                 :sample-product-image-url="$sampleProductImageUrl"
-                wire:key="'fashion-section-'.$collection->id"
+                wire:key="fashion-section-{{ $collection->id }}"
             />
         @endif
 
