@@ -61,13 +61,11 @@ class Cart extends SiteComponent
         }
     }
 
-
     protected function calculateTax(int $amount): int
     {
         $this->tax = round($amount * 0.09);
         return $this->tax;
     }
-
 
     public function getTotalPayableProperty(): int
     {
@@ -84,7 +82,6 @@ class Cart extends SiteComponent
 
         $this->remainingFreeShipping = max(0, $this->freeShipping - $total);
     }
-
 
     public function render(): View
     {
