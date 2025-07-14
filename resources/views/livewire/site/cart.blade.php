@@ -1,5 +1,5 @@
 <div>
-    <section class="cart-section pt-130 pb-130">
+    <section class="cart-section pt-50 pb-50">
         <div class="container rtl">
             <div class="row">
                 <div class="col-lg-8">
