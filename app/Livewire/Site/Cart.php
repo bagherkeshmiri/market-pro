@@ -16,7 +16,7 @@ class Cart extends SiteComponent
     public $cartTotal = 0;
     public $tax = 0;
     public $shipping = 20000;
-    public $discount = 150000;
+    public $discount = 50000;
     public $freeShipping = 2000000;
     public $remainingFreeShipping = 0;
     public float $usedFreeShippingLineProgress = 0;
@@ -57,7 +57,7 @@ class Cart extends SiteComponent
         $this->cartTotal = collect($this->cart)->sum('final_price');
 
         if ($this->getTotalPayableProperty() < $this->freeShipping) {
-            $this->remainingFreeShipping = $this->freeShipping - $this->getTotalPayableProperty();
+            $this->remainingFreeShipping = $this->freeShipping - $this->cartTotal;
         }
     }
 
@@ -80,13 +80,9 @@ class Cart extends SiteComponent
             return $item['qty'] * $item['unit_price'];
         });
 
-        $tax = $this->calculateTax($total);
+        $this->usedFreeShippingLineProgress = min(100, ($total / $this->freeShipping) * 100);
 
-        $totalPayable = $total + $tax + $this->shipping - $this->discount;
-
-        $this->usedFreeShippingLineProgress = min(100, ($totalPayable / $this->freeShipping) * 100);
-
-        $this->remainingFreeShipping = max(0, $this->freeShipping - $totalPayable);
+        $this->remainingFreeShipping = max(0, $this->freeShipping - $total);
     }
 
 
