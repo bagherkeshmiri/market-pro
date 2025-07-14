@@ -10,14 +10,14 @@
 
     @foreach($collections as $collection)
 
-{{--        @if($collection->type == \App\Enums\CollectionType::Category)--}}
-{{--            <livewire:site.category-section--}}
-{{--                :title="$collection->title"--}}
-{{--                :items="$collection->categoryCollection"--}}
-{{--                :sample-product-image-url="$sampleProductImageUrl"--}}
-{{--                wire:key="category-section-{{ $collection->id }}"--}}
-{{--            />--}}
-{{--        @endif--}}
+        @if($collection->type == \App\Enums\CollectionType::Category)
+            <livewire:site.category-section
+                :title="$collection->title"
+                :items="$collection->categoryCollection"
+                :sample-product-image-url="$sampleProductImageUrl"
+                wire:key="category-section-{{ $collection->id }}"
+            />
+        @endif
 
         @if($collection->type == \App\Enums\CollectionType::Product)
             <livewire:site.fashion-section

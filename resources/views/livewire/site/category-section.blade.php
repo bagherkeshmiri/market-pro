@@ -14,12 +14,17 @@
                 <div class="swiper-wrapper">
 
                     @foreach($items as $item)
-                        <livewire:site.category-slider-item
-                            :title="$item->category->name"
-                            :category="$item->category"
-                            :sample-product-image-url="$sampleProductImageUrl"
-                            wire:key="category-slider-item-{{ $item->category->id }}"
-                        />
+                        <div class="swiper-slide">
+                            <div class="category-item">
+                                <div class="category-img">
+                                    <img src="{{ $item->category->image ? asset($item->category->image->url) : asset($sampleProductImageUrl) }}" alt="category">
+                                </div>
+                                <h3 class="title">
+                                    <a href="#">{{ $item->category->name }}</a>
+                                </h3>
+                            </div>
+                        </div>
+
                     @endforeach
 
                 </div>

@@ -50,13 +50,13 @@
 
                                     @if($item->product->status ==  \App\Enums\ProductStatus::Exist)
                                         <span class="price">
-                @if($item->product->discount > 0)
+                                        @if($item->product->discount > 0)
                                                 <span class="offer">
-                    {{ $item->product->formatted_price }}  @lang('global.toman')
-                </span>
+                                        {{ $item->product->formatted_price }}  @lang('global.toman')
+                                        </span>
                                             @endif
                                             {{ $item->product->formatted_final_price }}  @lang('global.toman')
-            </span>
+                                    </span>
                                     @else
                                         <h5 class="mt-3 text-danger">@lang('global.not_exist')</h5>
                                     @endif
