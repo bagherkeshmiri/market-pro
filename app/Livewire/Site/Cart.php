@@ -17,6 +17,8 @@ class Cart extends SiteComponent
     public $tax = 0;
     public $shipping = 20000;
     public $discount = 150000;
+    public $freeShipping = 2000000;
+    public $remainingFreeShipping = 0;
 
     public function mount(): void
     {

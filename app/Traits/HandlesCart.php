@@ -76,6 +76,10 @@ trait HandlesCart
     {
         $this->cartTotal = collect($this->cart)->sum('final_price');
         $this->tax = round($this->cartTotal * 0.09);
+
+        if ($this->getTotalPayableProperty() < $this->freeShipping) {
+            $this->remainingFreeShipping = $this->freeShipping - $this->getTotalPayableProperty();
+        }
     }
 
     public function getTotalPayableProperty(): int

@@ -4,10 +4,13 @@
         <div class="container rtl">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="cart-top-content">
-                        <p>فقط کافیه <span>59 تومان</span> به سبد خرید اضافه کنید تا ارسال رایگان شود</p>
-                        <div class="line"></div>
-                    </div>
+                    @if($this->totalPayable < $this->freeShipping)
+                        <div class="cart-top-content">
+                            <p>فقط کافیه <span>{{ number_format($remainingFreeShipping) }} تومان</span> به سبد خرید اضافه کنید تا ارسال رایگان شود</p>
+                            <div class="line"></div>
+                        </div>
+                    @endif
+
                     <div class="table-content cart-table">
                         <table class="table mb-0">
                             <thead>
@@ -94,7 +97,11 @@
                                 <h4 class="cart-title">
                                     هزینه ارسال
                                 </h4>
-                                <span class="cart-price">{{ number_format($shipping) }} تومان</span>
+                                @if($this->totalPayable > $this->freeShipping)
+                                    <span class="cart-price">رایگان</span>
+                                @else
+                                    <span class="cart-price">{{ number_format($shipping) }} تومان</span>
+                                @endif
                             </div>
 
                             <div class="d-flex justify-content-between mb-4">
