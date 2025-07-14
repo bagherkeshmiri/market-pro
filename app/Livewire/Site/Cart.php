@@ -19,16 +19,22 @@ class Cart extends SiteComponent
     public $discount = 150000;
     public $freeShipping = 2000000;
     public $remainingFreeShipping = 0;
+    public float $usedFreeShippingLineProgress = 0;
 
     public function mount(): void
     {
         $this->cart = Session::get('cart', []);
         $this->calculateCartTotal();
+        $this->calculateTax($this->cartTotal);
+        $this->calculateUsedFreeShippingProgressLine();
     }
 
     public function removeProductFromCart(Product $product): void
     {
         $this->removeFromCart($product->id);
+        $this->calculateCartTotal();
+        $this->calculateTax($this->cartTotal);
+        $this->calculateUsedFreeShippingProgressLine();
     }
 
     public function updatedCart($value, $key): void
@@ -40,23 +46,49 @@ class Cart extends SiteComponent
         if ($property === 'qty') {
             $this->updateCartQty($productId, $value);
             $this->cart = Session::get('cart', []);
+            $this->calculateCartTotal();
+            $this->calculateTax($this->cartTotal);
+            $this->calculateUsedFreeShippingProgressLine();
         }
     }
 
     public function calculateCartTotal(): void
     {
         $this->cartTotal = collect($this->cart)->sum('final_price');
-        $this->tax = round($this->cartTotal * 0.09);
 
         if ($this->getTotalPayableProperty() < $this->freeShipping) {
             $this->remainingFreeShipping = $this->freeShipping - $this->getTotalPayableProperty();
         }
     }
 
+
+    protected function calculateTax(int $amount): int
+    {
+        $this->tax = round($amount * 0.09);
+        return $this->tax;
+    }
+
+
     public function getTotalPayableProperty(): int
     {
         return $this->cartTotal + $this->tax + $this->shipping - $this->discount;
     }
+
+    protected function calculateUsedFreeShippingProgressLine(): void
+    {
+        $total = collect($this->cart)->sum(function ($item) {
+            return $item['qty'] * $item['unit_price'];
+        });
+
+        $tax = $this->calculateTax($total);
+
+        $totalPayable = $total + $tax + $this->shipping - $this->discount;
+
+        $this->usedFreeShippingLineProgress = min(100, ($totalPayable / $this->freeShipping) * 100);
+
+        $this->remainingFreeShipping = max(0, $this->freeShipping - $totalPayable);
+    }
+
 
     public function render(): View
     {

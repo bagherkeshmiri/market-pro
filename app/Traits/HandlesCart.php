@@ -28,10 +28,6 @@ trait HandlesCart
         if (property_exists($this, 'cart')) {
             $this->cart = $cart;
         }
-
-        if (method_exists($this, 'calculateCartTotal')) {
-            $this->calculateCartTotal();
-        }
     }
 
     public function removeFromCart($productId): void
@@ -45,10 +41,6 @@ trait HandlesCart
             if (property_exists($this, 'cart')) {
                 $this->cart = $cart;
             }
-        }
-
-        if (method_exists($this, 'calculateCartTotal')) {
-            $this->calculateCartTotal();
         }
     }
 
@@ -65,12 +57,6 @@ trait HandlesCart
             if (property_exists($this, 'cart')) {
                 $this->cart = $cart;
             }
-
-            if (method_exists($this, 'calculateCartTotal')) {
-                $this->calculateCartTotal();
-            }
         }
     }
-
-
 }

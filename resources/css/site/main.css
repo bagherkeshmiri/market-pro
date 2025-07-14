@@ -9249,7 +9249,7 @@ blockquote .content p {
 .cart-top-content .line:before {
     background-color: var(--rr-color-theme-primary);
     content: "";
-    width: 80%;
+    width: var(--line-width, 0%);;
     height: 100%;
     position: absolute;
     top: 0;

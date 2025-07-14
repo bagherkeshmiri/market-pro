@@ -1,4 +1,3 @@
-
 <div>
     <section class="cart-section pt-130 pb-130">
         <div class="container rtl">
@@ -7,7 +6,7 @@
                     @if($this->totalPayable < $this->freeShipping)
                         <div class="cart-top-content">
                             <p>فقط کافیه <span>{{ number_format($remainingFreeShipping) }} تومان</span> به سبد خرید اضافه کنید تا ارسال رایگان شود</p>
-                            <div class="line"></div>
+                            <div class="line" style="--line-width: {{ $usedFreeShippingLineProgress }}%;"></div>
                         </div>
                     @endif
 
@@ -25,7 +24,7 @@
                             <tbody>
 
 
-                                @foreach($cart as $key => $value)
+                            @foreach($cart as $key => $value)
                                 <tr id="cart-item-{{ $key }}">
                                     <td class="product-remove">
                                         <button wire:click="removeProductFromCart({{ $key }})">
@@ -50,13 +49,12 @@
                                                    max="100"
                                                    step="1"
                                                    wire:model.lazy="cart.{{ $key }}.qty"
-                                                   class="input-text qty text" />
+                                                   class="input-text qty text"/>
                                         </div>
                                     </td>
                                     <td class="product-subtotal"><span class="amount"> {{ number_format($value['final_price']) }} تومان </span></td>
                                 </tr>
                             @endforeach
-
 
 
                             </tbody>
@@ -83,7 +81,7 @@
                                 <h4 class="cart-title">
                                     جمع سبد خرید
                                 </h4>
-                                <span class="cart-price" >{{ number_format($cartTotal) }} تومان</span>
+                                <span class="cart-price">{{ number_format($cartTotal) }} تومان</span>
                             </div>
 
                             <div class="d-flex justify-content-between mb-4">
@@ -106,7 +104,7 @@
 
                             <div class="d-flex justify-content-between mb-4">
                                 <h4 class="cart-title">
-                                   مالیات بر ارزش افزوده (9 ٪)
+                                    مالیات بر ارزش افزوده (9 ٪)
                                 </h4>
                                 <span class="cart-price">{{ number_format($tax) }} تومان</span>
                             </div>
@@ -131,5 +129,6 @@
 
 @section('scripts')
 @endsection
+
 
 
