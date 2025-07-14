@@ -19,11 +19,12 @@
         @endif
 
         @if($collection->type == \App\Enums\CollectionType::Product)
-            @include('custom-components.site.fashion-section', [
-                'title' => $collection->title,
-                'items' => $collection->productCollection,
-                'sampleProductImageUrl' => $sampleProductImageUrl,
-            ])
+            <livewire:site.fashion-section
+                :title="$collection->title"
+                :items="$collection->productCollection"
+                :sample-product-image-url="$sampleProductImageUrl"
+                :key="'fashion-section-'.$collection->id"
+            />
         @endif
 
     @endforeach
