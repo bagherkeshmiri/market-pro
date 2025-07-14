@@ -38,7 +38,7 @@ class Cart extends SiteComponent
         $this->calculateUsedFreeShippingProgressLine();
     }
 
-    public function updateCartQtyAndEmit($value, $key): void
+    public function updatedCart($value, $key): void
     {
         $parts = explode('.', $key);
         $productId = $parts[0];
