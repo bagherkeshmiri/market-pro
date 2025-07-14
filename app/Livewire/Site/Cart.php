@@ -38,7 +38,7 @@ class Cart extends SiteComponent
         $this->calculateUsedFreeShippingProgressLine();
     }
 
-    public function updatedCart($value, $key): void
+    public function updateCartQtyAndEmit($value, $key): void
     {
         $parts = explode('.', $key);
         $productId = $parts[0];
@@ -60,6 +60,9 @@ class Cart extends SiteComponent
         if ($this->getTotalPayableProperty() < $this->freeShipping) {
             $this->remainingFreeShipping = $this->freeShipping - $this->cartTotal;
         }
+
+        $this->storeCartSummaryToSession();
+
     }
 
     protected function calculateTax(int $amount): int
@@ -83,6 +86,15 @@ class Cart extends SiteComponent
         $this->usedFreeShippingLineProgress = min(100, ($total / $this->freeShipping) * 100);
 
         $this->remainingFreeShipping = max(0, $this->freeShipping - $total);
+    }
+
+    protected function storeCartSummaryToSession(): void
+    {
+        $count = collect($this->cart)->sum('qty');
+        $total = collect($this->cart)->sum('final_price');
+
+        Session::put('cart_summary.count', $count);
+        Session::put('cart_summary.total', $total);
     }
 
     public function render(): View

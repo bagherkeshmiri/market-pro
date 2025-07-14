@@ -61,6 +61,7 @@ trait HandlesCart
         }
 
         $this->recalculateCartSummary();
+
     }
 
     protected function recalculateCartSummary(): void
