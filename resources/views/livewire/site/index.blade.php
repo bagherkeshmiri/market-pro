@@ -4,9 +4,9 @@
 
 <div>
 
-    @include('custom-components.site.hero-section')
+    {{--    @include('custom-components.site.hero-section')--}}
 
-    @include('custom-components.site.discount-section')
+    {{--    @include('custom-components.site.discount-section')--}}
 
     @foreach($collections as $collection)
 
@@ -15,6 +15,8 @@
                 :title="$collection->title"
                 :items="$collection->categoryCollection"
                 :sample-product-image-url="$sampleProductImageUrl"
+                wire:key="'category-section-'.$collection->id"
+
             />
 
         @endif
@@ -24,21 +26,21 @@
                 :title="$collection->title"
                 :items="$collection->productCollection"
                 :sample-product-image-url="$sampleProductImageUrl"
-                :key="'fashion-section-'.$collection->id"
+                wire:key="'fashion-section-'.$collection->id"
             />
         @endif
 
     @endforeach
 
-    @include('custom-components.site.collect-section')
+    {{--    @include('custom-components.site.collect-section')--}}
 
-    @include('custom-components.site.cta-section')
+    {{--    @include('custom-components.site.cta-section')--}}
 
-    @include('custom-components.site.sponsor-section')
+    {{--    @include('custom-components.site.sponsor-section')--}}
 
-    @include('custom-components.site.deal-section')
+    {{--    @include('custom-components.site.deal-section')--}}
 
-    @include('custom-components.site.blog-section')
+    {{--    @include('custom-components.site.blog-section')--}}
 
 </div>
 

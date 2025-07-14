@@ -18,6 +18,7 @@
                             :title="$item->category->name"
                             :category="$item->category"
                             :sample-product-image-url="$sampleProductImageUrl"
+                            wire:key="'category-slider-item-'.$item->category->id"
                         />
                     @endforeach
 
