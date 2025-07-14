@@ -41,7 +41,13 @@
                                     <td class="product-quantity">
                                         <div class="quantity__group">
                                             <label for="qty" hidden></label>
-                                            <input type="number" class="input-text qty text" id="qty" value="{{ $value['qty'] }}" min="1" max="100" step="1" autocomplete="off" wire:model.defer="cart.{{ $key }}.qty">
+                                            <input type="number"
+                                                   id="qty"
+                                                   min="1"
+                                                   max="100"
+                                                   step="1"
+                                                   wire:model.lazy="cart.{{ $key }}.qty"
+                                                   class="input-text qty text" />
                                         </div>
                                     </td>
                                     <td class="product-subtotal"><span class="amount"> {{ number_format($value['final_price']) }} تومان </span></td>
@@ -74,34 +80,34 @@
                                 <h4 class="cart-title">
                                     جمع سبد خرید
                                 </h4>
-                                <span class="cart-price" >1,000,000 تومان</span>
+                                <span class="cart-price" >{{ number_format($cartTotal) }} تومان</span>
                             </div>
 
                             <div class="d-flex justify-content-between mb-4">
                                 <h4 class="cart-title">
                                     تخفیفات
                                 </h4>
-                                <span class="cart-price">200,000 تومان</span>
+                                <span class="cart-price">{{ number_format($discount) }} تومان</span>
                             </div>
 
                             <div class="d-flex justify-content-between mb-4">
                                 <h4 class="cart-title">
                                     هزینه ارسال
                                 </h4>
-                                <span class="cart-price">10,000 تومان</span>
+                                <span class="cart-price">{{ number_format($shipping) }} تومان</span>
                             </div>
 
                             <div class="d-flex justify-content-between mb-4">
                                 <h4 class="cart-title">
-                                    مالیات
+                                   مالیات بر ارزش افزوده (9 ٪)
                                 </h4>
-                                <span class="cart-price">105,000 تومان</span>
+                                <span class="cart-price">{{ number_format($tax) }} تومان</span>
                             </div>
 
                         </div>
                         <div class="checkout-total checkout-item pt-4">
                             <h4 style="color:#E53E3E !important;">مبلغ قابل پرداخت</h4>
-                            <h4>724,000 تومان</h4>
+                            <h4>{{ number_format($this->totalPayable) }} تومان </h4>
                         </div>
 
                     </div>
