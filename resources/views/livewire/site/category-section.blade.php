@@ -14,11 +14,11 @@
                 <div class="swiper-wrapper">
 
                     @foreach($items as $item)
-                        @include('custom-components.site.category-slider-item', [
-                            'title' => $item->category->name,
-                            'category' => $item->category,
-                            'sampleProductImageUrl' => $sampleProductImageUrl,
-                        ])
+                        <livewire:site.category-slider-item
+                            :title="$item->category->name"
+                            :category="$item->category"
+                            :sample-product-image-url="$sampleProductImageUrl"
+                        />
                     @endforeach
 
                 </div>
