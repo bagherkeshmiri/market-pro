@@ -11,16 +11,12 @@
         </div>
         <div class="shop-carousel swiper">
             <div class="swiper-wrapper">
-
-
                 @foreach($items as $item)
-
                     <livewire:site.product-slider-item
                         :product="$item->product"
                         :sample-product-image-url="$sampleProductImageUrl"
-                        :key="$item->product->id"
+                        wire:key="product-slider-item-{{ $item->product->id }}-{{ $loop->index }}"
                     />
-
                 @endforeach
             </div>
         </div>
