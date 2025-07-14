@@ -27,6 +27,7 @@ class Cart extends SiteComponent
         $this->calculateCartTotal();
         $this->calculateTax($this->cartTotal);
         $this->calculateUsedFreeShippingProgressLine();
+
     }
 
     public function removeProductFromCart(Product $product): void
