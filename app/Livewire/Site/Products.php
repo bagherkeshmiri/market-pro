@@ -6,7 +6,10 @@ use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\Category;
 use App\Models\Product;
 use App\Traits\HandlesCart;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class Products extends SiteComponent
 {
@@ -14,14 +17,23 @@ class Products extends SiteComponent
 
     public object $category;
     public $id;
+    public array $cart = [];
 
     public function mount(Category $category): void
     {
         $this->id = $category->id;
+        $this->cart =  Session::get('cart', []);
     }
 
     public function addProductToCart(Product $product): void
     {
+        $exists = collect($this->cart)->contains('id', $product->id);
+
+        if ($exists) {
+            $this->js("window.dispatchEvent(new CustomEvent('product-already-in-cart', { detail: { name: '{$product->name}' } }))");
+            return;
+        }
+
         $this->addToCart([
             'id' => $product->id,
             'name' => $product->name,
@@ -29,6 +41,9 @@ class Products extends SiteComponent
             'unit_price' => $product->final_price,
             'qty' => 1,
         ]);
+
+        $this->js("window.dispatchEvent(new CustomEvent('product-added-to-cart', { detail: { name: '{$product->name}' } }))");
+
     }
 
     public function render(): View

@@ -1,3 +1,12 @@
+@section('styles')
+    <style>
+        .swal2-title-rtl {
+            direction: rtl !important;
+            text-align: right !important;
+        }
+    </style>
+@endsection
+
 <div>
     <section class="fashion-section pb-50">
         <div class="container rtl">
@@ -71,3 +80,35 @@
         </div>
     </section>
 </div>
+
+@section('scripts')
+    <script>
+        window.addEventListener('product-added-to-cart', event => {
+            Swal.fire({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 10000,
+                background: '#F0FFF4',
+                color: '#38A169',
+                title: `${event.detail.name} به سبد خرید اضافه شد`,
+                customClass: {title: 'swal2-title-rtl'},
+                timerProgressBar: true,
+            });
+        });
+
+        window.addEventListener('product-already-in-cart', event => {
+            Swal.fire({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 10000,
+                background: '#FEEBC8',
+                color: '#D69E2E',
+                title: `${event.detail.name} قبلاً به سبد خرید اضافه شده است`,
+                customClass: {title: 'swal2-title-rtl'},
+                timerProgressBar: true,
+            });
+        });
+    </script>
+@endsection
