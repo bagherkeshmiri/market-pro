@@ -49,6 +49,6 @@ Route::name('site.')
 
 
 Route::get('test',function(){
-
     Session::forget('cart');
+    Session::forget('cart_summary');
 });
