@@ -20,7 +20,7 @@
                                     <img src="{{ $item->category->image ? asset($item->category->image->url) : asset($sampleProductImageUrl) }}" alt="category">
                                 </div>
                                 <h3 class="title">
-                                    <a href="#">{{ $item->category->name }}</a>
+                                    <a href="{{ route('site.products',['category' => $item->category->id]) }}">{{ $item->category->name }}</a>
                                 </h3>
                             </div>
                         </div>

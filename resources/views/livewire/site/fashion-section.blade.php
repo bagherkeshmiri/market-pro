@@ -25,7 +25,7 @@
                                     <ul class="shop-list">
                                         @if($item->product->status == \App\Enums\ProductStatus::Exist)
                                             <li>
-                                                <a href="javascript:void(0);" wire:click="addProductToCart({{ $item->product->id }})">
+                                                <a wire:click="addProductToCart({{ $item->product->id }})">
                                                     <i class="fa-regular fa-cart-shopping"></i>
                                                 </a>
                                             </li>
