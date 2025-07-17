@@ -40,6 +40,11 @@ class Cart extends SiteComponent
         $this->calculateCartTotal();
         $this->calculateTax($this->cartTotal);
         $this->calculateUsedFreeShippingProgressLine();
+
+        if (empty($this->cart)) {
+            $this->discount = 0;
+            $this->shipping = 0;
+        }
     }
 
     public function updatedCart($value, $key): void
@@ -54,6 +59,11 @@ class Cart extends SiteComponent
             $this->calculateCartTotal();
             $this->calculateTax($this->cartTotal);
             $this->calculateUsedFreeShippingProgressLine();
+        }
+
+        if (empty($this->cart)) {
+            $this->discount = 0;
+            $this->shipping = 0;
         }
     }
 

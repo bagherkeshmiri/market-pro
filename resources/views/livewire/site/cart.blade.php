@@ -24,7 +24,7 @@
                             <tbody>
 
 
-                            @foreach($cart as $key => $value)
+                            @forelse($cart as $key => $value)
                                 <tr id="cart-item-{{ $key }}">
                                     <td class="product-remove">
                                         <button wire:click="removeProductFromCart({{ $key }})">
@@ -54,12 +54,19 @@
                                     </td>
                                     <td class="product-subtotal"><span class="amount"> {{ number_format($value['final_price']) }} تومان </span></td>
                                 </tr>
-                            @endforeach
+
+                            @empty
+                                <tr>
+                                    <td colspan="5" style="text-align:center;">سبد خرید شما خالی است</td>
+                                </tr>
+                            @endforelse
 
 
                             </tbody>
                         </table>
+
                     </div>
+
                     <div class="cart-btn-wrap">
                         <div class="left-item">
                             <label for="discount-code" hidden></label>
