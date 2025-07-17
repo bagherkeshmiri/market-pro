@@ -70,7 +70,6 @@ class Products extends SiteComponent
         $this->js("window.dispatchEvent(new CustomEvent('product-added-to-wishlist', { detail: { name: '{$product->name}' } }))");
     }
 
-
     public function render(): View
     {
         $pageTitle = 'محصولات دسته ' . $this->category->name;
