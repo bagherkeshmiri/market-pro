@@ -65,8 +65,11 @@
                     </div>
                 </div>
             @empty
-                <div style="text-align: center; margin-top: 20px;">
-                    <img src="{{ asset('images/site/error-img.png') }}" alt="محصولی یافت نشد" style="margin-bottom: 50px;">
+                <div style="text-align: center; margin-top: 20px; width: 100%;">
+                    <img src="{{ asset('images/site/error-img.png') }}"
+                         style="width: 100%; height: auto; display: block;"
+                         alt="محصولی یافت نشد"
+                    >
                 </div>
             @endforelse
         </div>
