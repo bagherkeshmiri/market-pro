@@ -4,15 +4,42 @@ namespace App\Livewire\Site;
 
 use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\Product;
+use App\Traits\HandlesCart;
+use Illuminate\Support\Facades\Session;
 
 class SingleProduct extends SiteComponent
 {
+    use HandlesCart;
+
     public object $product;
     public $id;
+    public array $cart = [];
+
 
     public function mount(Product $product): void
     {
         $this->id = $product->id;
+        $this->cart = Session::get('cart', []);
+    }
+
+    public function addProductToCart(Product $product): void
+    {
+        $exists = collect($this->cart)->contains('id', $product->id);
+
+        if ($exists) {
+            $this->js("window.dispatchEvent(new CustomEvent('product-already-in-cart', { detail: { name: '{$product->name}' } }))");
+            return;
+        }
+
+        $this->addToCart([
+            'id' => $product->id,
+            'name' => $product->name,
+            'image' => $product->mainImage->url,
+            'unit_price' => $product->final_price,
+            'qty' => 1,
+        ]);
+
+        $this->js("window.dispatchEvent(new CustomEvent('product-added-to-cart', { detail: { name: '{$product->name}' } }))");
     }
 
     public function render()
@@ -32,7 +59,7 @@ class SingleProduct extends SiteComponent
         return $this->renderView(
             'livewire.site.single-product',
             $pageTitle,
-            compact('sampleProductImageUrl', 'product', 'products','comments')
+            compact('sampleProductImageUrl', 'product', 'products', 'comments')
         );
     }
 }

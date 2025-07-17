@@ -181,9 +181,9 @@
 
 
                                     </form>
-                                    <div class="cart-btn-wrap-2"><a href="#" class="rr-primary-btn cart-btn">افزودن به سبد خرید</a></div>
+                                    <div class="cart-btn-wrap-2"><a wire:click="addProductToCart({{ $product->id }})" class="rr-primary-btn cart-btn">افزودن به سبد خرید</a></div>
                                 </div>
-                                <a href="#" class="shop-details-btn rr-primary-btn">اکنون مورد را بخرید</a>
+                                <a href="{{ route('site.cart') }}" class="shop-details-btn rr-primary-btn">اکنون مورد را بخرید</a>
                             @endif
 
                         </div>
@@ -229,7 +229,7 @@
                 <div class="tab-pane fade review" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="row product-review gy-lg-0 gy-4">
 
-                        <livewire:site.product-comments :product-id="$product->id" />
+                        <livewire:site.product-comments :product-id="$product->id"/>
 
                         <div class="col-lg-7 col-md-12">
                             <div class="review-form-wrap">
@@ -275,7 +275,6 @@
         const input = document.getElementById("qty-input");
         const line = document.querySelector('.product-info .item-left-line .line');
 
-
         function updateLineProgress() {
             const value = parseInt(input.value) || 0;
             const percent = Math.min((value / maxStock) * 100, 100);
@@ -301,9 +300,35 @@
             updateLineProgress();
         });
 
-        // مقدار اولیه
         updateLineProgress();
 
+        window.addEventListener('product-added-to-cart', event => {
+            Swal.fire({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 10000,
+                background: '#F0FFF4',
+                color: '#38A169',
+                title: `${event.detail.name} به سبد خرید اضافه شد`,
+                customClass: {title: 'swal2-title-rtl'},
+                timerProgressBar: true,
+            });
+        });
+
+        window.addEventListener('product-already-in-cart', event => {
+            Swal.fire({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 10000,
+                background: '#FEEBC8',
+                color: '#D69E2E',
+                title: `${event.detail.name} قبلاً به سبد خرید اضافه شده است`,
+                customClass: {title: 'swal2-title-rtl'},
+                timerProgressBar: true,
+            });
+        });
 
     </script>
 @endsection
