@@ -140,24 +140,25 @@
         </div>
     </div>
 
-
-    <section class="page-header">
-        <div class="shape"><img src="{{ asset('images/site/page-header-shape.png') }}" alt="shape"></div>
-        <div class="container rtl">
-            <div class="page-header-content">
-                <h1 class="title">{{ $pageTitle }}</h1>
-                <h4 class="sub-title">
+    @if (!request()->routeIs('site.home'))
+        <section class="page-header">
+            <div class="shape"><img src="{{ asset('images/site/page-header-shape.png') }}" alt="shape"></div>
+            <div class="container rtl">
+                <div class="page-header-content">
+                    <h1 class="title">{{ $pageTitle }}</h1>
+                    <h4 class="sub-title">
                         <span class="home">
                             <a href="{{ route('site.home') }}">
                                 <span>خانه</span>
                             </a>
                         </span>
-                    <span class="icon"><i class="fa-solid fa-angle-left"></i></span>
-                    <span class="inner">
+                        <span class="icon"><i class="fa-solid fa-angle-left"></i></span>
+                        <span class="inner">
                             <span> {{ $pageTitle }}</span>
                         </span>
-                </h4>
+                    </h4>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 </div>
