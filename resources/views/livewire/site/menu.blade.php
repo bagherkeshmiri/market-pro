@@ -39,7 +39,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="icon">
+                                <a href="{{ route('site.wishlist') }}" class="icon">
                                     <i class="fa-sharp fa-regular fa-heart"></i>
                                 </a>
                             </li>
