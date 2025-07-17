@@ -167,18 +167,34 @@
                     <span class="menu-title text-white" data-i18n="roles">وب سایت </span>
                 </a>
                 <ul class="menu-content">
-                    <li><a href="#">
+                    <li>
+                        <a href="#">
                             <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="create-role">ایجاد منو</span>
+                            <span class="menu-item text-white" data-i18n="Second Level">
+                                سوالات متداول
+                            </span>
                         </a>
-                    </li>
+                        <ul class="menu-content">
+                            <li>
+                                <a href="{{ route('admin.faq.create') }}">
+                                    <i class="bx bx-left-arrow-alt text-white"></i>
+                                    <span class="menu-item text-white" data-i18n="Third Level">
+                                        ایجاد سوال
+                                    </span>
+                                </a>
+                            </li>
 
-                    <li><a href="#">
-                            <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست منو </span>
-                        </a>
-                    </li>
+                            <li>
+                                <a href="{{ route('admin.faq.index') }}">
+                                    <i class="bx bx-left-arrow-alt text-white"></i>
+                                    <span class="menu-item text-white" data-i18n="Third Level">
+                                         لیست سوالات
+                                    </span>
+                                </a>
+                            </li>
 
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li class=" nav-item">
