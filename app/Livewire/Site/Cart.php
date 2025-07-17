@@ -25,6 +25,10 @@ class Cart extends SiteComponent
     public function mount(): void
     {
         $this->cart = Session::get('cart', []);
+        if (empty($this->cart)) {
+            $this->discount = 0;
+            $this->shipping = 0;
+        }
         $this->calculateCartTotal();
         $this->calculateTax($this->cartTotal);
         $this->calculateUsedFreeShippingProgressLine();
