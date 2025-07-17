@@ -114,6 +114,6 @@ Route::prefix('dashboard')
             ->group(function () {
                 Route::get('/', ListFaq::class)->name('index');
                 Route::get('/create', CreateFaq::class)->name('create');
-//                Route::get('/show/{collection}', ShowCollection::class)->name('show');
+                Route::get('/show/{faq}', ListFaq::class)->name('show');
             });
     });

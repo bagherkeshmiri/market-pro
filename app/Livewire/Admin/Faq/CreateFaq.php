@@ -17,11 +17,11 @@ class CreateFaq extends AdminComponent
 {
     public $question;
     public $answer;
-    public $status;
+    public $isActive;
 
     public function mount(): void
     {
-        $this->status = IsActive::No;
+        $this->isActive = IsActive::No;
     }
 
     public function render(): View
@@ -43,7 +43,7 @@ class CreateFaq extends AdminComponent
         $this->validate([
             'question' => 'required',
             'answer' => 'required',
-            'status' => [
+            'isActive' => [
                 'required',
                 new Enum(IsActive::class)
             ],
@@ -53,7 +53,7 @@ class CreateFaq extends AdminComponent
         $data = [
             'question' => $this->question,
             'answer' => $this->answer,
-            'status' => $this->status,
+            'is_active' => $this->isActive,
         ];
 
         DB::beginTransaction();

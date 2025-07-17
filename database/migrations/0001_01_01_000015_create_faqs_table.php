@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('question');
             $table->text('answer');
-            $table->tinyInteger('is_active')->default(0);
+            $table->tinyInteger('is_active')->default(0)->comment(' 0:no , 1:yes');
             $table->timestamps();
         });
     }
