@@ -5,7 +5,7 @@
 
 <body style="overflow-x: hidden !important; " >
 
-<livewire:site.menu />
+<livewire:site.menu :pageTitle="$pageTitle"/>
 
 {{ $slot }}
 

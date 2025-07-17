@@ -6810,6 +6810,7 @@ START: Blog CSS
     position: relative;
     z-index: 1;
     overflow: hidden;
+    max-height: 150px;
 }
 
 .page-header .shape {
@@ -6824,10 +6825,11 @@ START: Blog CSS
     height: 100%;
     width: 100%;
     object-fit: cover;
+    max-height: 150px;
 }
 
 .page-header-content {
-    padding: 130px 0 100px;
+    padding: 75px 50px 100px;
     position: relative;
     z-index: 2;
     display: flex;
@@ -6850,7 +6852,7 @@ START: Blog CSS
 }
 
 .page-header-content .title {
-    font-size: 60px;
+    font-size: 30px;
     font-weight: 600;
     line-height: 1;
     display: inline-block;

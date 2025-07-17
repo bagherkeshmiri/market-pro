@@ -9,6 +9,7 @@ use Livewire\Component;
 
 class Menu extends Component
 {
+    public $pageTitle;
     public $cart = [];
     public $cartCount = 0;
     public $cartTotal = 0;
@@ -43,7 +44,6 @@ class Menu extends Component
         $this->cartCount = session('cart_summary.count', 0);
         $this->cartTotal = session('cart_summary.total', 0);
         $this->updateCart();
-
     }
 
     public function updateCart(): void
