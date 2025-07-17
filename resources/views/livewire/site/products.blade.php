@@ -7,10 +7,11 @@
     </style>
 @endsection
 
-<section class="shop-grid-2 pt-100 pb-100">
+<section class="shop-grid-2 pt-50 pb-50">
     <div class="container rtl">
         <div class="row gy-4">
-            @foreach($products as $product)
+
+            @forelse($products as $product)
                 <div class="col-xl-3 col-lg-4 col-md-6">
                     <div class="shop-item">
                         <div class="shop-thumb">
@@ -63,9 +64,16 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div style="text-align: center; margin-top: 20px;">
+                    <img src="{{ asset('images/site/error-img.png') }}" alt="محصولی یافت نشد" style="margin-bottom: 50px;">
+                </div>
+            @endforelse
         </div>
-        {{ $products->links('custom-components.site.pagination',['items' => $products]) }}
+
+        @if($products->count() > 0)
+            {{ $products->links('custom-components.site.pagination', ['items' => $products]) }}
+        @endif
     </div>
 </section>
 
