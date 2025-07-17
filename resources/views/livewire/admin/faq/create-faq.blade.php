@@ -32,10 +32,10 @@
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
                                                     <div class="form-group">
-                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'status' , 'content' => 'وضعیت'] )
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'isActive' , 'content' => 'وضعیت'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'status' , 'wire' => 'status'  ,'isDefer' => true,'attributes' => 'required'])
-                                                        @include('frest-components.validation-error',[ 'name' => 'status' ])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'isActive' , 'wire' => 'isActive'  ,'isDefer' => true,'attributes' => 'required'])
+                                                        @include('frest-components.validation-error',[ 'name' => 'isActive' ])
                                                     </div>
                                                 </div>
 

@@ -9,6 +9,7 @@ use App\Livewire\Admin\Collection\ShowCollection;
 use App\Livewire\Admin\Comment\ListComment;
 use App\Livewire\Admin\Faq\CreateFaq;
 use App\Livewire\Admin\Faq\ListFaq;
+use App\Livewire\Admin\Faq\ShowFaq;
 use App\Livewire\Admin\Product\CreateProduct;
 use App\Livewire\Admin\Product\ListProduct;
 use App\Livewire\Admin\Product\ShowProduct;
@@ -114,6 +115,6 @@ Route::prefix('dashboard')
             ->group(function () {
                 Route::get('/', ListFaq::class)->name('index');
                 Route::get('/create', CreateFaq::class)->name('create');
-                Route::get('/show/{faq}', ListFaq::class)->name('show');
+                Route::get('/show/{faq}', ShowFaq::class)->name('show');
             });
     });

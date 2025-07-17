@@ -124,7 +124,6 @@ class ShowProduct extends AdminComponent
 
         DB::beginTransaction();
         try {
-
             $this->product->update($data);
 
             if (!empty($this->mainImage) and $this->mainImage instanceof TemporaryUploadedFile) {
@@ -154,10 +153,9 @@ class ShowProduct extends AdminComponent
             DB::commit();
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.product.show', ['product' => $this->product->id]);
-        } catch (Exception $e) {
+        } catch (Exception) {
             DB::rollBack();
-//            session()->flash('error', __('global.error_message'));
-            session()->flash('error', $e->getMessage());
+            session()->flash('error', __('global.error_message'));
             return redirect()->route('admin.product.show', ['product' => $this->product->id]);
         }
     }
