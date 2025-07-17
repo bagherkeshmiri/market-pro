@@ -76,7 +76,7 @@
                                     <a href="#">محصولات</a>
                                     <ul>
                                         @foreach($menus as $menu)
-                                            <li><a href="#">{{ $menu->name }}</a></li>
+                                            <li><a href="{{ route('site.products',['category' => $menu->id]) }}">{{ $menu->name }}</a></li>
                                         @endforeach
                                     </ul>
                                 </li>

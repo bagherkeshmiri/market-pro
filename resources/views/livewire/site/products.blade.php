@@ -27,8 +27,12 @@
                                         </a>
                                     </li>
                                 @endif
-                                <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa-light fa-eye"></i></a></li>
+                                <li>
+                                    <a wire:click="addProductToWishlist({{ $product->id }})">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </a>
+                                </li>
+                                <li><a href="{{ route('admin.product.show',['product' => $product->id]) }}"><i class="fa-light fa-eye"></i></a></li>
                             </ul>
                         </div>
                         <div class="shop-content">
@@ -94,6 +98,35 @@
                 timerProgressBar: true,
             });
         });
+
+        window.addEventListener('product-added-to-wishlist', event => {
+            Swal.fire({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 10000,
+                background: '#F0FFF4',
+                color: '#38A169',
+                title: `${event.detail.name} به لیست علاقه مندی اضافه شد`,
+                customClass: {title: 'swal2-title-rtl'},
+                timerProgressBar: true,
+            });
+        });
+
+        window.addEventListener('product-already-in-wishlist', event => {
+            Swal.fire({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 10000,
+                background: '#FEEBC8',
+                color: '#D69E2E',
+                title: `${event.detail.name} قبلاً به لیست علاقه مندی اضافه شده است`,
+                customClass: {title: 'swal2-title-rtl'},
+                timerProgressBar: true,
+            });
+        });
+
     </script>
 @endsection
 

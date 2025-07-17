@@ -10,6 +10,7 @@ use App\Livewire\Site\Login;
 use App\Livewire\Site\Products;
 use App\Livewire\Site\Register;
 use App\Livewire\Site\SingleProduct;
+use App\Livewire\Site\Wishlist;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -26,6 +27,7 @@ Route::name('site.')
         Route::get('/register', Register::class)->name('register');
         Route::get('/faq', Faq::class)->name('faq');
         Route::get('/cart', Cart::class)->name('cart');
+        Route::get('/wishlist', Wishlist::class)->name('wishlist');
     });
 
 
@@ -47,8 +49,13 @@ Route::name('site.')
 //});
 
 
+Route::get('test', function () {
+//    Session::forget('cart');
+//    Session::forget('cart_summary');
+//
+//    Session::forget('wishlist');
 
-Route::get('test',function(){
-    Session::forget('cart');
-    Session::forget('cart_summary');
+//    dd(
+//        Session::get('wishlist')
+//    );
 });
