@@ -20,6 +20,7 @@ class Cart extends SiteComponent
     public $freeShipping = 2000000;
     public $remainingFreeShipping = 0;
     public float $usedFreeShippingLineProgress = 0;
+    public $discountCode;
 
     public function mount(): void
     {
@@ -27,7 +28,6 @@ class Cart extends SiteComponent
         $this->calculateCartTotal();
         $this->calculateTax($this->cartTotal);
         $this->calculateUsedFreeShippingProgressLine();
-
     }
 
     public function removeProductFromCart(Product $product): void
@@ -62,7 +62,6 @@ class Cart extends SiteComponent
         }
 
         $this->storeCartSummaryToSession();
-
     }
 
     protected function calculateTax(int $amount): int
@@ -78,7 +77,6 @@ class Cart extends SiteComponent
 
     protected function calculateUsedFreeShippingProgressLine(): void
     {
-
         $total = collect($this->cart)->sum(function ($item) {
             return $item['qty'] * $item['unit_price'];
         });
@@ -95,6 +93,12 @@ class Cart extends SiteComponent
 
         Session::put('cart_summary.count', $count);
         Session::put('cart_summary.total', $total);
+    }
+
+    public function checkDiscountCode(): void
+    {
+        session()->flash('warning', 'کد تخفیف وارد شده منقضی شده است');
+//        session()->flash('success', 'کد تخفیف با موفقیت در سبد خرید اعمال شد'); // TODO
     }
 
     public function render(): View

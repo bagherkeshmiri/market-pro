@@ -63,10 +63,24 @@
                     <div class="cart-btn-wrap">
                         <div class="left-item">
                             <label for="discount-code" hidden></label>
-                            <input type="text" id="discount-code" class="form-control" placeholder="کد را وارد کنید">
-                            <button class="rr-primary-btn">تایید کد تخفیف</button>
+                            <input type="text" wire:model.lazy="discountCode" id="discount-code" class="form-control" placeholder="کد تخفیف را وارد کنید">
+                            <button class="rr-primary-btn" wire:click="checkDiscountCode()">تایید کد تخفیف</button>
                         </div>
-                        <button class="rr-primary-btn update-btn">بروزرسانی سبد خرید</button>
+
+
+                        @if (!is_null(session('warning')))
+                            <span class="alert alert-warning" role="alert" style="margin-bottom: 0;">
+                                {{ session('warning') }}
+                            </span>
+                        @endif
+
+
+                        @if (!is_null(session('success')))
+                            <span class="alert alert-success" role="alert" style="margin-bottom: 0;">
+                                {{ session('success') }}
+                            </span>
+                        @endif
+
                     </div>
                 </div>
                 <div class="col-lg-4">
