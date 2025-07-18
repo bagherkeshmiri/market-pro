@@ -32,11 +32,13 @@
                                         </button>
                                     </td>
                                     <td class="product-thumbnail">
-                                        <a href="#">
+                                        <a href="{{ route('site.single-product',['product' => $key]) }}">
                                             <img src="{{ asset($value['image']) }}" alt="img">
                                         </a>
                                         <div class="product-thumbnail">
-                                            <h4 class="title">{{ $value['name'] }}</h4>
+                                            <a href="{{ route('site.single-product',['product' => $key]) }}">
+                                                <h4 class="title">{{ $value['name'] }}</h4>
+                                            </a>
                                         </div>
                                     </td>
                                     <td class="product-price "><span class="amount">{{ number_format($value['unit_price']) }}  تومان</span></td>
