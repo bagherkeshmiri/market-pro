@@ -11,13 +11,13 @@ class ListCategory extends AdminComponent
     public function render(): View
     {
         $pageTitle = 'لیست دسته بندی ها';
-        $tableHeads = ['تصویر','نام', 'دسته پدر', 'تاریخ ایجاد', 'عملیات'];
+        $tableHeads = ['تصویر', 'نام', 'دسته پدر', 'نوع', 'تاریخ ایجاد', 'عملیات'];
         $sampleProductImageUrl = $this->sampleProductImageUrl;
         $categories = Category::paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.category.list-category',
             $pageTitle,
-            compact('tableHeads','sampleProductImageUrl', 'categories')
+            compact('tableHeads', 'sampleProductImageUrl', 'categories')
         );
     }
 }

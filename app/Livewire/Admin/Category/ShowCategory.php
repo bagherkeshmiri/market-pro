@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Category;
 
+use App\Enums\CategoryType;
 use App\Jobs\DeleteImageJob;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
@@ -23,12 +24,14 @@ class ShowCategory extends AdminComponent
     public $name;
     public $parentId;
     public $image;
+    public $type;
 
     public function mount(Category $category): void
     {
         $this->name = $category->name;
         $this->parentId = $category->parent_id;
         $this->image = $category->image->url ?? null;
+        $this->type = $category->type;
     }
 
     public function render(): View
@@ -39,10 +42,11 @@ class ShowCategory extends AdminComponent
             ->pluck('id', 'name')
             ->toArray();
         Arr::forget($allCategories, $this->category->title);
+        $types = showEnumLabels(CategoryType::class);
         return $this->renderView(
             'livewire.admin.category.show-category',
             $pageTitle,
-            compact('sampleProductImageUrl', 'allCategories')
+            compact('sampleProductImageUrl', 'allCategories','types')
         );
     }
 

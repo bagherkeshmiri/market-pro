@@ -33,10 +33,13 @@
 
                                                 <tr>
                                                     <td data-toggle="tooltip" data-placement="top" title="  برای نمایش تصویر روی آن کلیک کنید">
-                                                        <img data-toggle="modal" data-target="#{{ $modalId }}" src="{{ $category->image ? asset($category->image->url) : asset($sampleProductImageUrl) }}" alt="product-image-{{ $category->id }}" width="40" height="40"/>
+                                                        <img data-toggle="modal" data-target="#{{ $modalId }}" src="{{ $category->image ? asset($category->image->url) : asset($sampleProductImageUrl) }}" alt="category-image-{{ $category->id }}" width="40" height="40"/>
                                                     </td>
                                                     <td class="text-white">{{ $category->name }}</td>
                                                     <td class="text-white">{{ $category->parent->name ?? ' - ' }}</td>
+                                                    <td>
+                                                        @include('frest-components.badge' , [ 'badgeClass' => $category->type_badge_class ,  'content' => $category->type_label  ])
+                                                    </td>
                                                     <td class="text-white">{{ $category->jalali_created_at }}</td>
                                                     <td>
                                                         @include('frest-components.icon-btn',[  'href' => route('admin.category.show',[ 'category' => $category->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
