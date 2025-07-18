@@ -15,7 +15,6 @@ class SingleProduct extends SiteComponent
     public $id;
     public array $cart = [];
 
-
     public function mount(Product $product): void
     {
         $this->id = $product->id;

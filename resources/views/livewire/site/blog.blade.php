@@ -13,7 +13,7 @@
                                     <li><i class="fa-sharp fa-solid fa-calendar-days"></i>3 نظر</li>
                                     <li><i class="fa-regular fa-tag"></i>فشن شو</li>
                                 </ul>
-                                <h3 class="title"><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</a></h3>
+                                <h3 class="title"><a href="{{ route('site.single-post') }}">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</a></h3>
                             </div>
                             <div class="post-bottom">
                                 <a href="#" class="read-more">بیشتر بدانید<i class="fa-regular fa-arrow-left"></i></a>

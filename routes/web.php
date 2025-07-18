@@ -9,6 +9,7 @@ use App\Livewire\Site\Index;
 use App\Livewire\Site\Login;
 use App\Livewire\Site\Products;
 use App\Livewire\Site\Register;
+use App\Livewire\Site\SinglePost;
 use App\Livewire\Site\SingleProduct;
 use App\Livewire\Site\Wishlist;
 use Illuminate\Database\Schema\Blueprint;
@@ -28,6 +29,7 @@ Route::name('site.')
         Route::get('/faq', Faq::class)->name('faq');
         Route::get('/cart', Cart::class)->name('cart');
         Route::get('/wishlist', Wishlist::class)->name('wishlist');
+        Route::get('/blog/test', SinglePost::class)->name('single-post');
     });
 
 
@@ -58,7 +60,6 @@ Route::get('test', function () {
 //    dd(
 //        Session::get('wishlist')
 //    );
-
 
 
 });
