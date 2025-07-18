@@ -9564,7 +9564,7 @@ blockquote .content p {
 }
 
 
-.cart-price{
+.cart-price {
     color: var(--rr-color-heading-primary);
     font-size: 14px;
     font-weight: 500;
@@ -10882,6 +10882,10 @@ START: Footer CSS
     direction: rtl !important
 }
 
+
+.cursor-pointer {
+    cursor: pointer;
+}
 
 /* !END: Theme Footer CSS */
 

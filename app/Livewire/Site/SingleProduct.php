@@ -22,8 +22,9 @@ class SingleProduct extends SiteComponent
         $this->cart = Session::get('cart', []);
     }
 
-    public function addProductToCart(Product $product): void
+    public function addProductToCart(Product $product,bool $redirect = false)
     {
+
         $exists = collect($this->cart)->contains('id', $product->id);
 
         if ($exists) {
@@ -38,6 +39,12 @@ class SingleProduct extends SiteComponent
             'unit_price' => $product->final_price,
             'qty' => 1,
         ]);
+
+
+        if($redirect){
+            return redirect()->route('site.cart');
+        }
+
 
         $this->js("window.dispatchEvent(new CustomEvent('product-added-to-cart', { detail: { name: '{$product->name}' } }))");
     }

@@ -181,9 +181,9 @@
 
 
                                     </form>
-                                    <div class="cart-btn-wrap-2"><a wire:click="addProductToCart({{ $product->id }})" class="rr-primary-btn cart-btn">افزودن به سبد خرید</a></div>
+                                    <div class="cart-btn-wrap-2"><a wire:click="addProductToCart({{ $product->id }})" class="rr-primary-btn cart-btn cursor-pointer">افزودن به سبد خرید</a></div>
                                 </div>
-                                <a href="{{ route('site.cart') }}" class="shop-details-btn rr-primary-btn">اکنون مورد را بخرید</a>
+                                <a  wire:click="addProductToCart({{ $product->id }},true)" class="shop-details-btn rr-primary-btn cursor-pointer">اکنون مورد را بخرید</a>
                             @endif
 
                         </div>
