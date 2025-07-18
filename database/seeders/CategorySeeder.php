@@ -2,29 +2,95 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
 {
     public function run(): void
     {
-        $categories = [
-            'فانتزی',
-            'دخترانه',
-            'عروسکی',
-            'سفارشی',
-            'شکلی',
-        ];
-
-        foreach ($categories as $category) {
-            Category::create([
-                'name' => $category,
+        DB::table('categories')->insert([
+            [
+                'id' => 1,
+                'name' => 'فانتزی',
                 'parent_id' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ]);
-        }
+                'deleted_at' => Carbon::now(),
+            ],
+            [
+                'id' => 2,
+                'name' => 'دخترانه',
+                'parent_id' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'deleted_at' => Carbon::now(),
+            ],
+            [
+                'id' => 3,
+                'name' => 'عروسکی',
+                'parent_id' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'deleted_at' => Carbon::now(),
+            ],
+            [
+                'id' => 4,
+                'name' => 'مجموعه ساعت',
+                'parent_id' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'deleted_at' => Carbon::now(),
+            ],
+            [
+                'id' => 5,
+                'name' => 'کالکشن کفش',
+                'parent_id' => 6,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'deleted_at' => null,
+            ],
+            [
+                'id' => 6,
+                'name' => 'پوشاک زنانه',
+                'parent_id' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'deleted_at' => null,
+            ],
+            [
+                'id' => 8,
+                'name' => 'کالکشن کیف',
+                'parent_id' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'deleted_at' => null,
+            ],
+            [
+                'id' => 9,
+                'name' => 'تجهیزات جانبی',
+                'parent_id' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'deleted_at' => null,
+            ],
+            [
+                'id' => 10,
+                'name' => 'مجموعه ساعت',
+                'parent_id' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'deleted_at' => null,
+            ],
+            [
+                'id' => 11,
+                'name' => 'عینک آفتابی',
+                'parent_id' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'deleted_at' => null,
+            ],
+        ]);
     }
 }

@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('parent_id')->nullable()->index();
+            $table->nullableMorphs('categorizable'); // include categorizable_id , categorizable_type
             $table->timestamps();
             $table->softDeletes();
         });

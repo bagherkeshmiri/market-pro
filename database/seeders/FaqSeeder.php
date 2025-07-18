@@ -19,7 +19,7 @@ class FaqSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'question' => 'چه روش‌هایی برای پرداخت وجود دارد؟',
+                'question' => 'چه روش‌ هایی برای پرداخت وجود دارد؟',
                 'answer' => 'در حال حاضر، امکان پرداخت از طریق درگاه بانکی (کارت‌های عضو شتاب) و پرداخت در محل فراهم است.',
                 'is_active' => true,
                 'created_at' => Carbon::now(),
