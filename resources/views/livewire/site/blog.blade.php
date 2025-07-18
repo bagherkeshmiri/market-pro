@@ -1,5 +1,5 @@
 <div>
-    <section class="blog-section pt-130 pb-130">
+    <section class="blog-section pt-50 pb-50">
         <div class="container rtl">
             <div class="row gy-4">
                 <div class="col-lg-4 col-md-6">
@@ -174,7 +174,7 @@
                     </div>
                 </div>
 
-                <ul class="pagination-wrap mt-50">
+                <ul class="pagination-wrap mt-50 justify-content-center">
                     <li><a href="#">1</a></li>
                     <li><a href="#" class="active">2</a></li>
                     <li><a href="#">3</a></li>

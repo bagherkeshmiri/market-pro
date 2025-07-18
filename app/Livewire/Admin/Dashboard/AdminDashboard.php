@@ -7,10 +7,11 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\View\View;
 
 class AdminDashboard extends AdminComponent
 {
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'داشبورد';
         $widgetsStatistics = [
@@ -53,7 +54,8 @@ class AdminDashboard extends AdminComponent
         ];
         return $this->renderView(
             'livewire.admin.dashboard.admin-dashboard',
-            compact('pageTitle', 'widgetsStatistics')
+            $pageTitle,
+            compact('widgetsStatistics')
         );
     }
 }

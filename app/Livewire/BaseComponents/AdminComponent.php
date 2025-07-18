@@ -15,10 +15,11 @@ class AdminComponent extends Component
     protected $queryString = ['page'];
     protected $sampleProductImageUrl = 'images/frest/sample-product.png';
 
-    public function renderView(string $view, array $variables = [])
+    public function renderView(string $view, string $pageTitle, array $variables = [])
     {
-//        return view($view, $variables)->layout('layouts.admin.admin-layout');
-        return view($view, $variables)->layout('layouts.admin.admin-layout-vertical');
+        return view($view, $variables)->layout('layouts.admin.admin-layout', [
+            'pageTitle' => $pageTitle,
+        ]);
     }
 
 }

@@ -8,6 +8,7 @@ use App\Models\Role;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
@@ -34,13 +35,14 @@ class ShowRole extends AdminComponent
         $this->permissions = $this->role->permissions->pluck('id')->toArray();
     }
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'ویرایش نقش';
         $allPermissions = $this->permissions;
         return $this->renderView(
             'livewire.admin.role.show-role',
-            compact('pageTitle', 'allPermissions')
+            $pageTitle,
+            compact('allPermissions')
         );
     }
 

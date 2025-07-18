@@ -32,7 +32,8 @@ class ListComment extends AdminComponent
 
         return $this->renderView(
             'livewire.admin.comment.list-comment',
-            compact('pageTitle', 'tableHeads', 'comments')
+            $pageTitle,
+            compact('tableHeads', 'comments')
         );
     }
 

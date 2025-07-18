@@ -7,6 +7,9 @@ use App\Livewire\Admin\Collection\CreateCollection;
 use App\Livewire\Admin\Collection\ListCollection;
 use App\Livewire\Admin\Collection\ShowCollection;
 use App\Livewire\Admin\Comment\ListComment;
+use App\Livewire\Admin\Faq\CreateFaq;
+use App\Livewire\Admin\Faq\ListFaq;
+use App\Livewire\Admin\Faq\ShowFaq;
 use App\Livewire\Admin\Product\CreateProduct;
 use App\Livewire\Admin\Product\ListProduct;
 use App\Livewire\Admin\Product\ShowProduct;
@@ -104,19 +107,14 @@ Route::prefix('dashboard')
             ->prefix('comment')
             ->group(function () {
                 Route::get('/', ListComment::class)->name('index');
-//                Route::get('/create', CreateCollection::class)->name('create');
-//                Route::get('/show/{collection}', ShowCollection::class)->name('show');
             });
 
 
-//        Route::name('menu.')
-//            ->prefix('menu')
-//            ->group(function () {
-//                Route::get('/', ListMainMenu::class)->name('index');
-//                Route::get('/create', CreateMainMenu::class)->name('create');
-//                Route::get('/show/{main_menu}', ShowMainMenu::class)->name('show');
-//                Route::get('/delete/{main_menu}', [MainMenuController::class, 'delete'])->name('delete');
-//                Route::get('/enable/{main_menu}', [MainMenuController::class, 'enable'])->middleware('CheckEnablePermission')->name('enable');
-//                Route::get('/disable/{main_menu}', [MainMenuController::class, 'disable'])->middleware('CheckDisablePermission')->name('disable');
-//            });
+        Route::name('faq.')
+            ->prefix('faq')
+            ->group(function () {
+                Route::get('/', ListFaq::class)->name('index');
+                Route::get('/create', CreateFaq::class)->name('create');
+                Route::get('/show/{faq}', ShowFaq::class)->name('show');
+            });
     });

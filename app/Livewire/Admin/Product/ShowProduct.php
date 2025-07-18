@@ -12,6 +12,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
+use Illuminate\View\View;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\Features\SupportRedirects\Redirector;
 use Livewire\WithFileUploads;
@@ -53,7 +54,7 @@ class ShowProduct extends AdminComponent
         $this->additionalInformation = $product->additional_information;
     }
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'ویرایش  محصول';
         $allCategories = Category::pluck('id', 'name')
@@ -63,7 +64,8 @@ class ShowProduct extends AdminComponent
         $sampleProductImageUrl = $this->sampleProductImageUrl;
         return $this->renderView(
             'livewire.admin.product.show-product',
-            compact('pageTitle', 'allCategories', 'statuses', 'discountTypes', 'sampleProductImageUrl')
+            $pageTitle,
+            compact('allCategories', 'statuses', 'discountTypes', 'sampleProductImageUrl')
         );
     }
 
@@ -122,7 +124,6 @@ class ShowProduct extends AdminComponent
 
         DB::beginTransaction();
         try {
-
             $this->product->update($data);
 
             if (!empty($this->mainImage) and $this->mainImage instanceof TemporaryUploadedFile) {
@@ -152,10 +153,9 @@ class ShowProduct extends AdminComponent
             DB::commit();
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.product.show', ['product' => $this->product->id]);
-        } catch (Exception $e) {
+        } catch (Exception) {
             DB::rollBack();
-//            session()->flash('error', __('global.error_message'));
-            session()->flash('error', $e->getMessage());
+            session()->flash('error', __('global.error_message'));
             return redirect()->route('admin.product.show', ['product' => $this->product->id]);
         }
     }

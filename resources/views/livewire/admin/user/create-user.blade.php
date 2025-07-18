@@ -1,10 +1,6 @@
-@section('title',$pageTitle)
-
 
 @section('styles')
 @endsection
-
-
 
 
 <div class="app-content content">

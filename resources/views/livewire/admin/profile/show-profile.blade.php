@@ -1,4 +1,3 @@
-@section('title', $pageTitle )
 
 @section('styles')
 

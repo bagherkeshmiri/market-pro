@@ -15,6 +15,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
+use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
@@ -86,7 +87,7 @@ class ShowCollection extends AdminComponent
             ->toArray();
     }
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'ویرایش  کالکشن ' . $this->title;
         $statuses = showEnumLabels(IsActive::class);
@@ -107,7 +108,6 @@ class ShowCollection extends AdminComponent
         }
 
         $viewData = [
-            'pageTitle' => $pageTitle,
             'statuses' => $statuses,
             'types' => $types,
             'selectBoxCategories' => $selectBoxCategories,
@@ -127,6 +127,7 @@ class ShowCollection extends AdminComponent
 
         return $this->renderView(
             'livewire.admin.collection.show-collection',
+            $pageTitle,
             $viewData
         );
     }

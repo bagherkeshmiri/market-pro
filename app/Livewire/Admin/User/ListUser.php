@@ -5,10 +5,11 @@ namespace App\Livewire\Admin\User;
 use App\Enums\UserType;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\User;
+use Illuminate\View\View;
 
 class ListUser extends AdminComponent
 {
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'لیست کاربران';
         $tableHeads = ['نام', 'ایمیل', 'نقش', 'نوع کاربر', 'دسترسی ها', 'تاریخ ایجاد', 'عملیات'];
@@ -18,7 +19,8 @@ class ListUser extends AdminComponent
         $isAdmin = auth()->user()->type == UserType::Admin;
         return $this->renderView(
             'livewire.admin.user.list-user',
-            compact('pageTitle', 'tableHeads', 'users', 'mainAdminId', 'isAdmin')
+            $pageTitle,
+            compact('tableHeads', 'users', 'mainAdminId', 'isAdmin')
         );
     }
 }

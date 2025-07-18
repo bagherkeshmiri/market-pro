@@ -7,6 +7,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
@@ -22,13 +23,14 @@ class ChangePassword extends AdminComponent
         $this->admin = auth()->user();
     }
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = ' تغییر رمز عبور';
         $admin = $this->admin;
         return $this->renderView(
             'livewire.admin.profile.change-password',
-            compact('pageTitle', 'admin')
+            $pageTitle,
+            compact('admin')
         );
     }
 

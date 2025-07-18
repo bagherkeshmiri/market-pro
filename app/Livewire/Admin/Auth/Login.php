@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 
 class Login extends AuthComponent
@@ -40,8 +41,9 @@ class Login extends AuthComponent
         }
     }
 
-    public function render()
+    public function render(): View
     {
-        return $this->renderView('livewire.admin.auth.login');
+        $pageTitle = 'ورود مدیران';
+        return $this->renderView('livewire.admin.auth.login',$pageTitle);
     }
 }

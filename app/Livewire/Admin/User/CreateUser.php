@@ -10,6 +10,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
+use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
@@ -21,14 +22,15 @@ class CreateUser extends AdminComponent
     public $password;
     public $role;
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'ایجاد کاربر';
         $roles = Role::pluck('id', 'fa_name')->toArray();
         $types = showEnumLabels(UserType::class);
         return $this->renderView(
             'livewire.admin.user.create-user',
-            compact('pageTitle', 'roles', 'types')
+            $pageTitle,
+            compact('roles', 'types')
         );
     }
 

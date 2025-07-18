@@ -10,6 +10,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
+use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
@@ -31,7 +32,7 @@ class ShowUser extends AdminComponent
         $this->role = $this->admin->permissions->pluck('id')->toArray()[0];
     }
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'ویرایش کاربر';
         $roles = Role::pluck('id', 'fa_name')->toArray();
@@ -41,7 +42,8 @@ class ShowUser extends AdminComponent
         $admins = $this->admin;
         return $this->renderView(
             'livewire.admin.user.show-user',
-            compact('pageTitle', 'roles', 'types', 'admins')
+            $pageTitle,
+            compact('roles', 'types', 'admins')
         );
     }
 

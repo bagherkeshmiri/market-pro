@@ -4,10 +4,11 @@ namespace App\Livewire\Admin\Category;
 
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
+use Illuminate\View\View;
 
 class ListCategory extends AdminComponent
 {
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'لیست دسته بندی ها';
         $tableHeads = ['تصویر','نام', 'دسته پدر', 'تاریخ ایجاد', 'عملیات'];
@@ -15,7 +16,8 @@ class ListCategory extends AdminComponent
         $categories = Category::paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.category.list-category',
-            compact('pageTitle', 'tableHeads','sampleProductImageUrl', 'categories')
+            $pageTitle,
+            compact('tableHeads','sampleProductImageUrl', 'categories')
         );
     }
 }

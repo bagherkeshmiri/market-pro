@@ -4,10 +4,11 @@ namespace App\Livewire\Admin\Product;
 
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Product;
+use Illuminate\View\View;
 
 class ListProduct extends AdminComponent
 {
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'لیست‌ محصولات';
         $tableHeads = ['تصویر', 'نام', 'دسته', 'وضعیت', 'نوع تخفیف', 'قیمت اولیه', 'تخفیف ','قیمت نهایی ', ' موجودی ', 'عملیات'];
@@ -17,7 +18,8 @@ class ListProduct extends AdminComponent
         ])->paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.product.list-product',
-            compact('pageTitle', 'tableHeads', 'products', 'sampleProductImageUrl')
+            $pageTitle,
+            compact('tableHeads', 'products', 'sampleProductImageUrl')
         );
     }
 }

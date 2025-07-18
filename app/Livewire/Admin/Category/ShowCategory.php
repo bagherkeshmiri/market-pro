@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\Features\SupportRedirects\Redirector;
 use Livewire\WithFileUploads;
@@ -30,7 +31,7 @@ class ShowCategory extends AdminComponent
         $this->image = $category->image->url ?? null;
     }
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'ویرایش دسته بندی';
         $sampleProductImageUrl = $this->sampleProductImageUrl;
@@ -40,7 +41,8 @@ class ShowCategory extends AdminComponent
         Arr::forget($allCategories, $this->category->title);
         return $this->renderView(
             'livewire.admin.category.show-category',
-            compact('pageTitle', 'sampleProductImageUrl', 'allCategories')
+            $pageTitle,
+            compact('sampleProductImageUrl', 'allCategories')
         );
     }
 

@@ -1,6 +1,6 @@
 <div>
 
-    <section class="login-area pt-100 pb-100">
+    <section class="login-area pt-50 pb-50">
         <div class="container">
             <div class="login-wrap text-center">
                 <h3 class="title">حساب کاربری برای خود بسازید</h3>

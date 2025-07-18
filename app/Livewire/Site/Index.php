@@ -4,10 +4,11 @@ namespace App\Livewire\Site;
 
 use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\Collection;
+use Illuminate\View\View;
 
 class Index extends SiteComponent
 {
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'فروشگاه اینترنتی رویسر';
         $sampleProductImageUrl = $this->sampleProductImageUrl;

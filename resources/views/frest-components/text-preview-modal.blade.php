@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body text-center">
                <p>
-                   {{ $content }}
+                   {!! $content !!}
                </p>
             </div>
         </div>

@@ -7,6 +7,7 @@ use App\Models\Category;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 use Livewire\WithFileUploads;
 use Throwable;
@@ -19,13 +20,14 @@ class CreateCategory extends AdminComponent
     public $parentId;
     public $image;
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'ایجاد دسته بندی';
         $allCategories = Category::pluck('id', 'name')->toArray();
         return $this->renderView(
             'livewire.admin.category.create-category',
-            compact('pageTitle', 'allCategories')
+            $pageTitle,
+            compact('allCategories')
         );
     }
 
