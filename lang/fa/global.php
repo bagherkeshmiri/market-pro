@@ -38,4 +38,5 @@ return [
     'approve' => 'تایید',
     'reject' => 'رد',
     'show' => 'نمایش',
+    'post' => 'پست',
 ];
