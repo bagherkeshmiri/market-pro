@@ -10,6 +10,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\Features\SupportRedirects\Redirector;
@@ -61,11 +62,16 @@ class ShowCategory extends AdminComponent
             'image' => $this->image instanceof TemporaryUploadedFile
                 ? 'file|mimes:jpg,png,jpeg,webp|max:500' // TODO reduce image size and width and height
                 : 'nullable',
+            'type' => [
+                'required',
+                new Enum(CategoryType::class),
+            ],
         ]);
 
         $data = [
             'name' => $this->name,
             'parent_id' => $this->parentId,
+            'type' => $this->type,
         ];
 
         DB::beginTransaction();
