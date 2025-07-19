@@ -29,7 +29,7 @@ Route::name('site.')
         Route::get('/faq', Faq::class)->name('faq');
         Route::get('/cart', Cart::class)->name('cart');
         Route::get('/wishlist', Wishlist::class)->name('wishlist');
-        Route::get('/blog/test', SinglePost::class)->name('single-post');
+        Route::get('/blog/{post}', SinglePost::class)->name('single-post');
     });
 
 

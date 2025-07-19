@@ -9,33 +9,22 @@
                         </div>
                         <div class="blog-details-content-wrap">
                             <ul class="post-meta">
-                                <li><i class="fa-sharp fa-regular fa-clock"></i>25 فروردین 1403</li>
-                                <li><i class="fa-light fa-user"></i>مدرن فشن</li>
+                                <li><i class="fa-sharp fa-regular fa-clock"></i>{{ $post->jalali_created_at }}</li>
+                                <li><i class="fa-light fa-user"></i>{{ $post->user->name ?? '' }}</li>
+                                <li><i class="fa-light fa-list"></i>{{ $post->category->name ?? '' }}</li>
                             </ul>
                             <div class="blog-details-content">
-                                <h2 class="details-title mb-25">امروزه بهترین نوع پوشاک رو میبینیم</h2>
-                                <p class="mb-20">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز</p>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیازلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز</p>
-                                <blockquote class="mb-30">
-                                    <div class="content">
-                                        <p>“لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است”</p>
-                                    </div>
-                                </blockquote>
-                                <p class="mb-30">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
-                                <div class="details-img-wrap mt-40 mb-40">
-                                    <img src="{{ asset('images/site/blog-details-img-1.png') }}" alt="blog">
-                                    <img src="{{ asset('images/site/blog-details-img-2.png') }}" alt="blog">
-                                </div>
-                                <p class="mb-50">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                                <h2 class="details-title mb-25">{{ $post->title }}</h2>
+                                {!! $post->body !!}
                             </div>
                             <div class="tags">
-                                <div class="tag-left">
-                                    <ul class="tag-list">
-                                        <li><a href="#">فشن</a></li>
-                                        <li><a href="#">پوشاک</a></li>
-                                        <li><a href="#">مبلمان</a></li>
-                                    </ul>
-                                </div>
+                                {{--                                <div class="tag-left">--}}
+                                {{--                                    <ul class="tag-list">--}}
+                                {{--                                        <li><a href="#">فشن</a></li>--}}
+                                {{--                                        <li><a href="#">پوشاک</a></li>--}}
+                                {{--                                        <li><a href="#">مبلمان</a></li>--}}
+                                {{--                                    </ul>--}}
+                                {{--                                </div>--}}
                                 <div class="social-list-wrap">
                                     <h4 class="follow">مارا دنبال کنید:</h4>
                                     <ul class="social-list">
@@ -114,7 +103,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- ./ comments-area -->
                             <div class="form-wrap pt-70">
                                 <div class="blog-contact-form">
                                     <h2 class="title">نظرات اضافه کنید</h2>
@@ -154,10 +142,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- ./ form-wrap -->
                     </div>
                 </div>
-                <!-- Sidebar Widgets -->
 
                 <div class="col-lg-4">
                     <div class="sidebar-widget">
@@ -171,58 +157,34 @@
                     <div class="sidebar-widget">
                         <h3 class="widget-title">دسته بندی</h3>
                         <ul class="sidebar-list">
-                            <li>
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                <label for="vehicle1"> آخرین خبر</label><br>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="vehicle6" name="vehicle1" value="Bike">
-                                <label for="vehicle6"> بهترین های امروز</label><br>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="vehicle3" name="vehicle1" value="Bike">
-                                <label for="vehicle3"> طراحی جدید</label><br>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="vehicle4" name="vehicle1" value="Bike">
-                                <label for="vehicle4"> فشن ها</label><br>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="vehicle5" name="vehicle1" value="Bike">
-                                <label for="vehicle5"> مبلمان</label><br>
-                            </li>
+
+                            @foreach($categories as $key => $value)
+                                <li>
+                                    <input type="checkbox" id="{{ $value }}" name="category-{{ $value }}" value="{{ $value }}">
+                                    <label for="vehicle1">{{ $key }}</label><br>
+                                </li>
+                            @endforeach
+
                         </ul>
                     </div>
-                    <div class="sidebar-widget">
-                        <h3 class="widget-title">آخرین پست ها</h3>
-                        <div class="sidebar-post">
-                            <img src="{{ asset('images/site/sidebar-thumb-1.png') }}" alt="post">
-                            <div class="post-content">
-                                <ul class="post-meta">
-                                    <li><i class="fa-sharp fa-regular fa-clock"></i>05 دی 1403</li>
-                                </ul>
-                                <h3 class="title"><a href="#">استخدام تیم فروش مناسب در زمان مناسب</a></h3>
-                            </div>
+
+                    @if($lastPosts->count() > 0)
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">آخرین پست ها</h3>
+                            @foreach($lastPosts as $lastPost)
+                                <div class="sidebar-post">
+                                    <img src="{{ asset('images/site/sidebar-thumb-1.png') }}" alt="post">
+                                    <div class="post-content">
+                                        <ul class="post-meta">
+                                            <li><i class="fa-sharp fa-regular fa-clock"></i>{{ $lastPost->jalali_created_at }}</li>
+                                        </ul>
+                                        <h3 class="title"><a href="{{ route('site.single-post',['post' => $lastPost->slug]) }}">{{ $lastPost->title }}</a></h3>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-                        <div class="sidebar-post">
-                            <img src="{{ asset('images/site/sidebar-thumb-2.png') }}" alt="post">
-                            <div class="post-content">
-                                <ul class="post-meta">
-                                    <li><i class="fa-sharp fa-regular fa-clock"></i>05 دی 1403</li>
-                                </ul>
-                                <h3 class="title"><a href="#">استخدام تیم فروش مناسب در زمان مناسب</a></h3>
-                            </div>
-                        </div>
-                        <div class="sidebar-post">
-                            <img src="{{ asset('images/site/sidebar-thumb-3.png') }}" alt="post">
-                            <div class="post-content">
-                                <ul class="post-meta">
-                                    <li><i class="fa-sharp fa-regular fa-clock"></i>05 دی 1403</li>
-                                </ul>
-                                <h3 class="title"><a href="#">استخدام تیم فروش مناسب در زمان مناسب</a></h3>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
+
                 </div>
             </div>
         </div>
