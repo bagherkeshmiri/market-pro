@@ -2,19 +2,55 @@
 
 namespace App\Models;
 
-use App\Enums\IsActive;
 use App\Enums\PostIsPublish;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
+use Str;
 
+/**
+ *
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $category_id
+ * @property string $title
+ * @property string $slug
+ * @property string|null $excerpt
+ * @property string $body
+ * @property PostIsPublish $is_published
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Category|null $category
+ * @property-read Collection<int, Comment> $comments
+ * @property-read int|null $comments_count
+ * @property-read string $is_publish_badge_class
+ * @property-read string $is_publish_label
+ * @property-read string $jalali_created_at
+ * @property-read User|null $user
+ * @method static Builder<static>|Post newModelQuery()
+ * @method static Builder<static>|Post newQuery()
+ * @method static Builder<static>|Post onlyTrashed()
+ * @method static Builder<static>|Post query()
+ * @method static Builder<static>|Post whereBody($value)
+ * @method static Builder<static>|Post whereCategoryId($value)
+ * @method static Builder<static>|Post whereCreatedAt($value)
+ * @method static Builder<static>|Post whereExcerpt($value)
+ * @method static Builder<static>|Post whereId($value)
+ * @method static Builder<static>|Post whereIsPublished($value)
+ * @method static Builder<static>|Post whereSlug($value)
+ * @method static Builder<static>|Post whereTitle($value)
+ * @method static Builder<static>|Post whereUpdatedAt($value)
+ * @method static Builder<static>|Post whereUserId($value)
+ * @method static Builder<static>|Post withTrashed()
+ * @method static Builder<static>|Post withoutTrashed()
+ * @mixin Eloquent
+ */
 class Post extends Eloquent
 {
     use SoftDeletes;
@@ -46,6 +82,15 @@ class Post extends Eloquent
         static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
             $builder->orderByDesc('id');
         });
+
+        static::creating(function ($post) {
+            $post->slug = Str::slug($post->title);
+        });
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 
     public function getJalaliCreatedAtAttribute(): string
@@ -62,6 +107,11 @@ class Post extends Eloquent
     public function getIsPublishBadgeClassAttribute(): string
     {
         return $this->is_published->badgeClass();
+    }
+
+    public function getExcerptAttribute($value): string
+    {
+        return $value ?? Str::limit(strip_tags($this->body), 200);
     }
 
     /*------------ Relations ------------*/
@@ -82,6 +132,17 @@ class Post extends Eloquent
     }
 
     /*-------------- Scopes -------------*/
+
+    public function scopePublished($query)
+    {
+        return $query->where('is_published', PostIsPublish::Yes);
+    }
+
+
+    public function scopeNotPublished($query)
+    {
+        return $query->where('is_published', PostIsPublish::No);
+    }
 
     /*---------- Other Functions --------*/
 
