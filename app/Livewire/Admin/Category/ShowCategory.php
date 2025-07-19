@@ -21,7 +21,7 @@ class ShowCategory extends AdminComponent
 {
     use WithFileUploads;
 
-    public object $category;
+    public Category $category;
     public $name;
     public $parentId;
     public $image;

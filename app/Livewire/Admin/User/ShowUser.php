@@ -16,7 +16,7 @@ use Throwable;
 
 class ShowUser extends AdminComponent
 {
-    public object $admin;
+    public User $admin;
     public $name;
     public $email;
     public $type;

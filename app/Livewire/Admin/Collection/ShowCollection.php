@@ -25,7 +25,7 @@ class ShowCollection extends AdminComponent
     use HandlesCollectionItemsSelection;
     use CollectionValidation;
 
-    public object $collection;
+    public Collection $collection;
     public $title;
     public $type;
     public $limitation;

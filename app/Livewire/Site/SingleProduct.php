@@ -14,7 +14,7 @@ class SingleProduct extends SiteComponent
 {
     use HandlesCart;
 
-    public object $product;
+    public Product $product;
     public $id;
     public array $cart = [];
 

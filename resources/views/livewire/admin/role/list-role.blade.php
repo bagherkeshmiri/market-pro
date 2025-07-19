@@ -37,9 +37,9 @@
                                                     </td>
                                                     <td class="text-white">{{ $role->jalali_created_at }}</td>
                                                     <td>
-                                                        @include('frest-components.icon-btn',[  'href' => route('admin.role.show',[ 'role' => $role->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.role.show',[ 'role' => $role->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                         @if($role->id !== $mainRoleId)
-                                                            @include('frest-components.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=role_delete(this,event)  data-url='.route('admin.role.delete',[ 'role' => $role->id ]) ])
+                                                            @include('frest-components.icon-btn',[ 'tooltipTitle' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=role_delete(this,event)  data-url='.route('admin.role.delete',[ 'role' => $role->id ]) ])
                                                         @endif
                                                     </td>
                                                 </tr>

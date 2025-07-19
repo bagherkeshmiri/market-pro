@@ -42,7 +42,7 @@
                                                           'modalId' => 'faq'.$faq->id,
                                                           'icon' => showIcon(__('global.show')),
                                                       ])
-                                                        @include('frest-components.icon-btn',[  'href' => route('admin.faq.show',[ 'faq' => $faq->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.faq.show',[ 'faq' => $faq->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                     </td>
                                                 </tr>
 

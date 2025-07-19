@@ -45,7 +45,7 @@
                                                           'modalId' => 'post'.$post->id,
                                                           'icon' => showIcon(__('global.show')),
                                                       ])
-                                                        {{--                                                        @include('frest-components.icon-btn',[  'href' => route('admin.faq.show',[ 'post' => $post->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])--}}
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.post.show',[ 'post' => $post->slug ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                     </td>
                                                 </tr>
 

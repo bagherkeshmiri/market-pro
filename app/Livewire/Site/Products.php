@@ -17,7 +17,7 @@ class Products extends SiteComponent
     use HandlesCart;
     use HandlesWishlist;
 
-    public object $category;
+    public Category $category;
     public $id;
     public array $cart = [];
     public array $wishlist = [];

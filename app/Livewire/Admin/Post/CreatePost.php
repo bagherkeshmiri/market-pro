@@ -85,11 +85,11 @@ class CreatePost extends AdminComponent
             DB::commit();
             $this->reset(['title']);
             session()->flash('success', __('global.success_message'));
-            return redirect()->route('admin.faq.index');
+            return redirect()->route('admin.post.index');
         } catch (Exception) {
             DB::rollBack();
             session()->flash('error', __('global.error_message'));
-            return redirect()->route('admin.faq.create');
+            return redirect()->route('admin.post.create');
         }
     }
 }

@@ -22,7 +22,7 @@ class ShowProduct extends AdminComponent
 {
     use WithFileUploads;
 
-    public object $product;
+    public Product $product;
     public $name;
     public $categoryId;
     public $price;
