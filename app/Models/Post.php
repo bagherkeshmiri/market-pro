@@ -56,8 +56,6 @@ use Str;
  */
 class Post extends Eloquent
 {
-    use SoftDeletes;
-
     public const string TABLE_NAME = 'posts';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';

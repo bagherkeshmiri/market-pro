@@ -58,9 +58,9 @@ class CreatePost extends AdminComponent
     public function store(): RedirectResponse|Redirector
     {
         $this->validate([
-            'title' => 'required',
-            'body' => 'required',
-            'slug' => 'required|regex:/^[A-Za-z0-9\-]+$/',
+            'title' => 'required|min:10',
+            'body' => 'required|min:100',
+            'slug' => 'required|min:10|regex:/^[A-Za-z0-9\-]+$/',
             'categoryId' => 'required|exists:categories,id',
             'status' => [
                 'required',

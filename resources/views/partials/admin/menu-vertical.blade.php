@@ -213,7 +213,7 @@
                             </li>
 
                             <li>
-                                <a href="#">
+                                <a href="{{ route('admin.post.index') }}">
                                     <i class="bx bx-left-arrow-alt text-white"></i>
                                     <span class="menu-item text-white" data-i18n="Third Level">
                                          لیست پست ها

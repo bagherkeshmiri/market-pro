@@ -11,6 +11,7 @@ use App\Livewire\Admin\Faq\CreateFaq;
 use App\Livewire\Admin\Faq\ListFaq;
 use App\Livewire\Admin\Faq\ShowFaq;
 use App\Livewire\Admin\Post\CreatePost;
+use App\Livewire\Admin\Post\ListPost;
 use App\Livewire\Admin\Product\CreateProduct;
 use App\Livewire\Admin\Product\ListProduct;
 use App\Livewire\Admin\Product\ShowProduct;
@@ -124,7 +125,7 @@ Route::prefix('dashboard')
         Route::name('post.')
             ->prefix('post')
             ->group(function () {
-//                Route::get('/', ListFaq::class)->name('index');
+                Route::get('/', ListPost::class)->name('index');
                 Route::get('/create', CreatePost::class)->name('create');
 //                Route::get('/show/{faq}', ShowFaq::class)->name('show');
             });
