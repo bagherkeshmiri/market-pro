@@ -4,10 +4,11 @@ namespace App\Livewire\Admin\Post;
 
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Post;
+use Illuminate\View\View;
 
 class ListPost extends AdminComponent
 {
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'لیست‌ سوالات متداول';
         $tableHeads = ['عنوان', 'اسلاگ','دسته', 'کاربر', 'وضعیت', 'تاریخ ایجاد', 'عملیات'];

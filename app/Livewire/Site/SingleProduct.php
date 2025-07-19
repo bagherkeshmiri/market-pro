@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Traits\HandlesCart;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 
 class SingleProduct extends SiteComponent
@@ -47,7 +48,7 @@ class SingleProduct extends SiteComponent
         }
     }
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = $this->product->name;
         $sampleProductImageUrl = $this->sampleProductImageUrl;

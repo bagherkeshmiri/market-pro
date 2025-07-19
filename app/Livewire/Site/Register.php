@@ -3,10 +3,11 @@
 namespace App\Livewire\Site;
 
 use App\Livewire\BaseComponents\SiteComponent;
+use Illuminate\View\View;
 
 class Register extends SiteComponent
 {
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'عضویت';
         return $this->renderView(
