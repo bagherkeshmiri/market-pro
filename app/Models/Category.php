@@ -32,6 +32,8 @@ use Morilog\Jalali\Jalalian;
  * @property-read Category|null $parent
  * @property-read Collection<int, Product> $products
  * @property-read int|null $products_count
+ * @method static Builder<static>|Category isPostCategory()
+ * @method static Builder<static>|Category isProductCategory()
  * @method static Builder<static>|Category newModelQuery()
  * @method static Builder<static>|Category newQuery()
  * @method static Builder<static>|Category onlyTrashed()
@@ -115,6 +117,16 @@ class Category extends Eloquent
 
 
     /*-------------- Scopes -------------*/
+
+    public function scopeIsPostCategory($query)
+    {
+        return $query->where('type', CategoryType::Post);
+    }
+
+    public function scopeIsProductCategory($query)
+    {
+        return $query->where('type', CategoryType::Product);
+    }
 
     /*---------- Other Functions --------*/
 

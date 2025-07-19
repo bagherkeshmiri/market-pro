@@ -195,6 +195,34 @@
 
                         </ul>
                     </li>
+                    <li>
+                        <a href="#">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item text-white" data-i18n="Second Level">
+                                وبلاگ
+                            </span>
+                        </a>
+                        <ul class="menu-content">
+                            <li>
+                                <a href="{{ route('admin.post.create') }}">
+                                    <i class="bx bx-left-arrow-alt text-white"></i>
+                                    <span class="menu-item text-white" data-i18n="Third Level">
+                                        ایجاد پست
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="bx bx-left-arrow-alt text-white"></i>
+                                    <span class="menu-item text-white" data-i18n="Third Level">
+                                         لیست پست ها
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li class=" nav-item">

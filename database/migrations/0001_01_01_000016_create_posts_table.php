@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('slug')->unique();
             $table->text('excerpt')->nullable();
             $table->longText('body');
-            $table->boolean('is_published')->default(false);
+            $table->unsignedTinyInteger('status')->default(0)->comment(' 0:not_active , 1:active ');
             $table->timestamps();
         });
     }

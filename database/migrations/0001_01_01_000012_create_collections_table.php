@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->unsignedTinyInteger('type')->default(1)->comment(' 1:product , 2:category');
             $table->unsignedTinyInteger('limitation')->nullable();
             $table->unsignedTinyInteger('sort')->nullable();
-            $table->tinyInteger('is_active')->default(1);
+            $table->tinyInteger('is_active')->default(1)->comment(' 0:active , 1:not_active ');
             $table->timestamps();
         });
 

@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use App\Enums\PostIsPublish;
+use App\Casts\CleanHtml;
+use App\Enums\IsActive;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -21,18 +22,20 @@ use Str;
  * @property int $category_id
  * @property string $title
  * @property string $slug
- * @property string|null $excerpt
+ * @property string $excerpt
  * @property string $body
- * @property PostIsPublish $is_published
+ * @property IsActive $status  0:active , 1:not_active
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Category|null $category
  * @property-read Collection<int, Comment> $comments
  * @property-read int|null $comments_count
- * @property-read string $is_publish_badge_class
- * @property-read string $is_publish_label
  * @property-read string $jalali_created_at
+ * @property-read string $status_badge_class
+ * @property-read string $status_label
  * @property-read User|null $user
+ * @method static Builder<static>|Post iSActive()
+ * @method static Builder<static>|Post isNotActive()
  * @method static Builder<static>|Post newModelQuery()
  * @method static Builder<static>|Post newQuery()
  * @method static Builder<static>|Post onlyTrashed()
@@ -42,8 +45,8 @@ use Str;
  * @method static Builder<static>|Post whereCreatedAt($value)
  * @method static Builder<static>|Post whereExcerpt($value)
  * @method static Builder<static>|Post whereId($value)
- * @method static Builder<static>|Post whereIsPublished($value)
  * @method static Builder<static>|Post whereSlug($value)
+ * @method static Builder<static>|Post whereStatus($value)
  * @method static Builder<static>|Post whereTitle($value)
  * @method static Builder<static>|Post whereUpdatedAt($value)
  * @method static Builder<static>|Post whereUserId($value)
@@ -68,13 +71,14 @@ class Post extends Eloquent
         'slug',
         'excerpt',
         'body',
-        'is_published',
+        'status',
     ];
 
     protected $hidden = [];
 
     protected $casts = [
-        'is_published' => PostIsPublish::class,
+        'status' => IsActive::class,
+        'body' => CleanHtml::class,
     ];
 
     protected static function booted(): void
@@ -84,7 +88,7 @@ class Post extends Eloquent
         });
 
         static::creating(function ($post) {
-            $post->slug = Str::slug($post->title);
+            $post->excerpt = Str::limit(strip_tags($post->body), 200);
         });
     }
 
@@ -98,20 +102,14 @@ class Post extends Eloquent
         return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
-
-    public function getIsPublishLabelAttribute(): string
+    public function getStatusLabelAttribute(): string
     {
-        return $this->is_published->label();
+        return $this->status->label();
     }
 
-    public function getIsPublishBadgeClassAttribute(): string
+    public function getStatusBadgeClassAttribute(): string
     {
-        return $this->is_published->badgeClass();
-    }
-
-    public function getExcerptAttribute($value): string
-    {
-        return $value ?? Str::limit(strip_tags($this->body), 200);
+        return $this->status->badgeClass();
     }
 
     /*------------ Relations ------------*/
@@ -133,15 +131,14 @@ class Post extends Eloquent
 
     /*-------------- Scopes -------------*/
 
-    public function scopePublished($query)
+    public function scopeISActive($query)
     {
-        return $query->where('is_published', PostIsPublish::Yes);
+        return $query->where('status', IsActive::Yes);
     }
 
-
-    public function scopeNotPublished($query)
+    public function scopeIsNotActive($query)
     {
-        return $query->where('is_published', PostIsPublish::No);
+        return $query->where('status', IsActive::No);
     }
 
     /*---------- Other Functions --------*/
