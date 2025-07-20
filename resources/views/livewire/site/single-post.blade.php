@@ -18,13 +18,6 @@
                                 {!! $post->body !!}
                             </div>
                             <div class="tags">
-                                {{--                                <div class="tag-left">--}}
-                                {{--                                    <ul class="tag-list">--}}
-                                {{--                                        <li><a href="#">فشن</a></li>--}}
-                                {{--                                        <li><a href="#">پوشاک</a></li>--}}
-                                {{--                                        <li><a href="#">مبلمان</a></li>--}}
-                                {{--                                    </ul>--}}
-                                {{--                                </div>--}}
                                 <div class="social-list-wrap">
                                     <h4 class="follow">مارا دنبال کنید:</h4>
                                     <ul class="social-list">
