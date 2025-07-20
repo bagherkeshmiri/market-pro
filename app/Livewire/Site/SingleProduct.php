@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Site;
 
+use App\Enums\CommentStatus;
 use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\Product;
 use App\Traits\HandlesCart;
@@ -61,7 +62,7 @@ class SingleProduct extends SiteComponent
             ->where('category_id', $product->category_id)
             ->get();
 
-        $comments = $this->product->comments;
+        $comments = $this->product->comments()->where('status', CommentStatus::Approved)->get();;
         return $this->renderView(
             'livewire.site.single-product',
             $pageTitle,
