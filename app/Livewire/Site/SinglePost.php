@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Site;
 
+use App\Enums\CommentStatus;
 use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\Category;
 use App\Models\Post;
@@ -23,7 +24,7 @@ class SinglePost extends SiteComponent
             ->pluck('id', 'name')
             ->toArray();
         $lastPosts = Post::iSActive()->limit(4)->get();
-        $comments = $this->post->comments;
+        $comments = $this->post->comments()->where('status', CommentStatus::Approved)->get();
         return $this->renderView(
             'livewire.site.single-post',
             $pageTitle,
