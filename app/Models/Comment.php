@@ -88,6 +88,7 @@ class Comment extends Eloquent
         return match ($this->commentable_type) {
             Product::class => 'محصول',
             Category::class => 'دسته‌بندی',
+            Post::class => 'پست',
             default => 'نامشخص',
         };
     }
@@ -97,6 +98,7 @@ class Comment extends Eloquent
         return match ($this->commentable_type) {
             Product::class => 'bg-rgba-info text-info',
             Category::class => 'bg-rgba-success text-success',
+            Post::class => 'bg-rgba-warning text-warning',
             default => 'bg-rgba-danger text-danger',
         };
     }
