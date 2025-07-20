@@ -3,7 +3,7 @@
         <div class="review-list">
 
             @foreach($comments as $comment)
-                <livewire:site.comment-item :comment="$comment" :key="$comment->id"/>
+                <livewire:site.single-product-comment-item :comment="$comment" :key="$comment->id"/>
             @endforeach
 
             {{ $comments->links('custom-components.site.pagination',['items' => $comments]) }}

@@ -63,75 +63,28 @@
                             </div>
                             <div class="comments-area">
                                 <div class="section-heading">
-                                    <h2 class="section-title">نظرات (3)</h2>
+                                    <h2 class="section-title">نظرات ({{ $comments->count() }})</h2>
                                 </div>
-                                <div class="comment-item">
-                                    <div class="comment-thumb">
-                                        <img src="{{ asset('images/site/comment-thumb-1.png') }}" alt="author">
-                                    </div>
-                                    <div class="comment-info">
-                                        <div class="comments-meta">
-                                            <span><i class="fa-light fa-circle-user"></i>10 خرداد 1403</span>
-                                        </div>
-                                        <h3 class="author">آصف هاشمی </h3>
-                                        <p>
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-                                        </p>
-                                        <button class="reply">پاسخ دهید</button>
-                                    </div>
-                                </div>
-                                <div class="comment-item item-2">
-                                    <div class="comment-thumb">
-                                        <img src="{{ asset('images/site/comment-thumb-2.png') }}" alt="author">
-                                    </div>
-                                    <div class="comment-info">
-                                        <div class="comments-meta">
-                                            <span><i class="fa-light fa-circle-user"></i>10 خرداد 1403</span>
-                                        </div>
-                                        <h3 class="author">آناهیتا دلپذیر </h3>
-                                        <p>
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-                                        </p>
-                                        <button class="reply">پاسخ دهید</button>
-                                    </div>
-                                </div>
+
+                                <livewire:site.post-comments :post-id="$post->id"/>
+
                             </div>
                             <div class="form-wrap pt-70">
                                 <div class="blog-contact-form">
-                                    <h2 class="title">نظرات اضافه کنید</h2>
-                                    <p>آدرس ایمیل شما منتشر نخواهد شد. فیلدهای الزامی مشخص شده اند *</p>
-                                    <div class="request-form">
-                                        <form action="#" method="post" id="ajax_contact" class="form-horizontal">
-                                            <div class="form-group row">
-                                                <div class="col-md-6">
-                                                    <div class="form-item">
-                                                        <label for="fullname" hidden></label>
-                                                        <input type="text" id="fullname" name="fullname" class="form-control" placeholder="نام شما">
-                                                        <div class="icon"><i class="fa-regular fa-user"></i></div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-item">
-                                                        <label for="email" hidden></label>
-                                                        <input type="email" id="email" name="email" class="form-control" placeholder="ایمیل شما">
-                                                        <div class="icon"><i class="fa-sharp fa-regular fa-envelope"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-12">
-                                                    <div class="form-item message-item">
-                                                        <label for="message" hidden></label>
-                                                        <textarea id="message" name="message" cols="30" rows="5" class="form-control address" placeholder="پیام شما"></textarea>
-                                                        <div class="icon"><i class="fa-light fa-messages"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="submit-btn">
-                                                <button id="submit" class="rr-primary-btn" type="submit">ارسال پیام</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                    <h2 class="title">نظر بدهید</h2>
+
+                                    @auth
+
+                                        @include('custom-components.site.flash-message')
+
+                                        @livewire('site.post-comment-form',['postId' => $post->id])
+
+                                    @else
+                                        <div class="alert alert-warning mt-3">
+                                            برای ثبت نظر لطفاً <a href="{{ route('site.login') }}" class="text-primary">وارد حساب کاربری خود شوید</a>.
+                                        </div>
+                                    @endauth
+
                                 </div>
                             </div>
                         </div>

@@ -23,10 +23,11 @@ class SinglePost extends SiteComponent
             ->pluck('id', 'name')
             ->toArray();
         $lastPosts = Post::iSActive()->limit(4)->get();
+        $comments = $this->post->comments;
         return $this->renderView(
             'livewire.site.single-post',
             $pageTitle,
-            compact('categories','lastPosts')
+            compact('categories','lastPosts','comments')
         );
     }
 }

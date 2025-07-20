@@ -52,16 +52,6 @@ class ProductCommentForm extends Component
             ->exists();
 
         $this->canSubmit = !$recentReview;
-
-
-//        dd(
-//            $user->comments()
-//                ->where('commentable_id', $this->productId)
-//                ->where('commentable_type', Product::class)
-//                ->where('created_at', '>=', Carbon::now()->subDay()->toDateTimeString())
-//                ->where('status', CommentStatus::Pending)
-//                ->dd()
-//        );
     }
 
     /**

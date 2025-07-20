@@ -6,7 +6,7 @@ use App\Models\Comment;
 use Illuminate\View\View;
 use Livewire\Component;
 
-class CommentItem extends Component
+class SingleProductCommentItem extends Component
 {
     public $comment;
     public $expanded = false;
@@ -24,6 +24,6 @@ class CommentItem extends Component
 
     public function render(): View
     {
-        return view('livewire.site.comment-item');
+        return view('livewire.site.single-product-comment-item');
     }
 }
