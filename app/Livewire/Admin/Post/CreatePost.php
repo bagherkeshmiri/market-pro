@@ -67,7 +67,7 @@ class CreatePost extends AdminComponent
             'body' => 'required|min:100',
             'slug' => 'required|min:10|regex:/^[A-Za-z0-9\-]+$/',
             'categoryId' => 'required|exists:categories,id',
-            'image' => 'nullable|file|mimes:jpg,png,jpeg,webp|max:500', // TODO reduce image size and width and height
+            'image' => 'required|file|mimes:jpg,png,jpeg,webp|max:500', // TODO reduce image size and width and height
             'status' => [
                 'required',
                 new Enum(IsActive::class)

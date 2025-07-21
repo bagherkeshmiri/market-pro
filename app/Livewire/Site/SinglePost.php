@@ -15,7 +15,6 @@ class SinglePost extends SiteComponent
     public function render(): View
     {
         $pageTitle = $this->post->title;
-        $sampleImageUrl = $this->sampleImageUrl;
         $categories = Category::withoutTrashed()
             ->isPostCategory()
             ->select([
@@ -29,7 +28,7 @@ class SinglePost extends SiteComponent
         return $this->renderView(
             'livewire.site.single-post',
             $pageTitle,
-            compact('sampleImageUrl', 'categories', 'lastPosts', 'comments')
+            compact('categories', 'lastPosts', 'comments')
         );
     }
 }

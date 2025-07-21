@@ -5,7 +5,7 @@
                 <div class="col-lg-8 col-md-12">
                     <div class="blog-details-wrap">
                         <div class="blog-details-img">
-                            <img src="{{ $post->image ? asset($post->image->url) : asset($sampleImageUrl) }}" alt="post-{{ $post->slug }}">
+                            <img src="{{ $post->image ? asset($post->image->url) : asset($this->sampleImageUrl) }}" alt="post-{{ $post->slug }}">
                         </div>
                         <div class="blog-details-content-wrap">
                             <ul class="post-meta">

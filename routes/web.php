@@ -67,4 +67,9 @@ Route::get('test', function () {
 //    );
 
 
+    dd(
+//        app()->isLocal()
+        app()->isProduction()
+    );
+
 });

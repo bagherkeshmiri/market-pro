@@ -1,7 +1,5 @@
-
 @section('styles')
 @endsection
-
 
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -10,7 +8,7 @@
 
             <section id="multiple-column-form">
                 <div class="row match-height">
-                    <div class="col-12">
+                    <div class="col-10">
                         <div class="card border">
                             <div class="card-content">
                                 <div class="card-body">
@@ -58,6 +56,16 @@
                                                     </div>
                                                 </div>
 
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                                    <div class="form-group">
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'image' , 'content' => 'آپلود تصویر '] )
+                                                        @include('frest-components.required-tag')
+                                                        @include('frest-components.simple-file-upload', ['wire' => 'image' , 'id' => 'image'])
+                                                        @include('frest-components.validation-error',[ 'name' => 'image' ])
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
                                                     @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => ' متن پست'] )
                                                     @include('frest-components.required-tag')
@@ -77,6 +85,25 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-2">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+
+                                    <div>
+                                        @include('frest-components.text-divider' , ['dividerClass' => 'divider-warning' ,'title' => 'تصویر اصلی'])
+                                        @if ($image)
+                                            <img src="{{ is_object($image) && method_exists($image, 'temporaryUrl') ? $image->temporaryUrl() : (file_exists(public_path($image)) ? asset($image) : asset($this->sampleImageUrl)) }}" width="100%" alt="product-image"/>
+                                        @else
+                                            <img src="{{ asset($this->sampleImageUrl) }}" width="100%" alt="default-image"/>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
             </section>
@@ -119,14 +146,15 @@
         }
 
         DecoupledDocumentEditor
-            .create(document.querySelector('#body'), { extraPlugins: [MyCustomUploadAdapterPlugin], language: { ui: 'fa', content: 'fa' } })
+            .create(document.querySelector('#body'), {extraPlugins: [MyCustomUploadAdapterPlugin], language: {ui: 'fa', content: 'fa'}})
             .then(editor => {
                 bodyEditor = editor;
                 document.querySelector('#toolbar-container-body').appendChild(editor.ui.view.toolbar.element);
             });
 
         saveBtn.addEventListener('click', function () {
-            @this.set('body', bodyEditor.getData());
+            @this.
+            set('body', bodyEditor.getData());
         });
 
 
