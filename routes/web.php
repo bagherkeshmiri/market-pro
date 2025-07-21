@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\CollectionType;
+use App\Jobs\TestJob;
 use App\Livewire\Site\Blog;
 use App\Livewire\Site\Cart;
 use App\Livewire\Site\Contact;
@@ -32,6 +33,10 @@ Route::name('site.')
         Route::get('/blog/{post}', SinglePost::class)->name('single-post');
     });
 
+
+Route::get('/run-test-job', function () {
+    TestJob::dispatch();
+});
 
 //Route::get('/create-new-table', function () {
 //    if (!Schema::hasTable('images')) {
