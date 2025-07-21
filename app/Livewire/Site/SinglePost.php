@@ -7,6 +7,7 @@ use App\Enums\IsActive;
 use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\Category;
 use App\Models\Post;
+use App\Traits\SampleImages;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;

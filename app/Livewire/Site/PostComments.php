@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Site;
 
-use App\Models\Post;
 use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -11,20 +10,20 @@ class PostComments extends Component
 {
     use WithPagination;
 
-    public $postId;
+    public $comments;
 
-    public function mount($postId): void
+    public function mount($comments): void
     {
-        $this->postId = $postId;
+        $this->comments = $comments;
     }
 
     public function render(): View
     {
-        $post = Post::findOrFail($this->postId);
-        $comments = $post->comments()->latest()->paginate(3);
         return view(
             'livewire.site.post-comments',
-            compact('comments')
+            [
+                'comments' => $this->comments,
+            ]
         );
     }
 }

@@ -17,7 +17,6 @@ class FashionSection extends Component
 
     public string $title;
     public $items;
-    public string $sampleImageUrl;
     public array $cart = [];
     public array $wishlist = [];
 
@@ -25,7 +24,6 @@ class FashionSection extends Component
     {
         $this->title = $title;
         $this->items = $items;
-        $this->sampleImageUrl = config('defaults.sample-image');
         $this->cart = Session::get('cart', []);
         $this->wishlist = Session::get('wishlist', []);
     }

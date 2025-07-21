@@ -16,7 +16,7 @@ class ListCategory extends AdminComponent
         return $this->renderView(
             'livewire.admin.category.list-category',
             $pageTitle,
-            compact('tableHeads', 'sampleImageUrl', 'categories')
+            compact('tableHeads', 'categories')
         );
     }
 }

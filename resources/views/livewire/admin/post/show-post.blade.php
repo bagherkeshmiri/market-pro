@@ -94,9 +94,9 @@
                                     <div>
                                         @include('frest-components.text-divider' , ['dividerClass' => 'divider-warning' ,'title' => 'تصویر اصلی'])
                                         @if ($image)
-                                            <img src="{{ is_object($image) && method_exists($image, 'temporaryUrl') ? $image->temporaryUrl() : (file_exists(public_path($image)) ? asset($image) : asset($this->sampleImageUrl)) }}" width="100%" alt="product-image"/>
+                                            <img src="{{ is_object($image) && method_exists($image, 'temporaryUrl') ? $image->temporaryUrl() : (file_exists(public_path($image)) ? asset($image) : asset($this->getSampleImageUrl())) }}" width="100%" alt="product-image"/>
                                         @else
-                                            <img src="{{ asset($this->sampleImageUrl) }}" width="100%" alt="default-image"/>
+                                            <img src="{{ asset($this->getSampleImageUrl()) }}" width="100%" alt="default-image"/>
                                         @endif
                                     </div>
                                 </div>
