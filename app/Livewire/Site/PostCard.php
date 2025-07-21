@@ -3,11 +3,14 @@
 namespace App\Livewire\Site;
 
 use App\Models\Post;
+use App\Traits\SampleImages;
 use Illuminate\View\View;
 use Livewire\Component;
 
 class PostCard extends Component
 {
+    use SampleImages;
+
     public Post $post;
     public $image;
     public $commentsCount;
@@ -20,7 +23,7 @@ class PostCard extends Component
     {
         return $this->post->image
             ? $this->post->image->url
-            : config('defaults.sample-image');
+            : $this->getSampleImageUrl();
     }
 
     public function mount(): void
