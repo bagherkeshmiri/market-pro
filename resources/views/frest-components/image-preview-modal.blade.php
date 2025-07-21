@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-                <img src="{{ $modelImageRelation ? asset($modelImageUrl) : asset($sampleProductImageUrl) }}" alt="product-image-{{ $modalId }}" class="img-fluid"/>
+                <img src="{{ $modelImageRelation ? asset($modelImageUrl) : asset($sampleImageUrl) }}" alt="product-image-{{ $modalId }}" class="img-fluid"/>
             </div>
         </div>
     </div>

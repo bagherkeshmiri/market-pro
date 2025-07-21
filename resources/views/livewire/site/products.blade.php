@@ -16,7 +16,7 @@
                     <div class="shop-item">
                         <div class="shop-thumb">
                             <div class="overlay"></div>
-                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleProductImageUrl) }}" alt="shop">
+                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleImageUrl) }}" alt="shop">
                             @if($product->discount > 0)
                                 <span class="sale">{{ $product->discount_percent }} %</span>
                             @endif

@@ -38,7 +38,7 @@ class ShowCategory extends AdminComponent
     public function render(): View
     {
         $pageTitle = 'ویرایش دسته بندی';
-        $sampleProductImageUrl = $this->sampleProductImageUrl;
+        $sampleImageUrl = $this->sampleImageUrl;
         $allCategories = Category::where('id', '!=', $this->category->id)
             ->pluck('id', 'name')
             ->toArray();
@@ -47,7 +47,7 @@ class ShowCategory extends AdminComponent
         return $this->renderView(
             'livewire.admin.category.show-category',
             $pageTitle,
-            compact('sampleProductImageUrl', 'allCategories','types')
+            compact('sampleImageUrl', 'allCategories','types')
         );
     }
 

@@ -10,13 +10,13 @@ class CategorySection extends Component
 {
     public string $title;
     public $items;
-    public string $sampleProductImageUrl;
+    public string $sampleImageUrl;
 
-    public function mount(string $title, Collection|array $items, string $sampleProductImageUrl): void
+    public function mount(string $title, Collection|array $items, string $sampleImageUrl): void
     {
         $this->title = $title;
         $this->items = $items;
-        $this->sampleProductImageUrl = $sampleProductImageUrl;
+        $this->sampleImageUrl = $sampleImageUrl;
     }
 
     public function render(): View

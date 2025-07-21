@@ -61,11 +61,11 @@ class ShowProduct extends AdminComponent
             ->toArray();
         $statuses = showEnumLabels(ProductStatus::class);
         $discountTypes = showEnumLabels(DiscountType::class);
-        $sampleProductImageUrl = $this->sampleProductImageUrl;
+        $sampleImageUrl = $this->sampleImageUrl;
         return $this->renderView(
             'livewire.admin.product.show-product',
             $pageTitle,
-            compact('allCategories', 'statuses', 'discountTypes', 'sampleProductImageUrl')
+            compact('allCategories', 'statuses', 'discountTypes', 'sampleImageUrl')
         );
     }
 

@@ -123,46 +123,6 @@
             </li>
             <li class=" nav-item">
                 <a href="#">
-                    <i class="bx   bx-money text-white"></i>
-                    <span class="menu-title text-white" data-i18n="roles"> سفارشات</span>
-                </a>
-                <ul class="menu-content">
-                    <li><a href="#">
-                            <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="create-role">سفارش ‌ها امروز</span>
-                        </a>
-                    </li>
-
-                    <li><a href="#">
-                            <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست سفارشات </span>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-            <li class=" nav-item">
-                <a href="#">
-                    <i class="bx bx-receipt text-white"></i>
-                    <span class="menu-title text-white" data-i18n="roles"> فاکتور ها</span>
-                </a>
-                <ul class="menu-content">
-                    <li><a href="#">
-                            <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="create-role">ایجاد فاکتور</span>
-                        </a>
-                    </li>
-
-                    <li><a href="#">
-                            <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست فاکتور ها </span>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-            <li class=" nav-item">
-                <a href="#">
                     <i class="bx bx-globe text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles">وب سایت </span>
                 </a>
@@ -248,6 +208,46 @@
                     <li><a href="#">
                             <i class="bx bx-left-arrow-alt text-white"></i>
                             <span class="menu-item  text-white" data-i18n="roles-list">    فروش امروز </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="#">
+                    <i class="bx   bx-money text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles"> سفارشات</span>
+                </a>
+                <ul class="menu-content">
+                    <li><a href="#">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white" data-i18n="create-role">سفارش ‌ها امروز</span>
+                        </a>
+                    </li>
+
+                    <li><a href="#">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست سفارشات </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="#">
+                    <i class="bx bx-receipt text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles"> فاکتور ها</span>
+                </a>
+                <ul class="menu-content">
+                    <li><a href="#">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white" data-i18n="create-role">ایجاد فاکتور</span>
+                        </a>
+                    </li>
+
+                    <li><a href="#">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست فاکتور ها </span>
                         </a>
                     </li>
 

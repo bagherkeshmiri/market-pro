@@ -4,10 +4,12 @@
             <div class="row gy-4">
 
                 @forelse($posts as $post)
+
                     <div class="col-lg-4 col-md-6">
                         <div class="post-card">
                             <div class="post-thumb">
-                                <img src="{{ asset('images/site/post-7.jpg') }}" alt="post">
+                                <img src="{{ $post->image ? asset($post->image->url) : asset($sampleImageUrl) }}" alt="post-{{ $post->slug }}">
+
                             </div>
                             <div class="post-content-wrap">
                                 <div class="post-content">

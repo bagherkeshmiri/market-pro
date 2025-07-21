@@ -60,10 +60,10 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'image' , 'content' => 'تصویر اصلی'] )
                                                         @if ($image)
-                                                            <img src="{{ is_object($image) && method_exists($image, 'temporaryUrl') ? $image->temporaryUrl() : (file_exists(public_path($image)) ? asset($image) : asset($sampleProductImageUrl)) }}"
+                                                            <img src="{{ is_object($image) && method_exists($image, 'temporaryUrl') ? $image->temporaryUrl() : (file_exists(public_path($image)) ? asset($image) : asset($sampleImageUrl)) }}"
                                                                  class="img-fluid rounded-start d-block" alt="category-image" width="100" style="padding: 8px;" />
                                                         @else
-                                                            <img src="{{ asset($sampleProductImageUrl) }}"
+                                                            <img src="{{ asset($sampleImageUrl) }}"
                                                                  class="img-fluid rounded-start d-block" width="100" alt="default-image"/>
                                                         @endif
                                                     </div>

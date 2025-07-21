@@ -9,22 +9,21 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 use Str;
 
 /**
- *
- *
  * @property int $id
  * @property int $user_id
  * @property int $category_id
  * @property string $title
  * @property string $slug
- * @property string $excerpt
- * @property string $body
- * @property IsActive $status  0:active , 1:not_active
+ * @property string|null $excerpt
+ * @property $body
+ * @property IsActive $status 0:not_active , 1:active
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Category|null $category
@@ -33,12 +32,12 @@ use Str;
  * @property-read string $jalali_created_at
  * @property-read string $status_badge_class
  * @property-read string $status_label
+ * @property-read Image|null $image
  * @property-read User|null $user
  * @method static Builder<static>|Post iSActive()
  * @method static Builder<static>|Post isNotActive()
  * @method static Builder<static>|Post newModelQuery()
  * @method static Builder<static>|Post newQuery()
- * @method static Builder<static>|Post onlyTrashed()
  * @method static Builder<static>|Post query()
  * @method static Builder<static>|Post whereBody($value)
  * @method static Builder<static>|Post whereCategoryId($value)
@@ -50,8 +49,6 @@ use Str;
  * @method static Builder<static>|Post whereTitle($value)
  * @method static Builder<static>|Post whereUpdatedAt($value)
  * @method static Builder<static>|Post whereUserId($value)
- * @method static Builder<static>|Post withTrashed()
- * @method static Builder<static>|Post withoutTrashed()
  * @mixin Eloquent
  */
 class Post extends Eloquent
@@ -125,6 +122,11 @@ class Post extends Eloquent
     public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function image(): MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     /*-------------- Scopes -------------*/

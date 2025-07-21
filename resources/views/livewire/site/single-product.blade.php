@@ -87,7 +87,7 @@
 
                                     <div class="swiper-slide">
                                         <div class="thumb-item">
-                                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleProductImageUrl) }}" alt="">
+                                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleImageUrl) }}" alt="">
                                         </div>
                                     </div>
 
@@ -104,7 +104,7 @@
 
                                 <div class="swiper-slide">
                                     <div class="gallary-item">
-                                        <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleProductImageUrl) }}" alt="shop">
+                                        <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleImageUrl) }}" alt="shop">
                                     </div>
                                 </div>
 
@@ -112,7 +112,7 @@
                                 @foreach($product->galleryImages as $imageGallery)
                                     <div class="swiper-slide">
                                         <div class="gallary-item">
-                                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleProductImageUrl) }}" alt="shop">
+                                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleImageUrl) }}" alt="shop">
                                         </div>
                                     </div>
                                 @endforeach

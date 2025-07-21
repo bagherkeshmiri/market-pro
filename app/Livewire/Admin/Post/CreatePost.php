@@ -13,16 +13,20 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
+use Livewire\WithFileUploads;
 use Throwable;
 
 class CreatePost extends AdminComponent
 {
+    use WithFileUploads;
+
     public $title;
     public $slug;
     public $excerpt;
     public $body;
     public $status;
     public $categoryId;
+    public $image;
 
     public function mount(): void
     {
@@ -63,6 +67,7 @@ class CreatePost extends AdminComponent
             'body' => 'required|min:100',
             'slug' => 'required|min:10|regex:/^[A-Za-z0-9\-]+$/',
             'categoryId' => 'required|exists:categories,id',
+            'image' => 'nullable|file|mimes:jpg,png,jpeg,webp|max:500', // TODO reduce image size and width and height
             'status' => [
                 'required',
                 new Enum(IsActive::class)
@@ -80,7 +85,14 @@ class CreatePost extends AdminComponent
 
         DB::beginTransaction();
         try {
-            Post::create($data);
+            $createdPost = Post::create($data);
+
+            if (!is_null($this->image)) {
+                $createdPost->image()->create([
+                    'url' => storeImage($this->image, 'posts'),
+                    'is_main' => true,
+                ]);
+            }
 
             DB::commit();
             $this->reset(['title']);

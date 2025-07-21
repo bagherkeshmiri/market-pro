@@ -73,14 +73,14 @@ class Products extends SiteComponent
     public function render(): View
     {
         $pageTitle = 'محصولات دسته ' . $this->category->name;
-        $sampleProductImageUrl = $this->sampleProductImageUrl;
+        $sampleImageUrl = $this->sampleImageUrl;
         $category = $this->category;
         $products = Product::whereCategoryId($this->category->id)
             ->paginate($this->perPage);
         return $this->renderView(
             'livewire.site.products',
             $pageTitle,
-            compact('category', 'sampleProductImageUrl', 'products')
+            compact('category', 'sampleImageUrl', 'products')
         );
     }
 }

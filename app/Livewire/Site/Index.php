@@ -11,7 +11,7 @@ class Index extends SiteComponent
     public function render(): View
     {
         $pageTitle = 'فروشگاه اینترنتی رویسر';
-        $sampleProductImageUrl = $this->sampleProductImageUrl;
+        $sampleImageUrl = $this->sampleImageUrl;
 
         $collections = Collection::whereIsActive(true)
             ->orderBy('sort')
@@ -26,7 +26,7 @@ class Index extends SiteComponent
         return $this->renderView(
             'livewire.site.index',
             $pageTitle,
-            compact('sampleProductImageUrl', 'collections')
+            compact('sampleImageUrl', 'collections')
         );
     }
 }

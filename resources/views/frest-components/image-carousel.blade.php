@@ -22,7 +22,7 @@
             </div>
         @empty
             <div class="carousel-item active">
-                <img class="img-fluid" src="{{ asset($sampleProductImageUrl) }}" alt="default-image">
+                <img class="img-fluid" src="{{ asset($sampleImageUrl) }}" alt="default-image">
             </div>
         @endforelse
 

@@ -58,6 +58,16 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                                    <div class="form-group">
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'image' , 'content' => 'آپلود تصویر '] )
+                                                        @include('frest-components.required-tag')
+                                                        @include('frest-components.simple-file-upload', ['wire' => 'image' , 'id' => 'image'])
+                                                        @include('frest-components.validation-error',[ 'name' => 'image' ])
+                                                    </div>
+                                                </div>
+
+
                                                 <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
                                                     @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => ' متن پست'] )
                                                     @include('frest-components.required-tag')
