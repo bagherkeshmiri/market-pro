@@ -34,7 +34,7 @@ Route::name('site.')
     });
 
 
-Route::get('/run-test-job', function () {
+Route::get('/run-test-job/1369', function () {
     TestJob::dispatch();
 });
 
@@ -56,7 +56,7 @@ Route::get('/run-test-job', function () {
 //});
 
 
-Route::get('test', function () {
+//Route::get('test', function () {
 //    Session::forget('cart');
 //    Session::forget('cart_summary');
 //
@@ -65,11 +65,4 @@ Route::get('test', function () {
 //    dd(
 //        Session::get('wishlist')
 //    );
-
-
-    dd(
-//        app()->isLocal()
-        app()->isProduction()
-    );
-
-});
+//});
