@@ -14,10 +14,10 @@
             <div class="carousel-item @if($loop->first) active @endif">
                 <img class="img-fluid"
                      src="{{
-                                                                    is_object($galleryImage) && method_exists($galleryImage, 'temporaryUrl')
-                                                                    ? $galleryImage->temporaryUrl()
-                                                                    : asset($galleryImage->url)
-                                                                 }}"
+                         is_object($galleryImage) && method_exists($galleryImage, 'temporaryUrl')
+                         ? $galleryImage->temporaryUrl()
+                         : asset($galleryImage->url)
+                         }}"
                      alt="gallery-image"/>
             </div>
         @empty

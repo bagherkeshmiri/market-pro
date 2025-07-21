@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Site;
 
+use App\Traits\SampleImages;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
 use Livewire\Component;
 
 class CategorySection extends Component
 {
+    use SampleImages;
     public string $title;
     public $items;
     public string $sampleImageUrl;
@@ -16,7 +18,7 @@ class CategorySection extends Component
     {
         $this->title = $title;
         $this->items = $items;
-        $this->sampleImageUrl = config('defaults.sample-image');
+        $this->sampleImageUrl = $this->getSampleImageUrl();
     }
 
     public function render(): View
