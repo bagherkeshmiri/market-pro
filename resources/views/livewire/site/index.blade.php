@@ -4,9 +4,9 @@
 
 <div>
 
-        @include('custom-components.site.hero-section')
+    @include('custom-components.site.hero-section')
 
-        @include('custom-components.site.discount-section')
+    @include('custom-components.site.discount-section')
 
     @foreach($collections as $collection)
 
@@ -14,7 +14,7 @@
             <livewire:site.category-section
                 :title="$collection->title"
                 :items="$collection->categoryCollection"
-                :sample-image-url="$sampleImageUrl"
+                :sample-image-url="$this->sampleImageUrl"
                 wire:key="category-section-{{ $collection->id }}"
             />
         @endif
@@ -23,22 +23,24 @@
             <livewire:site.fashion-section
                 :title="$collection->title"
                 :items="$collection->productCollection"
-                :sample-image-url="$sampleImageUrl"
+                :sample-image-url="$this->sampleImageUrl"
                 wire:key="fashion-section-{{ $collection->id }}"
             />
         @endif
 
     @endforeach
 
-        @include('custom-components.site.collect-section')
+    @include('custom-components.site.collect-section')
 
-        @include('custom-components.site.cta-section')
+    @include('custom-components.site.cta-section')
 
-        @include('custom-components.site.sponsor-section')
+    @include('custom-components.site.sponsor-section')
 
-        @include('custom-components.site.deal-section')
+    @include('custom-components.site.deal-section')
 
+    @if($posts->count() > 0)
         @include('custom-components.site.blog-section')
+    @endif
 
 </div>
 

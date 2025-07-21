@@ -4,28 +4,25 @@
             <div class="row gy-4">
 
                 @forelse($posts as $post)
-
                     <div class="col-lg-4 col-md-6">
-                        <div class="post-card">
-                            <div class="post-thumb">
-                                <img src="{{ $post->image ? asset($post->image->url) : asset($sampleImageUrl) }}" alt="post-{{ $post->slug }}">
-                            </div>
-                            <div class="post-content-wrap">
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li><i class="fa-sharp fa-solid fa-calendar-days"></i>{{ $post->comments->count() }} نظر</li>
-                                        <li><i class="fa-regular fa-tag"></i>{{ $post->category->name ?? '' }}</li>
-                                    </ul>
-                                    <h3 class="title"><a href="{{ route('site.single-post',['post' => $post->slug]) }}">{{ $post->title }}</a></h3>
-                                    <p class="mt-4" style="margin-bottom: 0 !important;">{{ $post->excerpt }}</p>
-                                </div>
-                                <div class="post-bottom">
-                                    <a href="{{ route('site.single-post',['post' => $post->slug]) }}" class="read-more">بیشتر بدانید<i class="fa-regular fa-arrow-left"></i></a>
+                        <livewire:site.post-card :post="$post"/>
+                    </div>
+                @empty
+                    <div class="container my-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 text-center">
+                                <div class="p-5 border rounded-3 shadow-sm bg-light">
+                                    <h2 class="mb-3">هنوز هیچ پستی منتشر نشده است</h2>
+                                    <p class="text-muted">
+                                        به نظر می‌رسد هنوز محتوایی در وبلاگ قرار نگرفته.<br>
+                                        به زودی مطالب جدید و جذابی اینجا منتشر خواهند شد.<br>
+                                        لطفاً بعداً دوباره سر بزنید!
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @empty
+
                 @endforelse
 
                 @if($posts->count() > $this->perPage)

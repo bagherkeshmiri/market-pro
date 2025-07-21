@@ -38,7 +38,7 @@ class ShowPost extends AdminComponent
         $this->body = $post->body;
         $this->status = $post->status;
         $this->categoryId = $post->category_id;
-        $this->image = $post->image->url;
+        $this->image = $post->image?->url ?? '';
     }
 
     public function render(): View

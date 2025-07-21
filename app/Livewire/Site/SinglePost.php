@@ -3,14 +3,25 @@
 namespace App\Livewire\Site;
 
 use App\Enums\CommentStatus;
+use App\Enums\IsActive;
 use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class SinglePost extends SiteComponent
 {
     public Post $post;
+
+    public function mount(): RedirectResponse|Redirector|null
+    {
+        if ($this->post->status == IsActive::No) {
+            return redirect()->route('site.blog');
+        }
+        return null;
+    }
 
     public function render(): View
     {
