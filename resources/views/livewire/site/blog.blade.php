@@ -27,7 +27,7 @@
                 @empty
                 @endforelse
 
-                @if($posts->count() > 0)
+                @if($posts->count() > $this->perPage)
                     {{ $posts->links('custom-components.site.pagination', ['items' => $posts]) }}
                 @endif
             </div>

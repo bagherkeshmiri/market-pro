@@ -74,7 +74,7 @@
             @endforelse
         </div>
 
-        @if($products->count() > 0)
+        @if($products->count() > $this->perPage)
             {{ $products->links('custom-components.site.pagination', ['items' => $products]) }}
         @endif
     </div>
