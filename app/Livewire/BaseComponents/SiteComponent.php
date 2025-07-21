@@ -12,9 +12,13 @@ class SiteComponent extends Component
     public int $page = 1;
     public int $perPage = 8;
     protected $queryString = ['page'];
-    protected $sampleImageUrl = 'images/sample.png';
 
-    protected  function renderView(string $view, string $pageTitle, array $variables = [])
+    public function getSampleImageUrl(): string
+    {
+        return config('defaults.default_image');
+    }
+
+    protected function renderView(string $view, string $pageTitle, array $variables = [])
     {
         return view($view, $variables)->layout('layouts.site.site-layout', [
             'pageTitle' => $pageTitle,

@@ -13,7 +13,11 @@ class AdminComponent extends Component
     public int $perPage = 10;
     protected $paginationTheme = 'bootstrap';
     protected $queryString = ['page'];
-    protected $sampleImageUrl = 'images/sample.png';
+
+    public function getSampleImageUrl(): string
+    {
+        return config('defaults.default_image');
+    }
 
     public function renderView(string $view, string $pageTitle, array $variables = [])
     {

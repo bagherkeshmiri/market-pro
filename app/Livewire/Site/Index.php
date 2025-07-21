@@ -13,7 +13,6 @@ class Index extends SiteComponent
     public function render(): View
     {
         $pageTitle = 'فروشگاه اینترنتی رویسر';
-        $sampleImageUrl = $this->sampleImageUrl;
 
         $collections = Collection::whereIsActive(true)
             ->orderBy('sort')

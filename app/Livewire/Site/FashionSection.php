@@ -21,11 +21,11 @@ class FashionSection extends Component
     public array $cart = [];
     public array $wishlist = [];
 
-    public function mount(string $title, Collection|array $items, string $sampleImageUrl): void
+    public function mount(string $title, Collection|array $items): void
     {
         $this->title = $title;
         $this->items = $items;
-        $this->sampleImageUrl = $sampleImageUrl;
+        $this->sampleImageUrl = config('defaults.sample-image');
         $this->cart = Session::get('cart', []);
         $this->wishlist = Session::get('wishlist', []);
     }

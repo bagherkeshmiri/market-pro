@@ -33,7 +33,7 @@
 
                                                 <tr>
                                                     <td data-toggle="tooltip" data-placement="top" title="  برای نمایش تصویر روی آن کلیک کنید">
-                                                        <img data-toggle="modal" data-target="#{{ $modalId }}" src="{{ $category->image ? asset($category->image->url) : asset($sampleImageUrl) }}" alt="category-image-{{ $category->id }}" width="40" height="40"/>
+                                                        <img data-toggle="modal" data-target="#{{ $modalId }}" src="{{ $category->image ? asset($category->image->url) : asset($this->getSampleImageUrl()) }}" alt="category-image-{{ $category->id }}" width="40" height="40"/>
                                                     </td>
                                                     <td class="text-white">{{ $category->name }}</td>
                                                     <td class="text-white">{{ $category->parent->name ?? ' - ' }}</td>
@@ -52,7 +52,7 @@
                                                     'modelImageUrl'         => $category->image->url ?? '',
                                                     'modalTitle'            => 'تصویر اصلی دسته بندی ' . $category->name,
                                                     'modalId'               => $modalId,
-                                                    'sampleProductImageUrl' => $sampleImageUrl,
+                                                    'sampleProductImageUrl' => $this->getSampleImageUrl(),
                                                 ])
 
                                             @empty

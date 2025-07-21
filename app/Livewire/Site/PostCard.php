@@ -20,7 +20,7 @@ class PostCard extends Component
     {
         return $this->post->image
             ? $this->post->image->url
-            : 'images/sample.png';
+            : config('defaults.sample-image');
     }
 
     public function mount(): void

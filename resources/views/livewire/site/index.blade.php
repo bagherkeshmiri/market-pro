@@ -14,7 +14,6 @@
             <livewire:site.category-section
                 :title="$collection->title"
                 :items="$collection->categoryCollection"
-                :sample-image-url="$this->sampleImageUrl"
                 wire:key="category-section-{{ $collection->id }}"
             />
         @endif
@@ -23,7 +22,6 @@
             <livewire:site.fashion-section
                 :title="$collection->title"
                 :items="$collection->productCollection"
-                :sample-image-url="$this->sampleImageUrl"
                 wire:key="fashion-section-{{ $collection->id }}"
             />
         @endif

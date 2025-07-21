@@ -12,7 +12,6 @@ class ListCategory extends AdminComponent
     {
         $pageTitle = 'لیست دسته بندی ها';
         $tableHeads = ['تصویر', 'نام', 'دسته پدر', 'نوع', 'تاریخ ایجاد', 'عملیات'];
-        $sampleImageUrl = $this->sampleImageUrl;
         $categories = Category::paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.category.list-category',

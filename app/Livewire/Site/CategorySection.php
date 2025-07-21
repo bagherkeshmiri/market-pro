@@ -12,11 +12,11 @@ class CategorySection extends Component
     public $items;
     public string $sampleImageUrl;
 
-    public function mount(string $title, Collection|array $items, string $sampleImageUrl): void
+    public function mount(string $title, Collection|array $items): void
     {
         $this->title = $title;
         $this->items = $items;
-        $this->sampleImageUrl = $sampleImageUrl;
+        $this->sampleImageUrl = config('defaults.sample-image');
     }
 
     public function render(): View
