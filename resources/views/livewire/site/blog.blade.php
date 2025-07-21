@@ -9,7 +9,6 @@
                         <div class="post-card">
                             <div class="post-thumb">
                                 <img src="{{ $post->image ? asset($post->image->url) : asset($sampleImageUrl) }}" alt="post-{{ $post->slug }}">
-
                             </div>
                             <div class="post-content-wrap">
                                 <div class="post-content">
