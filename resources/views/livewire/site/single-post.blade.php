@@ -67,7 +67,6 @@
                                 </div>
 
                                 @if($comments->count() > 0)
-{{--                                    <livewire:site.post-comments :post-id="$post->id"/>--}}
                                     <livewire:site.post-comments :comments="$comments"/>
                                 @else
                                     <p class="text-gray-500 italic text-center mt-6">نظر ثبت نشده، اولین نفری باشید که نظر می‌دهید!</p>
@@ -124,7 +123,7 @@
                             <h3 class="widget-title">آخرین پست ها</h3>
                             @foreach($lastPosts as $lastPost)
                                 <div class="sidebar-post">
-                                    <img src="{{ asset('images/site/sidebar-thumb-1.png') }}" alt="post">
+                                    <img src="{{ $lastPost->image ? asset($lastPost->image->url) : asset($this->getSampleImageUrl()) }}" alt="post">
                                     <div class="post-content">
                                         <ul class="post-meta">
                                             <li><i class="fa-sharp fa-regular fa-clock"></i>{{ $lastPost->jalali_created_at }}</li>
