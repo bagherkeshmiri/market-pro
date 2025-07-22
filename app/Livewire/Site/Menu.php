@@ -20,6 +20,7 @@ class Menu extends Component
     public function mount(): void
     {
         $this->menus = Category::withoutTrashed()
+            ->isProductCategory()
             ->select([
                 'id',
                 'parent_id',

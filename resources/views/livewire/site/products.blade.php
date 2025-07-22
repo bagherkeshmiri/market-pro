@@ -67,14 +67,17 @@
             @empty
                 <div style="text-align: center; margin-top: 20px; width: 100%;">
                     <img src="{{ asset('images/site/error-img.png') }}"
-                         style="width: 100%; height: auto; display: block;"
+                         style="width: 50%; height: auto;"
                          alt="محصولی یافت نشد"
                     >
+                    <p style="margin-top: 50px; font-size: 2rem; color: #555;">محصولی یافت نشد</p>
                 </div>
             @endforelse
         </div>
 
-        {{ $products->links('custom-components.site.pagination', ['items' => $products]) }}
+        @if($products->count() > 0)
+            {{ $products->links('custom-components.site.pagination', ['items' => $products]) }}
+        @endif
     </div>
 </section>
 
