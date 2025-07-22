@@ -16,7 +16,7 @@ class Blog extends SiteComponent
             ->with([
                 'image:id,imageable_id,imageable_type,url',
             ])
-            ->paginate($this->perPage);
+            ->paginate(6);
 
         return $this->renderView(
             'livewire.site.blog',
