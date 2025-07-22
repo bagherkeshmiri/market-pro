@@ -1,7 +1,9 @@
 <section class="blog-section pb-50">
     <div class="container rtl">
         <div class="section-heading text-center">
-            <h2 class="section-title mb-0">آخرین‌ اخبار ما</h2>
+            <a href="{{ route('site.blog') }}">
+                <h2 class="section-title mb-0">آخرین‌ اخبار ما</h2>
+            </a>
         </div>
         <div class="row gy-lg-0 gy-4 justify-content-center">
 
