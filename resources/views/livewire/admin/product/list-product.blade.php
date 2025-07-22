@@ -58,7 +58,7 @@
                                                    'modelImageUrl'         => $product->mainImage->url ?? '',
                                                    'modalTitle'            => 'تصویر اصلی  محصول ' . $product->name,
                                                    'modalId'               => $modalId,
-                                                   'sampleProductImageUrl' => $this->getSampleImageUrl(),
+                                                   'sampleImageUrl' => $this->getSampleImageUrl(),
                                                ])
 
                                             @empty

@@ -52,7 +52,7 @@
                                                     'modelImageUrl'         => $category->image->url ?? '',
                                                     'modalTitle'            => 'تصویر اصلی دسته بندی ' . $category->name,
                                                     'modalId'               => $modalId,
-                                                    'sampleProductImageUrl' => $this->getSampleImageUrl(),
+                                                    'sampleImageUrl' => $this->getSampleImageUrl(),
                                                 ])
 
                                             @empty
