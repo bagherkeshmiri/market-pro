@@ -15,7 +15,6 @@
           </span>
 
         </div>
-        <h3 class="author"> {{ $comment->user->name }}</h3>
         <p>
             {{ $expanded ? $comment->body : \Illuminate\Support\Str::limit($comment->body) }}
             @if (strlen($comment->body) > 100)
