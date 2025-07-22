@@ -84,7 +84,7 @@ class ProductCommentForm extends Component
             $product->comments()->create($data);
 
             DB::commit();
-            session()->flash('success', 'نظر شما با موفقیت ثبت شد و ئس از تایید نمایش داده می‌شود و تا 24 ساعت آینده امکان ثبت نظر وجود ندارد ');
+            session()->flash('success', 'نظر شما با موفقیت ثبت شد و پس از تایید نمایش داده می‌شود و تا 24 ساعت آینده امکان ثبت نظر وجود ندارد ');
             return redirect()->route('site.single-product', ['product' => $this->productId]);
         } catch (Exception) {
             DB::rollBack();
