@@ -10,6 +10,8 @@ class CollectionSeeder extends Seeder
 {
     public function run(): void
     {
+        $now = Carbon::now();
+
         DB::table('collections')->insert([
             [
                 'id' => 1,
@@ -18,8 +20,8 @@ class CollectionSeeder extends Seeder
                 'limitation' => 10,
                 'sort' => 1,
                 'is_active' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 2,
@@ -28,8 +30,8 @@ class CollectionSeeder extends Seeder
                 'limitation' => 8,
                 'sort' => 2,
                 'is_active' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
         ]);
     }

@@ -10,6 +10,8 @@ class ImageSeeder extends Seeder
 {
     public function run(): void
     {
+        $now = Carbon::now();
+
         DB::table('images')->insert([
             [
                 'id' => 1,
@@ -17,8 +19,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/products/2025/7/6/BJSuhrPUOfJZt8SApD81yO7QKsv3Bm4z80HJfFKX.jpg',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 2,
@@ -26,8 +28,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 0,
                 'url' => '/storage/uploads/images/products/2025/7/6/p2J0Lt4ScxzIMD1g3nOQnmDhsnCXL1PgItpZGMYJ.jpg',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 3,
@@ -35,8 +37,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 0,
                 'url' => '/storage/uploads/images/products/2025/7/6/rBFkA4bKxiKWzkAaRQJLIAauzNGQJYyPADxWZSlM.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 4,
@@ -44,8 +46,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 0,
                 'url' => '/storage/uploads/images/products/2025/7/6/4RQbCVSAWfLAOuiWjarRkm7H9RBuXyFD4ynXHgvg.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 5,
@@ -53,8 +55,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/products/2025/7/6/mjhiBpFRDYo4wERBfiQTNNtApAMPAvpuBX3fDDqT.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 6,
@@ -62,8 +64,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Category',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/categories/2025/7/6/YtpaSZnHxVr4eqrp2SK8dFB6kgyFHWMHmgEFlLlo.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 7,
@@ -71,8 +73,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Category',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/categories/2025/7/6/Jn7ic5CXYeBEzXLP2QyrGnC8DfdsvASnZnVnIA6y.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 8,
@@ -80,8 +82,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Category',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/categories/2025/7/6/IuPK5Rvx2mTK43HDypDU3hNT5U20UCUt1ot261cG.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 9,
@@ -89,8 +91,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Category',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/categories/2025/7/7/XcymRtoMgLVbqkNqXtSvZaXyYhQYbG0Q98PWgD24.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 10,
@@ -98,8 +100,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Category',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/categories/2025/7/7/h3kIKiFC7H3AZUYy9h8jllIjtOhOlGALeJqWQvfX.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 11,
@@ -107,8 +109,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Category',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/categories/2025/7/7/v0mhYljXohPERyF7YycYbCrswwYKd3k8y3fWl5Z8.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 12,
@@ -116,8 +118,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Category',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/categories/2025/7/7/C077fz0WMWmZ1deAwr3dGfLftaCNiVh64eKGizcZ.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 13,
@@ -125,8 +127,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/products/2025/7/7/B2JPml8GgHp2pIatKgSYFu3WFNopEG5eqiqev3rV.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 14,
@@ -134,8 +136,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/products/2025/7/7/yr2JT2e97XqSHDQtzzXH6OjisNV3F2ZugeGKZMPQ.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 15,
@@ -143,8 +145,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/products/2025/7/7/5G71srEiCxNsJWeGCkkRxFaBwBfZS7jOiGSE0nKO.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 16,
@@ -152,8 +154,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/products/2025/7/7/xP6FIAWxzzY9GiXBZRx3cbEcd3bSgyVXHKHIMwvR.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 17,
@@ -161,8 +163,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/products/2025/7/7/SdLs8NRBsGNeDCtmDJTcoiTTJ3bZxnl5vP9Xe1nF.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 18,
@@ -170,8 +172,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/products/2025/7/7/xhWRhqROzHsDoPczdOB1tOb6UNCeshFsEwhUnbld.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 19,
@@ -179,8 +181,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/products/2025/7/7/yccYtFxy6sFuoEz4YmhNRHSkPn17w4lWrTR1SVTT.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 20,
@@ -188,8 +190,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/products/2025/7/7/gTuno5ENjRzlVRmQZfuqF4yoF3vA0EZ7TSFBPjh3.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
             [
                 'id' => 21,
@@ -197,8 +199,8 @@ class ImageSeeder extends Seeder
                 'imageable_type' => 'App\Models\Product',
                 'is_main' => 1,
                 'url' => '/storage/uploads/images/products/2025/7/9/zEkEhdBpvSbKAA8o0sEmipuZcktDHwkzcKnd38yk.png',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => $now,
+                'updated_at' => $now,
             ],
         ]);
     }
