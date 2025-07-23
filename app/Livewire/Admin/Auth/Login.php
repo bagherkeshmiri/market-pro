@@ -3,7 +3,7 @@
 namespace App\Livewire\Admin\Auth;
 
 use App\Livewire\BaseComponents\AuthComponent;
-use App\Models\User;
+use App\Models\Admin;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -24,8 +24,7 @@ class Login extends AuthComponent
         ]);
 
         try {
-            $admin = User::IsAdmin()
-                ->where('email', $this->email)
+            $admin = Admin::query()->where('email', $this->email)
                 ->first();
 
             if (is_null($admin) || !Hash::check($this->password, $admin->password)) {

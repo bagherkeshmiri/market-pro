@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Dashboard;
 
 use App\Livewire\BaseComponents\AdminComponent;
+use App\Models\Admin;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -19,7 +20,8 @@ class AdminDashboard extends AdminComponent
                 'کل کاربران',
                 'bg-rgba-success text-success',
                 'bxs-group',
-                User::count('id'),
+//                Admin::count('id') + User::count('id'),   // TODO
+                Admin::count('id'),
             ],
             'allProducts' => [
                 'کل محصولات',

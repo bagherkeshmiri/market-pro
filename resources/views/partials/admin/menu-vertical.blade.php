@@ -24,23 +24,45 @@
             <li class=" nav-item">
                 <a href="#">
                     <i class="bx bx-group text-white"></i>
-                    <span class="menu-title text-white" data-i18n="users">کاربران</span>
+                    <span class="menu-title text-white" data-i18n="users">مدیران</span>
                 </a>
                 <ul class="menu-content">
-                    <li><a href="{{ route('admin.user.create') }}">
+                    <li><a href="{{ route('admin.admin.create') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="create-user">  ایجاد کاربر</span>
+                            <span class="menu-item  text-white" data-i18n="create-user">  ایجاد مدیر</span>
                         </a>
                     </li>
 
-                    <li><a href="{{ route('admin.user.index') }}">
+                    <li><a href="{{ route('admin.admin.index') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="users-list">   لیست کاربران </span>
+                            <span class="menu-item  text-white" data-i18n="users-list">   لیست مدیران </span>
                         </a>
                     </li>
 
                 </ul>
             </li>
+
+{{--            <li class=" nav-item">--}}
+{{--                <a href="#">--}}
+{{--                    <i class="bx bx-group text-white"></i>--}}
+{{--                    <span class="menu-title text-white" data-i18n="users">کاربران</span>--}}
+{{--                </a>--}}
+{{--                <ul class="menu-content">--}}
+{{--                    <li><a href="{{ route('admin.user.create') }}">--}}
+{{--                            <i class="bx bx-left-arrow-alt text-white"></i>--}}
+{{--                            <span class="menu-item  text-white" data-i18n="create-user">  ایجاد کاربر</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+
+{{--                    <li><a href="{{ route('admin.user.index') }}">--}}
+{{--                            <i class="bx bx-left-arrow-alt text-white"></i>--}}
+{{--                            <span class="menu-item  text-white" data-i18n="users-list">   لیست کاربران </span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+
+{{--                </ul>--}}
+{{--            </li>--}}
+
             <li class=" nav-item">
                 <a href="#">
                     <i class="bx bx-check-shield text-white"></i>

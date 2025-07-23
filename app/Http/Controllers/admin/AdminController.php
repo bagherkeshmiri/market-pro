@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 
-class AccountController extends Controller
+class AdminController extends Controller
 {
     public function delete(Admin $admin)
     {

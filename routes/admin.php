@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProductController;
+use App\Livewire\Admin\Admin\CreateAdmin;
+use App\Livewire\Admin\Admin\ListAdmin;
+use App\Livewire\Admin\Admin\ShowAdmin;
 use App\Livewire\Admin\Collection\CreateCollection;
 use App\Livewire\Admin\Collection\ListCollection;
 use App\Livewire\Admin\Collection\ShowCollection;
@@ -31,7 +35,6 @@ use App\Livewire\Admin\Role\ShowRole;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\RoleController;
-use App\Http\Controllers\admin\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,14 +70,24 @@ Route::prefix('dashboard')
             Route::get('/delete/{role}', [RoleController::class, 'delete'])->name('delete');
         });
 
-        Route::name('user.')
-            ->prefix('users')
+        Route::name('admin.')
+            ->prefix('admin')
             ->group(function () {
-                Route::get('/', ListUser::class)->name('index');
-                Route::get('/create', CreateUser::class)->name('create');
-                Route::get('/show/{admin}', ShowUser::class)->name('show');
-                Route::get('/delete/{admin}', [AccountController::class, 'delete'])->name('delete');
+                Route::get('/', ListAdmin::class)->name('index');
+                Route::get('/create', CreateAdmin::class)->name('create');
+                Route::get('/show/{admin}', ShowAdmin::class)->name('show');
+                Route::get('/delete/{admin}', [AdminController::class, 'delete'])->name('delete');
             });
+
+
+//        Route::name('user.')
+//            ->prefix('user')
+//            ->group(function () {
+//                Route::get('/', ListUser::class)->name('index');
+//                Route::get('/create', CreateUser::class)->name('create');
+//                Route::get('/show/{admin}', ShowUser::class)->name('show');
+//                Route::get('/delete/{admin}', [UserController::class, 'delete'])->name('delete');
+//            });
 
         Route::name('profile.')
             ->prefix('profile')
