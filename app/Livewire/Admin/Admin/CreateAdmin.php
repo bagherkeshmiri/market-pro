@@ -3,12 +3,12 @@
 namespace App\Livewire\Admin\Admin;
 
 use App\Livewire\BaseComponents\AdminComponent;
+use App\Models\Admin;
 use App\Models\Role;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
@@ -19,6 +19,13 @@ class CreateAdmin extends AdminComponent
     public $email;
     public $password;
     public $role;
+
+
+    public function mount(): void
+    {
+        $this->role = Role::first()->id;
+    }
+
 
     public function render(): View
     {
@@ -38,33 +45,32 @@ class CreateAdmin extends AdminComponent
     {
         $this->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,',
+            'email' => 'required|email|unique:admins,email,',
 //            'role' => 'required|integer',
-            'type' => [
-                'required',
-                new Enum(UserType::class),
-            ],
         ]);
 
         $data = [
             'name' => $this->name,
             'email' => $this->email,
             'role_id' => $this->role,
-            'type' => $this->type,
             'password' => $this->password,
         ];
 
         DB::beginTransaction();
         try {
-            User::create($data);
+            Admin::create($data);
             DB::commit();
-            $this->reset(['name', 'email', 'password', 'role', 'type']);
+            $this->reset(['name', 'email', 'password', 'role']);
             session()->flash('success', __('global.success_message'));
-            return redirect()->back();
-        } catch (Exception) {
+            return redirect()->route('admin.admin.index');
+        } catch (Exception $e) {
             DB::rollBack();
-            session()->flash('error', __('global.error_message'));
-            return redirect()->back();
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
+            return redirect()->route('admin.admin.create');
         }
     }
 }
