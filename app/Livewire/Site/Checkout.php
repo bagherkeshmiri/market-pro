@@ -3,8 +3,10 @@
 namespace App\Livewire\Site;
 
 use App\Livewire\BaseComponents\SiteComponent;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
+use Livewire\Features\SupportRedirects\Redirector;
 
 class Checkout extends SiteComponent
 {
@@ -15,15 +17,17 @@ class Checkout extends SiteComponent
     public $discount = 50000;
     public $freeShipping = 2000000;
 
-    public function mount(): void
+    public function mount(): RedirectResponse|Redirector|null
     {
         $this->cart = Session::get('cart', []);
         if (empty($this->cart)) {
             $this->discount = 0;
             $this->shipping = 0;
+            return redirect()->route('site.cart');
         }
         $this->calculateCartTotal();
         $this->calculateTax($this->cartTotal);
+        return null;
     }
 
     public function calculateCartTotal(): void
