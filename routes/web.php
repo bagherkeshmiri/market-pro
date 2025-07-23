@@ -4,6 +4,7 @@ use App\Enums\CollectionType;
 use App\Jobs\TestJob;
 use App\Livewire\Site\Blog;
 use App\Livewire\Site\Cart;
+use App\Livewire\Site\Checkout;
 use App\Livewire\Site\Contact;
 use App\Livewire\Site\Faq;
 use App\Livewire\Site\Index;
@@ -31,6 +32,7 @@ Route::name('site.')
         Route::get('/cart', Cart::class)->name('cart');
         Route::get('/wishlist', Wishlist::class)->name('wishlist');
         Route::get('/blog/{post}', SinglePost::class)->name('single-post');
+        Route::get('/checkout', Checkout::class)->name('checkout');
     });
 
 

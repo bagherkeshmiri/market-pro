@@ -142,7 +142,7 @@
 
 
                     <div class="checkout-proceed">
-                        <a href="#" class="rr-primary-btn checkout-btn">به تسویه حساب بروید</a>
+                        <a href="{{ route('site.checkout') }}" class="rr-primary-btn checkout-btn">به تسویه حساب بروید</a>
                     </div>
                 </div>
             </div>
