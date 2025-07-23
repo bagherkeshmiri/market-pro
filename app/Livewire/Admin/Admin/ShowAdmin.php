@@ -30,7 +30,7 @@ class ShowAdmin extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'ویرایش کاربر';
+        $pageTitle = 'ویرایش مدیر';
         $roles = Role::pluck('id', 'fa_name')->toArray();
         $this->fill([$this->role]);
         $admins = $this->admin;

@@ -17,16 +17,15 @@ class CreateAdmin extends AdminComponent
 {
     public $name;
     public $email;
-    public $type;
     public $password;
     public $role;
 
     public function render(): View
     {
-        $pageTitle = 'ایجاد کاربر';
+        $pageTitle = 'ایجاد مدیر';
         $roles = Role::pluck('id', 'fa_name')->toArray();
         return $this->renderView(
-            'livewire.admin.user.create-user',
+            'livewire.admin.admin.create-admin',
             $pageTitle,
             compact('roles')
         );

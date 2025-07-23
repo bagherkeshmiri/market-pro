@@ -10,7 +10,7 @@ class ListAdmin extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'لیست کاربران';
+        $pageTitle = 'لیست مدیران';
         $tableHeads = ['نام', 'ایمیل', 'نقش', 'دسترسی ها', 'تاریخ ایجاد', 'عملیات'];
         $adminQuery = Admin::query();
         $mainAdminId = (clone $adminQuery)->first()->id;
