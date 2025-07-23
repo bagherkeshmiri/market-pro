@@ -2,48 +2,43 @@
 
 namespace App\Livewire\Admin\Admin;
 
-use App\Enums\UserType;
 use App\Livewire\BaseComponents\AdminComponent;
+use App\Models\Admin;
 use App\Models\Role;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
 class ShowAdmin extends AdminComponent
 {
-    public User $admin;
+    public Admin $admin;
     public $name;
     public $email;
-    public $type;
     public $role;
     public $password;
-    public $adminRole;
 
-    public function mount(User $admin): void
+    public function mount(Admin $admin): void
     {
         $this->name = $admin->name;
         $this->email = $admin->email;
-        $this->type = $admin->type;
-        $this->role = $this->admin->permissions->pluck('id')->toArray()[0];
+        $this->role = $admin->role->id;
     }
 
     public function render(): View
     {
         $pageTitle = 'ویرایش کاربر';
         $roles = Role::pluck('id', 'fa_name')->toArray();
-        $this->adminRole = auth()->user()->role_id;
-        $this->fill([$this->adminRole]);
-        $types = showEnumLabels(UserType::class);
+        $this->fill([$this->role]);
         $admins = $this->admin;
+
         return $this->renderView(
-            'livewire.admin.user.show-user',
+            'livewire.admin.admin.show-admin',
             $pageTitle,
-            compact('roles', 'types', 'admins')
+            compact('roles', 'admins')
         );
     }
 
@@ -54,19 +49,14 @@ class ShowAdmin extends AdminComponent
     {
         $this->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $this->admin->id,
+            'email' => 'required|email|unique:admins,email,' . $this->admin->id,
             'role' => 'required|integer',
-            'type' => [
-                'required',
-                new Enum(UserType::class),
-            ],
         ]);
 
         $data = [
             'name' => $this->name,
             'email' => $this->email,
             'role_id' => $this->role,
-            'type' => $this->type->value,
         ];
 
         DB::beginTransaction();

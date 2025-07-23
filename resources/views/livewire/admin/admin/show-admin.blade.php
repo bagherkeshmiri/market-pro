@@ -44,17 +44,6 @@
 
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'type' , 'content' => 'نوع کاربری'] )
-                                                        @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $types , 'id' => 'type' , 'wire' => 'type' ])
-                                                        @include('frest-components.validation-error',[ 'name' => 'type' ])
-                                                    </div>
-
-                                                </div>
-
-
-                                                <div class="col-md-6 col-12">
-                                                    <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'role' , 'content' => 'نقش'] )
                                                         @include('frest-components.required-tag')
                                                         @include('frest-components.simple-selectbox',[ 'data' => $roles , 'id' => 'role' , 'wire' => 'role' ])
@@ -65,7 +54,7 @@
 
                                                 <div class="col-12 d-flex justify-content-end">
                                                     @include('frest-components.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
-                                                    @include('frest-components.link-button',[ 'href' =>  route('admin.user.index'), 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
+                                                    @include('frest-components.link-button',[ 'href' =>  route('admin.admin.index'), 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
                                                 </div>
                                             </div>
                                         </div>

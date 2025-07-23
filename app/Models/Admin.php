@@ -84,7 +84,7 @@ class Admin extends Authenticatable
         return $this->belongsTo(Role::class, self::COLUMN_ROLE_ID, Role::COLUMN_ID);
     }
 
-    public function permissions(): _IH_Permission_QB|BelongsToMany|Collection
+    public function permissions(): BelongsToMany|Collection
     {
         return $this->role?->permissions() ?? collect();
     }
