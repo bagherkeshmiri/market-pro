@@ -8,12 +8,13 @@ use App\Models\Comment;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
 class ListComment extends AdminComponent
 {
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'لیست  نظرات';
         $tableHeads = ['کاربر', 'نوع نظر', 'وضعیت', 'تاریخ ایجاد', 'عملیات'];

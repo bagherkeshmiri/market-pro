@@ -55,7 +55,7 @@
                                                     <td class="text-white">{{ $collection->limitation }}</td>
                                                     <td class="text-white">{{ $collection->jalali_created_at }}</td>
                                                     <td>
-                                                        @include('frest-components.icon-btn',[  'href' => route('admin.collection.show',[ 'collection' => $collection->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.collection.show',[ 'collection' => $collection->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                     </td>
                                                 </tr>
 

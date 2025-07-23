@@ -9,15 +9,13 @@ use App\Traits\HandlesCart;
 use App\Traits\HandlesWishlist;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 
 class Products extends SiteComponent
 {
     use HandlesCart;
     use HandlesWishlist;
 
-    public object $category;
+    public Category $category;
     public $id;
     public array $cart = [];
     public array $wishlist = [];
@@ -73,14 +71,13 @@ class Products extends SiteComponent
     public function render(): View
     {
         $pageTitle = 'محصولات دسته ' . $this->category->name;
-        $sampleProductImageUrl = $this->sampleProductImageUrl;
         $category = $this->category;
         $products = Product::whereCategoryId($this->category->id)
             ->paginate($this->perPage);
         return $this->renderView(
             'livewire.site.products',
             $pageTitle,
-            compact('category', 'sampleProductImageUrl', 'products')
+            compact('category', 'products')
         );
     }
 }

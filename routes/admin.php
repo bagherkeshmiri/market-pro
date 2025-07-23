@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\admin\CategoryController;
-use App\Http\Controllers\admin\MainMenuController;
 use App\Http\Controllers\admin\ProductController;
 use App\Livewire\Admin\Collection\CreateCollection;
 use App\Livewire\Admin\Collection\ListCollection;
@@ -10,6 +9,9 @@ use App\Livewire\Admin\Comment\ListComment;
 use App\Livewire\Admin\Faq\CreateFaq;
 use App\Livewire\Admin\Faq\ListFaq;
 use App\Livewire\Admin\Faq\ShowFaq;
+use App\Livewire\Admin\Post\CreatePost;
+use App\Livewire\Admin\Post\ListPost;
+use App\Livewire\Admin\Post\ShowPost;
 use App\Livewire\Admin\Product\CreateProduct;
 use App\Livewire\Admin\Product\ListProduct;
 use App\Livewire\Admin\Product\ShowProduct;
@@ -116,5 +118,15 @@ Route::prefix('dashboard')
                 Route::get('/', ListFaq::class)->name('index');
                 Route::get('/create', CreateFaq::class)->name('create');
                 Route::get('/show/{faq}', ShowFaq::class)->name('show');
+            });
+
+
+
+        Route::name('post.')
+            ->prefix('post')
+            ->group(function () {
+                Route::get('/', ListPost::class)->name('index');
+                Route::get('/create', CreatePost::class)->name('create');
+                Route::get('/show/{post}', ShowPost::class)->name('show');
             });
     });

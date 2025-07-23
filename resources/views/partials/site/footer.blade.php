@@ -100,24 +100,6 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="footer-widget">
-                    <div class="widget-header">
-                        <h3 class="widget-title">خبرنامه ما</h3>
-                    </div>
-                    <div class="news-form-wrap">
-                        <p class="mb-20">برای دریافت جدیدترین تخفیف ‌ها، در فهرست پستی مشترک شوید</p>
-                        <div class="footer-form mb-20">
-                            <form action="#" class="rr-subscribe-form">
-                                <input class="form-control" type="email" name="email" placeholder="آدرس ایمیل">
-                                <input type="hidden" name="action" value="mailchimpsubscribe">
-                                <button class="submit">عضویت</button>
-                                <div class="clearfix"></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 

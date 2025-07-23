@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('parent_id')->nullable()->index();
+            $table->unsignedTinyInteger('type')->default(1)->comment(' 1:product , 2:post');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -16,7 +16,7 @@
                     <div class="shop-item">
                         <div class="shop-thumb">
                             <div class="overlay"></div>
-                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleProductImageUrl) }}" alt="shop">
+                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($this->getSampleImageUrl()) }}" alt="shop">
                             @if($product->discount > 0)
                                 <span class="sale">{{ $product->discount_percent }} %</span>
                             @endif
@@ -67,9 +67,10 @@
             @empty
                 <div style="text-align: center; margin-top: 20px; width: 100%;">
                     <img src="{{ asset('images/site/error-img.png') }}"
-                         style="width: 100%; height: auto; display: block;"
+                         style="width: 50%; height: auto;"
                          alt="محصولی یافت نشد"
                     >
+                    <p style="margin-top: 50px; font-size: 2rem; color: #555;">محصولی یافت نشد</p>
                 </div>
             @endforelse
         </div>

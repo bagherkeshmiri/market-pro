@@ -2,18 +2,19 @@
 
 namespace App\Livewire\BaseComponents;
 
+use App\Traits\SampleImages;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class AdminComponent extends Component
 {
     use WithPagination;
+    use SampleImages;
 
     public int $page = 1;
     public int $perPage = 10;
     protected $paginationTheme = 'bootstrap';
     protected $queryString = ['page'];
-    protected $sampleProductImageUrl = 'images/frest/sample-product.png';
 
     public function renderView(string $view, string $pageTitle, array $variables = [])
     {

@@ -144,5 +144,8 @@ return [
         'main_image' => 'تصویر اصلی ',
         'galleryImages' => ' گالری تصاویر ',
         'gallery_images' => ' گالری تصاویر ',
+        'title' => 'عنوان',
+        'slug' => 'اسلاگ',
+        'status' => 'وضعیت',
     ],
 ];

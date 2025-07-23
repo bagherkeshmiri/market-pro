@@ -17,15 +17,13 @@ class FashionSection extends Component
 
     public string $title;
     public $items;
-    public string $sampleProductImageUrl;
     public array $cart = [];
     public array $wishlist = [];
 
-    public function mount(string $title, Collection|array $items, string $sampleProductImageUrl): void
+    public function mount(string $title, Collection|array $items): void
     {
         $this->title = $title;
         $this->items = $items;
-        $this->sampleProductImageUrl = $sampleProductImageUrl;
         $this->cart = Session::get('cart', []);
         $this->wishlist = Session::get('wishlist', []);
     }

@@ -8,6 +8,7 @@ use Auth;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
@@ -50,7 +51,7 @@ class Login extends SiteComponent
     }
 
 
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'ورود';
         return $this->renderView(

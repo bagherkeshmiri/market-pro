@@ -6,7 +6,9 @@
         <div class="content-top">
             <h4 class="name">
                 {{ $comment->user->name }}
-                <span>{{ $comment->jalali_created_at }}</span>
+                <span>
+                    <i class="fa-sharp fa-regular fa-clock" style="margin-left:5px;"></i>
+                    {{ $comment->jalali_created_at }}</span>
             </h4>
             <ul class="review">
                 @for ($i = 0; $i < 5; $i++)

@@ -9,6 +9,7 @@
 
     @isset($href)
         href="{{ $href }}"
+        target="_blank"
     @endisset
 
     @isset($tooltipTitle)

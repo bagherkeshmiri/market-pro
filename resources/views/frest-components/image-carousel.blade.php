@@ -14,15 +14,15 @@
             <div class="carousel-item @if($loop->first) active @endif">
                 <img class="img-fluid"
                      src="{{
-                                                                    is_object($galleryImage) && method_exists($galleryImage, 'temporaryUrl')
-                                                                    ? $galleryImage->temporaryUrl()
-                                                                    : asset($galleryImage->url)
-                                                                 }}"
+                         is_object($galleryImage) && method_exists($galleryImage, 'temporaryUrl')
+                         ? $galleryImage->temporaryUrl()
+                         : asset($galleryImage->url)
+                         }}"
                      alt="gallery-image"/>
             </div>
         @empty
             <div class="carousel-item active">
-                <img class="img-fluid" src="{{ asset($sampleProductImageUrl) }}" alt="default-image">
+                <img class="img-fluid" src="{{ asset($sampleImageUrl) }}" alt="default-image">
             </div>
         @endforelse
 

@@ -22,7 +22,7 @@ class ShowProduct extends AdminComponent
 {
     use WithFileUploads;
 
-    public object $product;
+    public Product $product;
     public $name;
     public $categoryId;
     public $price;
@@ -61,11 +61,10 @@ class ShowProduct extends AdminComponent
             ->toArray();
         $statuses = showEnumLabels(ProductStatus::class);
         $discountTypes = showEnumLabels(DiscountType::class);
-        $sampleProductImageUrl = $this->sampleProductImageUrl;
         return $this->renderView(
             'livewire.admin.product.show-product',
             $pageTitle,
-            compact('allCategories', 'statuses', 'discountTypes', 'sampleProductImageUrl')
+            compact('allCategories', 'statuses', 'discountTypes')
         );
     }
 

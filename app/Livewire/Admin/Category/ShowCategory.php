@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Category;
 
+use App\Enums\CategoryType;
 use App\Jobs\DeleteImageJob;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
@@ -9,6 +10,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\Features\SupportRedirects\Redirector;
@@ -19,30 +21,32 @@ class ShowCategory extends AdminComponent
 {
     use WithFileUploads;
 
-    public object $category;
+    public Category $category;
     public $name;
     public $parentId;
     public $image;
+    public $type;
 
     public function mount(Category $category): void
     {
         $this->name = $category->name;
         $this->parentId = $category->parent_id;
         $this->image = $category->image->url ?? null;
+        $this->type = $category->type;
     }
 
     public function render(): View
     {
         $pageTitle = 'ویرایش دسته بندی';
-        $sampleProductImageUrl = $this->sampleProductImageUrl;
         $allCategories = Category::where('id', '!=', $this->category->id)
             ->pluck('id', 'name')
             ->toArray();
         Arr::forget($allCategories, $this->category->title);
+        $types = showEnumLabels(CategoryType::class);
         return $this->renderView(
             'livewire.admin.category.show-category',
             $pageTitle,
-            compact('sampleProductImageUrl', 'allCategories')
+            compact('allCategories','types')
         );
     }
 
@@ -57,11 +61,16 @@ class ShowCategory extends AdminComponent
             'image' => $this->image instanceof TemporaryUploadedFile
                 ? 'file|mimes:jpg,png,jpeg,webp|max:500' // TODO reduce image size and width and height
                 : 'nullable',
+            'type' => [
+                'required',
+                new Enum(CategoryType::class),
+            ],
         ]);
 
         $data = [
             'name' => $this->name,
             'parent_id' => $this->parentId,
+            'type' => $this->type,
         ];
 
         DB::beginTransaction();

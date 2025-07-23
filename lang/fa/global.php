@@ -38,4 +38,7 @@ return [
     'approve' => 'تایید',
     'reject' => 'رد',
     'show' => 'نمایش',
+    'post' => 'پست',
+    'published' => 'منتشر شده',
+    'not_published' => ' منتشر نشده',
 ];

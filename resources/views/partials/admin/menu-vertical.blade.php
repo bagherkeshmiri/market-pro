@@ -123,6 +123,98 @@
             </li>
             <li class=" nav-item">
                 <a href="#">
+                    <i class="bx bx-globe text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles">وب سایت </span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="#">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item text-white" data-i18n="Second Level">
+                                سوالات متداول
+                            </span>
+                        </a>
+                        <ul class="menu-content">
+                            <li>
+                                <a href="{{ route('admin.faq.create') }}">
+                                    <i class="bx bx-left-arrow-alt text-white"></i>
+                                    <span class="menu-item text-white" data-i18n="Third Level">
+                                        ایجاد سوال
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('admin.faq.index') }}">
+                                    <i class="bx bx-left-arrow-alt text-white"></i>
+                                    <span class="menu-item text-white" data-i18n="Third Level">
+                                         لیست سوالات
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item text-white" data-i18n="Second Level">
+                                وبلاگ
+                            </span>
+                        </a>
+                        <ul class="menu-content">
+                            <li>
+                                <a href="{{ route('admin.post.create') }}">
+                                    <i class="bx bx-left-arrow-alt text-white"></i>
+                                    <span class="menu-item text-white" data-i18n="Third Level">
+                                        ایجاد پست
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('admin.post.index') }}">
+                                    <i class="bx bx-left-arrow-alt text-white"></i>
+                                    <span class="menu-item text-white" data-i18n="Third Level">
+                                         لیست پست ها
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="#">
+                    <i class="bx bx-message text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles">نظرات</span>
+                </a>
+                <ul class="menu-content">
+                    <li><a href="{{ route('admin.comment.index') }}">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست نظرات </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="#">
+                    <i class="bx bx-line-chart text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles">گزارشات</span>
+                </a>
+                <ul class="menu-content">
+                    <li><a href="#">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white" data-i18n="roles-list">    فروش امروز </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="#">
                     <i class="bx   bx-money text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles"> سفارشات</span>
                 </a>
@@ -156,70 +248,6 @@
                     <li><a href="#">
                             <i class="bx bx-left-arrow-alt text-white"></i>
                             <span class="menu-item  text-white" data-i18n="roles-list">   لیست فاکتور ها </span>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-            <li class=" nav-item">
-                <a href="#">
-                    <i class="bx bx-globe text-white"></i>
-                    <span class="menu-title text-white" data-i18n="roles">وب سایت </span>
-                </a>
-                <ul class="menu-content">
-                    <li>
-                        <a href="#">
-                            <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item text-white" data-i18n="Second Level">
-                                سوالات متداول
-                            </span>
-                        </a>
-                        <ul class="menu-content">
-                            <li>
-                                <a href="{{ route('admin.faq.create') }}">
-                                    <i class="bx bx-left-arrow-alt text-white"></i>
-                                    <span class="menu-item text-white" data-i18n="Third Level">
-                                        ایجاد سوال
-                                    </span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="{{ route('admin.faq.index') }}">
-                                    <i class="bx bx-left-arrow-alt text-white"></i>
-                                    <span class="menu-item text-white" data-i18n="Third Level">
-                                         لیست سوالات
-                                    </span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class=" nav-item">
-                <a href="#">
-                    <i class="bx bx-message text-white"></i>
-                    <span class="menu-title text-white" data-i18n="roles">نظرات</span>
-                </a>
-                <ul class="menu-content">
-                    <li><a href="{{ route('admin.comment.index') }}">
-                            <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست نظرات </span>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-            <li class=" nav-item">
-                <a href="#">
-                    <i class="bx bx-line-chart text-white"></i>
-                    <span class="menu-title text-white" data-i18n="roles">گزارشات</span>
-                </a>
-                <ul class="menu-content">
-                    <li><a href="#">
-                            <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="roles-list">    فروش امروز </span>
                         </a>
                     </li>
 

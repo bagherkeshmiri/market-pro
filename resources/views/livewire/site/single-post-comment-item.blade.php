@@ -1,0 +1,32 @@
+<div class="comment-item">
+
+    <div class="comment-thumb">
+        <img src="{{ asset('images/site/comment-thumb-1.png') }}" alt="author">
+    </div>
+    <div class="comment-info">
+        <div class="comments-meta">
+          <span style="display: inline-flex; align-items: center; gap: 30px;">
+              <span style="display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fa-light fa-user"></i> {{ $comment->user->name ?? '' }}
+              </span>
+              <span style="display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fa-sharp fa-regular fa-clock"></i> {{ $comment->jalali_created_at }}
+              </span>
+          </span>
+
+        </div>
+        <p>
+            {{ $expanded ? $comment->body : \Illuminate\Support\Str::limit($comment->body) }}
+            @if (strlen($comment->body) > 100)
+                <a wire:click="toggle" style="color: blue; cursor: pointer; margin-right:15px;">
+                    {{ $expanded ? 'کمتر' : 'بیشتر' }}
+                </a>
+            @endif
+        </p>
+
+    </div>
+</div>
+
+
+
+

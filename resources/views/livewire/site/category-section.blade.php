@@ -17,7 +17,7 @@
                         <div class="swiper-slide">
                             <div class="category-item">
                                 <div class="category-img">
-                                    <img src="{{ $item->category->image ? asset($item->category->image->url) : asset($sampleProductImageUrl) }}" alt="category">
+                                    <img src="{{ $item->category->image ? asset($item->category->image->url) : asset($sampleImageUrl) }}" alt="category">
                                 </div>
                                 <h3 class="title">
                                     <a href="{{ route('site.products',['category' => $item->category->id]) }}">{{ $item->category->name }}</a>

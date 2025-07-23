@@ -148,16 +148,16 @@
                                     <div>
                                         @include('frest-components.text-divider' , ['dividerClass' => 'divider-warning' ,'title' => 'تصویر اصلی'])
                                         @if ($mainImage)
-                                            <img src="{{ is_object($mainImage) && method_exists($mainImage, 'temporaryUrl') ? $mainImage->temporaryUrl() : (file_exists(public_path($mainImage)) ? asset($mainImage) : asset($sampleProductImageUrl)) }}" width="100%" alt="product-image"/>
+                                            <img src="{{ is_object($mainImage) && method_exists($mainImage, 'temporaryUrl') ? $mainImage->temporaryUrl() : (file_exists(public_path($mainImage)) ? asset($mainImage) : asset($this->getSampleImageUrl())) }}" width="100%" alt="product-image"/>
                                         @else
-                                            <img src="{{ asset($sampleProductImageUrl) }}" width="100%" alt="default-image"/>
+                                            <img src="{{ asset($this->getSampleImageUrl()) }}" width="100%" alt="default-image"/>
                                         @endif
                                     </div>
 
 
                                     <div class="mt-4">
                                         @include('frest-components.text-divider' , ['dividerClass' => 'divider-danger' ,'title' => 'گالری تصاویر'])
-                                        @include('frest-components.image-carousel',['id' => 'show-product-carousel' , 'galleryImages' => $galleryImages , 'sampleProductImageUrl' => $sampleProductImageUrl])
+                                        @include('frest-components.image-carousel',['id' => 'show-product-carousel' , 'galleryImages' => $galleryImages , 'sampleProductImageUrl' => $this->getSampleImageUrl()])
                                     </div>
                                 </div>
                             </div>

@@ -24,7 +24,7 @@ trait HandlesWishlist
             $wishlist[$productId] = [
                 'id' => $productData['id'],
                 'name' => $productData['name'],
-                'image' => $productData['image'] ?? ($this->sampleProductImageUrl ?? null),
+                'image' => $productData['image'] ?? ($this->getSampleImageUrl() ?? null),
                 'unit_price' => $productData['unit_price'],
                 'status' => $productData['status'],
                 'category' => $productData['category'],

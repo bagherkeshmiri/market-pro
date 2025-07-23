@@ -24,7 +24,7 @@ trait HandlesCart
             $cart[$productId] = [
                 'id' => $productData['id'],
                 'name' => $productData['name'],
-                'image' => $productData['image'] ?? ($this->sampleProductImageUrl ?? null),
+                'image' => $productData['image'] ?? ($this->getSampleImageUrl() ?? null),
                 'unit_price' => $productData['unit_price'],
                 'final_price' => $productData['qty'] * $productData['unit_price'],
                 'qty' => $productData['qty'],

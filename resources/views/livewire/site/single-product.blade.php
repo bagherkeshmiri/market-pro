@@ -87,7 +87,7 @@
 
                                     <div class="swiper-slide">
                                         <div class="thumb-item">
-                                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleProductImageUrl) }}" alt="">
+                                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($this->getSampleImageUrl()) }}" alt="">
                                         </div>
                                     </div>
 
@@ -104,7 +104,7 @@
 
                                 <div class="swiper-slide">
                                     <div class="gallary-item">
-                                        <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleProductImageUrl) }}" alt="shop">
+                                        <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($this->getSampleImageUrl()) }}" alt="shop">
                                     </div>
                                 </div>
 
@@ -112,7 +112,7 @@
                                 @foreach($product->galleryImages as $imageGallery)
                                     <div class="swiper-slide">
                                         <div class="gallary-item">
-                                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($sampleProductImageUrl) }}" alt="shop">
+                                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($this->getSampleImageUrl()) }}" alt="shop">
                                         </div>
                                     </div>
                                 @endforeach
@@ -183,7 +183,7 @@
                                     </form>
                                     <div class="cart-btn-wrap-2"><a wire:click="addProductToCart({{ $product->id }})" class="rr-primary-btn cart-btn cursor-pointer">افزودن به سبد خرید</a></div>
                                 </div>
-                                <a  wire:click="addProductToCart({{ $product->id }},true)" class="shop-details-btn rr-primary-btn cursor-pointer">اکنون مورد را بخرید</a>
+                                <a wire:click="addProductToCart({{ $product->id }},true)" class="shop-details-btn rr-primary-btn cursor-pointer">اکنون مورد را بخرید</a>
                             @endif
 
                         </div>
@@ -229,7 +229,11 @@
                 <div class="tab-pane fade review" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="row product-review gy-lg-0 gy-4">
 
-                        <livewire:site.product-comments :product-id="$product->id"/>
+                        @if($comments->count() > 0)
+                            <livewire:site.product-comments :product-id="$product->id"/>
+                        @else
+                            <p class="text-gray-500 italic text-center mt-6">نظر ثبت نشده، اولین نفری باشید که نظر می‌دهید!</p>
+                        @endif
 
                         <div class="col-lg-7 col-md-12">
                             <div class="review-form-wrap">

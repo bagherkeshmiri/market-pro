@@ -35,11 +35,18 @@
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'parentId' , 'content' => 'دسته پدر'] )
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'parentId' , 'wire' => 'parentId'  ,'isDefer' => true, 'defualtValue' => true])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $allCategories , 'id' => 'parentId' , 'wire' => 'parentId'  ,'isDefer' => true, 'defaultValue' => true])
                                                         @include('frest-components.validation-error',[ 'name' => 'parentId' ])
                                                     </div>
                                                 </div>
 
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                                                    <div class="form-group">
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'type' , 'content' => 'نوع دسته'] )
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $types , 'id' => 'type' , 'wire' => 'type'  ,'isDefer' => true , 'defaultValue' => true])
+                                                        @include('frest-components.validation-error',[ 'name' => 'type' ])
+                                                    </div>
+                                                </div>
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
@@ -53,10 +60,10 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'image' , 'content' => 'تصویر اصلی'] )
                                                         @if ($image)
-                                                            <img src="{{ is_object($image) && method_exists($image, 'temporaryUrl') ? $image->temporaryUrl() : (file_exists(public_path($image)) ? asset($image) : asset($sampleProductImageUrl)) }}"
+                                                            <img src="{{ is_object($image) && method_exists($image, 'temporaryUrl') ? $image->temporaryUrl() : (file_exists(public_path($image)) ? asset($image) : asset($this->getSampleImageUrl())) }}"
                                                                  class="img-fluid rounded-start d-block" alt="category-image" width="100" style="padding: 8px;" />
                                                         @else
-                                                            <img src="{{ asset($sampleProductImageUrl) }}"
+                                                            <img src="{{ asset($this->getSampleImageUrl()) }}"
                                                                  class="img-fluid rounded-start d-block" width="100" alt="default-image"/>
                                                         @endif
                                                     </div>

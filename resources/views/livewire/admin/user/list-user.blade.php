@@ -48,9 +48,9 @@
                                                     @endif
                                                     <td class="text-white">{{ $user->jalali_created_at }}</td>
                                                     <td>
-                                                        @include('frest-components.icon-btn',[  'href' => route('admin.user.show',[ 'admin' => $user->id ])  , 'tooltip_title' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.user.show',[ 'admin' => $user->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                         @if($user->id != $mainAdminId)
-                                                            @include('frest-components.icon-btn',[ 'tooltip_title' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=account_delete(this,event)  data-url='.route('admin.user.delete',[ 'admin' => $user->id ]) ])
+                                                            @include('frest-components.icon-btn',[ 'tooltipTitle' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=account_delete(this,event)  data-url='.route('admin.user.delete',[ 'admin' => $user->id ]) ])
                                                         @endif
                                                     </td>
                                                 </tr>

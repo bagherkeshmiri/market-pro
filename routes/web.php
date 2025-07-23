@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\CollectionType;
+use App\Jobs\TestJob;
 use App\Livewire\Site\Blog;
 use App\Livewire\Site\Cart;
 use App\Livewire\Site\Contact;
@@ -9,6 +10,7 @@ use App\Livewire\Site\Index;
 use App\Livewire\Site\Login;
 use App\Livewire\Site\Products;
 use App\Livewire\Site\Register;
+use App\Livewire\Site\SinglePost;
 use App\Livewire\Site\SingleProduct;
 use App\Livewire\Site\Wishlist;
 use Illuminate\Database\Schema\Blueprint;
@@ -28,8 +30,13 @@ Route::name('site.')
         Route::get('/faq', Faq::class)->name('faq');
         Route::get('/cart', Cart::class)->name('cart');
         Route::get('/wishlist', Wishlist::class)->name('wishlist');
+        Route::get('/blog/{post}', SinglePost::class)->name('single-post');
     });
 
+
+Route::get('/run-test-job/1369', function () {
+    TestJob::dispatch();
+});
 
 //Route::get('/create-new-table', function () {
 //    if (!Schema::hasTable('images')) {
@@ -49,7 +56,7 @@ Route::name('site.')
 //});
 
 
-Route::get('test', function () {
+//Route::get('test', function () {
 //    Session::forget('cart');
 //    Session::forget('cart_summary');
 //
@@ -58,7 +65,4 @@ Route::get('test', function () {
 //    dd(
 //        Session::get('wishlist')
 //    );
-
-
-
-});
+//});

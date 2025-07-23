@@ -21,7 +21,7 @@
                             </td>
                             <td class="product-thumbnail">
                                 <a href="{{ route('site.single-product',['product' => $key]) }}">
-                                    <img src="{{ $value['image'] ? asset($value['image']) : asset($sampleProductImageUrl) }}" alt="wishlist">
+                                    <img src="{{ $value['image'] ? asset($value['image']) : asset($this->getSampleImageUrl()) }}" alt="wishlist">
                                 </a>
                                 <div class="product-thumbnail">
                                     <span class="category">{{ $value['category'] }}</span>

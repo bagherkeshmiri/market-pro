@@ -29,7 +29,7 @@
 >
 
     @isset($data)
-        @isset($defualtValue)
+        @isset($defaultValue)
             <option>-- انتخاب کنید --</option>
         @endisset
 
