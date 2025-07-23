@@ -41,15 +41,22 @@ use App\Http\Controllers\admin\AccountController;
 
 Route::prefix('auth')
     ->group(function () {
-        Route::middleware('ValidAdmin')->get('/management', Login::class)->name('login');
+        Route::middleware('redirectIfAdminAuthenticated')
+            ->get('/management', Login::class)
+            ->name('login');
 
-        Route::controller(AuthController::class)->group(function () {
-            Route::get('/logout', 'logout')->name('logout');
-        });
+        Route::controller(AuthController::class)
+            ->group(function () {
+                Route::get('/logout', 'logout')
+                    ->name('logout');
+            });
     });
 
 Route::prefix('dashboard')
-    ->middleware('InvalidAdmin')
+    ->middleware([
+        'auth:admin',
+        'ensureIsAdmin',
+    ])
     ->group(function () {
         Route::get('/', AdminDashboard::class)->name('dashboard');
 
@@ -119,7 +126,6 @@ Route::prefix('dashboard')
                 Route::get('/create', CreateFaq::class)->name('create');
                 Route::get('/show/{faq}', ShowFaq::class)->name('show');
             });
-
 
 
         Route::name('post.')

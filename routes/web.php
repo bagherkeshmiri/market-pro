@@ -32,7 +32,7 @@ Route::name('site.')
         Route::get('/cart', Cart::class)->name('cart');
         Route::get('/wishlist', Wishlist::class)->name('wishlist');
         Route::get('/blog/{post}', SinglePost::class)->name('single-post');
-        Route::get('/checkout', Checkout::class)->name('checkout');
+        Route::middleware('auth:web')->get('/checkout', Checkout::class)->name('checkout');
     });
 
 

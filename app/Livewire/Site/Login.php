@@ -19,9 +19,6 @@ class Login extends SiteComponent
     public $password = '';
     public $remember = false;
 
-    /**
-     * @throws Throwable
-     */
     public function login(): RedirectResponse|Redirector
     {
         $this->validate([
@@ -29,7 +26,6 @@ class Login extends SiteComponent
             'password' => 'required',
         ]);
 
-        DB::beginTransaction();
         try {
             $user = User::whereEmail($this->email)->first();
 
@@ -38,13 +34,13 @@ class Login extends SiteComponent
                 return redirect()->route('site.login');
             }
 
-            Auth::login($user);
+            Auth::guard('web')->login($user);
 
-            DB::commit();
+            session()->regenerate();
+
             session()->flash('success', __('global.success_message'));
             return redirect()->route('site.home');
         } catch (Exception) {
-            DB::rollBack();
             session()->flash('error', __('global.error_message'));
             return redirect()->route('site.login');
         }

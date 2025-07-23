@@ -6,14 +6,14 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class InvalidAdmin
+class RedirectIfAdminAuthenticated
 {
-
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check()) {
-            return redirect()->route('admin.login');
+        if (Auth::guard('admin')->check()) {
+            return redirect()->route('admin.dashboard');
         }
+
         return $next($request);
     }
 }

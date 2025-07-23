@@ -33,7 +33,9 @@ class Login extends AuthComponent
                 return redirect()->back();
             }
 
-            Auth::loginUsingId($admin->id);
+            Auth::guard('admin')->loginUsingId($admin->id);
+            session()->regenerate();
+
             return redirect()->route('admin.dashboard');
         } catch (Exception) {
             session()->flash('error', __('global.error_message'));
@@ -44,6 +46,6 @@ class Login extends AuthComponent
     public function render(): View
     {
         $pageTitle = 'ورود مدیران';
-        return $this->renderView('livewire.admin.auth.login',$pageTitle);
+        return $this->renderView('livewire.admin.auth.login', $pageTitle);
     }
 }
