@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\EnsureIsAdmin;
 use App\Http\Middleware\RedirectIfAdminAuthenticated;
 use Illuminate\Foundation\Application;
@@ -19,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::prefix('admin')
                 ->middleware([
                     'web',
+                    'throttle:500,1',
                 ])
                 ->name('admin.')
                 ->group(base_path('routes/admin.php'));
@@ -26,8 +28,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'ensureIsAdmin' => ensureIsAdmin::class,
             'redirectIfAdminAuthenticated' => redirectIfAdminAuthenticated::class,
+            'auth' => Authenticate::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

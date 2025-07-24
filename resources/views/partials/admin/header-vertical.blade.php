@@ -28,7 +28,7 @@
 
                     </li>
                     <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                            <div class="user-nav d-sm-flex d-none"><span class="user-name" style="color: white !important;">{{ auth()->user()->name  }} </span></div>
+                            <div class="user-nav d-sm-flex d-none"><span class="user-name" style="color: white !important;">{{ auth('admin')->user()->name  }} </span></div>
                             <span><img class="round" src="{{ asset('images/frest/avatar-s-16.png') }}" alt="avatar" height="40" width="40"></span></a>
                         <div class="dropdown-menu pb-0">
                             <a class="dropdown-item text-white" href="{{ route('admin.profile.index') }}"><i class="bx bx-user mr-50"></i> پروفایل</a>
