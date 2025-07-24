@@ -25,62 +25,28 @@
                                     <div class="col-md-12">
                                         <div class="form-item">
                                             <label for="email" class="form-title">آدرس ایمیل</label>
+                                            @include('custom-components.site.required-tag')
                                             <input type="email" id="email" name="email" class="form-control">
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
                                     <div class="col-md-6">
-                                        <div class="form-item name">
-                                            <h4 class="form-title">نام *</h4>
-                                            <input type="text" id="fullname-2" name="fullname-2" class="form-control">
+                                        <div class="form-item">
+                                            <label for="fullName" class="form-title">نام و نام خانوادگی</label>
+                                            @include('custom-components.site.required-tag')
+                                            <input type="text" id="fullName" name="fullName" class="form-control">
                                         </div>
                                     </div>
+
+
                                     <div class="col-md-6">
                                         <div class="form-item">
-                                            <h4 class="form-title">نام خانوادگی *</h4>
-                                            <input type="text" id="lastname" name="lastname" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <div class="form-item">
-                                            <h4 class="form-title">نام شرکت (اختیاری)*</h4>
-                                            <input type="text" id="company" name="company" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <div class="form-item">
-                                            <h4 class="form-title">کشور / منطقه*</h4>
-                                            <input type="text" id="country" name="country" class="form-control" placeholder="ایالات متحده (ایالات متحده)">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <div class="form-item ">
-                                            <h4 class="form-title">آدرس خیابان*</h4>
-                                            <input type="text" id="street" name="street" class="form-control street-control" placeholder="شماره خانه و شماره خیابان">
-                                            <input type="text" id="street-2" name="street-2" class="form-control street-control-2" placeholder="آپارتمان، سوئیت، واحد و غیره (اختیاری)">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <div class="form-item">
-                                            <h4 class="form-title">استان*</h4>
-                                            <input type="text" id="town" name="town" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <div class="form-item">
-                                            <h4 class="form-title">شهر</h4>
-                                            <div class="nice-select select-control form-control country open" tabindex="0"><span class="current">کرج</span>
+                                            <label for="country" class="form-title">کشور</label>
+                                            @include('custom-components.site.required-tag')
+                                            <div class="nice-select select-control form-control country " tabindex="0">
+                                                <span class="current">ایران</span>
                                                 <ul class="list">
                                                     <li data-value="" class="option selected focus">تهران</li>
                                                     <li data-value="vdt" class="option">شیراز</li>
@@ -90,28 +56,72 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
+
+
                                 <div class="form-group row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-item">
-                                            <h4 class="form-title">کد پستی*</h4>
-                                            <input type="text" id="zip" name="zip" class="form-control">
+                                            <label for="province" class="form-title">استان</label>
+                                            @include('custom-components.site.required-tag')
+                                            <div class="nice-select select-control form-control province " tabindex="0">
+                                                <span class="current">کرج</span>
+                                                <ul class="list">
+                                                    <li data-value="" class="option selected focus">تهران</li>
+                                                    <li data-value="vdt" class="option">شیراز</li>
+                                                    <li data-value="can" class="option">اصفهان</li>
+                                                    <li data-value="uk" class="option">قزوین</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
+
+                                    <div class="col-md-6">
                                         <div class="form-item">
-                                            <h4 class="form-title">تلفن*</h4>
-                                            <input type="text" id="phone" name="phone" class="form-control">
+                                            <label for="city" class="form-title">شهر</label>
+                                            @include('custom-components.site.required-tag')
+                                            <div class="nice-select select-control form-control city" tabindex="0">
+                                                <span class="current">کرج</span>
+                                                <ul class="list">
+                                                    <li data-value="" class="option selected focus">تهران</li>
+                                                    <li data-value="vdt" class="option">شیراز</li>
+                                                    <li data-value="can" class="option">اصفهان</li>
+                                                    <li data-value="uk" class="option">قزوین</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
+
+
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <div class="form-item">
+                                            <label for="postalCode" class="form-title">کد پستی</label>
+                                            @include('custom-components.site.required-tag')
+                                            <input type="number" id="postalCode" name="postalCode" class="form-control">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-item">
+                                            <label for="postalCode" class="form-title"> تلفن</label>
+                                            @include('custom-components.site.required-tag')
+                                            <input type="number" id="postalCode" name="postalCode" class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="form-item">
-                                            <h4 class="form-title">یادداشت های سفارش *</h4>
-                                            <textarea id="message" name="message" cols="30" rows="5" class="form-control address"></textarea>
+                                            <label for="orderMessage" class="form-title"> یادداشت های سفارش</label>
+                                            <textarea id="orderMessage" name="orderMessage" cols="30" rows="5" class="form-control address"></textarea>
                                         </div>
                                     </div>
                                 </div>
