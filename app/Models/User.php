@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Models;
+
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Morilog\Jalali\Jalalian;
+
+
+class User extends Authenticatable
+{
+    public const string TABLE_NAME = 'users';
+    protected $table = self::TABLE_NAME;
+    public const string COLUMN_ID = 'id';
+
+    protected $fillable = [
+        'name',
+        'email',
+        'mobile',
+        'email_verified_at',
+        'password',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
+            $builder->orderByDesc('id');
+        });
+    }
+
+    public function getJalaliCreatedAtAttribute(): string
+    {
+        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
+    }
+
+    /*------------ Relations ------------*/
+
+    public function addresses(): HasMany
+    {
+        return $this->hasMany(UserAddress::class, UserAddress::COLUMN_USER_ID, self::COLUMN_ID);
+    }
+
+    /*-------------- Scopes -------------*/
+
+    /*---------- Other Functions --------*/
+
+    public function setPasswordAttribute($value): void
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
+}
