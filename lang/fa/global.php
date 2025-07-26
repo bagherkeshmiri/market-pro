@@ -41,4 +41,6 @@ return [
     'post' => 'پست',
     'published' => 'منتشر شده',
     'not_published' => ' منتشر نشده',
+    'unSuccess' => 'ناموفق',
+    'success' => 'موفق',
 ];
