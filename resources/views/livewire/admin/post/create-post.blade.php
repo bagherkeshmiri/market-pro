@@ -25,7 +25,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'title' , 'content' => 'عنوان'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'title' , 'classes' => 'text-left' , 'id' => 'title' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'title' , 'classes' => 'text-left' , 'id' => 'title' , 'icon' => titleIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.validation-error',[ 'name' => 'title' ])
                                                     </div>
                                                 </div>
@@ -35,7 +35,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'slug' , 'content' => 'اسلاگ'] )
                                                         @include('frest-components.required-tag')
                                                         <span class="text-warning pl-1" style="font-size: 0.7rem;">اسلاگ حتما باید انگلیسی وارد شود</span>
-                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'slug' , 'classes' => 'text-left' , 'id' => 'slug' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'slug' , 'classes' => 'text-right' , 'id' => 'slug' , 'icon' => titleIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.validation-error',[ 'name' => 'slug' ])
                                                     </div>
                                                 </div>

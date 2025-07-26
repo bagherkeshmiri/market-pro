@@ -43,7 +43,6 @@
                             'wire' => 'email',
                             'classes' => 'text-left',
                             'id' => 'email',
-                            'dir' => 'ltr',
                             'icon' => emailIcon(),
                             'attributes' => 'required',
                         ])
@@ -62,7 +61,6 @@
                             'wire' => 'password',
                             'classes' => 'text-left',
                             'id' => 'password',
-                            'dir' => 'ltr',
                             'icon' => lockIcon(),
                             'attributes' => 'required',
                         ])

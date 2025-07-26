@@ -74,7 +74,7 @@
                                                                     <div class="form-group">
                                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'old_pass' , 'content' => 'رمز عبور قبلی'] )
                                                                         @include('frest-components.required-tag')
-                                                                        @include('frest-components.input',[ 'type' => 'password' , 'wire' => 'oldPass' , 'classes' => 'text-left' , 'id' => 'oldPass' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
+                                                                        @include('frest-components.input',[ 'type' => 'password' , 'wire' => 'oldPass' , 'classes' => 'text-left' , 'id' => 'oldPass' , 'icon' => lockIcon() , 'attributes' => 'required' ])
                                                                         @include('frest-components.validation-error',[ 'name' => 'oldPass' ])
                                                                     </div>
                                                                 </div>
@@ -84,7 +84,7 @@
                                                                     <div class="form-group">
                                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'password' , 'content' => 'رمز عبور جدید'] )
                                                                         @include('frest-components.required-tag')
-                                                                        @include('frest-components.input',[ 'type' => 'password' , 'wire' => 'password' , 'classes' => 'text-left' , 'id' => 'password' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
+                                                                        @include('frest-components.input',[ 'type' => 'password' , 'wire' => 'password' , 'classes' => 'text-left' , 'id' => 'password' , 'icon' => lockIcon() , 'attributes' => 'required' ])
                                                                         @include('frest-components.validation-error',[ 'name' => 'password' ])
                                                                     </div>
                                                                 </div>
@@ -94,7 +94,7 @@
                                                                     <div class="form-group">
                                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'password_confirmation' , 'content' => ' تکرار رمز عبور جدید'] )
                                                                         @include('frest-components.required-tag')
-                                                                        @include('frest-components.input',[ 'type' => 'password' , 'wire' => 'password_confirmation' , 'classes' => 'text-left' , 'id' => 'password_confirmation' , 'dir' => 'ltr' , 'icon' => lockIcon() , 'attributes' => 'required' ])
+                                                                        @include('frest-components.input',[ 'type' => 'password' , 'wire' => 'password_confirmation' , 'classes' => 'text-left' , 'id' => 'password_confirmation' , 'icon' => lockIcon() , 'attributes' => 'required' ])
                                                                         @include('frest-components.validation-error',[ 'name' => 'password_confirmation' ])
                                                                     </div>
                                                                 </div>

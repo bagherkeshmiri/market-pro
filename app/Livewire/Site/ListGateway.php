@@ -4,10 +4,11 @@ namespace App\Livewire\Site;
 
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Gate;
+use Illuminate\View\View;
 
 class ListGateway extends AdminComponent
 {
-    public function render()
+    public function render(): View
     {
         $pageTitle = 'لیست‌ درگاه ها';
         $tableHeads = ['نام', 'لیبل', 'وضعیت', 'تاریخ ایجاد', 'عملیات'];

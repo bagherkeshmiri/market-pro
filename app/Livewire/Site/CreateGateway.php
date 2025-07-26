@@ -2,12 +2,17 @@
 
 namespace App\Livewire\Site;
 
-use Livewire\Component;
+use App\Livewire\BaseComponents\AdminComponent;
+use Illuminate\View\View;
 
-class CreateGateway extends Component
+class CreateGateway extends AdminComponent
 {
-    public function render()
+    public function render(): View
     {
-        return view('livewire.site.create-gateway');
+        $pageTitle = 'ایجاد درگاه';
+        return $this->renderView(
+            'livewire.site.create-gateway',
+            $pageTitle
+        );
     }
 }
