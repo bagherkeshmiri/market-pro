@@ -11,6 +11,35 @@ use Illuminate\Support\Facades\Hash;
 use Morilog\Jalali\Jalalian;
 
 
+/**
+ *
+ *
+ * @property int $id
+ * @property string|null $name
+ * @property string $email
+ * @property string|null $mobile
+ * @property Carbon|null $email_verified_at
+ * @property string $password
+ * @property string|null $remember_token
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, UserAddress> $addresses
+ * @property-read int|null $addresses_count
+ * @property-read string $jalali_created_at
+ * @method static Builder<static>|User newModelQuery()
+ * @method static Builder<static>|User newQuery()
+ * @method static Builder<static>|User query()
+ * @method static Builder<static>|User whereCreatedAt($value)
+ * @method static Builder<static>|User whereEmail($value)
+ * @method static Builder<static>|User whereEmailVerifiedAt($value)
+ * @method static Builder<static>|User whereId($value)
+ * @method static Builder<static>|User whereMobile($value)
+ * @method static Builder<static>|User whereName($value)
+ * @method static Builder<static>|User wherePassword($value)
+ * @method static Builder<static>|User whereRememberToken($value)
+ * @method static Builder<static>|User whereUpdatedAt($value)
+ * @mixin Eloquent
+ */
 class User extends Authenticatable
 {
     public const string TABLE_NAME = 'users';

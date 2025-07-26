@@ -20,8 +20,7 @@ class AdminDashboard extends AdminComponent
                 'کل کاربران',
                 'bg-rgba-success text-success',
                 'bxs-group',
-//                Admin::count('id') + User::count('id'),   // TODO
-                Admin::count('id'),
+                Admin::count('id') + User::count('id'),
             ],
             'allProducts' => [
                 'کل محصولات',

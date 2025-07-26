@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\UserController;
 use App\Livewire\Admin\Admin\CreateAdmin;
 use App\Livewire\Admin\Admin\ListAdmin;
 use App\Livewire\Admin\Admin\ShowAdmin;
@@ -19,7 +20,6 @@ use App\Livewire\Admin\Post\ShowPost;
 use App\Livewire\Admin\Product\CreateProduct;
 use App\Livewire\Admin\Product\ListProduct;
 use App\Livewire\Admin\Product\ShowProduct;
-use App\Livewire\Admin\User\CreateUser;
 use App\Livewire\Admin\User\ListUser;
 use App\Livewire\Admin\User\ShowUser;
 use App\Livewire\Admin\Auth\Login;
@@ -79,14 +79,13 @@ Route::prefix('dashboard')
             });
 
 
-//        Route::name('user.')
-//            ->prefix('user')
-//            ->group(function () {
-//                Route::get('/', ListUser::class)->name('index');
-//                Route::get('/create', CreateUser::class)->name('create');
-//                Route::get('/show/{admin}', ShowUser::class)->name('show');
-//                Route::get('/delete/{admin}', [UserController::class, 'delete'])->name('delete');
-//            });
+        Route::name('user.')
+            ->prefix('user')
+            ->group(function () {
+                Route::get('/', ListUser::class)->name('index');
+                Route::get('/show/{user}', ShowUser::class)->name('show');
+                Route::get('/delete/{user}', [UserController::class, 'delete'])->name('delete');
+            });
 
         Route::name('profile.')
             ->prefix('profile')

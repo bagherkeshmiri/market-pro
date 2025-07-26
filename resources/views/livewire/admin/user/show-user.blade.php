@@ -26,7 +26,6 @@
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام '] )
-                                                        @include('frest-components.required-tag')
                                                         @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'name' , 'classes' => 'text-left' , 'id' => 'name' , 'dir' => 'ltr' , 'icon' => userIcon() , 'tabindex' => '1' , 'attributes' => 'required' ])
                                                         @include('frest-components.validation-error',[ 'name' => 'name' ])
                                                     </div>
@@ -42,25 +41,14 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6 col-12">
-                                                    <div class="form-group">
-                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'type' , 'content' => 'نوع کاربری'] )
-                                                        @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $types , 'id' => 'type' , 'wire' => 'type' ])
-                                                        @include('frest-components.validation-error',[ 'name' => 'type' ])
-                                                    </div>
-
-                                                </div>
 
 
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'role' , 'content' => 'نقش'] )
-                                                        @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $roles , 'id' => 'role' , 'wire' => 'role' ])
-                                                        @include('frest-components.validation-error',[ 'name' => 'role' ])
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'mobile' , 'content' => 'موبایل '] )
+                                                        @include('frest-components.input',[ 'type' => 'number' , 'wire' => 'mobile' , 'classes' => 'text-left' , 'id' => 'mobile' , 'dir' => 'ltr' , 'icon' => mobileIcon() , 'tabindex' => '4' , 'attributes' => 'required' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'mobile' ])
                                                     </div>
-
                                                 </div>
 
                                                 <div class="col-12 d-flex justify-content-end">
