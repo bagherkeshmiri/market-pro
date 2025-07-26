@@ -40,8 +40,12 @@ class Login extends SiteComponent
 
             session()->flash('success', __('global.success_message'));
             return redirect()->route('site.home');
-        } catch (Exception) {
-            session()->flash('error', __('global.error_message'));
+        } catch (Exception $e) {
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
             return redirect()->route('site.login');
         }
     }

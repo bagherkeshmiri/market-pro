@@ -36,8 +36,12 @@ class Login extends AuthComponent
             session()->regenerate();
 
             return redirect()->route('admin.dashboard');
-        } catch (Exception) {
-            session()->flash('error', __('global.error_message'));
+        } catch (Exception $e) {
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
             return redirect()->back();
         }
     }
