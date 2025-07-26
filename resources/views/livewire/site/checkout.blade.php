@@ -47,12 +47,6 @@
                                             @include('custom-components.site.required-tag')
                                             <div class="nice-select select-control form-control country " tabindex="0">
                                                 <span class="current">ایران</span>
-                                                <ul class="list">
-                                                    <li data-value="" class="option selected focus">تهران</li>
-                                                    <li data-value="vdt" class="option">شیراز</li>
-                                                    <li data-value="can" class="option">اصفهان</li>
-                                                    <li data-value="uk" class="option">قزوین</li>
-                                                </ul>
                                             </div>
                                         </div>
                                     </div>
