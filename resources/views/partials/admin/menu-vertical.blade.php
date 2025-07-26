@@ -41,7 +41,6 @@
 
                 </ul>
             </li>
-
             <li class=" nav-item">
                 <a href="#">
                     <i class="bx bx-group text-white"></i>
@@ -56,7 +55,6 @@
 
                 </ul>
             </li>
-
             <li class=" nav-item">
                 <a href="#">
                     <i class="bx bx-check-shield text-white"></i>
@@ -217,6 +215,26 @@
             </li>
             <li class=" nav-item">
                 <a href="#">
+                    <i class="bx bxs-bank text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles"> درگاه‌ها</span>
+                </a>
+                <ul class="menu-content">
+                    <li><a href="{{ route('admin.gateway.create') }}">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white" data-i18n="create-role">ایجاد درگاه</span>
+                        </a>
+                    </li>
+
+                    <li><a href="{{ route('admin.gateway.index') }}">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست درگاه ها </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="#">
                     <i class="bx bx-line-chart text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles">گزارشات</span>
                 </a>
@@ -269,6 +287,7 @@
 
                 </ul>
             </li>
+
         </ul>
     </div>
 </div>

@@ -71,6 +71,17 @@ class Gate extends Authenticatable
         return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
+
+    public function getIsActiveLabelAttribute(): string
+    {
+        return $this->is_active->label();
+    }
+
+    public function getIsActiveBadgeClassAttribute(): string
+    {
+        return $this->is_active->badgeClass();
+    }
+
     /*------------ Relations ------------*/
 
     public function org(): HasMany

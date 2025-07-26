@@ -32,6 +32,9 @@ use App\Livewire\Admin\Profile\ShowProfile;
 use App\Livewire\Admin\Role\CreateRole;
 use App\Livewire\Admin\Role\ListRole;
 use App\Livewire\Admin\Role\ShowRole;
+use App\Livewire\Site\CreateGateway;
+use App\Livewire\Site\ListGateway;
+use App\Livewire\Site\ShowGateway;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\RoleController;
@@ -145,5 +148,14 @@ Route::prefix('dashboard')
                 Route::get('/', ListPost::class)->name('index');
                 Route::get('/create', CreatePost::class)->name('create');
                 Route::get('/show/{post}', ShowPost::class)->name('show');
+            });
+
+
+        Route::name('gateway.')
+            ->prefix('gateway')
+            ->group(function () {
+                Route::get('/', ListGateway::class)->name('index');
+                Route::get('/create', CreateGateway::class)->name('create');
+                Route::get('/show/{post}', ShowGateway::class)->name('show');
             });
     });
