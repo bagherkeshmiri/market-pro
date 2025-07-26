@@ -12,7 +12,45 @@ use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 use Str;
 
-
+/**
+ *
+ *
+ * @property int $id
+ * @property int $order_id
+ * @property int|null $gate_id
+ * @property int|null $gate_org_id
+ * @property string $payment_number
+ * @property PaymentStatus $status  1:unSuccess , 2:success
+ * @property string $amount
+ * @property string|null $ref_id
+ * @property int|null $paid_at
+ * @property int $expire_time
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Gate|null $gate
+ * @property-read GateOrg|null $gateOrg
+ * @property-read string $jalali_created_at
+ * @property-read Order|null $order
+ * @method static Builder<static>|Payment newModelQuery()
+ * @method static Builder<static>|Payment newQuery()
+ * @method static Builder<static>|Payment onlyTrashed()
+ * @method static Builder<static>|Payment query()
+ * @method static Builder<static>|Payment whereAmount($value)
+ * @method static Builder<static>|Payment whereCreatedAt($value)
+ * @method static Builder<static>|Payment whereExpireTime($value)
+ * @method static Builder<static>|Payment whereGateId($value)
+ * @method static Builder<static>|Payment whereGateOrgId($value)
+ * @method static Builder<static>|Payment whereId($value)
+ * @method static Builder<static>|Payment whereOrderId($value)
+ * @method static Builder<static>|Payment wherePaidAt($value)
+ * @method static Builder<static>|Payment wherePaymentNumber($value)
+ * @method static Builder<static>|Payment whereRefId($value)
+ * @method static Builder<static>|Payment whereStatus($value)
+ * @method static Builder<static>|Payment whereUpdatedAt($value)
+ * @method static Builder<static>|Payment withTrashed()
+ * @method static Builder<static>|Payment withoutTrashed()
+ * @mixin Eloquent
+ */
 class Payment extends Authenticatable
 {
     use SoftDeletes;
@@ -81,12 +119,10 @@ class Payment extends Authenticatable
         return $this->belongsTo(Gate::class, self::COLUMN_GATE_ID, Gate::COLUMN_ID);
     }
 
-
     public function gateOrg(): BelongsTo
     {
         return $this->belongsTo(GateOrg::class, self::COLUMN_GATE_ORG_ID, GateOrg::COLUMN_ID);
     }
-
 
     /*-------------- Scopes -------------*/
 
