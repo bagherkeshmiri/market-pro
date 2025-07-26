@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\CollectionType;
+use App\Http\Controllers\site\AuthController;
 use App\Jobs\TestJob;
 use App\Livewire\Site\Blog;
 use App\Livewire\Site\Cart;
@@ -35,6 +36,15 @@ Route::name('site.')
         Route::middleware('auth:web')->get('/checkout', Checkout::class)->name('checkout');
     });
 
+
+Route::prefix('auth')
+    ->group(function () {
+        Route::controller(AuthController::class)
+            ->group(function () {
+                Route::get('/logout', 'logout')
+                    ->name('logout');
+            });
+    });
 
 Route::get('/run-test-job/1369', function () {
     TestJob::dispatch();
