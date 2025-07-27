@@ -29,17 +29,6 @@
                                                     </div>
                                                 </div>
 
-
-                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                    <div class="form-group">
-                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'label' , 'content' => 'لیبل'] )
-                                                        @include('frest-components.required-tag')
-                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'label' , 'classes' => 'text-left' , 'id' => 'label' , 'icon' => titleIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.validation-error',[ 'name' => 'label' ])
-                                                    </div>
-                                                </div>
-
-
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'isActive' , 'content' => 'وضعیت'] )

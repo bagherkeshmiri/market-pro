@@ -28,7 +28,6 @@
                                                 <tr>
 
                                                     <td class="text-white">{{ $gateway->name }}</td>
-                                                    <td class="text-white">{{ $gateway->label }}</td>
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $gateway->is_active_badge_class,  'content' => $gateway->is_active_label ])
                                                     </td>

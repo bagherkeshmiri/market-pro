@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\GatewayOrg;
 use App\Enums\IsActive;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Gate;
+use App\Models\GateOrg;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -65,13 +66,9 @@ class CreateGatewayOrg extends AdminComponent
      */
     public function store(): RedirectResponse|Redirector
     {
-        dd(
-            $this
-        );
-
         $this->validate([
-            'name' => 'required',
             'label' => 'required',
+            'gateId' => 'required|numeric|exists:gates,id',
             'isActive' => [
                 'required',
                 new Enum(IsActive::class)
@@ -79,18 +76,19 @@ class CreateGatewayOrg extends AdminComponent
         ]);
 
         $data = [
-            'name' => $this->name,
             'label' => $this->label,
+            'gate_id' => $this->gateId,
             'is_active' => $this->isActive,
+            'is_default' => $this->isDefault,
         ];
 
         DB::beginTransaction();
         try {
-            Gate::create($data);
+            GateOrg::create($data);
             DB::commit();
-            $this->reset(['name', 'label']);
+            $this->reset(['label']);
             session()->flash('success', __('global.success_message'));
-            return redirect()->route('admin.gateway.index');
+            return redirect()->route('admin.gateway-org.index');
         } catch (Exception $e) {
             DB::rollBack();
             if (app()->isLocal()) {
@@ -98,7 +96,7 @@ class CreateGatewayOrg extends AdminComponent
             } else {
                 session()->flash('error', __('global.error_message'));
             }
-            return redirect()->route('admin.gateway.create');
+            return redirect()->route('admin.gateway-org.create');
         }
     }
 

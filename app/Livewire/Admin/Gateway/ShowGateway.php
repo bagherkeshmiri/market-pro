@@ -17,13 +17,11 @@ class ShowGateway extends AdminComponent
 {
     public Gate $gate;
     public $name;
-    public $label;
     public $isActive;
 
     public function mount(): void
     {
         $this->name = $this->gate->name;
-        $this->label = $this->gate->label;
         $this->isActive = $this->gate->is_active;
     }
 
@@ -45,7 +43,6 @@ class ShowGateway extends AdminComponent
     {
         $this->validate([
             'name' => 'required',
-            'label' => 'required',
             'isActive' => [
                 'required',
                 new Enum(IsActive::class)
@@ -54,7 +51,6 @@ class ShowGateway extends AdminComponent
 
         $data = [
             'name' => $this->name,
-            'label' => $this->label,
             'is_active' => $this->isActive,
         ];
 
@@ -62,7 +58,7 @@ class ShowGateway extends AdminComponent
         try {
             $this->gate->update($data);
             DB::commit();
-            $this->reset(['name', 'label']);
+            $this->reset(['name']);
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.gateway.show', ['gate' => $this->gate->id]);
         } catch (Exception $e) {

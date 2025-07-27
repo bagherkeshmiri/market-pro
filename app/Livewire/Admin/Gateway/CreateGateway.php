@@ -16,7 +16,6 @@ use Throwable;
 class CreateGateway extends AdminComponent
 {
     public $name;
-    public $label;
     public $isActive;
 
     public function mount(): void
@@ -42,7 +41,6 @@ class CreateGateway extends AdminComponent
     {
         $this->validate([
             'name' => 'required',
-            'label' => 'required',
             'isActive' => [
                 'required',
                 new Enum(IsActive::class)
@@ -51,7 +49,6 @@ class CreateGateway extends AdminComponent
 
         $data = [
             'name' => $this->name,
-            'label' => $this->label,
             'is_active' => $this->isActive,
         ];
 
@@ -59,7 +56,7 @@ class CreateGateway extends AdminComponent
         try {
             Gate::create($data);
             DB::commit();
-            $this->reset(['name', 'label']);
+            $this->reset(['name']);
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.gateway.index');
         } catch (Exception $e) {

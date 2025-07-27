@@ -2,12 +2,21 @@
 
 namespace App\Livewire\Admin\GatewayOrg;
 
-use Livewire\Component;
+use App\Livewire\BaseComponents\AdminComponent;
+use App\Models\GateOrg;
+use Illuminate\View\View;
 
-class ListGatewayOrg extends Component
+class ListGatewayOrg extends AdminComponent
 {
-    public function render()
+    public function render(): View
     {
-        return view('livewire.admin.gateway-org.list-gateway-org');
+        $pageTitle = 'لیست‌  تنظیمات درگاه ها';
+        $tableHeads = ['لیبل','درگاه', 'وضعیت', 'پیش‌فرض', 'تاریخ ایجاد', 'عملیات'];
+        $gatewayOrgs = GateOrg::withoutTrashed()->paginate($this->perPage);
+        return $this->renderView(
+            'livewire.admin.gateway-org.list-gateway-org',
+            $pageTitle,
+            compact('tableHeads', 'gatewayOrgs')
+        );
     }
 }
