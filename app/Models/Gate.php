@@ -21,6 +21,8 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Carbon|null $deleted_at
+ * @property-read string $is_active_badge_class
+ * @property-read string $is_active_label
  * @property-read string $jalali_created_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, GateOrg> $org
  * @property-read int|null $org_count

@@ -156,6 +156,6 @@ Route::prefix('dashboard')
             ->group(function () {
                 Route::get('/', ListGateway::class)->name('index');
                 Route::get('/create', CreateGateway::class)->name('create');
-                Route::get('/show/{post}', ShowGateway::class)->name('show');
+                Route::get('/show/{gate}', ShowGateway::class)->name('show');
             });
     });

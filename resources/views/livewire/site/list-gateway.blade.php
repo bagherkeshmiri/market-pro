@@ -29,11 +29,13 @@
 
                                                     <td class="text-white">{{ $gateway->name }}</td>
                                                     <td class="text-white">{{ $gateway->label }}</td>
-                                                    <td class="text-white">{{ $gateway->user->name ?? ' - ' }}</td>
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $gateway->is_active_badge_class,  'content' => $gateway->is_active_label ])
                                                     </td>
                                                     <td class="text-white">{{ $gateway->jalali_created_at }}</td>
+                                                    <td>
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.gateway.show',[ 'gate' => $gateway->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                    </td>
                                                 </tr>
                                             @empty
                                                 @include('custom-components.admin.empty-table')

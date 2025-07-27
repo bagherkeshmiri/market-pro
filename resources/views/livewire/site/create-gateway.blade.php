@@ -29,48 +29,24 @@
                                                     </div>
                                                 </div>
 
+
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                                     <div class="form-group">
-                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'slug' , 'content' => 'اسلاگ'] )
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'label' , 'content' => 'لیبل'] )
                                                         @include('frest-components.required-tag')
-                                                        <span class="text-warning pl-1" style="font-size: 0.7rem;">اسلاگ حتما باید انگلیسی وارد شود</span>
-                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'slug' , 'classes' => 'text-left' , 'id' => 'slug' , 'icon' => titleIcon() , 'attributes' => 'required' ])
-                                                        @include('frest-components.validation-error',[ 'name' => 'slug' ])
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'label' , 'classes' => 'text-left' , 'id' => 'label' , 'icon' => titleIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'label' ])
                                                     </div>
                                                 </div>
+
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
                                                     <div class="form-group">
-                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'status' , 'content' => 'وضعیت'] )
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'isActive' , 'content' => 'وضعیت'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'status' , 'wire' => 'status'  ,'isDefer' => true,'attributes' => 'required'])
-                                                        @include('frest-components.validation-error',[ 'name' => 'status' ])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'isActive' , 'wire' => 'isActive'  ,'isDefer' => true,'attributes' => 'required'])
+                                                        @include('frest-components.validation-error',[ 'name' => 'isActive' ])
                                                     </div>
-                                                </div>
-
-                                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                                                    <div class="form-group">
-                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'categoryId' , 'content' => 'دسته پست '] )
-                                                        @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $categories , 'id' => 'categoryId' , 'wire' => 'categoryId'  ,'isDefer' => true,'attributes' => 'required'])
-                                                        @include('frest-components.validation-error',[ 'name' => 'categoryId' ])
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                                                    <div class="form-group">
-                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'image' , 'content' => 'آپلود تصویر '] )
-                                                        @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-file-upload', ['wire' => 'image' , 'id' => 'image'])
-                                                        @include('frest-components.validation-error',[ 'name' => 'image' ])
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-md-12 col-12 mb-2 my-2" wire:ignore>
-                                                    @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'textarea-counter' , 'content' => ' متن پست'] )
-                                                    @include('frest-components.required-tag')
-                                                    @include('frest-components.ckEditor',[ 'id'=> 'body','wire' => 'body'])
                                                 </div>
 
 
