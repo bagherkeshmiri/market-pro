@@ -26,6 +26,8 @@ use Morilog\Jalali\Jalalian;
  * @property-read string $jalali_created_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, GateOrg> $org
  * @property-read int|null $org_count
+ * @method static Builder<static>|Gate isActive()
+ * @method static Builder<static>|Gate isNotActive()
  * @method static Builder<static>|Gate newModelQuery()
  * @method static Builder<static>|Gate newQuery()
  * @method static Builder<static>|Gate onlyTrashed()
@@ -92,6 +94,17 @@ class Gate extends Authenticatable
     }
 
     /*-------------- Scopes -------------*/
+
+
+    public function scopeIsActive($query)
+    {
+        return $query->where('is_active', IsActive::Yes);
+    }
+
+    public function scopeIsNotActive($query)
+    {
+        return $query->where('is_active', IsActive::No);
+    }
 
     /*---------- Other Functions --------*/
 

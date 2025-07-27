@@ -2,12 +2,37 @@
 
 namespace App\Livewire\Admin\GatewayOrg;
 
-use Livewire\Component;
+use App\Livewire\BaseComponents\AdminComponent;
+use App\Models\Gate;
+use Illuminate\View\View;
 
-class CreateGatewayOrg extends Component
+class CreateGatewayOrg extends AdminComponent
 {
-    public function render()
+    public $gates;
+    public $gateId;
+    public $label;
+    public $app_key;
+    public $isDefault;
+
+    public function mount(): void
     {
-        return view('livewire.admin.gateway-org.create-gateway-org');
+        $this->gates = Gate::withoutTrashed()
+            ->isActive()
+            ->select([
+                'id',
+                'name',
+            ])
+            ->pluck('id', 'name')
+            ->toArray();
+    }
+
+
+    public function render(): View
+    {
+        $pageTitle = 'ایجاد تنظیمات درگاه';
+        return $this->renderView(
+            'livewire.admin.gateway-org.create-gateway-org',
+            $pageTitle
+        );
     }
 }

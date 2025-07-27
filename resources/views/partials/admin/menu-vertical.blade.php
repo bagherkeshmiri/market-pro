@@ -256,7 +256,7 @@
                         </a>
                         <ul class="menu-content">
                             <li>
-                                <a href="#">
+                                <a href="{{ route('admin.gateway-org.create') }}">
                                     <i class="bx bx-left-arrow-alt text-white"></i>
                                     <span class="menu-item text-white" data-i18n="Third Level">
                                         ایجاد تنظیمات درگاه
@@ -265,7 +265,7 @@
                             </li>
 
                             <li>
-                                <a href="#">
+                                <a href="{{ route('admin.gateway-org.index') }}">
                                     <i class="bx bx-left-arrow-alt text-white"></i>
                                     <span class="menu-item text-white" data-i18n="Third Level">
                                          لیست تنظیمات درگاه

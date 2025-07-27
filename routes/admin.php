@@ -24,6 +24,9 @@ use App\Livewire\Admin\Faq\ShowFaq;
 use App\Livewire\Admin\Gateway\CreateGateway;
 use App\Livewire\Admin\Gateway\ListGateway;
 use App\Livewire\Admin\Gateway\ShowGateway;
+use App\Livewire\Admin\GatewayOrg\CreateGatewayOrg;
+use App\Livewire\Admin\GatewayOrg\ListGatewayOrg;
+use App\Livewire\Admin\GatewayOrg\ShowGatewayOrg;
 use App\Livewire\Admin\Post\CreatePost;
 use App\Livewire\Admin\Post\ListPost;
 use App\Livewire\Admin\Post\ShowPost;
@@ -163,8 +166,8 @@ Route::prefix('dashboard')
         Route::name('gateway-org.')
             ->prefix('gateway_org')
             ->group(function () {
-                Route::get('/', ListGateway::class)->name('index');
-                Route::get('/create', CreateGateway::class)->name('create');
-                Route::get('/show/{gate}', ShowGateway::class)->name('show');
+                Route::get('/', ListGatewayOrg::class)->name('index');
+                Route::get('/create', CreateGatewayOrg::class)->name('create');
+                Route::get('/show/{gate}', ShowGatewayOrg::class)->name('show');
             });
     });
