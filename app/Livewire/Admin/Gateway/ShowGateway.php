@@ -32,7 +32,7 @@ class ShowGateway extends AdminComponent
         $pageTitle = ' ویرایش درگاه ' . $this->gate->name;
         $statuses = showEnumLabels(IsActive::class);
         return $this->renderView(
-            'livewire.site.show-gateway',
+            'livewire.admin.gateway.show-gateway',
             $pageTitle,
             compact('statuses')
         );

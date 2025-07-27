@@ -29,7 +29,7 @@ class CreateGateway extends AdminComponent
         $pageTitle = 'ایجاد درگاه';
         $statuses = showEnumLabels(IsActive::class);
         return $this->renderView(
-            'livewire.site.create-gateway',
+            'livewire.admin.gateway.create-gateway',
             $pageTitle,
             compact('statuses')
         );

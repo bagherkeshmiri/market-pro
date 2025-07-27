@@ -14,7 +14,7 @@ class ListGateway extends AdminComponent
         $tableHeads = ['نام', 'لیبل', 'وضعیت', 'تاریخ ایجاد', 'عملیات'];
         $gateways = Gate::withoutTrashed()->paginate($this->perPage);
         return $this->renderView(
-            'livewire.site.list-gateway',
+            'livewire.admin.gateway.list-gateway',
             $pageTitle,
             compact('tableHeads', 'gateways')
         );
