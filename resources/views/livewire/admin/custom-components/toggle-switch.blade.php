@@ -2,10 +2,10 @@
     <input
         type="checkbox"
         class="custom-control-input"
-        id="customSwitch1"
+        id="customSwitch-_{{ $model }}"
         wire:model.live="value"
     >
-    <label class="custom-control-label" for="customSwitch1">
+    <label class="custom-control-label" for="customSwitch-_{{ $model }}">
         <span class="switch-icon-left"><i class="bx bx-check"></i></span>
         <span class="switch-icon-right"><i class="bx bx-x"></i></span>
     </label>

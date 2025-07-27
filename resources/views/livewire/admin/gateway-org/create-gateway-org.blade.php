@@ -52,17 +52,17 @@
                                                 </div>
 
 
-{{--                                                <div class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-2 ">--}}
-{{--                                                    <div class="form-group">--}}
-{{--                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'isDefault' , 'content' => 'پیشفرض'] )--}}
-{{--                                                        @include('frest-components.required-tag')--}}
-{{--                                                        <livewire:admin.custom-components.toggle-switch--}}
-{{--                                                            model="isDefault"--}}
-{{--                                                            :value="$isDefault"--}}
-{{--                                                            wire:key="isDefault-toggle-switch"--}}
-{{--                                                        />--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
+                                                <div class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-2 ">
+                                                    <div class="form-group">
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'isDefault' , 'content' => 'پیشفرض'] )
+                                                        @include('frest-components.required-tag')
+                                                        <livewire:admin.custom-components.toggle-switch
+                                                            model="isDefault"
+                                                            :value="$isDefault"
+                                                            wire:key="isDefault-toggle-switch"
+                                                        />
+                                                    </div>
+                                                </div>
 
 
                                                 <div class="col-12 d-flex justify-content-end mt-2">

@@ -24,7 +24,7 @@ class CreateGatewayOrg extends AdminComponent
 
     protected $listeners = [
         'isActive-updated' => 'updateIsActive',
-//        'isDefault-updated' => 'updateIsDefault',
+        'isDefault-updated' => 'updateIsDefault',
     ];
 
     public function mount(): void
@@ -46,10 +46,10 @@ class CreateGatewayOrg extends AdminComponent
         $this->isActive = $value;
     }
 
-//    public function updateIsDefault(bool $value): void
-//    {
-//        $this->isDefault = $value;
-//    }
+    public function updateIsDefault(bool $value): void
+    {
+        $this->isDefault = $value;
+    }
 
     public function render(): View
     {
