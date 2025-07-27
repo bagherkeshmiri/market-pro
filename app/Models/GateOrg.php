@@ -25,6 +25,10 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $updated_at
  * @property Carbon|null $deleted_at
  * @property-read Gate|null $gate
+ * @property-read string $is_active_badge_class
+ * @property-read string $is_active_label
+ * @property-read string $is_default_badge_class
+ * @property-read string $is_default_label
  * @property-read string $jalali_created_at
  * @method static Builder<static>|GateOrg newModelQuery()
  * @method static Builder<static>|GateOrg newQuery()
@@ -77,6 +81,27 @@ class GateOrg extends Authenticatable
     public function getJalaliCreatedAtAttribute(): string
     {
         return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
+    }
+
+    public function getIsActiveLabelAttribute(): string
+    {
+        return $this->is_active->label();
+    }
+
+    public function getIsActiveBadgeClassAttribute(): string
+    {
+        return $this->is_active->badgeClass();
+    }
+
+
+    public function getIsDefaultLabelAttribute(): string
+    {
+        return $this->is_default->label();
+    }
+
+    public function getIsDefaultBadgeClassAttribute(): string
+    {
+        return $this->is_default->badgeClass();
     }
 
     /*------------ Relations ------------*/

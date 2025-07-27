@@ -168,6 +168,6 @@ Route::prefix('dashboard')
             ->group(function () {
                 Route::get('/', ListGatewayOrg::class)->name('index');
                 Route::get('/create', CreateGatewayOrg::class)->name('create');
-                Route::get('/show/{gate}', ShowGatewayOrg::class)->name('show');
+                Route::get('/show/{gate_org}', ShowGatewayOrg::class)->name('show');
             });
     });

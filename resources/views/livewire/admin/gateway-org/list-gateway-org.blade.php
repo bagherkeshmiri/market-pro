@@ -29,13 +29,16 @@
 
                                                     <td class="text-white">{{ $gatewayOrg->label }}</td>
                                                     <td class="text-white">{{ $gatewayOrg->gate->name }}</td>
-                                                    {{--                                                    <td>--}}
-                                                    {{--                                                        @include('frest-components.badge' , [ 'badgeClass' => $gateway->is_active_badge_class,  'content' => $gateway->is_active_label ])--}}
-                                                    {{--                                                    </td>--}}
-                                                    {{--                                                    <td class="text-white">{{ $gateway->jalali_created_at }}</td>--}}
-                                                    {{--                                                    <td>--}}
-                                                    {{--                                                        @include('frest-components.icon-btn',[  'href' => route('admin.gateway.show',[ 'gate' => $gateway->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])--}}
-                                                    {{--                                                    </td>--}}
+                                                    <td>
+                                                        @include('frest-components.badge' , [ 'badgeClass' => $gatewayOrg->is_active_badge_class,  'content' => $gatewayOrg->is_active_label ])
+                                                    </td>
+                                                    <td>
+                                                        @include('frest-components.badge' , [ 'badgeClass' => $gatewayOrg->is_default_badge_class,  'content' => $gatewayOrg->is_default_label ])
+                                                    </td>
+                                                    <td class="text-white">{{ $gatewayOrg->jalali_created_at }}</td>
+                                                    <td>
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.gateway-org.show',[ 'gate_org' => $gatewayOrg->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                    </td>
                                                 </tr>
                                             @empty
                                                 @include('custom-components.admin.empty-table')
