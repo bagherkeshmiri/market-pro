@@ -33,7 +33,11 @@
                                                         @include('frest-components.badge' , [ 'badgeClass' => $gatewayOrg->is_active_badge_class,  'content' => $gatewayOrg->is_active_label ])
                                                     </td>
                                                     <td>
-                                                        @include('frest-components.badge' , [ 'badgeClass' => $gatewayOrg->is_default_badge_class,  'content' => $gatewayOrg->is_default_label ])
+                                                        @if($gatewayOrg->is_default->value)
+                                                            <i class="bx bx-check-circle text-success"></i>
+                                                        @else
+                                                            <i class="bx bx-x-circle text-danger"></i>
+                                                        @endif
                                                     </td>
                                                     <td class="text-white">{{ $gatewayOrg->jalali_created_at }}</td>
                                                     <td>
