@@ -32,10 +32,10 @@
 
                                                 <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                     <div class="form-group">
-                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'isActive' , 'content' => 'درگاه'] )
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'gateId' , 'content' => 'درگاه'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.simple-selectbox',[ 'data' => $this->gates , 'id' => 'isActive' , 'wire' => 'isActive'  ,'isDefer' => true,'attributes' => 'required'])
-                                                        @include('frest-components.validation-error',[ 'name' => 'isActive' ])
+                                                        @include('frest-components.simple-selectbox',[ 'data' => $this->gates , 'id' => 'gateId' , 'wire' => 'gateId'  ,'isDefer' => true,'attributes' => 'required'])
+                                                        @include('frest-components.validation-error',[ 'name' => 'gateId' ])
                                                     </div>
                                                 </div>
 
@@ -43,16 +43,26 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'isActive' , 'content' => 'وضعیت'] )
                                                         @include('frest-components.required-tag')
-                                                        <div class="custom-control custom-switch custom-switch-success mr-2" style="margin-top: 5px;">
-                                                            <input type="checkbox" class="custom-control-input" id="customSwitch11">
-                                                            <label class="custom-control-label" for="customSwitch11">
-                                                                <span class="switch-icon-left"><i class="bx bx-check"></i></span>
-                                                                <span class="switch-icon-right"><i class="bx bx-x"></i></span>
-                                                            </label>
-                                                            <span style="margin-right: 5px;">غیر فعال</span>
-                                                        </div>
+                                                        <livewire:admin.custom-components.toggle-switch
+                                                            model="isActive"
+                                                            :value="$isActive"
+                                                            wire:key="isActive-toggle-switch"
+                                                        />
                                                     </div>
                                                 </div>
+
+
+{{--                                                <div class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-2 ">--}}
+{{--                                                    <div class="form-group">--}}
+{{--                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'isDefault' , 'content' => 'پیشفرض'] )--}}
+{{--                                                        @include('frest-components.required-tag')--}}
+{{--                                                        <livewire:admin.custom-components.toggle-switch--}}
+{{--                                                            model="isDefault"--}}
+{{--                                                            :value="$isDefault"--}}
+{{--                                                            wire:key="isDefault-toggle-switch"--}}
+{{--                                                        />--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
 
 
                                                 <div class="col-12 d-flex justify-content-end mt-2">
