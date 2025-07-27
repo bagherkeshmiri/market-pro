@@ -1,43 +1,43 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
 use App\Livewire\Admin\Admin\CreateAdmin;
 use App\Livewire\Admin\Admin\ListAdmin;
 use App\Livewire\Admin\Admin\ShowAdmin;
+use App\Livewire\Admin\Auth\Login;
+use App\Livewire\Admin\Category\CreateCategory;
+use App\Livewire\Admin\Category\ListCategory;
+use App\Livewire\Admin\Category\ShowCategory;
 use App\Livewire\Admin\Collection\CreateCollection;
 use App\Livewire\Admin\Collection\ListCollection;
 use App\Livewire\Admin\Collection\ShowCollection;
 use App\Livewire\Admin\Comment\ListComment;
+use App\Livewire\Admin\Dashboard\AdminDashboard;
 use App\Livewire\Admin\Faq\CreateFaq;
 use App\Livewire\Admin\Faq\ListFaq;
 use App\Livewire\Admin\Faq\ShowFaq;
+use App\Livewire\Admin\Gateway\CreateGateway;
+use App\Livewire\Admin\Gateway\ListGateway;
+use App\Livewire\Admin\Gateway\ShowGateway;
 use App\Livewire\Admin\Post\CreatePost;
 use App\Livewire\Admin\Post\ListPost;
 use App\Livewire\Admin\Post\ShowPost;
 use App\Livewire\Admin\Product\CreateProduct;
 use App\Livewire\Admin\Product\ListProduct;
 use App\Livewire\Admin\Product\ShowProduct;
-use App\Livewire\Admin\User\ListUser;
-use App\Livewire\Admin\User\ShowUser;
-use App\Livewire\Admin\Auth\Login;
-use App\Livewire\Admin\Category\CreateCategory;
-use App\Livewire\Admin\Category\ListCategory;
-use App\Livewire\Admin\Category\ShowCategory;
-use App\Livewire\Admin\Dashboard\AdminDashboard;
 use App\Livewire\Admin\Profile\ChangePassword;
 use App\Livewire\Admin\Profile\ShowProfile;
 use App\Livewire\Admin\Role\CreateRole;
 use App\Livewire\Admin\Role\ListRole;
 use App\Livewire\Admin\Role\ShowRole;
-use App\Livewire\Site\CreateGateway;
-use App\Livewire\Site\ListGateway;
-use App\Livewire\Site\ShowGateway;
+use App\Livewire\Admin\User\ListUser;
+use App\Livewire\Admin\User\ShowUser;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\AuthController;
-use App\Http\Controllers\admin\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -153,6 +153,15 @@ Route::prefix('dashboard')
 
         Route::name('gateway.')
             ->prefix('gateway')
+            ->group(function () {
+                Route::get('/', ListGateway::class)->name('index');
+                Route::get('/create', CreateGateway::class)->name('create');
+                Route::get('/show/{gate}', ShowGateway::class)->name('show');
+            });
+
+
+        Route::name('gateway-org.')
+            ->prefix('gateway_org')
             ->group(function () {
                 Route::get('/', ListGateway::class)->name('index');
                 Route::get('/create', CreateGateway::class)->name('create');

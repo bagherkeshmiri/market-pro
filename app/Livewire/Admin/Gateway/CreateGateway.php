@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Site;
+namespace App\Livewire\Admin\Gateway;
 
 use App\Enums\IsActive;
 use App\Livewire\BaseComponents\AdminComponent;
