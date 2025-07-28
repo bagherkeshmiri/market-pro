@@ -17,12 +17,8 @@ use Throwable;
 class ShowGatewayOrg extends AdminComponent
 {
     public GateOrg $gateOrg;
-    public $gates;
-    public $gateId;
-    public $label;
-    public $app_key;
-    public IsActive $isDefault;
-    public IsActive $isActive;
+    public $gates, $gateId, $label, $app_key;
+    public IsActive $isDefault, $isActive;
 
     protected $listeners = [
         'isActive-updated' => 'updateIsActive',
@@ -40,10 +36,12 @@ class ShowGatewayOrg extends AdminComponent
             ->pluck('id', 'name')
             ->toArray();
 
-        $this->gateId = $this->gateOrg->gate_id;
-        $this->label = $this->gateOrg->label;
-        $this->isDefault = $this->gateOrg->is_default;
-        $this->isActive = $this->gateOrg->is_active;
+        $this->fill([
+            'gateId' => $this->gateOrg->gate_id,
+            'label' => $this->gateOrg->label,
+            'isDefault' => $this->gateOrg->is_default,
+            'isActive' => $this->gateOrg->is_active,
+        ]);
     }
 
     public function updateIsActive(bool $value): void
@@ -83,16 +81,17 @@ class ShowGatewayOrg extends AdminComponent
             ],
         ]);
 
-        $defaultGateOrgExist = GateOrg::withoutTrashed()
-            ->isActive()
-            ->isDefault()
-            ->where('id', '!=', $this->gateOrg->id)
-            ->exists();
+        if ($this->violatesConstraints()) {
+            return redirect()->route('admin.gateway-org.show', [
+                'gateOrg' => $this->gateOrg->id,
+            ]);
+        }
 
-
-        if (!$defaultGateOrgExist && $this->isDefault == IsActive::No) {
-            session()->flash('error', 'حداقل یک درگاه پیش‌فرض باید موجود باشد ');
-            return redirect()->route('admin.gateway-org.show', ['gateOrg' => $this->gateOrg->id]);
+        if ($this->isDefault == IsActive::Yes) {
+            GateOrg::query()->
+            update([
+                'is_default' => IsActive::No,
+            ]);
         }
 
         $data = [
@@ -118,5 +117,33 @@ class ShowGatewayOrg extends AdminComponent
             }
             return redirect()->route('admin.gateway-org.show', ['gateOrg' => $this->gateOrg->id]);
         }
+    }
+
+    private function violatesConstraints(): bool
+    {
+        if (
+            $this->isDefault === IsActive::No &&
+            !GateOrg::withoutTrashed()
+                ->isActive()
+                ->isDefault()
+                ->where('id', '!=', $this->gateOrg->id)
+                ->exists()
+        ) {
+            session()->flash('error', 'حداقل یک درگاه پیش‌فرض باید موجود باشد');
+            return true;
+        }
+
+        if (
+            $this->isActive === IsActive::No &&
+            !GateOrg::withoutTrashed()
+                ->isActive()
+                ->where('id', '!=', $this->gateOrg->id)
+                ->exists()
+        ) {
+            session()->flash('error', 'حداقل یک درگاه فعال باید موجود باشد');
+            return true;
+        }
+
+        return false;
     }
 }

@@ -16,12 +16,8 @@ use Throwable;
 
 class CreateGatewayOrg extends AdminComponent
 {
-    public $gates;
-    public $gateId;
-    public $label;
-    public $app_key;
-    public $isDefault = false;
-    public bool $isActive = false;
+    public $gates, $gateId, $label, $app_key;
+    public IsActive $isDefault, $isActive;
 
     protected $listeners = [
         'isActive-updated' => 'updateIsActive',
@@ -40,16 +36,18 @@ class CreateGatewayOrg extends AdminComponent
             ->toArray();
 
         $this->gateId = reset($this->gates);
+        $this->isActive = IsActive::Yes;
+        $this->isDefault = IsActive::No;
     }
 
     public function updateIsActive(bool $value): void
     {
-        $this->isActive = $value;
+        $this->isActive = $value ? IsActive::Yes : IsActive::No;
     }
 
     public function updateIsDefault(bool $value): void
     {
-        $this->isDefault = $value;
+        $this->isDefault = $value ? IsActive::Yes : IsActive::No;
     }
 
     public function render(): View
@@ -73,7 +71,18 @@ class CreateGatewayOrg extends AdminComponent
                 'required',
                 new Enum(IsActive::class)
             ],
+            'isDefault' => [
+                'required',
+                new Enum(IsActive::class)
+            ],
         ]);
+
+        if ($this->isDefault == IsActive::Yes) {
+            GateOrg::query()->
+            update([
+                'is_default' => IsActive::No,
+            ]);
+        }
 
         $data = [
             'label' => $this->label,
@@ -99,6 +108,5 @@ class CreateGatewayOrg extends AdminComponent
             return redirect()->route('admin.gateway-org.create');
         }
     }
-
 
 }
