@@ -10,6 +10,6 @@
         <span class="switch-icon-right"><i class="bx bx-x"></i></span>
     </label>
     <span style="margin-right: 5px;">
-        {{ $value ? 'فعال' : 'غیر فعال' }}
+        {{ $value instanceof \App\Enums\IsActive && $value == \App\Enums\IsActive::Yes ? 'فعال' : 'غیر فعال' }}
     </span>
 </div>

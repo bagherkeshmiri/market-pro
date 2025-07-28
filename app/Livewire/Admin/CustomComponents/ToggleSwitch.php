@@ -19,7 +19,8 @@ class ToggleSwitch extends Component
             $this->value = $value == IsActive::Yes;
         } else {
             $this->value = $value;
-        }    }
+        }
+    }
 
     public function updatedValue(): void
     {
