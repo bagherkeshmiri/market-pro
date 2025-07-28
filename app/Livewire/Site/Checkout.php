@@ -16,6 +16,12 @@ class Checkout extends SiteComponent
     public $shipping = 20000;
     public $discount = 50000;
     public $freeShipping = 2000000;
+    public $user;
+    public $email;
+    public $fullName;
+    public $postalCode;
+    public $phone;
+    public $orderMessage;
 
     public function mount(): RedirectResponse|Redirector|null
     {
@@ -27,6 +33,12 @@ class Checkout extends SiteComponent
         }
         $this->calculateCartTotal();
         $this->calculateTax($this->cartTotal);
+
+        $this->user = auth('web')->user();
+        if ($this->user) {
+            $this->fullName = $this->user->name;
+            $this->email = $this->user->email;
+        }
         return null;
     }
 
@@ -52,6 +64,22 @@ class Checkout extends SiteComponent
         return $this->renderView(
             'livewire.site.checkout',
             $pageTitle
+        );
+    }
+
+    public function pay()
+    {
+        $this->validate([
+            'email' => 'required|email|unique:users,email,' . $this->user->id,
+            'fullName' => 'required|string|max:255',
+            'postalCode' => 'required|digits:10',
+            'phone' => 'required|digits_between:8,15',
+            'orderMessage' => 'nullable|string|max:500',
+        ]);
+
+
+        dd(
+            $this
         );
     }
 }

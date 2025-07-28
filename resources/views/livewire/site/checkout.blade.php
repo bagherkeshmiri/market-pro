@@ -1,3 +1,20 @@
+@section('styles')
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+    </style>
+
+@endsection
+
+
 <div>
     <section class="checkout-section pt-50 pb-50">
         <div class="container rtl">
@@ -19,6 +36,7 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="checkout-left">
                         <h3 class="form-header">جزئیات صورتحساب</h3>
+{{--                        <form wire:submit.prevent>--}}
                         <form>
                             <div class="checkout-form-wrap">
                                 <div class="form-group row">
@@ -26,7 +44,9 @@
                                         <div class="form-item">
                                             <label for="email" class="form-title">آدرس ایمیل</label>
                                             @include('custom-components.site.required-tag')
-                                            <input type="email" id="email" name="email" class="form-control">
+                                            <input type="email" wire:model.defer="email" id="email"
+                                                   class="form-control" required>
+                                            @include('frest-components.validation-error',[ 'name' => 'email' ])
                                         </div>
                                     </div>
                                 </div>
@@ -36,7 +56,9 @@
                                         <div class="form-item">
                                             <label for="fullName" class="form-title">نام و نام خانوادگی</label>
                                             @include('custom-components.site.required-tag')
-                                            <input type="text" id="fullName" name="fullName" class="form-control">
+                                            <input type="text" id="fullName" wire:model.defer="fullName"
+                                                   class="form-control" required>
+                                            @include('frest-components.validation-error',[ 'name' => 'fullName' ])
                                         </div>
                                     </div>
 
@@ -52,7 +74,6 @@
                                     </div>
 
                                 </div>
-
 
                                 <div class="form-group row">
                                     <div class="col-md-6">
@@ -95,16 +116,20 @@
                                         <div class="form-item">
                                             <label for="postalCode" class="form-title">کد پستی</label>
                                             @include('custom-components.site.required-tag')
-                                            <input type="number" id="postalCode" name="postalCode" class="form-control">
+                                            <input type="number" id="postalCode" wire:model.defer="postalCode"
+                                                   class="form-control" required>
+                                            @include('frest-components.validation-error',[ 'name' => 'postalCode' ])
                                         </div>
                                     </div>
 
 
                                     <div class="col-md-6">
                                         <div class="form-item">
-                                            <label for="postalCode" class="form-title"> تلفن</label>
+                                            <label for="phone" class="form-title"> تلفن</label>
                                             @include('custom-components.site.required-tag')
-                                            <input type="number" id="postalCode" name="postalCode" class="form-control">
+                                            <input type="number" id="phone" wire:model.defer="phone" name="phone"
+                                                   class="form-control" required>
+                                            @include('frest-components.validation-error',[ 'name' => 'phone' ])
                                         </div>
                                     </div>
 
@@ -115,7 +140,12 @@
                                     <div class="col-md-12">
                                         <div class="form-item">
                                             <label for="orderMessage" class="form-title"> یادداشت های سفارش</label>
-                                            <textarea id="orderMessage" name="orderMessage" cols="30" rows="5" class="form-control address"></textarea>
+                                            <textarea id="orderMessage" wire:model.defer="orderMessage"
+                                                      cols="30" rows="5"
+                                                      class="form-control address">
+                                            </textarea>
+                                            @include('frest-components.validation-error',[ 'name' => 'orderMessage' ])
+
                                         </div>
                                     </div>
                                 </div>
@@ -141,7 +171,8 @@
                                 @forelse($cart as $key => $value)
                                     <div class="order-item">
                                         <div class="order-left">
-                                            <div class="order-img"><img src="{{ asset($value['image']) }}" alt="img"></div>
+                                            <div class="order-img"><img src="{{ asset($value['image']) }}" alt="img">
+                                            </div>
                                         </div>
                                         <div class="order-right">
                                             <div class="content">
@@ -196,17 +227,23 @@
                                 </div>
                                 <div class="order-item item-1">
                                     <div class="order-left">
-                                        <span class="left-title" style="color: black; font-size: var(--rr-fs-h4) !important;">مبلغ قابل پرداخت</span>
+                                        <span class="left-title"
+                                              style="color: black; font-size: var(--rr-fs-h4) !important;">مبلغ قابل پرداخت</span>
                                     </div>
                                     <div class="order-right">
-                                        <span class="right-title title-2" style="font-size: var(--rr-fs-h4) !important;">{{ number_format($this->totalPayable) }} تومان</span>
+                                        <span class="right-title title-2"
+                                              style="font-size: var(--rr-fs-h4) !important;">{{ number_format($this->totalPayable) }} تومان</span>
                                     </div>
                                 </div>
 
 
                             </div>
                             <div class="payment-option-wrap">
-                                <button class="rr-primary-btn order-btn"> پرداخت</button>
+                                <button wire:click="pay" wire:loading.attr="disabled" class="rr-primary-btn order-btn">
+                                    <span wire:loading.remove>پرداخت</span>
+                                    <span wire:loading>  در حال انتقال به درگاه پرداخت </span>
+                                </button>
+
                             </div>
                         </div>
                     </div>
