@@ -37,12 +37,12 @@ class ShowCollection extends AdminComponent
     public $unselectedCategories = [];
     public $categories = [];
 
-    public function mount(Collection $collection): void
+    public function mount(): void
     {
-        $this->title = $collection->title;
-        $this->type = $collection->type;
-        $this->limitation = $collection->limitation;
-        $this->isActive = $collection->is_active;
+        $this->title = $this->collection->title;
+        $this->type = $this->collection->type;
+        $this->limitation = $this->collection->limitation;
+        $this->isActive = $this->collection->is_active;
         $this->categories = Category::withoutTrashed()
             ->select([
                 'id',
@@ -51,7 +51,7 @@ class ShowCollection extends AdminComponent
             ->get();
 
         if ($this->type == CollectionType::Product) {
-            $this->selectedProducts = $collection->productCollection->load('product')
+            $this->selectedProducts = $this->collection->productCollection->load('product')
                 ->map(fn($item) => [
                     'id' => $item->product->id,
                     'name' => $item->product->name,
@@ -61,7 +61,7 @@ class ShowCollection extends AdminComponent
 
 
         if ($this->type == CollectionType::Category) {
-            $this->selectedCategories = $collection->categoryCollection->load('category')
+            $this->selectedCategories = $this->collection->categoryCollection->load('category')
                 ->map(fn($item) => [
                     'id' => $item->category->id,
                     'name' => $item->category->name,

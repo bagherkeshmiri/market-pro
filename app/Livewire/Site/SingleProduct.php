@@ -19,9 +19,9 @@ class SingleProduct extends SiteComponent
     public $id;
     public array $cart = [];
 
-    public function mount(Product $product): void
+    public function mount(): void
     {
-        $this->id = $product->id;
+        $this->id = $this->product->id;
         $this->cart = Session::get('cart', []);
     }
 

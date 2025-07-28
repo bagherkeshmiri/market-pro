@@ -41,7 +41,7 @@
                                                     </td>
                                                     <td class="text-white">{{ $gatewayOrg->jalali_created_at }}</td>
                                                     <td>
-                                                        @include('frest-components.icon-btn',[  'href' => route('admin.gateway-org.show',[ 'gate_org' => $gatewayOrg->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.gateway-org.show',[ 'gateOrg' => $gatewayOrg->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                     </td>
                                                 </tr>
                                             @empty

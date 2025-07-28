@@ -20,9 +20,9 @@ class Products extends SiteComponent
     public array $cart = [];
     public array $wishlist = [];
 
-    public function mount(Category $category): void
+    public function mount(): void
     {
-        $this->id = $category->id;
+        $this->id = $this->category->id;
         $this->cart = Session::get('cart', []);
         $this->wishlist = Session::get('wishlist', []);
     }

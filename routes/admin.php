@@ -40,6 +40,7 @@ use App\Livewire\Admin\Role\ListRole;
 use App\Livewire\Admin\Role\ShowRole;
 use App\Livewire\Admin\User\ListUser;
 use App\Livewire\Admin\User\ShowUser;
+use App\Models\GateOrg;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -168,6 +169,6 @@ Route::prefix('dashboard')
             ->group(function () {
                 Route::get('/', ListGatewayOrg::class)->name('index');
                 Route::get('/create', CreateGatewayOrg::class)->name('create');
-                Route::get('/show/{gate_org}', ShowGatewayOrg::class)->name('show');
+                Route::get('/show/{gateOrg}', ShowGatewayOrg::class)->name('show');
             });
     });

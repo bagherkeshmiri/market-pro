@@ -21,11 +21,11 @@ class ShowAdmin extends AdminComponent
     public $role;
     public $password;
 
-    public function mount(Admin $admin): void
+    public function mount(): void
     {
-        $this->name = $admin->name;
-        $this->email = $admin->email;
-        $this->role = $admin->role->id;
+        $this->name = $this->admin->name;
+        $this->email = $this->admin->email;
+        $this->role = $this->admin->role->id;
     }
 
     public function render(): View

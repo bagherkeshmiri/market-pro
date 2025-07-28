@@ -20,11 +20,11 @@ class ShowUser extends AdminComponent
     public $email;
     public $mobile;
 
-    public function mount(User $user): void
+    public function mount(): void
     {
-        $this->name = $user->name;
-        $this->email = $user->email;
-        $this->mobile = $user->mobile;
+        $this->name = $this->user->name;
+        $this->email = $this->user->email;
+        $this->mobile = $this->user->mobile;
     }
 
     public function render(): View

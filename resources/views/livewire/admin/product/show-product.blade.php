@@ -157,7 +157,7 @@
 
                                     <div class="mt-4">
                                         @include('frest-components.text-divider' , ['dividerClass' => 'divider-danger' ,'title' => 'گالری تصاویر'])
-                                        @include('frest-components.image-carousel',['id' => 'show-product-carousel' , 'galleryImages' => $galleryImages , 'sampleProductImageUrl' => $this->getSampleImageUrl()])
+                                        @include('frest-components.image-carousel',['id' => 'show-product-carousel' , 'galleryImages' => $galleryImages , 'sampleImageUrl' => $this->getSampleImageUrl()])
                                     </div>
                                 </div>
                             </div>
