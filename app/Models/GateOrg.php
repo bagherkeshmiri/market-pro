@@ -30,6 +30,10 @@ use Morilog\Jalali\Jalalian;
  * @property-read string $is_default_badge_class
  * @property-read string $is_default_label
  * @property-read string $jalali_created_at
+ * @method static Builder<static>|GateOrg isActive()
+ * @method static Builder<static>|GateOrg isDefault()
+ * @method static Builder<static>|GateOrg isNotActive()
+ * @method static Builder<static>|GateOrg isNotDefault()
  * @method static Builder<static>|GateOrg newModelQuery()
  * @method static Builder<static>|GateOrg newQuery()
  * @method static Builder<static>|GateOrg onlyTrashed()
@@ -112,6 +116,26 @@ class GateOrg extends Authenticatable
     }
 
     /*-------------- Scopes -------------*/
+
+    public function scopeIsActive($query)
+    {
+        return $query->where('is_active', IsActive::Yes);
+    }
+
+    public function scopeIsNotActive($query)
+    {
+        return $query->where('is_active', IsActive::No);
+    }
+
+    public function scopeIsDefault($query)
+    {
+        return $query->where('is_default', IsActive::Yes);
+    }
+
+    public function scopeIsNotDefault($query)
+    {
+        return $query->where('is_default', IsActive::No);
+    }
 
     /*---------- Other Functions --------*/
 

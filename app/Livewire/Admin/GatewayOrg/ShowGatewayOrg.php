@@ -77,7 +77,23 @@ class ShowGatewayOrg extends AdminComponent
                 'required',
                 new Enum(IsActive::class)
             ],
+            'isDefault' => [
+                'required',
+                new Enum(IsActive::class)
+            ],
         ]);
+
+        $defaultGateOrgExist = GateOrg::withoutTrashed()
+            ->isActive()
+            ->isDefault()
+            ->where('id', '!=', $this->gateOrg->id)
+            ->exists();
+
+
+        if (!$defaultGateOrgExist && $this->isDefault == IsActive::No) {
+            session()->flash('error', 'حداقل یک درگاه پیش‌فرض باید موجود باشد ');
+            return redirect()->route('admin.gateway-org.show', ['gateOrg' => $this->gateOrg->id]);
+        }
 
         $data = [
             'label' => $this->label,
