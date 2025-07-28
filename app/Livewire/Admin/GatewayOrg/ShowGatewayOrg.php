@@ -121,8 +121,7 @@ class ShowGatewayOrg extends AdminComponent
 
     private function violatesConstraints(): bool
     {
-        if (
-            $this->isDefault === IsActive::No &&
+        if ($this->isDefault === IsActive::No &&
             !GateOrg::withoutTrashed()
                 ->isActive()
                 ->isDefault()
@@ -133,14 +132,18 @@ class ShowGatewayOrg extends AdminComponent
             return true;
         }
 
-        if (
-            $this->isActive === IsActive::No &&
+        if ($this->isActive === IsActive::No &&
             !GateOrg::withoutTrashed()
                 ->isActive()
                 ->where('id', '!=', $this->gateOrg->id)
                 ->exists()
         ) {
             session()->flash('error', 'حداقل یک درگاه فعال باید موجود باشد');
+            return true;
+        }
+
+        if ($this->isActive === IsActive::No && $this->isDefault === IsActive::Yes) {
+            session()->flash('error', 'امکان غیر فعال کردن درگاه پیش‌فرض وجود ندارد');
             return true;
         }
 
