@@ -21,8 +21,8 @@ class ShowGatewayOrg extends AdminComponent
     public $gateId;
     public $label;
     public $app_key;
-    public $isDefault = false;
-    public bool $isActive = false;
+    public IsActive $isDefault;
+    public IsActive $isActive;
 
     protected $listeners = [
         'isActive-updated' => 'updateIsActive',
@@ -42,18 +42,18 @@ class ShowGatewayOrg extends AdminComponent
 
         $this->gateId = $this->gateOrg->gate_id;
         $this->label = $this->gateOrg->label;
-        $this->isDefault = (bool)$this->gateOrg->is_default;
-        $this->isActive = (bool)$this->gateOrg->is_active;
+        $this->isDefault = $this->gateOrg->is_default;
+        $this->isActive = $this->gateOrg->is_active;
     }
 
     public function updateIsActive(bool $value): void
     {
-        $this->isActive = $value;
+        $this->isActive = $value ? IsActive::Yes : IsActive::No;
     }
 
     public function updateIsDefault(bool $value): void
     {
-        $this->isDefault = $value;
+        $this->isDefault = $value ? IsActive::Yes : IsActive::No;
     }
 
     public function render(): View
@@ -92,7 +92,7 @@ class ShowGatewayOrg extends AdminComponent
             DB::commit();
             $this->reset(['label']);
             session()->flash('success', __('global.success_message'));
-            return redirect()->route('admin.gateway-org.show', ['gate_org' => $this->gateOrg->id]);
+            return redirect()->route('admin.gateway-org.show', ['gateOrg' => $this->gateOrg->id]);
         } catch (Exception $e) {
             DB::rollBack();
             if (app()->isLocal()) {
@@ -100,7 +100,7 @@ class ShowGatewayOrg extends AdminComponent
             } else {
                 session()->flash('error', __('global.error_message'));
             }
-            return redirect()->route('admin.gateway-org.show', ['gate_org' => $this->gateOrg->id]);
+            return redirect()->route('admin.gateway-org.show', ['gateOrg' => $this->gateOrg->id]);
         }
     }
 }
