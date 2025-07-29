@@ -46,7 +46,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.pagination',['model' => $users] )
+                                        {{ $users->links('frest-components.livewire-pagination',['elements' => $users]) }}
 
                                     </div>
 

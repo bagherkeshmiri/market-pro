@@ -62,7 +62,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.pagination',['model' => $payments] )
+                                        {{ $payments->links('frest-components.livewire-pagination',['elements' => $payments]) }}
 
                                     </div>
 
