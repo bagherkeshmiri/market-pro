@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\User;
 
 use App\Livewire\BaseComponents\AdminComponent;
+use App\Models\Payment;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\RedirectResponse;
@@ -30,9 +31,22 @@ class ShowUser extends AdminComponent
     public function render(): View
     {
         $pageTitle = 'ویرایش کاربر';
+        $payments = Payment::whereUserId($this->user->id)->paginate($this->perPage);
+        $paymentTableHeads = [
+            'شماره سفارش',
+            'درگاه',
+            'شماره پرداخت',
+            'وضعیت',
+            'مبلغ',
+            'شناسه پیگیری',
+            'تاریخ پرداخت',
+            'تاریخ ایجاد',
+            'عملیات'
+        ];
         return $this->renderView(
             'livewire.admin.user.show-user',
             $pageTitle,
+            compact('paymentTableHeads','payments')
         );
     }
 

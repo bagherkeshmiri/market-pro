@@ -50,7 +50,7 @@
                                                     </td>
                                                     <td class="text-white">{{ number_format($payment->amount) }}</td>
                                                     <td class="text-white">{{ $payment->ref_id }}</td>
-                                                    <td class="text-white">{{ $payment->paid_at }}</td>
+                                                    <td class="text-white">{{ $payment->jalali_paid_at }}</td>
                                                     <td class="text-white">{{ $payment->jalali_created_at }}</td>
                                                     <td class="text-white"></td>
                                                 </tr>

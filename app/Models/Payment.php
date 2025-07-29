@@ -105,6 +105,14 @@ class Payment extends Authenticatable
         return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
+    public function getJalaliPaidAtAttribute(): ?string
+    {
+        if (!empty($this->paid_at) && $this->paid_at instanceof \Carbon\Carbon) {
+            return Jalalian::fromCarbon($this->paid_at)->format('Y/m/d H:i:s');
+        }
+        return null;
+    }
+
     public function getStatusLabelAttribute(): string
     {
         return $this->status->label();
