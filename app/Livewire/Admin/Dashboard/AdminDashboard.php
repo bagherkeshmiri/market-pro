@@ -22,30 +22,35 @@ class AdminDashboard extends AdminComponent
                 'bg-rgba-success text-success',
                 'bxs-group',
                 Admin::count('id') + User::count('id'),
+                route('admin.user.index')
             ],
             'allProducts' => [
                 'کل محصولات',
                 'bg-rgba-primary text-primary',
                 'bx-package',
                 Product::count('id'),
+                route('admin.product.index')
             ],
             'allOrders' => [
                 'کل سفارشات',
                 'bg-rgba-warning text-warning',
                 'bx-money',
                 Order::count('id'),
+                route('admin.order.index-all')
             ],
             'allFactors' => [
                 'کل پرداخت ها',
                 'bg-rgba-info text-info',
                 'bxs-credit-card',
                 Payment::count('id'),
+                route('admin.payment.index')
             ],
             'todayOrders' => [
                 'سفارشات امروز',
                 'bg-rgba-danger text-danger',
                 'bx-shopping-bag',
                 Order::whereDate('created_at', Carbon::today())->count(),
+                route('admin.order.index-today')
             ],
             'todayFactors' => [
                 'پرداخت های امروز',
@@ -54,6 +59,7 @@ class AdminDashboard extends AdminComponent
                 Payment::whereDate('created_at', Carbon::today())->count(),
             ],
         ];
+
         return $this->renderView(
             'livewire.admin.dashboard.admin-dashboard',
             $pageTitle,
