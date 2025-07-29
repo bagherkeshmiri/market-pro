@@ -4,13 +4,14 @@ namespace App\Livewire\Admin\Payment;
 
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Payment;
+use Carbon\Carbon;
 use Illuminate\View\View;
 
-class ListPayment extends AdminComponent
+class ListTodayPayment extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'لیست‌ پرداخت ها ';
+        $pageTitle = 'لیست‌ پرداخت های امروز  ';
         $tableHeads = [
             'کاربر',
             'شماره سفارش',
@@ -23,11 +24,13 @@ class ListPayment extends AdminComponent
             'تاریخ ایجاد',
             'عملیات'
         ];
-        $payments = Payment::paginate($this->perPage);
+        $payments = Payment::whereDate('created_at', Carbon::today())->paginate($this->perPage);
+
         return $this->renderView(
-            'livewire.admin.payment.list-payment',
+            'livewire.admin.payment.list-today-payment',
             $pageTitle,
             compact('tableHeads', 'payments')
+
         );
     }
 }

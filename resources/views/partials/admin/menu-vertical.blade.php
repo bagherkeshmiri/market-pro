@@ -300,7 +300,7 @@
                 <ul class="menu-content">
                     <li><a href="{{ route('admin.order.index-today') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="create-role">سفارش ‌ها امروز</span>
+                            <span class="menu-item  text-white" data-i18n="create-role">سفارش ‌های امروز</span>
                         </a>
                     </li>
 
@@ -318,7 +318,13 @@
                     <span class="menu-title text-white" data-i18n="roles"> پرداخت ها</span>
                 </a>
                 <ul class="menu-content">
-                    <li><a href="{{ route('admin.payment.index') }}">
+                    <li><a href="{{ route('admin.payment.index-today') }}">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white" data-i18n="create-role">پرداخت ‌های امروز</span>
+                        </a>
+                    </li>
+
+                    <li><a href="{{ route('admin.payment.index-all') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
                             <span class="menu-item  text-white" data-i18n="roles-list">   لیست پرداخت ها </span>
                         </a>

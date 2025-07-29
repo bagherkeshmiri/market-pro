@@ -29,7 +29,8 @@ use App\Livewire\Admin\GatewayOrg\ListGatewayOrg;
 use App\Livewire\Admin\GatewayOrg\ShowGatewayOrg;
 use App\Livewire\Admin\Order\ListAllOrder;
 use App\Livewire\Admin\Order\ListTodayOrder;
-use App\Livewire\Admin\Payment\ListPayment;
+use App\Livewire\Admin\Payment\ListAllPayment;
+use App\Livewire\Admin\Payment\ListTodayPayment;
 use App\Livewire\Admin\Post\CreatePost;
 use App\Livewire\Admin\Post\ListPost;
 use App\Livewire\Admin\Post\ShowPost;
@@ -186,6 +187,7 @@ Route::prefix('dashboard')
         Route::name('payment.')
             ->prefix('payment')
             ->group(function () {
-                Route::get('/', ListPayment::class)->name('index');
+                Route::get('/today', ListTodayPayment::class)->name('index-today');
+                Route::get('/all', ListAllPayment::class)->name('index-all');
             });
     });

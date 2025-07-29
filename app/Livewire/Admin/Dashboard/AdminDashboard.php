@@ -43,7 +43,7 @@ class AdminDashboard extends AdminComponent
                 'bg-rgba-info text-info',
                 'bxs-credit-card',
                 Payment::count('id'),
-                route('admin.payment.index')
+                route('admin.payment.index-all')
             ],
             'todayOrders' => [
                 'سفارشات امروز',
@@ -57,6 +57,7 @@ class AdminDashboard extends AdminComponent
                 'bg-rgba-success text-success',
                 'bxs-credit-card',
                 Payment::whereDate('created_at', Carbon::today())->count(),
+                route('admin.payment.index-today')
             ],
         ];
 
