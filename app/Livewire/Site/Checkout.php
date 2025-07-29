@@ -3,6 +3,8 @@
 namespace App\Livewire\Site;
 
 use App\Livewire\BaseComponents\SiteComponent;
+use App\Models\City;
+use App\Models\Province;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
@@ -22,6 +24,8 @@ class Checkout extends SiteComponent
     public $postalCode;
     public $phone;
     public $orderMessage;
+    public $provinces;
+    public $cities;
 
     public function mount(): RedirectResponse|Redirector|null
     {
@@ -39,6 +43,10 @@ class Checkout extends SiteComponent
             $this->fullName = $this->user->name;
             $this->email = $this->user->email;
         }
+
+        $this->provinces = Province::all()->pluck('id', 'name')->toArray();
+//        $this->cities = City::all()->pluck('id', 'name')->toArray();
+
         return null;
     }
 

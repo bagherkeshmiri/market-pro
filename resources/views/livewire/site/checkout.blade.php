@@ -36,8 +36,7 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="checkout-left">
                         <h3 class="form-header">جزئیات صورتحساب</h3>
-{{--                        <form wire:submit.prevent>--}}
-                        <form>
+                        <form wire:submit.prevent>
                             <div class="checkout-form-wrap">
                                 <div class="form-group row">
                                     <div class="col-md-12">
@@ -80,13 +79,13 @@
                                         <div class="form-item">
                                             <label for="province" class="form-title">استان</label>
                                             @include('custom-components.site.required-tag')
-                                            <div class="nice-select select-control form-control province " tabindex="0">
-                                                <span class="current">کرج</span>
+                                            <div class="nice-select select-control form-control province" tabindex="0">
+                                                <span
+                                                    class="current">{{ array_key_first($this->provinces) ?? 'انتخاب استان' }}</span>
                                                 <ul class="list">
-                                                    <li data-value="" class="option selected focus">تهران</li>
-                                                    <li data-value="vdt" class="option">شیراز</li>
-                                                    <li data-value="can" class="option">اصفهان</li>
-                                                    <li data-value="uk" class="option">قزوین</li>
+                                                    @foreach($this->provinces as $name => $id)
+                                                        <li data-value="{{ $id }}" class="option">{{ $name }}</li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
