@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\User;
 
 use App\Livewire\BaseComponents\AdminComponent;
+use App\Models\Order;
 use App\Models\Payment;
 use App\Models\User;
 use Exception;
@@ -43,10 +44,22 @@ class ShowUser extends AdminComponent
             'تاریخ ایجاد',
             'عملیات'
         ];
+        $orders = Order::whereUserId($this->user->id)->paginate($this->perPage);
+        $orderTableHeads = [
+            'شماره سفارش',
+            'وضعیت',
+            'مبلغ کل',
+            'تخفیف',
+            'مالیات',
+            'هزینه ارسال',
+            'مبلغ پرداخت شده',
+            'تاریخ ایجاد',
+            'عملیات'
+        ];
         return $this->renderView(
             'livewire.admin.user.show-user',
             $pageTitle,
-            compact('paymentTableHeads','payments')
+            compact('paymentTableHeads', 'payments', 'orderTableHeads', 'orders')
         );
     }
 

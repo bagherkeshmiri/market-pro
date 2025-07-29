@@ -1,5 +1,5 @@
-<div class=" justify-content-start mb-1">
-    <div class="alert {{ $classes }} mb-2" role="alert">
+<div class=" justify-content-start ">
+    <div class="alert {{ $classes }} " role="alert" style=" margin-bottom: 0; padding-top: 10px; padding-bottom: 10px;">
         <div class="d-flex align-items-center">
             {!! $icon !!}
             <span>{{ $content }}</span>
