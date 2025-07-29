@@ -27,6 +27,9 @@ use App\Livewire\Admin\Gateway\ShowGateway;
 use App\Livewire\Admin\GatewayOrg\CreateGatewayOrg;
 use App\Livewire\Admin\GatewayOrg\ListGatewayOrg;
 use App\Livewire\Admin\GatewayOrg\ShowGatewayOrg;
+use App\Livewire\Admin\Order\ListAllOrder;
+use App\Livewire\Admin\Order\ListTodayOrder;
+use App\Livewire\Admin\Payment\ListPayment;
 use App\Livewire\Admin\Post\CreatePost;
 use App\Livewire\Admin\Post\ListPost;
 use App\Livewire\Admin\Post\ShowPost;
@@ -40,7 +43,6 @@ use App\Livewire\Admin\Role\ListRole;
 use App\Livewire\Admin\Role\ShowRole;
 use App\Livewire\Admin\User\ListUser;
 use App\Livewire\Admin\User\ShowUser;
-use App\Models\GateOrg;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -170,5 +172,20 @@ Route::prefix('dashboard')
                 Route::get('/', ListGatewayOrg::class)->name('index');
                 Route::get('/create', CreateGatewayOrg::class)->name('create');
                 Route::get('/show/{gateOrg}', ShowGatewayOrg::class)->name('show');
+            });
+
+
+        Route::name('order.')
+            ->prefix('order')
+            ->group(function () {
+                Route::get('/today', ListTodayOrder::class)->name('index-today');
+                Route::get('/all', ListAllOrder::class)->name('index-all');
+            });
+
+
+        Route::name('payment.')
+            ->prefix('payment')
+            ->group(function () {
+                Route::get('/', ListPayment::class)->name('index');
             });
     });

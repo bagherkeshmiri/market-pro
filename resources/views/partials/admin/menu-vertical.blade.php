@@ -14,7 +14,8 @@
     </div>
     <div class="shadow-bottom"></div>
     <div class="main-menu-content font-13 ">
-        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation"
+            data-icon-style="lines">
             <li class=" nav-item">
                 <a href="{{ route('admin.dashboard') }}">
                     <i class="bx bx-home text-white"></i>
@@ -297,13 +298,13 @@
                     <span class="menu-title text-white" data-i18n="roles"> سفارشات</span>
                 </a>
                 <ul class="menu-content">
-                    <li><a href="#">
+                    <li><a href="{{ route('admin.order.index-today') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
                             <span class="menu-item  text-white" data-i18n="create-role">سفارش ‌ها امروز</span>
                         </a>
                     </li>
 
-                    <li><a href="#">
+                    <li><a href="{{ route('admin.order.index-all') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
                             <span class="menu-item  text-white" data-i18n="roles-list">   لیست سفارش‌ها </span>
                         </a>
@@ -313,19 +314,13 @@
             </li>
             <li class=" nav-item">
                 <a href="#">
-                    <i class="bx bx-receipt text-white"></i>
-                    <span class="menu-title text-white" data-i18n="roles"> فاکتور ها</span>
+                    <i class="bx bxs-credit-card text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles"> پرداخت ها</span>
                 </a>
                 <ul class="menu-content">
-                    <li><a href="#">
+                    <li><a href="{{ route('admin.payment.index') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="create-role">ایجاد فاکتور</span>
-                        </a>
-                    </li>
-
-                    <li><a href="#">
-                            <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست فاکتور ها </span>
+                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست پرداخت ها </span>
                         </a>
                     </li>
 

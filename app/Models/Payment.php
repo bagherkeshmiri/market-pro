@@ -6,7 +6,6 @@ use App\Enums\PaymentStatus;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
@@ -16,6 +15,7 @@ use Str;
  *
  *
  * @property int $id
+ * @property int $user_id
  * @property int $order_id
  * @property int|null $gate_id
  * @property int|null $gate_org_id
@@ -30,10 +30,12 @@ use Str;
  * @property-read Gate|null $gate
  * @property-read GateOrg|null $gateOrg
  * @property-read string $jalali_created_at
+ * @property-read string $status_badge_class
+ * @property-read string $status_label
  * @property-read Order|null $order
+ * @property-read User|null $user
  * @method static Builder<static>|Payment newModelQuery()
  * @method static Builder<static>|Payment newQuery()
- * @method static Builder<static>|Payment onlyTrashed()
  * @method static Builder<static>|Payment query()
  * @method static Builder<static>|Payment whereAmount($value)
  * @method static Builder<static>|Payment whereCreatedAt($value)
@@ -47,8 +49,7 @@ use Str;
  * @method static Builder<static>|Payment whereRefId($value)
  * @method static Builder<static>|Payment whereStatus($value)
  * @method static Builder<static>|Payment whereUpdatedAt($value)
- * @method static Builder<static>|Payment withTrashed()
- * @method static Builder<static>|Payment withoutTrashed()
+ * @method static Builder<static>|Payment whereUserId($value)
  * @mixin Eloquent
  */
 class Payment extends Authenticatable
@@ -56,11 +57,13 @@ class Payment extends Authenticatable
     public const string TABLE_NAME = 'payments';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
+    public const string COLUMN_USER_ID = 'user_id';
     public const string COLUMN_ORDER_ID = 'order_id';
     public const string COLUMN_GATE_ID = 'gate_id';
     public const string COLUMN_GATE_ORG_ID = 'gate_org_id';
 
     protected $fillable = [
+        'user_id',
         'order_id',
         'gate_id',
         'gate_org_id',
@@ -95,13 +98,23 @@ class Payment extends Authenticatable
                 $payment->expire_time = Carbon::now()->addMinutes(15);
             }
         });
-
     }
 
     public function getJalaliCreatedAtAttribute(): string
     {
         return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
+
+    public function getStatusLabelAttribute(): string
+    {
+        return $this->status->label();
+    }
+
+    public function getStatusBadgeClassAttribute(): string
+    {
+        return $this->status->badgeClass();
+    }
+
 
     /*------------ Relations ------------*/
 
@@ -118,6 +131,11 @@ class Payment extends Authenticatable
     public function gateOrg(): BelongsTo
     {
         return $this->belongsTo(GateOrg::class, self::COLUMN_GATE_ORG_ID, GateOrg::COLUMN_ID);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, Payment::COLUMN_USER_ID, User::COLUMN_ID);
     }
 
     /*-------------- Scopes -------------*/

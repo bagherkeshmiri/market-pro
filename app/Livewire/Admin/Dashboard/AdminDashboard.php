@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Dashboard;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Admin;
 use App\Models\Order;
+use App\Models\Payment;
 use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
@@ -35,10 +36,10 @@ class AdminDashboard extends AdminComponent
                 Order::count('id'),
             ],
             'allFactors' => [
-                'کل فاکتور ها',
+                'کل پرداخت ها',
                 'bg-rgba-info text-info',
-                'bx-receipt',
-                235,
+                'bxs-credit-card',
+                Payment::count('id'),
             ],
             'todayOrders' => [
                 'سفارشات امروز',
@@ -47,10 +48,10 @@ class AdminDashboard extends AdminComponent
                 Order::whereDate('created_at', Carbon::today())->count(),
             ],
             'todayFactors' => [
-                'فاکتور های امروز',
+                'پرداخت های امروز',
                 'bg-rgba-success text-success',
-                'bx-receipt',
-                500,
+                'bxs-credit-card',
+                Payment::whereDate('created_at', Carbon::today())->count(),
             ],
         ];
         return $this->renderView(

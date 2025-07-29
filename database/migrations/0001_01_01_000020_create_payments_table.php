@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('order_id')->index();
             $table->unsignedInteger('gate_id')->nullable();
             $table->unsignedBigInteger('gate_org_id')->nullable()->index();
