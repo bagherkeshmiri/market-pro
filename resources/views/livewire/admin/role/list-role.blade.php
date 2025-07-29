@@ -50,7 +50,7 @@
                                             </tbody>
                                         </table>
 
-                                        {{ $roles->links('frest-components.livewire-pagination',['elements' => $roles]) }}
+                                        {{ $roles->links('frest-components.pagination',['elements' => $roles]) }}
 
                                     </div>
 

@@ -77,7 +77,7 @@
                                             </tbody>
                                         </table>
 
-                                        {{ $comments->links('frest-components.livewire-pagination',['elements' => $comments]) }}
+                                        {{ $comments->links('frest-components.pagination',['elements' => $comments]) }}
 
                                     </div>
 

@@ -66,7 +66,7 @@
                                             </tbody>
                                         </table>
 
-                                        {{ $collections->links('frest-components.livewire-pagination',['elements' => $collections]) }}
+                                        {{ $collections->links('frest-components.pagination',['elements' => $collections]) }}
 
                                     </div>
 

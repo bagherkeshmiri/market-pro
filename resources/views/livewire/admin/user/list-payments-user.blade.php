@@ -42,7 +42,7 @@
             </tbody>
         </table>
 
-        {{ $payments->links('frest-components.livewire-pagination',['elements' => $payments]) }}
+        {{ $payments->links('frest-components.pagination',['elements' => $payments]) }}
 
     </div>
 </div>

@@ -2,7 +2,7 @@
 
     <div class="d-flex justify-content-center mt-2">
         <nav>
-            <ul class="pagination">
+            <ul class="pagination" style="cursor:pointer;">
                 @if ($paginator->onFirstPage())
                     <li class="page-item disabled" aria-disabled="true">
                         <span class="page-link" aria-hidden="true">&lsaquo;</span>
@@ -32,7 +32,6 @@
                     @endif
                 @endforeach
 
-                {{-- Next Page Link --}}
                 @if ($paginator->hasMorePages())
                     <li class="page-item">
                         <a class="page-link" wire:click="nextPage" rel="next">&rsaquo;</a>

@@ -51,7 +51,7 @@
                                             </tbody>
                                         </table>
 
-                                        {{ $gatewayOrgs->links('frest-components.livewire-pagination',['elements' => $gatewayOrgs]) }}
+                                        {{ $gatewayOrgs->links('frest-components.pagination',['elements' => $gatewayOrgs]) }}
 
                                     </div>
 
