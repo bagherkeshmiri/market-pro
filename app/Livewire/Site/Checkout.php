@@ -25,7 +25,13 @@ class Checkout extends SiteComponent
     public $phone;
     public $orderMessage;
     public $provinces;
-    public $cities;
+    public $selectedProvince = null;
+    public $selectedProvinceName = null;
+    public $cities = [];
+    public $selectedCity = null;
+    public $selectedCityName = null;
+
+    protected $listeners = ['provinceSelected','citySelected'];
 
     public function mount(): RedirectResponse|Redirector|null
     {
@@ -44,8 +50,7 @@ class Checkout extends SiteComponent
             $this->email = $this->user->email;
         }
 
-        $this->provinces = Province::all()->pluck('id', 'name')->toArray();
-//        $this->cities = City::all()->pluck('id', 'name')->toArray();
+        $this->provinces = Province::pluck('name', 'id')->toArray();
 
         return null;
     }
@@ -73,6 +78,20 @@ class Checkout extends SiteComponent
             'livewire.site.checkout',
             $pageTitle
         );
+    }
+
+    public function provinceSelected($id, $name): void
+    {
+        $this->selectedProvince = $id;
+        $this->selectedProvinceName = $name;
+        $this->cities = City::whereProvinceId($id)->pluck('name', 'id')->toArray();
+        $this->selectedCity = null;
+    }
+
+    public function citySelected($id, $name): void
+    {
+        $this->selectedCity = $id;
+        $this->selectedCityName = $name;
     }
 
     public function pay()

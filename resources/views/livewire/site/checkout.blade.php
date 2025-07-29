@@ -79,12 +79,14 @@
                                         <div class="form-item">
                                             <label for="province" class="form-title">استان</label>
                                             @include('custom-components.site.required-tag')
-                                            <div class="nice-select select-control form-control province" tabindex="0">
-                                                <span
-                                                    class="current">{{ array_key_first($this->provinces) ?? 'انتخاب استان' }}</span>
+                                            <div class="nice-select select-control form-control province" tabindex="0" wire:ignore>
+                                                <span class="current">{{ $selectedProvinceName ?? 'انتخاب استان' }}</span>
                                                 <ul class="list">
-                                                    @foreach($this->provinces as $name => $id)
-                                                        <li data-value="{{ $id }}" class="option">{{ $name }}</li>
+                                                    @foreach($provinces as $id => $name)
+                                                        <li data-value="{{ $id }}" class="option {{ ($selectedProvince == $id) ? 'selected focus' : '' }}"
+                                                            onclick="window.Livewire.emit('provinceSelected', {{ $id }}, '{{ $name }}')">
+                                                            {{ $name }}
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -95,13 +97,15 @@
                                         <div class="form-item">
                                             <label for="city" class="form-title">شهر</label>
                                             @include('custom-components.site.required-tag')
-                                            <div class="nice-select select-control form-control city" tabindex="0">
-                                                <span class="current">کرج</span>
+                                            <div class="nice-select select-control form-control city" tabindex="0" wire:ignore>
+                                                <span class="current">{{ $selectedCityName ?? 'انتخاب شهر' }}</span>
                                                 <ul class="list">
-                                                    <li data-value="" class="option selected focus">تهران</li>
-                                                    <li data-value="vdt" class="option">شیراز</li>
-                                                    <li data-value="can" class="option">اصفهان</li>
-                                                    <li data-value="uk" class="option">قزوین</li>
+                                                    @foreach($cities as $id => $name)
+                                                        <li data-value="{{ $id }}" class="option {{ ($selectedCity == $id) ? 'selected focus' : '' }}"
+                                                            onclick="Livewire.emit('citySelected', {{ $id }}, '{{ $name }}')">
+                                                            {{ $name }}
+                                                        </li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
@@ -251,3 +255,32 @@
         </div>
     </section>
 </div>
+
+
+
+
+@section('scripts')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function updateSelectVisual(selectClass) {
+                document.querySelectorAll(`.${selectClass} .list .option`).forEach(option => {
+                    option.addEventListener('click', function () {
+                        const list = this.parentNode;
+                        list.querySelectorAll('.option').forEach(li => li.classList.remove('selected', 'focus'));
+                        this.classList.add('selected', 'focus');
+
+                        const currentSpan = this.closest(`.${selectClass}`).querySelector('.current');
+                        currentSpan.textContent = this.textContent.trim();
+                    });
+                });
+            }
+
+            updateSelectVisual('province');
+            updateSelectVisual('city');
+        });
+    </script>
+
+@endsection
+
+

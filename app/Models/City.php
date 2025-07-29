@@ -10,6 +10,26 @@ use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
 
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $province_id
+ * @property string $name
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read string $jalali_created_at
+ * @property-read \App\Models\Province|null $province
+ * @method static Builder<static>|City newModelQuery()
+ * @method static Builder<static>|City newQuery()
+ * @method static Builder<static>|City query()
+ * @method static Builder<static>|City whereCreatedAt($value)
+ * @method static Builder<static>|City whereId($value)
+ * @method static Builder<static>|City whereName($value)
+ * @method static Builder<static>|City whereProvinceId($value)
+ * @method static Builder<static>|City whereUpdatedAt($value)
+ * @mixin Eloquent
+ */
 class City extends Authenticatable
 {
 
