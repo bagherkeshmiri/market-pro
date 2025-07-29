@@ -6,9 +6,12 @@ use App\Models\Payment;
 use App\Models\User;
 use Illuminate\View\View;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ListPaymentsUser extends Component
 {
+    use WithPagination;
+
     public User $user;
 
     public function render(): View

@@ -40,9 +40,23 @@
                                     </ul>
                                     <div class="tab-content">
 
-                                        <livewire:admin.user.edit-user :user="$user"/>
-                                        <livewire:admin.user.list-payments-user :user="$user"/>
-                                        <livewire:admin.user.list-orders-user :user="$user"/>
+{{--                                        <livewire:admin.user.edit-user :user="$user"/>--}}
+{{--                                        <livewire:admin.user.list-payments-user :user="$user"/>--}}
+{{--                                        <livewire:admin.user.list-orders-user :user="$user"/>--}}
+
+
+
+                                        <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                            <livewire:admin.user.edit-user :user="$user" />
+                                        </div>
+
+                                        <div class="tab-pane" id="payments" role="tabpanel" aria-labelledby="profile-tab">
+                                            <livewire:admin.user.list-payments-user :user="$user" />
+                                        </div>
+
+                                        <div class="tab-pane" id="orders" role="tabpanel" aria-labelledby="about-tab">
+                                            <livewire:admin.user.list-orders-user :user="$user" />
+                                        </div>
 
                                     </div>
 
@@ -60,6 +74,17 @@
 
 
 
-
 @section('scripts')
+    <script>
+        $(document).ready(function () {
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                localStorage.setItem('activeTab', $(e.target).attr('href'));
+            });
+
+            const activeTab = localStorage.getItem('activeTab');
+            if (activeTab) {
+                $('a[href="' + activeTab + '"]').tab('show');
+            }
+        });
+    </script>
 @endsection

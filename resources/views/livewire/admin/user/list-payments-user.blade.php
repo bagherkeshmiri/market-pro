@@ -1,5 +1,4 @@
-<div class="tab-pane" id="payments" aria-labelledby="profile-tab"
-     role="tabpanel">
+<div>
     <div class="row">
         <div class="col-sm-12 col-xs-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4">
             @include('frest-components.rgba-alert', [
@@ -43,7 +42,7 @@
             </tbody>
         </table>
 
-        @include('frest-components.pagination',['model' => $payments] )
+        {{ $payments->links('frest-components.livewire-pagination',['elements' => $payments]) }}
 
     </div>
 </div>

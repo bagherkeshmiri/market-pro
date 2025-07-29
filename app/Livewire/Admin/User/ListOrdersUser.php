@@ -6,9 +6,12 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\View\View;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ListOrdersUser extends Component
 {
+    use WithPagination;
+
     public User $user;
 
     public function render(): View

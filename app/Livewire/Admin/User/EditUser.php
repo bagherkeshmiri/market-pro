@@ -16,11 +16,13 @@ class EditUser extends Component
     public User $user;
     public $name;
     public $email;
+    public $mobile;
 
     public function mount(): void
     {
         $this->name = $this->user->name;
         $this->email = $this->user->email;
+        $this->mobile = $this->user->mobile;
     }
 
     public function render(): View

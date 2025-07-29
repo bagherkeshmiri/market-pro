@@ -1,5 +1,4 @@
-<div class="tab-pane active" id="home" aria-labelledby="home-tab"
-     role="tabpanel">
+<div>
     @include('frest-components.flash-message')
 
     <form class="form" wire:submit.prevent="update">
