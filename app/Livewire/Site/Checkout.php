@@ -129,6 +129,7 @@ class Checkout extends SiteComponent
         }
 
         $order->payments()->create([
+            'user_id' => auth('web')->user()->id,
             'gate_id' => $this->gateOrg->gate_id,
             'gate_org_id' => $this->gateOrg->id,
             'amount' => $this->totalPayable,
