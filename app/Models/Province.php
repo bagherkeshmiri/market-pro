@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $name
@@ -54,6 +55,11 @@ class Province extends Authenticatable
     }
 
     /*------------ Relations ------------*/
+
+    public function city(): HasMany
+    {
+        return $this->hasMany(City::class, City::COLUMN_PROVINCE_ID, self::COLUMN_ID);
+    }
 
     /*-------------- Scopes -------------*/
 

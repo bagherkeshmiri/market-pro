@@ -68,13 +68,23 @@ Route::get('/run-test-job/1369', function () {
 //});
 
 
-//Route::get('test', function () {
+Route::get('test', action: function () {
 //    Session::forget('cart');
 //    Session::forget('cart_summary');
 //
 //    Session::forget('wishlist');
-
+//
 //    dd(
 //        Session::get('wishlist')
 //    );
-//});
+
+
+    $json = file_get_contents(database_path('data/cities.json'));
+
+//    $provinces = json_decode(File::get($json), true);
+
+
+    dd(
+        $json
+    );
+});
