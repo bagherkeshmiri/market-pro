@@ -1,0 +1,45 @@
+<div class="tab-pane active" id="home" aria-labelledby="home-tab"
+     role="tabpanel">
+    @include('frest-components.flash-message')
+
+    <form class="form" wire:submit.prevent="update">
+
+        <div class="form-body">
+            <div class="row">
+
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام '] )
+                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'name' , 'classes' => 'text-left' , 'id' => 'name' , 'icon' => userIcon() , 'tabindex' => '1' , 'attributes' => 'required' ])
+                        @include('frest-components.validation-error',[ 'name' => 'name' ])
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'email' , 'content' => 'ایمیل '] )
+                        @include('frest-components.required-tag')
+                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'email' , 'classes' => 'text-left' , 'id' => 'email' , 'icon' => emailIcon() , 'tabindex' => '4' , 'attributes' => 'required' ])
+                        @include('frest-components.validation-error',[ 'name' => 'email' ])
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 col-12">
+                    <div class="form-group">
+                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'mobile' , 'content' => 'موبایل '] )
+                        @include('frest-components.input',[ 'type' => 'number' , 'wire' => 'mobile' , 'classes' => 'text-left' , 'id' => 'mobile' , 'icon' => mobileIcon() , 'tabindex' => '4' , 'attributes' => 'disabled' ])
+                        @include('frest-components.validation-error',[ 'name' => 'mobile' ])
+                    </div>
+                </div>
+
+                <div class="col-12 d-flex justify-content-end">
+                    @include('frest-components.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
+                    @include('frest-components.link-button',[ 'href' =>  route('admin.user.index'), 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

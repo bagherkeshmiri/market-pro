@@ -18,20 +18,10 @@ use Throwable;
 class ShowUser extends AdminComponent
 {
     public User $user;
-    public $name;
-    public $email;
-    public $mobile;
-
-    public function mount(): void
-    {
-        $this->name = $this->user->name;
-        $this->email = $this->user->email;
-        $this->mobile = $this->user->mobile;
-    }
 
     public function render(): View
     {
-        $pageTitle = 'ویرایش کاربر';
+        $pageTitle = ' اطلاعات کاربر ' . $this->user->name;
         $payments = Payment::whereUserId($this->user->id)->paginate($this->perPage);
         $paymentTableHeads = [
             'شماره سفارش',
@@ -63,41 +53,4 @@ class ShowUser extends AdminComponent
         );
     }
 
-    /**
-     * @throws Throwable
-     */
-    public function update(): RedirectResponse|Redirector
-    {
-        $this->validate([
-            'name' => 'nullable',
-            'email' => 'required|email|unique:users,email,' . $this->user->id,
-            'mobile' => [
-                'nullable',
-                'digits:11',
-                Rule::unique('users', 'mobile')->ignore($this->user->id),
-            ],
-        ]);
-
-        $data = [
-            'name' => $this->name,
-            'email' => $this->email,
-            'mobile' => $this->mobile,
-        ];
-
-        DB::beginTransaction();
-        try {
-            $this->user->update($data);
-            DB::commit();
-            session()->flash('success', __('global.success_message'));
-            return redirect()->route('admin.user.show', ['user' => $this->user->id]);
-        } catch (Exception $e) {
-            DB::rollBack();
-            if (app()->isLocal()) {
-                session()->flash('error', $e->getMessage());
-            } else {
-                session()->flash('error', __('global.error_message'));
-            }
-            return redirect()->route('admin.user.show', ['user' => $this->user->id]);
-        }
-    }
 }
