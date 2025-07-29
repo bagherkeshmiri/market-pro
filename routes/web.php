@@ -15,6 +15,7 @@ use App\Livewire\Site\Register;
 use App\Livewire\Site\SinglePost;
 use App\Livewire\Site\SingleProduct;
 use App\Livewire\Site\Wishlist;
+use App\Models\GateOrg;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -50,22 +51,28 @@ Route::get('/run-test-job/1369', function () {
     TestJob::dispatch();
 });
 
-//Route::get('/create-new-table', function () {
-//    if (!Schema::hasTable('images')) {
-//        Schema::create('images', function (Blueprint $table) {
-//            $table->id();
-//            $table->unsignedBigInteger('imageable_id');
-//            $table->string('imageable_type');
-//            $table->boolean('is_main')->default(false);
-//            $table->string('url');
-//            $table->timestamps();
-//        });
-//
-//        return 'images table created successfully.';
-//    } else {
-//        return 'images table already exists.';
-//    }
-//});
+Route::get('/create-new-table', function () {
+    if (!Schema::hasTable('orders')) {
+        Schema::create('orders', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id')->index();
+            $table->string('order_number')->unique();
+            $table->unsignedTinyInteger('status')->default(1)->comment(
+                ' 1:pending , 2:paid , 3:shipped , 4: cancelled'
+            );
+            $table->decimal('subtotal', 15);
+            $table->decimal('discount', 15)->default(0);
+            $table->decimal('tax', 15)->default(0);
+            $table->decimal('shipping_fee', 15)->default(0);
+            $table->decimal('total', 15);
+            $table->timestamps();
+        });
+
+        return 'orders table created successfully.';
+    } else {
+        return 'orders table already exists.';
+    }
+});
 
 
 Route::get('test', action: function () {
@@ -78,13 +85,7 @@ Route::get('test', action: function () {
 //        Session::get('wishlist')
 //    );
 
-
-    $json = file_get_contents(database_path('data/cities.json'));
-
-//    $provinces = json_decode(File::get($json), true);
-
-
     dd(
-        $json
+        GateOrg::withoutTrashed()->isActive()->isDefault()->first()
     );
 });

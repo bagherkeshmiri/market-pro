@@ -91,20 +91,18 @@ class Payment extends Authenticatable
         static::creating(function ($payment) {
             $payment->payment_number = self::generateUniqueTrackingCode();
         });
+
+        static::creating(function ($payment) {
+            if (empty($payment->expire_time)) {
+                $payment->expire_time = Carbon::now()->addMinutes(15);
+            }
+        });
+
     }
 
     public function getJalaliCreatedAtAttribute(): string
     {
         return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
-    protected static function generateUniqueTrackingCode(): string
-    {
-        do {
-            $code = strtoupper(Str::random(10));
-        } while (self::where('payment_number', $code)->exists());
-
-        return $code;
     }
 
     /*------------ Relations ------------*/
@@ -128,4 +126,12 @@ class Payment extends Authenticatable
 
     /*---------- Other Functions --------*/
 
+    protected static function generateUniqueTrackingCode(): string
+    {
+        do {
+            $code = strtoupper(Str::random(10));
+        } while (self::where('payment_number', $code)->exists());
+
+        return $code;
+    }
 }

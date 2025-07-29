@@ -2,8 +2,12 @@
 
 namespace App\Livewire\Site;
 
+use App\Enums\OrderStatus;
 use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\City;
+use App\Models\GateOrg;
+use App\Models\Order;
+use App\Models\Payment;
 use App\Models\Province;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
@@ -18,6 +22,7 @@ class Checkout extends SiteComponent
     public $shipping = 20000;
     public $discount = 50000;
     public $freeShipping = 2000000;
+    public $gateOrg;
     public $user;
     public $email;
     public $fullName;
@@ -31,7 +36,7 @@ class Checkout extends SiteComponent
     public $selectedCity = null;
     public $selectedCityName = null;
 
-    protected $listeners = ['provinceSelected','citySelected'];
+    protected $listeners = ['provinceSelected', 'citySelected'];
 
     public function mount(): RedirectResponse|Redirector|null
     {
@@ -51,6 +56,8 @@ class Checkout extends SiteComponent
         }
 
         $this->provinces = Province::pluck('name', 'id')->toArray();
+
+        $this->gateOrg = GateOrg::withoutTrashed()->isActive()->isDefault()->first();
 
         return null;
     }
@@ -104,9 +111,27 @@ class Checkout extends SiteComponent
             'orderMessage' => 'nullable|string|max:500',
         ]);
 
+        $order = $this->user->orders()->create([
+            'subtotal' => $this->cartTotal,
+            'discount' => $this->discount,
+            'tax' => $this->tax,
+            'shipping_fee' => $this->shipping,
+            'total' => $this->totalPayable,
+        ]);
 
-        dd(
-            $this
-        );
+        foreach ($this->cart as $cart) {
+            $order->orderItems()->create([
+                'product_id' => $cart['id'],
+                'qty' => $cart['qty'],
+                'unit_price' => $cart['unit_price'],
+                'final_price' => $cart['final_price'],
+            ]);
+        }
+
+        $order->payments()->create([
+            'gate_id' => $this->gateOrg->gate_id,
+            'gate_org_id' => $this->gateOrg->id,
+            'amount' => $this->totalPayable,
+        ]);
     }
 }

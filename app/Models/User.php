@@ -85,6 +85,11 @@ class User extends Authenticatable
 
     /*-------------- Scopes -------------*/
 
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class, Order::COLUMN_USER_ID, self::COLUMN_ID);
+    }
+
     /*---------- Other Functions --------*/
 
     public function setPasswordAttribute($value): void
