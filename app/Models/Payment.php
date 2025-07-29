@@ -53,8 +53,6 @@ use Str;
  */
 class Payment extends Authenticatable
 {
-    use SoftDeletes;
-
     public const string TABLE_NAME = 'payments';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
