@@ -9,7 +9,7 @@
                     </li>
                 @else
                     <li class="page-item">
-                        <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev">&lsaquo;</a>
+                        <a class="page-link" wire:click="previousPage" rel="prev">&lsaquo;</a>
                     </li>
                 @endif
 

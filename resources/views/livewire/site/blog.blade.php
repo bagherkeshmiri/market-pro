@@ -5,7 +5,7 @@
 
                 @forelse($posts as $post)
                     <div class="col-lg-4 col-md-6">
-                        <livewire:site.post-card :post="$post"/>
+                        <livewire:site.post-card :post="$post" :wire:key="'post-card-'.$post->id"/>
                     </div>
                 @empty
                     <div class="container my-5">
@@ -25,8 +25,8 @@
 
                 @endforelse
 
-
                 {{ $posts->links('custom-components.site.pagination', ['items' => $posts]) }}
+
             </div>
         </div>
     </section>

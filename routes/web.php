@@ -47,35 +47,37 @@ Route::prefix('auth')
             });
     });
 
+
 Route::get('/run-test-job/1369', function () {
     TestJob::dispatch();
 });
 
-Route::get('/create-new-table', function () {
-    if (!Schema::hasTable('orders')) {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id')->index();
-            $table->string('order_number')->unique();
-            $table->unsignedTinyInteger('status')->default(1)->comment(
-                ' 1:pending , 2:paid , 3:shipped , 4: cancelled'
-            );
-            $table->decimal('subtotal', 15);
-            $table->decimal('discount', 15)->default(0);
-            $table->decimal('tax', 15)->default(0);
-            $table->decimal('shipping_fee', 15)->default(0);
-            $table->decimal('total', 15);
-            $table->timestamps();
-        });
 
-        return 'orders table created successfully.';
-    } else {
-        return 'orders table already exists.';
-    }
-});
+//Route::get('/create-new-table', function () {
+//    if (!Schema::hasTable('orders')) {
+//        Schema::create('orders', function (Blueprint $table) {
+//            $table->id();
+//            $table->unsignedBigInteger('user_id')->index();
+//            $table->string('order_number')->unique();
+//            $table->unsignedTinyInteger('status')->default(1)->comment(
+//                ' 1:pending , 2:paid , 3:shipped , 4: cancelled'
+//            );
+//            $table->decimal('subtotal', 15);
+//            $table->decimal('discount', 15)->default(0);
+//            $table->decimal('tax', 15)->default(0);
+//            $table->decimal('shipping_fee', 15)->default(0);
+//            $table->decimal('total', 15);
+//            $table->timestamps();
+//        });
+//
+//        return 'orders table created successfully.';
+//    } else {
+//        return 'orders table already exists.';
+//    }
+//});
 
 
-Route::get('test', action: function () {
+//Route::get('test', action: function () {
 //    Session::forget('cart');
 //    Session::forget('cart_summary');
 //
@@ -84,8 +86,4 @@ Route::get('test', action: function () {
 //    dd(
 //        Session::get('wishlist')
 //    );
-
-    dd(
-        GateOrg::withoutTrashed()->isActive()->isDefault()->first()
-    );
-});
+//});
