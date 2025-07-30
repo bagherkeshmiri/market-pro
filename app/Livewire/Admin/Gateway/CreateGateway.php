@@ -41,6 +41,7 @@ class CreateGateway extends AdminComponent
     {
         $this->validate([
             'name' => 'required',
+            'label' => 'required',
             'isActive' => [
                 'required',
                 new Enum(IsActive::class)
@@ -49,6 +50,7 @@ class CreateGateway extends AdminComponent
 
         $data = [
             'name' => $this->name,
+            'label' => $this->label,
             'is_active' => $this->isActive,
         ];
 

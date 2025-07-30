@@ -17,11 +17,13 @@ class ShowGateway extends AdminComponent
 {
     public Gate $gate;
     public $name;
+    public $label;
     public $isActive;
 
     public function mount(): void
     {
         $this->name = $this->gate->name;
+        $this->label = $this->gate->label;
         $this->isActive = $this->gate->is_active;
     }
 
@@ -51,6 +53,7 @@ class ShowGateway extends AdminComponent
 
         $data = [
             'name' => $this->name,
+            'label' => $this->label,
             'is_active' => $this->isActive,
         ];
 
