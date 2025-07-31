@@ -80,17 +80,16 @@
                                         </div>
                                     </div>
 
-
                                     <div class="col-md-6">
                                         <div class="form-item">
                                             <label for="country" class="form-title">کشور</label>
                                             @include('custom-components.site.required-tag')
-                                            <div class="nice-select select-control form-control country " tabindex="0">
-                                                <span class="current">ایران</span>
-                                            </div>
+                                            <select id="country" class="form-control">
+                                                <option value="iran">ایران</option>
+                                            </select>
+
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <div class="form-group row">
@@ -98,11 +97,15 @@
                                         <div class="form-item">
                                             <label for="province" class="form-title">استان</label>
                                             @include('custom-components.site.required-tag')
-                                                <select id="savedAddress" class="form-control" wire:ignore >
-                                                    @foreach($provinces as $id => $name)
-                                                        <option value="{{ $id }}"  @if($loop->first) selected @endif >{{ $name }}</option>
-                                                    @endforeach
-                                                </select>
+                                            <select id="province" class="form-control"
+                                                    wire:model="selectedProvince">
+                                                <option value="">انتخاب کنید</option>
+                                                @foreach($provinces as $id => $name)
+                                                    <option value="{{ $id }}">
+                                                        {{ $name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
 
                                         </div>
                                     </div>
@@ -111,11 +114,15 @@
                                         <div class="form-item">
                                             <label for="city" class="form-title">شهر</label>
                                             @include('custom-components.site.required-tag')
-                                            <select class="form-control" wire:ignore>
-                                                <option value=" " >ابتدا استان انتخاب شود</option>
-                                                @foreach($cities as $id => $name)
-                                                    <option value="{{ $id }}"  @if($loop->first) selected @endif >{{ $name }}</option>
-                                                @endforeach
+                                            <select id="city" class="form-control" wire:model="selectedCity">
+                                                <option value=" ">ابتدا استان انتخاب شود</option>
+                                                @if($cities && count($cities) > 0)
+                                                    @foreach($cities as $id => $name)
+                                                        <option value="{{ $id }}">{{ $name }}</option>
+                                                    @endforeach
+                                                @else
+                                                    <option value="">ابتدا استان را انتخاب کنید</option>
+                                                @endif
                                             </select>
 
                                         </div>
@@ -279,27 +286,6 @@
 
 
 @section('scripts')
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            function updateSelectVisual(selectClass) {
-                document.querySelectorAll(`.${selectClass} .list .option`).forEach(option => {
-                    option.addEventListener('click', function () {
-                        const list = this.parentNode;
-                        list.querySelectorAll('.option').forEach(li => li.classList.remove('selected', 'focus'));
-                        this.classList.add('selected', 'focus');
-
-                        const currentSpan = this.closest(`.${selectClass}`).querySelector('.current');
-                        currentSpan.textContent = this.textContent.trim();
-                    });
-                });
-            }
-
-            updateSelectVisual('province');
-            updateSelectVisual('city');
-        });
-    </script>
-
 @endsection
 
 

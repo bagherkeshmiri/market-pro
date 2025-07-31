@@ -4,6 +4,7 @@ namespace App\Livewire\Site;
 
 use App\Enums\OrderStatus;
 use App\Livewire\BaseComponents\SiteComponent;
+use App\Models\City;
 use App\Models\GateOrg;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -37,6 +38,8 @@ class Checkout extends SiteComponent
     public $provinces;
     public $cities = [];
     public $userAddresses;
+    public $selectedProvince = null;
+    public $selectedCity = null;
 
     protected $listeners = ['provinceSelected', 'citySelected'];
 
@@ -63,8 +66,22 @@ class Checkout extends SiteComponent
 
         $this->userAddresses = $this->user->addresses;
 
+        if ($this->selectedProvince) {
+            $this->updatedSelectedProvince($this->selectedProvince);
+        }
+
         return null;
     }
+
+
+    public function updatedSelectedProvince($provinceId): void
+    {
+        logger("Selected Province ID: $provinceId");
+
+        $this->cities = City::where('province_id', $provinceId)->pluck('name', 'id')->toArray();
+        $this->selectedCity = null;
+    }
+
 
     public function calculateCartTotal(): void
     {
