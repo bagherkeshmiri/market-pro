@@ -58,25 +58,20 @@ Route::get('/run-test-job/1369', function () {
 
 
 //Route::get('/create-new-table', function () {
-//    if (!Schema::hasTable('orders')) {
-//        Schema::create('orders', function (Blueprint $table) {
+//    if (!Schema::hasTable('user_addresses')) {
+//        Schema::create('user_addresses', function (Blueprint $table) {
 //            $table->id();
 //            $table->unsignedBigInteger('user_id')->index();
-//            $table->string('order_number')->unique();
-//            $table->unsignedTinyInteger('status')->default(1)->comment(
-//                ' 1:pending , 2:paid , 3:shipped , 4: cancelled'
-//            );
-//            $table->decimal('subtotal', 15);
-//            $table->decimal('discount', 15)->default(0);
-//            $table->decimal('tax', 15)->default(0);
-//            $table->decimal('shipping_fee', 15)->default(0);
-//            $table->decimal('total', 15);
+//            $table->unsignedBigInteger('province_id')->index();
+//            $table->unsignedBigInteger('city_id')->index();
+//            $table->text('address');
+//            $table->string('postal_code')->nullable();
 //            $table->timestamps();
 //        });
 //
-//        return 'orders table created successfully.';
+//        return 'user_addresses table created successfully.';
 //    } else {
-//        return 'orders table already exists.';
+//        return 'user_addresses table already exists.';
 //    }
 //});
 

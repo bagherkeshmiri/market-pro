@@ -83,12 +83,12 @@ class User extends Authenticatable
         return $this->hasMany(UserAddress::class, UserAddress::COLUMN_USER_ID, self::COLUMN_ID);
     }
 
-    /*-------------- Scopes -------------*/
-
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class, Order::COLUMN_USER_ID, self::COLUMN_ID);
     }
+
+    /*-------------- Scopes -------------*/
 
     /*---------- Other Functions --------*/
 

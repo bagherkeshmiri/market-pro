@@ -10,8 +10,8 @@ return new class extends Migration {
         Schema::create('user_addresses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
-            $table->string('province');
-            $table->string('city');
+            $table->unsignedBigInteger('province_id')->index();
+            $table->unsignedBigInteger('city_id')->index();
             $table->text('address');
             $table->string('postal_code')->nullable();
             $table->timestamps();

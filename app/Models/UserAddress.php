@@ -14,14 +14,13 @@ use Illuminate\Support\Facades\Hash;
 use LaravelIdea\Helper\App\Models\_IH_Permission_QB;
 use Morilog\Jalali\Jalalian;
 
-
 /**
  *
  *
  * @property int $id
  * @property int $user_id
- * @property string $province
- * @property string $city
+ * @property int $province_id
+ * @property int $city_id
  * @property string $address
  * @property string|null $postal_code
  * @property Carbon|null $created_at
@@ -35,11 +34,11 @@ use Morilog\Jalali\Jalalian;
  * @method static Builder<static>|UserAddress newQuery()
  * @method static Builder<static>|UserAddress query()
  * @method static Builder<static>|UserAddress whereAddress($value)
- * @method static Builder<static>|UserAddress whereCity($value)
+ * @method static Builder<static>|UserAddress whereCityId($value)
  * @method static Builder<static>|UserAddress whereCreatedAt($value)
  * @method static Builder<static>|UserAddress whereId($value)
  * @method static Builder<static>|UserAddress wherePostalCode($value)
- * @method static Builder<static>|UserAddress whereProvince($value)
+ * @method static Builder<static>|UserAddress whereProvinceId($value)
  * @method static Builder<static>|UserAddress whereUpdatedAt($value)
  * @method static Builder<static>|UserAddress whereUserId($value)
  * @mixin Eloquent
@@ -50,11 +49,13 @@ class UserAddress extends Authenticatable
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
     public const string COLUMN_USER_ID = 'user_id';
+    public const string COLUMN_PROVINCE_ID = 'province_id';
+    public const string COLUMN_CITY_ID = 'city_id';
 
     protected $fillable = [
         'user_id',
-        'province',
-        'city',
+        'province_id',
+        'city_id',
         'address',
         'postal_code',
     ];
@@ -85,6 +86,16 @@ class UserAddress extends Authenticatable
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class, Order::COLUMN_USER_ADDRESS_ID, self::COLUMN_ID);
+    }
+
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class, self::COLUMN_CITY_ID, City::COLUMN_ID);
+    }
+
+    public function province(): BelongsTo
+    {
+        return $this->belongsTo(Province::class, self::COLUMN_PROVINCE_ID, Province::COLUMN_ID);
     }
 
     /*-------------- Scopes -------------*/

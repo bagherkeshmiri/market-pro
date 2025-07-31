@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Payment;
 use App\Models\Province;
+use App\Models\UserAddress;
 use App\Services\Payment\GatewayFactory;
 use DB;
 use Exception;
@@ -41,6 +42,8 @@ class Checkout extends SiteComponent
     public $cities = [];
     public $selectedCity = null;
     public $selectedCityName = null;
+    public $userAddresses;
+    public string|null $selectedAddressId = null;
 
     protected $listeners = ['provinceSelected', 'citySelected'];
 
@@ -64,6 +67,8 @@ class Checkout extends SiteComponent
         $this->provinces = Province::pluck('name', 'id')->toArray();
 
         $this->gateOrg = GateOrg::withoutTrashed()->isActive()->isDefault()->first();
+
+        $this->userAddresses = $this->user->addresses;
 
         return null;
     }
@@ -107,6 +112,42 @@ class Checkout extends SiteComponent
         $this->selectedCityName = $name;
     }
 
+    public function fillAddressFromSaved(): void
+    {
+        $id = $this->selectedAddressId;
+
+        if ($id === 'new' || $id === null) {
+            $this->fullName = '';
+            $this->address = '';
+            $this->selectedProvince = null;
+            $this->selectedProvinceName = null;
+            $this->selectedCity = null;
+            $this->selectedCityName = null;
+            $this->postalCode = '';
+            $this->phone = '';
+            $this->cities = [];
+            return;
+        }
+
+        $selected = $this->userAddresses->firstWhere('id', $id);
+        if (!$selected) return;
+
+        $this->fullName = $selected->name;
+        $this->address = $selected->address;
+        $this->selectedProvince = $selected->province_id;
+        $this->selectedProvinceName = optional($selected->province)->name;
+        $this->selectedCity = $selected->city_id;
+        $this->selectedCityName = optional($selected->city)->name;
+        $this->postalCode = $selected->postal_code;
+        $this->phone = $selected->phone;
+
+        $this->cities = City::whereProvinceId($this->selectedProvince)->pluck('name', 'id')->toArray();
+
+        $this->dispatch('provinceSelected', $this->selectedProvince, $this->selectedProvinceName);
+        $this->dispatch('citySelected', $this->selectedCity, $this->selectedCityName);
+    }
+
+
     /**
      * @throws Throwable
      */
@@ -124,10 +165,10 @@ class Checkout extends SiteComponent
         try {
             $expiredOrderIds = $this->user->orders()
                 ->where('status', OrderStatus::Pending)
-                ->whereNotBetween('created_at', [
-                    today()->startOfDay()->toDateTimeString(),
-                    today()->endOfDay()->toDateTimeString()
-                ])
+//                ->whereNotBetween('created_at', [
+//                    today()->startOfDay()->toDateTimeString(),
+//                    today()->endOfDay()->toDateTimeString()
+//                ])
                 ->pluck('id')
                 ->toArray();
 
@@ -139,52 +180,38 @@ class Checkout extends SiteComponent
             }
 
 
-            $existingOrder = $this->user->orders()
-                ->where('status', OrderStatus::Pending)
-                ->whereBetween(
-                    'created_at',
-                    [today()->startOfDay()->toDateTimeString(), today()->endOfDay()->toDateTimeString()]
-                )
-                ->first();
+            $order = $this->user->orders()->create([
+                'subtotal' => $this->cartTotal,
+                'discount' => $this->discount,
+                'tax' => $this->tax,
+                'shipping_fee' => $this->shipping,
+                'total' => $this->totalPayable,
+                'description' => $this->orderMessage,
+            ]);
 
-
-            dd(
-                $existingOrder,
-//                $this->user->orders
-            );
-
-
-            if ($existingOrder) {
-                session()->forget('processing_order');
-
-                return;
-            }
-
-            if (is_null($existingOrder)) {
-                $order = $this->user->orders()->create([
-                    'subtotal' => $this->cartTotal,
-                    'discount' => $this->discount,
-                    'tax' => $this->tax,
-                    'shipping_fee' => $this->shipping,
-                    'total' => $this->totalPayable,
-                ]);
-
-                foreach ($this->cart as $cart) {
-                    $order->orderItems()->create([
-                        'product_id' => $cart['id'],
-                        'qty' => $cart['qty'],
-                        'unit_price' => $cart['unit_price'],
-                        'final_price' => $cart['final_price'],
-                    ]);
-                }
-
-                $payment = $order->payments()->create([
-                    'user_id' => auth()->id(),
-                    'gate_id' => $this->gateOrg->gate_id,
-                    'gate_org_id' => $this->gateOrg->id,
-                    'amount' => $this->totalPayable,
+            foreach ($this->cart as $cart) {
+                $order->orderItems()->create([
+                    'product_id' => $cart['id'],
+                    'qty' => $cart['qty'],
+                    'unit_price' => $cart['unit_price'],
+                    'final_price' => $cart['final_price'],
                 ]);
             }
+
+            $payment = $order->payments()->create([
+                'user_id' => auth()->id(),
+                'gate_id' => $this->gateOrg->gate_id,
+                'gate_org_id' => $this->gateOrg->id,
+                'amount' => $this->totalPayable,
+            ]);
+
+
+            $this->user->addresses()->create([
+                'province_id' => $this->selectedProvince,
+                'city_id' => $this->selectedCity,
+                'address' => $this->address,
+                'postal_code' => $this->postalCode,
+            ]);
 
 
             $gateway = GatewayFactory::make();

@@ -38,6 +38,25 @@
                         <h3 class="form-header">جزئیات صورتحساب</h3>
                         <form wire:submit.prevent>
                             <div class="checkout-form-wrap">
+
+                                @if(!$this->userAddresses->isEmpty())
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <div class="form-item">
+                                                <label for="savedAddress" class="form-title">آدرس‌ های من</label>
+                                                <select id="savedAddress" class="form-control"
+                                                        wire:model="selectedAddressId"
+                                                        wire:select="fillAddressFromSaved">
+                                                    @foreach($userAddresses as $id => $address)
+                                                        <option value="{{ $id }}">{{ $address['label'] }}</option>
+                                                    @endforeach
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="form-item">
@@ -79,11 +98,14 @@
                                         <div class="form-item">
                                             <label for="province" class="form-title">استان</label>
                                             @include('custom-components.site.required-tag')
-                                            <div class="nice-select select-control form-control province" tabindex="0" wire:ignore>
-                                                <span class="current">{{ $selectedProvinceName ?? 'انتخاب استان' }}</span>
+                                            <div class="nice-select select-control form-control province" tabindex="0"
+                                                 wire:ignore>
+                                                <span
+                                                    class="current">{{ $selectedProvinceName ?? 'انتخاب استان' }}</span>
                                                 <ul class="list">
                                                     @foreach($provinces as $id => $name)
-                                                        <li data-value="{{ $id }}" class="option {{ ($selectedProvince == $id) ? 'selected focus' : '' }}"
+                                                        <li data-value="{{ $id }}"
+                                                            class="option {{ ($selectedProvince == $id) ? 'selected focus' : '' }}"
                                                             onclick="window.Livewire.emit('provinceSelected', {{ $id }}, '{{ $name }}')">
                                                             {{ $name }}
                                                         </li>
@@ -97,11 +119,13 @@
                                         <div class="form-item">
                                             <label for="city" class="form-title">شهر</label>
                                             @include('custom-components.site.required-tag')
-                                            <div class="nice-select select-control form-control city" tabindex="0" wire:ignore>
+                                            <div class="nice-select select-control form-control city" tabindex="0"
+                                                 wire:ignore>
                                                 <span class="current">{{ $selectedCityName ?? 'انتخاب شهر' }}</span>
                                                 <ul class="list">
                                                     @foreach($cities as $id => $name)
-                                                        <li data-value="{{ $id }}" class="option {{ ($selectedCity == $id) ? 'selected focus' : '' }}"
+                                                        <li data-value="{{ $id }}"
+                                                            class="option {{ ($selectedCity == $id) ? 'selected focus' : '' }}"
                                                             onclick="Livewire.emit('citySelected', {{ $id }}, '{{ $name }}')">
                                                             {{ $name }}
                                                         </li>
@@ -149,7 +173,6 @@
 
                                 </div>
 
-
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="form-item">
@@ -163,6 +186,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </form>
                     </div>
@@ -266,8 +290,6 @@
         </div>
     </section>
 </div>
-
-
 
 
 @section('scripts')
