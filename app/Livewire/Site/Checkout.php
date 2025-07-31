@@ -4,13 +4,11 @@ namespace App\Livewire\Site;
 
 use App\Enums\OrderStatus;
 use App\Livewire\BaseComponents\SiteComponent;
-use App\Models\City;
 use App\Models\GateOrg;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Payment;
 use App\Models\Province;
-use App\Models\UserAddress;
 use App\Services\Payment\GatewayFactory;
 use DB;
 use Exception;
@@ -37,13 +35,8 @@ class Checkout extends SiteComponent
     public $phone;
     public $orderMessage;
     public $provinces;
-    public $selectedProvince = null;
-    public $selectedProvinceName = null;
     public $cities = [];
-    public $selectedCity = null;
-    public $selectedCityName = null;
     public $userAddresses;
-    public string|null $selectedAddressId = null;
 
     protected $listeners = ['provinceSelected', 'citySelected'];
 
@@ -64,7 +57,7 @@ class Checkout extends SiteComponent
             $this->email = $this->user->email;
         }
 
-        $this->provinces = Province::pluck('name', 'id')->toArray();
+        $this->provinces = Province::orderBy('id')->pluck('name', 'id')->toArray();
 
         $this->gateOrg = GateOrg::withoutTrashed()->isActive()->isDefault()->first();
 
@@ -97,56 +90,6 @@ class Checkout extends SiteComponent
             $pageTitle
         );
     }
-
-    public function provinceSelected($id, $name): void
-    {
-        $this->selectedProvince = $id;
-        $this->selectedProvinceName = $name;
-        $this->cities = City::whereProvinceId($id)->pluck('name', 'id')->toArray();
-        $this->selectedCity = null;
-    }
-
-    public function citySelected($id, $name): void
-    {
-        $this->selectedCity = $id;
-        $this->selectedCityName = $name;
-    }
-
-    public function fillAddressFromSaved(): void
-    {
-        $id = $this->selectedAddressId;
-
-        if ($id === 'new' || $id === null) {
-            $this->fullName = '';
-            $this->address = '';
-            $this->selectedProvince = null;
-            $this->selectedProvinceName = null;
-            $this->selectedCity = null;
-            $this->selectedCityName = null;
-            $this->postalCode = '';
-            $this->phone = '';
-            $this->cities = [];
-            return;
-        }
-
-        $selected = $this->userAddresses->firstWhere('id', $id);
-        if (!$selected) return;
-
-        $this->fullName = $selected->name;
-        $this->address = $selected->address;
-        $this->selectedProvince = $selected->province_id;
-        $this->selectedProvinceName = optional($selected->province)->name;
-        $this->selectedCity = $selected->city_id;
-        $this->selectedCityName = optional($selected->city)->name;
-        $this->postalCode = $selected->postal_code;
-        $this->phone = $selected->phone;
-
-        $this->cities = City::whereProvinceId($this->selectedProvince)->pluck('name', 'id')->toArray();
-
-        $this->dispatch('provinceSelected', $this->selectedProvince, $this->selectedProvinceName);
-        $this->dispatch('citySelected', $this->selectedCity, $this->selectedCityName);
-    }
-
 
     /**
      * @throws Throwable

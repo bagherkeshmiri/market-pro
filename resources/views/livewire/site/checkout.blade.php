@@ -98,20 +98,12 @@
                                         <div class="form-item">
                                             <label for="province" class="form-title">استان</label>
                                             @include('custom-components.site.required-tag')
-                                            <div class="nice-select select-control form-control province" tabindex="0"
-                                                 wire:ignore>
-                                                <span
-                                                    class="current">{{ $selectedProvinceName ?? 'انتخاب استان' }}</span>
-                                                <ul class="list">
+                                                <select id="savedAddress" class="form-control" wire:ignore >
                                                     @foreach($provinces as $id => $name)
-                                                        <li data-value="{{ $id }}"
-                                                            class="option {{ ($selectedProvince == $id) ? 'selected focus' : '' }}"
-                                                            onclick="window.Livewire.emit('provinceSelected', {{ $id }}, '{{ $name }}')">
-                                                            {{ $name }}
-                                                        </li>
+                                                        <option value="{{ $id }}"  @if($loop->first) selected @endif >{{ $name }}</option>
                                                     @endforeach
-                                                </ul>
-                                            </div>
+                                                </select>
+
                                         </div>
                                     </div>
 
@@ -119,19 +111,13 @@
                                         <div class="form-item">
                                             <label for="city" class="form-title">شهر</label>
                                             @include('custom-components.site.required-tag')
-                                            <div class="nice-select select-control form-control city" tabindex="0"
-                                                 wire:ignore>
-                                                <span class="current">{{ $selectedCityName ?? 'انتخاب شهر' }}</span>
-                                                <ul class="list">
-                                                    @foreach($cities as $id => $name)
-                                                        <li data-value="{{ $id }}"
-                                                            class="option {{ ($selectedCity == $id) ? 'selected focus' : '' }}"
-                                                            onclick="Livewire.emit('citySelected', {{ $id }}, '{{ $name }}')">
-                                                            {{ $name }}
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
+                                            <select class="form-control" wire:ignore>
+                                                <option value=" " >ابتدا استان انتخاب شود</option>
+                                                @foreach($cities as $id => $name)
+                                                    <option value="{{ $id }}"  @if($loop->first) selected @endif >{{ $name }}</option>
+                                                @endforeach
+                                            </select>
+
                                         </div>
                                     </div>
 
