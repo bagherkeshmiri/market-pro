@@ -6,6 +6,7 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -14,6 +15,35 @@ use LaravelIdea\Helper\App\Models\_IH_Permission_QB;
 use Morilog\Jalali\Jalalian;
 
 
+/**
+ *
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $province
+ * @property string $city
+ * @property string $address
+ * @property string|null $postal_code
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read string $jalali_created_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Order> $orders
+ * @property-read int|null $orders_count
+ * @property-write mixed $password
+ * @property-read User|null $user
+ * @method static Builder<static>|UserAddress newModelQuery()
+ * @method static Builder<static>|UserAddress newQuery()
+ * @method static Builder<static>|UserAddress query()
+ * @method static Builder<static>|UserAddress whereAddress($value)
+ * @method static Builder<static>|UserAddress whereCity($value)
+ * @method static Builder<static>|UserAddress whereCreatedAt($value)
+ * @method static Builder<static>|UserAddress whereId($value)
+ * @method static Builder<static>|UserAddress wherePostalCode($value)
+ * @method static Builder<static>|UserAddress whereProvince($value)
+ * @method static Builder<static>|UserAddress whereUpdatedAt($value)
+ * @method static Builder<static>|UserAddress whereUserId($value)
+ * @mixin Eloquent
+ */
 class UserAddress extends Authenticatable
 {
     public const string TABLE_NAME = 'user_addresses';
@@ -50,6 +80,11 @@ class UserAddress extends Authenticatable
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, self::COLUMN_USER_ID, User::COLUMN_ID);
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class, Order::COLUMN_USER_ADDRESS_ID, self::COLUMN_ID);
     }
 
     /*-------------- Scopes -------------*/

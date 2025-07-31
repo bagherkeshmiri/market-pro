@@ -41,7 +41,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="form-item">
-                                            <label for="email" class="form-title">آدرس ایمیل</label>
+                                            <label for="email" class="form-title"> ایمیل</label>
                                             @include('custom-components.site.required-tag')
                                             <input type="email" wire:model.defer="email" id="email"
                                                    class="form-control" required>
@@ -113,6 +113,17 @@
 
                                 </div>
 
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <div class="form-item">
+                                            <label for="address" class="form-title"> آدرس</label>
+                                            @include('custom-components.site.required-tag')
+                                            <input type="email" wire:model.defer="address" id="address"
+                                                   class="form-control" required>
+                                            @include('frest-components.validation-error',[ 'name' => 'address' ])
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div class="form-group row">
                                     <div class="col-md-6">

@@ -32,6 +32,7 @@ class Checkout extends SiteComponent
     public $email;
     public $fullName;
     public $postalCode;
+    public $address;
     public $phone;
     public $orderMessage;
     public $provinces;

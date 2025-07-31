@@ -10,6 +10,7 @@ return new class extends Migration {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedBigInteger('user_address_id')->nullable()->index();
             $table->string('order_number')->unique();
             $table->unsignedTinyInteger('status')->default(1)->comment(
                 ' 1:pending , 2:paid , 3:shipped , 4: cancelled'
@@ -19,6 +20,7 @@ return new class extends Migration {
             $table->decimal('tax', 15)->default(0);
             $table->decimal('shipping_fee', 15)->default(0);
             $table->decimal('total', 15);
+            $table->string('description')->nullable();
             $table->timestamps();
         });
 
