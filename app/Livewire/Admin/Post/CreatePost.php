@@ -98,9 +98,13 @@ class CreatePost extends AdminComponent
             $this->reset(['title']);
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.post.index');
-        } catch (Exception) {
+        } catch (Exception $e) {
             DB::rollBack();
-            session()->flash('error', __('global.error_message'));
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
             return redirect()->route('admin.post.create');
         }
     }

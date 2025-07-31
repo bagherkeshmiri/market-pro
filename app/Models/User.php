@@ -2,17 +2,12 @@
 
 namespace App\Models;
 
-use App\Enums\UserType;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
-use LaravelIdea\Helper\App\Models\_IH_Permission_QB;
 use Morilog\Jalali\Jalalian;
 
 
@@ -20,22 +15,17 @@ use Morilog\Jalali\Jalalian;
  *
  *
  * @property int $id
- * @property int $role_id
- * @property UserType $type  1 : user , 2 : admin
- * @property string $name
+ * @property string|null $name
  * @property string $email
+ * @property string|null $mobile
  * @property Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Order> $orders
- * @property-read int|null $orders_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, UserAddress> $addresses
+ * @property-read int|null $addresses_count
  * @property-read string $jalali_created_at
- * @property-read string $status_badge_class
- * @property-read string $type_label
- * @property-read Role|null $role
- * @method static Builder<static>|User isAdmin()
  * @method static Builder<static>|User newModelQuery()
  * @method static Builder<static>|User newQuery()
  * @method static Builder<static>|User query()
@@ -43,11 +33,10 @@ use Morilog\Jalali\Jalalian;
  * @method static Builder<static>|User whereEmail($value)
  * @method static Builder<static>|User whereEmailVerifiedAt($value)
  * @method static Builder<static>|User whereId($value)
+ * @method static Builder<static>|User whereMobile($value)
  * @method static Builder<static>|User whereName($value)
  * @method static Builder<static>|User wherePassword($value)
  * @method static Builder<static>|User whereRememberToken($value)
- * @method static Builder<static>|User whereRoleId($value)
- * @method static Builder<static>|User whereType($value)
  * @method static Builder<static>|User whereUpdatedAt($value)
  * @mixin Eloquent
  */
@@ -56,12 +45,12 @@ class User extends Authenticatable
     public const string TABLE_NAME = 'users';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
-    public const string COLUMN_ROLE_ID = 'role_id';
 
     protected $fillable = [
-        'role_id',
         'name',
         'email',
+        'mobile',
+        'email_verified_at',
         'password',
     ];
 
@@ -73,7 +62,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'type' => UserType::class,
     ];
 
     protected static function booted(): void
@@ -88,26 +76,11 @@ class User extends Authenticatable
         return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
-    public function getTypeLabelAttribute(): string
-    {
-        return $this->type->label();
-    }
-
-    public function getStatusBadgeClassAttribute(): string
-    {
-        return $this->type->badgeClass();
-    }
-
     /*------------ Relations ------------*/
 
-    public function role(): BelongsTo
+    public function addresses(): HasMany
     {
-        return $this->belongsTo(Role::class, self::COLUMN_ROLE_ID, Role::COLUMN_ID);
-    }
-
-    public function permissions(): _IH_Permission_QB|BelongsToMany|Collection
-    {
-        return $this->role?->permissions() ?? collect();
+        return $this->hasMany(UserAddress::class, UserAddress::COLUMN_USER_ID, self::COLUMN_ID);
     }
 
     public function orders(): HasMany
@@ -115,18 +88,7 @@ class User extends Authenticatable
         return $this->hasMany(Order::class, Order::COLUMN_USER_ID, self::COLUMN_ID);
     }
 
-    public function comments(): HasMany
-    {
-        return $this->hasMany(Comment::class, Comment::COLUMN_USER_ID, self::COLUMN_ID);
-    }
-
-
     /*-------------- Scopes -------------*/
-
-    public function scopeIsAdmin(Builder $query): Builder
-    {
-        return $query->where('type', UserType::Admin);
-    }
 
     /*---------- Other Functions --------*/
 
@@ -134,13 +96,4 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($value);
     }
-
-    public function hasPermissionByName(string $enName): bool
-    {
-        return optional($this->role)
-            ->permissions
-            ->contains('en_name', $enName);
-    }
-
-
 }

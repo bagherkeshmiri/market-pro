@@ -3,7 +3,9 @@
 namespace App\Livewire\Admin\Dashboard;
 
 use App\Livewire\BaseComponents\AdminComponent;
+use App\Models\Admin;
 use App\Models\Order;
+use App\Models\Payment;
 use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
@@ -19,39 +21,46 @@ class AdminDashboard extends AdminComponent
                 'کل کاربران',
                 'bg-rgba-success text-success',
                 'bxs-group',
-                User::count('id'),
+                Admin::count('id') + User::count('id'),
+                route('admin.user.index')
             ],
             'allProducts' => [
                 'کل محصولات',
                 'bg-rgba-primary text-primary',
                 'bx-package',
                 Product::count('id'),
+                route('admin.product.index')
             ],
             'allOrders' => [
                 'کل سفارشات',
                 'bg-rgba-warning text-warning',
                 'bx-money',
                 Order::count('id'),
+                route('admin.order.index-all')
             ],
             'allFactors' => [
-                'کل فاکتور ها',
+                'کل پرداخت ها',
                 'bg-rgba-info text-info',
-                'bx-receipt',
-                235,
+                'bxs-credit-card',
+                Payment::count('id'),
+                route('admin.payment.index-all')
             ],
             'todayOrders' => [
                 'سفارشات امروز',
                 'bg-rgba-danger text-danger',
                 'bx-shopping-bag',
                 Order::whereDate('created_at', Carbon::today())->count(),
+                route('admin.order.index-today')
             ],
             'todayFactors' => [
-                'فاکتور های امروز',
+                'پرداخت های امروز',
                 'bg-rgba-success text-success',
-                'bx-receipt',
-                500,
+                'bxs-credit-card',
+                Payment::whereDate('created_at', Carbon::today())->count(),
+                route('admin.payment.index-today')
             ],
         ];
+
         return $this->renderView(
             'livewire.admin.dashboard.admin-dashboard',
             $pageTitle,

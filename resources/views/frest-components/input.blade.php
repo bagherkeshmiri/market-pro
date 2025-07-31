@@ -16,7 +16,6 @@
             id="{{ $id }}"
         @endisset
 
-
         class="form-control  text-white @isset($classes)  {{$classes}} @endisset"
 
         @isset($placeholder)

@@ -24,11 +24,11 @@ class ShowFaq extends AdminComponent
     public $answer;
     public $isActive;
 
-    public function mount(Faq $faq): void
+    public function mount(): void
     {
-        $this->question = $faq->question;
-        $this->answer = $faq->answer;
-        $this->isActive = $faq->is_active;
+        $this->question = $this->faq->question;
+        $this->answer = $this->faq->answer;
+        $this->isActive = $this->faq->is_active;
     }
 
     public function render(): View

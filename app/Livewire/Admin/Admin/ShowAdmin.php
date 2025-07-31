@@ -1,72 +1,77 @@
 <?php
 
-namespace App\Livewire\Admin\User;
+namespace App\Livewire\Admin\Admin;
 
-use App\Enums\UserType;
 use App\Livewire\BaseComponents\AdminComponent;
+use App\Models\Admin;
 use App\Models\Role;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
-class CreateUser extends AdminComponent
+class ShowAdmin extends AdminComponent
 {
+    public Admin $admin;
     public $name;
     public $email;
-    public $type;
-    public $password;
     public $role;
+    public $password;
+
+    public function mount(): void
+    {
+        $this->name = $this->admin->name;
+        $this->email = $this->admin->email;
+        $this->role = $this->admin->role->id;
+    }
 
     public function render(): View
     {
-        $pageTitle = 'ایجاد کاربر';
+        $pageTitle = 'ویرایش مدیر';
         $roles = Role::pluck('id', 'fa_name')->toArray();
-        $types = showEnumLabels(UserType::class);
+        $this->fill([$this->role]);
+        $admins = $this->admin;
+
         return $this->renderView(
-            'livewire.admin.user.create-user',
+            'livewire.admin.admin.show-admin',
             $pageTitle,
-            compact('roles', 'types')
+            compact('roles', 'admins')
         );
     }
 
     /**
      * @throws Throwable
      */
-    public function store(): RedirectResponse|Redirector
+    public function update(): RedirectResponse|Redirector
     {
         $this->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,',
-//            'role' => 'required|integer',
-            'type' => [
-                'required',
-                new Enum(UserType::class),
-            ],
+            'email' => 'required|email|unique:admins,email,' . $this->admin->id,
+            'role' => 'required|integer',
         ]);
 
         $data = [
             'name' => $this->name,
             'email' => $this->email,
             'role_id' => $this->role,
-            'type' => $this->type,
-            'password' => $this->password,
         ];
 
         DB::beginTransaction();
         try {
-            User::create($data);
+            $this->admin->update($data);
             DB::commit();
-            $this->reset(['name', 'email', 'password', 'role', 'type']);
             session()->flash('success', __('global.success_message'));
             return redirect()->back();
-        } catch (Exception) {
+        } catch (Exception $e) {
             DB::rollBack();
-            session()->flash('error', __('global.error_message'));
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
             return redirect()->back();
         }
     }

@@ -25,7 +25,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'question' , 'content' => 'سوال '] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'question' , 'classes' => 'text-left' , 'id' => 'question' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'question' , 'classes' => 'text-left' , 'id' => 'question' , 'icon' => titleIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.validation-error',[ 'name' => 'question' ])
                                                     </div>
                                                 </div>

@@ -6,15 +6,23 @@
                 <h3 class="title">حساب کاربری برای خود بسازید</h3>
                 <a href="#" class="google-login"><img src="{{ asset('images/site/google.png') }}" alt="google">با گوگل وارد شوید</a>
                 <span class="or-text">یا</span>
-                <form action="#" class="login-form">
+                @include('custom-components.site.flash-message')
+
+
+                <form wire:submit.prevent="create" class="login-form">
                     <div class="form-item">
-                        <label for="email" class="form-header text-dark">*  ایمیل</label>
-                        <input type="email" id="email" name="email" class="form-control" >
+                        <label for="email" class="form-header text-dark">* ایمیل</label>
+                        <input type="email" id="email" wire:model.defer="email" class="form-control">
+                        @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
+
                     <div class="form-item">
                         <label for="password" class="form-header text-dark">* کلمه عبور</label>
-                        <input type="text" id="password" name="password" class="form-control" >
+                        <input type="password" id="password" wire:model.defer="password" class="form-control">
+                        @error('password') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
+
+
                     <div class="form-item">
                         <div class="checkbox-wrap mb-10">
                             <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
@@ -26,10 +34,10 @@
                         </div>
                     </div>
                     <div class="submit-btn">
-                        <button class="rr-primary-btn">ثبت حساب</button>
+                        <button type="submit"  class="rr-primary-btn">ثبت حساب</button>
                     </div>
                     <div class="login-btn-wrap">
-                        <a href="#" class="forgot">حساب کاربری دارید؟</a>
+                        <span class="forgot">حساب کاربری دارید؟</span>
                         <a class="log-in" href="{{ route('site.login') }}">وارد شدن</a>
                     </div>
                 </form>

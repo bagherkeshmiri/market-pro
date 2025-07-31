@@ -14,7 +14,8 @@
     </div>
     <div class="shadow-bottom"></div>
     <div class="main-menu-content font-13 ">
-        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation"
+            data-icon-style="lines">
             <li class=" nav-item">
                 <a href="{{ route('admin.dashboard') }}">
                     <i class="bx bx-home text-white"></i>
@@ -24,15 +25,29 @@
             <li class=" nav-item">
                 <a href="#">
                     <i class="bx bx-group text-white"></i>
-                    <span class="menu-title text-white" data-i18n="users">کاربران</span>
+                    <span class="menu-title text-white" data-i18n="users">مدیران</span>
                 </a>
                 <ul class="menu-content">
-                    <li><a href="{{ route('admin.user.create') }}">
+                    <li><a href="{{ route('admin.admin.create') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="create-user">  ایجاد کاربر</span>
+                            <span class="menu-item  text-white" data-i18n="create-user">  ایجاد مدیر</span>
                         </a>
                     </li>
 
+                    <li><a href="{{ route('admin.admin.index') }}">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white" data-i18n="users-list">   لیست مدیران </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="#">
+                    <i class="bx bx-group text-white"></i>
+                    <span class="menu-title text-white" data-i18n="users">کاربران</span>
+                </a>
+                <ul class="menu-content">
                     <li><a href="{{ route('admin.user.index') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
                             <span class="menu-item  text-white" data-i18n="users-list">   لیست کاربران </span>
@@ -201,6 +216,70 @@
             </li>
             <li class=" nav-item">
                 <a href="#">
+                    <i class="bx bxs-bank text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles">درگاه ها</span>
+                </a>
+                <ul class="menu-content">
+                    <li>
+                        <a href="#">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item text-white" data-i18n="Second Level">
+                                 مدیریت درگاه
+                            </span>
+                        </a>
+                        <ul class="menu-content">
+                            <li>
+                                <a href="{{ route('admin.gateway.create') }}">
+                                    <i class="bx bx-left-arrow-alt text-white"></i>
+                                    <span class="menu-item text-white" data-i18n="Third Level">
+                                        ایجاد درگاه
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('admin.gateway.index') }}">
+                                    <i class="bx bx-left-arrow-alt text-white"></i>
+                                    <span class="menu-item text-white" data-i18n="Third Level">
+                                         لیست درگاه ها
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item text-white" data-i18n="Second Level">
+                                تنظیمات درگاه
+                            </span>
+                        </a>
+                        <ul class="menu-content">
+                            <li>
+                                <a href="{{ route('admin.gateway-org.create') }}">
+                                    <i class="bx bx-left-arrow-alt text-white"></i>
+                                    <span class="menu-item text-white" data-i18n="Third Level">
+                                        ایجاد تنظیمات درگاه
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('admin.gateway-org.index') }}">
+                                    <i class="bx bx-left-arrow-alt text-white"></i>
+                                    <span class="menu-item text-white" data-i18n="Third Level">
+                                         لیست تنظیمات درگاه
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="#">
                     <i class="bx bx-line-chart text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles">گزارشات</span>
                 </a>
@@ -219,15 +298,15 @@
                     <span class="menu-title text-white" data-i18n="roles"> سفارشات</span>
                 </a>
                 <ul class="menu-content">
-                    <li><a href="#">
+                    <li><a href="{{ route('admin.order.index-today') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="create-role">سفارش ‌ها امروز</span>
+                            <span class="menu-item  text-white" data-i18n="create-role">سفارش ‌های امروز</span>
                         </a>
                     </li>
 
-                    <li><a href="#">
+                    <li><a href="{{ route('admin.order.index-all') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست سفارشات </span>
+                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست سفارش‌ها </span>
                         </a>
                     </li>
 
@@ -235,19 +314,19 @@
             </li>
             <li class=" nav-item">
                 <a href="#">
-                    <i class="bx bx-receipt text-white"></i>
-                    <span class="menu-title text-white" data-i18n="roles"> فاکتور ها</span>
+                    <i class="bx bxs-credit-card text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles"> پرداخت ها</span>
                 </a>
                 <ul class="menu-content">
-                    <li><a href="#">
+                    <li><a href="{{ route('admin.payment.index-today') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="create-role">ایجاد فاکتور</span>
+                            <span class="menu-item  text-white" data-i18n="create-role">پرداخت ‌های امروز</span>
                         </a>
                     </li>
 
-                    <li><a href="#">
+                    <li><a href="{{ route('admin.payment.index-all') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست فاکتور ها </span>
+                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست پرداخت ها </span>
                         </a>
                     </li>
 

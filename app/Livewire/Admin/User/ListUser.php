@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Admin\User;
 
-use App\Enums\UserType;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\User;
 use Illuminate\View\View;
@@ -12,15 +11,12 @@ class ListUser extends AdminComponent
     public function render(): View
     {
         $pageTitle = 'لیست کاربران';
-        $tableHeads = ['نام', 'ایمیل', 'نقش', 'نوع کاربر', 'دسترسی ها', 'تاریخ ایجاد', 'عملیات'];
-        $userQuery = User::query();
-        $mainAdminId = (clone $userQuery)->isAdmin()->first()->id;
-        $users = (clone $userQuery)->paginate($this->perPage);
-        $isAdmin = auth()->user()->type == UserType::Admin;
+        $tableHeads = ['نام', 'ایمیل', 'موبایل', 'تاریخ ایجاد', 'عملیات'];
+        $users = User::paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.user.list-user',
             $pageTitle,
-            compact('tableHeads', 'users', 'mainAdminId', 'isAdmin')
+            compact('tableHeads', 'users',)
         );
     }
 }

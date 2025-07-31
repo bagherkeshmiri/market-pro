@@ -77,7 +77,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.pagination',['model' => $comments] )
+                                        {{ $comments->links('frest-components.pagination',['elements' => $comments]) }}
 
                                     </div>
 

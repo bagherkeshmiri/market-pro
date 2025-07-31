@@ -27,12 +27,12 @@ class ShowCategory extends AdminComponent
     public $image;
     public $type;
 
-    public function mount(Category $category): void
+    public function mount(): void
     {
-        $this->name = $category->name;
-        $this->parentId = $category->parent_id;
-        $this->image = $category->image->url ?? null;
-        $this->type = $category->type;
+        $this->name = $this->category->name;
+        $this->parentId = $this->category->parent_id;
+        $this->image = $this->category->image->url ?? null;
+        $this->type = $this->category->type;
     }
 
     public function render(): View
@@ -93,9 +93,13 @@ class ShowCategory extends AdminComponent
             DB::commit();
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.category.show', ['category' => $this->category->id]);
-        } catch (Exception) {
+        } catch (Exception $e) {
             DB::rollBack();
-            session()->flash('error', __('global.error_message'));
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
             return redirect()->route('admin.category.create');
         }
     }

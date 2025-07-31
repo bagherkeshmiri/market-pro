@@ -30,15 +30,15 @@ class ShowPost extends AdminComponent
     public $categoryId;
     public $image;
 
-    public function mount(Post $post): void
+    public function mount(): void
     {
-        $this->title = $post->title;
-        $this->slug = $post->slug;
-        $this->excerpt = $post->excerpt;
-        $this->body = $post->body;
-        $this->status = $post->status;
-        $this->categoryId = $post->category_id;
-        $this->image = $post->image?->url ?? '';
+        $this->title = $this->post->title;
+        $this->slug = $this->post->slug;
+        $this->excerpt = $this->post->excerpt;
+        $this->body = $this->post->body;
+        $this->status = $this->post->status;
+        $this->categoryId = $this->post->category_id;
+        $this->image = $this->post->image?->url ?? '';
     }
 
     public function render(): View

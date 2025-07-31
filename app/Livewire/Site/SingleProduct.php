@@ -19,9 +19,9 @@ class SingleProduct extends SiteComponent
     public $id;
     public array $cart = [];
 
-    public function mount(Product $product): void
+    public function mount(): void
     {
-        $this->id = $product->id;
+        $this->id = $this->product->id;
         $this->cart = Session::get('cart', []);
     }
 
@@ -30,13 +30,8 @@ class SingleProduct extends SiteComponent
         $inCart = collect($this->cart)->contains('id', $product->id);
 
         if (!$inCart) {
-            $this->addToCart([
-                'id' => $product->id,
-                'name' => $product->name,
-                'image' => $product->mainImage->url,
-                'unit_price' => $product->final_price,
-                'qty' => 1,
-            ]);
+            $this->addToCart($product->id);
+
         } elseif (!$redirect) {
             $this->js("window.dispatchEvent(new CustomEvent('product-already-in-cart', { detail: { name: '{$product->name}' } }))");
             return null;

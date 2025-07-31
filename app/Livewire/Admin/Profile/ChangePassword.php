@@ -51,9 +51,13 @@ class ChangePassword extends AdminComponent
             DB::commit();
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.profile.change-password');
-        } catch (Exception) {
+        } catch (Exception $e) {
             DB::rollBack();
-            session()->flash('error', __('global.error_message'));
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
             return redirect()->route('admin.profile.change-password');
         }
     }

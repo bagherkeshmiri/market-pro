@@ -161,9 +161,13 @@ class CreateCollection extends AdminComponent
             $this->reset(['title', 'limitation']);
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.collection.index');
-        } catch (Exception) {
+        } catch (Exception $e) {
             DB::rollBack();
-            session()->flash('error', __('global.error_message'));
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
             return redirect()->route('admin.collection.create');
         }
     }

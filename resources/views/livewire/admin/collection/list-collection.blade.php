@@ -17,7 +17,7 @@
                                     @if($collections->isNotEmpty())
                                         <div class="row">
                                             <div class="col-sm-12 col-xs-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4">
-                                                @include('frest-components.rgba-alert',['classes' => 'bg-rgba-success' , 'icon' => starIcon()])
+                                                @include('frest-components.rgba-alert',['classes' => 'bg-rgba-success' ,'content' => 'جهت تغییر ترتیب کالکشن ها آنها رو در جدول جابجا کنید', 'icon' => starIcon()])
                                             </div>
                                         </div>
 
@@ -66,7 +66,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.pagination',['model' => $collections] )
+                                        {{ $collections->links('frest-components.pagination',['elements' => $collections]) }}
 
                                     </div>
 

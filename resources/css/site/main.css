@@ -9743,7 +9743,7 @@ blockquote .content p {
     color: var(--rr-color-heading-primary);
     font-size: 14px;
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .checkout-form-wrap .form-item .form-control {

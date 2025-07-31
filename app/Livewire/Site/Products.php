@@ -20,9 +20,9 @@ class Products extends SiteComponent
     public array $cart = [];
     public array $wishlist = [];
 
-    public function mount(Category $category): void
+    public function mount(): void
     {
-        $this->id = $category->id;
+        $this->id = $this->category->id;
         $this->cart = Session::get('cart', []);
         $this->wishlist = Session::get('wishlist', []);
     }
@@ -36,13 +36,7 @@ class Products extends SiteComponent
             return;
         }
 
-        $this->addToCart([
-            'id' => $product->id,
-            'name' => $product->name,
-            'image' => $product->mainImage->url,
-            'unit_price' => $product->final_price,
-            'qty' => 1,
-        ]);
+        $this->addToCart($product->id);
 
         $this->js("window.dispatchEvent(new CustomEvent('product-added-to-cart', { detail: { name: '{$product->name}' } }))");
     }
@@ -56,14 +50,8 @@ class Products extends SiteComponent
             return;
         }
 
-        $this->addToWishlist([
-            'id' => $product->id,
-            'name' => $product->name,
-            'image' => $product->mainImage->url,
-            'unit_price' => $product->final_price,
-            'status' => $product->status,
-            'category' => $product->category->name,
-        ]);
+        $this->addToWishlist($product->id);
+
 
         $this->js("window.dispatchEvent(new CustomEvent('product-added-to-wishlist', { detail: { name: '{$product->name}' } }))");
     }
@@ -73,7 +61,8 @@ class Products extends SiteComponent
         $pageTitle = 'محصولات دسته ' . $this->category->name;
         $category = $this->category;
         $products = Product::whereCategoryId($this->category->id)
-            ->paginate($this->perPage);
+//            ->paginate($this->perPage);
+            ->paginate(2);
         return $this->renderView(
             'livewire.site.products',
             $pageTitle,

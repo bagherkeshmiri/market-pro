@@ -70,11 +70,15 @@
                     </div>
 
                     <div class="cart-btn-wrap">
-                        <div class="left-item">
-                            <label for="discount-code" hidden></label>
-                            <input type="text" wire:model.lazy="discountCode" id="discount-code" class="form-control" placeholder="کد تخفیف را وارد کنید">
-                            <button class="rr-primary-btn" wire:click="checkDiscountCode()">تایید کد تخفیف</button>
-                        </div>
+
+
+                        @if(!empty($cart))
+                            <div class="left-item">
+                                <label for="discount-code" hidden></label>
+                                <input type="text" wire:model.lazy="discountCode" id="discount-code" class="form-control" placeholder="کد تخفیف را وارد کنید">
+                                <button class="rr-primary-btn" wire:click="checkDiscountCode()">تایید کد تخفیف</button>
+                            </div>
+                        @endif
 
 
                         @if (!is_null(session('warning')))
@@ -141,9 +145,12 @@
                     </div>
 
 
-                    <div class="checkout-proceed">
-                        <a href="#" class="rr-primary-btn checkout-btn">به تسویه حساب بروید</a>
-                    </div>
+                    @if(!empty($cart))
+                        <div class="checkout-proceed">
+                            <a href="{{ route('site.checkout') }}" class="rr-primary-btn checkout-btn">تایید و تکمیل سفارش</a>
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>

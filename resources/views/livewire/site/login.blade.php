@@ -34,6 +34,10 @@
                     </div>
 
                     <a href="#" class="forgot">رمز عبور خود را گم کرده‌اید؟</a>
+                    <div class="login-btn-wrap">
+                        <span class="forgot">حساب کاربری ندارید؟</span>
+                        <a class="log-in" href="{{ route('site.register') }}">عضو شوید</a>
+                    </div>
                 </form>
 
             </div>

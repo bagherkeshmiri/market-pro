@@ -27,11 +27,10 @@ class ShowRole extends AdminComponent
         $this->allPermissions = Permission::all();
     }
 
-    public function mount(Role $role): void
+    public function mount(): void
     {
-        $this->role = $role;
-        $this->faName = $role->fa_name;
-        $this->enName = $role->en_name;
+        $this->faName = $this->role->fa_name;
+        $this->enName = $this->role->en_name;
         $this->permissions = $this->role->permissions->pluck('id')->toArray();
     }
 
@@ -71,9 +70,13 @@ class ShowRole extends AdminComponent
             DB::commit();
             session()->flash('success', __('global.success_message'));
             return redirect()->back();
-        } catch (Exception) {
+        } catch (Exception $e) {
             DB::rollBack();
-            session()->flash('error', __('global.error_message'));
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
             return redirect()->back();
         }
     }

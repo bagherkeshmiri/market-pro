@@ -62,7 +62,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.pagination',['model' => $posts] )
+                                        {{ $posts->links('frest-components.pagination',['elements' => $posts]) }}
 
                                     </div>
 

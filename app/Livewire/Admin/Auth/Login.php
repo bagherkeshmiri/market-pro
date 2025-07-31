@@ -3,7 +3,7 @@
 namespace App\Livewire\Admin\Auth;
 
 use App\Livewire\BaseComponents\AuthComponent;
-use App\Models\User;
+use App\Models\Admin;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -24,8 +24,7 @@ class Login extends AuthComponent
         ]);
 
         try {
-            $admin = User::IsAdmin()
-                ->where('email', $this->email)
+            $admin = Admin::query()->where('email', $this->email)
                 ->first();
 
             if (is_null($admin) || !Hash::check($this->password, $admin->password)) {
@@ -33,10 +32,16 @@ class Login extends AuthComponent
                 return redirect()->back();
             }
 
-            Auth::loginUsingId($admin->id);
+            Auth::guard('admin')->loginUsingId($admin->id);
+            session()->regenerate();
+
             return redirect()->route('admin.dashboard');
-        } catch (Exception) {
-            session()->flash('error', __('global.error_message'));
+        } catch (Exception $e) {
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
             return redirect()->back();
         }
     }
@@ -44,6 +49,6 @@ class Login extends AuthComponent
     public function render(): View
     {
         $pageTitle = 'ورود مدیران';
-        return $this->renderView('livewire.admin.auth.login',$pageTitle);
+        return $this->renderView('livewire.admin.auth.login', $pageTitle);
     }
 }

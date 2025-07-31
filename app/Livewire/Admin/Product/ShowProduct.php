@@ -37,21 +37,21 @@ class ShowProduct extends AdminComponent
     public $shortDescription;
     public $additionalInformation;
 
-    public function mount(Product $product): void
+    public function mount(): void
     {
-        $this->name = $product->name;
-        $this->categoryId = $product->category_id;
-        $this->price = $product->price;
-        $this->stock = $product->stock;
-        $this->status = $product->status;
-        $this->discountType = $product->discount_type;
-        $this->discount = $product->discount;
-        $this->finalPrice = $product->final_price;
-        $this->mainImage = $product->mainImage->url ?? '';
-        $this->galleryImages = $product->galleryImages;
-        $this->longDescription = $product->long_description;
-        $this->shortDescription = $product->short_description;
-        $this->additionalInformation = $product->additional_information;
+        $this->name = $this->product->name;
+        $this->categoryId = $this->product->category_id;
+        $this->price = $this->product->price;
+        $this->stock = $this->product->stock;
+        $this->status = $this->product->status;
+        $this->discountType = $this->product->discount_type;
+        $this->discount = $this->product->discount;
+        $this->finalPrice = $this->product->final_price;
+        $this->mainImage = $this->product->mainImage->url ?? '';
+        $this->galleryImages = $this->product->galleryImages;
+        $this->longDescription = $this->product->long_description;
+        $this->shortDescription = $this->product->short_description;
+        $this->additionalInformation = $this->product->additional_information;
     }
 
     public function render(): View
@@ -152,9 +152,13 @@ class ShowProduct extends AdminComponent
             DB::commit();
             session()->flash('success', __('global.success_message'));
             return redirect()->route('admin.product.show', ['product' => $this->product->id]);
-        } catch (Exception) {
+        } catch (Exception $e) {
             DB::rollBack();
-            session()->flash('error', __('global.error_message'));
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
             return redirect()->route('admin.product.show', ['product' => $this->product->id]);
         }
     }

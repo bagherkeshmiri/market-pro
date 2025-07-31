@@ -1,4 +1,3 @@
-
 @section('styles')
 @endsection
 
@@ -31,27 +30,13 @@
 
                                             @forelse ($users as $user)
                                                 <tr>
-                                                    <td class="text-white">{{ $user->name }}</td>
-                                                    <td class="text-white">{{ $user->email }}</td>
-                                                    <td>
-                                                        @include('frest-components.badge' , [ 'badgeClass' => 'bg-rgba-danger text-danger',  'content' => $user->role->fa_name ])
-                                                    </td>
-                                                    <td>
-                                                        @include('frest-components.badge' , [ 'badgeClass' => 'bg-rgba-success text-success',  'content' => $user->type_label ])
-                                                    </td>
-                                                    @if($isAdmin)
-                                                        <td>
-                                                            @foreach($user->permissions as $permission)
-                                                                @include('frest-components.badge' , [ 'badgeClass' => 'bg-rgba-primary text-primary',  'content' => $permission->fa_name ])
-                                                            @endforeach
-                                                        </td>
-                                                    @endif
+                                                    <td class="text-white">{{ $user->name ?? ''}}</td>
+                                                    <td class="text-white">{{ $user->email ?? '' }}</td>
+                                                    <td class="text-white">{{ $user->mobile ?? '' }}</td>
                                                     <td class="text-white">{{ $user->jalali_created_at }}</td>
                                                     <td>
-                                                        @include('frest-components.icon-btn',[  'href' => route('admin.user.show',[ 'admin' => $user->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
-                                                        @if($user->id != $mainAdminId)
-                                                            @include('frest-components.icon-btn',[ 'tooltipTitle' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=account_delete(this,event)  data-url='.route('admin.user.delete',[ 'admin' => $user->id ]) ])
-                                                        @endif
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.user.show',[ 'user' => $user->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
+                                                        @include('frest-components.icon-btn',[ 'tooltipTitle' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=user_delete(this,event)  data-url='.route('admin.user.delete',[ 'user' => $user->id ]) ])
                                                     </td>
                                                 </tr>
                                             @empty
@@ -61,7 +46,7 @@
                                             </tbody>
                                         </table>
 
-                                        @include('frest-components.pagination',['model' => $users] )
+                                        {{ $users->links('frest-components.pagination',['elements' => $users]) }}
 
                                     </div>
 
@@ -83,7 +68,7 @@
     <script type="text/javascript" src="{{ asset('/js/swal-functions.js') }}"></script>
     <script type="text/javascript">
 
-        function account_delete(element, event) {
+        function user_delete(element, event) {
             event.preventDefault()
             mboxDelete(element.getAttribute('data-url'));
         }

@@ -26,7 +26,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'name' , 'content' => 'نام '] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'title' , 'classes' => 'text-left' , 'id' => 'title' , 'dir' => 'ltr' , 'icon' => titleIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'title' , 'classes' => 'text-left' , 'id' => 'title' , 'icon' => titleIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.validation-error',[ 'name' => 'title' ])
                                                     </div>
                                                 </div>
@@ -55,7 +55,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'limitation' , 'content' => ' تعداد آیتم ها'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.input',[ 'type' => 'number' , 'wire' => 'limitation' , 'classes' => 'text-left' , 'id' => 'limitation' , 'dir' => 'ltr' , 'icon' => packageIcon() , 'attributes' => 'required'])
+                                                        @include('frest-components.input',[ 'type' => 'number' , 'wire' => 'limitation' , 'classes' => 'text-left' , 'id' => 'limitation' , 'icon' => packageIcon() , 'attributes' => 'required'])
                                                         @include('frest-components.validation-error',[ 'name' => 'limitation' ])
                                                     </div>
                                                 </div>

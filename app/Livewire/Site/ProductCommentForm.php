@@ -86,9 +86,13 @@ class ProductCommentForm extends Component
             DB::commit();
             session()->flash('success', 'نظر شما با موفقیت ثبت شد و پس از تایید نمایش داده می‌شود و تا 24 ساعت آینده امکان ثبت نظر وجود ندارد ');
             return redirect()->route('site.single-product', ['product' => $this->productId]);
-        } catch (Exception) {
+        } catch (Exception $e) {
             DB::rollBack();
-            session()->flash('error', __('global.error_message'));
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
             return redirect()->route('site.single-product', ['product' => $this->productId]);
         }
     }
