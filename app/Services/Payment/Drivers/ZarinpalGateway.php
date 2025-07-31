@@ -4,23 +4,42 @@ namespace App\Services\Payment\Drivers;
 
 use App\Services\Payment\Contracts\GatewayInterface;
 use Illuminate\Support\Facades\Http;
+use Str;
 
 class ZarinpalGateway implements GatewayInterface
 {
     protected mixed $merchantId;
+    protected string $endpointUrl;
 
     public function __construct(array $config)
     {
-        $this->merchantId = $config['app_key'];
+        $isLocal = app()->isLocal();
+
+        $this->merchantId = $isLocal ? (string)Str::uuid() : $config['app_key'];
+        $this->endpointUrl = $isLocal
+            ? 'https://sandbox.zarinpal.com/pg/v4/payment/request.json'
+            : 'https://payment.zarinpal.com/pg/v4/payment/request.json';
     }
 
-    public function request(int $amount, string $callbackUrl, string $orderId): array
-    {
-        $response = Http::post('https://api.zarinpal.com/pg/v4/payment/request.json', [
+    public function request(
+        int $amount,
+        string $callbackUrl,
+        string $orderNumber,
+        string $mobile,
+        string $email,
+    ): array {
+
+        $response = Http::post($this->endpointUrl, [
             'merchant_id' => $this->merchantId,
             'amount' => $amount,
+            'currency' => 'IRT',
             'callback_url' => $callbackUrl,
-            'description' => "Order #$orderId",
+            'description' => "order #$orderNumber",
+            'metadata' => [
+                'mobile' => $mobile,
+                'email' => $email,
+                'order_id' => $orderNumber,
+            ],
         ]);
 
         $data = $response->json();

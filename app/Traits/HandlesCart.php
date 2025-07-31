@@ -2,10 +2,13 @@
 
 namespace App\Traits;
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 
 trait HandlesCart
 {
+    use SampleImages;
+
     protected function storeCart(array $cart): void
     {
         Session::put('cart', $cart);
@@ -14,26 +17,32 @@ trait HandlesCart
         }
     }
 
-    public function addToCart($productData): void
+    public function addToCart(int $productId, int $qty = 1): void
     {
         $cart = Session::get('cart', []);
 
-        $productId = $productData['id'];
+        $product = Product::find($productId);
 
-        if (!isset($cart[$productId])) {
-            $cart[$productId] = [
-                'id' => $productData['id'],
-                'name' => $productData['name'],
-                'image' => $productData['image'] ?? ($this->getSampleImageUrl() ?? null),
-                'unit_price' => $productData['unit_price'],
-                'final_price' => $productData['qty'] * $productData['unit_price'],
-                'qty' => $productData['qty'],
-            ];
+        if (!is_null($product)) {
+
+            $qty = max(1, min($qty, $product->stock));
+
+            if (!isset($cart[$productId])) {
+
+                $cart[$productId] = [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'image' => $product->mainImage?->url ?? ($this->getSampleImageUrl() ?? null),
+                    'unit_price' => $product->price,
+                    'final_price' => $qty * $product->price,
+                    'qty' => $qty,
+                ];
+
+                $this->storeCart($cart);
+
+                $this->recalculateCartSummary();
+            }
         }
-
-        $this->storeCart($cart);
-
-        $this->recalculateCartSummary();
     }
 
     public function removeFromCart($productId): void
@@ -61,7 +70,6 @@ trait HandlesCart
         }
 
         $this->recalculateCartSummary();
-
     }
 
     protected function recalculateCartSummary(): void

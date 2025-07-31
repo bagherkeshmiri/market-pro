@@ -16,7 +16,7 @@
 
 
 <div>
-    <section class="checkout-section pt-50 pb-50">
+    <section class="checkout-section pb-50">
         <div class="container rtl">
             <div class="checkout-top">
                 <div class="coupon-list">

@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->unsignedTinyInteger('status')->default(1)->comment(' 1:unSuccess , 2:success ');
             $table->decimal('amount', 10);
             $table->string('ref_id')->nullable();
+            $table->string('authority')->nullable();
             $table->timestamp('paid_at')->nullable();
             $table->timestamp('expire_time');
             $table->timestamps();

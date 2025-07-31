@@ -12,7 +12,7 @@ use Morilog\Jalali\Jalalian;
 use Str;
 
 /**
- *
+ * 
  *
  * @property int $id
  * @property int $user_id
@@ -27,13 +27,14 @@ use Str;
  * @property int $expire_time
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read Gate|null $gate
- * @property-read GateOrg|null $gateOrg
+ * @property-read \App\Models\Gate|null $gate
+ * @property-read \App\Models\GateOrg|null $gateOrg
  * @property-read string $jalali_created_at
+ * @property-read string|null $jalali_paid_at
  * @property-read string $status_badge_class
  * @property-read string $status_label
- * @property-read Order|null $order
- * @property-read User|null $user
+ * @property-read \App\Models\Order|null $order
+ * @property-read \App\Models\User|null $user
  * @method static Builder<static>|Payment newModelQuery()
  * @method static Builder<static>|Payment newQuery()
  * @method static Builder<static>|Payment query()
@@ -71,6 +72,7 @@ class Payment extends Authenticatable
         'status',
         'amount',
         'ref_id',
+        'authority',
         'paid_at',
         'expire_time',
     ];
