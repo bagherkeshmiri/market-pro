@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 
 trait HandlesWishlist
@@ -14,24 +15,26 @@ trait HandlesWishlist
         }
     }
 
-    public function addToWishlist($productData): void
+    public function addToWishlist(int $productId): void
     {
         $wishlist = Session::get('wishlist', []);
 
-        $productId = $productData['id'];
+        $product = Product::find($productId);
 
-        if (!isset($wishlist[$productId])) {
-            $wishlist[$productId] = [
-                'id' => $productData['id'],
-                'name' => $productData['name'],
-                'image' => $productData['image'] ?? ($this->getSampleImageUrl() ?? null),
-                'unit_price' => $productData['unit_price'],
-                'status' => $productData['status'],
-                'category' => $productData['category'],
-            ];
+        if (!is_null($product)) {
+            if (!isset($wishlist[$productId])) {
+                $wishlist[$productId] = [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'image' => $product->mainImage?->url ?? ($this->getSampleImageUrl() ?? null),
+                    'unit_price' => $product->price,
+                    'status' => $product->status,
+                    'category' => $product->category?->name ?? '',
+                ];
+
+                $this->storeWishlist($wishlist);
+            }
         }
-
-        $this->storeWishlist($wishlist);
     }
 
     public function removeFromWishlist($productId): void

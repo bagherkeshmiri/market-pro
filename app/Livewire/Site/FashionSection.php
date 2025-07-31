@@ -52,14 +52,7 @@ class FashionSection extends Component
             return;
         }
 
-        $this->addToWishlist([
-            'id' => $product->id,
-            'name' => $product->name,
-            'image' => $product->mainImage->url,
-            'unit_price' => $product->final_price,
-            'status' => $product->status,
-            'category' => $product->category->name,
-        ]);
+        $this->addToWishlist($product->id);
 
         $this->js("window.dispatchEvent(new CustomEvent('product-added-to-wishlist', { detail: { name: '{$product->name}' } }))");
     }
