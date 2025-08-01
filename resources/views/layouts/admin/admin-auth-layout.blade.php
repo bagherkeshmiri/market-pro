@@ -10,7 +10,18 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frest/images/ico/favicon.ico') }}">
     <meta name="theme-color" content="#5A8DEE">
 
-    @vite(['resources/css/admin-auth-app.css', 'resources/js/admin-auth-app.js'])
+    <link rel="stylesheet" href="{{ asset('css/frest/vendors/vendors.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/vendors/ui/prism.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/bootstrap-extended.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/colors.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/themes/dark-layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/themes/semi-dark-layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/pages/authentication.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/global.css') }}">
+
+
     @yield('styles')
     @livewireStyles
 </head>
