@@ -20,7 +20,7 @@ class ChangePassword extends AdminComponent
 
     public function boot(): void
     {
-        $this->admin = auth()->user();
+        $this->admin = auth('admin')->user();
     }
 
     public function render(): View

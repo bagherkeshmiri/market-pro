@@ -37,7 +37,7 @@ class ProductCommentForm extends Component
 
     private function checkIfUserCanSubmit(): void
     {
-        $user = auth()->user();
+        $user = auth('web')->user();
 
         if (!$user) {
             $this->canSubmit = false;
@@ -78,7 +78,7 @@ class ProductCommentForm extends Component
                 'name' => $this->name,
                 'email' => $this->email,
                 'body' => $this->message,
-                'user_id' => auth()->user()->id ?? null,
+                'user_id' => auth('web')->user()->id ?? null,
             ];
 
             $product->comments()->create($data);
