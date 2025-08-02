@@ -114,11 +114,9 @@ class Checkout extends SiteComponent
             'postalCode' => 'required|digits:10',
             'phone' => 'required|digits_between:8,15',
             'orderMessage' => 'nullable|string|max:500',
+            'selectedProvince' => 'required|numeric',
+            'selectedCity' => 'required|numeric',
         ]);
-
-
-
-
 
 //        DB::beginTransaction();
         try {
@@ -165,6 +163,7 @@ class Checkout extends SiteComponent
             ]);
 
 
+
             $this->user->addresses()->create([
                 'province_id' => $this->selectedProvince,
                 'city_id' => $this->selectedCity,
@@ -194,6 +193,7 @@ class Checkout extends SiteComponent
             }
         } catch (Exception) {
 //            DB::rollBack();
+            $this->reset(['address', 'postalCode', 'phone', 'orderMessage']);
             session()->flash('error', __('global.error_message'));
         } finally {
             session()->forget('processing_order');
