@@ -109,10 +109,10 @@ class Checkout extends SiteComponent
     {
         $this->validate([
             'email' => 'required|email|unique:users,email,' . $this->user->id,
-            'fullName' => 'required|string|max:255',
+            'fullName' => 'required|string|max:100',
             'postalCode' => 'required|digits:10',
             'phone' => 'required|digits_between:8,15',
-            'orderMessage' => 'nullable|string|max:500|regex:/^[\pL\pN\s.,!?\-@#\$%\^&\*\(\)\[\]{}"\'\/\\\n\r\t]+$/u',
+            'orderMessage' => 'nullable|string|max:255|regex:/^[\pL\pN\s.,!?\-@#\$%\^&\*\(\)\[\]{}"\'\/\\\n\r\t]+$/u',
             'selectedProvince' => 'required|numeric',
             'selectedCity' => 'required|numeric',
             'address' => 'required|regex:/^[\pL\pN\s.,\-\/]+$/u',

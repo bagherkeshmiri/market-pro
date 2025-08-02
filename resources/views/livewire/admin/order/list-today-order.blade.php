@@ -35,6 +35,7 @@
                                             <tbody class="font-13">
 
                                             @forelse ($orders as $order)
+
                                                 <tr>
                                                     <td class="text-white">
                                                         <a class="text-white"
@@ -52,7 +53,36 @@
                                                     <td class="text-white">{{ number_format($order->shipping_fee)}}</td>
                                                     <td class="text-white">{{ number_format($order->total)}}</td>
                                                     <td class="text-white">{{ $order->jalali_created_at }}</td>
+                                                    <td class="text-white">
+
+                                                        @if(!empty($order->description))
+                                                            @include('frest-components.icon-btn-with-modal', [
+                                                                  'modalId' => 'order-description-'.$order->id,
+                                                                  'icon' => showIcon('نمایش توضیحات'),
+                                                            ])
+                                                        @endif
+
+                                                        @include('frest-components.icon-btn-with-modal', [
+                                                            'modalId' => 'order-items-'.$order->id,
+                                                            'icon' => listIcon('نمایش اقلام'),
+                                                        ])
+
+                                                    </td>
                                                 </tr>
+
+                                                @if(!empty($order->description))
+                                                    @include('frest-components.text-preview-modal', [
+                                                        'modalTitle' => 'توضیحات سفارش ' . $order->order_number,
+                                                        'modalId' => 'order-description-'.$order->id,
+                                                        'content' => $order->description,
+                                                    ])
+                                                @endif
+
+                                                @include('frest-components.text-preview-modal', [
+                                                        'modalTitle' => ' اقلام سفارش ' . $order->order_number,
+                                                        'modalId' => 'order-items-'.$order->id,
+                                                        'content' => $order->orderItems,
+                                                    ])
 
                                             @empty
                                                 @include('custom-components.admin.empty-table')
