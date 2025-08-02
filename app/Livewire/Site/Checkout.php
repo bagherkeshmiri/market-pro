@@ -65,7 +65,7 @@ class Checkout extends SiteComponent
         $this->userAddresses = $this->user->addresses;
 
         if ($this->selectedProvince) {
-            $this->updatedSelectedProvince($this->selectedProvince);
+            $this->provinceSelected($this->selectedProvince);
         }
 
         return null;
@@ -75,7 +75,6 @@ class Checkout extends SiteComponent
     {
         $this->selectedProvince = $provinceId;
         $this->cities = City::where('province_id', $provinceId)->pluck('name', 'id')->toArray();
-//        $this->selectedCity = null;
     }
 
     public function calculateCartTotal(): void
@@ -113,10 +112,10 @@ class Checkout extends SiteComponent
             'fullName' => 'required|string|max:255',
             'postalCode' => 'required|digits:10',
             'phone' => 'required|digits_between:8,15',
-            'orderMessage' => 'nullable|string|max:500',
+            'orderMessage' => 'nullable|string|max:500|regex:/^[\pL\pN\s.,!?\-@#\$%\^&\*\(\)\[\]{}"\'\/\\\n\r\t]+$/u',
             'selectedProvince' => 'required|numeric',
             'selectedCity' => 'required|numeric',
-            'address' => 'required',
+            'address' => 'required|regex:/^[\pL\pN\s.,\-\/]+$/u',
         ]);
 
         DB::beginTransaction();

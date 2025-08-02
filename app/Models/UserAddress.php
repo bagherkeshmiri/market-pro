@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\CleanText;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -62,7 +63,10 @@ class UserAddress extends Authenticatable
 
     protected $hidden = [];
 
-    protected $casts = [];
+    protected $casts = [
+        'address' => CleanText::class,
+//        'postal_code',
+    ];
 
     protected static function booted(): void
     {

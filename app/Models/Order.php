@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\CleanText;
 use App\Enums\OrderStatus;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -73,12 +74,14 @@ class Order extends Eloquent
         'tax',
         'shipping_fee',
         'total',
+        'description',
     ];
 
     protected $hidden = [];
 
     protected $casts = [
         'status' => OrderStatus::class,
+        'description' => CleanText::class,
     ];
 
     protected static function booted(): void
