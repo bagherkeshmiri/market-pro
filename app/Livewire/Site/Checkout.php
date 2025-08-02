@@ -39,7 +39,7 @@ class Checkout extends SiteComponent
     public $cities = [];
     public $userAddresses;
     public $selectedProvince;
-    public $selectedCity = null;
+    public $selectedCity;
 
     public function mount(): RedirectResponse|Redirector|null
     {
@@ -75,7 +75,7 @@ class Checkout extends SiteComponent
     {
         $this->selectedProvince = $provinceId;
         $this->cities = City::where('province_id', $provinceId)->pluck('name', 'id')->toArray();
-        $this->selectedCity = null;
+//        $this->selectedCity = null;
     }
 
     public function calculateCartTotal(): void
@@ -106,7 +106,7 @@ class Checkout extends SiteComponent
     /**
      * @throws Throwable
      */
-    public function pay()
+    public function pay(): void
     {
         $this->validate([
             'email' => 'required|email|unique:users,email,' . $this->user->id,
@@ -116,16 +116,13 @@ class Checkout extends SiteComponent
             'orderMessage' => 'nullable|string|max:500',
             'selectedProvince' => 'required|numeric',
             'selectedCity' => 'required|numeric',
+            'address' => 'required',
         ]);
 
-//        DB::beginTransaction();
+        DB::beginTransaction();
         try {
             $expiredOrderIds = $this->user->orders()
                 ->where('status', OrderStatus::Pending)
-//                ->whereNotBetween('created_at', [
-//                    today()->startOfDay()->toDateTimeString(),
-//                    today()->endOfDay()->toDateTimeString()
-//                ])
                 ->pluck('id')
                 ->toArray();
 
@@ -162,15 +159,21 @@ class Checkout extends SiteComponent
                 'amount' => $this->totalPayable,
             ]);
 
+            $addressExists = $this->user->addresses()
+                ->where('province_id', $this->selectedProvince)
+                ->where('city_id', $this->selectedCity)
+                ->where('postal_code', $this->postalCode)
+                ->where('address', 'like', '%' . $this->address . '%')
+                ->exists();
 
-
-            $this->user->addresses()->create([
-                'province_id' => $this->selectedProvince,
-                'city_id' => $this->selectedCity,
-                'address' => $this->address,
-                'postal_code' => $this->postalCode,
-            ]);
-
+            if (!$addressExists) {
+                $this->user->addresses()->create([
+                    'province_id' => $this->selectedProvince,
+                    'city_id' => $this->selectedCity,
+                    'address' => $this->address,
+                    'postal_code' => $this->postalCode,
+                ]);
+            }
 
             $gateway = GatewayFactory::make();
 
@@ -187,12 +190,12 @@ class Checkout extends SiteComponent
                     'authority' => $result['authority']
                 ]);
 
-//                DB::commit();
+                DB::commit();
 
                 redirect($result['gateway_url']);
             }
         } catch (Exception) {
-//            DB::rollBack();
+            DB::rollBack();
             $this->reset(['address', 'postalCode', 'phone', 'orderMessage']);
             session()->flash('error', __('global.error_message'));
         } finally {

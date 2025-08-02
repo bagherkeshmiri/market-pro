@@ -20,7 +20,7 @@ class ListTodayOrder extends AdminComponent
             'تخفیف',
             'مالیات',
             'هزینه ارسال',
-            'مبلغ پرداخت شده',
+            'مبلغ پرداختی ',
             'تاریخ ایجاد',
         ];
         $orders = Order::whereDate('created_at', Carbon::today())->paginate($this->perPage);

@@ -101,14 +101,14 @@
                                             <select id="province" class="form-control"
                                                     wire:model.defer="selectedProvince"
                                                     wire:change="provinceSelected($event.target.value)">
-                                                <option value="">انتخاب کنید</option>
+                                                <option >انتخاب کنید</option>
                                                 @foreach($provinces as $id => $name)
                                                     <option value="{{ $id }}">
                                                         {{ $name }}
                                                     </option>
                                                 @endforeach
                                             </select>
-
+                                            @include('frest-components.validation-error',[ 'name' => 'selectedProvince' ])
                                         </div>
                                     </div>
 
@@ -126,7 +126,7 @@
                                                     <option value="">ابتدا استان را انتخاب کنید</option>
                                                 @endif
                                             </select>
-
+                                            @include('frest-components.validation-error',[ 'name' => 'selectedCity' ])
                                         </div>
                                     </div>
 
@@ -135,7 +135,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="form-item">
-                                            <label for="address" class="form-title"> آدرس</label>
+                                            <label for="address" class="form-title"> آدرس پستی</label>
                                             @include('custom-components.site.required-tag')
                                             <input type="email" wire:model.defer="address" id="address"
                                                    class="form-control" required>

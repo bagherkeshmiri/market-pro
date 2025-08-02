@@ -149,5 +149,9 @@ return [
         'status' => 'وضعیت',
         'postalCode' => 'کد پستی',
         'phone' => 'تلفن',
+        'address' => 'آدرس',
+        'selectedProvince' => 'استان',
+        'selectedCity' => 'شهر',
+        'fullName' => 'نام و نام خانوادگی',
     ],
 ];
