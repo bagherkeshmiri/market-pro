@@ -24,17 +24,24 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#payments"
+                                            <a class="nav-link" id="payments-tab" data-toggle="tab" href="#payments"
                                                aria-controls="payments" role="tab" aria-selected="false">
                                                 <i class="bx bxs-credit-card align-middle"></i>
                                                 <span class="align-middle">پرداخت ها</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="about-tab" data-toggle="tab" href="#orders"
+                                            <a class="nav-link" id="orders-tab" data-toggle="tab" href="#orders"
                                                aria-controls="orders" role="tab" aria-selected="false">
                                                 <i class="bx bx-money align-middle"></i>
-                                                <span class="align-middle">سفارش‌ها</span>
+                                                <span class="align-middle">سفارشات</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="addresses-tab" data-toggle="tab" href="#addresses"
+                                               aria-controls="orders" role="tab" aria-selected="false">
+                                                <i class="bx bx-map align-middle"></i>
+                                                <span class="align-middle">آدرس ها</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -44,12 +51,17 @@
                                             <livewire:admin.user.edit-user :user="$user" />
                                         </div>
 
-                                        <div class="tab-pane" id="payments" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="tab-pane" id="payments" role="tabpanel" aria-labelledby="payments-tab">
                                             <livewire:admin.user.list-payments-user :user="$user" />
                                         </div>
 
-                                        <div class="tab-pane" id="orders" role="tabpanel" aria-labelledby="about-tab">
+                                        <div class="tab-pane" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                                             <livewire:admin.user.list-orders-user :user="$user" />
+                                        </div>
+
+
+                                        <div class="tab-pane" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
+                                            <livewire:admin.user.list-addresses-user :user="$user" />
                                         </div>
 
                                     </div>
