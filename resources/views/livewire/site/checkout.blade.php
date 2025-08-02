@@ -36,7 +36,7 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="checkout-left">
                         <h3 class="form-header">جزئیات صورتحساب</h3>
-                        <form wire:submit.prevent>
+                        <form>
                             <div class="checkout-form-wrap">
 
                                 @if(!$this->userAddresses->isEmpty())
@@ -45,8 +45,8 @@
                                             <div class="form-item">
                                                 <label for="savedAddress" class="form-title">آدرس‌ های من</label>
                                                 <select id="savedAddress" class="form-control"
-                                                        wire:model="selectedAddressId"
-                                                        wire:select="fillAddressFromSaved">
+                                                        wire:model.defer="selectedAddressId"
+                                                        wire:change="fillAddressFromSaved">
                                                     @foreach($userAddresses as $id => $address)
                                                         <option value="{{ $id }}">{{ $address['label'] }}</option>
                                                     @endforeach
@@ -94,11 +94,13 @@
 
                                 <div class="form-group row">
                                     <div class="col-md-6">
+
                                         <div class="form-item">
                                             <label for="province" class="form-title">استان</label>
                                             @include('custom-components.site.required-tag')
                                             <select id="province" class="form-control"
-                                                    wire:model="selectedProvince">
+                                                    wire:model.defer="selectedProvince"
+                                                    wire:change="provinceSelected($event.target.value)">
                                                 <option value="">انتخاب کنید</option>
                                                 @foreach($provinces as $id => $name)
                                                     <option value="{{ $id }}">
@@ -114,8 +116,8 @@
                                         <div class="form-item">
                                             <label for="city" class="form-title">شهر</label>
                                             @include('custom-components.site.required-tag')
-                                            <select id="city" class="form-control" wire:model="selectedCity">
-                                                <option value=" ">ابتدا استان انتخاب شود</option>
+                                            <select id="city" class="form-control" wire:model.defer="selectedCity">
+                                                <option value="">ابتدا استان انتخاب شود</option>
                                                 @if($cities && count($cities) > 0)
                                                     @foreach($cities as $id => $name)
                                                         <option value="{{ $id }}">{{ $name }}</option>
@@ -271,8 +273,8 @@
                             </div>
                             <div class="payment-option-wrap">
                                 <button wire:click="pay" wire:loading.attr="disabled" class="rr-primary-btn order-btn">
-                                    <span wire:loading.remove>پرداخت</span>
-                                    <span wire:loading>  در حال انتقال به درگاه پرداخت </span>
+                                    <span wire:loading.remove wire:target="pay">پرداخت</span>
+                                    <span wire:loading wire:target="pay">  در حال انتقال به درگاه پرداخت </span>
                                 </button>
 
                             </div>

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/site/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/swiper.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/main.css') }}">
+
     @yield('styles')
     @livewireStyles
 

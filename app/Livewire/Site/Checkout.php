@@ -38,10 +38,8 @@ class Checkout extends SiteComponent
     public $provinces;
     public $cities = [];
     public $userAddresses;
-    public $selectedProvince = null;
+    public $selectedProvince;
     public $selectedCity = null;
-
-    protected $listeners = ['provinceSelected', 'citySelected'];
 
     public function mount(): RedirectResponse|Redirector|null
     {
@@ -73,15 +71,12 @@ class Checkout extends SiteComponent
         return null;
     }
 
-
-    public function updatedSelectedProvince($provinceId): void
+    public function provinceSelected($provinceId): void
     {
-        logger("Selected Province ID: $provinceId");
-
+        $this->selectedProvince = $provinceId;
         $this->cities = City::where('province_id', $provinceId)->pluck('name', 'id')->toArray();
         $this->selectedCity = null;
     }
-
 
     public function calculateCartTotal(): void
     {
@@ -120,6 +115,10 @@ class Checkout extends SiteComponent
             'phone' => 'required|digits_between:8,15',
             'orderMessage' => 'nullable|string|max:500',
         ]);
+
+
+
+
 
 //        DB::beginTransaction();
         try {
