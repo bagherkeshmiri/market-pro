@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Casts\CleanText;
 use App\Enums\OrderStatus;
+use App\Traits\HasDefaultOrdering;
 use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -61,6 +62,7 @@ use Str;
 class Order extends Eloquent
 {
     use HasJalaliTimestamps;
+    use HasDefaultOrdering;
 
     public const string TABLE_NAME = 'orders';
     protected $table = self::TABLE_NAME;
@@ -89,11 +91,6 @@ class Order extends Eloquent
 
     protected static function booted(): void
     {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-
-
         static::creating(function ($order) {
             $order->order_number = self::generateOrderNumber();
         });

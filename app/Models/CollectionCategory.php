@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasDefaultOrdering;
 use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -34,6 +35,7 @@ use Illuminate\Support\Carbon;
 class CollectionCategory extends Eloquent
 {
     use HasJalaliTimestamps;
+    use HasDefaultOrdering;
 
     public const string TABLE_NAME = 'collection_categories';
     protected $table = self::TABLE_NAME;
@@ -49,13 +51,6 @@ class CollectionCategory extends Eloquent
     protected $hidden = [];
 
     protected $casts = [];
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-    }
 
     /*------------ Relations ------------*/
 

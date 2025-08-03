@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enums\OrderStatus;
+use App\Traits\HasDefaultOrdering;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -37,6 +39,9 @@ use Illuminate\Support\Carbon;
  */
 class OrderItem extends Eloquent
 {
+    use HasJalaliTimestamps;
+    use HasDefaultOrdering;
+
     public const string TABLE_NAME = 'order_items';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -56,13 +61,6 @@ class OrderItem extends Eloquent
     protected $casts = [
         'status' => OrderStatus::class,
     ];
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-    }
 
     /*------------ Relations ------------*/
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasDefaultOrdering;
 use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -38,6 +39,7 @@ use Illuminate\Support\Carbon;
 class Image extends Eloquent
 {
     use HasJalaliTimestamps;
+    use HasDefaultOrdering;
 
     public const string TABLE_NAME = 'images';
     protected $table = self::TABLE_NAME;
@@ -53,13 +55,6 @@ class Image extends Eloquent
     protected $casts = [
         'is_main' => 'boolean',
     ];
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-    }
 
     /*------------ Relations ------------*/
 

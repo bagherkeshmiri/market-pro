@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Casts\CleanText;
+use App\Traits\HasDefaultOrdering;
 use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -51,6 +52,7 @@ use Morilog\Jalali\Jalalian;
 class UserAddress extends Authenticatable
 {
     use HasJalaliTimestamps;
+    use HasDefaultOrdering;
 
     public const string TABLE_NAME = 'user_addresses';
     protected $table = self::TABLE_NAME;
@@ -72,13 +74,6 @@ class UserAddress extends Authenticatable
     protected $casts = [
         'address' => CleanText::class,
     ];
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-    }
 
     /*------------ Relations ------------*/
 

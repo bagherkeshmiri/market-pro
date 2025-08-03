@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\CollectionType;
 use App\Enums\IsActive;
+use App\Traits\HasDefaultOrdering;
 use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -47,6 +48,7 @@ use Illuminate\Support\Carbon;
 class Collection extends Eloquent
 {
     use HasJalaliTimestamps;
+    use HasDefaultOrdering;
 
     public const string TABLE_NAME = 'collections';
     protected $table = self::TABLE_NAME;
@@ -66,13 +68,6 @@ class Collection extends Eloquent
         'is_active' => IsActive::class,
         'type' => CollectionType::class,
     ];
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-    }
 
     /*------------ Relations ------------*/
 

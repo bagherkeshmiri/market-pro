@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasDefaultOrdering;
 use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -37,6 +38,7 @@ use Illuminate\Support\Carbon;
 class Permission extends Eloquent
 {
     use HasJalaliTimestamps;
+    use HasDefaultOrdering;
 
     public const string TABLE_NAME = 'permissions';
     protected $table = self::TABLE_NAME;
@@ -50,13 +52,6 @@ class Permission extends Eloquent
     protected $hidden = [];
 
     protected $casts = [];
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-    }
 
     /*------------ Relations ------------*/
 

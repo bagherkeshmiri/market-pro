@@ -4,6 +4,7 @@
 namespace App\Models;
 
 use App\Enums\IsActive;
+use App\Traits\HasDefaultOrdering;
 use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -56,6 +57,7 @@ class GateOrg extends Authenticatable
 {
     use SoftDeletes;
     use HasJalaliTimestamps;
+    use HasDefaultOrdering;
 
     public const string TABLE_NAME = 'gates_org';
     protected $table = self::TABLE_NAME;
@@ -76,13 +78,6 @@ class GateOrg extends Authenticatable
         'is_active' => IsActive::class,
         'is_default' => IsActive::class,
     ];
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-    }
 
     /*------------ Relations ------------*/
 

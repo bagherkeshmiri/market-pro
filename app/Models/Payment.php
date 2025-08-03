@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\PaymentStatus;
+use App\Traits\HasDefaultOrdering;
 use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -60,6 +61,7 @@ use Str;
 class Payment extends Authenticatable
 {
     use HasJalaliTimestamps;
+    use HasDefaultOrdering;
 
     public const string TABLE_NAME = 'payments';
     protected $table = self::TABLE_NAME;
@@ -93,10 +95,6 @@ class Payment extends Authenticatable
 
     protected static function booted(): void
     {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-
         static::creating(function ($payment) {
             $payment->payment_number = self::generateUniqueTrackingCode();
         });

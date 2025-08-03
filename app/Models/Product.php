@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Casts\CleanHtml;
 use App\Enums\DiscountType;
 use App\Enums\ProductStatus;
+use App\Traits\HasDefaultOrdering;
 use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -76,6 +77,7 @@ use Illuminate\Support\Carbon;
 class Product extends Eloquent
 {
     use HasJalaliTimestamps;
+    use HasDefaultOrdering;
 
     public const string TABLE_NAME = 'products';
     protected $table = self::TABLE_NAME;
@@ -105,13 +107,6 @@ class Product extends Eloquent
         'short_description' => CleanHtml::class,
         'additional_information' => CleanHtml::class,
     ];
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-    }
 
     /*------------ Relations ------------*/
 
