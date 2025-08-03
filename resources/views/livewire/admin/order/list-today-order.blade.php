@@ -78,7 +78,7 @@
                                                     ])
                                                 @endif
 
-                                                <livewire:admin.order.list-today-order-items-modal
+                                                <livewire:admin.order.order-items-modal
                                                     :items="$order->orderItems"
                                                     :modal-id="'order-items-' . $order->id"
                                                     :modal-title="'اقلام سفارش ' . $order->order_number"
