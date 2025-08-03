@@ -47,8 +47,12 @@
                                                 <select id="savedAddress" class="form-control"
                                                         wire:model.defer="selectedAddressId"
                                                         wire:change="fillAddressFromSaved">
+                                                    @if(empty($selectedAddressId))
+                                                        <option value="">انتخاب آدرس</option>
+                                                    @endif
                                                     @foreach($userAddresses as $id => $address)
-                                                        <option value="{{ $id }}">{{ $address['full_address'] }}</option>
+                                                        <option
+                                                            value="{{ $id }}">{{ $address['full_address'] }}</option>
                                                     @endforeach
 
                                                 </select>
@@ -101,7 +105,9 @@
                                             <select id="province" class="form-control"
                                                     wire:model.defer="selectedProvince"
                                                     wire:change="provinceSelected($event.target.value)">
-                                                <option >انتخاب کنید</option>
+                                                @if(empty($selectedProvince))
+                                                    <option>انتخاب کنید</option>
+                                                @endif
                                                 @foreach($provinces as $id => $name)
                                                     <option value="{{ $id }}">
                                                         {{ $name }}
@@ -117,7 +123,9 @@
                                             <label for="city" class="form-title">شهر</label>
                                             @include('custom-components.site.required-tag')
                                             <select id="city" class="form-control" wire:model.defer="selectedCity">
-                                                <option value="">ابتدا استان انتخاب شود</option>
+                                                @if(empty($selectedProvince))
+                                                    <option value="">ابتدا استان انتخاب شود</option>
+                                                @endif
                                                 @if($cities && count($cities) > 0)
                                                     @foreach($cities as $id => $name)
                                                         <option value="{{ $id }}">{{ $name }}</option>
