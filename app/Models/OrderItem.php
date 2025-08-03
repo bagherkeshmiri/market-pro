@@ -7,7 +7,6 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 /**
  *
@@ -21,7 +20,6 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property OrderStatus $status
- * @property-read string $jalali_created_at
  * @property-read Order|null $order
  * @property-read Product|null $product
  * @method static Builder<static>|OrderItem newModelQuery()
@@ -66,11 +64,6 @@ class OrderItem extends Eloquent
         });
     }
 
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
     /*------------ Relations ------------*/
 
     public function order(): BelongsTo
@@ -82,6 +75,8 @@ class OrderItem extends Eloquent
     {
         return $this->belongsTo(Product::class, self::COLUMN_PRODUCT_ID, Product::COLUMN_ID);
     }
+
+    /*-------------- Accessors & Mutators -------------*/
 
     /*-------------- Scopes -------------*/
 

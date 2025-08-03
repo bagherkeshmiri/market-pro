@@ -4,18 +4,19 @@ namespace App\Models;
 
 use App\Casts\CleanHtml;
 use App\Enums\IsActive;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 use Str;
 
 /**
+ *
+ *
  * @property int $id
  * @property int $user_id
  * @property int $category_id
@@ -23,13 +24,14 @@ use Str;
  * @property string $slug
  * @property string|null $excerpt
  * @property $body
- * @property IsActive $status 0:not_active , 1:active
+ * @property IsActive $status  0:not_active , 1:active
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Category|null $category
  * @property-read Collection<int, Comment> $comments
  * @property-read int|null $comments_count
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @property-read string $status_badge_class
  * @property-read string $status_label
  * @property-read Image|null $image
@@ -53,6 +55,8 @@ use Str;
  */
 class Post extends Eloquent
 {
+    use HasJalaliTimestamps;
+
     public const string TABLE_NAME = 'posts';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -92,21 +96,6 @@ class Post extends Eloquent
         return 'slug';
     }
 
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
-    public function getStatusLabelAttribute(): string
-    {
-        return $this->status->label();
-    }
-
-    public function getStatusBadgeClassAttribute(): string
-    {
-        return $this->status->badgeClass();
-    }
-
     /*------------ Relations ------------*/
 
     public function user(): BelongsTo
@@ -127,6 +116,18 @@ class Post extends Eloquent
     public function image(): MorphOne
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    /*-------------- Accessors & Mutators -------------*/
+
+    public function getStatusLabelAttribute(): string
+    {
+        return $this->status->label();
+    }
+
+    public function getStatusBadgeClassAttribute(): string
+    {
+        return $this->status->badgeClass();
     }
 
     /*-------------- Scopes -------------*/

@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
-use Morilog\Jalali\Jalalian;
-
 
 /**
  *
@@ -26,6 +25,9 @@ use Morilog\Jalali\Jalalian;
  * @property-read \Illuminate\Database\Eloquent\Collection<int, UserAddress> $addresses
  * @property-read int|null $addresses_count
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Order> $orders
+ * @property-read int|null $orders_count
  * @method static Builder<static>|User newModelQuery()
  * @method static Builder<static>|User newQuery()
  * @method static Builder<static>|User query()
@@ -42,6 +44,8 @@ use Morilog\Jalali\Jalalian;
  */
 class User extends Authenticatable
 {
+    use HasJalaliTimestamps;
+
     public const string TABLE_NAME = 'users';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -71,11 +75,6 @@ class User extends Authenticatable
         });
     }
 
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
     /*------------ Relations ------------*/
 
     public function addresses(): HasMany
@@ -88,12 +87,16 @@ class User extends Authenticatable
         return $this->hasMany(Order::class, Order::COLUMN_USER_ID, self::COLUMN_ID);
     }
 
-    /*-------------- Scopes -------------*/
-
-    /*---------- Other Functions --------*/
+    /*-------------- Accessors & Mutators -------------*/
 
     public function setPasswordAttribute($value): void
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    /*-------------- Scopes -------------*/
+
+    /*---------- Other Functions --------*/
+
+
 }

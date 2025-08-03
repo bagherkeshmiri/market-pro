@@ -4,21 +4,21 @@ namespace App\Models;
 
 use App\Enums\CollectionType;
 use App\Enums\IsActive;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 /**
  *
  *
  * @property int $id
  * @property string|null $title
- * @property CollectionType $type 1:product , 2:category
+ * @property CollectionType $type  1:product , 2:category
  * @property int|null $limitation
  * @property int|null $sort
- * @property IsActive $is_active
+ * @property IsActive $is_active  0:active , 1:not_active
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, CollectionCategory> $categoryCollection
@@ -26,6 +26,7 @@ use Morilog\Jalali\Jalalian;
  * @property-read string $is_active_badge_class
  * @property-read string $is_active_label
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @property-read string $type_badge_class
  * @property-read string $type_label
  * @property-read \Illuminate\Database\Eloquent\Collection<int, CollectionProduct> $productCollection
@@ -45,6 +46,8 @@ use Morilog\Jalali\Jalalian;
  */
 class Collection extends Eloquent
 {
+    use HasJalaliTimestamps;
+
     public const string TABLE_NAME = 'collections';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -71,10 +74,19 @@ class Collection extends Eloquent
         });
     }
 
-    public function getJalaliCreatedAtAttribute(): string
+    /*------------ Relations ------------*/
+
+    public function productCollection(): HasMany
     {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
+        return $this->hasMany(CollectionProduct::class, CollectionProduct::COLUMN_COLLECTION_ID, self::COLUMN_ID);
     }
+
+    public function categoryCollection(): HasMany
+    {
+        return $this->hasMany(CollectionCategory::class, CollectionCategory::COLUMN_COLLECTION_ID, self::COLUMN_ID);
+    }
+
+    /*-------------- Accessors & Mutators -------------*/
 
     public function getTypeLabelAttribute(): string
     {
@@ -95,19 +107,6 @@ class Collection extends Eloquent
     {
         return $this->is_active->badgeClass();
     }
-
-    /*------------ Relations ------------*/
-
-    public function productCollection(): HasMany
-    {
-        return $this->hasMany(CollectionProduct::class, CollectionProduct::COLUMN_COLLECTION_ID, self::COLUMN_ID);
-    }
-
-    public function categoryCollection(): HasMany
-    {
-        return $this->hasMany(CollectionCategory::class, CollectionCategory::COLUMN_COLLECTION_ID, self::COLUMN_ID);
-    }
-
 
     /*-------------- Scopes -------------*/
 

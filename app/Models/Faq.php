@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use App\Enums\IsActive;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 /**
  *
@@ -14,12 +14,13 @@ use Morilog\Jalali\Jalalian;
  * @property int $id
  * @property string $question
  * @property string $answer
- * @property IsActive $is_active
+ * @property IsActive $is_active  0:no , 1:yes
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read string $is_active_badge_class
  * @property-read string $is_active_label
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @method static Builder<static>|Faq newModelQuery()
  * @method static Builder<static>|Faq newQuery()
  * @method static Builder<static>|Faq query()
@@ -33,6 +34,8 @@ use Morilog\Jalali\Jalalian;
  */
 class Faq extends Eloquent
 {
+    use HasJalaliTimestamps;
+
     public const string TABLE_NAME = 'faqs';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -56,10 +59,9 @@ class Faq extends Eloquent
         });
     }
 
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
+    /*------------ Relations ------------*/
+
+    /*-------------- Accessors & Mutators -------------*/
 
     public function getIsActiveLabelAttribute(): string
     {
@@ -70,8 +72,6 @@ class Faq extends Eloquent
     {
         return $this->is_active->badgeClass();
     }
-
-    /*------------ Relations ------------*/
 
     /*-------------- Scopes -------------*/
 

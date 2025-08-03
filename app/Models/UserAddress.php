@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Casts\CleanText;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -49,6 +50,8 @@ use Morilog\Jalali\Jalalian;
  */
 class UserAddress extends Authenticatable
 {
+    use HasJalaliTimestamps;
+
     public const string TABLE_NAME = 'user_addresses';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -99,13 +102,7 @@ class UserAddress extends Authenticatable
         return $this->belongsTo(Province::class, self::COLUMN_PROVINCE_ID, Province::COLUMN_ID);
     }
 
-
     /*-------------- Accessors & Mutators -------------*/
-
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
 
     public function setPasswordAttribute($value): void
     {
@@ -126,7 +123,6 @@ class UserAddress extends Authenticatable
     /*-------------- Scopes -------------*/
 
     /*---------- Other Functions --------*/
-
 
 
 }

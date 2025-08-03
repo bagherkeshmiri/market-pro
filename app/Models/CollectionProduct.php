@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 /**
  *
@@ -14,11 +14,11 @@ use Morilog\Jalali\Jalalian;
  * @property int $id
  * @property int $collection_id
  * @property int $product_id
- * @property int|null $sort
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Collection|null $collection
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @property-read Product|null $product
  * @method static Builder<static>|CollectionProduct newModelQuery()
  * @method static Builder<static>|CollectionProduct newQuery()
@@ -27,12 +27,13 @@ use Morilog\Jalali\Jalalian;
  * @method static Builder<static>|CollectionProduct whereCreatedAt($value)
  * @method static Builder<static>|CollectionProduct whereId($value)
  * @method static Builder<static>|CollectionProduct whereProductId($value)
- * @method static Builder<static>|CollectionProduct whereSort($value)
  * @method static Builder<static>|CollectionProduct whereUpdatedAt($value)
  * @mixin Eloquent
  */
 class CollectionProduct extends Eloquent
 {
+    use HasJalaliTimestamps;
+
     public const string TABLE_NAME = 'collection_products';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -55,11 +56,6 @@ class CollectionProduct extends Eloquent
         });
     }
 
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
     /*------------ Relations ------------*/
 
     public function collection(): BelongsTo
@@ -71,6 +67,8 @@ class CollectionProduct extends Eloquent
     {
         return $this->belongsTo(Product::class, self::COLUMN_PRODUCT_ID, Product::COLUMN_ID);
     }
+
+    /*-------------- Accessors & Mutators -------------*/
 
     /*-------------- Scopes -------------*/
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Casts\CleanHtml;
 use App\Enums\DiscountType;
 use App\Enums\ProductStatus;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -13,7 +14,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 /**
  *
@@ -27,14 +27,16 @@ use Morilog\Jalali\Jalalian;
  * @property int $discount
  * @property int $final_price
  * @property int $stock
- * @property string|null $long_description
- * @property string|null $short_description
- * @property string|null $additional_information
+ * @property $long_description
+ * @property $short_description
+ * @property $additional_information
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Category|null $category
  * @property-read Collection<int, CollectionProduct> $collections
  * @property-read int|null $collections_count
+ * @property-read Collection<int, Comment> $comments
+ * @property-read int|null $comments_count
  * @property-read Collection<int, Image> $galleryImages
  * @property-read int|null $gallery_images_count
  * @property-read int $discount_percent
@@ -44,6 +46,7 @@ use Morilog\Jalali\Jalalian;
  * @property-read string $formatted_final_price
  * @property-read string $formatted_price
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @property-read string $status_badge_class
  * @property-read string $status_label
  * @property-read Collection<int, Image> $images
@@ -72,6 +75,8 @@ use Morilog\Jalali\Jalalian;
  */
 class Product extends Eloquent
 {
+    use HasJalaliTimestamps;
+
     public const string TABLE_NAME = 'products';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -108,10 +113,44 @@ class Product extends Eloquent
         });
     }
 
-    public function getJalaliCreatedAtAttribute(): string
+    /*------------ Relations ------------*/
+
+    public function category(): BelongsTo
     {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
+        return $this->belongsTo(Category::class, self::COLUMN_CATEGORY_ID, Category::COLUMN_ID);
     }
+
+    public function images(): MorphMany
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function mainImage(): MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable')->where('is_main', true);
+    }
+
+    public function galleryImages(): MorphMany
+    {
+        return $this->morphMany(Image::class, 'imageable')->where('is_main', false);
+    }
+
+    public function orderItems(): HasMany
+    {
+        return $this->hasMany(OrderItem::class, OrderItem::COLUMN_PRODUCT_ID, self::COLUMN_ID);
+    }
+
+    public function collections(): HasMany
+    {
+        return $this->hasMany(CollectionProduct::class, CollectionProduct::COLUMN_PRODUCT_ID, self::COLUMN_ID);
+    }
+
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    /*-------------- Accessors & Mutators -------------*/
 
     public function getStatusLabelAttribute(): string
     {
@@ -163,44 +202,6 @@ class Product extends Eloquent
     public function getDiscountTypeBadgeClassAttribute(): string
     {
         return $this->discount_type->badgeClass();
-    }
-
-
-    /*------------ Relations ------------*/
-
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(Category::class, self::COLUMN_CATEGORY_ID, Category::COLUMN_ID);
-    }
-
-    public function images(): MorphMany
-    {
-        return $this->morphMany(Image::class, 'imageable');
-    }
-
-    public function mainImage(): MorphOne
-    {
-        return $this->morphOne(Image::class, 'imageable')->where('is_main', true);
-    }
-
-    public function galleryImages(): MorphMany
-    {
-        return $this->morphMany(Image::class, 'imageable')->where('is_main', false);
-    }
-
-    public function orderItems(): HasMany
-    {
-        return $this->hasMany(OrderItem::class, OrderItem::COLUMN_PRODUCT_ID, self::COLUMN_ID);
-    }
-
-    public function collections(): HasMany
-    {
-        return $this->hasMany(CollectionProduct::class, CollectionProduct::COLUMN_PRODUCT_ID, self::COLUMN_ID);
-    }
-
-    public function comments(): MorphMany
-    {
-        return $this->morphMany(Comment::class, 'commentable');
     }
 
     /*-------------- Scopes -------------*/

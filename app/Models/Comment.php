@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use App\Enums\CommentStatus;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 /**
  *
@@ -23,7 +23,10 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Model|Eloquent|null $commentable
+ * @property-read string $commentable_type_badge_class
+ * @property-read string $commentable_type_label
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @property-read string $status_badge_class
  * @property-read string $status_label
  * @property-read User|null $user
@@ -42,6 +45,8 @@ use Morilog\Jalali\Jalalian;
  */
 class Comment extends Eloquent
 {
+    use HasJalaliTimestamps;
+
     public const string TABLE_NAME = 'comments';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -68,10 +73,19 @@ class Comment extends Eloquent
         });
     }
 
-    public function getJalaliCreatedAtAttribute(): string
+    /*------------ Relations ------------*/
+
+    public function commentable(): MorphTo
     {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
+        return $this->morphTo();
     }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, self::COLUMN_USER_ID, User::COLUMN_ID);
+    }
+
+    /*-------------- Accessors & Mutators -------------*/
 
     public function getStatusLabelAttribute(): string
     {
@@ -101,18 +115,6 @@ class Comment extends Eloquent
             Post::class => 'bg-rgba-warning text-warning',
             default => 'bg-rgba-danger text-danger',
         };
-    }
-
-    /*------------ Relations ------------*/
-
-    public function commentable(): MorphTo
-    {
-        return $this->morphTo();
-    }
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, self::COLUMN_USER_ID, User::COLUMN_ID);
     }
 
     /*-------------- Scopes -------------*/

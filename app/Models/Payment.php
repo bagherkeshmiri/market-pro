@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\PaymentStatus;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,7 +13,7 @@ use Morilog\Jalali\Jalalian;
 use Str;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $user_id
@@ -23,22 +24,25 @@ use Str;
  * @property PaymentStatus $status  1:unSuccess , 2:success
  * @property string $amount
  * @property string|null $ref_id
+ * @property string|null $authority
  * @property int|null $paid_at
  * @property int $expire_time
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read \App\Models\Gate|null $gate
- * @property-read \App\Models\GateOrg|null $gateOrg
+ * @property-read Gate|null $gate
+ * @property-read GateOrg|null $gateOrg
  * @property-read string $jalali_created_at
  * @property-read string|null $jalali_paid_at
+ * @property-read string $jalali_updated_at
  * @property-read string $status_badge_class
  * @property-read string $status_label
- * @property-read \App\Models\Order|null $order
- * @property-read \App\Models\User|null $user
+ * @property-read Order|null $order
+ * @property-read User|null $user
  * @method static Builder<static>|Payment newModelQuery()
  * @method static Builder<static>|Payment newQuery()
  * @method static Builder<static>|Payment query()
  * @method static Builder<static>|Payment whereAmount($value)
+ * @method static Builder<static>|Payment whereAuthority($value)
  * @method static Builder<static>|Payment whereCreatedAt($value)
  * @method static Builder<static>|Payment whereExpireTime($value)
  * @method static Builder<static>|Payment whereGateId($value)
@@ -55,6 +59,8 @@ use Str;
  */
 class Payment extends Authenticatable
 {
+    use HasJalaliTimestamps;
+
     public const string TABLE_NAME = 'payments';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -102,30 +108,6 @@ class Payment extends Authenticatable
         });
     }
 
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
-    public function getJalaliPaidAtAttribute(): ?string
-    {
-        if (!empty($this->paid_at) && $this->paid_at instanceof \Carbon\Carbon) {
-            return Jalalian::fromCarbon($this->paid_at)->format('Y/m/d H:i:s');
-        }
-        return null;
-    }
-
-    public function getStatusLabelAttribute(): string
-    {
-        return $this->status->label();
-    }
-
-    public function getStatusBadgeClassAttribute(): string
-    {
-        return $this->status->badgeClass();
-    }
-
-
     /*------------ Relations ------------*/
 
     public function order(): BelongsTo
@@ -146,6 +128,26 @@ class Payment extends Authenticatable
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, Payment::COLUMN_USER_ID, User::COLUMN_ID);
+    }
+
+    /*-------------- Accessors & Mutators -------------*/
+
+    public function getJalaliPaidAtAttribute(): ?string
+    {
+        if (!empty($this->paid_at) && $this->paid_at instanceof \Carbon\Carbon) {
+            return Jalalian::fromCarbon($this->paid_at)->format('Y/m/d H:i:s');
+        }
+        return null;
+    }
+
+    public function getStatusLabelAttribute(): string
+    {
+        return $this->status->label();
+    }
+
+    public function getStatusBadgeClassAttribute(): string
+    {
+        return $this->status->badgeClass();
     }
 
     /*-------------- Scopes -------------*/

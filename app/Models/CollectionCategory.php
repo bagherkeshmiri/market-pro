@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 
 /**
@@ -20,6 +20,7 @@ use Morilog\Jalali\Jalalian;
  * @property-read Category|null $category
  * @property-read Collection|null $collection
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @method static Builder<static>|CollectionCategory newModelQuery()
  * @method static Builder<static>|CollectionCategory newQuery()
  * @method static Builder<static>|CollectionCategory query()
@@ -32,6 +33,8 @@ use Morilog\Jalali\Jalalian;
  */
 class CollectionCategory extends Eloquent
 {
+    use HasJalaliTimestamps;
+
     public const string TABLE_NAME = 'collection_categories';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -54,11 +57,6 @@ class CollectionCategory extends Eloquent
         });
     }
 
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
     /*------------ Relations ------------*/
 
     public function collection(): BelongsTo
@@ -70,6 +68,8 @@ class CollectionCategory extends Eloquent
     {
         return $this->belongsTo(Category::class, self::COLUMN_CATEGORY_ID, Product::COLUMN_ID);
     }
+
+    /*-------------- Accessors & Mutators -------------*/
 
     /*-------------- Scopes -------------*/
 

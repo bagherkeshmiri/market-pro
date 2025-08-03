@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,8 +11,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
-use LaravelIdea\Helper\App\Models\_IH_Permission_QB;
-use Morilog\Jalali\Jalalian;
 
 /**
  *
@@ -26,6 +25,7 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @property-read Role|null $role
  * @method static Builder<static>|Admin newModelQuery()
  * @method static Builder<static>|Admin newQuery()
@@ -43,6 +43,8 @@ use Morilog\Jalali\Jalalian;
  */
 class Admin extends Authenticatable
 {
+    use HasJalaliTimestamps;
+
     public const string TABLE_NAME = 'admins';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -72,11 +74,6 @@ class Admin extends Authenticatable
         });
     }
 
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
     /*------------ Relations ------------*/
 
     public function role(): BelongsTo
@@ -89,9 +86,7 @@ class Admin extends Authenticatable
         return $this->role?->permissions() ?? collect();
     }
 
-    /*-------------- Scopes -------------*/
-
-    /*---------- Other Functions --------*/
+    /*-------------- Accessors & Mutators -------------*/
 
     public function setPasswordAttribute($value): void
     {
@@ -105,5 +100,8 @@ class Admin extends Authenticatable
             ->contains('en_name', $enName);
     }
 
+    /*-------------- Scopes -------------*/
+
+    /*---------- Other Functions --------*/
 
 }

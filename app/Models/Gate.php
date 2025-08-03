@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use App\Enums\IsActive;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 /**
  *
@@ -24,6 +24,7 @@ use Morilog\Jalali\Jalalian;
  * @property-read string $is_active_badge_class
  * @property-read string $is_active_label
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, GateOrg> $org
  * @property-read int|null $org_count
  * @method static Builder<static>|Gate isActive()
@@ -46,6 +47,7 @@ use Morilog\Jalali\Jalalian;
 class Gate extends Authenticatable
 {
     use SoftDeletes;
+    use HasJalaliTimestamps;
 
     public const string TABLE_NAME = 'gates';
     protected $table = self::TABLE_NAME;
@@ -70,11 +72,14 @@ class Gate extends Authenticatable
         });
     }
 
-    public function getJalaliCreatedAtAttribute(): string
+    /*------------ Relations ------------*/
+
+    public function org(): HasMany
     {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
+        return $this->hasMany(GateOrg::class, GateOrg::COLUMN_GATE_ID, self::COLUMN_ID);
     }
 
+    /*-------------- Accessors & Mutators -------------*/
 
     public function getIsActiveLabelAttribute(): string
     {
@@ -86,15 +91,7 @@ class Gate extends Authenticatable
         return $this->is_active->badgeClass();
     }
 
-    /*------------ Relations ------------*/
-
-    public function org(): HasMany
-    {
-        return $this->hasMany(GateOrg::class, GateOrg::COLUMN_GATE_ID, self::COLUMN_ID);
-    }
-
     /*-------------- Scopes -------------*/
-
 
     public function scopeIsActive($query)
     {

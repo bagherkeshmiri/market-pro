@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
-
 
 /**
  *
@@ -21,6 +20,7 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $updated_at
  * @property Carbon|null $deleted_at
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @property-read Collection<int, Permission> $permissions
  * @property-read int|null $permissions_count
  * @method static Builder<static>|Role newModelQuery()
@@ -40,6 +40,7 @@ use Morilog\Jalali\Jalalian;
 class Role extends Eloquent
 {
     use SoftDeletes;
+    use HasJalaliTimestamps;
 
     public const string TABLE_NAME = 'roles';
     protected $table = self::TABLE_NAME;
@@ -61,17 +62,14 @@ class Role extends Eloquent
         });
     }
 
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
     /*------------ Relations ------------*/
 
     public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(Permission::class, 'role_permission');
     }
+
+    /*-------------- Accessors & Mutators -------------*/
 
     /*-------------- Scopes -------------*/
 

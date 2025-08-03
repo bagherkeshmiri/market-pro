@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
-
 
 /**
  *
@@ -17,7 +16,10 @@ use Morilog\Jalali\Jalalian;
  * @property string $name
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, City> $city
+ * @property-read int|null $city_count
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @method static Builder<static>|Province newModelQuery()
  * @method static Builder<static>|Province newQuery()
  * @method static Builder<static>|Province query()
@@ -29,6 +31,7 @@ use Morilog\Jalali\Jalalian;
  */
 class Province extends Authenticatable
 {
+    use HasJalaliTimestamps;
 
     public const string TABLE_NAME = 'provinces';
     protected $table = self::TABLE_NAME;
@@ -49,17 +52,14 @@ class Province extends Authenticatable
         });
     }
 
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
     /*------------ Relations ------------*/
 
     public function city(): HasMany
     {
         return $this->hasMany(City::class, City::COLUMN_PROVINCE_ID, self::COLUMN_ID);
     }
+
+    /*-------------- Accessors & Mutators -------------*/
 
     /*-------------- Scopes -------------*/
 
