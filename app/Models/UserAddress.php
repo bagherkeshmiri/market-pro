@@ -22,13 +22,16 @@ use Morilog\Jalali\Jalalian;
  * @property int $user_id
  * @property int $province_id
  * @property int $city_id
- * @property string $address
+ * @property $address
  * @property string|null $postal_code
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property-read City|null $city
+ * @property-read string $full_address
  * @property-read string $jalali_created_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Order> $orders
  * @property-read int|null $orders_count
+ * @property-read Province|null $province
  * @property-write mixed $password
  * @property-read User|null $user
  * @method static Builder<static>|UserAddress newModelQuery()
@@ -65,7 +68,6 @@ class UserAddress extends Authenticatable
 
     protected $casts = [
         'address' => CleanText::class,
-//        'postal_code',
     ];
 
     protected static function booted(): void
@@ -73,11 +75,6 @@ class UserAddress extends Authenticatable
         static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
             $builder->orderByDesc('id');
         });
-    }
-
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
     }
 
     /*------------ Relations ------------*/
@@ -102,12 +99,34 @@ class UserAddress extends Authenticatable
         return $this->belongsTo(Province::class, self::COLUMN_PROVINCE_ID, Province::COLUMN_ID);
     }
 
-    /*-------------- Scopes -------------*/
 
-    /*---------- Other Functions --------*/
+    /*-------------- Accessors & Mutators -------------*/
+
+    public function getJalaliCreatedAtAttribute(): string
+    {
+        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
+    }
 
     public function setPasswordAttribute($value): void
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    public function getFullAddressAttribute(): string
+    {
+        $provinceName = $this->province ? $this->province->name : '';
+        $cityName = $this->city ? $this->city->name : '';
+        $address = $this->address ?? '';
+
+        $parts = array_filter([$provinceName, $cityName, $address]);
+
+        return implode(' - ', $parts);
+    }
+
+    /*-------------- Scopes -------------*/
+
+    /*---------- Other Functions --------*/
+
+
+
 }

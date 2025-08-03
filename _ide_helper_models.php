@@ -16,29 +16,33 @@ namespace App\Models{
  * 
  *
  * @property int $id
- * @property string|null $name
- * @property string|null $label
- * @property \App\Enums\IsActive $is_active  0:no 1:yes
+ * @property int $user_id
+ * @property int $province_id
+ * @property int $city_id
+ * @property $address
+ * @property string|null $postal_code
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \App\Models\City|null $city
+ * @property-read string $full_address
  * @property-read string $jalali_created_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\GateOrg> $org
- * @property-read int|null $org_count
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Gate newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Gate newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Gate onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Gate query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Gate whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Gate whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Gate whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Gate whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Gate whereLabel($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Gate whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Gate whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Gate withTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Gate withoutTrashed()
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Order> $orders
+ * @property-read int|null $orders_count
+ * @property-read \App\Models\Province|null $province
+ * @property-write mixed $password
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserAddress newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserAddress newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserAddress query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserAddress whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserAddress whereCityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserAddress whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserAddress whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserAddress wherePostalCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserAddress whereProvinceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserAddress whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserAddress whereUserId($value)
  */
-	class Gate extends \Eloquent {}
+	class UserAddress extends \Eloquent {}
 }
 

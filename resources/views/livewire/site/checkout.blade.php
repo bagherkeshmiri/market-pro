@@ -48,7 +48,7 @@
                                                         wire:model.defer="selectedAddressId"
                                                         wire:change="fillAddressFromSaved">
                                                     @foreach($userAddresses as $id => $address)
-                                                        <option value="{{ $id }}">{{ $address['label'] }}</option>
+                                                        <option value="{{ $id }}">{{ $address['full_address'] }}</option>
                                                     @endforeach
 
                                                 </select>
