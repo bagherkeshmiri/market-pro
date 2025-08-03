@@ -50,9 +50,9 @@
                                                     @if(empty($selectedAddressId))
                                                         <option value="">انتخاب آدرس</option>
                                                     @endif
-                                                    @foreach($userAddresses as $id => $address)
+                                                    @foreach($userAddresses as $userAddress)
                                                         <option
-                                                            value="{{ $id }}">{{ $address['full_address'] }}</option>
+                                                            value="{{ $userAddress->id }}">{{ $userAddress->full_address }}</option>
                                                     @endforeach
 
                                                 </select>
@@ -105,7 +105,7 @@
                                             <select id="province" class="form-control"
                                                     wire:model.defer="selectedProvince"
                                                     wire:change="provinceSelected($event.target.value)">
-                                                @if(empty($selectedProvince))
+                                                @if(empty($selectedProvince) && empty($selectedAddressId))
                                                     <option>انتخاب کنید</option>
                                                 @endif
                                                 @foreach($provinces as $id => $name)
@@ -160,17 +160,6 @@
                                             <input type="number" id="postalCode" wire:model.defer="postalCode"
                                                    class="form-control" required>
                                             @include('frest-components.validation-error',[ 'name' => 'postalCode' ])
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-item">
-                                            <label for="phone" class="form-title"> تلفن</label>
-                                            @include('custom-components.site.required-tag')
-                                            <input type="number" id="phone" wire:model.defer="phone" name="phone"
-                                                   class="form-control" required>
-                                            @include('frest-components.validation-error',[ 'name' => 'phone' ])
                                         </div>
                                     </div>
 

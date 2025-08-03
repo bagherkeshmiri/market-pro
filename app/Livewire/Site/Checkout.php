@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Payment;
 use App\Models\Province;
+use App\Models\UserAddress;
 use App\Services\Payment\GatewayFactory;
 use DB;
 use Exception;
@@ -33,13 +34,13 @@ class Checkout extends SiteComponent
     public $fullName;
     public $postalCode;
     public $address;
-    public $phone;
     public $orderMessage;
     public $provinces;
     public $cities = [];
     public $userAddresses;
     public $selectedProvince;
     public $selectedCity;
+    public $selectedAddressId;
 
     public function mount(): RedirectResponse|Redirector|null
     {
@@ -77,6 +78,23 @@ class Checkout extends SiteComponent
         $this->cities = City::where('province_id', $provinceId)->pluck('name', 'id')->toArray();
     }
 
+    public function fillAddressFromSaved(): void
+    {
+        $selectedAddress = UserAddress::find($this->selectedAddressId);
+
+        if (!is_null($selectedAddress)) {
+            $this->selectedProvince = $selectedAddress->province_id;
+            $this->selectedCity = $selectedAddress->city_id;
+            $this->address = $selectedAddress->address;
+            $this->postalCode = $selectedAddress->postal_code;
+        }
+
+//        dd(
+//            $this->selectedCity
+//        );
+
+    }
+
     public function calculateCartTotal(): void
     {
         $this->cartTotal = collect($this->cart)->sum('final_price');
@@ -111,7 +129,6 @@ class Checkout extends SiteComponent
             'email' => 'required|email|unique:users,email,' . $this->user->id,
             'fullName' => 'required|string|max:100',
             'postalCode' => 'required|digits:10',
-            'phone' => 'required|digits_between:8,15',
             'orderMessage' => 'nullable|string|max:255|regex:/^[\pL\pN\s.,!?\-@#\$%\^&\*\(\)\[\]{}"\'\/\\\n\r\t]+$/u',
             'selectedProvince' => 'required|numeric',
             'selectedCity' => 'required|numeric',
@@ -195,7 +212,7 @@ class Checkout extends SiteComponent
             }
         } catch (Exception) {
             DB::rollBack();
-            $this->reset(['address', 'postalCode', 'phone', 'orderMessage']);
+            $this->reset(['address', 'postalCode', 'orderMessage']);
             session()->flash('error', __('global.error_message'));
         } finally {
             session()->forget('processing_order');
