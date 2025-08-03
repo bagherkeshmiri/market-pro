@@ -78,11 +78,11 @@
                                                     ])
                                                 @endif
 
-                                                @include('frest-components.text-preview-modal', [
-                                                        'modalTitle' => ' اقلام سفارش ' . $order->order_number,
-                                                        'modalId' => 'order-items-'.$order->id,
-                                                        'content' => $order->orderItems,
-                                                    ])
+                                                <livewire:admin.order.list-today-order-items-modal
+                                                    :items="$order->orderItems"
+                                                    :modal-id="'order-items-' . $order->id"
+                                                    :modal-title="'اقلام سفارش ' . $order->order_number"
+                                                />
 
                                             @empty
                                                 @include('custom-components.admin.empty-table')
