@@ -113,7 +113,7 @@ class Order extends Eloquent
         return $this->hasMany(Payment::class, Payment::COLUMN_ORDER_ID, self::COLUMN_ID);
     }
 
-    public function userAddresses(): BelongsTo
+    public function address(): BelongsTo
     {
         return $this->belongsTo(UserAddress::class, self::COLUMN_USER_ADDRESS_ID, UserAddress::COLUMN_ID);
     }

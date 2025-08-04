@@ -67,6 +67,15 @@
                                                             'icon' => listIcon('نمایش اقلام'),
                                                         ])
 
+
+
+                                                        @if(!empty($order->user_address_id))
+                                                            @include('frest-components.icon-btn-with-modal', [
+                                                                  'modalId' => 'order-address-'.$order->id,
+                                                                  'icon' => locationIcon('نمایش آدرس'),
+                                                            ])
+                                                        @endif
+
                                                     </td>
                                                 </tr>
 
@@ -83,6 +92,15 @@
                                                     :modal-id="'order-items-' . $order->id"
                                                     :modal-title="'اقلام سفارش ' . $order->order_number"
                                                 />
+
+
+                                                @if(!empty($order->user_address_id))
+                                                    @include('frest-components.text-preview-modal', [
+                                                        'modalTitle' => 'آدرس سفارش ' . $order->order_number,
+                                                        'modalId' => 'order-address-'.$order->id,
+                                                        'content' => $order->address?->full_address,
+                                                    ])
+                                                @endif
 
                                             @empty
                                                 @include('custom-components.admin.empty-table')
