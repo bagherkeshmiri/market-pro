@@ -41,6 +41,8 @@ class Checkout extends SiteComponent
     public $selectedProvince;
     public $selectedCity;
     public $selectedAddressId;
+    public $createdUserAddress;
+
 
     public function mount(): RedirectResponse|Redirector|null
     {
@@ -84,15 +86,11 @@ class Checkout extends SiteComponent
 
         if (!is_null($selectedAddress)) {
             $this->selectedProvince = $selectedAddress->province_id;
-            $this->selectedCity = $selectedAddress->city_id;
+            $this->cities = City::where('province_id', $selectedAddress->province_id)->pluck('name', 'id')->toArray();
+            $this->selectedCity = (int)$selectedAddress->city_id;
             $this->address = $selectedAddress->address;
             $this->postalCode = $selectedAddress->postal_code;
         }
-
-//        dd(
-//            $this->selectedCity
-//        );
-
     }
 
     public function calculateCartTotal(): void
@@ -183,11 +181,20 @@ class Checkout extends SiteComponent
                 ->exists();
 
             if (!$addressExists) {
-                $this->user->addresses()->create([
+                $this->createdUserAddress = $this->user->addresses()->create([
                     'province_id' => $this->selectedProvince,
                     'city_id' => $this->selectedCity,
                     'address' => $this->address,
                     'postal_code' => $this->postalCode,
+                ]);
+            }
+
+            $selectedId = (int)$this->selectedAddressId;
+            $createdId = (int)$this->createdUserAddress?->id;
+
+            if (($selectedId !== 0 && $createdId === 0) || ($selectedId === 0 && $createdId !== 0)) {
+                $order->update([
+                    'user_address_id' => $selectedId !== 0 ? $selectedId : $createdId
                 ]);
             }
 
@@ -210,10 +217,13 @@ class Checkout extends SiteComponent
 
                 redirect($result['gateway_url']);
             }
-        } catch (Exception) {
+        } catch (Exception $e) {
             DB::rollBack();
-            $this->reset(['address', 'postalCode', 'orderMessage']);
-            session()->flash('error', __('global.error_message'));
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
         } finally {
             session()->forget('processing_order');
         }

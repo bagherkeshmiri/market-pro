@@ -33,7 +33,11 @@
                 </div>
             </div>
             <div class="row">
+
+                @include('custom-components.site.flash-message')
+
                 <div class="col-lg-6 col-md-12">
+
                     <div class="checkout-left">
                         <h3 class="form-header">جزئیات صورتحساب</h3>
                         <form>
@@ -52,9 +56,9 @@
                                                     @endif
                                                     @foreach($userAddresses as $userAddress)
                                                         <option
-                                                            value="{{ $userAddress->id }}">{{ $userAddress->full_address }}</option>
+                                                            value="{{ $userAddress->id }}">{{ $userAddress->full_address }}
+                                                        </option>
                                                     @endforeach
-
                                                 </select>
                                             </div>
                                         </div>
@@ -122,16 +126,13 @@
                                         <div class="form-item">
                                             <label for="city" class="form-title">شهر</label>
                                             @include('custom-components.site.required-tag')
-                                            <select id="city" class="form-control" wire:model.defer="selectedCity">
-                                                @if(empty($selectedProvince))
-                                                    <option value="">ابتدا استان انتخاب شود</option>
-                                                @endif
+                                            <select id="city" class="form-control" wire:model="selectedCity">
                                                 @if($cities && count($cities) > 0)
                                                     @foreach($cities as $id => $name)
-                                                        <option value="{{ $id }}">{{ $name }}</option>
+                                                        <option value="{{ (int) $id }}">{{ $name }}</option>
                                                     @endforeach
                                                 @else
-                                                    <option value="">ابتدا استان را انتخاب کنید</option>
+                                                    <option value="">ابتدا استان انتخاب شود</option>
                                                 @endif
                                             </select>
                                             @include('frest-components.validation-error',[ 'name' => 'selectedCity' ])
@@ -174,7 +175,6 @@
                                                       class="form-control address">
                                             </textarea>
                                             @include('frest-components.validation-error',[ 'name' => 'orderMessage' ])
-
                                         </div>
                                     </div>
                                 </div>
