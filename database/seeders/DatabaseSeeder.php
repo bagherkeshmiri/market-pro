@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CommentSeeder::class);
         $this->call(ProvinceSeeder::class);
         $this->call(CitySeeder::class);
+        $this->call(GateSeeder::class);
+        $this->call(GateOrgSeeder::class);
     }
 }
