@@ -26,9 +26,9 @@ class GatewayFactory
         $name = Str::lower($gatewayOrg->gate->name);
 
         return match ($name) {
-            'zarinpal' => new ZarinpalGateway(['app_key' => $gatewayOrg->app_key]),
-            'idpay' => new IdpayGateway(['app_key' => $gatewayOrg->app_key]),
-            'payping' => new PayPingGateway(['app_key' => $gatewayOrg->app_key]),
+            'zarinpal' => new ZarinpalGateway(),
+            'idpay' => new IdpayGateway(),
+            'payping' => new PayPingGateway(),
             default => throw new Exception('درگاه ناشناخته است'),
         };
     }

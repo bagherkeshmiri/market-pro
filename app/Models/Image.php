@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\HasDefaultOrdering;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 
 /**
@@ -21,7 +22,8 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read string $jalali_created_at
- * @property-read Model|\Eloquent $imageable
+ * @property-read string $jalali_updated_at
+ * @property-read Model|Eloquent $imageable
  * @method static Builder<static>|Image newModelQuery()
  * @method static Builder<static>|Image newQuery()
  * @method static Builder<static>|Image query()
@@ -36,6 +38,9 @@ use Morilog\Jalali\Jalalian;
  */
 class Image extends Eloquent
 {
+    use HasJalaliTimestamps;
+    use HasDefaultOrdering;
+
     public const string TABLE_NAME = 'images';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -51,18 +56,6 @@ class Image extends Eloquent
         'is_main' => 'boolean',
     ];
 
-    protected static function booted(): void
-    {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-    }
-
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
     /*------------ Relations ------------*/
 
     public function imageable(): MorphTo
@@ -70,6 +63,7 @@ class Image extends Eloquent
         return $this->morphTo();
     }
 
+    /*-------------- Accessors & Mutators -------------*/
 
     /*-------------- Scopes -------------*/
 

@@ -38,7 +38,7 @@ class PostCommentForm extends Component
 
     private function checkIfUserCanSubmit(): void
     {
-        $user = auth()->user();
+        $user = auth('web')->user();
 
         if (!$user) {
             $this->canSubmit = false;
@@ -79,7 +79,7 @@ class PostCommentForm extends Component
                 'name' => $this->name,
                 'email' => $this->email,
                 'body' => $this->message,
-                'user_id' => auth()->user()->id ?? null,
+                'user_id' => auth('web')->user()->id ?? null,
             ];
 
             $post->comments()->create($data);

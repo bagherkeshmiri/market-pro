@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
+use App\Traits\HasDefaultOrdering;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $province_id
@@ -19,7 +20,8 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read string $jalali_created_at
- * @property-read \App\Models\Province|null $province
+ * @property-read string $jalali_updated_at
+ * @property-read Province|null $province
  * @method static Builder<static>|City newModelQuery()
  * @method static Builder<static>|City newQuery()
  * @method static Builder<static>|City query()
@@ -32,6 +34,8 @@ use Morilog\Jalali\Jalalian;
  */
 class City extends Authenticatable
 {
+    use HasJalaliTimestamps;
+    use HasDefaultOrdering;
 
     public const string TABLE_NAME = 'cities';
     protected $table = self::TABLE_NAME;
@@ -47,24 +51,14 @@ class City extends Authenticatable
 
     protected $casts = [];
 
-    protected static function booted(): void
-    {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-    }
-
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
     /*------------ Relations ------------*/
 
     public function province(): BelongsTo
     {
         return $this->belongsTo(Province::class, self::COLUMN_PROVINCE_ID, Province::COLUMN_ID);
     }
+
+    /*-------------- Accessors & Mutators -------------*/
 
     /*-------------- Scopes -------------*/
 

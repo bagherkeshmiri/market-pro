@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enums\CategoryType;
+use App\Traits\HasDefaultOrdering;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -11,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 /**
  *
@@ -26,6 +27,7 @@ use Morilog\Jalali\Jalalian;
  * @property-read Collection<int, Category> $children
  * @property-read int|null $children_count
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @property-read string $type_badge_class
  * @property-read string $type_label
  * @property-read Image|null $image
@@ -52,6 +54,8 @@ use Morilog\Jalali\Jalalian;
 class Category extends Eloquent
 {
     use SoftDeletes;
+    use HasJalaliTimestamps;
+    use HasDefaultOrdering;
 
     public const string TABLE_NAME = 'categories';
     protected $table = self::TABLE_NAME;
@@ -69,29 +73,6 @@ class Category extends Eloquent
     protected $casts = [
         'type' => CategoryType::class
     ];
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-    }
-
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
-
-    public function getTypeLabelAttribute(): string
-    {
-        return $this->type->label();
-    }
-
-    public function getTypeBadgeClassAttribute(): string
-    {
-        return $this->type->badgeClass();
-    }
 
     /*------------ Relations ------------*/
 
@@ -115,6 +96,17 @@ class Category extends Eloquent
         return $this->morphOne(Image::class, 'imageable');
     }
 
+    /*-------------- Accessors & Mutators -------------*/
+
+    public function getTypeLabelAttribute(): string
+    {
+        return $this->type->label();
+    }
+
+    public function getTypeBadgeClassAttribute(): string
+    {
+        return $this->type->badgeClass();
+    }
 
     /*-------------- Scopes -------------*/
 

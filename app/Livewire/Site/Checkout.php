@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Payment;
 use App\Models\Province;
+use App\Models\UserAddress;
 use App\Services\Payment\GatewayFactory;
 use DB;
 use Exception;
@@ -33,15 +34,14 @@ class Checkout extends SiteComponent
     public $fullName;
     public $postalCode;
     public $address;
-    public $phone;
     public $orderMessage;
     public $provinces;
     public $cities = [];
     public $userAddresses;
-    public $selectedProvince = null;
-    public $selectedCity = null;
-
-    protected $listeners = ['provinceSelected', 'citySelected'];
+    public $selectedProvince;
+    public $selectedCity;
+    public $selectedAddressId;
+    public $createdUserAddress;
 
     public function mount(): RedirectResponse|Redirector|null
     {
@@ -67,21 +67,31 @@ class Checkout extends SiteComponent
         $this->userAddresses = $this->user->addresses;
 
         if ($this->selectedProvince) {
-            $this->updatedSelectedProvince($this->selectedProvince);
+            $this->provinceSelected($this->selectedProvince);
         }
 
         return null;
     }
 
-
-    public function updatedSelectedProvince($provinceId): void
+    public function provinceSelected($provinceId): void
     {
-        logger("Selected Province ID: $provinceId");
-
+        $this->selectedProvince = $provinceId;
         $this->cities = City::where('province_id', $provinceId)->pluck('name', 'id')->toArray();
-        $this->selectedCity = null;
     }
 
+    public function fillAddressFromSaved(): void
+    {
+        $selectedAddress = UserAddress::find($this->selectedAddressId);
+
+        if (!is_null($selectedAddress)) {
+            $this->selectedProvince = $selectedAddress->province_id;
+            $this->cities = City::where('province_id', $selectedAddress->province_id)->pluck('name', 'id')->toArray();
+            $this->selectedCity = (string)$selectedAddress->city_id;
+            $this->address = $selectedAddress->address;
+            $this->postalCode = $selectedAddress->postal_code;
+        }
+
+    }
 
     public function calculateCartTotal(): void
     {
@@ -111,24 +121,23 @@ class Checkout extends SiteComponent
     /**
      * @throws Throwable
      */
-    public function pay()
+    public function pay(): void
     {
         $this->validate([
             'email' => 'required|email|unique:users,email,' . $this->user->id,
-            'fullName' => 'required|string|max:255',
+            'fullName' => 'required|string|max:100',
             'postalCode' => 'required|digits:10',
-            'phone' => 'required|digits_between:8,15',
-            'orderMessage' => 'nullable|string|max:500',
+            'orderMessage' => 'nullable|string|max:255|regex:/^[\pL\pN\s.,!?\-@#\$%\^&\*\(\)\[\]{}"\'\/\\\n\r\t]+$/u',
+            'selectedProvince' => 'required|numeric',
+            'selectedCity' => 'required|numeric',
+            'address' => 'required|regex:/^[\pL\pN\s.,\-\/]+$/u',
         ]);
 
-//        DB::beginTransaction();
+        DB::beginTransaction();
         try {
+
             $expiredOrderIds = $this->user->orders()
                 ->where('status', OrderStatus::Pending)
-//                ->whereNotBetween('created_at', [
-//                    today()->startOfDay()->toDateTimeString(),
-//                    today()->endOfDay()->toDateTimeString()
-//                ])
                 ->pluck('id')
                 ->toArray();
 
@@ -159,20 +168,36 @@ class Checkout extends SiteComponent
             }
 
             $payment = $order->payments()->create([
-                'user_id' => auth()->id(),
+                'user_id' => auth('web')->id(),
                 'gate_id' => $this->gateOrg->gate_id,
                 'gate_org_id' => $this->gateOrg->id,
                 'amount' => $this->totalPayable,
             ]);
 
+            $addressExists = $this->user->addresses()
+                ->where('province_id', $this->selectedProvince)
+                ->where('city_id', $this->selectedCity)
+                ->where('postal_code', $this->postalCode)
+                ->where('address', 'like', '%' . $this->address . '%')
+                ->exists();
 
-            $this->user->addresses()->create([
-                'province_id' => $this->selectedProvince,
-                'city_id' => $this->selectedCity,
-                'address' => $this->address,
-                'postal_code' => $this->postalCode,
-            ]);
+            if (!$addressExists) {
+                $this->createdUserAddress = $this->user->addresses()->create([
+                    'province_id' => $this->selectedProvince,
+                    'city_id' => $this->selectedCity,
+                    'address' => $this->address,
+                    'postal_code' => $this->postalCode,
+                ]);
+            }
 
+            $selectedId = (int)$this->selectedAddressId;
+            $createdId = (int)$this->createdUserAddress?->id;
+
+            if (($selectedId !== 0 && $createdId === 0) || ($selectedId === 0 && $createdId !== 0)) {
+                $order->update([
+                    'user_address_id' => $selectedId !== 0 ? $selectedId : $createdId
+                ]);
+            }
 
             $gateway = GatewayFactory::make();
 
@@ -189,13 +214,17 @@ class Checkout extends SiteComponent
                     'authority' => $result['authority']
                 ]);
 
-//                DB::commit();
+                DB::commit();
 
                 redirect($result['gateway_url']);
             }
-        } catch (Exception) {
-//            DB::rollBack();
-            session()->flash('error', __('global.error_message'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
         } finally {
             session()->forget('processing_order');
         }

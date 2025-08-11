@@ -19,8 +19,9 @@ class ListAllOrder extends AdminComponent
             'تخفیف',
             'مالیات',
             'هزینه ارسال',
-            'مبلغ پرداخت شده',
+            'مبلغ پرداختی ',
             'تاریخ ایجاد',
+            'عملیات',
         ];
         $orders = Order::paginate($this->perPage);
 

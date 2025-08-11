@@ -104,3 +104,15 @@ function showIcon(string $toolTipTitle = ''): string
 {
     return '<i id="bx-show" class="bx bx-show" data-toggle="tooltip" data-placement="top" title="' . $toolTipTitle . '"></i>';
 }
+
+
+function listIcon(string $toolTipTitle = ''): string
+{
+    return '<i id="bx-list-ul" class="bx bx-list-ul" data-toggle="tooltip" data-placement="top" title="' . $toolTipTitle . '"></i>';
+}
+
+
+function locationIcon(string $toolTipTitle = ''): string
+{
+    return '<i id="bx-map" class="bx bx-map" data-toggle="tooltip" data-placement="top" title="' . $toolTipTitle . '"></i>';
+}

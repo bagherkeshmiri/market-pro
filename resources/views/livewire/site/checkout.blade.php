@@ -33,10 +33,14 @@
                 </div>
             </div>
             <div class="row">
+
+                @include('custom-components.site.flash-message')
+
                 <div class="col-lg-6 col-md-12">
+
                     <div class="checkout-left">
                         <h3 class="form-header">جزئیات صورتحساب</h3>
-                        <form wire:submit.prevent>
+                        <form>
                             <div class="checkout-form-wrap">
 
                                 @if(!$this->userAddresses->isEmpty())
@@ -45,12 +49,16 @@
                                             <div class="form-item">
                                                 <label for="savedAddress" class="form-title">آدرس‌ های من</label>
                                                 <select id="savedAddress" class="form-control"
-                                                        wire:model="selectedAddressId"
-                                                        wire:select="fillAddressFromSaved">
-                                                    @foreach($userAddresses as $id => $address)
-                                                        <option value="{{ $id }}">{{ $address['label'] }}</option>
+                                                        wire:model.defer="selectedAddressId"
+                                                        wire:change="fillAddressFromSaved">
+                                                    @if(empty($selectedAddressId))
+                                                        <option value="">انتخاب آدرس</option>
+                                                    @endif
+                                                    @foreach($userAddresses as $userAddress)
+                                                        <option
+                                                            value="{{ $userAddress->id }}">{{ $userAddress->full_address }}
+                                                        </option>
                                                     @endforeach
-
                                                 </select>
                                             </div>
                                         </div>
@@ -94,19 +102,23 @@
 
                                 <div class="form-group row">
                                     <div class="col-md-6">
+
                                         <div class="form-item">
                                             <label for="province" class="form-title">استان</label>
                                             @include('custom-components.site.required-tag')
                                             <select id="province" class="form-control"
-                                                    wire:model="selectedProvince">
-                                                <option value="">انتخاب کنید</option>
+                                                    wire:model.defer="selectedProvince"
+                                                    wire:change="provinceSelected($event.target.value)">
+                                                @if(empty($selectedProvince) && empty($selectedAddressId))
+                                                    <option>انتخاب کنید</option>
+                                                @endif
                                                 @foreach($provinces as $id => $name)
                                                     <option value="{{ $id }}">
                                                         {{ $name }}
                                                     </option>
                                                 @endforeach
                                             </select>
-
+                                            @include('frest-components.validation-error',[ 'name' => 'selectedProvince' ])
                                         </div>
                                     </div>
 
@@ -114,17 +126,19 @@
                                         <div class="form-item">
                                             <label for="city" class="form-title">شهر</label>
                                             @include('custom-components.site.required-tag')
-                                            <select id="city" class="form-control" wire:model="selectedCity">
-                                                <option value=" ">ابتدا استان انتخاب شود</option>
+                                            <select id="city" class="form-control"
+                                                    wire:model="selectedCity"
+                                                    wire:key="city-select-{{ $selectedProvince }}"
+                                            >
                                                 @if($cities && count($cities) > 0)
                                                     @foreach($cities as $id => $name)
-                                                        <option value="{{ $id }}">{{ $name }}</option>
+                                                        <option value="{{ (int) $id }}">{{ $name }}</option>
                                                     @endforeach
                                                 @else
-                                                    <option value="">ابتدا استان را انتخاب کنید</option>
+                                                    <option value="">ابتدا استان انتخاب شود</option>
                                                 @endif
                                             </select>
-
+                                            @include('frest-components.validation-error',[ 'name' => 'selectedCity' ])
                                         </div>
                                     </div>
 
@@ -133,7 +147,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="form-item">
-                                            <label for="address" class="form-title"> آدرس</label>
+                                            <label for="address" class="form-title"> آدرس پستی</label>
                                             @include('custom-components.site.required-tag')
                                             <input type="email" wire:model.defer="address" id="address"
                                                    class="form-control" required>
@@ -153,17 +167,6 @@
                                         </div>
                                     </div>
 
-
-                                    <div class="col-md-6">
-                                        <div class="form-item">
-                                            <label for="phone" class="form-title"> تلفن</label>
-                                            @include('custom-components.site.required-tag')
-                                            <input type="number" id="phone" wire:model.defer="phone" name="phone"
-                                                   class="form-control" required>
-                                            @include('frest-components.validation-error',[ 'name' => 'phone' ])
-                                        </div>
-                                    </div>
-
                                 </div>
 
                                 <div class="form-group row">
@@ -175,7 +178,6 @@
                                                       class="form-control address">
                                             </textarea>
                                             @include('frest-components.validation-error',[ 'name' => 'orderMessage' ])
-
                                         </div>
                                     </div>
                                 </div>
@@ -198,7 +200,6 @@
                                     </div>
                                 </div>
 
-
                                 @forelse($cart as $key => $value)
                                     <div class="order-item">
                                         <div class="order-left">
@@ -207,7 +208,6 @@
                                         </div>
                                         <div class="order-right">
                                             <div class="content">
-                                                <span class="category">هدفون</span>
                                                 <h4 class="title">{{ $value['name'] }}</h4>
                                             </div>
                                             <span class="price" style="color: black;">{{ number_format($value['unit_price']) }}  تومان</span>
@@ -271,8 +271,8 @@
                             </div>
                             <div class="payment-option-wrap">
                                 <button wire:click="pay" wire:loading.attr="disabled" class="rr-primary-btn order-btn">
-                                    <span wire:loading.remove>پرداخت</span>
-                                    <span wire:loading>  در حال انتقال به درگاه پرداخت </span>
+                                    <span wire:loading.remove wire:target="pay">پرداخت</span>
+                                    <span wire:loading wire:target="pay">  در حال انتقال به درگاه پرداخت </span>
                                 </button>
 
                             </div>

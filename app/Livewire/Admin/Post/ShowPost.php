@@ -80,7 +80,7 @@ class ShowPost extends AdminComponent
         ]);
 
         $data = [
-            'user_id' => auth()->user()->id,
+            'user_id' => auth('admin')->user()->id,
             'category_id' => $this->categoryId,
             'title' => $this->title,
             'slug' => $this->slug,

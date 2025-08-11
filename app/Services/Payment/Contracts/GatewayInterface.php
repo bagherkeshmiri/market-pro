@@ -10,7 +10,7 @@ interface GatewayInterface
         string $orderNumber,
         string $mobile,
         string $email,
-    ): array;
+    );
 
-    public function verify(array $params): array;
+    public function verify(array $params);
 }

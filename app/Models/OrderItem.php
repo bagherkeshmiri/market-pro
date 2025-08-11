@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Enums\OrderStatus;
+use App\Traits\HasDefaultOrdering;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 /**
  *
@@ -21,7 +22,6 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property OrderStatus $status
- * @property-read string $jalali_created_at
  * @property-read Order|null $order
  * @property-read Product|null $product
  * @method static Builder<static>|OrderItem newModelQuery()
@@ -39,6 +39,9 @@ use Morilog\Jalali\Jalalian;
  */
 class OrderItem extends Eloquent
 {
+    use HasJalaliTimestamps;
+    use HasDefaultOrdering;
+
     public const string TABLE_NAME = 'order_items';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -59,18 +62,6 @@ class OrderItem extends Eloquent
         'status' => OrderStatus::class,
     ];
 
-    protected static function booted(): void
-    {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-    }
-
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
     /*------------ Relations ------------*/
 
     public function order(): BelongsTo
@@ -82,6 +73,8 @@ class OrderItem extends Eloquent
     {
         return $this->belongsTo(Product::class, self::COLUMN_PRODUCT_ID, Product::COLUMN_ID);
     }
+
+    /*-------------- Accessors & Mutators -------------*/
 
     /*-------------- Scopes -------------*/
 

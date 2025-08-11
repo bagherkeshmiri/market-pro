@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\HasDefaultOrdering;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 
 /**
@@ -19,6 +20,8 @@ use Morilog\Jalali\Jalalian;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
+ * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @property-read Collection<int, Role> $roles
  * @property-read int|null $roles_count
  * @method static Builder<static>|Permission newModelQuery()
@@ -34,6 +37,9 @@ use Morilog\Jalali\Jalalian;
  */
 class Permission extends Eloquent
 {
+    use HasJalaliTimestamps;
+    use HasDefaultOrdering;
+
     public const string TABLE_NAME = 'permissions';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
@@ -47,24 +53,14 @@ class Permission extends Eloquent
 
     protected $casts = [];
 
-    protected static function booted(): void
-    {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
-    }
-
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
-
     /*------------ Relations ------------*/
 
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class, 'role_permission');
     }
+
+    /*-------------- Accessors & Mutators -------------*/
 
     /*-------------- Scopes -------------*/
 

@@ -3,15 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\City;
-use File;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Database\Seeder;
 
 class CitySeeder extends Seeder
 {
-    /**
-     * @throws FileNotFoundException
-     */
     public function run(): void
     {
         $json = file_get_contents(database_path('data/cities.json'));

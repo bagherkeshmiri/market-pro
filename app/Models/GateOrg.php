@@ -4,13 +4,14 @@
 namespace App\Models;
 
 use App\Enums\IsActive;
+use App\Traits\HasDefaultOrdering;
+use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
-use Morilog\Jalali\Jalalian;
 
 /**
  *
@@ -30,6 +31,7 @@ use Morilog\Jalali\Jalalian;
  * @property-read string $is_default_badge_class
  * @property-read string $is_default_label
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @method static Builder<static>|GateOrg isActive()
  * @method static Builder<static>|GateOrg isDefault()
  * @method static Builder<static>|GateOrg isNotActive()
@@ -54,6 +56,8 @@ use Morilog\Jalali\Jalalian;
 class GateOrg extends Authenticatable
 {
     use SoftDeletes;
+    use HasJalaliTimestamps;
+    use HasDefaultOrdering;
 
     public const string TABLE_NAME = 'gates_org';
     protected $table = self::TABLE_NAME;
@@ -75,17 +79,14 @@ class GateOrg extends Authenticatable
         'is_default' => IsActive::class,
     ];
 
-    protected static function booted(): void
+    /*------------ Relations ------------*/
+
+    public function gate(): BelongsTo
     {
-        static::addGlobalScope('orderByIdDesc', function (Builder $builder) {
-            $builder->orderByDesc('id');
-        });
+        return $this->belongsTo(Gate::class, self::COLUMN_GATE_ID, Gate::COLUMN_ID);
     }
 
-    public function getJalaliCreatedAtAttribute(): string
-    {
-        return Jalalian::fromCarbon($this->created_at)->format('Y/m/d H:i:s');
-    }
+    /*-------------- Accessors & Mutators -------------*/
 
     public function getIsActiveLabelAttribute(): string
     {
@@ -106,13 +107,6 @@ class GateOrg extends Authenticatable
     public function getIsDefaultBadgeClassAttribute(): string
     {
         return $this->is_default->badgeClass();
-    }
-
-    /*------------ Relations ------------*/
-
-    public function gate(): BelongsTo
-    {
-        return $this->belongsTo(Gate::class, self::COLUMN_GATE_ID, Gate::COLUMN_ID);
     }
 
     /*-------------- Scopes -------------*/

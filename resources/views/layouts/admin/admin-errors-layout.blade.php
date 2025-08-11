@@ -8,12 +8,19 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frest/images/ico/favicon.ico') }} ">
     <meta name="theme-color" content="#5A8DEE">
 
-    @vite(['resources/css/admin-panel-app.css', 'resources/js/admin-panel-app.js'])
+    <link rel="stylesheet" href="{{ asset('css/frest/vendors/vendors.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/bootstrap-extended.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/colors.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/themes/dark-layout.css') }}">
+
 </head>
 
-<body class="horizontal-layout horizontal-menu navbar-static dark-layout 1-column   footer-static   blank-page blank-page"
-      data-open="hover" data-menu="horizontal-menu" data-col="1-column" data-layout="dark-layout"
-        style="background: url({{ asset('images/frest/auth-bg.jpg') }}) no-repeat center center;
+<body
+    class="horizontal-layout horizontal-menu navbar-static dark-layout 1-column   footer-static   blank-page blank-page"
+    data-open="hover" data-menu="horizontal-menu" data-col="1-column" data-layout="dark-layout"
+    style="background: url({{ asset('images/frest/auth-bg.jpg') }}) no-repeat center center;
 	background-size: cover;">
 @yield('contents')
 

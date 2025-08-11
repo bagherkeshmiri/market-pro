@@ -11,11 +11,11 @@ class ZarinpalGateway implements GatewayInterface
     protected mixed $merchantId;
     protected string $endpointUrl;
 
-    public function __construct(array $config)
+    public function __construct()
     {
         $isLocal = app()->isLocal();
 
-        $this->merchantId = $isLocal ? (string)Str::uuid() : $config['app_key'];
+        $this->merchantId = $isLocal ? (string)Str::uuid() : config('payment.zarinpal_token');
         $this->endpointUrl = $isLocal
             ? 'https://sandbox.zarinpal.com/pg/v4/payment/request.json'
             : 'https://payment.zarinpal.com/pg/v4/payment/request.json';
@@ -28,7 +28,6 @@ class ZarinpalGateway implements GatewayInterface
         string $mobile,
         string $email,
     ): array {
-
         $response = Http::post($this->endpointUrl, [
             'merchant_id' => $this->merchantId,
             'amount' => $amount,
@@ -36,7 +35,7 @@ class ZarinpalGateway implements GatewayInterface
             'callback_url' => $callbackUrl,
             'description' => "order #$orderNumber",
             'metadata' => [
-                'mobile' => $mobile,
+                'mobile' => empty($mobile) ? '09150000000' : $mobile,
                 'email' => $email,
                 'order_id' => $orderNumber,
             ],

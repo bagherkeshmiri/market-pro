@@ -1,32 +1,14 @@
-@import './frest/ck-editor.css';
-@import './frest/vendors/vendors.min.css';
-@import './frest/vendors/extensions/dragula.min.css';
-@import './frest/vendors/ui/prism.min.css';
-@import './frest/bootstrap.min.css';
-@import './frest/bootstrap-extended.css';
-@import './frest/colors.css';
-@import './frest/components.css';
-@import './frest/themes/dark-layout.css';
-@import './frest/themes/semi-dark-layout.css';
-@import './frest/themes/semi-dark-layout.css';
-/*@import './frest/core/menu/menu-types/horizontal-menu.css';*/
-@import './frest/core/menu/menu-types/vertical-menu.css';
-@import './frest/plugins/extensions/drag-and-drop.css';
-@import './frest/pages/authentication.css';
-@import './frest/pages/page-user-profile.css';
-@import './frest/pages/widgets.css';
-@import './frest/global.css';
-@import './frest/vendors/extensions/sweetalert2.min.css';
-@import './frest/vendors/extensions/toastr.css';
-@import './frest/plugins/extensions/toastr.css';
+.font-13 {
+    font-size: 13px !important;
+}
 
 @font-face {
     font-family: "primary-font";
-    src: url("../fonts/iran-sans-300.eot");
-    src: url("../fonts/iran-sans-300.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/iran-sans-300.woff2") format("woff2"),
-    url("../fonts/iran-sans-300.woff") format("woff"),
-    url("../fonts/iran-sans-300.ttf") format("truetype");
+    src: url("/fonts/iran-sans-300.eot");
+    src: url("/fonts/iran-sans-300.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/iran-sans-300.woff2") format("woff2"),
+    url("/fonts/iran-sans-300.woff") format("woff"),
+    url("/fonts/iran-sans-300.ttf") format("truetype");
     font-weight: 300;
 }
 
@@ -39,12 +21,12 @@
     font-family: boxicons;
     font-weight: 400;
     font-style: normal;
-    src: url(../fonts/boxicons.eot);
-    src: url(../fonts/boxicons.eot) format('embedded-opentype'),
-    url(../fonts/boxicons.woff2) format('woff2'),
-    url(../fonts/boxicons.woff) format('woff'),
-    url(../fonts/boxicons.ttf) format('truetype'),
-    url(../fonts/boxicons.svg?#boxicons) format('svg')
+    src: url(/fonts/boxicons.eot);
+    src: url(/fonts/boxicons.eot) format('embedded-opentype'),
+    url(/fonts/boxicons.woff2) format('woff2'),
+    url(/fonts/boxicons.woff) format('woff'),
+    url(/fonts/boxicons.ttf) format('truetype'),
+    url(/fonts/boxicons.svg?#boxicons) format('svg')
 }
 
 .bx {
@@ -4711,4 +4693,5 @@
 .bxs-zoom-in:before {
     content: "\ed29"
 }
+
 
