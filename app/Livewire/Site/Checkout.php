@@ -43,7 +43,6 @@ class Checkout extends SiteComponent
     public $selectedAddressId;
     public $createdUserAddress;
 
-
     public function mount(): RedirectResponse|Redirector|null
     {
         $this->cart = Session::get('cart', []);
@@ -87,10 +86,11 @@ class Checkout extends SiteComponent
         if (!is_null($selectedAddress)) {
             $this->selectedProvince = $selectedAddress->province_id;
             $this->cities = City::where('province_id', $selectedAddress->province_id)->pluck('name', 'id')->toArray();
-            $this->selectedCity = (int)$selectedAddress->city_id;
+            $this->selectedCity = (string)$selectedAddress->city_id;
             $this->address = $selectedAddress->address;
             $this->postalCode = $selectedAddress->postal_code;
         }
+
     }
 
     public function calculateCartTotal(): void
@@ -135,6 +135,7 @@ class Checkout extends SiteComponent
 
         DB::beginTransaction();
         try {
+
             $expiredOrderIds = $this->user->orders()
                 ->where('status', OrderStatus::Pending)
                 ->pluck('id')

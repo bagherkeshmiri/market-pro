@@ -126,7 +126,10 @@
                                         <div class="form-item">
                                             <label for="city" class="form-title">شهر</label>
                                             @include('custom-components.site.required-tag')
-                                            <select id="city" class="form-control" wire:model="selectedCity">
+                                            <select id="city" class="form-control"
+                                                    wire:model="selectedCity"
+                                                    wire:key="city-select-{{ $selectedProvince }}"
+                                            >
                                                 @if($cities && count($cities) > 0)
                                                     @foreach($cities as $id => $name)
                                                         <option value="{{ (int) $id }}">{{ $name }}</option>
@@ -197,7 +200,6 @@
                                     </div>
                                 </div>
 
-
                                 @forelse($cart as $key => $value)
                                     <div class="order-item">
                                         <div class="order-left">
@@ -206,7 +208,6 @@
                                         </div>
                                         <div class="order-right">
                                             <div class="content">
-                                                <span class="category">هدفون</span>
                                                 <h4 class="title">{{ $value['name'] }}</h4>
                                             </div>
                                             <span class="price" style="color: black;">{{ number_format($value['unit_price']) }}  تومان</span>
