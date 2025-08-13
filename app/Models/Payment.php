@@ -31,7 +31,6 @@ use Str;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Gate|null $gate
- * @property-read GateOrg|null $gateOrg
  * @property-read string $jalali_created_at
  * @property-read string|null $jalali_paid_at
  * @property-read string $jalali_updated_at
@@ -47,7 +46,6 @@ use Str;
  * @method static Builder<static>|Payment whereCreatedAt($value)
  * @method static Builder<static>|Payment whereExpireTime($value)
  * @method static Builder<static>|Payment whereGateId($value)
- * @method static Builder<static>|Payment whereGateOrgId($value)
  * @method static Builder<static>|Payment whereId($value)
  * @method static Builder<static>|Payment whereOrderId($value)
  * @method static Builder<static>|Payment wherePaidAt($value)
@@ -69,13 +67,11 @@ class Payment extends Authenticatable
     public const string COLUMN_USER_ID = 'user_id';
     public const string COLUMN_ORDER_ID = 'order_id';
     public const string COLUMN_GATE_ID = 'gate_id';
-    public const string COLUMN_GATE_ORG_ID = 'gate_org_id';
 
     protected $fillable = [
         'user_id',
         'order_id',
         'gate_id',
-        'gate_org_id',
         'payment_number',
         'status',
         'amount',
@@ -116,11 +112,6 @@ class Payment extends Authenticatable
     public function gate(): BelongsTo
     {
         return $this->belongsTo(Gate::class, self::COLUMN_GATE_ID, Gate::COLUMN_ID);
-    }
-
-    public function gateOrg(): BelongsTo
-    {
-        return $this->belongsTo(GateOrg::class, self::COLUMN_GATE_ORG_ID, GateOrg::COLUMN_ID);
     }
 
     public function user(): BelongsTo

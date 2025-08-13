@@ -24,9 +24,6 @@ use App\Livewire\Admin\Faq\ShowFaq;
 use App\Livewire\Admin\Gateway\CreateGateway;
 use App\Livewire\Admin\Gateway\ListGateway;
 use App\Livewire\Admin\Gateway\ShowGateway;
-use App\Livewire\Admin\GatewayOrg\CreateGatewayOrg;
-use App\Livewire\Admin\GatewayOrg\ListGatewayOrg;
-use App\Livewire\Admin\GatewayOrg\ShowGatewayOrg;
 use App\Livewire\Admin\Order\ListAllOrder;
 use App\Livewire\Admin\Order\ListTodayOrder;
 use App\Livewire\Admin\Payment\ListAllPayment;
@@ -165,15 +162,6 @@ Route::prefix('dashboard')
                 Route::get('/create', CreateGateway::class)->name('create');
                 Route::get('/show/{gate}', ShowGateway::class)->name('show');
             });
-
-
-//        Route::name('gateway-org.')
-//            ->prefix('gateway_org')
-//            ->group(function () {
-//                Route::get('/', ListGatewayOrg::class)->name('index');
-//                Route::get('/create', CreateGatewayOrg::class)->name('create');
-//                Route::get('/show/{gateOrg}', ShowGatewayOrg::class)->name('show');
-//            });
 
 
         Route::name('order.')

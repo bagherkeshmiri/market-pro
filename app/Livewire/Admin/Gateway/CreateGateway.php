@@ -5,7 +5,6 @@ namespace App\Livewire\Admin\Gateway;
 use App\Enums\IsActive;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Gate;
-use App\Models\GateOrg;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
