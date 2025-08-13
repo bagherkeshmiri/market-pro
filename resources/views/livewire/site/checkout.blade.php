@@ -10,6 +10,13 @@
             -moz-appearance: textfield;
             appearance: textfield;
         }
+
+        .no-wrap-text {
+            white-space: nowrap; /* متن در یک خط نمایش داده شود */
+            overflow: hidden; /* متن اضافی مخفی شود */
+            text-overflow: ellipsis; /* نمایش ... در انتهای متن در صورت طول زیاد */
+        }
+
     </style>
 
 @endsection
@@ -33,8 +40,6 @@
                 </div>
             </div>
             <div class="row">
-
-                @include('custom-components.site.flash-message')
 
                 <div class="col-lg-6 col-md-12">
 
@@ -287,19 +292,22 @@
 
 @section('scripts')
 
-
     <script>
         window.addEventListener('error', event => {
             Swal.fire({
                 toast: true,
                 position: 'top',
                 showConfirmButton: false,
+                width: '650px',
                 timer: 10000,
                 background: '#E53E3E',
                 color: '#FBB6B6',
                 title: `${event.detail.content}`,
-                customClass: {title: 'swal2-title-rtl'},
+                customClass: {
+                    title: 'swal2-title-rtl no-wrap-text'
+                },
                 timerProgressBar: true,
+
             });
         });
 

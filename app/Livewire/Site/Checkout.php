@@ -123,12 +123,10 @@ class Checkout extends SiteComponent
     public function pay(): void
     {
         if (is_null($this->gate)) {
-//            session()->flash('error', 'امکان پرداخت از طریق درگاه وجود ندارد. لطفا بعدا دوباره تلاش کنید.');
-//            return;
-
-            $this->js("window.dispatchEvent(new CustomEvent('error', { detail: { content: 'امکان پرداخت از طریق درگاه وجود ندارد. لطفا بعدا دوباره تلاش کنید' } }));");
+            $this->js(
+                "window.dispatchEvent(new CustomEvent('error', { detail: { content: 'امکان پرداخت از طریق درگاه وجود ندارد. لطفا بعدا دوباره تلاش کنید' } }));"
+            );
             return;
-
         }
 
         $this->validate([
