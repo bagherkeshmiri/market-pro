@@ -5,7 +5,7 @@ namespace App\Livewire\Site;
 use App\Enums\OrderStatus;
 use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\City;
-use App\Models\GateOrg;
+use App\Models\Gate;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Payment;
@@ -28,7 +28,7 @@ class Checkout extends SiteComponent
     public $shipping = 20000;
     public $discount = 50000;
     public $freeShipping = 2000000;
-    public $gateOrg;
+    public $gate;
     public $user;
     public $email;
     public $fullName;
@@ -62,7 +62,7 @@ class Checkout extends SiteComponent
 
         $this->provinces = Province::orderBy('id')->pluck('name', 'id')->toArray();
 
-        $this->gateOrg = GateOrg::withoutTrashed()->isActive()->isDefault()->first();
+        $this->gate = Gate::withoutTrashed()->isActive()->isDefault()->first();
 
         $this->userAddresses = $this->user->addresses;
 
@@ -90,7 +90,6 @@ class Checkout extends SiteComponent
             $this->address = $selectedAddress->address;
             $this->postalCode = $selectedAddress->postal_code;
         }
-
     }
 
     public function calculateCartTotal(): void
@@ -123,6 +122,15 @@ class Checkout extends SiteComponent
      */
     public function pay(): void
     {
+        if (is_null($this->gate)) {
+//            session()->flash('error', 'امکان پرداخت از طریق درگاه وجود ندارد. لطفا بعدا دوباره تلاش کنید.');
+//            return;
+
+            $this->js("window.dispatchEvent(new CustomEvent('error', { detail: { content: 'امکان پرداخت از طریق درگاه وجود ندارد. لطفا بعدا دوباره تلاش کنید' } }));");
+            return;
+
+        }
+
         $this->validate([
             'email' => 'required|email|unique:users,email,' . $this->user->id,
             'fullName' => 'required|string|max:100',
@@ -135,7 +143,6 @@ class Checkout extends SiteComponent
 
         DB::beginTransaction();
         try {
-
             $expiredOrderIds = $this->user->orders()
                 ->where('status', OrderStatus::Pending)
                 ->pluck('id')
@@ -169,8 +176,7 @@ class Checkout extends SiteComponent
 
             $payment = $order->payments()->create([
                 'user_id' => auth('web')->id(),
-                'gate_id' => $this->gateOrg->gate_id,
-                'gate_org_id' => $this->gateOrg->id,
+                'gate_id' => $this->gate->id,
                 'amount' => $this->totalPayable,
             ]);
 

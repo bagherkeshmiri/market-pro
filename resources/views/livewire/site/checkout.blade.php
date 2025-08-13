@@ -286,6 +286,24 @@
 
 
 @section('scripts')
+
+
+    <script>
+        window.addEventListener('error', event => {
+            Swal.fire({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 10000,
+                background: '#E53E3E',
+                color: '#FBB6B6',
+                title: `${event.detail.content}`,
+                customClass: {title: 'swal2-title-rtl'},
+                timerProgressBar: true,
+            });
+        });
+
+    </script>
 @endsection
 
 
