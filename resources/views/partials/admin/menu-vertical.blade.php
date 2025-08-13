@@ -216,66 +216,22 @@
             </li>
             <li class=" nav-item">
                 <a href="#">
-                    <i class="bx bxs-bank text-white"></i>
-                    <span class="menu-title text-white" data-i18n="roles">درگاه ها</span>
+                    <i class="bx  bxs-bank text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles"> درگاه ها</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
-                        <a href="#">
+                    <li><a href="{{ route('admin.gateway.create') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item text-white" data-i18n="Second Level">
-                                 مدیریت درگاه
-                            </span>
+                            <span class="menu-item  text-white" data-i18n="create-role">  ایجاد درگاه</span>
                         </a>
-                        <ul class="menu-content">
-                            <li>
-                                <a href="{{ route('admin.gateway.create') }}">
-                                    <i class="bx bx-left-arrow-alt text-white"></i>
-                                    <span class="menu-item text-white" data-i18n="Third Level">
-                                        ایجاد درگاه
-                                    </span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="{{ route('admin.gateway.index') }}">
-                                    <i class="bx bx-left-arrow-alt text-white"></i>
-                                    <span class="menu-item text-white" data-i18n="Third Level">
-                                         لیست درگاه ها
-                                    </span>
-                                </a>
-                            </li>
-
-                        </ul>
                     </li>
-                    <li>
-                        <a href="#">
+
+                    <li><a href="{{ route('admin.gateway.index') }}">
                             <i class="bx bx-left-arrow-alt text-white"></i>
-                            <span class="menu-item text-white" data-i18n="Second Level">
-                                تنظیمات درگاه
-                            </span>
+                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست درگاه ها </span>
                         </a>
-                        <ul class="menu-content">
-                            <li>
-                                <a href="{{ route('admin.gateway-org.create') }}">
-                                    <i class="bx bx-left-arrow-alt text-white"></i>
-                                    <span class="menu-item text-white" data-i18n="Third Level">
-                                        ایجاد تنظیمات درگاه
-                                    </span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="{{ route('admin.gateway-org.index') }}">
-                                    <i class="bx bx-left-arrow-alt text-white"></i>
-                                    <span class="menu-item text-white" data-i18n="Third Level">
-                                         لیست تنظیمات درگاه
-                                    </span>
-                                </a>
-                            </li>
-
-                        </ul>
                     </li>
+
                 </ul>
             </li>
             <li class=" nav-item">

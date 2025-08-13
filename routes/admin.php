@@ -167,13 +167,13 @@ Route::prefix('dashboard')
             });
 
 
-        Route::name('gateway-org.')
-            ->prefix('gateway_org')
-            ->group(function () {
-                Route::get('/', ListGatewayOrg::class)->name('index');
-                Route::get('/create', CreateGatewayOrg::class)->name('create');
-                Route::get('/show/{gateOrg}', ShowGatewayOrg::class)->name('show');
-            });
+//        Route::name('gateway-org.')
+//            ->prefix('gateway_org')
+//            ->group(function () {
+//                Route::get('/', ListGatewayOrg::class)->name('index');
+//                Route::get('/create', CreateGatewayOrg::class)->name('create');
+//                Route::get('/show/{gateOrg}', ShowGatewayOrg::class)->name('show');
+//            });
 
 
         Route::name('order.')

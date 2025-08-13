@@ -57,23 +57,24 @@ Route::get('/run-test-job/1369', function () {
 });
 
 
-//Route::get('/create-new-table', function () {
-//    if (!Schema::hasTable('user_addresses')) {
-//        Schema::create('user_addresses', function (Blueprint $table) {
-//            $table->id();
-//            $table->unsignedBigInteger('user_id')->index();
-//            $table->unsignedBigInteger('province_id')->index();
-//            $table->unsignedBigInteger('city_id')->index();
-//            $table->text('address');
-//            $table->string('postal_code')->nullable();
-//            $table->timestamps();
-//        });
-//
-//        return 'user_addresses table created successfully.';
-//    } else {
-//        return 'user_addresses table already exists.';
-//    }
-//});
+Route::get('/create-new-table', function () {
+    if (!Schema::hasTable('gates')) {
+        Schema::create('gates', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');   // like zarinpal
+            $table->string('label'); // like زرین پال اول
+            $table->text('token')->nullable();
+            $table->tinyInteger('is_active')->default(0);
+            $table->tinyInteger('is_default')->default(0);
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        return 'gates table created successfully.';
+    } else {
+        return 'gates table already exists.';
+    }
+});
 
 
 //Route::get('test', action: function () {
