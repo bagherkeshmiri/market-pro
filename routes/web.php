@@ -56,25 +56,25 @@ Route::get('/run-test-job/1369', function () {
     TestJob::dispatch();
 });
 
-
-Route::get('/create-new-table', function () {
-    if (!Schema::hasTable('gates')) {
-        Schema::create('gates', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');   // like zarinpal
-            $table->string('label'); // like زرین پال اول
-            $table->text('token')->nullable();
-            $table->tinyInteger('is_active')->default(0);
-            $table->tinyInteger('is_default')->default(0);
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
-        return 'gates table created successfully.';
-    } else {
-        return 'gates table already exists.';
-    }
-});
+//
+//Route::get('/create-new-table', function () {
+//    if (!Schema::hasTable('gates')) {
+//        Schema::create('gates', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('name');   // like zarinpal
+//            $table->string('label'); // like زرین پال اول
+//            $table->text('token')->nullable();
+//            $table->tinyInteger('is_active')->default(0);
+//            $table->tinyInteger('is_default')->default(0);
+//            $table->timestamps();
+//            $table->softDeletes();
+//        });
+//
+//        return 'gates table created successfully.';
+//    } else {
+//        return 'gates table already exists.';
+//    }
+//});
 
 
 //Route::get('test', action: function () {
