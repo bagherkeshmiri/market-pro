@@ -43,24 +43,27 @@ Route::name('site.')
 //                    $gateway = Gate::find($payment->gate_id);
 //                }
 
-                $gateway = GatewayFactory::make();
+                if ($payment->status != \App\Enums\PaymentStatus::Success) {
+                    $gateway = GatewayFactory::make();
 
-                $response = $gateway->verify([
-                    'Authority' => $authority,
-                    'amount' => (int)$payment->amount,
-                ]);
-
-
-                if ($response['status']) {
-                    $payment->update([
-                        'ref_id' => $response['ref_id'],
-                        'status' => \App\Enums\PaymentStatus::Success,
-                        'paid_at' => \Carbon\Carbon::now(),
+                    $response = $gateway->verify([
+                        'Authority' => $authority,
+                        'amount' => (int)$payment->amount,
                     ]);
-                    $payment->order->update([
-                        'status' => \App\Enums\OrderStatus::Paid,
-                    ]);
+
+
+                    if ($response['status']) {
+                        $payment->update([
+                            'ref_id' => $response['ref_id'],
+                            'status' => \App\Enums\PaymentStatus::Success,
+                            'paid_at' => \Carbon\Carbon::now(),
+                        ]);
+                        $payment->order->update([
+                            'status' => \App\Enums\OrderStatus::Paid,
+                        ]);
+                    }
                 }
+
             } else {
                 dd('لغو پرداخت');
             }
