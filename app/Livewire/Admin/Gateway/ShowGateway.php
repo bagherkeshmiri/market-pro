@@ -89,8 +89,8 @@ class ShowGateway extends AdminComponent
         ]);
 
         if ($this->violatesConstraints()) {
-            return redirect()->route('admin.gateway-org.show', [
-                'gateOrg' => $this->gateOrg->id,
+            return redirect()->route('admin.gateway.show', [
+                'gate' => $this->gate->id,
             ]);
         }
 
@@ -134,10 +134,10 @@ class ShowGateway extends AdminComponent
     private function violatesConstraints(): bool
     {
         if ($this->isDefault === IsActive::No &&
-            !GateOrg::withoutTrashed()
+            !Gate::withoutTrashed()
                 ->isActive()
                 ->isDefault()
-                ->where('id', '!=', $this->gateOrg->id)
+                ->where('id', '!=', $this->gate->id)
                 ->exists()
         ) {
             session()->flash('error', 'حداقل یک درگاه پیش‌فرض باید موجود باشد');
@@ -145,9 +145,9 @@ class ShowGateway extends AdminComponent
         }
 
         if ($this->isActive === IsActive::No &&
-            !GateOrg::withoutTrashed()
+            !Gate::withoutTrashed()
                 ->isActive()
-                ->where('id', '!=', $this->gateOrg->id)
+                ->where('id', '!=', $this->gate->id)
                 ->exists()
         ) {
             session()->flash('error', 'حداقل یک درگاه فعال باید موجود باشد');

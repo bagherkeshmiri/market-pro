@@ -12,9 +12,10 @@
         }
 
         .no-wrap-text {
-            white-space: nowrap; /* متن در یک خط نمایش داده شود */
-            overflow: hidden; /* متن اضافی مخفی شود */
-            text-overflow: ellipsis; /* نمایش ... در انتهای متن در صورت طول زیاد */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            direction: rtl;
         }
 
     </style>
@@ -301,7 +302,7 @@
                 width: '650px',
                 timer: 10000,
                 background: '#E53E3E',
-                color: '#FBB6B6',
+                color: '#FFF',
                 title: `${event.detail.content}`,
                 customClass: {
                     title: 'swal2-title-rtl no-wrap-text'

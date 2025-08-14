@@ -32,6 +32,13 @@
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $gateway->is_active_badge_class,  'content' => $gateway->is_active_label ])
                                                     </td>
+                                                    <td>
+                                                        @if($gateway->is_default->value)
+                                                            <i class="bx bx-check-circle text-success"></i>
+                                                        @else
+                                                            <i class="bx bx-x-circle text-danger"></i>
+                                                        @endif
+                                                    </td>
                                                     <td class="text-white">{{ $gateway->jalali_created_at }}</td>
                                                     <td>
                                                         @include('frest-components.icon-btn',[  'href' => route('admin.gateway.show',[ 'gate' => $gateway->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
