@@ -1,7 +1,5 @@
 <?php
 
-use App\Enums\CollectionType;
-use App\Enums\OrderStatus;
 use App\Http\Controllers\site\AuthController;
 use App\Jobs\TestJob;
 use App\Livewire\Site\Blog;
@@ -16,14 +14,10 @@ use App\Livewire\Site\Register;
 use App\Livewire\Site\SinglePost;
 use App\Livewire\Site\SingleProduct;
 use App\Livewire\Site\Wishlist;
-use App\Models\GateOrg;
-use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\Payment;
-use Illuminate\Database\Schema\Blueprint;
+use App\Services\Payment\GatewayFactory;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;
-
+use Illuminate\Http\Request;
 
 Route::name('site.')
     ->group(function () {
@@ -39,6 +33,37 @@ Route::name('site.')
         Route::get('/wishlist', Wishlist::class)->name('wishlist');
         Route::get('/blog/{post}', SinglePost::class)->name('single-post');
         Route::middleware('auth:web')->get('/checkout', Checkout::class)->name('checkout');
+        Route::get('/payment/callback', function (Request $request) {
+            $status = $request->input('Status');
+            $authority = $request->input('Authority');
+
+            if ($status == 'OK') {
+                $payment = Payment::whereAuthority($authority)->first();
+//                if (!is_null($payment)) {
+//                    $gateway = Gate::find($payment->gate_id);
+//                }
+
+                $gateway = GatewayFactory::make();
+
+                $response = $gateway->verify([
+                    'Authority' => $authority,
+                    'amount' => (int)$payment->amount,
+                ]);
+
+
+                if ($response['status']) {
+                    $payment->update([
+                        'ref_id' => $response['ref_id'],
+                        'status' => \App\Enums\PaymentStatus::Success,
+                    ]);
+                    $payment->order->update([
+                        'status' => \App\Enums\OrderStatus::Paid,
+                    ]);
+                }
+            } else {
+                dd('لغو پرداخت');
+            }
+        });
     });
 
 
@@ -52,9 +77,9 @@ Route::prefix('auth')
     });
 
 
-Route::get('/run-test-job/1369', function () {
-    TestJob::dispatch();
-});
+//Route::get('/run-test-job/1369', function () {
+//    TestJob::dispatch();
+//});
 
 //
 //Route::get('/create-new-table', function () {
@@ -77,13 +102,17 @@ Route::get('/run-test-job/1369', function () {
 //});
 
 
-//Route::get('test', action: function () {
+Route::get('test', action: function () {
 //    Session::forget('cart');
 //    Session::forget('cart_summary');
-
+//
 //    Session::forget('wishlist');
 //
 //    dd(
 //        Session::get('wishlist')
 //    );
-//});
+
+//    dd(
+//        config('payment.local_payment_callback') . '/payment/verify'
+//    );
+});

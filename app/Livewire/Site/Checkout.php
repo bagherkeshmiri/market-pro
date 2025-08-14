@@ -146,13 +146,11 @@ class Checkout extends SiteComponent
                 ->pluck('id')
                 ->toArray();
 
-
             if (!empty($expiredOrderIds)) {
                 OrderItem::whereIn('order_id', $expiredOrderIds)->delete();
                 Payment::whereIn('order_id', $expiredOrderIds)->delete();
                 Order::whereIn('id', $expiredOrderIds)->delete();
             }
-
 
             $order = $this->user->orders()->create([
                 'subtotal' => $this->cartTotal,
@@ -207,7 +205,7 @@ class Checkout extends SiteComponent
 
             $result = $gateway->request(
                 $this->totalPayable,
-                'https://83ece52cbdd5.ngrok-free.app/verify',
+                config('payment.local_payment_callback') . '/payment/callback',
                 $order->order_number,
                 $this->user->mobile ?? '',
                 $this->user->email ?? '',

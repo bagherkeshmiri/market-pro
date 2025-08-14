@@ -2,7 +2,7 @@
 
 namespace App\Services\Payment;
 
-use App\Models\GateOrg;
+use App\Models\Gate;
 use App\Services\Payment\Contracts\GatewayInterface;
 use App\Services\Payment\Drivers\PayPingGateway;
 use App\Services\Payment\Drivers\ZarinpalGateway;
@@ -17,18 +17,17 @@ class GatewayFactory
      */
     public static function make(): GatewayInterface
     {
-        $gatewayOrg = GateOrg::withoutTrashed()
+        $gateway = Gate::withoutTrashed()
             ->isActive()
             ->isDefault()
-            ->with('gate')
             ->firstOrFail();
 
-        $name = Str::lower($gatewayOrg->gate->name);
+        $name = Str::lower($gateway->name);
 
         return match ($name) {
-            'zarinpal' => new ZarinpalGateway(),
-            'idpay' => new IdpayGateway(),
-            'payping' => new PayPingGateway(),
+            'zarinpal' => new ZarinpalGateway($gateway),
+//            'idpay' => new IdpayGateway($gateway),
+            'payping' => new PayPingGateway($gateway),
             default => throw new Exception('درگاه ناشناخته است'),
         };
     }
