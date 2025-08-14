@@ -55,6 +55,7 @@ Route::name('site.')
                     $payment->update([
                         'ref_id' => $response['ref_id'],
                         'status' => \App\Enums\PaymentStatus::Success,
+                        'paid_at' => \Carbon\Carbon::now(),
                     ]);
                     $payment->order->update([
                         'status' => \App\Enums\OrderStatus::Paid,

@@ -123,8 +123,14 @@ class Payment extends Authenticatable
 
     public function getJalaliPaidAtAttribute(): ?string
     {
-        if (!empty($this->paid_at) && $this->paid_at instanceof \Carbon\Carbon) {
-            return Jalalian::fromCarbon($this->paid_at)->format('Y/m/d H:i:s');
+        if (!empty($this->paid_at)) {
+            $paidAtCarbon = $this->paid_at instanceof Carbon
+                ? $this->paid_at
+                : Carbon::createFromTimestamp($this->paid_at);
+
+            $paidAtCarbon->setTimezone('Asia/Tehran');
+
+            return Jalalian::fromCarbon($paidAtCarbon)->format('Y/m/d H:i:s');
         }
         return null;
     }
