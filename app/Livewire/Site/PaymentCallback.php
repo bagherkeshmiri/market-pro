@@ -11,14 +11,16 @@ use App\Services\Payment\GatewayFactory;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use Log;
 
 class PaymentCallback extends SiteComponent
 {
     public string $paymentResultString;
-    private ?string $authority = null;
-    private ?string $status = null;
+    public ?string $authority = null;
+    public ?string $status = null;
+    public PaymentStatus $paymentStatus = PaymentStatus::UnSuccess;
 
     /**
      * @throws Exception
@@ -51,6 +53,7 @@ class PaymentCallback extends SiteComponent
 
         if ($payment->status === PaymentStatus::Success) {
             $this->paymentResultString = __('payment.processed');
+            $this->paymentStatus = PaymentStatus::Success;
             return;
         }
 
@@ -81,6 +84,10 @@ class PaymentCallback extends SiteComponent
             $this->paymentResultString = __('payment.success', [
                 'ref_id' => $response['ref_id'] ?? '-',
             ]);
+
+            $this->paymentStatus = PaymentStatus::Success;
+            Session::forget('cart');
+            Session::forget('cart_summary');
         } else {
             $this->paymentResultString = __('payment.bank_error');
         }
