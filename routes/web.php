@@ -71,7 +71,7 @@ Route::prefix('auth')
 //});
 
 
-Route::get('test', action: function () {
+//Route::get('test', function () {
 //    Session::forget('cart');
 //    Session::forget('cart_summary');
 //
@@ -84,4 +84,5 @@ Route::get('test', action: function () {
 //    dd(
 //        config('payment.local_payment_callback') . '/payment/verify'
 //    );
-});
+
+//});

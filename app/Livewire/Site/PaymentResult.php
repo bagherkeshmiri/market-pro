@@ -11,12 +11,14 @@ class PaymentResult extends SiteComponent
 {
     public PaymentStatus $paymentStatus;
     public string $paymentResultString;
+    public $cart = [];
 
     public function mount(): void
     {
         $data = Session::get('payment_data');
-        $this->paymentStatus = $data['status'];
-        $this->paymentResultString = $data['message'];
+
+        $this->paymentStatus = $data['status'] ?? PaymentStatus::UnSuccess;
+        $this->paymentResultString = $data['message'] ?? __('payment.technical_error');
     }
 
     public function render(): View

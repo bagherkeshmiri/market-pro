@@ -29,6 +29,7 @@ class PaymentCallback extends SiteComponent
      */
     public function mount(Request $request): RedirectResponse|Redirector
     {
+
         $this->status = $request->input('Status');
         $this->authority = $request->input('Authority');
 
@@ -40,12 +41,11 @@ class PaymentCallback extends SiteComponent
             $this->paymentResultString = __('payment.canceled');
         }
 
-        Session::put('payment_data', [
-            'status' => $this->paymentStatus,
-            'message' => $this->paymentResultString,
-        ]);
-
-        return redirect()->route('site.payment-result');
+        return redirect()->route('site.payment-result')
+            ->with('payment_data', [
+                'status' => $this->paymentStatus,
+                'message' => $this->paymentResultString,
+            ]);
     }
 
     /**
