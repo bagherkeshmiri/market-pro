@@ -9,6 +9,7 @@ use App\Livewire\Site\Contact;
 use App\Livewire\Site\Faq;
 use App\Livewire\Site\Index;
 use App\Livewire\Site\Login;
+use App\Livewire\Site\PaymentCallback;
 use App\Livewire\Site\Products;
 use App\Livewire\Site\Register;
 use App\Livewire\Site\SinglePost;
@@ -33,41 +34,7 @@ Route::name('site.')
         Route::get('/wishlist', Wishlist::class)->name('wishlist');
         Route::get('/blog/{post}', SinglePost::class)->name('single-post');
         Route::middleware('auth:web')->get('/checkout', Checkout::class)->name('checkout');
-        Route::get('/payment/callback', function (Request $request) {
-            $status = $request->input('Status');
-            $authority = $request->input('Authority');
-
-            if ($status == 'OK') {
-                $payment = Payment::whereAuthority($authority)->first();
-//                if (!is_null($payment)) {
-//                    $gateway = Gate::find($payment->gate_id);
-//                }
-
-                if ($payment->status != \App\Enums\PaymentStatus::Success) {
-                    $gateway = GatewayFactory::make();
-
-                    $response = $gateway->verify([
-                        'Authority' => $authority,
-                        'amount' => (int)$payment->amount,
-                    ]);
-
-
-                    if ($response['status']) {
-                        $payment->update([
-                            'ref_id' => $response['ref_id'],
-                            'status' => \App\Enums\PaymentStatus::Success,
-                            'paid_at' => \Carbon\Carbon::now(),
-                        ]);
-                        $payment->order->update([
-                            'status' => \App\Enums\OrderStatus::Paid,
-                        ]);
-                    }
-                }
-
-            } else {
-                dd('لغو پرداخت');
-            }
-        });
+        Route::get('/payment/callback', PaymentCallback::class)->name('payment-callback');
     });
 
 

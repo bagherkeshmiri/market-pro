@@ -201,7 +201,13 @@ class Checkout extends SiteComponent
                 ]);
             }
 
-            $gateway = GatewayFactory::make();
+            $gateway = Gate::withoutTrashed()
+                ->isActive()
+                ->isDefault()
+                ->firstOrFail();
+
+
+            $gateway = GatewayFactory::make($gateway);
 
             $result = $gateway->request(
                 $this->totalPayable,

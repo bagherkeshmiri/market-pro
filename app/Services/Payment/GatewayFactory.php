@@ -15,13 +15,8 @@ class GatewayFactory
     /**
      * @throws Exception
      */
-    public static function make(): GatewayInterface
+    public static function make(Gate $gateway): GatewayInterface
     {
-        $gateway = Gate::withoutTrashed()
-            ->isActive()
-            ->isDefault()
-            ->firstOrFail();
-
         $name = Str::lower($gateway->name);
 
         return match ($name) {
