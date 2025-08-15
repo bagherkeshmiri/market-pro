@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\site\AuthController;
-use App\Jobs\TestJob;
 use App\Livewire\Site\Blog;
 use App\Livewire\Site\Cart;
 use App\Livewire\Site\Checkout;
@@ -10,15 +9,13 @@ use App\Livewire\Site\Faq;
 use App\Livewire\Site\Index;
 use App\Livewire\Site\Login;
 use App\Livewire\Site\PaymentCallback;
+use App\Livewire\Site\PaymentResult;
 use App\Livewire\Site\Products;
 use App\Livewire\Site\Register;
 use App\Livewire\Site\SinglePost;
 use App\Livewire\Site\SingleProduct;
 use App\Livewire\Site\Wishlist;
-use App\Models\Payment;
-use App\Services\Payment\GatewayFactory;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 
 Route::name('site.')
     ->group(function () {
@@ -35,6 +32,7 @@ Route::name('site.')
         Route::get('/blog/{post}', SinglePost::class)->name('single-post');
         Route::middleware('auth:web')->get('/checkout', Checkout::class)->name('checkout');
         Route::get('/payment/callback', PaymentCallback::class)->name('payment-callback');
+        Route::get('/payment/result', PaymentResult::class)->name('payment-result');
     });
 
 

@@ -10,9 +10,11 @@ use App\Models\Payment;
 use App\Services\Payment\GatewayFactory;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
+use Livewire\Features\SupportRedirects\Redirector;
 use Log;
 
 class PaymentCallback extends SiteComponent
@@ -25,7 +27,7 @@ class PaymentCallback extends SiteComponent
     /**
      * @throws Exception
      */
-    public function mount(Request $request): void
+    public function mount(Request $request): RedirectResponse|Redirector
     {
         $this->status = $request->input('Status');
         $this->authority = $request->input('Authority');
@@ -37,6 +39,13 @@ class PaymentCallback extends SiteComponent
         } else {
             $this->paymentResultString = __('payment.canceled');
         }
+
+        Session::put('payment_data', [
+            'status' => $this->paymentStatus,
+            'message' => $this->paymentResultString,
+        ]);
+
+        return redirect()->route('site.payment-result');
     }
 
     /**
@@ -99,8 +108,7 @@ class PaymentCallback extends SiteComponent
      */
     public function render(): View
     {
-        $pageTitle = 'نتیجه پرداخت ';
-
+        $pageTitle = '';
         return $this->renderView(
             'livewire.site.payment-callback',
             $pageTitle
