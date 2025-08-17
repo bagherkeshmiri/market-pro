@@ -100,7 +100,7 @@ class ShowCategory extends AdminComponent
             } else {
                 session()->flash('error', __('global.error_message'));
             }
-            return redirect()->route('admin.category.create');
+            return redirect()->route('admin.category.show', ['category' => $this->category->id]);
         }
     }
 }

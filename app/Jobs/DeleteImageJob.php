@@ -27,9 +27,15 @@ class DeleteImageJob implements ShouldQueue
 
     public function handle(): void
     {
-        $relativePath = Str::replaceFirst('/storage/', '', $this->address);
-        if (Storage::disk('public')->exists($relativePath)) {
-            Storage::disk('public')->delete($relativePath);
+        $disk = app()->isLocal() ? 'public' : 's3';
+
+        if ($disk === 'public') {
+            $relativePath = Str::replaceFirst('/storage/', '', $this->address);
+        } else {
+            $relativePath = $this->address;
+        }
+        if (Storage::disk($disk)->exists($relativePath)) {
+            Storage::disk($disk)->delete($relativePath);
         }
     }
 

@@ -57,6 +57,7 @@ class CreateCategory extends AdminComponent
         ];
         DB::beginTransaction();
         try {
+
             $createdCategory = Category::create($data);
 
             if (!is_null($this->image)) {
