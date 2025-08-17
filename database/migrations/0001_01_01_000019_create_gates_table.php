@@ -9,21 +9,11 @@ return new class extends Migration {
     {
         Schema::create('gates', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('label');
-            $table->tinyInteger('is_active')->default(0)->comment(' 0:no 1:yes ');
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
-
-        Schema::create('gates_org', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('gate_id')->index();
-            $table->string('label');
-            $table->string('app_key')->nullable();
-            $table->tinyInteger('is_active')->default(0)->comment(' 0:no 1:yes ');
-            $table->tinyInteger('is_default')->default(0)->comment(' 0:no 1:yes ');
+            $table->string('name');   // like zarinpal
+            $table->string('label'); // like زرین پال اول
+            $table->text('token')->nullable();
+            $table->tinyInteger('is_active')->default(0);
+            $table->tinyInteger('is_default')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,7 +21,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('gates_org');
         Schema::dropIfExists('gates');
     }
 };

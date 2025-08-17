@@ -2,10 +2,10 @@
 
 namespace App\Services\Payment\Drivers;
 
+use App\Models\Gate;
 use App\Services\Payment\Contracts\GatewayInterface;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
-use Str;
 
 class PayPingGateway implements GatewayInterface
 {
@@ -14,14 +14,13 @@ class PayPingGateway implements GatewayInterface
     protected string $endpointUrl;
     protected array $headers;
 
-    public function __construct()
+    public function __construct(Gate $gateway)
     {
-        $this->token = config('payment.payping_token');
         $this->endpointUrl = 'https://api.payping.ir/new/v2/pay';
         $this->headers = [
             'accept' => 'application/json',
             'Content-Type' => 'application/json',
-            'Authorization' => 'bearer ' . $this->token,
+            'Authorization' => 'bearer ' . $gateway->token,
         ];
     }
 
@@ -67,7 +66,6 @@ class PayPingGateway implements GatewayInterface
         }
 
         return ['status' => false, 'message' => $data['errors']['message'] ?? 'خطای نامشخص'];
-
     }
 
     public function verify(array $params): array

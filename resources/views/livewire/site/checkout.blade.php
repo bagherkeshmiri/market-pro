@@ -10,6 +10,14 @@
             -moz-appearance: textfield;
             appearance: textfield;
         }
+
+        .no-wrap-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            direction: rtl;
+        }
+
     </style>
 
 @endsection
@@ -33,8 +41,6 @@
                 </div>
             </div>
             <div class="row">
-
-                @include('custom-components.site.flash-message')
 
                 <div class="col-lg-6 col-md-12">
 
@@ -286,6 +292,27 @@
 
 
 @section('scripts')
+
+    <script>
+        window.addEventListener('error', event => {
+            Swal.fire({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                width: '650px',
+                timer: 10000,
+                background: '#E53E3E',
+                color: '#FFF',
+                title: `${event.detail.content}`,
+                customClass: {
+                    title: 'swal2-title-rtl no-wrap-text'
+                },
+                timerProgressBar: true,
+
+            });
+        });
+
+    </script>
 @endsection
 
 

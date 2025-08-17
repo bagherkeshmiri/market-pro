@@ -35,10 +35,24 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'label' , 'content' => 'لیبل'] )
                                                         @include('frest-components.required-tag')
+                                                        <span class="text-warning pl-1" style="font-size: 0.7rem;">نام نمایشی درگاه در فروشگاه</span>
                                                         @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'label' , 'classes' => 'text-left' , 'id' => 'label' , 'icon' => titleIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.validation-error',[ 'name' => 'label' ])
                                                     </div>
                                                 </div>
+
+
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <div class="form-group">
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'token' , 'content' => 'توکن'] )
+                                                        @include('frest-components.required-tag')
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'token' , 'classes' => 'text-left' , 'id' => 'token' , 'icon' => titleIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.validation-error',[ 'name' => 'token' ])
+                                                    </div>
+                                                </div>
+
+
 
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
                                                     <div class="form-group">
@@ -47,6 +61,20 @@
                                                         @include('frest-components.simple-selectbox',[ 'data' => $statuses , 'id' => 'isActive' , 'wire' => 'isActive'  ,'isDefer' => true,'attributes' => 'required'])
                                                         @include('frest-components.validation-error',[ 'name' => 'isActive' ])
                                                     </div>
+                                                </div>
+
+
+                                                <div class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-2 ">
+                                                    <div class="form-group">
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'isDefault' , 'content' => 'پیشفرض'] )
+                                                        @include('frest-components.required-tag')
+                                                        <livewire:admin.custom-components.toggle-switch
+                                                            model="isDefault"
+                                                            :value="$isDefault"
+                                                            wire:key="isDefault-toggle-switch"
+                                                        />
+                                                    </div>
+                                                    @include('frest-components.validation-error',[ 'name' => 'isDefault' ])
                                                 </div>
 
 
@@ -72,4 +100,11 @@
 
 
 @section('scripts')
+
+    <script>
+        document.getElementById('name').addEventListener('input', function () {
+            this.value = this.value.replace(/[^A-Za-z\s]/g, '');
+        });
+    </script>
+
 @endsection

@@ -1,9 +1,6 @@
 <?php
 
-use App\Enums\CollectionType;
-use App\Enums\OrderStatus;
 use App\Http\Controllers\site\AuthController;
-use App\Jobs\TestJob;
 use App\Livewire\Site\Blog;
 use App\Livewire\Site\Cart;
 use App\Livewire\Site\Checkout;
@@ -11,19 +8,14 @@ use App\Livewire\Site\Contact;
 use App\Livewire\Site\Faq;
 use App\Livewire\Site\Index;
 use App\Livewire\Site\Login;
+use App\Livewire\Site\PaymentCallback;
+use App\Livewire\Site\PaymentResult;
 use App\Livewire\Site\Products;
 use App\Livewire\Site\Register;
 use App\Livewire\Site\SinglePost;
 use App\Livewire\Site\SingleProduct;
 use App\Livewire\Site\Wishlist;
-use App\Models\GateOrg;
-use App\Models\Order;
-use App\Models\OrderItem;
-use App\Models\Payment;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;
-
 
 Route::name('site.')
     ->group(function () {
@@ -39,6 +31,8 @@ Route::name('site.')
         Route::get('/wishlist', Wishlist::class)->name('wishlist');
         Route::get('/blog/{post}', SinglePost::class)->name('single-post');
         Route::middleware('auth:web')->get('/checkout', Checkout::class)->name('checkout');
+        Route::get('/payment/callback', PaymentCallback::class)->name('payment-callback');
+        Route::get('/payment/result', PaymentResult::class)->name('payment-result');
     });
 
 
@@ -52,37 +46,43 @@ Route::prefix('auth')
     });
 
 
-Route::get('/run-test-job/1369', function () {
-    TestJob::dispatch();
-});
+//Route::get('/run-test-job/1369', function () {
+//    TestJob::dispatch();
+//});
 
-
+//
 //Route::get('/create-new-table', function () {
-//    if (!Schema::hasTable('user_addresses')) {
-//        Schema::create('user_addresses', function (Blueprint $table) {
+//    if (!Schema::hasTable('gates')) {
+//        Schema::create('gates', function (Blueprint $table) {
 //            $table->id();
-//            $table->unsignedBigInteger('user_id')->index();
-//            $table->unsignedBigInteger('province_id')->index();
-//            $table->unsignedBigInteger('city_id')->index();
-//            $table->text('address');
-//            $table->string('postal_code')->nullable();
+//            $table->string('name');   // like zarinpal
+//            $table->string('label'); // like زرین پال اول
+//            $table->text('token')->nullable();
+//            $table->tinyInteger('is_active')->default(0);
+//            $table->tinyInteger('is_default')->default(0);
 //            $table->timestamps();
+//            $table->softDeletes();
 //        });
 //
-//        return 'user_addresses table created successfully.';
+//        return 'gates table created successfully.';
 //    } else {
-//        return 'user_addresses table already exists.';
+//        return 'gates table already exists.';
 //    }
 //});
 
 
-//Route::get('test', action: function () {
+//Route::get('test', function () {
 //    Session::forget('cart');
 //    Session::forget('cart_summary');
-
+//
 //    Session::forget('wishlist');
 //
 //    dd(
 //        Session::get('wishlist')
 //    );
+
+//    dd(
+//        config('payment.local_payment_callback') . '/payment/verify'
+//    );
+
 //});

@@ -2,17 +2,17 @@
 
 namespace App\Services\Payment\Drivers;
 
+use App\Models\Gate;
 use App\Services\Payment\Contracts\GatewayInterface;
 use Illuminate\Support\Facades\Http;
 
 class IdpayGateway implements GatewayInterface
 {
+    protected string $token;
 
-    protected mixed $merchantId;
-
-    public function __construct(array $config)
+    public function __construct(Gate $gateway)
     {
-        $this->merchantId = $config['app_key'];
+        $this->token = $gateway->token;
     }
 
     public function request(int $amount, string $callbackUrl, string $orderId): array
