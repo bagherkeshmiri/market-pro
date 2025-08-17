@@ -3,8 +3,11 @@
 namespace App\Livewire\Admin\Payment;
 
 use App\Livewire\BaseComponents\AdminComponent;
+use App\Models\Gate;
 use App\Models\Payment;
+use App\Services\Payment\GatewayFactory;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\View\View;
 
 class ListTodayPayment extends AdminComponent
@@ -32,5 +35,28 @@ class ListTodayPayment extends AdminComponent
             compact('tableHeads', 'payments')
 
         );
+    }
+
+
+    /**
+     * @throws Exception
+     */
+    public function inquiry(Payment $payment): void
+    {
+        $gateway = GatewayFactory::make(Gate::find($payment->gate_id));
+
+        $inquiryResult = $gateway->inquiry($payment->authority);
+
+
+//        if ($inquiryResult['status'] && $inquiryResult['paymentStatus'] == 'PAID') {
+            $verifyResult = $gateway->verify([
+                'Authority' => $payment->authority,
+                'amount' => (int)$payment->amount,
+            ]);
+
+            dd(
+                $verifyResult
+            );
+//        }
     }
 }
