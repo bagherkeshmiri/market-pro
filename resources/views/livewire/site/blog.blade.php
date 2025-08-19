@@ -25,7 +25,9 @@
 
                 @endforelse
 
-                {{ $posts->links('custom-components.site.pagination', ['items' => $posts]) }}
+                @if ($posts->count())
+                    {{ $posts->links('custom-components.site.pagination', ['items' => $posts]) }}
+                @endif
 
             </div>
         </div>
