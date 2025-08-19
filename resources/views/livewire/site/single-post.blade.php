@@ -109,7 +109,7 @@
                                        wire:model.live.debounce.500ms="searchText"
                                        type="text"
                                        class="form-control text-dark pe-5"
-                                       placeholder="جستجو در وبلاگ">
+                                       placeholder="جستجو ">
 
                                 <div wire:loading wire:target="searchText"
                                      class="spinner-border spinner-border-sm text-secondary position-absolute
