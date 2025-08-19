@@ -5,7 +5,8 @@
                 <div class="col-lg-8 col-md-12">
                     <div class="blog-details-wrap">
                         <div class="blog-details-img">
-                            <img src="{{ $post->image ? asset($post->image->url) : asset($this->getSampleImageUrl()) }}" alt="post-{{ $post->slug }}">
+                            <img src="{{ $post->image ? asset($post->image->url) : asset($this->getSampleImageUrl()) }}"
+                                 alt="post-{{ $post->slug }}">
                         </div>
                         <div class="blog-details-content-wrap">
                             <ul class="post-meta">
@@ -43,7 +44,9 @@
                                     </div>
                                     <div class="content">
                                         <h3 class="name">درباره نویسنده</h3>
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
+                                            طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                            با استفاده از طراحان گرافیک است</p>
                                         <ul class="social-list">
                                             <li>
                                                 <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
@@ -69,7 +72,8 @@
                                 @if($comments->count() > 0)
                                     <livewire:site.post-comments :postId="$post->id "/>
                                 @else
-                                    <p class="text-gray-500 italic text-center mt-6">نظر ثبت نشده، اولین نفری باشید که نظر می‌دهید!</p>
+                                    <p class="text-gray-500 italic text-center mt-6">نظر ثبت نشده، اولین نفری باشید که
+                                        نظر می‌دهید!</p>
                                 @endif
 
                             </div>
@@ -85,7 +89,8 @@
 
                                     @else
                                         <div class="alert alert-warning mt-3">
-                                            برای ثبت نظر لطفاً <a href="{{ route('site.login') }}" class="text-primary">وارد حساب کاربری خود شوید</a>.
+                                            برای ثبت نظر لطفاً <a href="{{ route('site.login') }}" class="text-primary">وارد
+                                                حساب کاربری خود شوید</a>.
                                         </div>
                                     @endauth
 
@@ -98,10 +103,35 @@
                 <div class="col-lg-4">
                     <div class="sidebar-widget">
                         <div class="search-box">
-                            <form action="https://html.rrdevs.net/roiser/contact.php" class="search-form">
-                                <label for="search" hidden></label>
-                                <input type="text" id="search" class="form-control" placeholder="جستجو">
+                            <form wire:submit.prevent="search" class="search-form position-relative">
+                                <label for="searchInput" hidden></label>
+                                <input id="searchInput"
+                                       wire:model.live.debounce.500ms="searchText"
+                                       type="text"
+                                       class="form-control text-dark pe-5"
+                                       placeholder="جستجو در وبلاگ">
+
+                                <div wire:loading wire:target="searchText"
+                                     class="spinner-border spinner-border-sm text-secondary position-absolute
+                                      end-0 top-50 translate-middle-y me-2" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
                             </form>
+
+                            <div>
+                                @if($readyToShow && !empty($searchResults))
+                                    @foreach($searchResults as $searchResult)
+                                        <div class="card mb-2">
+                                            <a href="{{ route('site.single-post',['post' => $searchResult->slug]) }}"
+                                               class="card-body">
+                                                <h5>{{ $searchResult->title }}</h5>
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                @elseif($readyToShow && empty($searchResults))
+                                    <p class="text-muted">هیچ نتیجه‌ای یافت نشد.</p>
+                                @endif
+                            </div>
                         </div>
                     </div>
                     <div class="sidebar-widget">
@@ -109,10 +139,9 @@
                         <ul class="sidebar-list">
 
                             @foreach($categories as $key => $value)
-                                <a href="{{ route('site.blog',['category' => $value]) }}">
+                                <a class="text-dark" href="{{ route('site.blog',['category' => $value]) }}">
                                     <li>
-                                        <input type="checkbox" id="{{ $value }}" name="category-{{ $value }}" value="{{ $value }}">
-                                        <label for="vehicle1">{{ $key }}</label><br>
+                                        {{ $key }}
                                     </li>
                                 </a>
 
@@ -126,12 +155,18 @@
                             <h3 class="widget-title">آخرین پست ها</h3>
                             @foreach($lastPosts as $lastPost)
                                 <div class="sidebar-post">
-                                    <img src="{{ $lastPost->image ? asset($lastPost->image->url) : asset($this->getSampleImageUrl()) }}" alt="post">
+                                    <img
+                                        src="{{ $lastPost->image ? asset($lastPost->image->url) : asset($this->getSampleImageUrl()) }}"
+                                        alt="post">
                                     <div class="post-content">
                                         <ul class="post-meta">
-                                            <li><i class="fa-sharp fa-regular fa-clock"></i>{{ $lastPost->jalali_created_at }}</li>
+                                            <li>
+                                                <i class="fa-sharp fa-regular fa-clock"></i>{{ $lastPost->jalali_created_at }}
+                                            </li>
                                         </ul>
-                                        <h3 class="title"><a href="{{ route('site.single-post',['post' => $lastPost->slug]) }}">{{ $lastPost->title }}</a></h3>
+                                        <h3 class="title"><a
+                                                href="{{ route('site.single-post',['post' => $lastPost->slug]) }}">{{ $lastPost->title }}</a>
+                                        </h3>
                                     </div>
                                 </div>
                             @endforeach
@@ -143,3 +178,19 @@
         </div>
     </section>
 </div>
+
+
+
+@section('scripts')
+    <script>
+        let searchTimeout;
+        const input = document.getElementById('searchInput');
+
+        input.addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                Livewire.emit('performSearch');
+            }, 2000); // 2 ثانیه
+        });
+    </script>
+@endsection
