@@ -109,10 +109,13 @@
                         <ul class="sidebar-list">
 
                             @foreach($categories as $key => $value)
-                                <li>
-                                    <input type="checkbox" id="{{ $value }}" name="category-{{ $value }}" value="{{ $value }}">
-                                    <label for="vehicle1">{{ $key }}</label><br>
-                                </li>
+                                <a href="{{ route('site.blog',['category' => $value]) }}">
+                                    <li>
+                                        <input type="checkbox" id="{{ $value }}" name="category-{{ $value }}" value="{{ $value }}">
+                                        <label for="vehicle1">{{ $key }}</label><br>
+                                    </li>
+                                </a>
+
                             @endforeach
 
                         </ul>
