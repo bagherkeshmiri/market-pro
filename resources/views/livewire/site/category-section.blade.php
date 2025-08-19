@@ -1,4 +1,4 @@
-<div>
+<div wire:ignore>
     <section class="category-section pt-50 pb-50">
         <div class="container rtl">
             <div class="category-top heading-space space-border">

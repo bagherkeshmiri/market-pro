@@ -7,7 +7,7 @@
     </style>
 @endsection
 
-<div>
+<div wire:ignore>
     <section class="fashion-section pb-50">
         <div class="container rtl">
             <div class="category-top heading-space space-border">
