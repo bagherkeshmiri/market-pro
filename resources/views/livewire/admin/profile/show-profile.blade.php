@@ -1,6 +1,8 @@
 
 @section('styles')
 
+    <link rel="stylesheet" href="{{ asset('css/frest/pages/page-user-profile.css') }}">
+
     <style>
         body {
             overflow-x: hidden;

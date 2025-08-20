@@ -1,4 +1,10 @@
 @section('styles')
+
+    <link rel="stylesheet" href="{{ asset('css/frest/vendors/pickers/pickadate/pickadate.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/vendors/pickers/daterange/daterangepicker.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('css/frest/vendors/pickers/datepicker-jalali/bootstrap-datepicker.min.css') }}">
+
 @endsection
 
 
@@ -81,6 +87,22 @@
                                                 </div>
 
 
+                                                <div class="col-md-3">
+                                                    <div class="mb-1">
+                                                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'expiresAt' , 'content' => 'تاریخ انقضا'] )
+                                                        @include('frest-components.required-tag')
+                                                        <fieldset class="form-group position-relative has-icon-left">
+                                                            <input type="text" wire:model="expiresAt"
+                                                                   class="form-control shamsi-datepicker"
+                                                                   placeholder="انتخاب تاریخ">
+                                                            <div class="form-control-position">
+                                                                <i class="bx bx-calendar"></i>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+
+
                                                 <div class="col-12 d-flex justify-content-end mt-2">
                                                     @include('frest-components.submit-button', [ 'classes' => 'btn btn-primary mr-1 mb-1' , 'id' => 'save_btn' , 'content' => __('global.save')  , 'icon' => saveIcon() ])
                                                     @include('frest-components.link-button',[ 'href' => route('admin.discount.index') , 'classes' => 'btn btn-danger mr-1 mb-1' , 'id' => 'cancel' , 'content' => __('global.cancel')  , 'icon' => arrowIcon() ])
@@ -101,4 +123,14 @@
 
 
 @section('scripts')
+    <script src="{{ asset('js/frest/vendors/pickers/pickadate/picker.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/pickadate/picker.date.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/pickadate/picker.time.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/pickadate/legacy.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/daterange/moment.min.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/daterange/daterangepicker.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/datepicker-jalali/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/datepicker-jalali/bootstrap-datepicker.fa.min.js') }}"></script>
+    <script src="{{ asset('js/frest/scripts/pickers/dateTime/pick-a-datetime.js') }}"></script>
+
 @endsection

@@ -1,5 +1,6 @@
-
 @section('styles')
+
+    <link rel="stylesheet" href="{{ asset('css/frest/pages/page-user-profile.css') }}">
 
     <style>
         body {
@@ -39,13 +40,15 @@
                                             <a class="nav-link d-flex px-1 align-items-center" id="main-tab"
                                                href="{{ route('admin.profile.index') }}">
                                                 <i class="bx bx-home text-white"></i><span
-                                                    class="d-none d-md-block text-white"  style="padding-right:5px;">اصلی</span></a>
+                                                    class="d-none d-md-block text-white"
+                                                    style="padding-right:5px;">اصلی</span></a>
                                         </li>
                                         <li class="nav-item pb-0">
                                             <a class=" nav-link d-flex px-1 active align-items-center" id="password-tab"
                                                data-toggle="tab" href="#password" aria-controls="password"
                                                role="tab" aria-selected="true"><i class="bx bx-lock"></i><span
-                                                    class="d-none d-md-block"  style="padding-right:5px;">تغییر رمز عبور</span></a>
+                                                    class="d-none d-md-block"
+                                                    style="padding-right:5px;">تغییر رمز عبور</span></a>
                                         </li>
 
                                     </ul>
