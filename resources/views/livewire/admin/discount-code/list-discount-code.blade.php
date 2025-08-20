@@ -1,4 +1,3 @@
-
 @section('styles')
 @endsection
 
@@ -25,35 +24,32 @@
                                             </thead>
                                             <tbody class="font-13">
 
-                                            @forelse ($categories as $category)
-                                                @php
-                                                    $modalId = 'mainImageModal' . $category->id;
-                                                @endphp
-
-
+                                            @forelse ($discountCodes as $discountCode)
                                                 <tr>
-                                                    <td data-toggle="tooltip" data-placement="top" title="  برای نمایش تصویر روی آن کلیک کنید">
-                                                        <img data-toggle="modal" data-target="#{{ $modalId }}" src="{{ $category->image ? asset($category->image->url) : asset($this->getSampleImageUrl()) }}" alt="category-image-{{ $category->id }}" width="40" height="40"/>
-                                                    </td>
-                                                    <td class="text-white">{{ $category->name }}</td>
-                                                    <td class="text-white">{{ $category->parent->name ?? ' - ' }}</td>
+
+                                                    <td class="text-white">{{ $discountCode->code }}</td>
                                                     <td>
-                                                        @include('frest-components.badge' , [ 'badgeClass' => $category->type_badge_class ,  'content' => $category->type_label  ])
+                                                        @include('frest-components.badge' , [ 'badgeClass' => $discountCode->type_badge_class ,  'content' => $discountCode->type_label  ])
                                                     </td>
-                                                    <td class="text-white">{{ $category->jalali_created_at }}</td>
                                                     <td>
-                                                        @include('frest-components.icon-btn',[  'href' => route('admin.category.show',[ 'category' => $category->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
-                                                        @include('frest-components.icon-btn',[ 'tooltipTitle' => __('global.delete') , 'icon' => dangerTrashIcon() , 'attributes' => 'onclick=category_delete(this,event)  data-url='.route('admin.category.delete',[ 'category' => $category->id ]) ])
+                                                        @include('frest-components.badge' , [ 'badgeClass' => $discountCode->is_active_badge_class ,  'content' => $discountCode->is_active_label  ])
+                                                    </td>
+                                                    @if($discountCode->type == \App\Enums\DiscountType::Amount)
+                                                        <td class="text-white">{{ number_format($discountCode->amount) }} </td>
+                                                    @else
+                                                        <td class="text-white">
+                                                            {{ fmod($discountCode->amount, 1) == 0 ? intval($discountCode->amount) : $discountCode->amount }}
+                                                        </td>
+                                                    @endif
+                                                    <td class="text-white">{{ $discountCode->usage_limit }}</td>
+                                                    <td class="text-white">{{ $discountCode->used_count }}</td>
+                                                    <td class="text-white">{{ number_format($discountCode->min_order_amount) }}</td>
+                                                    <td class="text-white">{{ $discountCode->jalali_expire_at }}</td>
+                                                    <td class="text-white">{{ $discountCode->jalali_created_at }}</td>
+                                                    <td>
+                                                        @include('frest-components.icon-btn',[  'href' => route('admin.discount.show',[ 'discount' => $discountCode->id ])  , 'tooltipTitle' => __('global.edit') , 'icon' => warningPencilIcon() ])
                                                     </td>
                                                 </tr>
-
-                                                @include('frest-components.image-preview-modal', [
-                                                    'modelImageRelation'    => $category->image,
-                                                    'modelImageUrl'         => $category->image->url ?? '',
-                                                    'modalTitle'            => 'تصویر اصلی دسته بندی ' . $category->name,
-                                                    'modalId'               => $modalId,
-                                                    'sampleImageUrl' => $this->getSampleImageUrl(),
-                                                ])
 
                                             @empty
                                                 @include('custom-components.admin.empty-table')
@@ -62,7 +58,7 @@
                                             </tbody>
                                         </table>
 
-                                        {{ $categories->links('frest-components.pagination',['elements' => $categories]) }}
+                                        {{ $discountCodes->links('frest-components.pagination',['elements' => $discountCodes]) }}
 
                                     </div>
 
@@ -79,16 +75,4 @@
 
 
 @section('scripts')
-    <script type="text/javascript" src="{{ asset('js/frest/scripts/extensions/sweet-alerts.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/frest/vendors/extensions/sweetalert2.all.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/swal-functions.js') }}"></script>
-    <script src="{{ asset('js/frest/vendors/extensions/toastr.min.js') }}"></script>
-    <script type="text/javascript">
-
-        function category_delete(element, event) {
-            event.preventDefault()
-            mboxDelete(element.getAttribute('data-url'));
-        }
-
-    </script>
 @endsection

@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('discount_codes', function (Blueprint $table) {
             $table->id();
             $table->string('code', 50)->unique();
-            $table->tinyInteger('type')->default(1)->comment(' 1:percentage , 2:fixed ');
+            $table->tinyInteger('type')->default(1)->comment(' 1:percentage , 2:amount ');
             $table->tinyInteger('is_active')->default(0)->comment(' 0:no , 1:yes ');
             $table->decimal('amount', 10);
             $table->unsignedInteger('usage_limit')->default(0);

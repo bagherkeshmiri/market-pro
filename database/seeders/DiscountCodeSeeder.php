@@ -15,7 +15,8 @@ class DiscountCodeSeeder extends Seeder
         DB::table('discount_codes')->insert([
             [
                 'code' => 'SUMMER2025',
-                'type' => 'percentage',
+                'type' => 1,
+                'is_active' => 0,
                 'amount' => 20,
                 'usage_limit' => 100,
                 'used_count' => 0,
@@ -26,7 +27,8 @@ class DiscountCodeSeeder extends Seeder
             ],
             [
                 'code' => 'WELCOME50K',
-                'type' => 'fixed',
+                'type' => 2,
+                'is_active' => 0,
                 'amount' => 50000,
                 'usage_limit' => 50,
                 'used_count' => 0,
@@ -37,9 +39,10 @@ class DiscountCodeSeeder extends Seeder
             ],
             [
                 'code' => 'BLACKFRIDAY',
-                'type' => 'percentage',
+                'type' => 1,
+                'is_active' => 0,
                 'amount' => 50,
-                'usage_limit' => null,
+                'usage_limit' => 10,
                 'used_count' => 0,
                 'min_order_amount' => 100000,
                 'expires_at' => Carbon::create(2025, 11, 30),

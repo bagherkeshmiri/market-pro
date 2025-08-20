@@ -188,6 +188,6 @@ Route::prefix('dashboard')
             ->group(function () {
                 Route::get('/', ListDiscountCode::class)->name('index');
                 Route::get('/create', CreateDiscountCode::class)->name('create');
-                Route::get('/show/{collection}', ShowDiscountCode::class)->name('show');
+                Route::get('/show/{discount}', ShowDiscountCode::class)->name('show');
             });
     });
