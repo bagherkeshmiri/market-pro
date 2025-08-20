@@ -25,7 +25,8 @@ class ListDiscountCode extends AdminComponent
         $discountCodes = DiscountCode::paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.discount-code.list-discount-code',
-            $pageTitle
+            $pageTitle,
+            compact('tableHeads', 'discountCodes')
         );
     }
 }
