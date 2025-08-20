@@ -6,6 +6,8 @@ use App\Enums\DiscountType;
 use App\Enums\IsActive;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Category;
+use App\Models\DiscountCode;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
@@ -67,30 +69,22 @@ class CreateDiscountCode extends AdminComponent
 
 
         $data = [
-            'name' => $this->code,
+            'code' => $this->code,
             'is_active' => $this->isActive,
             'type' => $this->type,
-            'amount' => $this->amount,
+            'amount' => str_replace(',', '', $this->amount),
             'usageLimit' => $this->usageLimit,
             'expires_at' => Jalalian::fromFormat('Y/m/d', $this->expiresAt)->toCarbon()->endOfDay(),
-            'min_order_amount' => $this->minOrderAmount,
+            'min_order_amount' => str_replace(',', '', $this->minOrderAmount),
         ];
 
         DB::beginTransaction();
         try {
-            $createdCategory = Category::create($data);
-
-            if (!is_null($this->image)) {
-                $createdCategory->image()->create([
-                    'url' => storeImage($this->image, 'categories'),
-                    'is_main' => true,
-                ]);
-            }
-
+            DiscountCode::create($data);
             DB::commit();
-            $this->reset(['name']);
+            $this->reset(['code', 'amount', 'usageLimit', 'minOrderAmount']);
             session()->flash('success', __('global.success_message'));
-            return redirect()->route('admin.category.index');
+            return redirect()->route('admin.discount.index');
         } catch (Exception $e) {
             DB::rollBack();
             if (app()->isLocal()) {
@@ -98,7 +92,7 @@ class CreateDiscountCode extends AdminComponent
             } else {
                 session()->flash('error', __('global.error_message'));
             }
-            return redirect()->route('admin.category.create');
+            return redirect()->route('admin.discount.create');
         }
     }
 }
