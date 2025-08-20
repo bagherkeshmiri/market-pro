@@ -5,7 +5,6 @@ namespace App\Livewire\Admin\DiscountCode;
 use App\Enums\DiscountType;
 use App\Enums\IsActive;
 use App\Livewire\BaseComponents\AdminComponent;
-use App\Models\Category;
 use App\Models\DiscountCode;
 use Exception;
 use Illuminate\Http\RedirectResponse;
