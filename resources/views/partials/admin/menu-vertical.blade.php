@@ -288,6 +288,28 @@
 
                 </ul>
             </li>
+
+            <li class=" nav-item">
+                <a href="#">
+                    <i class="bx bxs-discount text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles">کد تخفیف </span>
+                </a>
+                <ul class="menu-content">
+                    <li><a href="{{ route('admin.discount.create') }}">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white" data-i18n="create-role">ایجاد کد تخفیف</span>
+                        </a>
+                    </li>
+
+                    <li><a href="{{ route('admin.discount.index') }}">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white" data-i18n="roles-list">   لیست کد های تخفیف  </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
         </ul>
     </div>
 </div>

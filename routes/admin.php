@@ -18,6 +18,9 @@ use App\Livewire\Admin\Collection\ListCollection;
 use App\Livewire\Admin\Collection\ShowCollection;
 use App\Livewire\Admin\Comment\ListComment;
 use App\Livewire\Admin\Dashboard\AdminDashboard;
+use App\Livewire\Admin\DiscountCode\CreateDiscountCode;
+use App\Livewire\Admin\DiscountCode\ListDiscountCode;
+use App\Livewire\Admin\DiscountCode\ShowDiscountCode;
 use App\Livewire\Admin\Faq\CreateFaq;
 use App\Livewire\Admin\Faq\ListFaq;
 use App\Livewire\Admin\Faq\ShowFaq;
@@ -177,5 +180,14 @@ Route::prefix('dashboard')
             ->group(function () {
                 Route::get('/today', ListTodayPayment::class)->name('index-today');
                 Route::get('/all', ListAllPayment::class)->name('index-all');
+            });
+
+
+        Route::name('discount.')
+            ->prefix('discount')
+            ->group(function () {
+                Route::get('/', ListDiscountCode::class)->name('index');
+                Route::get('/create', CreateDiscountCode::class)->name('create');
+                Route::get('/show/{collection}', ShowDiscountCode::class)->name('show');
             });
     });
