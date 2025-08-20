@@ -118,7 +118,17 @@
 
 
 @section('scripts')
+
+    @php
+        $amountDiscountType = \App\Enums\DiscountType::Amount->value;
+    @endphp
+
     <script>
+
+        let jsAmountDiscountType = @json($amountDiscountType);
+        let typeInput = document.getElementById('type');
+        let amountInput = document.getElementById('amount');
+        let minOrderAmountInput = document.getElementById('minOrderAmount');
 
         $(function () {
             const $datepicker = $('.shamsi-datepicker');
@@ -131,8 +141,62 @@
             });
 
             $datepicker.on("change", function () {
-                @this.set('expiresAt', $(this).val());
+                @this.
+                set('expiresAt', $(this).val());
             });
+        });
+
+        function formatPrice(input) {
+            if (input.type !== 'text' && input.tagName.toLowerCase() !== 'textarea') {
+                return;
+            }
+            let cursorPosition = input.selectionStart;
+            let value = input.value.replace(/[^0-9]/g, '').replace(/^0+/, '');
+            let formatted = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            let diff = formatted.length - input.value.length;
+            input.value = formatted;
+            if (typeof input.setSelectionRange === 'function') {
+                input.setSelectionRange(cursorPosition + diff, cursorPosition + diff);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function () {
+
+            if (amountInput) {
+                amountInput.addEventListener('input', function () {
+                    const Type = Number(document.getElementById('type').value);
+                    if (Type === jsAmountDiscountType) {
+                        formatPrice(amountInput);
+                    }
+                });
+            }
+
+
+            if (minOrderAmountInput) {
+                minOrderAmountInput.addEventListener('input', function () {
+                    formatPrice(minOrderAmountInput);
+                });
+            }
+
+        });
+
+        document.getElementById('type').addEventListener('change', function () {
+            let Type = Number(this.value);
+
+            if (Type === jsAmountDiscountType) {
+                if (amountInput.type === 'number') {
+                    amountInput.type = 'text';
+                    amountInput.value = 0;
+                }
+            } else {
+                if (amountInput.type === 'text') {
+                    amountInput.type = 'number';
+                    amountInput.value = 0;
+                }
+            }
+
+            amountInput.value = 0;
+
         });
 
 

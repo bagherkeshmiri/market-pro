@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
+use Morilog\Jalali\Jalalian;
 use Throwable;
 
 class CreateDiscountCode extends AdminComponent
@@ -48,10 +49,6 @@ class CreateDiscountCode extends AdminComponent
      */
     public function store(): RedirectResponse|Redirector
     {
-        dd(
-            $this
-        );
-
         $this->validate([
             'code' => 'required',
             'isActive' => [
@@ -70,10 +67,15 @@ class CreateDiscountCode extends AdminComponent
 
 
         $data = [
-            'name' => $this->name,
-            'parent_id' => $this->parentId,
+            'name' => $this->code,
+            'is_active' => $this->isActive,
             'type' => $this->type,
+            'amount' => $this->amount,
+            'usageLimit' => $this->usageLimit,
+            'expires_at' => Jalalian::fromFormat('Y/m/d', $this->expiresAt)->toCarbon()->endOfDay(),
+            'min_order_amount' => $this->minOrderAmount,
         ];
+
         DB::beginTransaction();
         try {
             $createdCategory = Category::create($data);
