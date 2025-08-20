@@ -72,7 +72,7 @@ class CreateDiscountCode extends AdminComponent
             'is_active' => $this->isActive,
             'type' => $this->type,
             'amount' => str_replace(',', '', $this->amount),
-            'usageLimit' => $this->usageLimit,
+            'usage_limit' => $this->usageLimit,
             'expires_at' => Jalalian::fromFormat('Y/m/d', $this->expiresAt)->toCarbon()->endOfDay(),
             'min_order_amount' => str_replace(',', '', $this->minOrderAmount),
         ];
