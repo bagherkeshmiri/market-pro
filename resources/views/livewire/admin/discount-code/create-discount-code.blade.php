@@ -1,10 +1,4 @@
 @section('styles')
-
-    <link rel="stylesheet" href="{{ asset('css/frest/vendors/pickers/pickadate/pickadate.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/frest/vendors/pickers/daterange/daterangepicker.css') }}">
-    <link rel="stylesheet"
-          href="{{ asset('css/frest/vendors/pickers/datepicker-jalali/bootstrap-datepicker.min.css') }}">
-
 @endsection
 
 
@@ -31,7 +25,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'code' , 'content' => 'کد '] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.input',[ 'type' => 'text' , 'code' => 'name' , 'classes' => 'text-left' , 'id' => 'code' , 'icon' => titleIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'code' , 'classes' => 'text-left' , 'id' => 'code' , 'icon' => titleIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.validation-error',[ 'name' => 'code' ])
                                                     </div>
                                                 </div>
@@ -61,7 +55,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'amount' , 'content' => 'مقدار تخفیف'] )
                                                         @include('frest-components.required-tag')
                                                         <span class="text-warning pl-1" style="font-size: 0.7rem;">   درصد یا تومان   </span>
-                                                        @include('frest-components.input',[ 'type' => 'text' , 'amount' => 'name' , 'classes' => 'text-left' , 'id' => 'amount' , 'icon' => dollarIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'amount' , 'classes' => 'text-left' , 'id' => 'amount' , 'icon' => dollarIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.validation-error',[ 'name' => 'amount' ])
                                                     </div>
                                                 </div>
@@ -71,7 +65,7 @@
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'usageLimit' , 'content' => 'حداکثر دفعات استفاده'] )
                                                         @include('frest-components.required-tag')
-                                                        @include('frest-components.input',[ 'type' => 'text' , 'usageLimit' => 'name' , 'classes' => 'text-left' , 'id' => 'usageLimit' , 'icon' => plusIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'usageLimit' , 'classes' => 'text-left' , 'id' => 'usageLimit' , 'icon' => plusIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.validation-error',[ 'name' => 'usageLimit' ])
                                                     </div>
                                                 </div>
@@ -81,7 +75,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'minOrderAmount' , 'content' => 'حداقل سبد خرید'] )
                                                         @include('frest-components.required-tag')
                                                         <span class="text-warning pl-1" style="font-size: 0.7rem;"> تومان </span>
-                                                        @include('frest-components.input',[ 'type' => 'text' , 'minOrderAmount' => 'name' , 'classes' => 'text-left' , 'id' => 'minOrderAmount' , 'icon' => dollarIcon() , 'attributes' => 'required' ])
+                                                        @include('frest-components.input',[ 'type' => 'text' , 'wire' => 'minOrderAmount' , 'classes' => 'text-left' , 'id' => 'minOrderAmount' , 'icon' => dollarIcon() , 'attributes' => 'required' ])
                                                         @include('frest-components.validation-error',[ 'name' => 'minOrderAmount' ])
                                                     </div>
                                                 </div>
@@ -92,7 +86,7 @@
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'expiresAt' , 'content' => 'تاریخ انقضا'] )
                                                         @include('frest-components.required-tag')
                                                         <fieldset class="form-group position-relative has-icon-left">
-                                                            <input type="text" wire:model="expiresAt"
+                                                            <input type="text" wire:model.defer="expiresAt"
                                                                    class="form-control shamsi-datepicker"
                                                                    placeholder="انتخاب تاریخ">
                                                             <div class="form-control-position">
@@ -100,6 +94,7 @@
                                                             </div>
                                                         </fieldset>
                                                     </div>
+
                                                 </div>
 
 
@@ -123,14 +118,24 @@
 
 
 @section('scripts')
-    <script src="{{ asset('js/frest/vendors/pickers/pickadate/picker.js') }}"></script>
-    <script src="{{ asset('js/frest/vendors/pickers/pickadate/picker.date.js') }}"></script>
-    <script src="{{ asset('js/frest/vendors/pickers/pickadate/picker.time.js') }}"></script>
-    <script src="{{ asset('js/frest/vendors/pickers/pickadate/legacy.js') }}"></script>
-    <script src="{{ asset('js/frest/vendors/pickers/daterange/moment.min.js') }}"></script>
-    <script src="{{ asset('js/frest/vendors/pickers/daterange/daterangepicker.js') }}"></script>
-    <script src="{{ asset('js/frest/vendors/pickers/datepicker-jalali/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('js/frest/vendors/pickers/datepicker-jalali/bootstrap-datepicker.fa.min.js') }}"></script>
-    <script src="{{ asset('js/frest/scripts/pickers/dateTime/pick-a-datetime.js') }}"></script>
+    <script>
+
+        $(function () {
+            const $datepicker = $('.shamsi-datepicker');
+
+            $datepicker.datepicker({
+                format: "yyyy/mm/dd",
+                autoclose: true,
+                todayHighlight: true,
+                language: "fa"
+            });
+
+            $datepicker.on("change", function () {
+                @this.set('expiresAt', $(this).val());
+            });
+        });
+
+
+    </script>
 
 @endsection
