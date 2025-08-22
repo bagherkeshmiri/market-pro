@@ -82,6 +82,11 @@ class User extends Authenticatable
         return $this->hasMany(Order::class, Order::COLUMN_USER_ID, self::COLUMN_ID);
     }
 
+    public function discountCodes(): HasMany
+    {
+        return $this->hasMany(DiscountCodeUser::class, DiscountCodeUser::COLUMN_USER_ID, self::COLUMN_ID);
+    }
+
     /*-------------- Accessors & Mutators -------------*/
 
     public function setPasswordAttribute($value): void

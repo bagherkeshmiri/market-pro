@@ -8,6 +8,7 @@ use App\Traits\HasDefaultOrdering;
 use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
@@ -79,6 +80,11 @@ class DiscountCode extends Eloquent
     ];
 
     /*------------ Relations ------------*/
+
+    public function usages(): HasMany
+    {
+        return $this->hasMany(DiscountCodeUser::class, DiscountCodeUser::COLUMN_DISCOUNT_CODE_ID, self::COLUMN_ID);
+    }
 
     /*-------------- Accessors & Mutators -------------*/
 

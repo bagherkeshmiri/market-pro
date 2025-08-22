@@ -42,10 +42,15 @@ class Checkout extends SiteComponent
     public $selectedCity;
     public $selectedAddressId;
     public $createdUserAddress;
+    public $cartDiscountDetails = [];
+
 
     public function mount(): RedirectResponse|Redirector|null
     {
         $this->cart = Session::get('cart', []);
+        $this->cartDiscountDetails = Session::get('cart_discount_details', []);
+        $this->discount = $this->cartDiscountDetails['discount_amount'];
+
         if (empty($this->cart)) {
             $this->discount = 0;
             $this->shipping = 0;
@@ -221,6 +226,13 @@ class Checkout extends SiteComponent
                 $payment->update([
                     'authority' => $result['authority']
                 ]);
+
+
+                $this->cartDiscountDetails['discount']->incrementUsage();
+                $this->cartDiscountDetails['discount']->usages()->create([
+                    'user_id' => auth()->user()->id,
+                ]);
+
 
                 DB::commit();
 

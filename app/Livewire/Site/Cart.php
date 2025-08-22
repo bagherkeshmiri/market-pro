@@ -118,6 +118,11 @@ class Cart extends SiteComponent
         if ($result['status']) {
             session()->flash('success', 'کد تخفیف با موفقیت در سبد خرید اعمال شد');
             $this->discount = $result['amount'];
+
+            Session::put('cart_discount_details', [
+                'discount' => $result['discount'],
+                'discount_amount' => $result['amount'],
+            ]);
         } else {
             session()->flash('warning', $result['error']);
         }
