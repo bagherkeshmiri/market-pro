@@ -8,7 +8,6 @@ use App\Traits\HasDefaultOrdering;
 use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Morilog\Jalali\Jalalian;
 
@@ -17,10 +16,10 @@ use Morilog\Jalali\Jalalian;
  * @property string $code
  * @property DiscountType $type  1:percentage , 2:amount
  * @property IsActive $is_active  0:no , 1:yes
- * @property string $amount
+ * @property int $amount
  * @property int $usage_limit
  * @property int $used_count
- * @property string $min_order_amount
+ * @property int $min_order_amount
  * @property int $expires_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -31,6 +30,10 @@ use Morilog\Jalali\Jalalian;
  * @property-read string $jalali_updated_at
  * @property-read string $type_badge_class
  * @property-read string $type_label
+ * @method static Builder<static>|DiscountCode isActive()
+ * @method static Builder<static>|DiscountCode isAmount()
+ * @method static Builder<static>|DiscountCode isNotActive()
+ * @method static Builder<static>|DiscountCode isPercentage()
  * @method static Builder<static>|DiscountCode newModelQuery()
  * @method static Builder<static>|DiscountCode newQuery()
  * @method static Builder<static>|DiscountCode query()
@@ -47,7 +50,7 @@ use Morilog\Jalali\Jalalian;
  * @method static Builder<static>|DiscountCode whereUsedCount($value)
  * @mixin Eloquent
  */
-class DiscountCode extends Authenticatable
+class DiscountCode extends Eloquent
 {
     use HasJalaliTimestamps;
     use HasDefaultOrdering;
@@ -72,7 +75,7 @@ class DiscountCode extends Authenticatable
     protected $casts = [
         'type' => DiscountType::class,
         'is_active' => IsActive::class,
-        'expires_at' => 'timestamp',
+        'expires_at' => 'datetime',
     ];
 
     /*------------ Relations ------------*/
@@ -101,19 +104,33 @@ class DiscountCode extends Authenticatable
 
     public function getJalaliExpireAtAttribute(): ?string
     {
-        if (!empty($this->expires_at)) {
-            $expireAtCarbon = $this->expires_at instanceof Carbon
-                ? $this->expires_at
-                : Carbon::createFromTimestamp($this->expires_at);
-
-            $expireAtCarbon->setTimezone('Asia/Tehran');
-
-            return Jalalian::fromCarbon($expireAtCarbon)->format('Y/m/d H:i:s');
-        }
-        return null;
+        return $this->expires_at
+            ? Jalalian::fromCarbon($this->expires_at->setTimezone('Asia/Tehran'))->format('Y/m/d H:i:s')
+            : null;
     }
 
     /*-------------- Scopes -------------*/
+
+    public function scopeIsActive($query)
+    {
+        return $query->where('is_active', IsActive::Yes);
+    }
+
+    public function scopeIsNotActive($query)
+    {
+        return $query->where('is_active', IsActive::No);
+    }
+
+    public function scopeIsPercentage($query)
+    {
+        return $query->where('type', DiscountType::Percent);
+    }
+
+    public function scopeIsAmount($query)
+    {
+        return $query->where('type', DiscountType::Amount);
+    }
+
 
     /*---------- Other Functions --------*/
 
@@ -122,4 +139,12 @@ class DiscountCode extends Authenticatable
         $this->increment('used_count');
     }
 
+    public function calculateDiscount(float|int $orderAmount): float
+    {
+        if ($this->type == DiscountType::Percent) {
+            return ($orderAmount * $this->amount) / 100;
+        }
+
+        return $this->amount;
+    }
 }

@@ -26,7 +26,7 @@ class Checkout extends SiteComponent
     public $cartTotal = 0;
     public $tax = 0;
     public $shipping = 20000;
-    public $discount = 50000;
+    public $discount = 0;
     public $freeShipping = 2000000;
     public $gate;
     public $user;
