@@ -19,10 +19,20 @@ return new class extends Migration {
             $table->timestamp('expires_at');
             $table->timestamps();
         });
+
+
+        Schema::create('discount_code_user', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedBigInteger('discount_code_id')->index();
+            $table->timestamp('used_at')->useCurrent();
+            $table->timestamps();
+        });
     }
 
     public function down(): void
     {
+        Schema::dropIfExists('discount_code_user');
         Schema::dropIfExists('discount_codes');
     }
 };
