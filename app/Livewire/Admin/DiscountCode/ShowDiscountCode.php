@@ -71,7 +71,6 @@ class ShowDiscountCode extends AdminComponent
             'minOrderAmount' => 'required',
         ]);
 
-
         $data = [
             'code' => $this->code,
             'is_active' => $this->isActive,

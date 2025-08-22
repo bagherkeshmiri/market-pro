@@ -88,7 +88,9 @@
                                                         <fieldset class="form-group position-relative has-icon-left" wire:ignore>
                                                             <input type="text" wire:model.defer="expiresAt"
                                                                    class="form-control shamsi-datepicker"
-                                                                   placeholder="انتخاب تاریخ">
+                                                                   placeholder="انتخاب تاریخ"
+                                                                   style="color: white;"
+                                                            >
                                                             <div class="form-control-position">
                                                                 <i class="bx bx-calendar"></i>
                                                             </div>
@@ -163,6 +165,11 @@
         window.addEventListener('DOMContentLoaded', function () {
 
             if (amountInput) {
+
+                formatPrice(amountInput);
+                formatPrice(minOrderAmountInput);
+
+
                 amountInput.addEventListener('input', function () {
                     const Type = Number(document.getElementById('type').value);
                     if (Type === jsAmountDiscountType) {
