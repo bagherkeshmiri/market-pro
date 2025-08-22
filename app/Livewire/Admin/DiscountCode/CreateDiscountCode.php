@@ -22,7 +22,6 @@ class CreateDiscountCode extends AdminComponent
     public $type;
     public $amount;
     public $usageLimit;
-    public $usedCount;
     public $expiresAt;
     public $minOrderAmount;
 
