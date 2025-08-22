@@ -25,7 +25,7 @@
 
 <script src="{{ asset('js/frest/vendors/vendors.min.js') }}"></script>
 
-@if(request()->routeIs('admin.discount.create'))
+@if(request()->routeIs('admin.discount.create') || request()->routeIs('admin.discount.show'))
     <script src="{{ asset('js/frest/vendors/pickers/pickadate/picker.js') }}"></script>
     <script src="{{ asset('js/frest/vendors/pickers/pickadate/picker.date.js') }}"></script>
     <script src="{{ asset('js/frest/vendors/pickers/pickadate/picker.time.js') }}"></script>
@@ -44,7 +44,7 @@
 <script src="{{ asset('js/frest/scripts/components.js') }}"></script>
 <script src="{{ asset('js/frest/scripts/footer.js') }}"></script>
 
-@if(request()->routeIs('admin.discount.create'))
+@if(request()->routeIs('admin.discount.create') || request()->routeIs('admin.discount.show'))
     <script src="{{ asset('js/frest/scripts/pickers/dateTime/pick-a-datetime.js') }}"></script>
 @endif
 

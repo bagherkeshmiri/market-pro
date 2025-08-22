@@ -85,7 +85,7 @@
                                                     <div class="mb-1">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'expiresAt' , 'content' => 'تاریخ انقضا'] )
                                                         @include('frest-components.required-tag')
-                                                        <fieldset class="form-group position-relative has-icon-left">
+                                                        <fieldset class="form-group position-relative has-icon-left" wire:ignore>
                                                             <input type="text" wire:model.defer="expiresAt"
                                                                    class="form-control shamsi-datepicker"
                                                                    placeholder="انتخاب تاریخ">
