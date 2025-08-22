@@ -7,7 +7,6 @@ use Carbon\Carbon;
 
 trait DiscountValidator
 {
-
     public function checkCode(string $code, int $cartTotal): array
     {
         $discount = DiscountCode::whereCode($code)
@@ -35,7 +34,6 @@ trait DiscountValidator
             ];
         }
 
-
         if ($discount->expires_at < Carbon::now()) {
             return [
                 'status' => false,
@@ -43,16 +41,10 @@ trait DiscountValidator
             ];
         }
 
-//        $discount->incrementUsage();
-//        $discount->usages()->create([
-//            'user_id' => auth()->user()->id,
-//        ]);
-
         return [
             'status' => true,
             'discount' => $discount,
             'amount' => $discount->calculateDiscount($cartTotal)
         ];
     }
-
 }
