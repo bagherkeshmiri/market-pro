@@ -3,12 +3,20 @@
 namespace App\Traits;
 
 use App\Models\DiscountCode;
+use Auth;
 use Carbon\Carbon;
 
 trait DiscountValidator
 {
     public function checkCode(string $code, int $cartTotal): array
     {
+        if (!Auth::check()) {
+            return [
+                'status' => false,
+                'error' => 'برای استفاده از کد تخفیف باید وارد حساب کاربری شوید.',
+            ];
+        }
+
         $discount = DiscountCode::whereCode($code)
             ->isActive()
             ->first();
@@ -38,6 +46,13 @@ trait DiscountValidator
             return [
                 'status' => false,
                 'error' => 'کد تخفیف منقضی شده است',
+            ];
+        }
+
+        if (auth()->user()->discountCodes()->where('discount_code_id', $discount->id)->exists()) {
+            return [
+                'status' => false,
+                'error' => 'شما قبلاً از این کد تخفیف استفاده کرده‌اید',
             ];
         }
 
