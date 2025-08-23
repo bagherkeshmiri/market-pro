@@ -4,12 +4,10 @@ namespace App\Livewire\Admin\User;
 
 use App\Models\User;
 use Exception;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Livewire\Component;
-use Livewire\Features\SupportRedirects\Redirector;
 use Throwable;
 
 class ChangePasswordUser extends Component
@@ -31,6 +29,7 @@ class ChangePasswordUser extends Component
     {
         if (!Hash::check($this->oldPass, $this->user->password)) {
             session()->flash('error', 'رمز عبور قبلی نادرست وارد شده است');
+            return ;
         }
         DB::beginTransaction();
         try {
