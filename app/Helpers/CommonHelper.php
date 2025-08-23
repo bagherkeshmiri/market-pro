@@ -42,3 +42,23 @@ function calculateProductFinalPrice(
         default => $price,
     };
 }
+
+function isActiveRoute($routes, $class = 'active')
+{
+    foreach ((array)$routes as $route) {
+        if (request()->routeIs($route)) {
+            return $class;
+        }
+    }
+    return '';
+}
+
+function isActiveUrl($patterns, $class = 'active')
+{
+    foreach ((array)$patterns as $pattern) {
+        if (request()->is($pattern)) {
+            return $class;
+        }
+    }
+    return '';
+}
