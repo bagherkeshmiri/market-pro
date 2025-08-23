@@ -5,7 +5,6 @@ namespace App\Livewire\Admin\Admin;
 use App\Models\Admin;
 use Exception;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Livewire\Component;
 use Throwable;
