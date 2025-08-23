@@ -13,7 +13,6 @@ use Throwable;
 class ChangePasswordAdmin extends Component
 {
     public Admin $admin;
-    public $oldPass;
     public $password;
     public $password_confirmation;
 
@@ -27,10 +26,10 @@ class ChangePasswordAdmin extends Component
      */
     public function change(): void
     {
-        if (!Hash::check($this->oldPass, $this->admin->password)) {
-            session()->flash('error', 'رمز عبور قبلی نادرست وارد شده است');
-            return ;
-        }
+        $this->validate([
+            'password' => 'required|min:8|confirmed'
+        ]);
+
         DB::beginTransaction();
         try {
             $this->admin->update([
