@@ -5,7 +5,6 @@ namespace App\Livewire\Admin\User;
 use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Livewire\Component;
 use Throwable;
@@ -13,7 +12,6 @@ use Throwable;
 class ChangePasswordUser extends Component
 {
     public User $user;
-    public $oldPass;
     public $password;
     public $password_confirmation;
 
@@ -27,10 +25,10 @@ class ChangePasswordUser extends Component
      */
     public function change(): void
     {
-        if (!Hash::check($this->oldPass, $this->user->password)) {
-            session()->flash('error', 'رمز عبور قبلی نادرست وارد شده است');
-            return ;
-        }
+        $this->validate([
+            'password' => 'required|min:8|confirmed'
+        ]);
+
         DB::beginTransaction();
         try {
             $this->user->update([

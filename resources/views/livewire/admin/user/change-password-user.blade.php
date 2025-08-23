@@ -8,16 +8,6 @@
 
                 <div class="col-md-4 col-12">
                     <div class="form-group">
-                        @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'old_pass' , 'content' => 'رمز عبور قبلی'] )
-                        @include('frest-components.required-tag')
-                        @include('frest-components.input',[ 'type' => 'password' , 'wire' => 'oldPass' , 'classes' => 'text-left' , 'id' => 'oldPass' , 'icon' => lockIcon() , 'attributes' => 'required' ])
-                        @include('frest-components.validation-error',[ 'name' => 'oldPass' ])
-                    </div>
-                </div>
-
-
-                <div class="col-md-4 col-12">
-                    <div class="form-group">
                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'password' , 'content' => 'رمز عبور جدید'] )
                         @include('frest-components.required-tag')
                         @include('frest-components.input',[ 'type' => 'password' , 'wire' => 'password' , 'classes' => 'text-left' , 'id' => 'password' , 'icon' => lockIcon() , 'attributes' => 'required' ])
