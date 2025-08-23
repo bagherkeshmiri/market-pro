@@ -33,11 +33,10 @@ class ShowFaq extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'ویرایش سوال متداول';
         $statuses = showEnumLabels(IsActive::class);
         return $this->renderView(
             'livewire.admin.faq.show-faq',
-            $pageTitle,
+            'ویرایش سوال متداول',
             compact('statuses')
         );
     }

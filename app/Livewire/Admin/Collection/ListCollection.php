@@ -23,13 +23,12 @@ class ListCollection extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'لیست  کالکشن ها';
         $tableHeads = ['نام', 'نوع', 'وضعیت', 'تعداد آیتم ها', 'تاریخ ایجاد', 'عملیات'];
         $collections = Collection::orderBy('sort')
             ->paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.collection.list-collection',
-            $pageTitle,
+            'لیست  کالکشن ها',
             compact('tableHeads', 'collections')
         );
     }

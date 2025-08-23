@@ -12,8 +12,6 @@ class Index extends SiteComponent
 {
     public function render(): View
     {
-        $pageTitle = 'فروشگاه اینترنتی رویسر';
-
         $collections = Collection::whereIsActive(true)
             ->orderBy('sort')
             ->with([
@@ -33,7 +31,7 @@ class Index extends SiteComponent
 
         return $this->renderView(
             'livewire.site.index',
-            $pageTitle,
+            'فروشگاه اینترنتی رویسر',
             compact('collections','posts')
         );
     }

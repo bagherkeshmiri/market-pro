@@ -20,7 +20,6 @@ class Blog extends SiteComponent
 
     public function render(): View
     {
-        $pageTitle = 'وبلاگ';
         $posts = Post::whereStatus(IsActive::Yes)
             ->when($this->category, function ($query) {
                 $query->where('category_id', $this->category);
@@ -32,7 +31,7 @@ class Blog extends SiteComponent
 
         return $this->renderView(
             'livewire.site.blog',
-            $pageTitle,
+            'وبلاگ',
             compact('posts')
         );
     }

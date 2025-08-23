@@ -10,7 +10,6 @@ class ListAllOrder extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'لیست سفارش ها';
         $tableHeads = [
             'کاربر',
             'شماره سفارش',
@@ -27,7 +26,7 @@ class ListAllOrder extends AdminComponent
 
         return $this->renderView(
             'livewire.admin.order.list-all-order',
-            $pageTitle,
+            'لیست سفارش ها',
             compact('tableHeads', 'orders')
         );
     }

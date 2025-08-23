@@ -115,10 +115,9 @@ class Checkout extends SiteComponent
 
     public function render(): View
     {
-        $pageTitle = 'تسویه حساب';
         return $this->renderView(
             'livewire.site.checkout',
-            $pageTitle
+            'تسویه حساب'
         );
     }
 

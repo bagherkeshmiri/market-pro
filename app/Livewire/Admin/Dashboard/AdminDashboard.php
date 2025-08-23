@@ -15,7 +15,6 @@ class AdminDashboard extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'داشبورد';
         $widgetsStatistics = [
             'allUsers' => [
                 'کل کاربران',
@@ -63,7 +62,7 @@ class AdminDashboard extends AdminComponent
 
         return $this->renderView(
             'livewire.admin.dashboard.admin-dashboard',
-            $pageTitle,
+            'داشبورد',
             compact('widgetsStatistics')
         );
     }

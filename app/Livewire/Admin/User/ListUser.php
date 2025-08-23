@@ -10,12 +10,11 @@ class ListUser extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'لیست کاربران';
         $tableHeads = ['نام', 'ایمیل', 'موبایل', 'تاریخ ایجاد', 'عملیات'];
         $users = User::paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.user.list-user',
-            $pageTitle,
+            'لیست کاربران',
             compact('tableHeads', 'users',)
         );
     }

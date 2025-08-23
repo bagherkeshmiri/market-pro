@@ -43,7 +43,6 @@ class ShowPost extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = ' ویرایش پست ' . $this->post->title;
         $statuses = showEnumLabels(IsActive::class);
         $categories = Category::withoutTrashed()
             ->isPostCategory()
@@ -55,7 +54,7 @@ class ShowPost extends AdminComponent
             ->toArray();
         return $this->renderView(
             'livewire.admin.post.show-post',
-            $pageTitle,
+            ' ویرایش پست ' . $this->post->title,
             compact('statuses', 'categories')
         );
     }

@@ -44,11 +44,10 @@ class CreateGateway extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'ایجاد درگاه';
         $statuses = showEnumLabels(IsActive::class);
         return $this->renderView(
             'livewire.admin.gateway.create-gateway',
-            $pageTitle,
+            'ایجاد درگاه',
             compact('statuses')
         );
     }

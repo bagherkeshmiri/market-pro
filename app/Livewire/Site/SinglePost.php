@@ -32,7 +32,6 @@ class SinglePost extends SiteComponent
 
     public function render(): View
     {
-        $pageTitle = $this->post->title;
         $categories = Category::withoutTrashed()
             ->isPostCategory()
             ->select([
@@ -45,7 +44,7 @@ class SinglePost extends SiteComponent
         $comments = $this->post->comments()->where('status', CommentStatus::Approved)->get();
         return $this->renderView(
             'livewire.site.single-post',
-            $pageTitle,
+            $this->post->title,
             compact('categories', 'lastPosts', 'comments')
         );
     }

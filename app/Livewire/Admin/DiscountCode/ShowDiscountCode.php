@@ -40,12 +40,11 @@ class ShowDiscountCode extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'ویرایش کد تخفیف';
         $types = showEnumLabels(DiscountType::class);
         $statuses = showEnumLabels(IsActive::class);
         return $this->renderView(
             'livewire.admin.discount-code.show-discount-code',
-            $pageTitle,
+            'ویرایش کد تخفیف',
             compact('types', 'statuses')
         );
     }

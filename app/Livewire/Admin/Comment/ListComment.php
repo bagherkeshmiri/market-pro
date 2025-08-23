@@ -16,7 +16,6 @@ class ListComment extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'لیست  نظرات';
         $tableHeads = ['کاربر', 'نوع نظر', 'وضعیت', 'تاریخ ایجاد', 'عملیات'];
         $comments = Comment::select([
             'id',
@@ -33,7 +32,7 @@ class ListComment extends AdminComponent
 
         return $this->renderView(
             'livewire.admin.comment.list-comment',
-            $pageTitle,
+            'لیست  نظرات',
             compact('tableHeads', 'comments')
         );
     }

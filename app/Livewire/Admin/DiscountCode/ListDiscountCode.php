@@ -10,7 +10,6 @@ class ListDiscountCode extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'لیست دسته بندی ها';
         $tableHeads = [
             'کد',
             'نوع',
@@ -26,7 +25,7 @@ class ListDiscountCode extends AdminComponent
         $discountCodes = DiscountCode::paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.discount-code.list-discount-code',
-            $pageTitle,
+            'لیست دسته بندی ها',
             compact('tableHeads', 'discountCodes')
         );
     }

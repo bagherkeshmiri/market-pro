@@ -130,10 +130,9 @@ class Cart extends SiteComponent
 
     public function render(): View
     {
-        $pageTitle = 'سبد خرید';
         return $this->renderView(
             'livewire.site.cart',
-            $pageTitle
+            'سبد خرید'
         );
     }
 }
