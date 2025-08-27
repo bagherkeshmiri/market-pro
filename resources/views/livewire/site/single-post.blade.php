@@ -23,16 +23,16 @@
                                     <h4 class="follow">مارا دنبال کنید:</h4>
                                     <ul class="social-list">
                                         <li>
-                                            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                                            <a class="facebook"><i class="fab fa-facebook-f"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                                            <a class="twitter"><i class="fab fa-twitter"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                            <a class="linkedin"><i class="fab fa-linkedin-in"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                                            <a class="instagram"><i class="fab fa-instagram"></i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -49,16 +49,16 @@
                                             با استفاده از طراحان گرافیک است</p>
                                         <ul class="social-list">
                                             <li>
-                                                <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                                                <a class="facebook"><i class="fab fa-facebook-f"></i></a>
                                             </li>
                                             <li>
-                                                <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                                                <a class="twitter"><i class="fab fa-twitter"></i></a>
                                             </li>
                                             <li>
-                                                <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                                <a class="linkedin"><i class="fab fa-linkedin-in"></i></a>
                                             </li>
                                             <li>
-                                                <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                                                <a class="instagram"><i class="fab fa-instagram"></i></a>
                                             </li>
                                         </ul>
                                     </div>

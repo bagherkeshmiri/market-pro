@@ -73,7 +73,7 @@
                                     <a href="{{ route('site.home') }}">خانه</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#">محصولات</a>
+                                    <a role="button">محصولات</a>
                                     <ul>
                                         @foreach($menus as $menu)
                                             <li><a href="{{ route('site.products',['category' => $menu->id]) }}">{{ $menu->name }}</a></li>
@@ -81,13 +81,13 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#">پرفروش‌ترین‌ها</a>
+                                    <a role="button">پرفروش‌ترین‌ها</a>
                                 </li>
                                 <li>
-                                    <a href="#">جدیدترین‌ها</a>
+                                    <a role="button">جدیدترین‌ها</a>
                                 </li>
                                 <li>
-                                    <a href="#">پیگیری سفارش</a>
+                                    <a role="button">پیگیری سفارش</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('site.faq') }}">سوالات متداول</a>
@@ -105,7 +105,7 @@
                                 @endguest
 
                                 @auth
-                                    <li><a href="#">پروفایل من</a></li>
+                                    <li><a role="button">پروفایل من</a></li>
                                 @endauth
 
                             </ul>
@@ -114,7 +114,7 @@
                     <div class="header-right-wrap">
                         <div class="header-right">
                             <div class="header-right-item">
-                                <a href="#" class="mobile-side-menu-toggle"
+                                <a class="mobile-side-menu-toggle"
                                    role="button" aria-label="باز کردن منوی موبایل">
                                     <i class="fa-sharp fa-solid fa-bars" aria-hidden="true"></i>
                                 </a>

@@ -4,7 +4,7 @@
         <div class="cta-wrap text-center">
             <span>مجموعه زنانه بهار تابستان 22</span>
             <h2 class="title">-15% تخفیف <br>همه اینجا</h2>
-            <a href="#" class="rr-primary-btn cta-btn">مشاهده مجموعه ها</a>
+            <a class="rr-primary-btn cta-btn">مشاهده مجموعه ها</a>
         </div>
     </div>
 </section>

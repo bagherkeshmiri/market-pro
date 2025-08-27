@@ -13,10 +13,10 @@
         <div class="card-content">
             <div class="card-body">
                 <div class="d-flex flex-md-row flex-column justify-content-around">
-                    <a href="#" class="btn btn-social btn-google btn-block font-small-3 mr-md-1 mb-md-0 mb-1">
+                    <a class="btn btn-social btn-google btn-block font-small-3 mr-md-1 mb-md-0 mb-1">
                         <i class="bx bxl-google font-medium-3"></i><span
                             class="pl-50 d-block text-center">@lang('global.google')</span></a>
-                    <a href="#" class="btn btn-social btn-block mt-0 btn-facebook font-small-3">
+                    <a class="btn btn-social btn-block mt-0 btn-facebook font-small-3">
                         <i class="bx bxl-facebook-square font-medium-3"></i><span
                             class="pl-50 d-block text-center">@lang('global.facebook')</span></a>
                 </div>
@@ -78,7 +78,7 @@
                                 'value' => '',
                             ])
                         </div>
-                        <div class="text-right line-height-2"><a href="#" class="card-link"><small
+                        <div class="text-right line-height-2"><a class="card-link"><small
                                     class="text-warning"> @lang('login.forget_password') </small></a></div>
                     </div>
                     @include('frest-components.submit-button', [

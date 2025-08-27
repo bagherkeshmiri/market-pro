@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
-                <a href="#">
+                <a>
                     <i class="bx bx-group text-white"></i>
                     <span class="menu-title text-white" data-i18n="users">مدیران</span>
                 </a>
@@ -46,7 +46,7 @@
                 </ul>
             </li>
             <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
-                <a href="#">
+                <a>
                     <i class="bx bx-group text-white"></i>
                     <span class="menu-title text-white" data-i18n="users">کاربران</span>
                 </a>
@@ -61,7 +61,7 @@
                 </ul>
             </li>
             <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
-                <a href="#">
+                <a>
                     <i class="bx bx-check-shield text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles">نقش ها</span>
                 </a>
@@ -83,7 +83,7 @@
                 </ul>
             </li>
             <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
-                <a href="#">
+                <a>
                     <i class="bx bx-folder text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles">دسته بندی ها</span>
                 </a>
@@ -105,7 +105,7 @@
                 </ul>
             </li>
             <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
-                <a href="#">
+                <a>
                     <i class="bx  bx-package text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles">محصولات</span>
                 </a>
@@ -127,7 +127,7 @@
                 </ul>
             </li>
             <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
-                <a href="#">
+                <a>
                     <i class="bx  bx-collection text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles">کالکشن ها</span>
                 </a>
@@ -149,13 +149,13 @@
                 </ul>
             </li>
             <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
-                <a href="#">
+                <a>
                     <i class="bx bx-globe text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles">وب سایت </span>
                 </a>
                 <ul class="menu-content">
                     <li>
-                        <a href="#">
+                        <a>
                             <i class="bx bx-left-arrow-alt text-white"></i>
                             <span class="menu-item text-white" data-i18n="Second Level">
                                 سوالات متداول
@@ -183,7 +183,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">
+                        <a>
                             <i class="bx bx-left-arrow-alt text-white"></i>
                             <span class="menu-item text-white" data-i18n="Second Level">
                                 وبلاگ
@@ -213,7 +213,7 @@
                 </ul>
             </li>
             <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
-                <a href="#">
+                <a>
                     <i class="bx bx-message text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles">نظرات</span>
                 </a>
@@ -228,7 +228,7 @@
                 </ul>
             </li>
             <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
-                <a href="#">
+                <a>
                     <i class="bx  bxs-bank text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles"> درگاه ها</span>
                 </a>
@@ -250,13 +250,13 @@
                 </ul>
             </li>
             <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
-                <a href="#">
+                <a>
                     <i class="bx bx-line-chart text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles">گزارشات</span>
                 </a>
                 <ul class="menu-content">
                     <li class="{{ isActiveRoute('') }}">
-                        <a href="#">
+                        <a>
                             <i class="bx bx-left-arrow-alt text-white"></i>
                             <span class="menu-item  text-white" data-i18n="roles-list">    فروش امروز </span>
                         </a>
@@ -265,7 +265,7 @@
                 </ul>
             </li>
             <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
-                <a href="#">
+                <a>
                     <i class="bx   bx-money text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles"> سفارشات</span>
                 </a>
@@ -287,7 +287,7 @@
                 </ul>
             </li>
             <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
-                <a href="#">
+                <a>
                     <i class="bx bxs-credit-card text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles"> پرداخت ها</span>
                 </a>
@@ -309,7 +309,7 @@
                 </ul>
             </li>
             <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
-                <a href="#">
+                <a>
                     <i class="bx bxs-discount text-white"></i>
                     <span class="menu-title text-white" data-i18n="roles">کد تخفیف </span>
                 </a>
