@@ -34,14 +34,18 @@
                                     <ul class="shop-list">
                                         @if($item->product->status == \App\Enums\ProductStatus::Exist)
                                             <li>
-                                                <a wire:click="addProductToCart({{ $item->product->id }})">
-                                                    <i class="fa-regular fa-cart-shopping"></i>
+                                                <a role="button"
+                                                   wire:click="addProductToCart({{ $item->product->id }})"
+                                                   aria-label="افزودن محصول به سبد خرید">
+                                                    <i class="fa-regular fa-cart-shopping" aria-hidden="true"></i>
                                                 </a>
                                             </li>
                                         @endif
                                         <li>
-                                            <a wire:click="addProductToWishlist({{ $item->product->id }})">
-                                                <i class="fa-regular fa-heart"></i>
+                                            <a role="button"
+                                               wire:click="addProductToWishlist({{ $item->product->id }})"
+                                               aria-label="افزودن محصول به علاقه‌مندی‌ها">
+                                                <i class="fa-regular fa-heart" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li><a href="#"><i class="fa-light fa-eye"></i></a></li>

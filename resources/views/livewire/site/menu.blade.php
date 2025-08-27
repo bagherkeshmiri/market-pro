@@ -114,8 +114,9 @@
                     <div class="header-right-wrap">
                         <div class="header-right">
                             <div class="header-right-item">
-                                <a href="javascript:void(0)" class="mobile-side-menu-toggle">
-                                    <i class="fa-sharp fa-solid fa-bars"></i>
+                                <a href="#" class="mobile-side-menu-toggle"
+                                   role="button" aria-label="باز کردن منوی موبایل">
+                                    <i class="fa-sharp fa-solid fa-bars" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>

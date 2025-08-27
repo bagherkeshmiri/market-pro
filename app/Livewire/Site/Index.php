@@ -3,6 +3,7 @@
 namespace App\Livewire\Site;
 
 use App\Enums\IsActive;
+use App\Helpers\SeoHelper;
 use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\Collection;
 use App\Models\Post;
@@ -28,6 +29,8 @@ class Index extends SiteComponent
             ])
             ->limit(3)
             ->get();
+
+        SeoHelper::forHome();
 
         return $this->renderView(
             'livewire.site.index',
