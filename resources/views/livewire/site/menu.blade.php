@@ -34,12 +34,12 @@
                                     <span>تماس با ما:</span>
                                     <a class="number" href="tel:+985112345678">12345678 - 051 </a>
                                 </div>
-                                <a href="#" class="icon">
+                                <a href="#" class="icon" aria-label="تماس با ما">
                                     <i class="fa-regular fa-phone"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('site.wishlist') }}" class="icon">
+                                <a href="{{ route('site.wishlist') }}" class="icon" aria-label="اضافه کردن به سبد خرید">
                                     <i class="fa-sharp fa-regular fa-heart"></i>
                                 </a>
                             </li>
