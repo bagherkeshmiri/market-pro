@@ -7,7 +7,7 @@
                 <div class="content">
                     <span>50% تخفیف ویژه</span>
                     <h3 class="title">آخرین ترندهای مردانه <br> این فصل</h3>
-                    <a><i class="fa-regular fa-plus"></i>مشاهده کالکشن</a>
+                    <a href="#"><i class="fa-regular fa-plus"></i>مشاهده کالکشن</a>
                 </div>
                 <div class="men"><img src="{{ asset('images/site/discount-men-1.png') }}" alt="img"></div>
             </div>
@@ -20,7 +20,7 @@
                 <div class="content">
                     <span>50% تخفیف ویژه</span>
                     <h3 class="title">جدیدترین پوشاک گودکان <br>در این فصل</h3>
-                    <a><i class="fa-regular fa-plus"></i>مشاهده کالکشن</a>
+                    <a href="#"><i class="fa-regular fa-plus"></i>مشاهده کالکشن</a>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                 <div class="content">
                     <span>50% تخفیف ویژه</span>
                     <h3 class="title">آخرین مد های زنانه <br>فصل جدید</h3>
-                    <a><i class="fa-regular fa-plus"></i>مشاهده کالکشن</a>
+                    <a href="#"><i class="fa-regular fa-plus"></i>مشاهده کالکشن</a>
                 </div>
             </div>
         </div>

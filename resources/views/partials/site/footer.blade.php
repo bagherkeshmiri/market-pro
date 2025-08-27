@@ -54,7 +54,7 @@
                     <ul class="schedule-list">
                         <li><span> ساعات کاری :</span> همه روزه از ۸ صبح تا ۶ عصر</li>
                         <li><span>ایمیل : </span> support@example.com</li>
-                        <li><span>آدرس  :</span> تهران ، خیابان گل ، پلاک ۱۲۳</li>
+                        <li><span>آدرس :</span> تهران ، خیابان گل ، پلاک ۱۲۳</li>
                     </ul>
                 </div>
             </div>
@@ -64,11 +64,11 @@
                         <h3 class="widget-title">درباره ما</h3>
                     </div>
                     <ul class="footer-list">
-                        <li><a>درباره فروشگاه</a></li>
+                        <li><a href="#">درباره فروشگاه</a></li>
                         <li><a href="{{ route('site.contact') }}"> ارتباط با ما</a></li>
                         <li><a href="{{ route('site.blog') }}"> وبلاگ</a></li>
-                        <li><a> فرصت های شغلی</a></li>
-                        <li><a>‌همکاری با ما</a></li>
+                        <li><a href="#"> فرصت های شغلی</a></li>
+                        <li><a href="#">‌همکاری با ما</a></li>
                     </ul>
                 </div>
             </div>
@@ -78,11 +78,11 @@
                         <h3 class="widget-title"> خدمات مشتریان</h3>
                     </div>
                     <ul class="footer-list">
-                        <li><a>راهنمای خرید</a></li>
+                        <li><a href="#">راهنمای خرید</a></li>
                         <li><a href="{{ route('site.faq') }}">سوالات متداول</a></li>
-                        <li><a>قوانین و مقررات</a></li>
-                        <li><a>پیگیری سفارش</a></li>
-                        <li><a>بازگشت کالا</a></li>
+                        <li><a href="#">قوانین و مقررات</a></li>
+                        <li><a href="#">پیگیری سفارش</a></li>
+                        <li><a href="#">بازگشت کالا</a></li>
                     </ul>
                 </div>
             </div>
@@ -92,11 +92,11 @@
                         <h3 class="widget-title">دسته‌بندی‌های محبوب</h3>
                     </div>
                     <ul class="footer-list">
-                        <li><a>لباس زنانه</a></li>
-                        <li><a>لباس مردانه</a></li>
-                        <li><a>لباس بچه گانه</a></li>
-                        <li><a>کفش و کتانی</a></li>
-                        <li><a>اکسسوری</a></li>
+                        <li><a href="#">لباس زنانه</a></li>
+                        <li><a href="#">لباس مردانه</a></li>
+                        <li><a href="#">لباس بچه گانه</a></li>
+                        <li><a href="#">کفش و کتانی</a></li>
+                        <li><a href="#">اکسسوری</a></li>
                     </ul>
                 </div>
             </div>

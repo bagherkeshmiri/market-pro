@@ -16,7 +16,7 @@
                             <p>پیشنهاد زمان محدود قرارداد منقضی خواهد شد <br> یک 18 اوت 2024 </p>
                         </div>
                     </div>
-                    <a class="rr-primary-btn deal-btn">مشاهده همه مجموعه ها</a>
+                    <a href="#" class="rr-primary-btn deal-btn">مشاهده همه مجموعه ها</a>
                 </div>
             </div>
             <div class="col-xl-7 col-lg-12">
@@ -28,14 +28,14 @@
                                 <img src="{{ asset('images/site/shop-5.jpg') }}" alt="shop">
                                 <span class="sale">جدید</span>
                                 <ul class="shop-list">
-                                    <li><a><i class="fa-regular fa-cart-shopping"></i></a></li>
-                                    <li><a><i class="fa-light fa-heart"></i></a></li>
-                                    <li><a><i class="fa-light fa-eye"></i></a></li>
+                                    <li><a href="#"><i class="fa-regular fa-cart-shopping"></i></a></li>
+                                    <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
+                                    <li><a href="#"><i class="fa-light fa-eye"></i></a></li>
                                 </ul>
                             </div>
                             <div class="shop-content">
                                 <span class="category">Levi’s برند</span>
-                                <h3 class="title"><a>لباس مجلسی مونیکا دیارا</a></h3>
+                                <h3 class="title"><a href="#">لباس مجلسی مونیکا دیارا</a></h3>
                                 <div class="review-wrap">
                                     <ul class="review">
                                         <li><i class="fa-solid fa-star"></i></li>
@@ -57,14 +57,14 @@
                                 <img src="{{ asset('images/site/shop-6.jpg') }}" alt="shop">
                                 <span class="sale">جدید</span>
                                 <ul class="shop-list">
-                                    <li><a><i class="fa-regular fa-cart-shopping"></i></a></li>
-                                    <li><a><i class="fa-light fa-heart"></i></a></li>
-                                    <li><a><i class="fa-light fa-eye"></i></a></li>
+                                    <li><a href="#"><i class="fa-regular fa-cart-shopping"></i></a></li>
+                                    <li><a href="#"><i class="fa-light fa-heart"></i></a></li>
+                                    <li><a href="#"><i class="fa-light fa-eye"></i></a></li>
                                 </ul>
                             </div>
                             <div class="shop-content">
                                 <span class="category">Levi’s برند</span>
-                                <h3 class="title"><a>صندل گل مشکی اونیما</a></h3>
+                                <h3 class="title"><a href="#">صندل گل مشکی اونیما</a></h3>
                                 <div class="review-wrap">
                                     <ul class="review">
                                         <li><i class="fa-solid fa-star"></i></li>
