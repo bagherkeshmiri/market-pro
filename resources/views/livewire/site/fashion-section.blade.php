@@ -27,7 +27,9 @@
                             <div class="shop-item">
                                 <div class="shop-thumb">
                                     <div class="overlay"></div>
-                                    <img src="{{ $item->product->mainImage ? asset($item->product->mainImage->url) : asset($sampleImageUrl) }}" alt="shop">
+                                    <img
+                                        src="{{ $item->product->mainImage ? asset($item->product->mainImage->url) : asset($sampleImageUrl) }}"
+                                        alt="shop">
                                     @if($item->product->discount > 0)
                                         <span class="sale">{{ $item->product->discount_percent }} %</span>
                                     @endif
@@ -53,7 +55,9 @@
                                 </div>
                                 <div class="shop-content">
                                     <span class="category">{{ $item->product->category->name }}</span>
-                                    <h3 class="title"><a href="{{ route('site.single-product',['product' => $item->product->id]) }}">{{ $item->product->name }}</a></h3>
+                                    <h3 class="title"><a
+                                            href="{{ route('site.single-product',['product' => $item->product->id]) }}">{{ $item->product->name }}</a>
+                                    </h3>
                                     <div class="review-wrap">
                                         <ul class="review">
                                             <li><i class="fa-solid fa-star"></i></li>
@@ -73,9 +77,11 @@
                                         </span>
                                             @endif
                                             {{ $item->product->formatted_final_price }}  @lang('global.toman')
-                                    </span>
+                                        </span>
                                     @else
-                                        <h5 class="mt-3 text-danger">@lang('global.not_exist')</h5>
+                                        <span class="price">
+                                            @lang('global.not_exist')
+                                        </span>
                                     @endif
 
                                 </div>
