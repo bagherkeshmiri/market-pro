@@ -88,9 +88,10 @@ class ShowProduct extends AdminComponent
                 new Enum(DiscountType::class)
             ],
             'mainImage' => $this->mainImage instanceof TemporaryUploadedFile
-                ? 'file|mimes:jpg,png,jpeg,webp|max:500' // TODO reduce image size and width and height
+                ? 'image|mimes:jpg,png,jpeg|max:250'
                 : 'nullable',
-            'galleryImages' => 'nullable|array', // TODO if array file has file|mimes:jpg,png,jpeg,webp|max:500 validation
+            'galleryImages' => 'nullable|array',
+            'galleryImages.*' => 'nullable|image|mimes:jpg,png,jpeg|max:250',
         ]);
 
         $this->price = (int)str_replace(',', '', $this->price);
