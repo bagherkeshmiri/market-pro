@@ -38,6 +38,8 @@ class Products extends SiteComponent
 
         $this->addToCart($product->id);
 
+        $this->dispatch('cartUpdated');
+
         $this->js("window.dispatchEvent(new CustomEvent('product-added-to-cart', { detail: { name: '{$product->name}' } }))");
     }
 
