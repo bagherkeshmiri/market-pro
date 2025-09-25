@@ -7,13 +7,12 @@ use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 /**
- *
- *
  * @property int $id
  * @property string|null $name
  * @property string $email
@@ -25,6 +24,10 @@ use Illuminate\Support\Facades\Hash;
  * @property Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, UserAddress> $addresses
  * @property-read int|null $addresses_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Comment> $comments
+ * @property-read int|null $comments_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, DiscountCodeUser> $discountCodes
+ * @property-read int|null $discount_codes_count
  * @property-read string $jalali_created_at
  * @property-read string $jalali_updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Order> $orders
@@ -85,6 +88,11 @@ class User extends Authenticatable
     public function discountCodes(): HasMany
     {
         return $this->hasMany(DiscountCodeUser::class, DiscountCodeUser::COLUMN_USER_ID, self::COLUMN_ID);
+    }
+
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     /*-------------- Accessors & Mutators -------------*/
