@@ -47,6 +47,9 @@ class Cart extends SiteComponent
             $this->discount = 0;
             $this->shipping = 0;
         }
+
+        $this->dispatch('cartUpdated');
+
     }
 
     public function updatedCart($value, $key): void
