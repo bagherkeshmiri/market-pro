@@ -56,14 +56,13 @@ class ShowProduct extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'ویرایش  محصول';
         $allCategories = Category::pluck('id', 'name')
             ->toArray();
         $statuses = showEnumLabels(ProductStatus::class);
         $discountTypes = showEnumLabels(DiscountType::class);
         return $this->renderView(
             'livewire.admin.product.show-product',
-            $pageTitle,
+            'ویرایش  محصول',
             compact('allCategories', 'statuses', 'discountTypes')
         );
     }

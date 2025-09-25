@@ -23,11 +23,9 @@ class PaymentResult extends SiteComponent
 
     public function render(): View
     {
-        $pageTitle = 'نتیجه پرداخت';
-
         return $this->renderView(
             'livewire.site.payment-result',
-            $pageTitle
+            'نتیجه پرداخت'
         );
     }
 }

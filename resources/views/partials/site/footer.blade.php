@@ -54,7 +54,7 @@
                     <ul class="schedule-list">
                         <li><span> ساعات کاری :</span> همه روزه از ۸ صبح تا ۶ عصر</li>
                         <li><span>ایمیل : </span> support@example.com</li>
-                        <li><span>آدرس  :</span> تهران ، خیابان گل ، پلاک ۱۲۳</li>
+                        <li><span>آدرس :</span> تهران ، خیابان گل ، پلاک ۱۲۳</li>
                     </ul>
                 </div>
             </div>

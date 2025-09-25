@@ -15,6 +15,11 @@ use Livewire\Features\SupportRedirects\Redirector;
 class SinglePost extends SiteComponent
 {
     public Post $post;
+    public string $searchText = '';
+    public $searchResults = [];
+    public bool $readyToShow = false;
+
+    protected $listeners = ['performSearch'];
 
     public function mount(): RedirectResponse|Redirector|null
     {
@@ -24,9 +29,9 @@ class SinglePost extends SiteComponent
         return null;
     }
 
+
     public function render(): View
     {
-        $pageTitle = $this->post->title;
         $categories = Category::withoutTrashed()
             ->isPostCategory()
             ->select([
@@ -39,8 +44,30 @@ class SinglePost extends SiteComponent
         $comments = $this->post->comments()->where('status', CommentStatus::Approved)->get();
         return $this->renderView(
             'livewire.site.single-post',
-            $pageTitle,
+            $this->post->title,
             compact('categories', 'lastPosts', 'comments')
         );
     }
+
+    public function updatedSearchText(): void
+    {
+        $this->search();
+    }
+
+    public function search(): void
+    {
+        if (strlen($this->searchText) > 2) {
+            $this->searchResults = Post::query()
+                ->whereStatus(IsActive::Yes)
+                ->where('title', 'like', '%' . $this->searchText . '%')
+                ->latest()
+                ->get();
+
+            $this->readyToShow = true;
+        } else {
+            $this->searchResults = [];
+            $this->readyToShow = false;
+        }
+    }
+
 }

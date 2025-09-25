@@ -14,7 +14,6 @@ class ListTodayPayment extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'لیست‌ پرداخت های امروز  ';
         $tableHeads = [
             'کاربر',
             'شماره سفارش',
@@ -31,7 +30,7 @@ class ListTodayPayment extends AdminComponent
 
         return $this->renderView(
             'livewire.admin.payment.list-today-payment',
-            $pageTitle,
+            'لیست‌ پرداخت های امروز  ',
             compact('tableHeads', 'payments')
 
         );

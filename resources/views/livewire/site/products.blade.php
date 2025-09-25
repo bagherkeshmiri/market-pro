@@ -29,7 +29,9 @@
                                     </li>
                                 @endif
                                 <li>
-                                    <a wire:click="addProductToWishlist({{ $product->id }})">
+                                    <a role="button"
+                                        wire:click="addProductToWishlist({{ $product->id }})"
+                                       aria-label="افزودن محصول به علاقه‌مندی‌ها">
                                         <i class="fa-regular fa-heart"></i>
                                     </a>
                                 </li>

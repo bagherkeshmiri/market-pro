@@ -10,12 +10,11 @@ class ListGateway extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'لیست‌ درگاه ها';
         $tableHeads = ['نام', 'لیبل','وضعیت','پیش‌فرض', 'تاریخ ایجاد', 'عملیات'];
         $gateways = Gate::withoutTrashed()->paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.gateway.list-gateway',
-            $pageTitle,
+            'لیست‌ درگاه ها',
             compact('tableHeads', 'gateways')
         );
     }

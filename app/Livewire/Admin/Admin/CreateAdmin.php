@@ -29,11 +29,10 @@ class CreateAdmin extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'ایجاد مدیر';
         $roles = Role::pluck('id', 'fa_name')->toArray();
         return $this->renderView(
             'livewire.admin.admin.create-admin',
-            $pageTitle,
+            'ایجاد مدیر',
             compact('roles')
         );
     }

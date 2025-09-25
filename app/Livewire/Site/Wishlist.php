@@ -45,10 +45,9 @@ class Wishlist extends SiteComponent
 
     public function render(): View
     {
-        $pageTitle = 'لیست علاقه مندی ها';
         return $this->renderView(
             'livewire.site.wishlist',
-            $pageTitle
+            'لیست علاقه مندی ها'
         );
     }
 }

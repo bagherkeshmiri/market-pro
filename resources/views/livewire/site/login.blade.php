@@ -3,7 +3,7 @@
         <div class="container">
             <div class="login-wrap text-center">
                 <h3 class="title">وارد حساب کاربری خود شوید</h3>
-                <a href="#" class="google-login"><img src="{{ asset('images/site/google.png') }}" alt="google">با گوگل وارد شوید</a>
+                <a class="google-login"><img src="{{ asset('images/site/google.png') }}" alt="google">با گوگل وارد شوید</a>
                 <span class="or-text">یا</span>
 
                 @include('custom-components.site.flash-message')
@@ -33,7 +33,7 @@
                         <button type="submit" class="rr-primary-btn">ورود به حساب کاربری</button>
                     </div>
 
-                    <a href="#" class="forgot">رمز عبور خود را گم کرده‌اید؟</a>
+                    <a class="forgot">رمز عبور خود را گم کرده‌اید؟</a>
                     <div class="login-btn-wrap">
                         <span class="forgot">حساب کاربری ندارید؟</span>
                         <a class="log-in" href="{{ route('site.register') }}">عضو شوید</a>

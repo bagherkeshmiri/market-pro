@@ -44,24 +44,41 @@
                                                 <span class="align-middle">آدرس ها</span>
                                             </a>
                                         </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="change-password-tab" data-toggle="tab"
+                                               href="#change-password"
+                                               aria-controls="orders" role="tab" aria-selected="false">
+                                                <i class="bx bx-check-shield align-middle"></i>
+                                                <span class="align-middle">تغییر رمز عبور</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                     <div class="tab-content">
 
-                                        <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                            <livewire:admin.user.edit-user :user="$user" />
+                                        <div class="tab-pane active" id="home" role="tabpanel"
+                                             aria-labelledby="home-tab">
+                                            <livewire:admin.user.edit-user :user="$user"/>
                                         </div>
 
-                                        <div class="tab-pane" id="payments" role="tabpanel" aria-labelledby="payments-tab">
-                                            <livewire:admin.user.list-payments-user :user="$user" />
+                                        <div class="tab-pane" id="payments" role="tabpanel"
+                                             aria-labelledby="payments-tab">
+                                            <livewire:admin.user.list-payments-user :user="$user"/>
                                         </div>
 
                                         <div class="tab-pane" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-                                            <livewire:admin.user.list-orders-user :user="$user" />
+                                            <livewire:admin.user.list-orders-user :user="$user"/>
                                         </div>
 
 
-                                        <div class="tab-pane" id="addresses" role="tabpanel" aria-labelledby="addresses-tab">
-                                            <livewire:admin.user.list-addresses-user :user="$user" />
+                                        <div class="tab-pane" id="addresses" role="tabpanel"
+                                             aria-labelledby="addresses-tab">
+                                            <livewire:admin.user.list-addresses-user :user="$user"/>
+                                        </div>
+
+                                        <div class="tab-pane" id="change-password" role="tabpanel"
+                                             aria-labelledby="change-password-tab">
+                                            <livewire:admin.user.change-password-user :user="$user"/>
                                         </div>
 
                                     </div>

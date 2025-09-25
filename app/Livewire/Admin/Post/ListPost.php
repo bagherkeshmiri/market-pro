@@ -10,12 +10,11 @@ class ListPost extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'لیست‌ پست ها';
         $tableHeads = ['عنوان', 'اسلاگ','دسته', 'کاربر', 'وضعیت', 'تاریخ ایجاد', 'عملیات'];
         $posts = Post::paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.post.list-post',
-            $pageTitle,
+            'لیست‌ پست ها',
             compact('tableHeads', 'posts')
         );
     }

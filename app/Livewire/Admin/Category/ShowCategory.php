@@ -37,7 +37,6 @@ class ShowCategory extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'ویرایش دسته بندی';
         $allCategories = Category::where('id', '!=', $this->category->id)
             ->pluck('id', 'name')
             ->toArray();
@@ -45,7 +44,7 @@ class ShowCategory extends AdminComponent
         $types = showEnumLabels(CategoryType::class);
         return $this->renderView(
             'livewire.admin.category.show-category',
-            $pageTitle,
+            'ویرایش دسته بندی',
             compact('allCategories','types')
         );
     }

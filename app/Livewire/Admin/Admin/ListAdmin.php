@@ -10,14 +10,13 @@ class ListAdmin extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'لیست مدیران';
         $tableHeads = ['نام', 'ایمیل', 'نقش', 'دسترسی ها', 'تاریخ ایجاد', 'عملیات'];
         $adminQuery = Admin::query();
         $mainAdminId = (clone $adminQuery)->orderBy('id')->first()->id;
         $admins = (clone $adminQuery)->paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.admin.list-admin',
-            $pageTitle,
+            'لیست مدیران',
             compact('tableHeads', 'admins', 'mainAdminId')
         );
     }

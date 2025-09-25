@@ -39,7 +39,6 @@ class CreatePost extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'ایجاد پست';
         $statuses = showEnumLabels(IsActive::class);
         $categories = Category::withoutTrashed()
             ->isPostCategory()
@@ -52,7 +51,7 @@ class CreatePost extends AdminComponent
 
         return $this->renderView(
             'livewire.admin.post.create-post',
-            $pageTitle,
+            'ایجاد پست',
             compact('statuses', 'categories')
         );
     }

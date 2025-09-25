@@ -10,7 +10,6 @@ class Faq extends SiteComponent
 {
     public function render(): View
     {
-        $pageTitle = 'سوالات متداول';
         $faqs = \App\Models\Faq::whereIsActive(IsActive::Yes)
             ->select([
                 'id',
@@ -20,7 +19,7 @@ class Faq extends SiteComponent
             ->get();
         return $this->renderView(
             'livewire.site.faq',
-            $pageTitle,
+            'سوالات متداول',
             compact('faqs')
         );
     }

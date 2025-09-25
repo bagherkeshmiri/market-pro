@@ -48,7 +48,9 @@ class Login extends AuthComponent
 
     public function render(): View
     {
-        $pageTitle = 'ورود مدیران';
-        return $this->renderView('livewire.admin.auth.login', $pageTitle);
+        return $this->renderView(
+            'livewire.admin.auth.login',
+            'ورود مدیران'
+        );
     }
 }

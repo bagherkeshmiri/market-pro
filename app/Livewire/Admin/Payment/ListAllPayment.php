@@ -10,7 +10,6 @@ class ListAllPayment extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'لیست‌ پرداخت ها ';
         $tableHeads = [
             'کاربر',
             'شماره سفارش',
@@ -26,7 +25,7 @@ class ListAllPayment extends AdminComponent
         $payments = Payment::paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.payment.list-all-payment',
-            $pageTitle,
+            'لیست‌ پرداخت ها ',
             compact('tableHeads', 'payments')
         );
     }

@@ -12,11 +12,9 @@ class ShowUser extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = ' اطلاعات کاربر ' . $this->user->name;
-
         return $this->renderView(
             'livewire.admin.user.show-user',
-            $pageTitle
+            ' اطلاعات کاربر ' . $this->user->name
         );
     }
 

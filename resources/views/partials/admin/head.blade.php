@@ -10,8 +10,10 @@
 
     <link rel="stylesheet" href="{{ asset('css/frest/ck-editor.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/vendors/vendors.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/frest/vendors/vendors.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/frest/vendors/extensions/dragula.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/vendors/pickers/pickadate/pickadate.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/vendors/pickers/daterange/daterangepicker.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('css/frest/vendors/pickers/datepicker-jalali/bootstrap-datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/vendors/ui/prism.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/bootstrap-extended.css') }}">
@@ -19,13 +21,16 @@
     <link rel="stylesheet" href="{{ asset('css/frest/components.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/themes/dark-layout.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/core/menu/menu-types/vertical-menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/frest/plugins/extensions/drag-and-drop.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/frest/pages/page-user-profile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/pages/widgets.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/global.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/vendors/extensions/sweetalert2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/vendors/extensions/toastr.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/plugins/extensions/toastr.css') }}">
+
+
+    @if(request()->routeIs('admin.profile.index') || request()->routeIs('admin.profile.change-password'))
+        <link rel="stylesheet" href="{{ asset('css/frest/pages/page-user-profile.css') }}">
+    @endif
 
 
     <style>

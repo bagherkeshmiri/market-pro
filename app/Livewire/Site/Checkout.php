@@ -26,7 +26,7 @@ class Checkout extends SiteComponent
     public $cartTotal = 0;
     public $tax = 0;
     public $shipping = 20000;
-    public $discount = 50000;
+    public $discount = 0;
     public $freeShipping = 2000000;
     public $gate;
     public $user;
@@ -42,10 +42,15 @@ class Checkout extends SiteComponent
     public $selectedCity;
     public $selectedAddressId;
     public $createdUserAddress;
+    public $cartDiscountDetails = [];
+
 
     public function mount(): RedirectResponse|Redirector|null
     {
         $this->cart = Session::get('cart', []);
+        $this->cartDiscountDetails = Session::get('cart_discount_details', []);
+        $this->discount = $this->cartDiscountDetails['discount_amount'];
+
         if (empty($this->cart)) {
             $this->discount = 0;
             $this->shipping = 0;
@@ -110,10 +115,9 @@ class Checkout extends SiteComponent
 
     public function render(): View
     {
-        $pageTitle = 'تسویه حساب';
         return $this->renderView(
             'livewire.site.checkout',
-            $pageTitle
+            'تسویه حساب'
         );
     }
 
@@ -221,6 +225,13 @@ class Checkout extends SiteComponent
                 $payment->update([
                     'authority' => $result['authority']
                 ]);
+
+
+                $this->cartDiscountDetails['discount']->incrementUsage();
+                $this->cartDiscountDetails['discount']->usages()->create([
+                    'user_id' => auth()->user()->id,
+                ]);
+
 
                 DB::commit();
 

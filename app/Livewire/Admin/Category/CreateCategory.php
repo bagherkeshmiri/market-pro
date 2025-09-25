@@ -25,12 +25,11 @@ class CreateCategory extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'ایجاد دسته بندی';
         $allCategories = Category::pluck('id', 'name')->toArray();
         $types = showEnumLabels(CategoryType::class);
         return $this->renderView(
             'livewire.admin.category.create-category',
-            $pageTitle,
+            'ایجاد دسته بندی',
             compact('allCategories','types')
         );
     }
