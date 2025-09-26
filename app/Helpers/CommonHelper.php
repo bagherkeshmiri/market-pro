@@ -43,7 +43,7 @@ function storeImage(TemporaryUploadedFile $image, string $folder): string
     }
 
     ob_start();
-    imagewebp($imgResource, null, 90);
+    imagewebp($imgResource, null, 100);
     $webpData = ob_get_clean();
 
     imagedestroy($imgResource);
