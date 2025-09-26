@@ -12,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\Features\SupportRedirects\Redirector;
 use Livewire\WithFileUploads;
 use Throwable;
@@ -76,8 +77,11 @@ class CreateProduct extends AdminComponent
                 'nullable',
                 new Enum(DiscountType::class)
             ],
-            'mainImage' => 'required|file|mimes:jpg,png,jpeg,webp|max:500', // TODO reduce image size and width and height
-            'galleryImages' => 'nullable|array', // if array file has file|mimes:jpg,png,jpeg,webp|max:500 validation
+            'mainImage' => $this->mainImage instanceof TemporaryUploadedFile
+                ? 'image|mimes:jpg,png,jpeg|max::250'
+                : 'nullable',
+            'galleryImages' => 'nullable|array',
+            'galleryImages.*' => 'nullable|image|mimes:jpg,png,jpeg|max::250',
         ]);
 
         $this->price = (int)str_replace(',', '', $this->price);

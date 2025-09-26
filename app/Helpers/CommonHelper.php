@@ -12,21 +12,52 @@ function showEnumLabels(string|int $enum): Collection
     ]);
 }
 
+/**
+ * @throws Exception
+ */
 function storeImage(TemporaryUploadedFile $image, string $folder): string
 {
     $date = Carbon::now();
     $originalPath = 'uploads/images/' . $folder . '/' . $date->year . '/' . $date->month . '/' . $date->day;
 
     $disk = app()->isLocal() ? 'public' : 's3';
+    $filename = uniqid() . '.webp';
+    $mime = $image->getMimeType();
 
-    $path = Storage::disk($disk)->put($originalPath, $image);
-
-    if ($disk === 'public') {
-        return '/storage/' . $path;
+    switch ($mime) {
+        case 'image/jpeg':
+        case 'image/jpg':
+            $imgResource = imagecreatefromjpeg($image->getPathname());
+            break;
+        case 'image/png':
+            $imgResource = imagecreatefrompng($image->getPathname());
+            $newImage = imagecreatetruecolor(imagesx($imgResource), imagesy($imgResource));
+            imagealphablending($newImage, false);
+            imagesavealpha($newImage, true);
+            imagecopy($newImage, $imgResource, 0, 0, 0, 0, imagesx($imgResource), imagesy($imgResource));
+            imagedestroy($imgResource);
+            $imgResource = $newImage;
+            break;
+        default:
+            throw new Exception('فرمت فایل پشتیبانی نمی‌شود.');
     }
 
-    return Storage::disk('s3')->url($path);
+    ob_start();
+    imagewebp($imgResource, null, 100);
+    $webpData = ob_get_clean();
+
+    imagedestroy($imgResource);
+
+    $fullPath = $originalPath . '/' . $filename;
+    if ($disk === 'public') {
+        Storage::disk('public')->put($fullPath, $webpData);
+        return '/storage/' . $fullPath;
+    } else {
+        Storage::disk('s3')->put($fullPath, $webpData, 'public');
+        return Storage::disk('s3')->url($fullPath);
+    }
 }
+
 
 function calculateProductFinalPrice(
     string|int|DiscountType $discountType,
