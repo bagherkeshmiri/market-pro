@@ -125,7 +125,7 @@ class ShowProduct extends AdminComponent
         try {
             $this->product->update($data);
 
-            if (!empty($this->mainImage) and $this->mainImage instanceof TemporaryUploadedFile) {
+            if ($this->mainImage instanceof TemporaryUploadedFile) {
                 $productImage = $this->product->mainImage;
                 if (!is_null($productImage)) {
                     DeleteImageJob::dispatch($productImage->url);
@@ -139,8 +139,8 @@ class ShowProduct extends AdminComponent
             }
 
             if (!empty($this->galleryImages) and is_array($this->galleryImages)) {
-//                DeleteImageJob::dispatch($address); // TODO
-                $this->product->galleryImages->delete(); // TODO check delete galley images successfully
+                $this->product->galleryImages->each(fn($image) => DeleteImageJob::dispatch($image->url));
+                $this->product->galleryImages()->delete();
 
                 foreach ($this->galleryImages as $galleryImage) {
                     $this->product->images()->create([
