@@ -124,7 +124,7 @@ class Checkout extends SiteComponent
     /**
      * @throws Throwable
      */
-    public function pay(): void
+    public function pay()
     {
         if (is_null($this->gate)) {
             $this->js(
@@ -226,16 +226,18 @@ class Checkout extends SiteComponent
                     'authority' => $result['authority']
                 ]);
 
-
-                $this->cartDiscountDetails['discount']->incrementUsage();
-                $this->cartDiscountDetails['discount']->usages()->create([
-                    'user_id' => auth()->user()->id,
-                ]);
-
+                if (!empty($this->cartDiscountDetails)) {
+                    $this->cartDiscountDetails['discount']->incrementUsage();
+                    $this->cartDiscountDetails['discount']->usages()->create([
+                        'user_id' => auth()->user()->id,
+                    ]);
+                }
 
                 DB::commit();
 
                 redirect($result['gateway_url']);
+
+                return redirect()->away($result['gateway_url']);
             }
         } catch (Exception $e) {
             DB::rollBack();
