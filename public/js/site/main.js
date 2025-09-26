@@ -2,7 +2,7 @@
 
 (function ($) {
     "use strict";
-    
+
         //Toggle Js
 		$('.rr-checkout-login-form-reveal-btn').on('click', function () {
 			$('#rrReturnCustomerLoginForm').slideToggle(400);
@@ -52,13 +52,13 @@
         if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
             $('body').addClass('firefox');
         }
-        
+
         var header = $(".header"),
             stickyHeader = $(".primary-header");
 
         function menuSticky(w) {
             if (w.matches) {
-                
+
                 $(window).on("scroll", function () {
                     var scroll = $(window).scrollTop();
                     if (scroll >= 110) {
@@ -67,9 +67,9 @@
                         stickyHeader.removeClass("fixed");
                     }
                 });
-                if ($(".header").length > 0) {    
+                if ($(".header").length > 0) {
                     var  headerHeight = document.querySelector(".header"),
-                        setHeaderHeight = headerHeight.offsetHeight;	
+                        setHeaderHeight = headerHeight.offsetHeight;
                     header.each(function () {
                         $(this).css({
                             'height' : setHeaderHeight + 'px'
@@ -348,13 +348,13 @@
 
         //Swiper Slider For Shop
         var swiper = new Swiper(".product-gallary-thumb", {
-            spaceBetween: 10,
-            slidesPerView: 3,
+            spaceBetween: 20,
+            slidesPerView: 4,
             freeMode: true,
             watchSlidesProgress: true,
             direction: 'vertical',
         });
-        
+
         var swiper2 = new Swiper(".product-gallary", {
             spaceBetween: 10,
             loop: true,
@@ -406,7 +406,7 @@
                 const scrollElementWrap = $("#scroll-percentage");
 
                 scrollElementWrap.css("background", `conic-gradient( var(--rr-color-theme-primary) ${scrollValue}%, var(--rr-color-common-white) ${scrollValue}%)`);
-                
+
                 // ScrollProgress
                 if ( scrollTopPos > 100 ) {
                     scrollElementWrap.addClass("active");
@@ -430,7 +430,7 @@
                     behavior: "smooth"
                 });
             }
-            
+
             $("#scroll-percentage").on("click", scrollToTop);
         }
 
