@@ -49,7 +49,7 @@ class Checkout extends SiteComponent
     {
         $this->cart = Session::get('cart', []);
         $this->cartDiscountDetails = Session::get('cart_discount_details', []);
-        $this->discount = $this->cartDiscountDetails['discount_amount'];
+        $this->discount = $this->cartDiscountDetails['discount_amount'] ?? 0;
 
         if (empty($this->cart)) {
             $this->discount = 0;
