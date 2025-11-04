@@ -3,7 +3,8 @@
 
 @include('partials.admin.head',['pageTitle' => $pageTitle])
 
-<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-sticky footer-static font-13" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-sticky footer-static font-13"
+      data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="dark-layout">
 
 <div class="d-flex position-absolute justify-content-center mx-auto vh-100 vw-100"
      style="background-color: #0000009e; z-index: 999;" id="loading">
@@ -23,15 +24,29 @@
 @include('partials.admin.footer-vertical')
 
 <script src="{{ asset('js/frest/vendors/vendors.min.js') }}"></script>
+
+@if(request()->routeIs('admin.discount.create') || request()->routeIs('admin.discount.show'))
+    <script src="{{ asset('js/frest/vendors/pickers/pickadate/picker.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/pickadate/picker.date.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/pickadate/picker.time.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/pickadate/legacy.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/daterange/moment.min.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/daterange/daterangepicker.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/datepicker-jalali/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/frest/vendors/pickers/datepicker-jalali/bootstrap-datepicker.fa.min.js') }}"></script>
+@endif
+
 <script src="{{ asset('js/frest/vendors/ui/jquery.sticky.js') }}"></script>
 <script src="{{ asset('js/frest/vendors/ui/prism.min.js') }}"></script>
-<script src="{{ asset('js/frest/vendors/extensions/dragula.min.js') }}"></script>
 <script src="{{ asset('js/frest/scripts/configs/vertical-menu-dark.js') }}"></script>
 <script src="{{ asset('js/frest/core/app-menu.js') }}"></script>
 <script src="{{ asset('js/frest/core/app.js') }}"></script>
 <script src="{{ asset('js/frest/scripts/components.js') }}"></script>
 <script src="{{ asset('js/frest/scripts/footer.js') }}"></script>
-<script src="{{ asset('js/frest/scripts/extensions/drag-drop.js') }}"></script>
+
+@if(request()->routeIs('admin.discount.create') || request()->routeIs('admin.discount.show'))
+    <script src="{{ asset('js/frest/scripts/pickers/dateTime/pick-a-datetime.js') }}"></script>
+@endif
 
 @yield('scripts')
 @livewireScripts

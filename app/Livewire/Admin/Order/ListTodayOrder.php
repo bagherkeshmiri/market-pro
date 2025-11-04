@@ -11,7 +11,6 @@ class ListTodayOrder extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'لیست ‌سفارشات امروز';
         $tableHeads = [
             'کاربر',
             'شماره سفارش',
@@ -31,7 +30,7 @@ class ListTodayOrder extends AdminComponent
 
         return $this->renderView(
             'livewire.admin.order.list-today-order',
-            $pageTitle,
+            'لیست ‌سفارشات امروز',
             compact('tableHeads', 'orders')
         );
     }

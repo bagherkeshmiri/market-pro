@@ -56,14 +56,13 @@ class ShowProduct extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'ویرایش  محصول';
         $allCategories = Category::pluck('id', 'name')
             ->toArray();
         $statuses = showEnumLabels(ProductStatus::class);
         $discountTypes = showEnumLabels(DiscountType::class);
         return $this->renderView(
             'livewire.admin.product.show-product',
-            $pageTitle,
+            'ویرایش  محصول',
             compact('allCategories', 'statuses', 'discountTypes')
         );
     }
@@ -89,9 +88,10 @@ class ShowProduct extends AdminComponent
                 new Enum(DiscountType::class)
             ],
             'mainImage' => $this->mainImage instanceof TemporaryUploadedFile
-                ? 'file|mimes:jpg,png,jpeg,webp|max:500' // TODO reduce image size and width and height
+                ? 'image|mimes:jpg,png,jpeg|max:250'
                 : 'nullable',
-            'galleryImages' => 'nullable|array', // TODO if array file has file|mimes:jpg,png,jpeg,webp|max:500 validation
+            'galleryImages' => 'nullable|array',
+            'galleryImages.*' => 'nullable|image|mimes:jpg,png,jpeg|max:250',
         ]);
 
         $this->price = (int)str_replace(',', '', $this->price);
@@ -125,7 +125,7 @@ class ShowProduct extends AdminComponent
         try {
             $this->product->update($data);
 
-            if (!empty($this->mainImage) and $this->mainImage instanceof TemporaryUploadedFile) {
+            if ($this->mainImage instanceof TemporaryUploadedFile) {
                 $productImage = $this->product->mainImage;
                 if (!is_null($productImage)) {
                     DeleteImageJob::dispatch($productImage->url);
@@ -139,8 +139,8 @@ class ShowProduct extends AdminComponent
             }
 
             if (!empty($this->galleryImages) and is_array($this->galleryImages)) {
-//                DeleteImageJob::dispatch($address); // TODO
-                $this->product->galleryImages->delete(); // TODO check delete galley images successfully
+                $this->product->galleryImages->each(fn($image) => DeleteImageJob::dispatch($image->url));
+                $this->product->galleryImages()->delete();
 
                 foreach ($this->galleryImages as $galleryImage) {
                     $this->product->images()->create([

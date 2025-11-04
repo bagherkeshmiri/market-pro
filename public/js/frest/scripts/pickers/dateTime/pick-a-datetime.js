@@ -4,7 +4,7 @@
 ==========================================================================================*/
 (function (window, document, $) {
 	'use strict';
-	  
+
 	// ************************//
   	// * Shamsi Date Picker *//
   	// ************************//
@@ -163,7 +163,7 @@
   	// ************************//
   	// * Date Range Picker *//
 	// ************************//
-	  
+
 	var dateRangePickerLocaleFa = {
 		"format": "YYYY/MM/DD",
 		"separator": " - ",
@@ -430,18 +430,22 @@
 		locale: dateRangePickerLocaleFa
   	});
 
-  	// Inline Date Picker
-  	var picker = $('.inlineDateRangePicker').daterangepicker({
-		parentEl: "#daterangepicker-container",
-		locale: dateRangePickerLocaleFa,
-		opens: "left"
-  	});
+    // Inline Date Picker
+    var $inlinePicker = $('.inlineDateRangePicker');
 
-  	// To remain picker opened after date range applied
-  	picker.data('daterangepicker').hide = function () {};
+    if ($inlinePicker.length) {
+        var picker = $inlinePicker.daterangepicker({
+            parentEl: "#daterangepicker-container",
+            locale: dateRangePickerLocaleFa,
+            opens: "left"
+        }).data('daterangepicker');
 
-  	// show picker on load
-  	picker.data('daterangepicker').show();
+        if (picker) {
+            // جلوگیری از بسته شدن اتوماتیک
+            picker.hide = function () {};
+            // نمایش هنگام لود
+            picker.show();
+        }
+    }
 
-
-  })(window, document, jQuery);
+})(window, document, jQuery);

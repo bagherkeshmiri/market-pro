@@ -53,10 +53,9 @@ class Login extends SiteComponent
 
     public function render(): View
     {
-        $pageTitle = 'ورود';
         return $this->renderView(
             'livewire.site.login',
-            $pageTitle
+            'ورود'
         );
     }
 }

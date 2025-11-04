@@ -20,7 +20,7 @@
                                     <p class="p-2">
                                         پس از پاکسازی حافظه کش و حذف کوکی ها مرورگر را ریستارت کنید. <br> ایراد ها توسط دسترسی های نادرست فایل ها و پوشه ها به وجود آمده اند.
                                     </p>
-                                    <a href="#" class="btn btn-primary round glow">بازگشت به خانه</a>
+                                    <a class="btn btn-primary round glow">بازگشت به خانه</a>
                                 </div>
                             </div>
                         </div>

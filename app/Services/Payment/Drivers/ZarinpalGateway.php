@@ -14,6 +14,7 @@ class ZarinpalGateway implements GatewayInterface
     protected string $requestUrl;
     protected string $verifyUrl;
     protected string $startPayUrl;
+    protected string $inquiryUrl;
 
     public function __construct(Gate $gateway)
     {
@@ -24,11 +25,13 @@ class ZarinpalGateway implements GatewayInterface
             $this->requestUrl = 'https://sandbox.zarinpal.com/pg/v4/payment/request.json';
             $this->verifyUrl = 'https://sandbox.zarinpal.com/pg/v4/payment/verify.json';
             $this->startPayUrl = 'https://sandbox.zarinpal.com/pg/StartPay/';
+            $this->inquiryUrl = 'https://sandbox.zarinpal.com/pg/v4/payment/inquiry.json';
         } else {
             $this->token = $gateway->token;
             $this->requestUrl = 'https://payment.zarinpal.com/pg/v4/payment/request.json';
             $this->verifyUrl = 'https://payment.zarinpal.com/pg/v4/payment/verify.json';
             $this->startPayUrl = 'https://www.zarinpal.com/pg/StartPay/';
+            $this->inquiryUrl = 'https://payment.zarinpal.com/pg/v4/payment/inquiry.json';
         }
     }
 
@@ -85,17 +88,52 @@ class ZarinpalGateway implements GatewayInterface
 
         $data = $response->json();
 
-        if (isset($data['data']['code']) && $data['data']['code'] === 100 || $data['data']['code'] === 101) {
-            return ['status' => true, 'ref_id' => $data['data']['ref_id']];
-        }
-
-        if (isset($data['data']['code']) && $data['data']['code'] !== 100 || $data['data']['code'] !== 101) {
-            Log::info('zarinpal payment error code : ' . $data['data']['code'] . ' - ' . ' authority' . $authority);
+        if (empty($data['errors'])) {
+            return [
+                'status' => true,
+                'code' => $data['data']['code'],
+                'paymentStatus' => $data['data']['status'],
+                'paymentMessage' => $data['data']['message'],
+            ];
+        } else {
+            Log::info(
+                'zarinpal payment error in verify method : ' . json_encode($data['errors']) . ' - ' . ' authority' . $authority
+            );
         }
 
         return [
             'status' => false,
-            'message' => 'تراکنش ناموفق'
+            'errors' => $data['errors']
         ];
     }
+
+    public function inquiry(string $authority): array
+    {
+        $response = Http::post($this->inquiryUrl, [
+            'merchant_id' => $this->token,
+            'authority' => $authority,
+        ]);
+
+        $data = $response->json();
+
+        if (empty($data['errors'])) {
+            return [
+                'status' => true,
+                'code' => $data['data']['code'],
+                'paymentStatus' => $data['data']['status'],
+                'paymentMessage' => $data['data']['message'],
+            ];
+        } else {
+            Log::info(
+                'zarinpal payment error in inquiry method : ' . json_encode($data['errors']) . ' - ' . ' authority' . $authority
+            );
+        }
+
+        return [
+            'status' => false,
+            'message' => $data['message'],
+            'errors' => $data['errors']
+        ];
+    }
+
 }

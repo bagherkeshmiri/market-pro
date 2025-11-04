@@ -66,6 +66,12 @@
 
 @endsection
 
+
+@php
+    $images = collect([$product->mainImage])->merge($product->galleryImages);
+@endphp
+
+
 <div>
     <section class="shop-section single pt-100 pb-100">
         <div class="container rtl">
@@ -75,23 +81,16 @@
                         <div class="swiper product-gallary-thumb">
                             <div class="swiper-wrapper">
 
-                                @forelse($product->galleryImages as $imageGallery)
+
+                                @foreach($images as $image)
 
                                     <div class="swiper-slide">
                                         <div class="thumb-item">
-                                            <img src="{{ $imageGallery->url }}" alt="">
+                                            <img src="{{ $image->url }}" alt="">
                                         </div>
                                     </div>
 
-                                @empty
-
-                                    <div class="swiper-slide">
-                                        <div class="thumb-item">
-                                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($this->getSampleImageUrl()) }}" alt="">
-                                        </div>
-                                    </div>
-
-                                @endforelse
+                                @endforeach
 
                             </div>
                         </div>
@@ -102,20 +101,15 @@
                             <div class="swiper-wrapper">
 
 
-                                <div class="swiper-slide">
-                                    <div class="gallary-item">
-                                        <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($this->getSampleImageUrl()) }}" alt="shop">
-                                    </div>
-                                </div>
-
-
-                                @foreach($product->galleryImages as $imageGallery)
+                                @foreach($images as $image)
                                     <div class="swiper-slide">
                                         <div class="gallary-item">
-                                            <img src="{{ $product->mainImage ? asset($product->mainImage->url) : asset($this->getSampleImageUrl()) }}" alt="shop">
+                                            <img src="{{ $image->url }}" alt="">
                                         </div>
                                     </div>
+
                                 @endforeach
+
                             </div>
                             <div class="swiper-nav-next"><i class="las la-arrow-right"></i></div>
                             <div class="swiper-nav-prev"><i class="las la-arrow-left"></i></div>

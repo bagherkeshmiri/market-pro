@@ -3,6 +3,7 @@
 namespace App\Livewire\Site;
 
 use App\Enums\IsActive;
+use App\Helpers\SeoHelper;
 use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\Collection;
 use App\Models\Post;
@@ -12,8 +13,6 @@ class Index extends SiteComponent
 {
     public function render(): View
     {
-        $pageTitle = 'فروشگاه اینترنتی رویسر';
-
         $collections = Collection::whereIsActive(true)
             ->orderBy('sort')
             ->with([
@@ -31,9 +30,11 @@ class Index extends SiteComponent
             ->limit(3)
             ->get();
 
+        SeoHelper::forHome();
+
         return $this->renderView(
             'livewire.site.index',
-            $pageTitle,
+            'فروشگاه اینترنتی رویسر',
             compact('collections','posts')
         );
     }

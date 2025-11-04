@@ -46,7 +46,6 @@ class SingleProduct extends SiteComponent
 
     public function render(): View
     {
-        $pageTitle = $this->product->name;
         $product = $this->product;
         $products = Product::limit(8)
             ->with([
@@ -59,7 +58,7 @@ class SingleProduct extends SiteComponent
         $comments = $this->product->comments()->where('status', CommentStatus::Approved)->get();;
         return $this->renderView(
             'livewire.site.single-product',
-            $pageTitle,
+            $this->product->name,
             compact('product', 'products', 'comments')
         );
     }

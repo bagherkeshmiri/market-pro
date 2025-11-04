@@ -27,10 +27,9 @@ class CreateFaq extends AdminComponent
     public function render(): View
     {
         $statuses = showEnumLabels(IsActive::class);
-        $pageTitle = 'ایجاد سوال متداول';
         return $this->renderView(
             'livewire.admin.faq.create-faq',
-            $pageTitle,
+            'ایجاد سوال متداول',
             compact('statuses')
         );
     }

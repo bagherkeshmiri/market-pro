@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
+use Livewire\Livewire;
 
 trait HandlesCart
 {
@@ -41,6 +42,10 @@ trait HandlesCart
                 $this->storeCart($cart);
 
                 $this->recalculateCartSummary();
+
+                if (method_exists($this, 'emit')) {
+                    $this->emit('cartUpdated');
+                }
             }
         }
     }

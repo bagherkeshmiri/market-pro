@@ -4,7 +4,7 @@
         <div class="container">
             <div class="login-wrap text-center">
                 <h3 class="title">حساب کاربری برای خود بسازید</h3>
-                <a href="#" class="google-login"><img src="{{ asset('images/site/google.png') }}" alt="google">با گوگل وارد شوید</a>
+                <a class="google-login"><img src="{{ asset('images/site/google.png') }}" alt="google">با گوگل وارد شوید</a>
                 <span class="or-text">یا</span>
                 @include('custom-components.site.flash-message')
 

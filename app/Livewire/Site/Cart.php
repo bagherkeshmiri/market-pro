@@ -4,6 +4,7 @@ namespace App\Livewire\Site;
 
 use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\Product;
+use App\Traits\DiscountValidator;
 use App\Traits\HandlesCart;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
@@ -11,12 +12,13 @@ use Illuminate\View\View;
 class Cart extends SiteComponent
 {
     use HandlesCart;
+    use DiscountValidator;
 
     public $cart = [];
     public $cartTotal = 0;
     public $tax = 0;
     public $shipping = 20000;
-    public $discount = 50000;
+    public $discount = 0;
     public $freeShipping = 2000000;
     public $remainingFreeShipping = 0;
     public float $usedFreeShippingLineProgress = 0;
@@ -45,6 +47,9 @@ class Cart extends SiteComponent
             $this->discount = 0;
             $this->shipping = 0;
         }
+
+        $this->dispatch('cartUpdated');
+
     }
 
     public function updatedCart($value, $key): void
@@ -111,16 +116,26 @@ class Cart extends SiteComponent
 
     public function checkDiscountCode(): void
     {
-        session()->flash('warning', 'کد تخفیف وارد شده منقضی شده است');
-//        session()->flash('success', 'کد تخفیف با موفقیت در سبد خرید اعمال شد'); // TODO
+        $result = $this->checkCode($this->discountCode, $this->cartTotal);
+
+        if ($result['status']) {
+            session()->flash('success', 'کد تخفیف با موفقیت در سبد خرید اعمال شد');
+            $this->discount = $result['amount'];
+
+            Session::put('cart_discount_details', [
+                'discount' => $result['discount'],
+                'discount_amount' => $result['amount'],
+            ]);
+        } else {
+            session()->flash('warning', $result['error']);
+        }
     }
 
     public function render(): View
     {
-        $pageTitle = 'سبد خرید';
         return $this->renderView(
             'livewire.site.cart',
-            $pageTitle
+            'سبد خرید'
         );
     }
 }

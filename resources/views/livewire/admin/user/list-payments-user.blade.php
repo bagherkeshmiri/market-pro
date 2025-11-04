@@ -23,7 +23,7 @@
             @forelse ($payments as $payment)
                 <tr>
                     <td class="text-white">{{ $payment->order->order_number }}</td>
-                    <td class="text-white">{{ $payment->gateOrg->label }}</td>
+                    <td class="text-white">{{ $payment->gate->label }}</td>
                     <td class="text-white">{{ $payment->payment_number }}</td>
                     <td>
                         @include('frest-components.badge' , [ 'badgeClass' => $payment->status_badge_class,  'content' => $payment->status_label ])

@@ -49,10 +49,9 @@ class Register extends SiteComponent
 
     public function render(): View
     {
-        $pageTitle = 'عضویت';
         return $this->renderView(
             'livewire.site.register',
-            $pageTitle
+            'عضویت'
         );
     }
 }

@@ -50,23 +50,20 @@ Route::prefix('auth')
 //    TestJob::dispatch();
 //});
 
-//
+
 //Route::get('/create-new-table', function () {
-//    if (!Schema::hasTable('gates')) {
-//        Schema::create('gates', function (Blueprint $table) {
+//    if (!Schema::hasTable('discount_code_user')) {
+//        Schema::create('discount_code_user', function (Illuminate\Database\Schema\Blueprint $table) {
 //            $table->id();
-//            $table->string('name');   // like zarinpal
-//            $table->string('label'); // like زرین پال اول
-//            $table->text('token')->nullable();
-//            $table->tinyInteger('is_active')->default(0);
-//            $table->tinyInteger('is_default')->default(0);
+//            $table->unsignedBigInteger('user_id')->index();
+//            $table->unsignedBigInteger('discount_code_id')->index();
+//            $table->timestamp('used_at')->useCurrent();
 //            $table->timestamps();
-//            $table->softDeletes();
 //        });
 //
-//        return 'gates table created successfully.';
+//        return 'discount_code_user table created successfully.';
 //    } else {
-//        return 'gates table already exists.';
+//        return 'discount_code_user table already exists.';
 //    }
 //});
 

@@ -37,7 +37,6 @@ class ShowCategory extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'ویرایش دسته بندی';
         $allCategories = Category::where('id', '!=', $this->category->id)
             ->pluck('id', 'name')
             ->toArray();
@@ -45,7 +44,7 @@ class ShowCategory extends AdminComponent
         $types = showEnumLabels(CategoryType::class);
         return $this->renderView(
             'livewire.admin.category.show-category',
-            $pageTitle,
+            'ویرایش دسته بندی',
             compact('allCategories','types')
         );
     }
@@ -100,7 +99,7 @@ class ShowCategory extends AdminComponent
             } else {
                 session()->flash('error', __('global.error_message'));
             }
-            return redirect()->route('admin.category.create');
+            return redirect()->route('admin.category.show', ['category' => $this->category->id]);
         }
     }
 }

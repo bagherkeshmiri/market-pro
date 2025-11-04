@@ -10,12 +10,11 @@ class ShowProfile extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'پروفایل';
         $admin = auth('admin')->user();
 
         return $this->renderView(
             'livewire.admin.profile.show-profile',
-            $pageTitle,
+            'پروفایل',
             compact('admin')
         );
     }

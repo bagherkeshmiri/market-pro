@@ -43,7 +43,7 @@
                                                         </a>
                                                     </td>
                                                     <td class="text-white">{{ $payment->order->order_number }}</td>
-                                                    <td class="text-white">{{ $payment->gateOrg->label }}</td>
+                                                    <td class="text-white">{{ $payment->gate->label }}</td>
                                                     <td class="text-white">{{ $payment->payment_number }}</td>
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $payment->status_badge_class,  'content' => $payment->status_label ])
@@ -52,7 +52,25 @@
                                                     <td class="text-white">{{ $payment->ref_id }}</td>
                                                     <td class="text-white">{{ $payment->jalali_paid_at }}</td>
                                                     <td class="text-white">{{ $payment->jalali_created_at }}</td>
-                                                    <td class="text-white"></td>
+                                                    <td class="text-white">
+
+                                                        @if($payment->status == \App\Enums\PaymentStatus::UnSuccess)
+
+                                                            <a data-toggle="tooltip"
+                                                               data-placement="top"
+                                                               data-original-title="استعلام وضعیت"
+                                                               wire:click="inquiry({{ $payment }})"
+                                                               wire:key="inquiry-{{ $payment->id }}"
+                                                            >
+                                                                <i class="bx bx-revision"
+                                                                   style="color:#FDAC41 !important; font-size: 19px !important;">
+                                                                </i>
+                                                            </a>
+
+                                                        @endif
+
+                                                    </td>
+
                                                 </tr>
 
                                             @empty

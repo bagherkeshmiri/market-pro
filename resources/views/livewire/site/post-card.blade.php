@@ -12,7 +12,12 @@
             <p class="mt-4" style="margin-bottom: 0 !important;">{{ $excerpt }}</p>
         </div>
         <div class="post-bottom">
-            <a href="{{ route('site.single-post',['post' => $slug]) }}" class="read-more">بیشتر بدانید<i class="fa-regular fa-arrow-left"></i></a>
+            <a href="{{ route('site.single-post',['post' => $slug]) }}" class="read-more"
+               aria-label="بیشتر بدانید درباره {{ $title }}">
+                بیشتر بدانید
+                <span class="sr-only"> درباره {{ $title }}</span>
+                <i class="fa-regular fa-arrow-left" aria-hidden="true"></i>
+            </a>
         </div>
     </div>
 </div>

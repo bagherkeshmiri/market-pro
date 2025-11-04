@@ -9,10 +9,9 @@ class Contact extends SiteComponent
 {
     public function render(): View
     {
-        $pageTitle = 'ارتباط با ما';
         return $this->renderView(
             'livewire.site.contact',
-            $pageTitle
+            'ارتباط با ما'
         );
     }
 }

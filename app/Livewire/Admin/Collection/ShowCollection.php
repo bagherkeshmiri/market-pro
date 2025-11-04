@@ -89,7 +89,6 @@ class ShowCollection extends AdminComponent
 
     public function render(): View
     {
-        $pageTitle = 'ویرایش  کالکشن ' . $this->title;
         $statuses = showEnumLabels(IsActive::class);
         $types = showEnumLabels(CollectionType::class);
         $selectBoxCategories = $this->categories->mapWithKeys(fn($item) => [
@@ -127,7 +126,7 @@ class ShowCollection extends AdminComponent
 
         return $this->renderView(
             'livewire.admin.collection.show-collection',
-            $pageTitle,
+            'ویرایش  کالکشن ' . $this->title,
             $viewData
         );
     }

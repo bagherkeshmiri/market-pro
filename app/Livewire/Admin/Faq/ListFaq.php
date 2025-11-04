@@ -10,12 +10,11 @@ class ListFaq extends AdminComponent
 {
     public function render(): View
     {
-        $pageTitle = 'لیست‌ سوالات متداول';
         $tableHeads = ['سوال', 'وضعیت', 'پاسخ', 'عملیات'];
         $faqs = Faq::paginate($this->perPage);
         return $this->renderView(
             'livewire.admin.faq.list-faq',
-            $pageTitle,
+            'لیست‌ سوالات متداول',
             compact('tableHeads','faqs')
         );
     }

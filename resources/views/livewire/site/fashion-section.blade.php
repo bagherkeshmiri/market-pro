@@ -7,7 +7,7 @@
     </style>
 @endsection
 
-<div>
+<div wire:ignore>
     <section class="fashion-section pb-50">
         <div class="container rtl">
             <div class="category-top heading-space space-border">
@@ -27,21 +27,27 @@
                             <div class="shop-item">
                                 <div class="shop-thumb">
                                     <div class="overlay"></div>
-                                    <img src="{{ $item->product->mainImage ? asset($item->product->mainImage->url) : asset($sampleImageUrl) }}" alt="shop">
+                                    <img
+                                        src="{{ $item->product->mainImage ? asset($item->product->mainImage->url) : asset($sampleImageUrl) }}"
+                                        alt="shop">
                                     @if($item->product->discount > 0)
                                         <span class="sale">{{ $item->product->discount_percent }} %</span>
                                     @endif
                                     <ul class="shop-list">
                                         @if($item->product->status == \App\Enums\ProductStatus::Exist)
                                             <li>
-                                                <a wire:click="addProductToCart({{ $item->product->id }})">
-                                                    <i class="fa-regular fa-cart-shopping"></i>
+                                                <a role="button"
+                                                   wire:click="addProductToCart({{ $item->product->id }})"
+                                                   aria-label="افزودن محصول به سبد خرید">
+                                                    <i class="fa-regular fa-cart-shopping" aria-hidden="true"></i>
                                                 </a>
                                             </li>
                                         @endif
                                         <li>
-                                            <a wire:click="addProductToWishlist({{ $item->product->id }})">
-                                                <i class="fa-regular fa-heart"></i>
+                                            <a role="button"
+                                               wire:click="addProductToWishlist({{ $item->product->id }})"
+                                               aria-label="افزودن محصول به علاقه‌مندی‌ها">
+                                                <i class="fa-regular fa-heart" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li><a href="#"><i class="fa-light fa-eye"></i></a></li>
@@ -49,7 +55,9 @@
                                 </div>
                                 <div class="shop-content">
                                     <span class="category">{{ $item->product->category->name }}</span>
-                                    <h3 class="title"><a href="{{ route('site.single-product',['product' => $item->product->id]) }}">{{ $item->product->name }}</a></h3>
+                                    <h3 class="title"><a
+                                            href="{{ route('site.single-product',['product' => $item->product->id]) }}">{{ $item->product->name }}</a>
+                                    </h3>
                                     <div class="review-wrap">
                                         <ul class="review">
                                             <li><i class="fa-solid fa-star"></i></li>
@@ -69,9 +77,11 @@
                                         </span>
                                             @endif
                                             {{ $item->product->formatted_final_price }}  @lang('global.toman')
-                                    </span>
+                                        </span>
                                     @else
-                                        <h5 class="mt-3 text-danger">@lang('global.not_exist')</h5>
+                                        <span class="price">
+                                            @lang('global.not_exist')
+                                        </span>
                                     @endif
 
                                 </div>

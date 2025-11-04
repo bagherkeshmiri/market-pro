@@ -1,6 +1,5 @@
 
 @section('styles')
-
     <style>
         body {
             overflow-x: hidden;
