@@ -1,4 +1,3 @@
-
 @section('styles')
 @endsection
 
@@ -59,9 +58,18 @@
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                                                     <div class="form-group">
                                                         @include('frest-components.label',[ 'classes' => 'text-bold-700' , 'for' => 'image' , 'content' => 'تصویر اصلی'] )
+
                                                         @if ($image)
-                                                            <img src="{{ is_object($image) && method_exists($image, 'temporaryUrl') ? $image->temporaryUrl() : (file_exists(public_path($image)) ? asset($image) : asset($this->getSampleImageUrl())) }}"
-                                                                 class="img-fluid rounded-start d-block" alt="category-image" width="100" style="padding: 8px;" />
+
+                                                            <img src="{{
+                                                                          is_object($image) && method_exists($image, 'temporaryUrl')
+                                                                          ? $image->temporaryUrl()
+                                                                          : (Str::startsWith($image, ['http://', 'https://'])
+                                                                          ? $image
+                                                                          : (file_exists(public_path($image))
+                                                                          ? asset($image)
+                                                                          : asset($this->getSampleImageUrl())))
+                                                                          }}" class="img-fluid rounded-start d-block" alt="category-image" width="100" style="padding: 8px;"/>
                                                         @else
                                                             <img src="{{ asset($this->getSampleImageUrl()) }}"
                                                                  class="img-fluid rounded-start d-block" width="100" alt="default-image"/>
