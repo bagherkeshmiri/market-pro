@@ -13,9 +13,8 @@ Route::post('/upload', function (Request $request) {
     $request->validate([
         'image' => 'required',
     ]);
+
     return responseSuccess([
-        'data' => storeImage($request),
+        'data' => storeImage($request->file('image'), 'global'),
     ]);
 })->name('api.upload');
-
-
