@@ -68,18 +68,18 @@ Route::prefix('auth')
 //});
 
 
-Route::get('test', function () {
-    Session::forget('cart');
-    Session::forget('cart_summary');
-
-    Session::forget('wishlist');
-
-    dd(
-        Session::get('wishlist')
-    );
-
-    dd(
-        config('payment.local_payment_callback') . '/payment/verify'
-    );
-
-});
+//Route::get('test', function () {
+//    Session::forget('cart');
+//    Session::forget('cart_summary');
+//
+//    Session::forget('wishlist');
+//
+//    dd(
+//        Session::get('wishlist')
+//    );
+//
+//    dd(
+//        config('payment.local_payment_callback') . '/payment/verify'
+//    );
+//
+//});
