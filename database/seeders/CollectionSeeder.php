@@ -14,7 +14,6 @@ class CollectionSeeder extends Seeder
 
         DB::table('collections')->insert([
             [
-                'id' => 1,
                 'title' => 'فروش ویژه',
                 'type' => 2,
                 'limitation' => 10,
@@ -24,7 +23,6 @@ class CollectionSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'id' => 2,
                 'title' => 'تابستانه',
                 'type' => 1,
                 'limitation' => 8,

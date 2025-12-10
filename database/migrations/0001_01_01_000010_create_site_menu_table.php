@@ -9,7 +9,13 @@ return new class extends Migration {
     {
         Schema::create('site_menus', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id')->nullable();
+
+            $table->foreignId('parent_id')
+                ->nullable()
+                ->constrained('categories')
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
+
             $table->string('key');
             $table->string('value');
             $table->unsignedTinyInteger('is_active')->default(0)->comment(' 0 => no , 1 => yes ');

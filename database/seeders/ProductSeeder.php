@@ -14,8 +14,7 @@ class ProductSeeder extends Seeder
 
         DB::table('products')->insert([
             [
-                'id' => 1,
-                'category_id' => 5,
+                'category_id' => 1,
                 'name' => 'کیف پنبه ای اداری ضد آب',
                 'status' => 2,
                 'discount_type' => 2,
@@ -30,8 +29,7 @@ class ProductSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'id' => 2,
-                'category_id' => 5,
+                'category_id' => 2,
                 'name' => 'لباس مجلسی مونیکا دیارا',
                 'status' => 1,
                 'discount_type' => 1,
@@ -46,8 +44,7 @@ class ProductSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'id' => 3,
-                'category_id' => 5,
+                'category_id' => 3,
                 'name' => 'صندل گل مشکل اونیما',
                 'status' => 1,
                 'discount_type' => 1,
@@ -62,8 +59,7 @@ class ProductSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'id' => 4,
-                'category_id' => 6,
+                'category_id' => 4,
                 'name' => 'پیراهن بهاره ',
                 'status' => 1,
                 'discount_type' => 1,
@@ -78,8 +74,7 @@ class ProductSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'id' => 5,
-                'category_id' => 5,
+                'category_id' => 1,
                 'name' => 'ژاکت پانچو بین المللی',
                 'status' => 2,
                 'discount_type' => 1,

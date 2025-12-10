@@ -9,9 +9,20 @@ return new class extends Migration {
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedBigInteger('order_id')->index();
-            $table->unsignedInteger('gate_id')->nullable()->index();
+
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+
+            $table->foreignId('order_id')
+                ->constrained('orders')
+                ->cascadeOnDelete();
+
+            $table->foreignId('gate_id')
+                ->nullable()
+                ->constrained('gates')
+                ->nullOnDelete();
+
             $table->string('payment_number', 20)->unique();
             $table->unsignedTinyInteger('status')->default(1)->comment(' 1:unSuccess , 2:success ');
             $table->decimal('amount', 10);
