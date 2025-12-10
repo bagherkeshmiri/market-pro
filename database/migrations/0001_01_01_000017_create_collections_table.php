@@ -35,8 +35,15 @@ return new class extends Migration {
 
         Schema::create('collection_categories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('collection_id')->index();
-            $table->unsignedBigInteger('category_id')->index();
+
+            $table->foreignId('collection_id')
+                ->constrained('collections')
+                ->cascadeOnDelete();
+
+            $table->foreignId('category_id')
+                ->constrained('categories')
+                ->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

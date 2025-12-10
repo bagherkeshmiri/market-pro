@@ -10,6 +10,7 @@ use Livewire\Component;
 class CategorySection extends Component
 {
     use SampleImages;
+
     public string $title;
     public $items;
 
@@ -21,6 +22,9 @@ class CategorySection extends Component
 
     public function render(): View
     {
-        return view('livewire.site.category-section');
+        return view('livewire.site.category-section', [
+            'sampleImageUrl' => $this->getSampleImageUrl(),
+
+        ]);
     }
 }
