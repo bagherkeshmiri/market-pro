@@ -2,11 +2,11 @@
 
 namespace App\Enums;
 
-enum CommentStatus: int
+enum CommentStatus: string
 {
-    case Pending = 1;
-    case Approved = 2;
-    case Rejected = 3;
+    case Pending = 'pending';
+    case Approved = 'approved';
+    case Rejected = 'rejected';
 
     public function label(): string
     {

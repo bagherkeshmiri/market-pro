@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('collections', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
-            $table->unsignedTinyInteger('type')->default(1)->comment(' 1:product , 2:category');
+            $table->enum('type', ['product', 'category'])->default('product');
             $table->unsignedTinyInteger('limitation')->nullable();
             $table->unsignedTinyInteger('sort')->nullable();
             $table->tinyInteger('is_active')->default(1)->comment(' 0:active , 1:not_active ');

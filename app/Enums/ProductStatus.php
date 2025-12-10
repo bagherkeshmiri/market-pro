@@ -2,10 +2,10 @@
 
 namespace App\Enums;
 
-enum ProductStatus: int
+enum ProductStatus: string
 {
-    case NotExist = 1;
-    case Exist = 2;
+    case NotExist = 'not_exist';
+    case Exist = 'exist';
 
     public function label(): string
     {

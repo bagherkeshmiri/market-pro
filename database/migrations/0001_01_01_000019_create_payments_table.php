@@ -24,7 +24,7 @@ return new class extends Migration {
                 ->nullOnDelete();
 
             $table->string('payment_number', 20)->unique();
-            $table->unsignedTinyInteger('status')->default(1)->comment(' 1:unSuccess , 2:success ');
+            $table->enum('status', ['unSuccess', 'success'])->default('unSuccess');
             $table->decimal('amount', 10);
             $table->string('ref_id')->nullable();
             $table->string('authority')->nullable();

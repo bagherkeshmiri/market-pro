@@ -17,7 +17,8 @@ return new class extends Migration {
                 ->nullOnDelete()
                 ->cascadeOnUpdate();
 
-            $table->unsignedTinyInteger('type')->default(1)->comment(' 1:product , 2:post');
+            $table->enum('type', ['product', 'post'])->default('product');
+
             $table->timestamps();
             $table->softDeletes();
         });
