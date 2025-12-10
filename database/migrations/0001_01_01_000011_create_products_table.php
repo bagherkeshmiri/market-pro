@@ -9,7 +9,11 @@ return new class extends Migration {
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id')->index();
+
+            $table->foreignId('category_id')
+                ->constrained('categories')
+                ->cascadeOnDelete();
+
             $table->string('name');
             $table->unsignedTinyInteger('status')->default(1)->comment(' 1:not_exist , 2:exist ');
             $table->unsignedTinyInteger('discount_type')->default(1)->comment(' 1:percent , 2:amount ');
@@ -22,7 +26,6 @@ return new class extends Migration {
             $table->longText('additional_information')->nullable();
             $table->timestamps();
         });
-
     }
 
     public function down(): void

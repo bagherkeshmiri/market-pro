@@ -9,9 +9,21 @@ return new class extends Migration {
     {
         Schema::create('user_addresses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedBigInteger('province_id')->index();
-            $table->unsignedBigInteger('city_id')->index();
+
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+
+            $table->foreignId('province_id')
+                ->nullable()
+                ->constrained('provinces')
+                ->nullOnDelete();
+
+            $table->foreignId('city_id')
+                ->nullable()
+                ->constrained('cities')
+                ->nullOnDelete();
+
             $table->text('address');
             $table->string('postal_code')->nullable();
             $table->timestamps();

@@ -23,8 +23,15 @@ return new class extends Migration {
 
         Schema::create('discount_code_user', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedBigInteger('discount_code_id')->index();
+
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+
+            $table->foreignId('discount_code_id')
+                ->constrained('discount_codes')
+                ->cascadeOnDelete();
+
             $table->timestamp('used_at')->useCurrent();
             $table->timestamps();
         });
