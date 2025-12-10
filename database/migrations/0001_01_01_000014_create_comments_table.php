@@ -9,10 +9,15 @@ return new class extends Migration {
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
+
+            $table->foreignId('user_id')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
+
             $table->unsignedBigInteger('commentable_id')->nullable()->index();
             $table->string('commentable_type')->nullable()->index();
-            $table->unsignedTinyInteger('status')->default(1)->comment(' 1:pending , 2:approved , 3:rejected');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->text('body');
             $table->timestamps();
         });

@@ -2,5 +2,5 @@
     "laravel": {
         "phpVersion": "8.3"
     },
-    "args": [ "php artisan octane:start --server=swoole --host=0.0.0.0 --port=80" ]
+    "args": [ "php artisan optimize:clear" ]
 }

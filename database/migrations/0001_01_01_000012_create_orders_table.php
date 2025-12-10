@@ -9,12 +9,18 @@ return new class extends Migration {
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedBigInteger('user_address_id')->nullable()->index();
+
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+
+            $table->foreignId('user_address_id')
+                ->nullable()
+                ->constrained('user_addresses')
+                ->nullOnDelete();
+
             $table->string('order_number')->unique();
-            $table->unsignedTinyInteger('status')->default(1)->comment(
-                ' 1:pending , 2:paid , 3:shipped , 4: cancelled'
-            );
+            $table->enum('status', ['pending', 'paid', 'shipped', 'cancelled'])->default('pending');
             $table->decimal('subtotal', 15);
             $table->decimal('discount', 15)->default(0);
             $table->decimal('tax', 15)->default(0);
@@ -26,8 +32,15 @@ return new class extends Migration {
 
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('order_id')->index();
-            $table->unsignedBigInteger('product_id')->index();
+
+            $table->foreignId('order_id')
+                ->constrained('orders')
+                ->cascadeOnDelete();
+
+            $table->foreignId('product_id')
+                ->constrained('products')
+                ->cascadeOnDelete();
+
             $table->unsignedInteger('qty');
             $table->decimal('unit_price');
             $table->decimal('final_price');

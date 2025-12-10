@@ -1,7 +1,9 @@
 <?php
 
 use App\Enums\DiscountType;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Carbon\Carbon;
 
@@ -15,12 +17,13 @@ function showEnumLabels(string|int $enum): Collection
 /**
  * @throws Exception
  */
-function storeImage(TemporaryUploadedFile $image, string $folder): string
+function storeImage(TemporaryUploadedFile|UploadedFile $image, string $folder): string
 {
     $date = Carbon::now();
     $originalPath = 'uploads/images/' . $folder . '/' . $date->year . '/' . $date->month . '/' . $date->day;
 
     $disk = app()->isLocal() ? 'public' : 's3';
+
     $filename = uniqid() . '.webp';
     $mime = $image->getMimeType();
 

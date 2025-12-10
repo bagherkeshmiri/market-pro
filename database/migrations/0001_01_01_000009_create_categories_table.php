@@ -10,8 +10,15 @@ return new class extends Migration {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('parent_id')->nullable()->index();
-            $table->unsignedTinyInteger('type')->default(1)->comment(' 1:product , 2:post');
+
+            $table->foreignId('parent_id')
+                ->nullable()
+                ->constrained('categories')
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
+
+            $table->enum('type', ['product', 'post'])->default('product');
+
             $table->timestamps();
             $table->softDeletes();
         });

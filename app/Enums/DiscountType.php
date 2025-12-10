@@ -2,10 +2,10 @@
 
 namespace App\Enums;
 
-enum DiscountType: int
+enum DiscountType: string
 {
-    case Percent = 1;
-    case Amount = 2;
+    case Percent = 'percent';
+    case Amount = 'amount';
 
     public function label(): string
     {

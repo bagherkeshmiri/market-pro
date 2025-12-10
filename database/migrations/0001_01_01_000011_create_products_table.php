@@ -9,10 +9,14 @@ return new class extends Migration {
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id')->index();
+
+            $table->foreignId('category_id')
+                ->constrained('categories')
+                ->cascadeOnDelete();
+
             $table->string('name');
-            $table->unsignedTinyInteger('status')->default(1)->comment(' 1:not_exist , 2:exist ');
-            $table->unsignedTinyInteger('discount_type')->default(1)->comment(' 1:percent , 2:amount ');
+            $table->enum('status', ['not_exist', 'exist'])->default('not_exist');
+            $table->enum('discount_type', ['percent', 'amount'])->default('percent');
             $table->unsignedBigInteger('price')->default(0);
             $table->unsignedBigInteger('discount')->default(0);
             $table->unsignedBigInteger('final_price')->default(0);
@@ -22,7 +26,6 @@ return new class extends Migration {
             $table->longText('additional_information')->nullable();
             $table->timestamps();
         });
-
     }
 
     public function down(): void

@@ -2,10 +2,10 @@
 
 namespace App\Enums;
 
-enum CollectionType: int
+enum CollectionType: string
 {
-    case Product = 1;
-    case Category = 2;
+    case Product = 'product';
+    case Category = 'category';
 
     public function label(): string
     {

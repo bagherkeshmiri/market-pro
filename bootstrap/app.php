@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Middleware\Authenticate;
-use App\Http\Middleware\EnsureIsAdmin;
 use App\Http\Middleware\RedirectIfAdminAuthenticated;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;

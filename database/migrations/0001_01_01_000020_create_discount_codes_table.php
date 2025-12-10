@@ -10,8 +10,8 @@ return new class extends Migration {
         Schema::create('discount_codes', function (Blueprint $table) {
             $table->id();
             $table->string('code', 50)->unique();
-            $table->tinyInteger('type')->default(1)->comment(' 1:percentage , 2:amount ');
-            $table->tinyInteger('is_active')->default(0)->comment(' 0:no , 1:yes ');
+            $table->enum('type', ['percent', 'amount'])->default('percent');
+            $table->unsignedTinyInteger('is_active')->default(0)->comment(' 0:no , 1:yes ');
             $table->unsignedBigInteger('amount');
             $table->unsignedInteger('usage_limit')->default(0);
             $table->unsignedInteger('used_count')->default(0);
@@ -23,8 +23,15 @@ return new class extends Migration {
 
         Schema::create('discount_code_user', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedBigInteger('discount_code_id')->index();
+
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+
+            $table->foreignId('discount_code_id')
+                ->constrained('discount_codes')
+                ->cascadeOnDelete();
+
             $table->timestamp('used_at')->useCurrent();
             $table->timestamps();
         });
