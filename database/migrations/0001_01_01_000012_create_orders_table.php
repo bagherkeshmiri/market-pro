@@ -20,9 +20,7 @@ return new class extends Migration {
                 ->nullOnDelete();
 
             $table->string('order_number')->unique();
-            $table->unsignedTinyInteger('status')->default(1)->comment(
-                ' 1:pending , 2:paid , 3:shipped , 4: cancelled'
-            );
+            $table->enum('status', ['pending', 'paid', 'shipped', 'cancelled'])->default('pending');
             $table->decimal('subtotal', 15);
             $table->decimal('discount', 15)->default(0);
             $table->decimal('tax', 15)->default(0);

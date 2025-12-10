@@ -2,10 +2,10 @@
 
 namespace App\Enums;
 
-enum PaymentStatus: int
+enum PaymentStatus: string
 {
-    case UnSuccess = 1;
-    case Success = 2;
+    case UnSuccess = 'unSuccess';
+    case Success = 'success';
 
     public function label(): string
     {
