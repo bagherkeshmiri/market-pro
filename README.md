@@ -1,65 +1,218 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Market Pro – Laravel 12 E‑Commerce / Marketplace
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+پروژه **Market Pro** یک فروشگاه اینترنتی / مارکت مبتنی بر **Laravel 12** و **Livewire 3** است که بصورت کامل سمت **ادمین** و **سایت کاربر** را پیاده‌سازی می‌کند.  
+این پروژه می‌تواند به عنوان پایه‌ی توسعه فروشگاه آنلاین، مارکت‌پلیس و یا پروژه‌های آموزشی/تجاری استفاده شود.
 
-## About Laravel
+- **زبان برنامه‌نویسی**: PHP 8.3+
+- **فریم‌ورک**: Laravel 12
+- **Front-End**: Blade + Livewire + قالب Admin (`frest`) و قالب Site
+- **پایگاه داده**: MySQL (یا هر DB سازگار با Laravel)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## امکانات اصلی
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **مدیریت محصولات و دسته‌بندی‌ها**
+  - تعریف و مدیریت محصولات با تصاویر، قیمت و وضعیت
+  - مدیریت دسته‌بندی‌های تو در تو و فیلتر محصولات بر اساس دسته
+- **کالکشن‌ها، کمپین‌ها و بنرها**
+  - ساخت کالکشن‌ها و کمپین‌های مختلف (پیشنهاد ویژه، پرفروش‌ها و ...)
+  - اتصال محصولات به کالکشن‌ها برای صفحه اصلی و لندینگ‌ها
+- **تخفیف و کد تخفیف**
+  - تعریف کد تخفیف درصدی و مبلغی
+  - محدودیت روی تعداد استفاده، تاریخ انقضا و کاربر / سفارش
+- **سبد خرید و لیست علاقه‌مندی‌ها**
+  - افزودن، ویرایش و حذف آیتم‌ها در سبد خرید
+  - مدیریت لیست علاقه‌مندی‌ها برای کاربران لاگین کرده
+- **سفارش‌ها و پرداخت آنلاین**
+  - ایجاد سفارش از روی سبد خرید
+  - اتصال به درگاه پرداخت (قابل تنظیم از طریق تنظیمات پرداخت)
+  - پیگیری وضعیت سفارش و پرداخت در پنل مدیریت
+- **مدیریت کاربران و نقش‌ها**
+  - پنل مدیریت جداگانه برای ادمین
+  - تعریف نقش‌ها و سطح دسترسی برای مدیریت بخش‌های مختلف سیستم
+- **محتوا، بلاگ و نظرات**
+  - مدیریت نوشته‌ها / مقالات
+  - مدیریت نظرات کاربران و تأیید/رد آن‌ها
+  - سوالات متداول (FAQ) برای صفحات راهنما
+- **امکانات جانبی**
+  - نمایش تاریخ‌ها به صورت جلالی
+  - تنظیمات سئو برای صفحات مهم
+  - پاک‌سازی ورودی‌های HTML برای افزایش امنیت
+  - مدیریت لاگ‌ها و خطاها برای ادمین
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## پیش‌نیازها
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **PHP** 8.3 یا بالاتر
+- **Composer**
+- یک پایگاه داده (MySQL / MariaDB و ...)
+- **Ext-gd** فعال برای پردازش تصویر
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+در صورت استفاده از Docker / میزبان ابری (مانند **Liara**) تنظیمات مربوطه را نیز باید انجام دهید (`liara.json` در ریشه پروژه موجود است).
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## نصب و راه‌اندازی (محلی)
 
-### Premium Partners
+در مسیر ریشه پروژه:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+```
 
-## Contributing
+سپس تنظیمات اتصال پایگاه داده را در فایل `.env` انجام دهید:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=market_pro
+DB_USERNAME=root
+DB_PASSWORD=your_password
+```
 
-## Code of Conduct
+اجرا و مهاجرت دیتابیس (به همراه داده‌های اولیه):
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan migrate --seed
+```
 
-## Security Vulnerabilities
+> مدل‌ها و سیدرها: در مسیر `database/seeders` شامل `AdminSeeder`, `UserSeeder`, `ProductSeeder`, `CategorySeeder` و ... برای ایجاد اطلاعات نمونه استفاده شده‌اند.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+ساخت لینک استوریج عمومی (در صورت نیاز برای آپلود تصویر):
 
-## License
+```bash
+php artisan storage:link
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
 
+## اجرای پروژه
 
-database diagram :
-https://dbdocs.io/embed/e038fc8b030e75e831dec03a1111c41e/b349456a6e764cb481533f74c3d4b05c
+برای اجرای پروژه در محیط توسعه، کافی است وب‌سرور PHP را اجرا کنید:
+
+```bash
+php artisan serve
+```
+
+در صورت استفاده از صف‌ها (jobs) می‌توانید به صورت جداگانه دستور زیر را نیز اجرا کنید:
+
+```bash
+php artisan queue:listen
+```
+
+---
+
+## ساخت ادمین و داده‌های اولیه
+
+- با اجرای `php artisan migrate --seed`، ادمین و داده‌های اولیه (محصولات نمونه، دسته‌بندی‌ها، نقش‌ها و...) بر اساس سیدرهای موجود ایجاد می‌شود.
+- در صورت نیاز می‌توانید سیدرهای جداگانه را مستقل اجرا کنید:
+
+```bash
+php artisan db:seed --class=AdminSeeder
+php artisan db:seed --class=ProductSeeder
+```
+
+> اطلاعات ورود ادمین (ایمیل/پسورد) در سیدرهای مربوطه تعریف شده است؛ در صورت نیاز آن‌ها را مطابق با نیاز پروژه تغییر دهید.
+
+---
+
+## ساختار پوشه‌ها (به صورت خلاصه)
+
+- **`app/Models`**: تمام مدل‌های اصلی پروژه (Product, Order, Payment, User, Admin, Role, Permission و ...)
+- **`app/Livewire/Admin`**: کامپوننت‌های Livewire مربوط به پنل مدیریت
+- **`app/Livewire/Site`**: کامپوننت‌های Livewire مربوط به بخش کاربری سایت
+- **`app/Traits`**: Traits عمومی مثل `HandlesCart`, `HandlesWishlist`, `HasJalaliTimestamps`, `DiscountValidator` و ...
+- **`app/Services/Payment`**: کلاس‌های مرتبط با درگاه‌های پرداخت و پردازش تراکنش‌ها
+- **`app/Helpers`**: هِلپرها (CommonHelper, ResponseHelper, BoxIconsHelper, SeoHelper)
+- **`routes/web.php`** و **`routes/admin.php`**: مسیرهای اصلی سایت و پنل مدیریت
+- **`resources/views`**: ویوهای Blade پنل ادمین و سایت
+- **`public/`**: فایل‌های استاتیک، CSS/JS مربوط به قالب‌ها، CKEditor و غیره
+
+---
+
+## تنظیمات پرداخت
+
+پیکربندی درگاه‌های پرداخت در فایل `config/payment.php` قرار دارد.  
+اطلاعات مرتبط با کلید درگاه، Callback URL و سایر تنظیمات باید در `.env` تنظیم شود (با توجه به توضیحات داخل `config/payment.php`).
+
+نمونه (شبه‌کد – با مقادیر واقعی خودتان جایگزین کنید):
+
+```env
+PAYMENT_DRIVER=zarinpal
+PAYMENT_MERCHANT_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+PAYMENT_CALLBACK_URL=https://your-domain.com/payment/callback
+```
+
+---
+
+## لاگ‌ها و مانیتورینگ
+
+- مشاهده لاگ‌ها از طریق پکیج `opcodesio/log-viewer` (مسیر دسترسی در `routes` و یا داکیومنت پکیج مشخص شده است).
+- لاگ استاندارد لاراول در مسیر `storage/logs/laravel.log` ذخیره می‌شود.
+
+---
+
+## تست‌ها
+
+برای اجرای تست‌های پروژه:
+
+```bash
+php artisan test
+```
+
+این پروژه از `phpunit/phpunit` برای تست استفاده می‌کند و تنظیمات در `phpunit.xml` قرار دارد.
+
+---
+
+## استقرار (Deployment)
+
+### Liara (پیشنهادی برای ایران)
+
+در ریشه پروژه فایل `liara.json` وجود دارد که تنظیمات اولیه برای استقرار روی **Liara** را آماده می‌کند.  
+به صورت کلی مراحل:
+
+1. ساخت سرویس PHP در لیارا
+2. تنظیم متغیرهای محیطی (.env) در پنل لیارا
+3. دیپلوی پروژه (از طریق CLI یا Git)
+4. اجرای دستورات:
+
+```bash
+php artisan migrate --force
+php artisan db:seed --force   # در صورت نیاز
+php artisan storage:link
+```
+
+برای جزئیات بیشتر به مستندات لیارا مراجعه کنید.
+
+---
+
+## دیاگرام پایگاه داده
+
+در صورتی که نیاز به نمای کلی ساختار دیتابیس دارید، می‌توانید از لینک زیر استفاده کنید:
+
+`https://dbdocs.io/embed/e038fc8b030e75e831dec03a1111c41e/b349456a6e764cb481533f74c3d4b05c`
+
+---
+
+## مشارکت در توسعه (Contributing)
+
+Pull Request و Issue ها برای افزودن امکانات جدید، رفع باگ‌ها و بهبود مستندات خوش‌آمد هستند.
+
+پیشنهاد می‌شود قبل از ارسال PR:
+
+- کد خود را با استانداردهای کدنویسی پروژه هماهنگ کنید.
+- تست‌های مرتبط را اضافه/به‌روز کنید.
+- توضیح واضحی از تغییرات در توضیحات PR بنویسید.
+
+---
+
+## لایسنس
+
+این پروژه تحت لایسنس **MIT** منتشر شده است.  
+شما می‌توانید آزادانه آن را در پروژه‌های شخصی یا تجاری استفاده، ویرایش و منتشر کنید.
+
