@@ -14,10 +14,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
 
 /**
- *
- *
  * @property int $id
- * @property int $role_id
+ * @property int|null $role_id
  * @property string $name
  * @property string $email
  * @property Carbon|null $email_verified_at
@@ -31,15 +29,6 @@ use Illuminate\Support\Facades\Hash;
  * @method static Builder<static>|Admin newModelQuery()
  * @method static Builder<static>|Admin newQuery()
  * @method static Builder<static>|Admin query()
- * @method static Builder<static>|Admin whereCreatedAt($value)
- * @method static Builder<static>|Admin whereEmail($value)
- * @method static Builder<static>|Admin whereEmailVerifiedAt($value)
- * @method static Builder<static>|Admin whereId($value)
- * @method static Builder<static>|Admin whereName($value)
- * @method static Builder<static>|Admin wherePassword($value)
- * @method static Builder<static>|Admin whereRememberToken($value)
- * @method static Builder<static>|Admin whereRoleId($value)
- * @method static Builder<static>|Admin whereUpdatedAt($value)
  * @mixin Eloquent
  */
 class Admin extends Authenticatable
