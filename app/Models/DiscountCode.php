@@ -15,13 +15,13 @@ use Morilog\Jalali\Jalalian;
 /**
  * @property int $id
  * @property string $code
- * @property DiscountType $type  1:percentage , 2:amount
+ * @property DiscountType $type
  * @property IsActive $is_active  0:no , 1:yes
  * @property int $amount
  * @property int $usage_limit
  * @property int $used_count
  * @property int $min_order_amount
- * @property int $expires_at
+ * @property Carbon $expires_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read string $is_active_badge_class
@@ -31,6 +31,7 @@ use Morilog\Jalali\Jalalian;
  * @property-read string $jalali_updated_at
  * @property-read string $type_badge_class
  * @property-read string $type_label
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, DiscountCodeUser> $usages
  * @method static Builder<static>|DiscountCode isActive()
  * @method static Builder<static>|DiscountCode isAmount()
  * @method static Builder<static>|DiscountCode isNotActive()
@@ -38,17 +39,6 @@ use Morilog\Jalali\Jalalian;
  * @method static Builder<static>|DiscountCode newModelQuery()
  * @method static Builder<static>|DiscountCode newQuery()
  * @method static Builder<static>|DiscountCode query()
- * @method static Builder<static>|DiscountCode whereAmount($value)
- * @method static Builder<static>|DiscountCode whereCode($value)
- * @method static Builder<static>|DiscountCode whereCreatedAt($value)
- * @method static Builder<static>|DiscountCode whereExpiresAt($value)
- * @method static Builder<static>|DiscountCode whereId($value)
- * @method static Builder<static>|DiscountCode whereIsActive($value)
- * @method static Builder<static>|DiscountCode whereMinOrderAmount($value)
- * @method static Builder<static>|DiscountCode whereType($value)
- * @method static Builder<static>|DiscountCode whereUpdatedAt($value)
- * @method static Builder<static>|DiscountCode whereUsageLimit($value)
- * @method static Builder<static>|DiscountCode whereUsedCount($value)
  * @mixin Eloquent
  */
 class DiscountCode extends Eloquent
