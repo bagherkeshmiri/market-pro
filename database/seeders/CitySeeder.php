@@ -22,8 +22,6 @@ class CitySeeder extends Seeder
                     ['province_id' => $provinceId]
                 );
             }
-
-            $this->command->info("✅ شهرهای استان {$province['province_name']} ثبت شدند");
         }
     }
 }
