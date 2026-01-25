@@ -58,7 +58,7 @@ class SinglePost extends SiteComponent
     {
         if (strlen($this->searchText) > 2) {
             $this->searchResults = Post::query()
-                ->whereStatus(IsActive::Yes)
+                ->where('status',IsActive::Yes)
                 ->where('title', 'like', '%' . $this->searchText . '%')
                 ->latest()
                 ->get();
