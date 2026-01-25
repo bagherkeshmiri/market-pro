@@ -14,16 +14,13 @@ use Morilog\Jalali\Jalalian;
 use Str;
 
 /**
- *
- *
  * @property int $id
  * @property int $user_id
  * @property int $order_id
  * @property int|null $gate_id
- * @property int|null $gate_org_id
  * @property string $payment_number
- * @property PaymentStatus $status  1:unSuccess , 2:success
- * @property string $amount
+ * @property PaymentStatus $status
+ * @property numeric $amount
  * @property string|null $ref_id
  * @property string|null $authority
  * @property int|null $paid_at
@@ -36,24 +33,11 @@ use Str;
  * @property-read string $jalali_updated_at
  * @property-read string $status_badge_class
  * @property-read string $status_label
- * @property-read Order|null $order
- * @property-read User|null $user
+ * @property-read Order $order
+ * @property-read User $user
  * @method static Builder<static>|Payment newModelQuery()
  * @method static Builder<static>|Payment newQuery()
  * @method static Builder<static>|Payment query()
- * @method static Builder<static>|Payment whereAmount($value)
- * @method static Builder<static>|Payment whereAuthority($value)
- * @method static Builder<static>|Payment whereCreatedAt($value)
- * @method static Builder<static>|Payment whereExpireTime($value)
- * @method static Builder<static>|Payment whereGateId($value)
- * @method static Builder<static>|Payment whereId($value)
- * @method static Builder<static>|Payment whereOrderId($value)
- * @method static Builder<static>|Payment wherePaidAt($value)
- * @method static Builder<static>|Payment wherePaymentNumber($value)
- * @method static Builder<static>|Payment whereRefId($value)
- * @method static Builder<static>|Payment whereStatus($value)
- * @method static Builder<static>|Payment whereUpdatedAt($value)
- * @method static Builder<static>|Payment whereUserId($value)
  * @mixin Eloquent
  */
 class Payment extends Authenticatable
