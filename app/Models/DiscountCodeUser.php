@@ -16,19 +16,13 @@ use Illuminate\Support\Carbon;
  * @property Carbon $used_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read DiscountCode|null $discountCode
+ * @property-read DiscountCode $discountCode
  * @property-read string $jalali_created_at
  * @property-read string $jalali_updated_at
- * @property-read User|null $user
+ * @property-read User $user
  * @method static Builder<static>|DiscountCodeUser newModelQuery()
  * @method static Builder<static>|DiscountCodeUser newQuery()
  * @method static Builder<static>|DiscountCodeUser query()
- * @method static Builder<static>|DiscountCodeUser whereCreatedAt($value)
- * @method static Builder<static>|DiscountCodeUser whereDiscountCodeId($value)
- * @method static Builder<static>|DiscountCodeUser whereId($value)
- * @method static Builder<static>|DiscountCodeUser whereUpdatedAt($value)
- * @method static Builder<static>|DiscountCodeUser whereUsedAt($value)
- * @method static Builder<static>|DiscountCodeUser whereUserId($value)
  * @mixin Eloquent
  */
 class DiscountCodeUser extends Eloquent
