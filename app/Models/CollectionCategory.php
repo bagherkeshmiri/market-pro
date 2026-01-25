@@ -9,27 +9,19 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 
-
 /**
- *
- *
  * @property int $id
  * @property int $collection_id
  * @property int $category_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read Category|null $category
- * @property-read Collection|null $collection
+ * @property-read Category $category
+ * @property-read Collection $collection
  * @property-read string $jalali_created_at
  * @property-read string $jalali_updated_at
  * @method static Builder<static>|CollectionCategory newModelQuery()
  * @method static Builder<static>|CollectionCategory newQuery()
  * @method static Builder<static>|CollectionCategory query()
- * @method static Builder<static>|CollectionCategory whereCategoryId($value)
- * @method static Builder<static>|CollectionCategory whereCollectionId($value)
- * @method static Builder<static>|CollectionCategory whereCreatedAt($value)
- * @method static Builder<static>|CollectionCategory whereId($value)
- * @method static Builder<static>|CollectionCategory whereUpdatedAt($value)
  * @mixin Eloquent
  */
 class CollectionCategory extends Eloquent
