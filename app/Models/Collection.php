@@ -12,18 +12,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
- *
- *
  * @property int $id
  * @property string|null $title
- * @property CollectionType $type  1:product , 2:category
+ * @property CollectionType $type
  * @property int|null $limitation
  * @property int|null $sort
  * @property IsActive $is_active  0:active , 1:not_active
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, CollectionCategory> $categoryCollection
- * @property-read int|null $category_collection_count
  * @property-read string $is_active_badge_class
  * @property-read string $is_active_label
  * @property-read string $jalali_created_at
@@ -31,18 +28,9 @@ use Illuminate\Support\Carbon;
  * @property-read string $type_badge_class
  * @property-read string $type_label
  * @property-read \Illuminate\Database\Eloquent\Collection<int, CollectionProduct> $productCollection
- * @property-read int|null $product_collection_count
  * @method static Builder<static>|Collection newModelQuery()
  * @method static Builder<static>|Collection newQuery()
  * @method static Builder<static>|Collection query()
- * @method static Builder<static>|Collection whereCreatedAt($value)
- * @method static Builder<static>|Collection whereId($value)
- * @method static Builder<static>|Collection whereIsActive($value)
- * @method static Builder<static>|Collection whereLimitation($value)
- * @method static Builder<static>|Collection whereSort($value)
- * @method static Builder<static>|Collection whereTitle($value)
- * @method static Builder<static>|Collection whereType($value)
- * @method static Builder<static>|Collection whereUpdatedAt($value)
  * @mixin Eloquent
  */
 class Collection extends Eloquent
