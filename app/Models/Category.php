@@ -15,17 +15,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
 /**
- *
- *
  * @property int $id
  * @property string $name
  * @property int|null $parent_id
- * @property CategoryType $type  1:product , 2:post
+ * @property CategoryType $type
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Carbon|null $deleted_at
  * @property-read Collection<int, Category> $children
- * @property-read int|null $children_count
  * @property-read string $jalali_created_at
  * @property-read string $jalali_updated_at
  * @property-read string $type_badge_class
@@ -33,21 +30,13 @@ use Illuminate\Support\Carbon;
  * @property-read Image|null $image
  * @property-read Category|null $parent
  * @property-read Collection<int, Product> $products
- * @property-read int|null $products_count
  * @method static Builder<static>|Category isPostCategory()
  * @method static Builder<static>|Category isProductCategory()
  * @method static Builder<static>|Category newModelQuery()
  * @method static Builder<static>|Category newQuery()
  * @method static Builder<static>|Category onlyTrashed()
  * @method static Builder<static>|Category query()
- * @method static Builder<static>|Category whereCreatedAt($value)
- * @method static Builder<static>|Category whereDeletedAt($value)
- * @method static Builder<static>|Category whereId($value)
- * @method static Builder<static>|Category whereName($value)
- * @method static Builder<static>|Category whereParentId($value)
- * @method static Builder<static>|Category whereType($value)
- * @method static Builder<static>|Category whereUpdatedAt($value)
- * @method static Builder<static>|Category withTrashed()
+ * @method static Builder<static>|Category withTrashed(bool $withTrashed = true)
  * @method static Builder<static>|Category withoutTrashed()
  * @mixin Eloquent
  */
