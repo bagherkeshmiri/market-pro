@@ -99,11 +99,23 @@ function isActiveUrl($patterns, $class = 'active')
 }
 
 
-
-function getSystemSetting($key, $default = null)
+function getSystemSetting(string $key, $default = null)
 {
-    return cache()->rememberForever("setting_{$key}", function () use ($key, $default) {
-        return SystemSetting::where('key', $key)->value('value') ?? $default;
+    return cache()->rememberForever("system_setting.{$key}", function () use ($key, $default) {
+        $setting = SystemSetting::where('key', $key)->first();
+
+        return $setting?->casted_value ?? $default;
     });
 }
 
+
+function getSystemSettings(array $keys): array
+{
+    return cache()->rememberForever(
+        'system_settings_' . md5(implode(',', $keys)),
+        fn () => SystemSetting::whereIn('key', $keys)
+            ->get()
+            ->mapWithKeys(fn ($s) => [$s->key => $s->casted_value])
+            ->toArray()
+    );
+}

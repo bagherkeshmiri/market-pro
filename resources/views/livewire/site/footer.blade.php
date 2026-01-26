@@ -52,9 +52,9 @@
                         </div>
                     </div>
                     <ul class="schedule-list">
-                        <li><span> ساعات کاری :</span> همه روزه از ۸ صبح تا ۶ عصر</li>
-                        <li><span>ایمیل : </span> support@example.com</li>
-                        <li><span>آدرس :</span> تهران ، خیابان گل ، پلاک ۱۲۳</li>
+                        <li><span> ساعات کاری :</span> {{ $siteWorkingHour }}</li>
+                        <li><span>ایمیل : </span>{{ $siteEmail }}</li>
+                        <li><span>آدرس :</span> {{ $siteAddress }}</li>
                     </ul>
                 </div>
             </div>
@@ -123,7 +123,7 @@
 
     <div class="row justify-content-center">
         <div class="col-lg-6 mx-auto text-center px-3 pb-4">
-            <span >
+            <span>
                     کپی رایت &copy;
                 <script>
                         const today = new Date();
@@ -132,7 +132,7 @@
                 </script>
                     - 1400
                     |
-                    تمامی حقوق برای فروشگاه تست محفوظ است
+                تمامی حقوق برای فروشگاه {{ $siteTitle }}  محفوظ است
             </span>
         </div>
     </div>
