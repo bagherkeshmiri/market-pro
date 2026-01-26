@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Enums\CategoryType;
 use App\Enums\CollectionType;
+use App\Models\Category;
+use App\Models\Collection;
 use App\Models\CollectionCategory;
 use Carbon\Carbon;
 use DB;
@@ -15,51 +17,23 @@ class CollectionCategorySeeder extends Seeder
     {
         $now = Carbon::now();
 
-        $categoryCollection = DB::table('collections')
-            ->where('type', CollectionType::Category)
-            ->first();
+        $productCollectionId = Collection::where('type', CollectionType::Category)->value('id');
 
-        $productCategory = DB::table('categories')
-            ->where('type', CategoryType::Product)
-            ->first();
+        $categories = Category::get();
 
-        CollectionCategory::insert([
-            [
-                'collection_id' => $categoryCollection->id,
-                'category_id' => $productCategory->id,
+        $insertData = [];
+
+        foreach ($categories as $category) {
+            $insertData[] = [
+                'collection_id' => $productCollectionId,
+                'category_id' => $category->id,
                 'created_at' => $now,
                 'updated_at' => $now,
-            ],
-            [
-                'collection_id' => $categoryCollection->id,
-                'category_id' => $productCategory->id,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'collection_id' => $categoryCollection->id,
-                'category_id' => $productCategory->id,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'collection_id' => $categoryCollection->id,
-                'category_id' => $productCategory->id,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'collection_id' => $categoryCollection->id,
-                'category_id' => $productCategory->id,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'collection_id' => $categoryCollection->id,
-                'category_id' => $productCategory->id,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-        ]);
+            ];
+        }
+
+        if (!empty($insertData)) {
+            CollectionCategory::insert($insertData);
+        }
     }
 }
