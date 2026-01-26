@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CitySeeder::class);
         $this->call(GateSeeder::class);
         $this->call(DiscountCodeSeeder::class);
+        $this->call(SystemSettingSeeder::class);
     }
 }

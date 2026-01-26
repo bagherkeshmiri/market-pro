@@ -43,4 +43,9 @@ return [
     'not_published' => ' منتشر نشده',
     'unSuccess' => 'ناموفق',
     'success' => 'موفق',
+    'string' => 'رشته',
+    'integer' => 'عدد',
+    'json' => 'جیسون',
+    'boolean' => 'بولی',
+    'array' => 'آرایه',
 ];
