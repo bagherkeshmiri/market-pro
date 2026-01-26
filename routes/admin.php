@@ -42,6 +42,9 @@ use App\Livewire\Admin\Profile\ShowProfile;
 use App\Livewire\Admin\Role\CreateRole;
 use App\Livewire\Admin\Role\ListRole;
 use App\Livewire\Admin\Role\ShowRole;
+use App\Livewire\Admin\SystemSetting\CreateSystemSetting;
+use App\Livewire\Admin\SystemSetting\ListSystemSetting;
+use App\Livewire\Admin\SystemSetting\ShowSystemSetting;
 use App\Livewire\Admin\User\ListUser;
 use App\Livewire\Admin\User\ShowUser;
 use Illuminate\Support\Facades\Route;
@@ -189,5 +192,14 @@ Route::prefix('dashboard')
                 Route::get('/', ListDiscountCode::class)->name('index');
                 Route::get('/create', CreateDiscountCode::class)->name('create');
                 Route::get('/show/{discount}', ShowDiscountCode::class)->name('show');
+            });
+
+
+        Route::name('system-setting.')
+            ->prefix('system-setting')
+            ->group(function () {
+                Route::get('/', ListSystemSetting::class)->name('index');
+                Route::get('/create', CreateSystemSetting::class)->name('create');
+                Route::get('/show/{systemSetting}', ShowSystemSetting::class)->name('show');
             });
     });

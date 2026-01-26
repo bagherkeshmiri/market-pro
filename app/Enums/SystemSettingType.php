@@ -23,6 +23,12 @@ enum SystemSettingType: string
 
     public function badgeClass(): string
     {
-        return 'bg-rgba-primary text-primary';
+        return match ($this) {
+            self::Integer => 'bg-rgba-info text-info',
+            self::Json => 'bg-rgba-warning text-warning',
+            self::Boolean => 'bg-rgba-danger text-danger',
+            self::Array => 'bg-rgba-success text-success',
+            default => 'bg-rgba-primary text-primary',
+        };
     }
 }

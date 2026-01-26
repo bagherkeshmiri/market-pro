@@ -9,6 +9,23 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 
+/**
+ * @property int $id
+ * @property string|null $label
+ * @property string $key
+ * @property string|null $value
+ * @property SystemSettingType $type
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
+ * @property-read string $type_badge_class
+ * @property-read string $type_label
+ * @method static Builder<static>|SystemSetting newModelQuery()
+ * @method static Builder<static>|SystemSetting newQuery()
+ * @method static Builder<static>|SystemSetting query()
+ * @mixin Eloquent
+ */
 class SystemSetting extends Eloquent
 {
     use HasJalaliTimestamps;
@@ -34,6 +51,16 @@ class SystemSetting extends Eloquent
     /*------------ Relations ------------*/
 
     /*-------------- Accessors & Mutators -------------*/
+
+    public function getTypeLabelAttribute(): string
+    {
+        return $this->type->label();
+    }
+
+    public function getTypeBadgeClassAttribute(): string
+    {
+        return $this->type->badgeClass();
+    }
 
     /*-------------- Scopes -------------*/
 

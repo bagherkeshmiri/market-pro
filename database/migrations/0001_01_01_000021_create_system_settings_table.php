@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->string('label')->nullable();
             $table->string('key')->unique();
             $table->longText('value')->nullable();
-            $table->string('type')->default('string');  // example : string , boolean , integer , json
+            $table->enum('type', ['string', 'boolean', 'integer', 'json'])->default('string');
             $table->timestamps();
         });
     }
