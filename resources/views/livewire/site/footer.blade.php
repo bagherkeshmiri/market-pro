@@ -48,7 +48,7 @@
                         <div class="icon"><i class="fa-sharp fa-solid fa-phone-rotary"></i></div>
                         <div class="content">
                             <span>سوالی دارید؟  با ما تماس بگیرید</span>
-                            <a href="tel:+989127661646">12345678 - 051</a>
+                            <a href="tel:+{{$siteTel}}">{{ $siteTel }}</a>
                         </div>
                     </div>
                     <ul class="schedule-list">

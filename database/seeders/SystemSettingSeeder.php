@@ -35,6 +35,12 @@ class SystemSettingSeeder extends Seeder
                 'value' => 'تهران ، خیابان گل ، پلاک ۱۲۳',
                 'type' => SystemSettingType::String,
             ],
+            [
+                'label' => 'تلفن فروشگاه',
+                'key' => 'site_tel',
+                'value' => '12345678 - 051',
+                'type' => SystemSettingType::String,
+            ],
         ];
 
         foreach ($systemSettings as $systemSetting) {

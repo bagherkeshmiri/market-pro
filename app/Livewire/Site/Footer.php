@@ -13,6 +13,7 @@ class Footer extends Component
     public $siteWorkingHour;
     public $siteEmail;
     public $siteAddress;
+    public $siteTel;
 
     public function mount(): void
     {
@@ -20,6 +21,7 @@ class Footer extends Component
         $this->siteWorkingHour = getSystemSetting('site_working_hour');
         $this->siteEmail = getSystemSetting('site_email');
         $this->siteAddress = getSystemSetting('site_address');
+        $this->siteTel = getSystemSetting('site_tel');
     }
 
     public function render(): View
