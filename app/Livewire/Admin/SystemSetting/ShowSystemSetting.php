@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
-use Morilog\Jalali\Jalalian;
 use Throwable;
 
 class ShowSystemSetting extends AdminComponent
@@ -40,52 +39,43 @@ class ShowSystemSetting extends AdminComponent
         );
     }
 
-//    /**
-//     * @throws Throwable
-//     */
-//    public function update(): RedirectResponse|Redirector
-//    {
-//        $this->validate([
-//            'code' => 'required',
-//            'isActive' => [
-//                'required',
-//                new Enum(IsActive::class),
-//            ],
-//            'type' => [
-//                'required',
-//                new Enum(DiscountType::class),
-//            ],
-//            'amount' => 'required',
-//            'usageLimit' => 'required',
-//            'expiresAt' => 'required',
-//            'minOrderAmount' => 'required',
-//        ]);
-//
-//        $data = [
-//            'code' => $this->code,
-//            'is_active' => $this->isActive,
-//            'type' => $this->type,
-//            'amount' => str_replace(',', '', $this->amount),
-//            'usage_limit' => $this->usageLimit,
-//            'expires_at' => Jalalian::fromFormat('Y/m/d', $this->expiresAt)->toCarbon()->endOfDay(),
-//            'min_order_amount' => str_replace(',', '', $this->minOrderAmount),
-//        ];
-//
-//        DB::beginTransaction();
-//        try {
-//            $this->discount->update($data);
-//            DB::commit();
-//            $this->reset(['code', 'amount', 'usageLimit', 'minOrderAmount']);
-//            session()->flash('success', __('global.success_message'));
-//            return redirect()->route('admin.discount.show', ['discount' => $this->discount->id]);
-//        } catch (Exception $e) {
-//            DB::rollBack();
-//            if (app()->isLocal()) {
-//                session()->flash('error', $e->getMessage());
-//            } else {
-//                session()->flash('error', __('global.error_message'));
-//            }
-//            return redirect()->route('admin.discount.show', ['discount' => $this->discount->id]);
-//        }
-//    }
+    /**
+     * @throws Throwable
+     */
+    public function update(): RedirectResponse|Redirector
+    {
+        $this->validate([
+            'label' => 'required',
+            'key' => 'required',
+            'value' => 'required',
+            'type' => [
+                'required',
+                new Enum(SystemSettingType::class),
+            ],
+        ]);
+
+        $data = [
+            'label' => $this->label,
+            'key' => $this->key,
+            'value' => $this->value,
+            'type' => $this->type,
+        ];
+
+        DB::beginTransaction();
+        try {
+            $this->systemSetting->update($data);
+            DB::commit();
+            $this->reset(['label', 'key', 'value', 'type']);
+            session()->flash('success', __('global.success_message'));
+            return redirect()->route('admin.system-setting.show', ['systemSetting' => $this->systemSetting->id]);
+        } catch (Exception $e) {
+            DB::rollBack();
+            if (app()->isLocal()) {
+                session()->flash('error', $e->getMessage());
+            } else {
+                session()->flash('error', __('global.error_message'));
+            }
+            return redirect()->route('admin.system-setting.show', ['systemSetting' => $this->systemSetting->id]);
+        }
+    }
 }

@@ -13,7 +13,7 @@ class Index extends SiteComponent
 {
     public function render(): View
     {
-        $collections = Collection::whereIsActive(true)
+        $collections = Collection::where('is_active',true)
             ->orderBy('sort')
             ->with([
                 'productCollection',
@@ -23,7 +23,7 @@ class Index extends SiteComponent
             ])
             ->get();
 
-        $posts = Post::whereStatus(IsActive::Yes)
+        $posts = Post::where('status',IsActive::Yes)
             ->with([
                 'image:id,imageable_id,imageable_type,url',
             ])
@@ -34,7 +34,7 @@ class Index extends SiteComponent
 
         return $this->renderView(
             'livewire.site.index',
-            'فروشگاه اینترنتی رویسر',
+            getSystemSetting('site_title'),
             compact('collections','posts')
         );
     }

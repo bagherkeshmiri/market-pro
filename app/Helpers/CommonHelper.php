@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\DiscountType;
+use App\Models\SystemSetting;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
@@ -96,3 +97,13 @@ function isActiveUrl($patterns, $class = 'active')
     }
     return '';
 }
+
+
+
+function getSystemSetting($key, $default = null)
+{
+    return cache()->rememberForever("setting_{$key}", function () use ($key, $default) {
+        return SystemSetting::where('key', $key)->value('value') ?? $default;
+    });
+}
+

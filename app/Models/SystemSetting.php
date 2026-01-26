@@ -48,6 +48,17 @@ class SystemSetting extends Eloquent
         'type' => SystemSettingType::class,
     ];
 
+    protected static function booted(): void
+    {
+        static::saved(function ($setting) {
+            cache()->forget("setting_{$setting->key}");
+        });
+
+        static::deleted(function ($setting) {
+            cache()->forget("setting_{$setting->key}");
+        });
+    }
+
     /*------------ Relations ------------*/
 
     /*-------------- Accessors & Mutators -------------*/
