@@ -53,7 +53,7 @@ class PaymentCallback extends SiteComponent
      */
     private function processPayment(): void
     {
-        $payment = Payment::whereAuthority($this->authority)->first();
+        $payment = Payment::where('authority',$this->authority)->first();
 
         if (!$payment) {
             $this->paymentResultString = __('payment.not_found');
