@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\SystemSettingType;
 use App\Traits\HasDefaultOrdering;
 use App\Traits\HasJalaliTimestamps;
+use Cache;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
@@ -53,16 +54,16 @@ class SystemSetting extends Eloquent
     {
         static::updating(function ($setting) {
             if ($setting->isDirty('key')) {
-                cache()->forget('setting_' . $setting->getOriginal('key'));
+                Cache::forget('setting_' . $setting->getOriginal('key'));
             }
         });
 
         static::saved(function ($setting) {
-            cache()->forget('setting_' . $setting->key);
+            Cache::forget('setting_' . $setting->key);
         });
 
         static::deleted(function ($setting) {
-            cache()->forget('setting_' . $setting->key);
+            Cache::forget('setting_' . $setting->key);
         });
     }
 

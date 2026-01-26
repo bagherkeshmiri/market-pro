@@ -13,6 +13,17 @@
                             <div class="card-content">
                                 <div class="card-body">
 
+                                    <div class="row">
+                                        <div class="col-sm-12 col-xs-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4">
+                                            @include('frest-components.rgba-alert', [
+                                                'classes' => 'bg-rgba-warning',
+                                                'content' => 'بعد از بروزرسانی مقادیر تنظیمات بروزرسانی کش لازم است',
+                                                'icon'    => starIcon(),
+                                            ])
+                                        </div>
+                                    </div>
+
+
                                     <div class="table-responsive">
                                         <table class="table mb-0 table-hover">
                                             <thead>
