@@ -23,8 +23,10 @@
                                         </div>
 
                                         <div class="col-sm-12 col-xs-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4">
-                                            <button type="button" class="btn btn-primary glow mr-1 mb-1"><i class="bx bx-rotate-right"></i>
-                                                <span class="align-middle ml-25">بروزرسانی کش</span></button>
+                                            <button type="button" class="btn btn-primary glow mr-1 mb-1">
+                                                <i class="bx bx-rotate-right"></i>
+                                                <span class="align-middle ml-25">بروزرسانی کش</span>
+                                            </button>
                                         </div>
 
                                     </div>
