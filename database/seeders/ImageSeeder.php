@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Image;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Database\Seeder;
@@ -12,7 +13,7 @@ class ImageSeeder extends Seeder
     {
         $now = Carbon::now();
 
-        DB::table('images')->insert([
+        Image::insert([
             [
                 'id' => 1,
                 'imageable_id' => 4,

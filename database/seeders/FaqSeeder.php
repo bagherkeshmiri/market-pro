@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Faq;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class FaqSeeder extends Seeder
@@ -29,6 +29,6 @@ class FaqSeeder extends Seeder
             'updated_at' => $now,
         ]), $faqs);
 
-        DB::table('faqs')->insert($faqs);
+        Faq::insert($faqs);
     }
 }

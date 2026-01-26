@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Province;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -26,6 +27,6 @@ class ProvinceSeeder extends Seeder
             'updated_at' => $now,
         ], $provinceNames);
 
-        DB::table('provinces')->insert($provinces);
+        Province::insert($provinces);
     }
 }

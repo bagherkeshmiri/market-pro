@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Product;
 use Carbon\Carbon;
@@ -15,9 +16,13 @@ class CommentSeeder extends Seeder
     {
         $now = Carbon::now();
 
-        DB::table('comments')->insert([
+
+        $user = DB::table('users')
+            ->first();
+
+        Comment::insert([
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'commentable_id' => 1,
                 'commentable_type' => Category::class,
                 'status' => 2,
@@ -26,7 +31,7 @@ class CommentSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'commentable_id' => 1,
                 'commentable_type' => Product::class,
                 'status' => 2,
@@ -35,7 +40,7 @@ class CommentSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'commentable_id' => 1,
                 'commentable_type' => Product::class,
                 'status' => 2,
@@ -44,7 +49,7 @@ class CommentSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'commentable_id' => 1,
                 'commentable_type' => Product::class,
                 'status' => 2,
@@ -53,7 +58,7 @@ class CommentSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'commentable_id' => 1,
                 'commentable_type' => Product::class,
                 'status' => 2,
@@ -62,7 +67,7 @@ class CommentSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'commentable_id' => 9,
                 'commentable_type' => Post::class,
                 'status' => 2,
@@ -71,7 +76,7 @@ class CommentSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'commentable_id' => 9,
                 'commentable_type' => Post::class,
                 'status' => 2,
@@ -80,7 +85,7 @@ class CommentSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'commentable_id' => 9,
                 'commentable_type' => Post::class,
                 'status' => 2,
@@ -89,7 +94,7 @@ class CommentSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'user_id' => 1,
+                'user_id' => $user->id,
                 'commentable_id' => 9,
                 'commentable_type' => Post::class,
                 'status' => 2,

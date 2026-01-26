@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Enums\CollectionType;
+use App\Models\CollectionProduct;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Database\Seeder;
@@ -12,37 +14,26 @@ class CollectionProductSeeder extends Seeder
     {
         $now = Carbon::now();
 
-        DB::table('collection_products')->insert([
-            [
-                'collection_id' => 2,
-                'product_id' => 4,
+        $categoryCollection = DB::table('collections')
+            ->where('type', CollectionType::Product)
+            ->first();
+
+        $products = DB::table('products')
+            ->get();
+
+        $insertData = [];
+
+        foreach ($products as $product) {
+            $insertData[] = [
+                'collection_id' => $categoryCollection->id,
+                'product_id' => $product->id,
                 'created_at' => $now,
                 'updated_at' => $now,
-            ],
-            [
-                'collection_id' => 2,
-                'product_id' => 5,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'collection_id' => 2,
-                'product_id' => 3,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'collection_id' => 2,
-                'product_id' => 2,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'collection_id' => 2,
-                'product_id' => 1,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-        ]);
+            ];
+        }
+
+        if (!empty($insertData)) {
+            CollectionProduct::insert($insertData);
+        }
     }
 }

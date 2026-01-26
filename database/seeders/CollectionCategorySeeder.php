@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Enums\CategoryType;
+use App\Enums\CollectionType;
+use App\Models\CollectionCategory;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Database\Seeder;
@@ -12,40 +15,48 @@ class CollectionCategorySeeder extends Seeder
     {
         $now = Carbon::now();
 
-        DB::table('collection_categories')->insert([
+        $categoryCollection = DB::table('collections')
+            ->where('type', CollectionType::Category)
+            ->first();
+
+        $productCategory = DB::table('categories')
+            ->where('type', CategoryType::Product)
+            ->first();
+
+        CollectionCategory::insert([
             [
-                'collection_id' => 1,
-                'category_id' => 1,
+                'collection_id' => $categoryCollection->id,
+                'category_id' => $productCategory->id,
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
             [
-                'collection_id' => 1,
-                'category_id' => 2,
+                'collection_id' => $categoryCollection->id,
+                'category_id' => $productCategory->id,
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
             [
-                'collection_id' => 1,
-                'category_id' => 3,
+                'collection_id' => $categoryCollection->id,
+                'category_id' => $productCategory->id,
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
             [
-                'collection_id' => 1,
-                'category_id' => 4,
+                'collection_id' => $categoryCollection->id,
+                'category_id' => $productCategory->id,
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
             [
-                'collection_id' => 1,
-                'category_id' => 3,
+                'collection_id' => $categoryCollection->id,
+                'category_id' => $productCategory->id,
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
             [
-                'collection_id' => 1,
-                'category_id' => 2,
+                'collection_id' => $categoryCollection->id,
+                'category_id' => $productCategory->id,
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
