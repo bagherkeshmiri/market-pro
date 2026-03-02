@@ -12,7 +12,7 @@ function linkIcon(): string
 
 function userIcon(string $toolTipTitle = ''): string
 {
-    return '<i id="bx-show" class="bx bx-show" data-toggle="tooltip" data-placement="top" title="' . $toolTipTitle . '"></i>';
+    return '<i id="bx-show" class="bx bx-show text-white" data-toggle="tooltip" data-placement="top" title="' . $toolTipTitle . '"></i>';
 }
 
 function emailIcon(): string
@@ -112,4 +112,14 @@ function listIcon(string $toolTipTitle = ''): string
 function locationIcon(string $toolTipTitle = ''): string
 {
     return '<i id="bx-map" class="bx bx-map" data-toggle="tooltip" data-placement="top" title="' . $toolTipTitle . '"></i>';
+}
+
+function searchIcon(): string
+{
+    return '<i id="icon-arrow text-white" class="bx bx-search"></i>';
+}
+
+function resetIcon(): string
+{
+    return '<i id="icon-arrow text-white" class="bx bx-reset"></i>';
 }
