@@ -210,31 +210,36 @@
 
 <div class="dashboard container">
 
-    <!-- Sidebar -->
     <div class="sidebar">
-        <h4 class="text-white">پروفایل من</h4>
+        <h4 class="text-white d-none d-md-block">پروفایل من</h4>
         <button class="menu-item active" onclick="showSection('info')">اطلاعات</button>
         <button class="menu-item" onclick="showSection('payments')">پرداخت‌ها</button>
         <button class="menu-item" onclick="showSection('orders')">سفارشات</button>
         <button class="menu-item" onclick="showSection('password')">رمز عبور</button>
     </div>
 
-    <!-- Content -->
     <div class="content">
 
         <section id="info" class="active">
             <h2>اطلاعات کاربر</h2>
-            <div class="card">
-                <div><strong>نام :</strong> {{ $user->name }}</div>
-                <div><strong>ایمیل:</strong> {{ $user->email }}</div>
-                <div><strong>شماره تماس:</strong> {{ $user->mobile }}</div>
-                <div><strong>عضو از تاریخ:</strong> {{ $user->created_at }}</div>
+            <div class="row">
+                <div class="card col-12 p-3">
+                    <div class="row g-3">
 
-                <div class="submit-btn mt-5">
-                    <button id="submit" class="rr-primary-btn" type="submit">یرایش اطلاعات</button>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="mb-2"><strong>نام :</strong> {{ $user->name }}</div>
+                            <div class="mb-2"><strong>ایمیل:</strong> {{ $user->email }}</div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                            <div class="mb-2"><strong>شماره تماس:</strong> {{ $user->mobile }}</div>
+                            <div class="mb-2"><strong>عضو از تاریخ:</strong> {{ $user->created_at }}</div>
+                        </div>
+
+                    </div>
                 </div>
-
             </div>
+
         </section>
 
         <section id="payments">
@@ -295,7 +300,9 @@
                 <label>تأیید رمز جدید</label>
                 <input type="password" placeholder="رمز جدید را دوباره وارد کنید">
 
-                <button type="submit">تغییر رمز</button>
+                <div class="submit-btn mt-5">
+                    <button id="submit" class="rr-primary-btn" type="submit">تغییر رمز عبور</button>
+                </div>
             </form>
         </section>
     </div>

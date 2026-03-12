@@ -7,7 +7,6 @@ use Auth;
 
 use Illuminate\View\View;
 
-
 class Profile extends SiteComponent
 {
     public function render(): View
