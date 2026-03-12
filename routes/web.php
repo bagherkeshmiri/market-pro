@@ -11,6 +11,7 @@ use App\Livewire\Site\Login;
 use App\Livewire\Site\PaymentCallback;
 use App\Livewire\Site\PaymentResult;
 use App\Livewire\Site\Products;
+use App\Livewire\Site\Profile;
 use App\Livewire\Site\Register;
 use App\Livewire\Site\SinglePost;
 use App\Livewire\Site\SingleProduct;
@@ -33,6 +34,7 @@ Route::name('site.')
         Route::middleware('auth:web')->get('/checkout', Checkout::class)->name('checkout');
         Route::get('/payment/callback', PaymentCallback::class)->name('payment-callback');
         Route::get('/payment/result', PaymentResult::class)->name('payment-result');
+        Route::get('/profile', Profile::class)->name('profile');
     });
 
 

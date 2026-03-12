@@ -15,14 +15,16 @@
                                 <ul class="list">
 
                                     @foreach($searchMenuCategories as $searchMenuCategory)
-                                        <li data-value="" class="option {{ $loop->first ? 'selected focus' : '' }} ">{{ $searchMenuCategory->name }}</li>
+                                        <li data-value=""
+                                            class="option {{ $loop->first ? 'selected focus' : '' }} ">{{ $searchMenuCategory->name }}</li>
                                     @endforeach
 
                                 </ul>
                             </div>
                             <form class="header-form" action="#">
                                 <label for="search" hidden></label>
-                                <input class="form-control" type="text" id="search" name="search" placeholder="دنبال چی هستی؟">
+                                <input class="form-control" type="text" id="search" name="search"
+                                       placeholder="دنبال چی هستی؟">
                                 <button class="submit rr-primary-btn">جستجو کنید</button>
                             </form>
                         </div>
@@ -76,7 +78,9 @@
                                     <a role="button">محصولات</a>
                                     <ul>
                                         @foreach($menus as $menu)
-                                            <li><a href="{{ route('site.products',['category' => $menu->id]) }}">{{ $menu->name }}</a></li>
+                                            <li>
+                                                <a href="{{ route('site.products',['category' => $menu->id]) }}">{{ $menu->name }}</a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </li>
@@ -105,7 +109,7 @@
                                 @endguest
 
                                 @auth
-                                    <li><a role="button">پروفایل من</a></li>
+                                    <li><a href="{{ route('site.profile') }}">پروفایل من</a></li>
                                 @endauth
 
                             </ul>
@@ -136,7 +140,8 @@
             <ul class="side-menu-list">
                 <li><i class="fa-light fa-location-dot"></i>آدرس : <span>تهران ، خیابان گل ، پلاک ۱۲۳</span></li>
                 <li><i class="fa-light fa-phone"></i>شماره تماس : <a href="tel:+989127661646">12345678 - 051</a></li>
-                <li><i class="fa-light fa-envelope"></i>آدرس ایمیل : <a href="mailto:info@example.com">info@example.com</a></li>
+                <li><i class="fa-light fa-envelope"></i>آدرس ایمیل : <a
+                        href="mailto:info@example.com">info@example.com</a></li>
             </ul>
         </div>
     </div>
