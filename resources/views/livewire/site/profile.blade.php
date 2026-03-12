@@ -268,15 +268,6 @@
 
         <section id="orders">
             <h2>سفارشات</h2>
-            {{--            <div class="card">--}}
-            {{--                <p><strong>محصول:</strong> مانتو چهارخانه</p>--}}
-            {{--                <p><strong>کد سفارش:</strong> DK12346</p>--}}
-            {{--                <p><strong>تاریخ:</strong> 1402/12/08</p>--}}
-            {{--                <p><strong>وضعیت:</strong> تحویل شده</p>--}}
-            {{--                <button>جزئیات</button>--}}
-            {{--            </div>--}}
-
-
             <table>
                 <thead>
                 <tr>
