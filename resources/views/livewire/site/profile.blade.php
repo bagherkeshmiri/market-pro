@@ -8,7 +8,6 @@
 
         .dashboard {
             display: flex;
-            margin: 40px auto;
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
@@ -24,6 +23,8 @@
             display: flex;
             flex-direction: column;
             padding: 20px 10px;
+            /* Bootstrap column styling might interfere, ensuring flex-direction */
+            flex-shrink: 0; /* Prevent shrinking */
         }
 
         .sidebar h4 {
@@ -43,6 +44,7 @@
             border-radius: 8px;
             margin-bottom: 8px;
             transition: 0.2s;
+            white-space: nowrap; /* Prevent wrapping */
         }
 
         .menu-item:hover,
@@ -54,6 +56,7 @@
         .content {
             flex: 1;
             padding: 30px;
+            width: 100%; /* Ensure it takes available width */
         }
 
         .content section {
@@ -121,19 +124,21 @@
             background-color: #c62828;
         }
 
+        /* ========== Table Styling ========== */
+        /* Removed overflow-x: auto and display: block from table */
         table {
             width: 100%;
             border-collapse: collapse;
-            overflow-x: auto;
-            display: block;
+            /* REMOVED: overflow-x: auto; */
+            /* REMOVED: display: block; */
+            font-size: 14px; /* Adjusted base font size */
         }
 
         th, td {
             border-bottom: 1px solid #eee;
-            padding: 10px;
+            padding: 12px 10px; /* Slightly increased padding */
             text-align: center;
-            font-size: 14px;
-            min-width: 100px;
+            /* min-width: 100px; */ /* Removed to allow Bootstrap to manage width */
         }
 
         th {
@@ -142,30 +147,35 @@
         }
 
         /* ========== Responsive Design ========== */
-        @media (max-width: 900px) {
+        @media (max-width: 991px) {
+            /* Using Bootstrap's md breakpoint */
             .dashboard {
                 flex-direction: column;
-                margin: 0;
-                border-radius: 0;
+                /* margin: 0; */ /* Removed margin */
+                /* border-radius: 0; */ /* Removed border-radius */
             }
 
             .sidebar {
-                flex-direction: row;
                 width: 100%;
-                justify-content: space-around;
+                flex-direction: row; /* Changed to row for horizontal layout */
+                justify-content: space-around; /* Distribute items */
                 align-items: center;
                 padding: 10px;
+                flex-wrap: wrap; /* Allow wrapping if needed */
+                height: auto; /* Adjust height automatically */
             }
 
-            .sidebar h3 {
-                display: none;
+            .sidebar h4 {
+                display: none; /* Hide title on smaller screens */
             }
 
             .menu-item {
-                flex: 1;
+                flex: 1; /* Allow items to grow */
+                min-width: 120px; /* Minimum width for each item */
                 text-align: center;
                 font-size: 14px;
                 padding: 10px;
+                margin: 4px; /* Add some margin between items */
             }
 
             .content {
@@ -189,10 +199,13 @@
             }
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 575px) {
+            /* Using Bootstrap's xs breakpoint */
             .menu-item {
                 font-size: 13px;
                 padding: 8px;
+                min-width: 100px; /* Further reduce min-width */
+                margin: 2px;
             }
 
             h2 {
@@ -201,16 +214,20 @@
 
             th, td {
                 font-size: 12px;
+                padding: 8px 5px; /* Further reduce padding */
+            }
+
+            .sidebar {
+                justify-content: center; /* Center items when few */
             }
         }
     </style>
 @endsection
 
-
+{{-- HTML Structure --}}
 <div class="dashboard container">
 
     <div class="sidebar">
-        <h4 class="text-white d-none d-md-block">پروفایل من</h4>
         <button class="menu-item active" onclick="showSection('info')">اطلاعات</button>
         <button class="menu-item" onclick="showSection('payments')">پرداخت‌ها</button>
         <button class="menu-item" onclick="showSection('orders')">سفارشات</button>
@@ -221,103 +238,101 @@
 
         <section id="info" class="active">
             <h2>اطلاعات کاربر</h2>
-            <div class="row">
-                <div class="card col-12 p-3">
-                    <div class="row g-3">
-
-                        <div class="col-md-6 col-sm-12">
-                            <div class="mb-2"><strong>نام :</strong> {{ $user->name }}</div>
-                            <div class="mb-2"><strong>ایمیل:</strong> {{ $user->email }}</div>
-                        </div>
-
-                        <div class="col-md-6 col-sm-12">
-                            <div class="mb-2"><strong>شماره تماس:</strong> {{ $user->mobile }}</div>
-                            <div class="mb-2"><strong>عضو از تاریخ:</strong> {{ $user->jalali_created_at }}</div>
-                        </div>
-
+            <div class="card col-12 p-3">
+                <div class="row g-3">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="mb-2"><strong>نام :</strong> {{ $user->name }}</div>
+                        <div class="mb-2"><strong>ایمیل:</strong> {{ $user->email }}</div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="mb-2"><strong>شماره تماس:</strong> {{ $user->mobile }}</div>
+                        <div class="mb-2"><strong>عضو از تاریخ:</strong> {{ $user->jalali_created_at }}</div>
                     </div>
                 </div>
             </div>
-
         </section>
 
         <section id="payments">
-            <h2> پرداخت‌ها</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>تاریخ</th>
-                    <th>مبلغ</th>
-                    <th>وضعیت</th>
-                    <th>روش پرداخت</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1402/11/10</td>
-                    <td>۵۰۰,۰۰۰ تومان</td>
-                    <td>موفق</td>
-                    <td>کارت بانکی</td>
-                </tr>
-
-
-                </tbody>
-            </table>
+            <h2>پرداخت‌ها</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>تاریخ</th>
+                        <th>مبلغ</th>
+                        <th>وضعیت</th>
+                        <th>روش پرداخت</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1402/11/10</td>
+                        <td>۵۰۰,۰۰۰ تومان</td>
+                        <td>موفق</td>
+                        <td>کارت بانکی</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="orders">
             <h2>سفارشات</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>جمع اقلام ( تومان )</th>
-                    <th> تخفیف ( تومان )</th>
-                    <th> مالیات ( تومان )</th>
-                    <th> هزینه ارسال ( تومان )</th>
-                    <th> جمع کل ( تومان )</th>
-                    <th> وضعیت</th>
-                    <th> توضیحات</th>
-                    <th> تاریخ</th>
-                </tr>
-                </thead>
-                <tbody>
-                @forelse ($orders as $order)
+            <div class="table-responsive">
+                <table>
+                    <thead>
                     <tr>
-                        <td>{{ number_format($order->subtotal) }}</td>
-                        <td>{{ number_format($order->discount) }}</td>
-                        <td>{{ number_format($order->tax) }}</td>
-                        <td>{{ number_format($order->shipping_fee) }}</td>
-                        <td>{{ number_format($order->total) }}</td>
-                        <td>{{ $order->status_label }}</td>
-                        <td>{{ $order->description }}</td>
-                        <td>{{ $order->jalali_created_at }}</td>
+                        <th> شماره</th>
+                        <th> تخفیف</th>
+                        <th> مالیات</th>
+                        <th> هزینه ارسال</th>
+                        <th> جمع کل</th>
+                        <th> وضعیت</th>
+                        <th> تاریخ</th>
                     </tr>
-                @empty
-                    @include('custom-components.site.empty-table')
-                @endforelse
-
-                </tbody>
-            </table>
-
+                    </thead>
+                    <tbody>
+                    @forelse ($orders as $order)
+                        <tr>
+                            <td>{{ $order->order_number }}</td>
+                            <td>{{ number_format($order->discount) }} تومان</td>
+                            <td>{{ number_format($order->tax) }} تومان</td>
+                            <td>{{ number_format($order->shipping_fee) }} تومان</td>
+                            <td>{{ number_format($order->total) }} تومان</td>
+                            <td>{{ $order->status_label }}</td>
+                            <td>{{ $order->jalali_created_at }}</td>
+                        </tr>
+                    @empty
+                        @include('custom-components.site.empty-table')
+                    @endforelse
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="password">
             <h2>تغییر رمز عبور</h2>
-            <form>
-                <label>رمز فعلی</label>
-                <input type="password" placeholder="رمز فعلی را وارد کنید">
-
-                <label>رمز جدید</label>
-                <input type="password" placeholder="رمز جدید را وارد کنید">
-
-                <label>تأیید رمز جدید</label>
-                <input type="password" placeholder="رمز جدید را دوباره وارد کنید">
-
-                <div class="submit-btn mt-5">
-                    <button id="submit" class="rr-primary-btn" type="submit">تغییر رمز عبور</button>
-                </div>
-            </form>
+            <div class="card p-3">
+                <form>
+                    <div class="mb-3">
+                        <label for="current_password">رمز فعلی</label>
+                        <input type="password" id="current_password" placeholder="رمز فعلی را وارد کنید">
+                    </div>
+                    <div class="mb-3">
+                        <label for="new_password">رمز جدید</label>
+                        <input type="password" id="new_password" placeholder="رمز جدید را وارد کنید">
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirm_password">تأیید رمز جدید</label>
+                        <input type="password" id="confirm_password" placeholder="رمز جدید را دوباره وارد کنید">
+                    </div>
+                    <div class="submit-btn mt-4">
+                        <button id="submit" class="rr-primary-btn" type="submit">تغییر رمز عبور</button>
+                    </div>
+                </form>
+            </div>
         </section>
+
     </div>
 
 </div>
