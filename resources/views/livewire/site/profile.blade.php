@@ -3,7 +3,6 @@
         body {
             direction: rtl;
             background-color: #f8f8f8;
-            /*margin: 0;*/
             color: #333;
         }
 
