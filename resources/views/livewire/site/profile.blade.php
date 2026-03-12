@@ -233,7 +233,7 @@
 
                         <div class="col-md-6 col-sm-12">
                             <div class="mb-2"><strong>شماره تماس:</strong> {{ $user->mobile }}</div>
-                            <div class="mb-2"><strong>عضو از تاریخ:</strong> {{ $user->created_at }}</div>
+                            <div class="mb-2"><strong>عضو از تاریخ:</strong> {{ $user->jalali_created_at }}</div>
                         </div>
 
                     </div>
@@ -243,7 +243,7 @@
         </section>
 
         <section id="payments">
-            <h2>تاریخچه پرداخت‌ها</h2>
+            <h2> پرداخت‌ها</h2>
             <table>
                 <thead>
                 <tr>
@@ -260,32 +260,55 @@
                     <td>موفق</td>
                     <td>کارت بانکی</td>
                 </tr>
-                <tr>
-                    <td>1402/12/03</td>
-                    <td>۲۲۰,۰۰۰ تومان</td>
-                    <td>ناموفق</td>
-                    <td>درگاه آنلاین</td>
-                </tr>
+
+
                 </tbody>
             </table>
         </section>
 
         <section id="orders">
             <h2>سفارشات</h2>
-            <div class="card">
-                <p><strong>محصول:</strong> پیراهن تابستانی</p>
-                <p><strong>کد سفارش:</strong> DK12345</p>
-                <p><strong>تاریخ:</strong> 1402/12/05</p>
-                <p><strong>وضعیت:</strong> در حال ارسال</p>
-                <button>جزئیات</button>
-            </div>
-            <div class="card">
-                <p><strong>محصول:</strong> مانتو چهارخانه</p>
-                <p><strong>کد سفارش:</strong> DK12346</p>
-                <p><strong>تاریخ:</strong> 1402/12/08</p>
-                <p><strong>وضعیت:</strong> تحویل شده</p>
-                <button>جزئیات</button>
-            </div>
+            {{--            <div class="card">--}}
+            {{--                <p><strong>محصول:</strong> مانتو چهارخانه</p>--}}
+            {{--                <p><strong>کد سفارش:</strong> DK12346</p>--}}
+            {{--                <p><strong>تاریخ:</strong> 1402/12/08</p>--}}
+            {{--                <p><strong>وضعیت:</strong> تحویل شده</p>--}}
+            {{--                <button>جزئیات</button>--}}
+            {{--            </div>--}}
+
+
+            <table>
+                <thead>
+                <tr>
+                    <th>جمع اقلام ( تومان )</th>
+                    <th> تخفیف ( تومان )</th>
+                    <th> مالیات ( تومان )</th>
+                    <th> هزینه ارسال ( تومان )</th>
+                    <th> جمع کل ( تومان )</th>
+                    <th> وضعیت</th>
+                    <th> توضیحات</th>
+                    <th> تاریخ</th>
+                </tr>
+                </thead>
+                <tbody>
+                @forelse ($orders as $order)
+                    <tr>
+                        <td>{{ number_format($order->subtotal) }}</td>
+                        <td>{{ number_format($order->discount) }}</td>
+                        <td>{{ number_format($order->tax) }}</td>
+                        <td>{{ number_format($order->shipping_fee) }}</td>
+                        <td>{{ number_format($order->total) }}</td>
+                        <td>{{ $order->status_label }}</td>
+                        <td>{{ $order->description }}</td>
+                        <td>{{ $order->jalali_created_at }}</td>
+                    </tr>
+                @empty
+                    @include('custom-components.site.empty-table')
+                @endforelse
+
+                </tbody>
+            </table>
+
         </section>
 
         <section id="password">

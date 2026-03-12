@@ -12,11 +12,12 @@ class Profile extends SiteComponent
     public function render(): View
     {
         $user = Auth::user();
+        $orders = $user->orders;
 
         return $this->renderView(
             'livewire.site.profile',
             'پروفایل',
-            compact('user')
+            compact('user', 'orders')
         );
     }
 }
