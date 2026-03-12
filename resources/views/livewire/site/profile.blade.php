@@ -224,7 +224,6 @@
     </style>
 @endsection
 
-{{-- HTML Structure --}}
 <div class="dashboard container">
 
     <div class="sidebar">
@@ -314,21 +313,36 @@
             <h2>تغییر رمز عبور</h2>
             <div class="card p-3">
                 <form>
-                    <div class="mb-3">
-                        <label for="current_password">رمز فعلی</label>
-                        <input type="password" id="current_password" placeholder="رمز فعلی را وارد کنید">
-                    </div>
-                    <div class="mb-3">
-                        <label for="new_password">رمز جدید</label>
-                        <input type="password" id="new_password" placeholder="رمز جدید را وارد کنید">
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirm_password">تأیید رمز جدید</label>
-                        <input type="password" id="confirm_password" placeholder="رمز جدید را دوباره وارد کنید">
-                    </div>
-                    <div class="submit-btn mt-4">
-                        <button id="submit" class="rr-primary-btn" type="submit">تغییر رمز عبور</button>
-                    </div>
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="current_password">رمز فعلی</label>
+                                <input type="password" id="current_password">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="new_password">رمز جدید</label>
+                                <input type="password" id="new_password">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="confirm_password">تأیید رمز جدید</label>
+                                <input type="password" id="confirm_password">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="submit-btn mt-4 ">
+                                <button id="submit" class="rr-primary-btn" type="submit">تغییر رمز عبور</button>
+                            </div>
+                        </div>
+
+                    </div> {{-- پایان row --}}
                 </form>
             </div>
         </section>
