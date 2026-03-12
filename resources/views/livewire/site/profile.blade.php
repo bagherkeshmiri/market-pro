@@ -125,7 +125,6 @@
         }
 
         /* ========== Table Styling ========== */
-        /* Removed overflow-x: auto and display: block from table */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -136,9 +135,9 @@
 
         th, td {
             border-bottom: 1px solid #eee;
-            padding: 12px 10px; /* Slightly increased padding */
+            padding: 12px 10px;
             text-align: center;
-            /* min-width: 100px; */ /* Removed to allow Bootstrap to manage width */
+             min-width: 100px;
         }
 
         th {
@@ -200,7 +199,6 @@
         }
 
         @media (max-width: 575px) {
-            /* Using Bootstrap's xs breakpoint */
             .menu-item {
                 font-size: 13px;
                 padding: 8px;
@@ -342,7 +340,7 @@
                             </div>
                         </div>
 
-                    </div> {{-- پایان row --}}
+                    </div>
                 </form>
             </div>
         </section>
