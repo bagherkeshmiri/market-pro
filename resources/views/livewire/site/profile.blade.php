@@ -302,6 +302,14 @@
                     @empty
                         @include('custom-components.site.empty-table')
                     @endforelse
+
+
+
+                    @if($orders->count() > 0)
+                        {{ $orders->links('custom-components.site.pagination', ['items' => $orders]) }}
+                    @endif
+
+
                     </tbody>
                 </table>
             </div>
