@@ -7,6 +7,7 @@ use App\Models\User;
 use Auth;
 use Exception;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
 
@@ -25,9 +26,9 @@ class Login extends SiteComponent
         ]);
 
         try {
-            $user = User::whereEmail($this->email)->first();
+            $user = User::where('email', $this->email)->first();
 
-            if (is_null($user)) {
+            if (is_null($user) || !Hash::check($this->password, $user->password)) {
                 session()->flash('error', 'اطلاعات وارد شده نادرست است');
                 return redirect()->route('site.login');
             }

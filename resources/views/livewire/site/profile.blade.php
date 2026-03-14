@@ -359,7 +359,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="confirm_password"> تکرار رمز</label>
-                                <input wire:model.defer="confirmPassword" type="password" id="confirm_password">
+                                <input wire:model.defer="newPassword_confirmation" type="password" id="confirm_password">
                                 @error('confirmPassword') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>

@@ -20,7 +20,7 @@ class Profile extends SiteComponent
     public $user;
     public $currentPassword;
     public $newPassword;
-    public $confirmPassword;
+    public $newPassword_confirmation;
     public $activeSection;
     public $section;
 
@@ -67,37 +67,34 @@ class Profile extends SiteComponent
         $this->activeSection = $sectionId;
     }
 
-    public function changePassword(): ?RedirectResponse
+    public function changePassword(): void
     {
+        $this->activeSection = 'password';
+
         $this->validate([
             'currentPassword' => 'required|min:8',
             'newPassword' => 'required|min:8|confirmed',
-            'confirmPassword' => 'required|min:8',
         ]);
 
         try {
             if (!Hash::check($this->currentPassword, $this->user->password)) {
-                throw new Exception(__('validation.current_password'));
+                session()->flash('error', __('validation.current_password'));
+                return;
             }
 
-            $this->user->password = Hash::make($this->newPassword);
-            $this->user->save();
+            $this->user->update([
+                'password' => $this->newPassword
+            ]);
 
-            $this->reset(['currentPassword', 'newPassword', 'confirmPassword']);
-            $this->activeSection = 'info';
+            $this->reset(['currentPassword', 'newPassword', 'newPassword_confirmation']);
 
             session()->flash('success', __('global.success_message'));
         } catch (Exception $e) {
-            $this->activeSection = 'password';
-
             if (app()->isLocal()) {
                 session()->flash('error', $e->getMessage());
             } else {
                 session()->flash('error', __('global.error_message'));
             }
-            return redirect()->route('site.profile');
         }
-
-        return null;
     }
 }
