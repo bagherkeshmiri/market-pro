@@ -54,10 +54,7 @@ class Profile extends SiteComponent
 
         try {
 
-            dd(
-                'asdadad'
-            );
-
+            // TODO
 
             session()->flash('success', __('global.success_message'));
             return redirect()->route('site.profile');

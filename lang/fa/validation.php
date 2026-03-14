@@ -153,5 +153,7 @@ return [
         'selectedProvince' => 'استان',
         'selectedCity' => 'شهر',
         'fullName' => 'نام و نام خانوادگی',
+        'newPassword' => 'رمز جدید',
+        'confirmPassword' => 'تکرار رمز',
     ],
 ];

@@ -323,13 +323,13 @@
             <h2>تغییر رمز عبور</h2>
             <div class="card p-3">
                 <form wire:submit.prevent="changePassword">
-                <form >
                     <div class="row g-3">
 
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="current_password">رمز فعلی</label>
                                 <input wire:model.defer="currentPassword" type="password" id="current_password">
+                                @error('currentPassword') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
 
@@ -337,13 +337,15 @@
                             <div class="mb-3">
                                 <label for="new_password">رمز جدید</label>
                                 <input wire:model.defer="newPassword" type="password" id="new_password">
+                                @error('newPassword') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="confirm_password">تأیید رمز جدید</label>
+                                <label for="confirm_password">  تکرار رمز</label>
                                 <input wire:model.defer="confirmPassword" type="password" id="confirm_password">
+                                @error('confirmPassword') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
 
