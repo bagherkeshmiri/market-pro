@@ -91,6 +91,7 @@
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            color: #333;
         }
 
         .profile-label {
@@ -140,6 +141,10 @@
         th {
             background-color: #E53935;
             color: #fff;
+        }
+
+        tr{
+            color: #333;
         }
 
         /* ========== Responsive Design ========== */
@@ -219,27 +224,27 @@
 <div class="profile-dashboard container mt-50 mb-50">
 
     <div class="profile-sidebar">
-        <button  class=" profile-button profile-menu-item {{ $activeSection === 'info' ? 'active' : '' }}" wire:click="showSection('info')">
+        <button class=" profile-button profile-menu-item {{ $activeSection === 'info' ? 'active' : '' }}" wire:click="showSection('info')">
             <i class="fa-sharp fa-regular fa-home pl-10"></i>
             اطلاعات
         </button>
 
-        <button  class=" profile-button profile-menu-item {{ $activeSection === 'payments' ? 'active' : '' }}" wire:click="showSection('payments')">
+        <button class=" profile-button profile-menu-item {{ $activeSection === 'payments' ? 'active' : '' }}" wire:click="showSection('payments')">
             <i class="fa-sharp fa-regular fa-dollar pl-10"></i>
             پرداخت‌ها
         </button>
 
-        <button  class=" profile-button profile-menu-item {{ $activeSection === 'orders' ? 'active' : '' }}" wire:click="showSection('orders')">
+        <button class=" profile-button profile-menu-item {{ $activeSection === 'orders' ? 'active' : '' }}" wire:click="showSection('orders')">
             <i class="fa-sharp fa-regular fa-list pl-10"></i>
             سفارشات
         </button>
 
-        <button  class=" profile-button profile-menu-item {{ $activeSection === 'password' ? 'active' : '' }}" wire:click="showSection('password')">
+        <button class=" profile-button profile-menu-item {{ $activeSection === 'password' ? 'active' : '' }}" wire:click="showSection('password')">
             <i class="fa-sharp fa-regular fa-lock pl-10"></i>
             رمز عبور
         </button>
 
-        <a class="profile-menu-item" href="{{ route('logout') }}">
+        <a class="profile-menu-item" href="{{ route('logout') }}" style="color: #fff">
             <i class="fa-sharp fa-regular fa-power-off pl-10"></i>
             خروج
         </a>
