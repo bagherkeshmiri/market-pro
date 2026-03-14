@@ -2,8 +2,6 @@
     <style>
         body {
             direction: rtl;
-        /*    background-color: #f8f8f8;*/
-        /*    color: #333;*/
         }
 
         .profile-dashboard {
@@ -23,8 +21,7 @@
             display: flex;
             flex-direction: column;
             padding: 20px 10px;
-            /* Bootstrap column styling might interfere, ensuring flex-direction */
-            flex-shrink: 0; /* Prevent shrinking */
+            flex-shrink: 0;
         }
 
         .profile-sidebar h4 {
@@ -44,9 +41,10 @@
             border-radius: 8px;
             margin-bottom: 8px;
             transition: 0.2s;
-            white-space: nowrap; /* Prevent wrapping */
+            white-space: nowrap;
         }
 
+        /* !important : dont remove */
         .profile-menu-item:hover,
         .profile-menu-item.active {
             background-color: #c62828;
@@ -56,7 +54,7 @@
         .profile-content {
             flex: 1;
             padding: 30px;
-            width: 100%; /* Ensure it takes available width */
+            width: 100%;
         }
 
         .profile-content section {
@@ -64,6 +62,7 @@
             animation: fadeIn 0.3s ease-in-out;
         }
 
+        /* !important : dont remove */
         .profile-content section.active {
             display: block;
         }
@@ -94,22 +93,22 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
-        label {
+        .profile-label {
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
         }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
+        /*input {*/
+        /*    width: 100%;*/
+        /*    padding: 10px;*/
+        /*    border: 1px solid #ddd;*/
+        /*    border-radius: 5px;*/
+        /*    margin-bottom: 10px;*/
+        /*    font-size: 14px;*/
+        /*}*/
 
-        button {
+        .profile-button {
             background-color: #E53935;
             color: white;
             border: none;
@@ -120,7 +119,7 @@
             font-size: 15px;
         }
 
-        button:hover {
+        .profile-button:hover {
             background-color: #c62828;
         }
 
@@ -128,9 +127,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            /* REMOVED: overflow-x: auto; */
-            /* REMOVED: display: block; */
-            font-size: 14px; /* Adjusted base font size */
+            font-size: 14px;
         }
 
         th, td {
@@ -147,34 +144,31 @@
 
         /* ========== Responsive Design ========== */
         @media (max-width: 991px) {
-            /* Using Bootstrap's md breakpoint */
             .profile-dashboard {
                 flex-direction: column;
-                /* margin: 0; */ /* Removed margin */
-                /* border-radius: 0; */ /* Removed border-radius */
             }
 
             .profile-sidebar {
                 width: 100%;
-                flex-direction: row; /* Changed to row for horizontal layout */
-                justify-content: space-around; /* Distribute items */
+                flex-direction: row;
+                justify-content: space-around;
                 align-items: center;
                 padding: 10px;
-                flex-wrap: wrap; /* Allow wrapping if needed */
-                height: auto; /* Adjust height automatically */
+                flex-wrap: wrap;
+                height: auto;
             }
 
             .profile-sidebar h4 {
-                display: none; /* Hide title on smaller screens */
+                display: none;
             }
 
             .profile-menu-item {
-                flex: 1; /* Allow items to grow */
-                min-width: 120px; /* Minimum width for each item */
+                flex: 1;
+                min-width: 120px;
                 text-align: center;
                 font-size: 14px;
                 padding: 10px;
-                margin: 4px; /* Add some margin between items */
+                margin: 4px;
             }
 
             .profile-content {
@@ -193,7 +187,7 @@
                 font-size: 13px;
             }
 
-            button {
+            .profile-button {
                 width: 100%;
             }
         }
@@ -202,7 +196,7 @@
             .profile-menu-item {
                 font-size: 13px;
                 padding: 8px;
-                min-width: 100px; /* Further reduce min-width */
+                min-width: 100px;
                 margin: 2px;
             }
 
@@ -212,35 +206,35 @@
 
             th, td {
                 font-size: 12px;
-                padding: 8px 5px; /* Further reduce padding */
+                padding: 8px 5px;
             }
 
             .profile-sidebar {
-                justify-content: center; /* Center items when few */
+                justify-content: center;
             }
         }
     </style>
 @endsection
 
-<div class="profile-dashboard container">
+<div class="profile-dashboard container mt-50 mb-50">
 
     <div class="profile-sidebar">
-        <button class="profile-menu-item {{ $activeSection === 'info' ? 'active' : '' }}" wire:click="showSection('info')">
+        <button  class=" profile-button profile-menu-item {{ $activeSection === 'info' ? 'active' : '' }}" wire:click="showSection('info')">
             <i class="fa-sharp fa-regular fa-home pl-10"></i>
             اطلاعات
         </button>
 
-        <button class="profile-menu-item {{ $activeSection === 'payments' ? 'active' : '' }}" wire:click="showSection('payments')">
+        <button  class=" profile-button profile-menu-item {{ $activeSection === 'payments' ? 'active' : '' }}" wire:click="showSection('payments')">
             <i class="fa-sharp fa-regular fa-dollar pl-10"></i>
             پرداخت‌ها
         </button>
 
-        <button class="profile-menu-item {{ $activeSection === 'orders' ? 'active' : '' }}" wire:click="showSection('orders')">
+        <button  class=" profile-button profile-menu-item {{ $activeSection === 'orders' ? 'active' : '' }}" wire:click="showSection('orders')">
             <i class="fa-sharp fa-regular fa-list pl-10"></i>
             سفارشات
         </button>
 
-        <button class="profile-menu-item {{ $activeSection === 'password' ? 'active' : '' }}" wire:click="showSection('password')">
+        <button  class=" profile-button profile-menu-item {{ $activeSection === 'password' ? 'active' : '' }}" wire:click="showSection('password')">
             <i class="fa-sharp fa-regular fa-lock pl-10"></i>
             رمز عبور
         </button>
@@ -351,7 +345,7 @@
 
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="current_password">رمز فعلی</label>
+                                <label class="profile-label" for="current_password">رمز فعلی</label>
                                 <input wire:model.defer="currentPassword" type="password" id="current_password">
                                 @error('currentPassword') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
@@ -359,7 +353,7 @@
 
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="new_password">رمز جدید</label>
+                                <label class="profile-label" for="new_password">رمز جدید</label>
                                 <input wire:model.defer="newPassword" type="password" id="new_password">
                                 @error('newPassword') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
@@ -367,7 +361,7 @@
 
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="confirm_password"> تکرار رمز</label>
+                                <label class="profile-label" for="confirm_password"> تکرار رمز</label>
                                 <input wire:model.defer="newPassword_confirmation" type="password" id="confirm_password">
                                 @error('confirmPassword') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
