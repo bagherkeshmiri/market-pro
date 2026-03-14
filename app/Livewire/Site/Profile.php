@@ -6,8 +6,12 @@ use App\Livewire\BaseComponents\SiteComponent;
 use Auth;
 use Exception;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
+use Livewire\Features\SupportRedirects\Redirector;
 use Livewire\WithPagination;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class Profile extends SiteComponent
 {
@@ -17,14 +21,27 @@ class Profile extends SiteComponent
     public $currentPassword;
     public $newPassword;
     public $confirmPassword;
+    public $activeSection;
+    public $section;
 
-    public function mount(): RedirectResponse|null
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function mount(): RedirectResponse|Redirector|null
     {
         $this->user = Auth::user();
 
         if (!$this->user) {
             return redirect()->route('site.home');
         }
+
+        $this->activeSection = 'info';
+
+        if (request()->has('section') && in_array(request()->get('section'), ['info', 'payments', 'orders', 'password'])) {
+            $this->activeSection = request()->get('section');
+        }
+
         return null;
     }
 
@@ -40,11 +57,17 @@ class Profile extends SiteComponent
                 'user' => $this->user,
                 'orders' => $orders,
                 'payments' => $payments,
+                'activeSection' => $this->activeSection,
             ]
         );
     }
 
-    public function changePassword(): RedirectResponse
+    public function showSection(string $sectionId): void
+    {
+        $this->activeSection = $sectionId;
+    }
+
+    public function changePassword(): ?RedirectResponse
     {
         $this->validate([
             'currentPassword' => 'required|min:8',
@@ -53,12 +76,20 @@ class Profile extends SiteComponent
         ]);
 
         try {
+            if (!Hash::check($this->currentPassword, $this->user->password)) {
+                throw new Exception(__('validation.current_password'));
+            }
 
-            // TODO
+            $this->user->password = Hash::make($this->newPassword);
+            $this->user->save();
+
+            $this->reset(['currentPassword', 'newPassword', 'confirmPassword']);
+            $this->activeSection = 'info';
 
             session()->flash('success', __('global.success_message'));
-            return redirect()->route('site.profile');
         } catch (Exception $e) {
+            $this->activeSection = 'password';
+
             if (app()->isLocal()) {
                 session()->flash('error', $e->getMessage());
             } else {
@@ -67,5 +98,6 @@ class Profile extends SiteComponent
             return redirect()->route('site.profile');
         }
 
+        return null;
     }
 }

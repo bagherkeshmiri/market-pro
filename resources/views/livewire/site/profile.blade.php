@@ -225,15 +225,27 @@
 <div class="dashboard container">
 
     <div class="sidebar">
-        <button class="menu-item active" onclick="showSection('info')">اطلاعات</button>
-        <button class="menu-item" onclick="showSection('payments')">پرداخت‌ها</button>
-        <button class="menu-item" onclick="showSection('orders')">سفارشات</button>
-        <button class="menu-item" onclick="showSection('password')">رمز عبور</button>
+        <button class="menu-item {{ $activeSection === 'info' ? 'active' : '' }}" wire:click="showSection('info')">
+            اطلاعات
+        </button>
+
+        <button class="menu-item {{ $activeSection === 'payments' ? 'active' : '' }}" wire:click="showSection('payments')">
+            پرداخت‌ها
+        </button>
+
+        <button class="menu-item {{ $activeSection === 'orders' ? 'active' : '' }}" wire:click="showSection('orders')">
+            سفارشات
+        </button>
+
+        <button class="menu-item {{ $activeSection === 'password' ? 'active' : '' }}" wire:click="showSection('password')">
+            رمز عبور
+        </button>
     </div>
+
 
     <div class="content">
 
-        <section id="info" class="active">
+        <section id="info" class="{{ $activeSection === 'info' ? 'active' : '' }}">
             <h2>اطلاعات کاربر</h2>
             <div class="card col-12 p-3">
                 <div class="row g-3">
@@ -243,13 +255,13 @@
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div class="mb-2"><strong>شماره تماس:</strong> {{ $user->mobile }}</div>
-                        <div class="mb-2"><strong>  تاریخ ثبت نام :</strong> {{ $user->jalali_created_at }}</div>
+                        <div class="mb-2"><strong> تاریخ ثبت نام :</strong> {{ $user->jalali_created_at }}</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="payments">
+        <section id="payments" class="{{ $activeSection === 'payments' ? 'active' : '' }}">
             <h2>پرداخت‌ها</h2>
             <div class="table-responsive">
                 <table>
@@ -282,7 +294,7 @@
             </div>
         </section>
 
-        <section id="orders">
+        <section id="orders" class="{{ $activeSection === 'orders' ? 'active' : '' }}">
             <h2>سفارشات</h2>
             <div class="table-responsive">
                 <table>
@@ -319,9 +331,12 @@
             </div>
         </section>
 
-        <section id="password">
+        <section id="password" class="{{ $activeSection === 'password' ? 'active' : '' }}">
             <h2>تغییر رمز عبور</h2>
             <div class="card p-3">
+
+                @include('custom-components.site.flash-message')
+
                 <form wire:submit.prevent="changePassword">
                     <div class="row g-3">
 
@@ -343,7 +358,7 @@
 
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="confirm_password">  تکرار رمز</label>
+                                <label for="confirm_password"> تکرار رمز</label>
                                 <input wire:model.defer="confirmPassword" type="password" id="confirm_password">
                                 @error('confirmPassword') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
@@ -365,12 +380,4 @@
 </div>
 
 @section('scripts')
-    <script>
-        function showSection(id) {
-            document.querySelectorAll('.menu-item').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.content section').forEach(s => s.classList.remove('active'));
-            document.querySelector(`.menu-item[onclick="showSection('${id}')"]`).classList.add('active');
-            document.getElementById(id).classList.add('active');
-        }
-    </script>
 @endsection

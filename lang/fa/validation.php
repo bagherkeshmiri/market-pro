@@ -153,6 +153,7 @@ return [
         'selectedProvince' => 'استان',
         'selectedCity' => 'شهر',
         'fullName' => 'نام و نام خانوادگی',
+        'currentPassword' => 'رمز قبلی',
         'newPassword' => 'رمز جدید',
         'confirmPassword' => 'تکرار رمز',
     ],
