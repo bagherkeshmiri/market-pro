@@ -226,22 +226,32 @@
 
     <div class="sidebar">
         <button class="menu-item {{ $activeSection === 'info' ? 'active' : '' }}" wire:click="showSection('info')">
+            <i class="fa-sharp fa-regular fa-home pl-10"></i>
             اطلاعات
         </button>
 
         <button class="menu-item {{ $activeSection === 'payments' ? 'active' : '' }}" wire:click="showSection('payments')">
+            <i class="fa-sharp fa-regular fa-dollar pl-10"></i>
             پرداخت‌ها
         </button>
 
         <button class="menu-item {{ $activeSection === 'orders' ? 'active' : '' }}" wire:click="showSection('orders')">
+            <i class="fa-sharp fa-regular fa-list pl-10"></i>
             سفارشات
         </button>
 
         <button class="menu-item {{ $activeSection === 'password' ? 'active' : '' }}" wire:click="showSection('password')">
+            <i class="fa-sharp fa-regular fa-lock pl-10"></i>
             رمز عبور
         </button>
-    </div>
 
+        <a class="menu-item" href="{{ route('logout') }}">
+            <i class="fa-sharp fa-regular fa-power-off pl-10"></i>
+            خروج
+        </a>
+
+
+    </div>
 
     <div class="content">
 
