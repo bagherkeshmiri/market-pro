@@ -137,7 +137,7 @@
             border-bottom: 1px solid #eee;
             padding: 12px 10px;
             text-align: center;
-             min-width: 100px;
+            min-width: 100px;
         }
 
         th {
@@ -243,7 +243,7 @@
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div class="mb-2"><strong>شماره تماس:</strong> {{ $user->mobile }}</div>
-                        <div class="mb-2"><strong>عضو از تاریخ:</strong> {{ $user->jalali_created_at }}</div>
+                        <div class="mb-2"><strong>  تاریخ ثبت نام :</strong> {{ $user->jalali_created_at }}</div>
                     </div>
                 </div>
             </div>
@@ -255,21 +255,30 @@
                 <table>
                     <thead>
                     <tr>
-                        <th>تاریخ</th>
-                        <th>مبلغ</th>
-                        <th>وضعیت</th>
-                        <th>روش پرداخت</th>
+                        <th> شناسه پرداخت</th>
+                        <th> شناسه سفارش</th>
+                        <th> مبلغ</th>
+                        <th> وضعیت</th>
+                        <th> تاریخ</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1402/11/10</td>
-                        <td>۵۰۰,۰۰۰ تومان</td>
-                        <td>موفق</td>
-                        <td>کارت بانکی</td>
-                    </tr>
+                    @forelse ($payments as $payment)
+                        <tr>
+                            <td>{{ $payment->payment_number }}</td>
+                            <td>{{ $payment->order->order_number }}</td>
+                            <td>{{ number_format($payment->amount) }} تومان</td>
+                            <td>{{ $payment->status_label }}</td>
+                            <td>{{ $payment->jalali_created_at }}</td>
+                        </tr>
+                    @empty
+                        @include('custom-components.site.empty-table')
+                    @endforelse
                     </tbody>
                 </table>
+                @if($payments->count() > $this->perPage)
+                    {{ $payments->links('custom-components.site.pagination', ['items' => $payments]) }}
+                @endif
             </div>
         </section>
 

@@ -24,8 +24,8 @@ class Profile extends SiteComponent
 
     public function render(): View
     {
+        $payments = $this->user->payments()->with('order')->latest()->paginate($this->perPage);
         $orders = $this->user->orders()->latest()->paginate($this->perPage);
-
 
         return $this->renderView(
             'livewire.site.profile',
@@ -33,6 +33,7 @@ class Profile extends SiteComponent
             [
                 'user' => $this->user,
                 'orders' => $orders,
+                'payments' => $payments,
             ]
         );
     }

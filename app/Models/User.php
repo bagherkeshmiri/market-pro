@@ -82,6 +82,11 @@ class User extends Authenticatable
         return $this->morphMany(Comment::class, 'commentable');
     }
 
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class, Payment::COLUMN_USER_ID, self::COLUMN_ID);
+    }
+
     /*-------------- Accessors & Mutators -------------*/
 
     public function setPasswordAttribute($value): void
