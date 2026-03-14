@@ -2,11 +2,11 @@
     <style>
         body {
             direction: rtl;
-            background-color: #f8f8f8;
-            color: #333;
+        /*    background-color: #f8f8f8;*/
+        /*    color: #333;*/
         }
 
-        .dashboard {
+        .profile-dashboard {
             display: flex;
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -16,7 +16,7 @@
         }
 
         /* ========== Sidebar (Desktop) ========== */
-        .sidebar {
+        .profile-sidebar {
             width: 250px;
             background-color: #E53935;
             color: #fff;
@@ -27,13 +27,13 @@
             flex-shrink: 0; /* Prevent shrinking */
         }
 
-        .sidebar h4 {
+        .profile-sidebar h4 {
             text-align: center;
             margin-bottom: 30px;
             font-weight: 500;
         }
 
-        .menu-item {
+        .profile-menu-item {
             background: none;
             border: none;
             color: #fff;
@@ -47,24 +47,24 @@
             white-space: nowrap; /* Prevent wrapping */
         }
 
-        .menu-item:hover,
-        .menu-item.active {
+        .profile-menu-item:hover,
+        .profile-menu-item.active {
             background-color: #c62828;
         }
 
         /* ========== Main Content ========== */
-        .content {
+        .profile-content {
             flex: 1;
             padding: 30px;
             width: 100%; /* Ensure it takes available width */
         }
 
-        .content section {
+        .profile-content section {
             display: none;
             animation: fadeIn 0.3s ease-in-out;
         }
 
-        .content section.active {
+        .profile-content section.active {
             display: block;
         }
 
@@ -77,7 +77,7 @@
             }
         }
 
-        h2 {
+        .profile-h2 {
             color: #E53935;
             border-bottom: 2px solid #E53935;
             padding-bottom: 10px;
@@ -85,7 +85,7 @@
             font-size: 20px;
         }
 
-        .card {
+        .profile-card {
             background: #fafafa;
             border: 1px solid #eee;
             border-radius: 8px;
@@ -148,13 +148,13 @@
         /* ========== Responsive Design ========== */
         @media (max-width: 991px) {
             /* Using Bootstrap's md breakpoint */
-            .dashboard {
+            .profile-dashboard {
                 flex-direction: column;
                 /* margin: 0; */ /* Removed margin */
                 /* border-radius: 0; */ /* Removed border-radius */
             }
 
-            .sidebar {
+            .profile-sidebar {
                 width: 100%;
                 flex-direction: row; /* Changed to row for horizontal layout */
                 justify-content: space-around; /* Distribute items */
@@ -164,11 +164,11 @@
                 height: auto; /* Adjust height automatically */
             }
 
-            .sidebar h4 {
+            .profile-sidebar h4 {
                 display: none; /* Hide title on smaller screens */
             }
 
-            .menu-item {
+            .profile-menu-item {
                 flex: 1; /* Allow items to grow */
                 min-width: 120px; /* Minimum width for each item */
                 text-align: center;
@@ -177,11 +177,11 @@
                 margin: 4px; /* Add some margin between items */
             }
 
-            .content {
+            .profile-content {
                 padding: 20px;
             }
 
-            .card {
+            .profile-card {
                 padding: 15px;
             }
 
@@ -199,7 +199,7 @@
         }
 
         @media (max-width: 575px) {
-            .menu-item {
+            .profile-menu-item {
                 font-size: 13px;
                 padding: 8px;
                 min-width: 100px; /* Further reduce min-width */
@@ -215,56 +215,55 @@
                 padding: 8px 5px; /* Further reduce padding */
             }
 
-            .sidebar {
+            .profile-sidebar {
                 justify-content: center; /* Center items when few */
             }
         }
     </style>
 @endsection
 
-<div class="dashboard container">
+<div class="profile-dashboard container">
 
-    <div class="sidebar">
-        <button class="menu-item {{ $activeSection === 'info' ? 'active' : '' }}" wire:click="showSection('info')">
+    <div class="profile-sidebar">
+        <button class="profile-menu-item {{ $activeSection === 'info' ? 'active' : '' }}" wire:click="showSection('info')">
             <i class="fa-sharp fa-regular fa-home pl-10"></i>
             اطلاعات
         </button>
 
-        <button class="menu-item {{ $activeSection === 'payments' ? 'active' : '' }}" wire:click="showSection('payments')">
+        <button class="profile-menu-item {{ $activeSection === 'payments' ? 'active' : '' }}" wire:click="showSection('payments')">
             <i class="fa-sharp fa-regular fa-dollar pl-10"></i>
             پرداخت‌ها
         </button>
 
-        <button class="menu-item {{ $activeSection === 'orders' ? 'active' : '' }}" wire:click="showSection('orders')">
+        <button class="profile-menu-item {{ $activeSection === 'orders' ? 'active' : '' }}" wire:click="showSection('orders')">
             <i class="fa-sharp fa-regular fa-list pl-10"></i>
             سفارشات
         </button>
 
-        <button class="menu-item {{ $activeSection === 'password' ? 'active' : '' }}" wire:click="showSection('password')">
+        <button class="profile-menu-item {{ $activeSection === 'password' ? 'active' : '' }}" wire:click="showSection('password')">
             <i class="fa-sharp fa-regular fa-lock pl-10"></i>
             رمز عبور
         </button>
 
-        <a class="menu-item" href="{{ route('logout') }}">
+        <a class="profile-menu-item" href="{{ route('logout') }}">
             <i class="fa-sharp fa-regular fa-power-off pl-10"></i>
             خروج
         </a>
 
-
     </div>
 
-    <div class="content">
+    <div class="profile-content">
 
         <section id="info" class="{{ $activeSection === 'info' ? 'active' : '' }}">
-            <h2>اطلاعات کاربر</h2>
-            <div class="card col-12 p-3">
+            <h2 class="profile-h2">اطلاعات کاربر</h2>
+            <div class="profile-card col-12 p-3">
                 <div class="row g-3">
                     <div class="col-md-6 col-sm-12">
-                        <div class="mb-2"><strong>نام :</strong> {{ $user->name }}</div>
-                        <div class="mb-2"><strong>ایمیل:</strong> {{ $user->email }}</div>
+                        <div class="mb-2"><strong>نام و نام خانوادگی :</strong> {{ $user->name }}</div>
+                        <div class="mb-2"><strong>ایمیل :</strong> {{ $user->email }}</div>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <div class="mb-2"><strong>شماره تماس:</strong> {{ $user->mobile }}</div>
+                        <div class="mb-2"><strong>موبایل :</strong> {{ $user->mobile }}</div>
                         <div class="mb-2"><strong> تاریخ ثبت نام :</strong> {{ $user->jalali_created_at }}</div>
                     </div>
                 </div>
@@ -272,7 +271,7 @@
         </section>
 
         <section id="payments" class="{{ $activeSection === 'payments' ? 'active' : '' }}">
-            <h2>پرداخت‌ها</h2>
+            <h2 class="profile-h2">پرداخت‌ها</h2>
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -305,7 +304,7 @@
         </section>
 
         <section id="orders" class="{{ $activeSection === 'orders' ? 'active' : '' }}">
-            <h2>سفارشات</h2>
+            <h2 class="profile-h2">سفارشات</h2>
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -342,8 +341,8 @@
         </section>
 
         <section id="password" class="{{ $activeSection === 'password' ? 'active' : '' }}">
-            <h2>تغییر رمز عبور</h2>
-            <div class="card p-3">
+            <h2 class="profile-h2">تغییر رمز عبور</h2>
+            <div class="profile-card p-3">
 
                 @include('custom-components.site.flash-message')
 
