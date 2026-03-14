@@ -46,7 +46,6 @@ class Register extends SiteComponent
         }
     }
 
-
     public function render(): View
     {
         return $this->renderView(
