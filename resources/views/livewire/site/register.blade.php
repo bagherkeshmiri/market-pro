@@ -6,8 +6,8 @@
                 <h3 class="title">حساب کاربری برای خود بسازید</h3>
                 <a class="google-login"><img src="{{ asset('images/site/google.png') }}" alt="google">با گوگل وارد شوید</a>
                 <span class="or-text">یا</span>
-                @include('custom-components.site.flash-message')
 
+                @include('custom-components.site.flash-message')
 
                 <form wire:submit.prevent="create" class="login-form">
                     <div class="form-item">
@@ -61,15 +61,22 @@
                     <div class="form-item">
                         <div class="checkbox-wrap mb-10">
                             <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                            <label for="vehicle1"> مشترک شوید تا از محصولات و پیشنهادات جدید مطلع شوید</label><br>
+                            <label for="vehicle1">
+                                مشترک شوید تا از محصولات و پیشنهادات جدید مطلع شوید
+                            </label>
+                            <br>
                         </div>
                         <div class="checkbox-wrap">
                             <input type="checkbox" id="vehicle2" name="vehicle2" value="Bike">
-                            <label for="vehicle2"> من قبول میکنم  <span>شرایط / سیاست حفظ حریم خصوصی</span></label><br>
+                            <label for="vehicle2">
+                                من قبول میکنم
+                                <span>شرایط / سیاست حفظ حریم خصوصی</span>
+                            </label>
+                            <br>
                         </div>
                     </div>
                     <div class="submit-btn">
-                        <button type="submit"  class="rr-primary-btn">ثبت حساب</button>
+                        <button type="submit" class="rr-primary-btn">ثبت حساب</button>
                     </div>
                     <div class="login-btn-wrap">
                         <span class="forgot">حساب کاربری دارید؟</span>
