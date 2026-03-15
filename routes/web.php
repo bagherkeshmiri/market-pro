@@ -25,8 +25,8 @@ Route::name('site.')
         Route::get('/contact', Contact::class)->name('contact');
         Route::get('/products/{category}', Products::class)->name('products');
         Route::get('/blog', Blog::class)->name('blog');
-        Route::get('/login', Login::class)->name('login');
-        Route::get('/register', Register::class)->name('register');
+        Route::middleware('EnsureUserIsGuest')->get('/login', Login::class)->name('login');
+        Route::middleware('EnsureUserIsGuest')->get('/register', Register::class)->name('register');
         Route::get('/faq', Faq::class)->name('faq');
         Route::get('/cart', Cart::class)->name('cart');
         Route::get('/wishlist', Wishlist::class)->name('wishlist');

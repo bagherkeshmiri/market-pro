@@ -13,7 +13,6 @@ use Livewire\Features\SupportRedirects\Redirector;
 
 class Login extends SiteComponent
 {
-
     public $email = '';
     public $password = '';
     public $remember = false;
@@ -48,7 +47,6 @@ class Login extends SiteComponent
             return redirect()->route('site.login');
         }
     }
-
 
     public function render(): View
     {

@@ -57,7 +57,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')
     ->group(function () {
-        Route::middleware('redirectIfAdminAuthenticated')
+        Route::middleware('RedirectIfAdmin')
             ->get('/management', Login::class)
             ->name('login');
 

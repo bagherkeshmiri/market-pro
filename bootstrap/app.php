@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Middleware\Authenticate;
-use App\Http\Middleware\RedirectIfAdminAuthenticated;
+use App\Http\Middleware\EnsureIsAdmin;
+use App\Http\Middleware\EnsureUserIsGuest;
+use App\Http\Middleware\RedirectIfAdmin;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -27,8 +29,10 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'redirectIfAdminAuthenticated' => redirectIfAdminAuthenticated::class,
+            'RedirectIfAdmin' => RedirectIfAdmin::class,
             'auth' => Authenticate::class,
+            'EnsureUserIsGuest' => EnsureUserIsGuest::class,
+            'EnsureIsAdmin' => EnsureIsAdmin::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
