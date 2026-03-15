@@ -350,25 +350,75 @@
 
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="profile-label" for="current_password">رمز فعلی</label>
-                                <input wire:model.defer="currentPassword" type="password" id="current_password">
-                                @error('currentPassword') <span class="text-danger">{{ $message }}</span> @enderror
+                                @include('custom-components.site.label', [
+                                    'for' => 'currentPassword',
+                                    'content' => 'رمز قبلی',
+                                    'classes' => ''
+                                ])
+                                @include('custom-components.site.required-tag')
+
+                                @include('custom-components.site.input', [
+                                    'type' => 'password',
+                                    'wire' => 'currentPassword',
+                                    'classes' => '',
+                                    'id' => 'current_password',
+                                    'attributes' => 'required',
+                                ])
+
+                                @include('custom-components.site.validation-error', [
+                                    'name' => 'currentPassword',
+                                ])
+
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="profile-label" for="new_password">رمز جدید</label>
-                                <input wire:model.defer="newPassword" type="password" id="new_password">
-                                @error('newPassword') <span class="text-danger">{{ $message }}</span> @enderror
+
+                                @include('custom-components.site.label', [
+                                   'for' => 'new_password',
+                                   'content' => 'رمز جدید',
+                                   'classes' => ''
+                               ])
+                                @include('custom-components.site.required-tag')
+
+                                @include('custom-components.site.input', [
+                                    'type' => 'password',
+                                    'wire' => 'newPassword',
+                                    'classes' => '',
+                                    'id' => 'new_password',
+                                    'attributes' => 'required',
+                                ])
+
+                                @include('custom-components.site.validation-error', [
+                                    'name' => 'newPassword',
+                                ])
+
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="profile-label" for="confirm_password"> تکرار رمز</label>
-                                <input wire:model.defer="newPassword_confirmation" type="password" id="confirm_password">
-                                @error('confirmPassword') <span class="text-danger">{{ $message }}</span> @enderror
+
+                                @include('custom-components.site.label', [
+                                   'for' => 'confirm_password',
+                                   'content' => 'تکرار رمز',
+                                   'classes' => ''
+                               ])
+                                @include('custom-components.site.required-tag')
+
+                                @include('custom-components.site.input', [
+                                    'type' => 'password',
+                                    'wire' => 'newPassword_confirmation',
+                                    'classes' => '',
+                                    'id' => 'confirm_password',
+                                    'attributes' => 'required',
+                                ])
+
+                                @include('custom-components.site.validation-error', [
+                                    'name' => 'confirmPassword',
+                                ])
+
                             </div>
                         </div>
 
