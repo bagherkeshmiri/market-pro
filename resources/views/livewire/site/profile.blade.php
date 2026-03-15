@@ -143,7 +143,7 @@
             color: #fff;
         }
 
-        tr{
+        tr {
             color: #333;
         }
 

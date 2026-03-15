@@ -1,1 +1,5 @@
-<p class="text-gray-500 italic text-center mt-6"> {{ __('global.no_information_found') }}</p>
+<tr>
+    <td colspan="5" class="text-center text-gray-500 italic py-4">
+        {{ __('global.no_information_found') }}
+    </td>
+</tr>
