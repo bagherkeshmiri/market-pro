@@ -21,7 +21,7 @@ class Login extends SiteComponent
     {
         $this->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required|min:8',
         ]);
 
         try {
