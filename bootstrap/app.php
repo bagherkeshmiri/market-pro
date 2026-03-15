@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Middleware\Authenticate;
-use App\Http\Middleware\EnsureIsAdmin;
 use App\Http\Middleware\EnsureUserIsGuest;
 use App\Http\Middleware\RedirectIfAdmin;
 use Illuminate\Foundation\Application;
@@ -32,7 +31,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'RedirectIfAdmin' => RedirectIfAdmin::class,
             'auth' => Authenticate::class,
             'EnsureUserIsGuest' => EnsureUserIsGuest::class,
-            'EnsureIsAdmin' => EnsureIsAdmin::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
