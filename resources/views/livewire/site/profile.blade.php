@@ -100,15 +100,6 @@
             margin-bottom: 5px;
         }
 
-        /*input {*/
-        /*    width: 100%;*/
-        /*    padding: 10px;*/
-        /*    border: 1px solid #ddd;*/
-        /*    border-radius: 5px;*/
-        /*    margin-bottom: 10px;*/
-        /*    font-size: 14px;*/
-        /*}*/
-
         .profile-button {
             background-color: #E53935;
             color: white;
@@ -218,6 +209,109 @@
                 justify-content: center;
             }
         }
+
+
+        /* ========== New Styles for Info Section ========== */
+        .profile-h2 .profile-h2-icon {
+            color: #E53935;
+            margin-left: 10px;
+            font-size: 22px;
+        }
+
+        .profile-card .user-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-card .user-info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .profile-card .user-info-item .profile-info-icon {
+            color: #E53935;
+            font-size: 24px;
+            margin-left: 15px;
+            flex-shrink: 0;
+        }
+
+        .profile-card .user-info-item div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-card .user-info-item .profile-label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 3px;
+            font-size: 14px;
+        }
+
+        .profile-card .user-info-item .profile-value {
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* ========== Responsive Adjustments for Info Section ========== */
+        @media (max-width: 991px) {
+            .profile-card .row.g-3 > div {
+                margin-bottom: 20px;
+            }
+
+            .profile-card .row.g-3 > div:last-child {
+                margin-bottom: 0;
+            }
+
+            .profile-card .user-info-item {
+                justify-content: center;
+                text-align: center;
+                border-bottom: none;
+                padding-bottom: 10px;
+            }
+
+            .profile-card .user-info-item .profile-info-icon {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            .profile-card .user-info-item div {
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .profile-h2 {
+                font-size: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .profile-h2 .profile-h2-icon {
+                font-size: 20px;
+                margin-left: 8px;
+            }
+
+            .profile-card .user-info-item .profile-info-icon {
+                font-size: 20px;
+            }
+
+            .profile-card .user-info-item .profile-label {
+                font-size: 13px;
+            }
+
+            .profile-card .user-info-item .profile-value {
+                font-size: 14px;
+            }
+        }
+
+        /* ========== End New Styles ========== */
+
+
     </style>
 @endsection
 
@@ -230,12 +324,12 @@
         </button>
 
         <button class=" profile-button profile-menu-item {{ $activeSection === 'payments' ? 'active' : '' }}" wire:click="showSection('payments')">
-            <i class="fa-sharp fa-regular fa-dollar pl-10"></i>
-            پرداخت‌ها
+            <i class="fa-sharp fa-regular fa-credit-card pl-10"></i>
+            پرداخت‌ ها
         </button>
 
         <button class=" profile-button profile-menu-item {{ $activeSection === 'orders' ? 'active' : '' }}" wire:click="showSection('orders')">
-            <i class="fa-sharp fa-regular fa-list pl-10"></i>
+            <i class="fa-sharp fa-regular fa-bag-shopping pl-10"></i>
             سفارشات
         </button>
 
@@ -254,23 +348,62 @@
     <div class="profile-content">
 
         <section id="info" class="{{ $activeSection === 'info' ? 'active' : '' }}">
-            <h2 class="profile-h2">اطلاعات کاربر</h2>
+            <h2 class="profile-h2">
+                <i class="fa-solid fa-home profile-h2-icon"></i>
+                اطلاعات کاربر
+            </h2>
             <div class="profile-card col-12 p-3">
-                <div class="row g-3">
-                    <div class="col-md-6 col-sm-12">
-                        <div class="mb-2"><strong>نام و نام خانوادگی :</strong> {{ $user->name }}</div>
-                        <div class="mb-2"><strong>ایمیل :</strong> {{ $user->email }}</div>
+                <div class="row g-3 align-items-center">
+                    <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                        <div class="user-info-item">
+                            <i class="fa-solid fa-user profile-info-icon"></i>
+                            <div>
+                                <span class="profile-label">نام و نام خانوادگی</span>
+                                @if($user->name)
+                                    <span class="profile-value">{{ $user->name }}</span>
+                                @else
+                                    <span class="profile-value profile-value-empty">ثبت نشده</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="user-info-item">
+                            <i class="fa-solid fa-envelope profile-info-icon"></i>
+                            <div>
+                                <span class="profile-label">ایمیل</span>
+                                <span class="profile-value">{{ $user->email }}</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6 col-sm-12">
-                        <div class="mb-2"><strong>موبایل :</strong> {{ $user->mobile }}</div>
-                        <div class="mb-2"><strong> تاریخ ثبت نام :</strong> {{ $user->jalali_created_at }}</div>
+
+                    <div class="col-lg-6 col-md-12">
+                        <div class="user-info-item">
+                            <i class="fa-solid fa-phone profile-info-icon"></i>
+                            <div>
+                                <span class="profile-label">موبایل</span>
+                                @if($user->mobile)
+                                    <span class="profile-value">{{ $user->mobile }}</span>
+                                @else
+                                    <span class="profile-value profile-value-empty">ثبت نشده</span>
+                                @endif                            </div>
+                        </div>
+                        <div class="user-info-item">
+                            <i class="fa-solid fa-calendar-alt profile-info-icon"></i>
+                            <div>
+                                <span class="profile-label">تاریخ ثبت نام</span>
+                                <span class="profile-value">{{ $user->jalali_created_at }}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="payments" class="{{ $activeSection === 'payments' ? 'active' : '' }}">
-            <h2 class="profile-h2">پرداخت‌ها</h2>
+            <h2 class="profile-h2">
+                <i class="fa-solid fa-credit-card profile-h2-icon"></i>
+                پرداخت ‌ها
+            </h2>
+
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -303,7 +436,11 @@
         </section>
 
         <section id="orders" class="{{ $activeSection === 'orders' ? 'active' : '' }}">
-            <h2 class="profile-h2">سفارشات</h2>
+            <h2 class="profile-h2">
+                <i class="fa-solid fa-bag-shopping profile-h2-icon"></i>
+                سفارشات
+            </h2>
+
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -340,7 +477,12 @@
         </section>
 
         <section id="password" class="{{ $activeSection === 'password' ? 'active' : '' }}">
-            <h2 class="profile-h2">تغییر رمز عبور</h2>
+
+            <h2 class="profile-h2">
+                <i class="fa-solid fa-lock profile-h2-icon"></i>
+                تغییر رمز عبور
+            </h2>
+
             <div class="profile-card p-3">
 
                 @include('custom-components.site.flash-message')
