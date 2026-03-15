@@ -109,7 +109,7 @@
                         <p class="mb-20">برای دریافت جدیدترین تخفیف ‌ها، در فهرست پستی مشترک شوید</p>
                         <div class="footer-form mb-20">
                             <form class="rr-subscribe-form">
-                                <input class="form-control" type="email" name="email" placeholder="آدرس ایمیل">
+                                <input class="form-control" type="email" name="email" placeholder="آدرس ایمیل" autocomplete="email">
                                 <input type="hidden" name="action" value="mailchimpsubscribe">
                                 <button class="submit">عضویت</button>
                                 <div class="clearfix"></div>

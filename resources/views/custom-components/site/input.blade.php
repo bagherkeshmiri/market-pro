@@ -14,8 +14,3 @@
     class="form-control {{ $classes }}"
 
 >
-
-{{--<input type="email" id="email" wire:model.defer="email" class="form-control">--}}
-
-
-

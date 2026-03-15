@@ -493,7 +493,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 @include('custom-components.site.label', [
-                                    'for' => 'currentPassword',
+                                    'for' => 'current_password',
                                     'content' => 'رمز قبلی',
                                     'classes' => ''
                                 ])
