@@ -8,18 +8,53 @@
 
                 @include('custom-components.site.flash-message')
 
-
                 <form wire:submit.prevent="login" class="login-form">
                     <div class="form-item">
-                        <label for="email" class="form-header text-dark">* ایمیل</label>
-                        <input type="email" id="email" wire:model.defer="email" class="form-control">
-                        @error('email') <span class="text-danger">{{ $message }}</span> @enderror
+                        <div class="d-flex align-items-center gap-1" dir="{{ app()->isLocale('fa') ? 'rtl' : 'ltr' }}">
+                            @include('custom-components.site.label', [
+                                'for' => 'email',
+                                'content' => 'ایمیل',
+                                'classes' => ''
+                            ])
+                            @include('custom-components.site.required-tag')
+                        </div>
+
+                        @include('custom-components.site.input', [
+                               'type' => 'email',
+                               'wire' => 'email',
+                               'classes' => '',
+                               'id' => 'email',
+                               'attributes' => 'required',
+                        ])
+
+                        @include('custom-components.site.validation-error', [
+                             'name' => 'email',
+                        ])
+
                     </div>
 
                     <div class="form-item">
-                        <label for="password" class="form-header text-dark">* کلمه عبور</label>
-                        <input type="password" id="password" wire:model.defer="password" class="form-control">
-                        @error('password') <span class="text-danger">{{ $message }}</span> @enderror
+                        <div class="d-flex align-items-center gap-1" dir="{{ app()->isLocale('fa') ? 'rtl' : 'ltr' }}">
+                            @include('custom-components.site.label', [
+                                'for' => 'password',
+                                'content' => 'رمز عبور',
+                                'classes' => ''
+                            ])
+                            @include('custom-components.site.required-tag')
+                        </div>
+
+                        @include('custom-components.site.input', [
+                               'type' => 'password',
+                               'wire' => 'password',
+                               'classes' => '',
+                               'id' => 'password',
+                               'attributes' => 'required',
+                        ])
+
+                        @include('custom-components.site.validation-error', [
+                             'name' => 'password',
+                        ])
+
                     </div>
 
                     <div class="form-item">
@@ -43,5 +78,4 @@
             </div>
         </div>
     </section>
-
 </div>

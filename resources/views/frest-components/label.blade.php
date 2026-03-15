@@ -1,16 +1,15 @@
-
 <label
     @isset($classes)
         class="text-white @isset($classes)  {{$classes}} @endisset"
     @endisset
 
     @isset($id)
-    id="{{ $id }}"
+        id="{{ $id }}"
     @endisset
 
 
     @isset($for)
-    for="{{ $for }}"
+        for="{{ $for }}"
     @endisset
 >
 
