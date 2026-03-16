@@ -24,6 +24,3 @@
 >
 
 </textarea>
-
-
-{{--<textarea id="message" name="message" cols="30" rows="5" class="form-control address">--}}
