@@ -1,4 +1,6 @@
 <input
+    class="form-control {{ $classes }}"
+
     @isset($type)
         type="{{ $type }}"
     @endisset
@@ -14,6 +16,4 @@
     @isset($attributes)
         {{$attributes}}
     @endisset
-
-    class="form-control {{ $classes }}"
 >
