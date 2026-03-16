@@ -22,6 +22,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Model|Eloquent|null $commentable
+ * @property-read string $commentable_title
  * @property-read string $commentable_type_badge_class
  * @property-read string $commentable_type_label
  * @property-read string $jalali_created_at
@@ -99,6 +100,15 @@ class Comment extends Eloquent
             Category::class => 'bg-rgba-success text-success',
             Post::class => 'bg-rgba-warning text-warning',
             default => 'bg-rgba-danger text-danger',
+        };
+    }
+
+    public function getCommentableTitleAttribute(): string
+    {
+        return match ($this->commentable_type) {
+            Product::class, Category::class => $this->commentable->name ?? ' ',
+            Post::class => $this->commentable->title ?? ' ',
+            default => ' --- ',
         };
     }
 

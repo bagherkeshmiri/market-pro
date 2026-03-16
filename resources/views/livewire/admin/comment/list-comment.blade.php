@@ -1,4 +1,3 @@
-
 @section('styles')
 @endsection
 
@@ -32,6 +31,11 @@
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $comment->Commentable_type_badge_class ,  'content' => $comment->Commentable_type_label  ])
                                                     </td>
+
+                                                    <td>
+                                                        {{ $comment->Commentable_title }}
+                                                    </td>
+
                                                     <td>
                                                         @include('frest-components.badge' , [ 'badgeClass' => $comment->status_badge_class,  'content' => $comment->status_label ])
                                                     </td>
