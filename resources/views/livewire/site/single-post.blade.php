@@ -20,7 +20,7 @@
                             </div>
                             <div class="tags">
                                 <div class="social-list-wrap">
-                                    <h4 class="follow">مارا دنبال کنید:</h4>
+                                    <h4 class="follow">ما را دنبال کنید:</h4>
                                     <ul class="social-list">
                                         <li>
                                             <a class="facebook"><i class="fab fa-facebook-f"></i></a>
@@ -89,8 +89,10 @@
 
                                     @else
                                         <div class="alert alert-warning mt-3">
-                                            برای ثبت نظر لطفاً <a href="{{ route('site.login') }}" class="text-primary">وارد
-                                                حساب کاربری خود شوید</a>.
+                                             برای ثبت نظر لطفاً
+                                            <a href="{{ route('site.login', ['intended' => url()->full()]) }}" class="text-primary">
+                                            وارد حساب کاربری خود شوید
+                                            </a>
                                         </div>
                                     @endauth
 

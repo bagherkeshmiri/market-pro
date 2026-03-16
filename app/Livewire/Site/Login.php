@@ -7,6 +7,7 @@ use App\Models\User;
 use Auth;
 use Exception;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Livewire\Features\SupportRedirects\Redirector;
@@ -16,6 +17,12 @@ class Login extends SiteComponent
     public $email = '';
     public $password = '';
     public $remember = false;
+    public $intendedUrl = null;
+
+    public function mount(Request $request): void
+    {
+        $this->intendedUrl = $request->query('intended', route('site.home'));
+    }
 
     public function login(): RedirectResponse|Redirector
     {
@@ -37,7 +44,7 @@ class Login extends SiteComponent
             session()->regenerate();
 
             session()->flash('success', __('global.success_message'));
-            return redirect()->route('site.home');
+            return redirect()->to($this->intendedUrl);
         } catch (Exception $e) {
             if (app()->isLocal()) {
                 session()->flash('error', $e->getMessage());
