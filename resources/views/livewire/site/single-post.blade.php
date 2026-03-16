@@ -72,8 +72,9 @@
                                 @if($comments->count() > 0)
                                     <livewire:site.post-comments :postId="$post->id "/>
                                 @else
-                                    <p class="text-gray-500 italic text-center mt-6">نظر ثبت نشده، اولین نفری باشید که
-                                        نظر می‌دهید!</p>
+                                    <p class="text-gray-500 italic text-center mt-6">
+                                        نظر ثبت نشده، اولین نفری باشید که نظر می‌دهید!
+                                    </p>
                                 @endif
 
                             </div>
