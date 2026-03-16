@@ -11,6 +11,9 @@
         id="{{ $id }}"
     @endisset
 
-    class="form-control {{ $classes }}"
+    @isset($attributes)
+        {{$attributes}}
+    @endisset
 
+    class="form-control {{ $classes }}"
 >
