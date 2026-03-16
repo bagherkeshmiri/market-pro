@@ -192,7 +192,7 @@
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => {
                 Livewire.emit('performSearch');
-            }, 2000); // 2 ثانیه
+            }, 2000);
         });
     </script>
 @endsection
