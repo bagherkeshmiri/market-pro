@@ -17,10 +17,9 @@
         id="{{ $id }}"
     @endisset
 
-@isset($attributes)
-    {{$attributes}}
+    @isset($attributes)
+        {{$attributes}}
     @endisset
-
 >
 
 </textarea>
