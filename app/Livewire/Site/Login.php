@@ -43,7 +43,6 @@ class Login extends SiteComponent
 
             session()->regenerate();
 
-            session()->flash('success', __('global.success_message'));
             return redirect()->to($this->intendedUrl);
         } catch (Exception $e) {
             if (app()->isLocal()) {
