@@ -17,14 +17,12 @@ trait DiscountValidator
             ];
         }
 
-        $discount = DiscountCode::whereCode($code)
-            ->isActive()
-            ->first();
+        $discount = DiscountCode::isActive()->where('code', $code)->first();
 
         if (!$discount) {
             return [
                 'status' => false,
-                'error' => 'کد تخفیف نامعتبر است',
+                'error' => 'کد تخفیف  '.$code.' نامعتبر است',
             ];
         }
 
@@ -38,7 +36,7 @@ trait DiscountValidator
         if ($discount->min_order_amount >= $cartTotal) {
             return [
                 'status' => false,
-                'error' => 'سبد خرید کمتر از ' . number_format($discount->min_order_amount) . ' تومان است',
+                'error' => 'سبد خرید کمتر از '.number_format($discount->min_order_amount).' تومان است',
             ];
         }
 
