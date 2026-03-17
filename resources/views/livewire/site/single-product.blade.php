@@ -81,12 +81,12 @@
                         <div class="swiper product-gallary-thumb">
                             <div class="swiper-wrapper">
 
-
                                 @foreach($images as $image)
 
                                     <div class="swiper-slide">
                                         <div class="thumb-item">
-                                            <img src="{{ $image->url }}" alt="">
+                                            <img src="{{ $image ? asset($image->url) : asset($sampleImageUrl) }}" alt="{{ $product->name }}"/>
+
                                         </div>
                                     </div>
 
@@ -104,7 +104,7 @@
                                 @foreach($images as $image)
                                     <div class="swiper-slide">
                                         <div class="gallary-item">
-                                            <img src="{{ $image->url }}" alt="">
+                                            <img src="{{ $image ? asset($image->url) : asset($sampleImageUrl) }}" alt="{{ $product->name }}"/>
                                         </div>
                                     </div>
 
@@ -130,7 +130,7 @@
                                         <li><i class="fa-sharp fa-solid fa-star"></i></li>
                                         <li><i class="fa-sharp fa-solid fa-star"></i></li>
                                     </ul>
-                                    <span>(1 نظر مشتریان)</span>
+                                    <span>({{ $comments->count() }} نظر مشتریان)</span>
                                 </div>
 
                                 @if($product->status ==  \App\Enums\ProductStatus::Exist)
