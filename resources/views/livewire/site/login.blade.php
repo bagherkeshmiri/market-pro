@@ -16,7 +16,9 @@
                                 'content' => 'ایمیل',
                                 'classes' => ''
                             ])
+
                             @include('custom-components.site.required-tag')
+
                         </div>
 
                         @include('custom-components.site.input', [
