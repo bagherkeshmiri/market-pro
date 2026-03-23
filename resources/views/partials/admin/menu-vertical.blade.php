@@ -358,6 +358,22 @@
 
                 </ul>
             </li>
+            <li class=" nav-item {{ isActiveUrl('admin/admin*', 'open') }}">
+                <a>
+                    <i class="bx bxs-cog text-white"></i>
+                    <span class="menu-title text-white" data-i18n="roles">تنظیمات سیستم</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ isActiveRoute('admin.system.index') }}">
+                        <a href="{{ route('admin.system.index') }}">
+                            <i class="bx bx-left-arrow-alt text-white"></i>
+                            <span class="menu-item  text-white" data-i18n="create-role">وضعیت سیستم</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
         </ul>
     </div>
 </div>
