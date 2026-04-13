@@ -35,7 +35,7 @@
                                         <i class="fa-regular fa-heart"></i>
                                     </a>
                                 </li>
-                                <li><a href="{{ route('admin.product.show',['product' => $product->id]) }}"><i class="fa-light fa-eye"></i></a></li>
+                                <li><a href="{{ route('site.single-product',['product' => $product->id]) }}"><i class="fa-light fa-eye"></i></a></li>
                             </ul>
                         </div>
                         <div class="shop-content">

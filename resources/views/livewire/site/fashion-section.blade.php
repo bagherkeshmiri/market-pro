@@ -50,7 +50,7 @@
                                                 <i class="fa-regular fa-heart" aria-hidden="true"></i>
                                             </a>
                                         </li>
-                                        <li><a href="#"><i class="fa-light fa-eye"></i></a></li>
+                                        <li><a href="{{ route('site.single-product',['product' => $item->product->id]) }}"><i class="fa-light fa-eye"></i></a></li>
                                     </ul>
                                 </div>
                                 <div class="shop-content">
