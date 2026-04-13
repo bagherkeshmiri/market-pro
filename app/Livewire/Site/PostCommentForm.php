@@ -26,8 +26,10 @@ class PostCommentForm extends Component
 
     public function mount($postId): void
     {
+        $user = auth()->user();
         $this->postId = $postId;
-
+        $this->name = $user->name;
+        $this->email = $user->email;
         $this->checkIfUserCanSubmit();
     }
 
