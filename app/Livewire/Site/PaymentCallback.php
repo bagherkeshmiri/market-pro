@@ -29,7 +29,6 @@ class PaymentCallback extends SiteComponent
      */
     public function mount(Request $request): RedirectResponse|Redirector
     {
-
         $this->status = $request->input('Status');
         $this->authority = $request->input('Authority');
 
@@ -53,7 +52,7 @@ class PaymentCallback extends SiteComponent
      */
     private function processPayment(): void
     {
-        $payment = Payment::where('authority',$this->authority)->first();
+        $payment = Payment::where('authority', $this->authority)->first();
 
         if (!$payment) {
             $this->paymentResultString = __('payment.not_found');
@@ -89,6 +88,16 @@ class PaymentCallback extends SiteComponent
             $payment->order?->update([
                 'status' => OrderStatus::Paid,
             ]);
+
+            foreach ($payment->order->orderItems as $orderItem) {
+                $product = $orderItem->product;
+
+                if ($product->stock >= $orderItem->qty) {
+                    $product->update([
+                        'stock' => $product->stock - $orderItem->qty,
+                    ]);
+                }
+            }
 
             $this->paymentResultString = __('payment.success', [
                 'ref_id' => $response['ref_id'] ?? '-',
