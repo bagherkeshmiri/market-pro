@@ -92,8 +92,6 @@ class ZarinpalGateway implements GatewayInterface
             return [
                 'status' => true,
                 'code' => $data['data']['code'],
-                'paymentStatus' => $data['data']['status'],
-                'paymentMessage' => $data['data']['message'],
             ];
         } else {
             Log::info(
@@ -120,8 +118,6 @@ class ZarinpalGateway implements GatewayInterface
             return [
                 'status' => true,
                 'code' => $data['data']['code'],
-                'paymentStatus' => $data['data']['status'],
-                'paymentMessage' => $data['data']['message'],
             ];
         } else {
             Log::info(
