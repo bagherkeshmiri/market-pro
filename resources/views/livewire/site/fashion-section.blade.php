@@ -34,7 +34,7 @@
                                         <span class="sale">{{ $item->product->discount_percent }} %</span>
                                     @endif
                                     <ul class="shop-list">
-                                        @if($item->product->status == \App\Enums\ProductStatus::Exist)
+                                        @if($item->product->status == \App\Enums\ProductStatus::Exist && $item->product->stock > 0 )
                                             <li>
                                                 <a role="button"
                                                    wire:click="addProductToCart({{ $item->product->id }})"

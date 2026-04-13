@@ -100,7 +100,7 @@ class PaymentCallback extends SiteComponent
             }
 
             $this->paymentResultString = __('payment.success', [
-                'ref_id' => $response['ref_id'] ?? '-',
+                'order_number' => $payment->order->order_number ?? '-',
             ]);
 
             $this->paymentStatus = PaymentStatus::Success;
