@@ -410,7 +410,7 @@
                     <tr>
                         <th> شناسه پرداخت</th>
                         <th> شناسه سفارش</th>
-                        <th> مبلغ</th>
+                        <th> مبلغ کل ( تومان )</th>
                         <th> وضعیت</th>
                         <th> تاریخ</th>
                     </tr>
@@ -421,7 +421,7 @@
                             <td>{{ $payment->payment_number }}</td>
                             <td>{{ $payment->order->order_number }}</td>
                             <td>{{ number_format($payment->amount) }} تومان</td>
-                            <td>{{ $payment->status_label }}</td>
+                            <td class="{{ $payment->status_badge_class }}">{{ $payment->status_label }}</td>
                             <td>{{ $payment->jalali_created_at }}</td>
                         </tr>
                     @empty
@@ -445,11 +445,12 @@
                 <table>
                     <thead>
                     <tr>
-                        <th> شماره</th>
-                        <th> تخفیف</th>
-                        <th> مالیات</th>
-                        <th> هزینه ارسال</th>
-                        <th> جمع کل</th>
+                        <th> شماره سفارش</th>
+                        <th> جمع سفارش ( تومان )</th>
+                        <th> تخفیف ( تومان )</th>
+                        <th> مالیات ( تومان )</th>
+                        <th>هزینه ارسال ( تومان )</th>
+                        <th> جمع کل ( تومان )</th>
                         <th> وضعیت</th>
                         <th> تاریخ</th>
                     </tr>
@@ -458,11 +459,12 @@
                     @forelse ($orders as $order)
                         <tr>
                             <td>{{ $order->order_number }}</td>
-                            <td>{{ number_format($order->discount) }} تومان</td>
-                            <td>{{ number_format($order->tax) }} تومان</td>
-                            <td>{{ number_format($order->shipping_fee) }} تومان</td>
-                            <td>{{ number_format($order->total) }} تومان</td>
-                            <td>{{ $order->status_label }}</td>
+                            <td>{{ number_format($order->subtotal) }} </td>
+                            <td>{{ number_format($order->discount) }} </td>
+                            <td>{{ number_format($order->tax) }} </td>
+                            <td>{{ number_format($order->shipping_fee) }} </td>
+                            <td>{{ number_format($order->total) }} </td>
+                            <td class="{{ $order->status_badge_class }}">{{ $order->status_label }}</td>
                             <td>{{ $order->jalali_created_at }}</td>
                         </tr>
                     @empty
