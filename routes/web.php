@@ -70,7 +70,7 @@ Route::prefix('auth')
 //});
 
 
-//Route::get('test', function () {
+Route::get('test', function () {
 //    Session::forget('cart');
 //    Session::forget('cart_summary');
 //
@@ -80,8 +80,8 @@ Route::prefix('auth')
 //        Session::get('wishlist')
 //    );
 
-//    dd(
-//        config('payment.local_payment_callback') . '/payment/verify'
-//    );
+    dd(
+        Cache::get('setting_site_tel')
+    );
 
-//});
+});
