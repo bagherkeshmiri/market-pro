@@ -3,6 +3,7 @@
 namespace App\Livewire\Site;
 
 use App\Livewire\BaseComponents\SiteComponent;
+use App\Models\SystemSetting;
 use Illuminate\View\View;
 
 class Contact extends SiteComponent
@@ -15,11 +16,13 @@ class Contact extends SiteComponent
 
     public function mount(): void
     {
-        $this->siteTitle = getSystemSetting('site_title');
-        $this->siteWorkingHour = getSystemSetting('site_working_hour');
-        $this->siteEmail = getSystemSetting('site_email');
-        $this->siteAddress = getSystemSetting('site_address');
-        $this->siteTel = getSystemSetting('site_tel');
+        $systemSetting = SystemSetting::getMultipleFromCache();
+
+        $this->siteTitle = $systemSetting[SystemSetting::CACHE_PREFIX . 'site_title'];
+        $this->siteWorkingHour = $systemSetting[SystemSetting::CACHE_PREFIX . 'site_working_hour'];
+        $this->siteEmail = $systemSetting[SystemSetting::CACHE_PREFIX . 'site_email'];
+        $this->siteAddress = $systemSetting[SystemSetting::CACHE_PREFIX . 'site_address'];
+        $this->siteTel = $systemSetting[SystemSetting::CACHE_PREFIX . 'site_tel'];
     }
 
     public function render(): View
