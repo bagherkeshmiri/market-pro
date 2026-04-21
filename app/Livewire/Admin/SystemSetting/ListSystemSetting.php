@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\SystemSetting;
 
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\SystemSetting;
+use Cache;
 use Illuminate\View\View;
 
 class ListSystemSetting extends AdminComponent
@@ -24,5 +25,20 @@ class ListSystemSetting extends AdminComponent
             'لیست  تنظیمات',
             compact('tableHeads', 'systemSettings')
         );
+    }
+
+    public function syncCache(): void
+    {
+        $systemSettings = SystemSetting::get(['key', 'value']);
+
+        foreach ($systemSettings as $systemSetting) {
+            $key = $systemSetting->key;
+            $value = $systemSetting->value;
+
+            Cache::rememberForever('setting_' . $key, function () use ($key, $value) {
+                return $value;
+            });
+        }
+
     }
 }
