@@ -35,9 +35,9 @@ class ListSystemSetting extends AdminComponent
             $key = $systemSetting->key;
             $value = $systemSetting->value;
 
-            Cache::forget('setting_' . $key);
+            Cache::forget(SystemSetting::CACHE_PREFIX . $key);
 
-            Cache::rememberForever('setting_' . $key, function () use ($key, $value) {
+            Cache::rememberForever(SystemSetting::CACHE_PREFIX . $key, function () use ($key, $value) {
                 return $value;
             });
         }

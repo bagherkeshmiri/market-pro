@@ -9,6 +9,7 @@ use Cache;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 
 /**
  * @property int $id
@@ -36,6 +37,7 @@ class SystemSetting extends Eloquent
     public const string TABLE_NAME = 'system_settings';
     protected $table = self::TABLE_NAME;
     public const string COLUMN_ID = 'id';
+    public const string CACHE_PREFIX = 'system_setting.';
 
     protected $fillable = [
         'label',
@@ -49,23 +51,6 @@ class SystemSetting extends Eloquent
     protected $casts = [
         'type' => SystemSettingType::class,
     ];
-
-    protected static function booted(): void
-    {
-        static::updating(function ($setting) {
-            if ($setting->isDirty('key')) {
-                Cache::forget('setting_' . $setting->getOriginal('key'));
-            }
-        });
-
-        static::saved(function ($setting) {
-            Cache::forget('setting_' . $setting->key);
-        });
-
-        static::deleted(function ($setting) {
-            Cache::forget('setting_' . $setting->key);
-        });
-    }
 
     /*------------ Relations ------------*/
 
@@ -85,9 +70,9 @@ class SystemSetting extends Eloquent
     {
         return match ($this->type) {
             SystemSettingType::Boolean => filter_var($this->value, FILTER_VALIDATE_BOOLEAN),
-            SystemSettingType::Integer => (int) $this->value,
-            SystemSettingType::Json    => json_decode($this->value, true),
-            default                    => $this->value,
+            SystemSettingType::Integer => (int)$this->value,
+            SystemSettingType::Json => json_decode($this->value, true),
+            default => $this->value,
         };
     }
 
@@ -95,4 +80,30 @@ class SystemSetting extends Eloquent
 
     /*---------- Other Functions --------*/
 
+    public static function getAllKeys(): Collection
+    {
+        return self::pluck('key');
+    }
+
+    public static function getAllCacheKeys(): Collection
+    {
+        return self::pluck('key')->map(function ($key) {
+            return self::CACHE_PREFIX . $key;
+        });
+    }
+
+
+    /**
+     * Retrieve multiple system setting values from cache.
+     */
+    public static function getMultipleFromCache(): array
+    {
+        $cacheKeys = self::getAllCacheKeys();
+
+        if ($cacheKeys->isEmpty()) {
+            return [];
+        }
+
+        return Cache::many($cacheKeys->toArray());
+    }
 }
