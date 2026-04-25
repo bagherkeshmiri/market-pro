@@ -10,10 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 
-
 /**
- *
- *
  * @property int $id
  * @property string $fa_name
  * @property string $en_name
@@ -23,16 +20,9 @@ use Illuminate\Support\Carbon;
  * @property-read string $jalali_created_at
  * @property-read string $jalali_updated_at
  * @property-read Collection<int, Role> $roles
- * @property-read int|null $roles_count
  * @method static Builder<static>|Permission newModelQuery()
  * @method static Builder<static>|Permission newQuery()
  * @method static Builder<static>|Permission query()
- * @method static Builder<static>|Permission whereCreatedAt($value)
- * @method static Builder<static>|Permission whereDeletedAt($value)
- * @method static Builder<static>|Permission whereEnName($value)
- * @method static Builder<static>|Permission whereFaName($value)
- * @method static Builder<static>|Permission whereId($value)
- * @method static Builder<static>|Permission whereUpdatedAt($value)
  * @mixin Eloquent
  */
 class Permission extends Eloquent

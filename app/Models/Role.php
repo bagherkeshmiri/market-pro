@@ -12,8 +12,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
 /**
- *
- *
  * @property int $id
  * @property string $fa_name
  * @property string $en_name
@@ -23,18 +21,11 @@ use Illuminate\Support\Carbon;
  * @property-read string $jalali_created_at
  * @property-read string $jalali_updated_at
  * @property-read Collection<int, Permission> $permissions
- * @property-read int|null $permissions_count
  * @method static Builder<static>|Role newModelQuery()
  * @method static Builder<static>|Role newQuery()
  * @method static Builder<static>|Role onlyTrashed()
  * @method static Builder<static>|Role query()
- * @method static Builder<static>|Role whereCreatedAt($value)
- * @method static Builder<static>|Role whereDeletedAt($value)
- * @method static Builder<static>|Role whereEnName($value)
- * @method static Builder<static>|Role whereFaName($value)
- * @method static Builder<static>|Role whereId($value)
- * @method static Builder<static>|Role whereUpdatedAt($value)
- * @method static Builder<static>|Role withTrashed()
+ * @method static Builder<static>|Role withTrashed(bool $withTrashed = true)
  * @method static Builder<static>|Role withoutTrashed()
  * @mixin Eloquent
  */

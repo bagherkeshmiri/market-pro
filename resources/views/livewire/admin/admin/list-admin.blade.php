@@ -8,7 +8,7 @@
         <div class="content-body">
 
 
-            @include('frest-components.search')
+            @include('livewire.admin.user.search')
 
             <section id="multiple-column-form">
                 <div class="row  match-height">

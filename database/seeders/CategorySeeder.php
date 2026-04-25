@@ -3,57 +3,24 @@
 namespace Database\Seeders;
 
 use App\Enums\CategoryType;
-use Carbon\Carbon;
-use DB;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
 {
     public function run(): void
     {
-        $now = Carbon::now();
+        $categories = [
+            ['name' => 'مجموعه ساعت', 'type' => CategoryType::Product],
+            ['name' => 'دانش نامه',   'type' => CategoryType::Post],
+        ];
 
-        DB::table('categories')->insert([
-            [
-                'name' => 'مجموعه ساعت',
+        foreach ($categories as $category) {
+            Category::create([
+                'name' => $category['name'],
+                'type' => $category['type'],
                 'parent_id' => null,
-                'type' => CategoryType::Product,
-                'created_at' => $now,
-                'updated_at' => $now,
-                'deleted_at' => $now,
-            ],
-            [
-                'name' => 'کالکشن کفش',
-                'type' => CategoryType::Product,
-                'parent_id' => null,
-                'created_at' => $now,
-                'updated_at' => $now,
-                'deleted_at' => null,
-            ],
-            [
-                'name' => 'پوشاک زنانه',
-                'parent_id' => null,
-                'type' => CategoryType::Product,
-                'created_at' => $now,
-                'updated_at' => $now,
-                'deleted_at' => null,
-            ],
-            [
-                'name' => 'کالکشن کیف',
-                'parent_id' => null,
-                'type' => CategoryType::Product,
-                'created_at' => $now,
-                'updated_at' => $now,
-                'deleted_at' => null,
-            ],
-            [
-                'name' => 'دانش نامه',
-                'parent_id' => null,
-                'type' => CategoryType::Post,
-                'created_at' => $now,
-                'updated_at' => $now,
-                'deleted_at' => null,
-            ],
-        ]);
+            ]);
+        }
     }
 }

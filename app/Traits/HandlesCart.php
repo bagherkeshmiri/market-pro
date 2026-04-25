@@ -37,6 +37,7 @@ trait HandlesCart
                     'unit_price' => $product->price,
                     'final_price' => $qty * $product->price,
                     'qty' => $qty,
+                    'max_qty' => $product->stock,
                 ];
 
                 $this->storeCart($cart);

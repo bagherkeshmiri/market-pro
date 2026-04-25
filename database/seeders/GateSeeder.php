@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Gate;
 use Carbon\Carbon;
-use DB;
 use Illuminate\Database\Seeder;
 
 class GateSeeder extends Seeder
@@ -12,7 +12,7 @@ class GateSeeder extends Seeder
     {
         $now = Carbon::now();
 
-        DB::table('gates')->insert([
+        Gate::insert([
             [
                 'id' => 1,
                 'name' => 'zarinpal',

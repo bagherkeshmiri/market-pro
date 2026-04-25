@@ -42,6 +42,10 @@ use App\Livewire\Admin\Profile\ShowProfile;
 use App\Livewire\Admin\Role\CreateRole;
 use App\Livewire\Admin\Role\ListRole;
 use App\Livewire\Admin\Role\ShowRole;
+use App\Livewire\Admin\System\SystemMonitor;
+use App\Livewire\Admin\SystemSetting\CreateSystemSetting;
+use App\Livewire\Admin\SystemSetting\ListSystemSetting;
+use App\Livewire\Admin\SystemSetting\ShowSystemSetting;
 use App\Livewire\Admin\User\ListUser;
 use App\Livewire\Admin\User\ShowUser;
 use Illuminate\Support\Facades\Route;
@@ -54,7 +58,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')
     ->group(function () {
-        Route::middleware('redirectIfAdminAuthenticated')
+        Route::middleware('RedirectIfAdmin')
             ->get('/management', Login::class)
             ->name('login');
 
@@ -190,4 +194,22 @@ Route::prefix('dashboard')
                 Route::get('/create', CreateDiscountCode::class)->name('create');
                 Route::get('/show/{discount}', ShowDiscountCode::class)->name('show');
             });
+
+
+        Route::name('system-setting.')
+            ->prefix('system-setting')
+            ->group(function () {
+                Route::get('/', ListSystemSetting::class)->name('index');
+                Route::get('/create', CreateSystemSetting::class)->name('create');
+                Route::get('/show/{systemSetting}', ShowSystemSetting::class)->name('show');
+            });
+
+
+        Route::name('system.')
+            ->prefix('system')
+            ->group(function () {
+                Route::get('/', SystemMonitor::class)->name('index');
+            });
+
+
     });

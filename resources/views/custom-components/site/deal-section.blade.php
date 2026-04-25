@@ -34,7 +34,7 @@
                                 </ul>
                             </div>
                             <div class="shop-content">
-                                <span class="category">Levi’s برند</span>
+                                <span class="category">Adidas برند</span>
                                 <h3 class="title"><a href="#">لباس مجلسی مونیکا دیارا</a></h3>
                                 <div class="review-wrap">
                                     <ul class="review">
@@ -73,7 +73,7 @@
                                         <li><i class="fa-solid fa-star"></i></li>
                                         <li><i class="fa-solid fa-star"></i></li>
                                     </ul>
-                                    <span>(15 نظرات)</span>
+                                    <span>(10 نظرات)</span>
                                 </div>
                                 <span class="price"> <span class="offer">520,000 تومان</span>257,000 تومان</span>
                             </div>

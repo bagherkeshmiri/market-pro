@@ -48,13 +48,13 @@
                         <div class="icon"><i class="fa-sharp fa-solid fa-phone-rotary"></i></div>
                         <div class="content">
                             <span>سوالی دارید؟  با ما تماس بگیرید</span>
-                            <a href="tel:+989127661646">12345678 - 051</a>
+                            <a href="tel:+{{$siteTel}}">{{ $siteTel }}</a>
                         </div>
                     </div>
                     <ul class="schedule-list">
-                        <li><span> ساعات کاری :</span> همه روزه از ۸ صبح تا ۶ عصر</li>
-                        <li><span>ایمیل : </span> support@example.com</li>
-                        <li><span>آدرس :</span> تهران ، خیابان گل ، پلاک ۱۲۳</li>
+                        <li><span> ساعات کاری :</span> {{ $siteWorkingHour }}</li>
+                        <li><span>ایمیل : </span>{{ $siteEmail }}</li>
+                        <li><span>آدرس :</span> {{ $siteAddress }}</li>
                     </ul>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                         <p class="mb-20">برای دریافت جدیدترین تخفیف ‌ها، در فهرست پستی مشترک شوید</p>
                         <div class="footer-form mb-20">
                             <form class="rr-subscribe-form">
-                                <input class="form-control" type="email" name="email" placeholder="آدرس ایمیل">
+                                <input class="form-control" type="email" name="email" placeholder="آدرس ایمیل" autocomplete="email">
                                 <input type="hidden" name="action" value="mailchimpsubscribe">
                                 <button class="submit">عضویت</button>
                                 <div class="clearfix"></div>
@@ -123,7 +123,7 @@
 
     <div class="row justify-content-center">
         <div class="col-lg-6 mx-auto text-center px-3 pb-4">
-            <span >
+            <span>
                     کپی رایت &copy;
                 <script>
                         const today = new Date();
@@ -132,7 +132,7 @@
                 </script>
                     - 1400
                     |
-                    تمامی حقوق برای فروشگاه تست محفوظ است
+                تمامی حقوق برای فروشگاه {{ $siteTitle }}  محفوظ است
             </span>
         </div>
     </div>

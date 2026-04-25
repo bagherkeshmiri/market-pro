@@ -8,22 +8,16 @@ use App\Traits\HasJalaliTimestamps;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
-use LaravelIdea\Helper\App\Models\_IH_Permission_QB;
-use Morilog\Jalali\Jalalian;
 
 /**
- *
- *
  * @property int $id
  * @property int $user_id
- * @property int $province_id
- * @property int $city_id
+ * @property int|null $province_id
+ * @property int|null $city_id
  * @property $address
  * @property string|null $postal_code
  * @property Carbon|null $created_at
@@ -31,22 +25,14 @@ use Morilog\Jalali\Jalalian;
  * @property-read City|null $city
  * @property-read string $full_address
  * @property-read string $jalali_created_at
+ * @property-read string $jalali_updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Order> $orders
- * @property-read int|null $orders_count
  * @property-read Province|null $province
  * @property-write mixed $password
- * @property-read User|null $user
+ * @property-read User $user
  * @method static Builder<static>|UserAddress newModelQuery()
  * @method static Builder<static>|UserAddress newQuery()
  * @method static Builder<static>|UserAddress query()
- * @method static Builder<static>|UserAddress whereAddress($value)
- * @method static Builder<static>|UserAddress whereCityId($value)
- * @method static Builder<static>|UserAddress whereCreatedAt($value)
- * @method static Builder<static>|UserAddress whereId($value)
- * @method static Builder<static>|UserAddress wherePostalCode($value)
- * @method static Builder<static>|UserAddress whereProvinceId($value)
- * @method static Builder<static>|UserAddress whereUpdatedAt($value)
- * @method static Builder<static>|UserAddress whereUserId($value)
  * @mixin Eloquent
  */
 class UserAddress extends Authenticatable

@@ -13,17 +13,16 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
 
 /**
- *
- *
  * @property int $id
  * @property int|null $user_id
  * @property int|null $commentable_id
  * @property string|null $commentable_type
- * @property CommentStatus $status  1:pending , 2:approved , 3:rejected
+ * @property CommentStatus $status
  * @property string $body
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Model|Eloquent|null $commentable
+ * @property-read string $commentable_title
  * @property-read string $commentable_type_badge_class
  * @property-read string $commentable_type_label
  * @property-read string $jalali_created_at
@@ -34,14 +33,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Comment newModelQuery()
  * @method static Builder<static>|Comment newQuery()
  * @method static Builder<static>|Comment query()
- * @method static Builder<static>|Comment whereBody($value)
- * @method static Builder<static>|Comment whereCommentableId($value)
- * @method static Builder<static>|Comment whereCommentableType($value)
- * @method static Builder<static>|Comment whereCreatedAt($value)
- * @method static Builder<static>|Comment whereId($value)
- * @method static Builder<static>|Comment whereStatus($value)
- * @method static Builder<static>|Comment whereUpdatedAt($value)
- * @method static Builder<static>|Comment whereUserId($value)
  * @mixin Eloquent
  */
 class Comment extends Eloquent
@@ -109,6 +100,15 @@ class Comment extends Eloquent
             Category::class => 'bg-rgba-success text-success',
             Post::class => 'bg-rgba-warning text-warning',
             default => 'bg-rgba-danger text-danger',
+        };
+    }
+
+    public function getCommentableTitleAttribute(): string
+    {
+        return match ($this->commentable_type) {
+            Product::class, Category::class => $this->commentable->name ?? ' ',
+            Post::class => $this->commentable->title ?? ' ',
+            default => ' --- ',
         };
     }
 

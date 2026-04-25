@@ -5,7 +5,7 @@
         alt="{{ $this->paymentStatus == \App\Enums\PaymentStatus::Success ? 'success-payment' : 'unsuccess-payment' }}"
         style="display: block; width: 12%; margin: 32px auto 40px;">
 
-    <p class="text-dark" style="font-size: 1.4rem;">
+    <p class="text-dark" style="font-size: 1.4rem; direction: rtl ;" >
         {{ $paymentResultString }}
     </p>
 </div>

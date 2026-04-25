@@ -11,6 +11,7 @@ use App\Livewire\Site\Login;
 use App\Livewire\Site\PaymentCallback;
 use App\Livewire\Site\PaymentResult;
 use App\Livewire\Site\Products;
+use App\Livewire\Site\Profile;
 use App\Livewire\Site\Register;
 use App\Livewire\Site\SinglePost;
 use App\Livewire\Site\SingleProduct;
@@ -24,8 +25,8 @@ Route::name('site.')
         Route::get('/contact', Contact::class)->name('contact');
         Route::get('/products/{category}', Products::class)->name('products');
         Route::get('/blog', Blog::class)->name('blog');
-        Route::get('/login', Login::class)->name('login');
-        Route::get('/register', Register::class)->name('register');
+        Route::middleware('EnsureUserIsGuest')->get('/login', Login::class)->name('login');
+        Route::middleware('EnsureUserIsGuest')->get('/register', Register::class)->name('register');
         Route::get('/faq', Faq::class)->name('faq');
         Route::get('/cart', Cart::class)->name('cart');
         Route::get('/wishlist', Wishlist::class)->name('wishlist');
@@ -33,6 +34,7 @@ Route::name('site.')
         Route::middleware('auth:web')->get('/checkout', Checkout::class)->name('checkout');
         Route::get('/payment/callback', PaymentCallback::class)->name('payment-callback');
         Route::get('/payment/result', PaymentResult::class)->name('payment-result');
+        Route::get('/profile', Profile::class)->name('profile');
     });
 
 
@@ -68,7 +70,7 @@ Route::prefix('auth')
 //});
 
 
-//Route::get('test', function () {
+Route::get('test', function () {
 //    Session::forget('cart');
 //    Session::forget('cart_summary');
 //
@@ -78,8 +80,8 @@ Route::prefix('auth')
 //        Session::get('wishlist')
 //    );
 
-//    dd(
-//        config('payment.local_payment_callback') . '/payment/verify'
-//    );
+    dd(
+        Cache::get('setting_site_tel')
+    );
 
-//});
+});

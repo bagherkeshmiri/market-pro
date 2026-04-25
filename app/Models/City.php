@@ -10,10 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 
-
 /**
- *
- *
  * @property int $id
  * @property int $province_id
  * @property string $name
@@ -21,15 +18,10 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property-read string $jalali_created_at
  * @property-read string $jalali_updated_at
- * @property-read Province|null $province
+ * @property-read Province $province
  * @method static Builder<static>|City newModelQuery()
  * @method static Builder<static>|City newQuery()
  * @method static Builder<static>|City query()
- * @method static Builder<static>|City whereCreatedAt($value)
- * @method static Builder<static>|City whereId($value)
- * @method static Builder<static>|City whereName($value)
- * @method static Builder<static>|City whereProvinceId($value)
- * @method static Builder<static>|City whereUpdatedAt($value)
  * @mixin Eloquent
  */
 class City extends Authenticatable

@@ -5,6 +5,7 @@ namespace App\Livewire\Site;
 use App\Models\Product;
 use App\Traits\HandlesCart;
 use App\Traits\HandlesWishlist;
+use App\Traits\SampleImages;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
@@ -14,6 +15,7 @@ class FashionSection extends Component
 {
     use HandlesCart;
     use HandlesWishlist;
+    use SampleImages;
 
     public string $title;
     public $items;
@@ -61,6 +63,8 @@ class FashionSection extends Component
 
     public function render(): View
     {
-        return view('livewire.site.fashion-section');
+        return view('livewire.site.fashion-section',[
+            'sampleImageUrl' => $this->getSampleImageUrl(),
+        ]);
     }
 }

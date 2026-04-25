@@ -229,7 +229,7 @@ class Checkout extends SiteComponent
                 if (!empty($this->cartDiscountDetails)) {
                     $this->cartDiscountDetails['discount']->incrementUsage();
                     $this->cartDiscountDetails['discount']->usages()->create([
-                        'user_id' => auth()->user()->id,
+                        'user_id' => auth('web')->user()->id,
                     ]);
                 }
 

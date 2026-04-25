@@ -10,10 +10,10 @@
 
     <link rel="stylesheet" href="{{ asset('css/frest/ck-editor.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/vendors/vendors.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/vendors/charts/apexcharts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/vendors/pickers/pickadate/pickadate.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/vendors/pickers/daterange/daterangepicker.css') }}">
-    <link rel="stylesheet"
-          href="{{ asset('css/frest/vendors/pickers/datepicker-jalali/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/frest/vendors/pickers/datepicker-jalali/bootstrap-datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/vendors/ui/prism.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/bootstrap-extended.css') }}">
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{ asset('css/frest/vendors/extensions/sweetalert2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/vendors/extensions/toastr.css') }}">
     <link rel="stylesheet" href="{{ asset('css/frest/plugins/extensions/toastr.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('css/frest/plugins/extensions/toastr.css') }}">
 
     @if(request()->routeIs('admin.profile.index') || request()->routeIs('admin.profile.change-password'))
         <link rel="stylesheet" href="{{ asset('css/frest/pages/page-user-profile.css') }}">

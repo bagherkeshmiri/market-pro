@@ -6,17 +6,45 @@
                     <div class="form-group row">
                         <div class="col-md-12">
                             <div class="form-item">
-                                <label for="name">نام شما</label>
+
+                                @include('custom-components.site.label', [
+                                    'for' => 'name',
+                                    'content' => 'نام شما',
+                                    'classes' => ''
+                                ])
+
                                 @include('custom-components.site.required-tag')
-                                <input type="text" id="name" wire:model.defer="name" class="form-control" required>
+
+                                @include('custom-components.site.input', [
+                                    'type' => 'text',
+                                    'wire' => 'name',
+                                    'classes' => '',
+                                    'id' => 'name',
+                                    'attributes' => 'required',
+                                ])
+
                                 @include('custom-components.site.validation-error',[ 'name' => 'name'] )
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-item">
-                                <label for="email">ایمیل شما</label>
+
+                                @include('custom-components.site.label', [
+                                   'for' => 'email',
+                                   'content' => 'ایمیل شما',
+                                   'classes' => ''
+                               ])
+
                                 @include('custom-components.site.required-tag')
-                                <input type="email" id="email" wire:model.defer="email" class="form-control" required>
+
+                                @include('custom-components.site.input', [
+                                   'type' => 'email',
+                                   'wire' => 'email',
+                                   'classes' => '',
+                                   'id' => 'email',
+                                   'attributes' => 'required',
+                                ])
+
                                 @include('custom-components.site.validation-error',[ 'name' => 'email'] )
                             </div>
                         </div>
@@ -24,9 +52,23 @@
                     <div class="form-group row">
                         <div class="col-md-12">
                             <div class="form-item message-item">
-                                <label for="message">نظر شما</label>
+
+                                @include('custom-components.site.label', [
+                                    'for' => 'message',
+                                    'content' => 'نظر شما',
+                                    'classes' => ''
+                                ])
+
                                 @include('custom-components.site.required-tag')
-                                <textarea id="message" wire:model.defer="message" cols="30" rows="5" class="form-control address" required></textarea>
+
+                                @include('custom-components.site.textarea', [
+                                    'type' => 'text',
+                                    'wire' => 'message',
+                                    'classes' => 'address',
+                                    'id' => 'message',
+                                    'attributes' => 'required',
+                                ])
+
                                 @include('custom-components.site.validation-error',[ 'name' => 'message'] )
                             </div>
                         </div>

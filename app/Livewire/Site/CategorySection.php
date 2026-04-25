@@ -24,7 +24,6 @@ class CategorySection extends Component
     {
         return view('livewire.site.category-section', [
             'sampleImageUrl' => $this->getSampleImageUrl(),
-
         ]);
     }
 }

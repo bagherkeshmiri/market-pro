@@ -9,8 +9,8 @@
 
 {{ $slot }}
 
-@include('partials.site.footer')
 
+<livewire:site.footer/>
 
 <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
 

@@ -37,7 +37,7 @@ class CreateProduct extends AdminComponent
     public function mount(): void
     {
         $this->categoryId = Category::withoutTrashed()
-            ->first()->id;
+            ->first()->id ?? null;
 
         $this->status = ProductStatus::NotExist;
         $this->discountType = DiscountType::Percent;

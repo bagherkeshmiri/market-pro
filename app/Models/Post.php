@@ -16,8 +16,6 @@ use Illuminate\Support\Carbon;
 use Str;
 
 /**
- *
- *
  * @property int $id
  * @property int $user_id
  * @property int $category_id
@@ -28,30 +26,19 @@ use Str;
  * @property IsActive $status  0:not_active , 1:active
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read Category|null $category
+ * @property-read Category $category
  * @property-read Collection<int, Comment> $comments
- * @property-read int|null $comments_count
  * @property-read string $jalali_created_at
  * @property-read string $jalali_updated_at
  * @property-read string $status_badge_class
  * @property-read string $status_label
  * @property-read Image|null $image
- * @property-read User|null $user
+ * @property-read User $user
  * @method static Builder<static>|Post iSActive()
  * @method static Builder<static>|Post isNotActive()
  * @method static Builder<static>|Post newModelQuery()
  * @method static Builder<static>|Post newQuery()
  * @method static Builder<static>|Post query()
- * @method static Builder<static>|Post whereBody($value)
- * @method static Builder<static>|Post whereCategoryId($value)
- * @method static Builder<static>|Post whereCreatedAt($value)
- * @method static Builder<static>|Post whereExcerpt($value)
- * @method static Builder<static>|Post whereId($value)
- * @method static Builder<static>|Post whereSlug($value)
- * @method static Builder<static>|Post whereStatus($value)
- * @method static Builder<static>|Post whereTitle($value)
- * @method static Builder<static>|Post whereUpdatedAt($value)
- * @method static Builder<static>|Post whereUserId($value)
  * @mixin Eloquent
  */
 class Post extends Eloquent
