@@ -11,6 +11,7 @@
             appearance: textfield;
         }
 
+        /* !important : dont remove */
         .no-wrap-text {
             white-space: nowrap;
             overflow: hidden;
@@ -74,10 +75,23 @@
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="form-item">
-                                            <label for="email" class="form-title"> ایمیل</label>
+
+                                            @include('custom-components.site.label', [
+                                                'for' => 'email',
+                                                'content' => 'ایمیل',
+                                                'classes' => 'form-title'
+                                            ])
+
                                             @include('custom-components.site.required-tag')
-                                            <input type="email" wire:model.defer="email" id="email"
-                                                   class="form-control" required>
+
+                                            @include('custom-components.site.input', [
+                                                'type' => 'email',
+                                                'wire' => 'email',
+                                                'classes' => '',
+                                                'id' => 'email',
+                                                'attributes' => 'required',
+                                            ])
+
                                             @include('frest-components.validation-error',[ 'name' => 'email' ])
                                         </div>
                                     </div>
@@ -86,17 +100,36 @@
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <div class="form-item">
-                                            <label for="fullName" class="form-title">نام و نام خانوادگی</label>
+
+                                            @include('custom-components.site.label', [
+                                                'for' => 'fullName',
+                                                'content' => 'نام و نام خانوادگی',
+                                                'classes' => 'form-title'
+                                            ])
+
                                             @include('custom-components.site.required-tag')
-                                            <input type="text" id="fullName" wire:model.defer="fullName"
-                                                   class="form-control" required>
+
+                                            @include('custom-components.site.input', [
+                                                'type' => 'text',
+                                                'wire' => 'fullName',
+                                                'classes' => '',
+                                                'id' => 'fullName',
+                                                'attributes' => 'required',
+                                            ])
+
                                             @include('frest-components.validation-error',[ 'name' => 'fullName' ])
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-item">
-                                            <label for="country" class="form-title">کشور</label>
+
+                                            @include('custom-components.site.label', [
+                                                'for' => 'country',
+                                                'content' => 'کشور',
+                                                'classes' => 'form-title'
+                                            ])
+
                                             @include('custom-components.site.required-tag')
                                             <select id="country" class="form-control">
                                                 <option value="iran">ایران</option>
@@ -110,7 +143,13 @@
                                     <div class="col-md-6">
 
                                         <div class="form-item">
-                                            <label for="province" class="form-title">استان</label>
+
+                                            @include('custom-components.site.label', [
+                                               'for' => 'province',
+                                               'content' => 'استان',
+                                               'classes' => 'form-title'
+                                           ])
+
                                             @include('custom-components.site.required-tag')
                                             <select id="province" class="form-control"
                                                     wire:model.defer="selectedProvince"
@@ -130,7 +169,13 @@
 
                                     <div class="col-md-6">
                                         <div class="form-item">
-                                            <label for="city" class="form-title">شهر</label>
+
+                                            @include('custom-components.site.label', [
+                                              'for' => 'city',
+                                              'content' => 'شهر',
+                                              'classes' => 'form-title'
+                                            ])
+
                                             @include('custom-components.site.required-tag')
                                             <select id="city" class="form-control"
                                                     wire:model="selectedCity"
@@ -153,10 +198,23 @@
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="form-item">
-                                            <label for="address" class="form-title"> آدرس پستی</label>
+
+                                            @include('custom-components.site.label', [
+                                                'for' => 'address',
+                                                'content' => ' آدرس پستی',
+                                                'classes' => 'form-title'
+                                            ])
+
                                             @include('custom-components.site.required-tag')
-                                            <input type="email" wire:model.defer="address" id="address"
-                                                   class="form-control" required>
+
+                                            @include('custom-components.site.input', [
+                                                'type' => 'text',
+                                                'wire' => 'address',
+                                                'classes' => '',
+                                                'id' => 'address',
+                                                'attributes' => 'required',
+                                            ])
+
                                             @include('frest-components.validation-error',[ 'name' => 'address' ])
                                         </div>
                                     </div>
@@ -165,10 +223,23 @@
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <div class="form-item">
-                                            <label for="postalCode" class="form-title">کد پستی</label>
+
+                                            @include('custom-components.site.label', [
+                                                'for' => 'postalCode',
+                                                'content' => 'کد پستی',
+                                                'classes' => 'form-title'
+                                            ])
+
                                             @include('custom-components.site.required-tag')
-                                            <input type="number" id="postalCode" wire:model.defer="postalCode"
-                                                   class="form-control" required>
+
+                                            @include('custom-components.site.input', [
+                                                'type' => 'number',
+                                                'wire' => 'postalCode',
+                                                'classes' => '',
+                                                'id' => 'postalCode',
+                                                'attributes' => 'required',
+                                            ])
+
                                             @include('frest-components.validation-error',[ 'name' => 'postalCode' ])
                                         </div>
                                     </div>
@@ -178,11 +249,21 @@
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="form-item">
-                                            <label for="orderMessage" class="form-title"> یادداشت های سفارش</label>
-                                            <textarea id="orderMessage" wire:model.defer="orderMessage"
-                                                      cols="30" rows="5"
-                                                      class="form-control address">
-                                            </textarea>
+
+                                            @include('custom-components.site.label', [
+                                                'for' => 'orderMessage',
+                                                'content' => 'یادداشت های سفارش',
+                                                'classes' => 'form-title'
+                                            ])
+
+                                            @include('custom-components.site.textarea', [
+                                                'type' => 'text',
+                                                'wire' => 'orderMessage',
+                                                'classes' => 'address',
+                                                'id' => 'orderMessage',
+                                                'attributes' => 'required',
+                                            ])
+
                                             @include('frest-components.validation-error',[ 'name' => 'orderMessage' ])
                                         </div>
                                     </div>
@@ -206,7 +287,7 @@
                                     </div>
                                 </div>
 
-                                @forelse($cart as $key => $value)
+                                @foreach($cart as $key => $value)
                                     <div class="order-item">
                                         <div class="order-left">
                                             <div class="order-img"><img src="{{ asset($value['image']) }}" alt="img">
@@ -220,9 +301,7 @@
                                         </div>
                                     </div>
 
-                                @empty
-
-                                @endforelse
+                                @endforeach
 
                                 <div class="order-item item-1">
                                     <div class="order-left">

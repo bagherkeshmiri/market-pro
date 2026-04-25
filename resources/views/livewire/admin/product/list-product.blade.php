@@ -7,6 +7,10 @@
     <div class="content-wrapper">
         <div class="content-body">
 
+
+            @include('livewire.admin.product.search')
+
+
             <section id="multiple-column-form">
                 <div class="row match-height">
                     <div class="col-12">

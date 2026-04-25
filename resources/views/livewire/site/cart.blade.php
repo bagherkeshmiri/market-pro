@@ -48,7 +48,7 @@
                                             <input type="number"
                                                    id="qty"
                                                    min="1"
-                                                   max="100"
+                                                   max="{{ $value['max_qty'] }}"
                                                    step="1"
                                                    wire:model.lazy="cart.{{ $key }}.qty"
                                                    class="input-text qty text"/>

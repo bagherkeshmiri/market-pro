@@ -10,10 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
 
-
 /**
- *
- *
  * @property int $id
  * @property int $imageable_id
  * @property string $imageable_type
@@ -27,13 +24,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Image newModelQuery()
  * @method static Builder<static>|Image newQuery()
  * @method static Builder<static>|Image query()
- * @method static Builder<static>|Image whereCreatedAt($value)
- * @method static Builder<static>|Image whereId($value)
- * @method static Builder<static>|Image whereImageableId($value)
- * @method static Builder<static>|Image whereImageableType($value)
- * @method static Builder<static>|Image whereIsMain($value)
- * @method static Builder<static>|Image whereUpdatedAt($value)
- * @method static Builder<static>|Image whereUrl($value)
  * @mixin Eloquent
  */
 class Image extends Eloquent

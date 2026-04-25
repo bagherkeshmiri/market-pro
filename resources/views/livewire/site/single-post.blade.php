@@ -20,7 +20,7 @@
                             </div>
                             <div class="tags">
                                 <div class="social-list-wrap">
-                                    <h4 class="follow">مارا دنبال کنید:</h4>
+                                    <h4 class="follow">ما را دنبال کنید:</h4>
                                     <ul class="social-list">
                                         <li>
                                             <a class="facebook"><i class="fab fa-facebook-f"></i></a>
@@ -72,8 +72,9 @@
                                 @if($comments->count() > 0)
                                     <livewire:site.post-comments :postId="$post->id "/>
                                 @else
-                                    <p class="text-gray-500 italic text-center mt-6">نظر ثبت نشده، اولین نفری باشید که
-                                        نظر می‌دهید!</p>
+                                    <p class="text-gray-500 italic text-center mt-6">
+                                        نظر ثبت نشده، اولین نفری باشید که نظر می‌دهید!
+                                    </p>
                                 @endif
 
                             </div>
@@ -89,8 +90,10 @@
 
                                     @else
                                         <div class="alert alert-warning mt-3">
-                                            برای ثبت نظر لطفاً <a href="{{ route('site.login') }}" class="text-primary">وارد
-                                                حساب کاربری خود شوید</a>.
+                                             برای ثبت نظر لطفاً
+                                            <a href="{{ route('site.login', ['intended' => url()->full()]) }}" class="text-primary">
+                                            وارد حساب کاربری خود شوید
+                                            </a>
                                         </div>
                                     @endauth
 
@@ -190,7 +193,7 @@
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(() => {
                 Livewire.emit('performSearch');
-            }, 2000); // 2 ثانیه
+            }, 2000);
         });
     </script>
 @endsection

@@ -26,8 +26,10 @@ class PostCommentForm extends Component
 
     public function mount($postId): void
     {
+        $user = auth('web')->user();
         $this->postId = $postId;
-
+        $this->name = $user->name;
+        $this->email = $user->email;
         $this->checkIfUserCanSubmit();
     }
 
@@ -45,12 +47,27 @@ class PostCommentForm extends Component
             return;
         }
 
+
+        dd(
+
+            $user
+//            $this->postId,
+//             Comment::where('commentable_id',7)->get()
+
+        );
+
+
         $recentReview = $user->comments()
             ->where('commentable_id', $this->postId)
             ->where('commentable_type', Post::class)
-            ->where('created_at', '>=', Carbon::now()->subDay()->toDateTimeString())
+//            ->where('created_at', '>=', Carbon::now()->subDay()->toDateTimeString())
             ->where('status', CommentStatus::Pending)
             ->exists();
+
+
+        dd(
+            $recentReview
+        );
 
         $this->canSubmit = !$recentReview;
     }

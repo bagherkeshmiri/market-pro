@@ -14,49 +14,31 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Str;
 
-
 /**
- *
- *
  * @property int $id
  * @property int $user_id
  * @property int|null $user_address_id
  * @property string $order_number
- * @property OrderStatus $status  1:pending , 2:paid , 3:shipped , 4: cancelled
- * @property string $subtotal
- * @property string $discount
- * @property string $tax
- * @property string $shipping_fee
- * @property string $total
+ * @property OrderStatus $status
+ * @property numeric $subtotal
+ * @property numeric $discount
+ * @property numeric $tax
+ * @property numeric $shipping_fee
+ * @property numeric $total
  * @property $description
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property-read UserAddress|null $address
  * @property-read string $jalali_created_at
  * @property-read string $jalali_updated_at
  * @property-read string $status_badge_class
  * @property-read string $status_label
  * @property-read Collection<int, OrderItem> $orderItems
- * @property-read int|null $order_items_count
  * @property-read Collection<int, Payment> $payments
- * @property-read int|null $payments_count
- * @property-read User|null $user
- * @property-read UserAddress|null $userAddresses
+ * @property-read User $user
  * @method static Builder<static>|Order newModelQuery()
  * @method static Builder<static>|Order newQuery()
  * @method static Builder<static>|Order query()
- * @method static Builder<static>|Order whereCreatedAt($value)
- * @method static Builder<static>|Order whereDescription($value)
- * @method static Builder<static>|Order whereDiscount($value)
- * @method static Builder<static>|Order whereId($value)
- * @method static Builder<static>|Order whereOrderNumber($value)
- * @method static Builder<static>|Order whereShippingFee($value)
- * @method static Builder<static>|Order whereStatus($value)
- * @method static Builder<static>|Order whereSubtotal($value)
- * @method static Builder<static>|Order whereTax($value)
- * @method static Builder<static>|Order whereTotal($value)
- * @method static Builder<static>|Order whereUpdatedAt($value)
- * @method static Builder<static>|Order whereUserAddressId($value)
- * @method static Builder<static>|Order whereUserId($value)
  * @mixin Eloquent
  */
 class Order extends Eloquent

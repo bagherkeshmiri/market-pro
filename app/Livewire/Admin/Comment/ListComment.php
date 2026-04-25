@@ -5,7 +5,11 @@ namespace App\Livewire\Admin\Comment;
 use App\Enums\CommentStatus;
 use App\Livewire\BaseComponents\AdminComponent;
 use App\Models\Comment;
+use App\Models\Post;
+use App\Models\Product;
+use App\Models\User;
 use Exception;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -16,7 +20,7 @@ class ListComment extends AdminComponent
 {
     public function render(): View
     {
-        $tableHeads = ['کاربر', 'نوع نظر', 'وضعیت', 'تاریخ ایجاد', 'عملیات'];
+        $tableHeads = ['کاربر', 'نوع نظر', 'مربوط به', 'وضعیت', 'تاریخ ایجاد', 'عملیات'];
         $comments = Comment::select([
             'id',
             'user_id',
@@ -27,8 +31,7 @@ class ListComment extends AdminComponent
             'created_at'
         ])->with([
             'user:id,name',
-        ])
-            ->paginate($this->perPage);
+        ])->paginate($this->perPage);
 
         return $this->renderView(
             'livewire.admin.comment.list-comment',

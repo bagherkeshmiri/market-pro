@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Enums\CollectionType;
+use App\Models\Collection;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Database\Seeder;
@@ -12,10 +14,10 @@ class CollectionSeeder extends Seeder
     {
         $now = Carbon::now();
 
-        DB::table('collections')->insert([
+        Collection::insert([
             [
                 'title' => 'فروش ویژه',
-                'type' => 2,
+                'type' => CollectionType::Product,
                 'limitation' => 10,
                 'sort' => 1,
                 'is_active' => 1,
@@ -24,7 +26,7 @@ class CollectionSeeder extends Seeder
             ],
             [
                 'title' => 'تابستانه',
-                'type' => 1,
+                'type' => CollectionType::Category,
                 'limitation' => 8,
                 'sort' => 2,
                 'is_active' => 1,

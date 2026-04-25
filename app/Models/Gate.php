@@ -27,6 +27,7 @@ use Illuminate\Support\Carbon;
  * @property-read string $is_default_label
  * @property-read string $jalali_created_at
  * @property-read string $jalali_updated_at
+ * @property-read string $masked_token
  * @method static Builder<static>|Gate isActive()
  * @method static Builder<static>|Gate isDefault()
  * @method static Builder<static>|Gate isNotActive()
@@ -35,15 +36,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Gate newQuery()
  * @method static Builder<static>|Gate onlyTrashed()
  * @method static Builder<static>|Gate query()
- * @method static Builder<static>|Gate whereCreatedAt($value)
- * @method static Builder<static>|Gate whereDeletedAt($value)
- * @method static Builder<static>|Gate whereId($value)
- * @method static Builder<static>|Gate whereIsActive($value)
- * @method static Builder<static>|Gate whereIsDefault($value)
- * @method static Builder<static>|Gate whereLabel($value)
- * @method static Builder<static>|Gate whereName($value)
- * @method static Builder<static>|Gate whereToken($value)
- * @method static Builder<static>|Gate whereUpdatedAt($value)
  * @method static Builder<static>|Gate withTrashed(bool $withTrashed = true)
  * @method static Builder<static>|Gate withoutTrashed()
  * @mixin Eloquent

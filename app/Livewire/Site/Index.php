@@ -7,13 +7,15 @@ use App\Helpers\SeoHelper;
 use App\Livewire\BaseComponents\SiteComponent;
 use App\Models\Collection;
 use App\Models\Post;
+use App\Models\SystemSetting;
+use Cache;
 use Illuminate\View\View;
 
 class Index extends SiteComponent
 {
     public function render(): View
     {
-        $collections = Collection::whereIsActive(true)
+        $collections = Collection::where('is_active', true)
             ->orderBy('sort')
             ->with([
                 'productCollection',
@@ -23,7 +25,7 @@ class Index extends SiteComponent
             ])
             ->get();
 
-        $posts = Post::whereStatus(IsActive::Yes)
+        $posts = Post::where('status', IsActive::Yes)
             ->with([
                 'image:id,imageable_id,imageable_type,url',
             ])
@@ -32,10 +34,12 @@ class Index extends SiteComponent
 
         SeoHelper::forHome();
 
+        $siteTitle = Cache::get(SystemSetting::CACHE_PREFIX . 'site_title') ?? 'فروشگاه من';
+
         return $this->renderView(
             'livewire.site.index',
-            'فروشگاه اینترنتی رویسر',
-            compact('collections','posts')
+            $siteTitle,
+            compact('collections', 'posts')
         );
     }
 }

@@ -17,13 +17,11 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Carbon;
 
 /**
- *
- *
  * @property int $id
  * @property int $category_id
  * @property string $name
- * @property ProductStatus $status  1:not_exist , 2:exist
- * @property DiscountType $discount_type  1:percent , 2:amount
+ * @property ProductStatus $status
+ * @property DiscountType $discount_type
  * @property int $price
  * @property int $discount
  * @property int $final_price
@@ -33,13 +31,10 @@ use Illuminate\Support\Carbon;
  * @property $additional_information
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read Category|null $category
+ * @property-read Category $category
  * @property-read Collection<int, CollectionProduct> $collections
- * @property-read int|null $collections_count
  * @property-read Collection<int, Comment> $comments
- * @property-read int|null $comments_count
  * @property-read Collection<int, Image> $galleryImages
- * @property-read int|null $gallery_images_count
  * @property-read int $discount_percent
  * @property-read string $discount_type_badge_class
  * @property-read string $discount_type_label
@@ -51,27 +46,11 @@ use Illuminate\Support\Carbon;
  * @property-read string $status_badge_class
  * @property-read string $status_label
  * @property-read Collection<int, Image> $images
- * @property-read int|null $images_count
  * @property-read Image|null $mainImage
  * @property-read Collection<int, OrderItem> $orderItems
- * @property-read int|null $order_items_count
  * @method static Builder<static>|Product newModelQuery()
  * @method static Builder<static>|Product newQuery()
  * @method static Builder<static>|Product query()
- * @method static Builder<static>|Product whereAdditionalInformation($value)
- * @method static Builder<static>|Product whereCategoryId($value)
- * @method static Builder<static>|Product whereCreatedAt($value)
- * @method static Builder<static>|Product whereDiscount($value)
- * @method static Builder<static>|Product whereDiscountType($value)
- * @method static Builder<static>|Product whereFinalPrice($value)
- * @method static Builder<static>|Product whereId($value)
- * @method static Builder<static>|Product whereLongDescription($value)
- * @method static Builder<static>|Product whereName($value)
- * @method static Builder<static>|Product wherePrice($value)
- * @method static Builder<static>|Product whereShortDescription($value)
- * @method static Builder<static>|Product whereStatus($value)
- * @method static Builder<static>|Product whereStock($value)
- * @method static Builder<static>|Product whereUpdatedAt($value)
  * @mixin Eloquent
  */
 class Product extends Eloquent

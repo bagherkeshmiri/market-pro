@@ -23,27 +23,14 @@ use Illuminate\Support\Facades\Hash;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, UserAddress> $addresses
- * @property-read int|null $addresses_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Comment> $comments
- * @property-read int|null $comments_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, DiscountCodeUser> $discountCodes
- * @property-read int|null $discount_codes_count
  * @property-read string $jalali_created_at
  * @property-read string $jalali_updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Order> $orders
- * @property-read int|null $orders_count
  * @method static Builder<static>|User newModelQuery()
  * @method static Builder<static>|User newQuery()
  * @method static Builder<static>|User query()
- * @method static Builder<static>|User whereCreatedAt($value)
- * @method static Builder<static>|User whereEmail($value)
- * @method static Builder<static>|User whereEmailVerifiedAt($value)
- * @method static Builder<static>|User whereId($value)
- * @method static Builder<static>|User whereMobile($value)
- * @method static Builder<static>|User whereName($value)
- * @method static Builder<static>|User wherePassword($value)
- * @method static Builder<static>|User whereRememberToken($value)
- * @method static Builder<static>|User whereUpdatedAt($value)
  * @mixin Eloquent
  */
 class User extends Authenticatable
@@ -93,6 +80,11 @@ class User extends Authenticatable
     public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class, Payment::COLUMN_USER_ID, self::COLUMN_ID);
     }
 
     /*-------------- Accessors & Mutators -------------*/

@@ -104,6 +104,7 @@ return [
     'uploaded' => 'بارگذاری فایل :attribute موفقیت آمیز نبود.',
     'url' => ':attribute معتبر نمی‌باشد.',
     'uuid' => ':attribute باید یک UUID معتبر باشد.',
+    'current_password' => 'رمز وارد شده نادرست است',
 
     /*
     |--------------------------------------------------------------------------
@@ -153,5 +154,8 @@ return [
         'selectedProvince' => 'استان',
         'selectedCity' => 'شهر',
         'fullName' => 'نام و نام خانوادگی',
+        'currentPassword' => 'رمز قبلی',
+        'newPassword' => 'رمز جدید',
+        'confirmPassword' => 'تکرار رمز',
     ],
 ];

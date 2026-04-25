@@ -8,6 +8,10 @@ use Illuminate\View\View;
 
 class ListUser extends AdminComponent
 {
+
+    // TODO search components completed
+    // TODO add search in users list
+
     public function render(): View
     {
         $tableHeads = ['نام', 'ایمیل', 'موبایل', 'تاریخ ایجاد', 'عملیات'];

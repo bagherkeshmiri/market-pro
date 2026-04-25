@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Site;
 
+use App\Enums\CommentStatus;
 use App\Models\Post;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -21,7 +22,7 @@ class PostComments extends Component
     public function render(): View
     {
         $post = Post::findOrFail($this->postId);
-        $comments = $post->comments()->latest()->paginate(3);
+        $comments = $post->comments()->where('status', CommentStatus::Approved)->latest()->paginate(3);
         return view(
             'livewire.site.post-comments',
             compact('comments')

@@ -22,7 +22,7 @@
 
                     @forelse ($items as $item)
                         <div style="display: flex; background-color: #272E48; padding: 8px; border: 1px solid #444;">
-                            <div style="flex: 2;">{{ $item->product->name ?? '—' }}</div>
+                            <div style="flex: 1;">{{ $item->product->name ?? '—' }}</div>
                             <div style="flex: 1;">{{ $item->qty ?? 0 }}</div>
                             <div style="flex: 1;">{{ number_format($item->unit_price) }} تومان</div>
                             <div style="flex: 1;">{{ number_format($item->final_price) }} تومان</div>

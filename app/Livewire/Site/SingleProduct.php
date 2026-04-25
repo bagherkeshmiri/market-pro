@@ -31,7 +31,6 @@ class SingleProduct extends SiteComponent
 
         if (!$inCart) {
             $this->addToCart($product->id);
-
         } elseif (!$redirect) {
             $this->js("window.dispatchEvent(new CustomEvent('product-already-in-cart', { detail: { name: '{$product->name}' } }))");
             return null;
@@ -42,24 +41,23 @@ class SingleProduct extends SiteComponent
         } else {
             $this->js("window.dispatchEvent(new CustomEvent('product-added-to-cart', { detail: { name: '{$product->name}' } }))");
         }
+
+        return null;
     }
 
     public function render(): View
     {
         $product = $this->product;
-        $products = Product::limit(8)
-            ->with([
-                'mainImage:id,url',
-                'galleryImages:id,url',
-            ])
-            ->where('category_id', $product->category_id)
-            ->get();
+        $comments = $this->product->comments()->where('status', CommentStatus::Approved)->get();
 
-        $comments = $this->product->comments()->where('status', CommentStatus::Approved)->get();;
         return $this->renderView(
             'livewire.site.single-product',
             $this->product->name,
-            compact('product', 'products', 'comments')
+            [
+                'sampleImageUrl' => $this->getSampleImageUrl(),
+                'product' => $product,
+                'comments' => $comments,
+            ]
         );
     }
 }

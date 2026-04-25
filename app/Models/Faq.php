@@ -10,8 +10,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 
 /**
- *
- *
  * @property int $id
  * @property string $question
  * @property string $answer
@@ -25,12 +23,6 @@ use Illuminate\Support\Carbon;
  * @method static Builder<static>|Faq newModelQuery()
  * @method static Builder<static>|Faq newQuery()
  * @method static Builder<static>|Faq query()
- * @method static Builder<static>|Faq whereAnswer($value)
- * @method static Builder<static>|Faq whereCreatedAt($value)
- * @method static Builder<static>|Faq whereId($value)
- * @method static Builder<static>|Faq whereIsActive($value)
- * @method static Builder<static>|Faq whereQuestion($value)
- * @method static Builder<static>|Faq whereUpdatedAt($value)
  * @mixin Eloquent
  */
 class Faq extends Eloquent

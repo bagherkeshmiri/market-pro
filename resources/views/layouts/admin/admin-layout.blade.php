@@ -43,6 +43,7 @@
 <script src="{{ asset('js/frest/core/app.js') }}"></script>
 <script src="{{ asset('js/frest/scripts/components.js') }}"></script>
 <script src="{{ asset('js/frest/scripts/footer.js') }}"></script>
+<script src="{{ asset('js/frest/vendors/charts/apexcharts.min.js') }}"></script>
 
 @if(request()->routeIs('admin.discount.create') || request()->routeIs('admin.discount.show'))
     <script src="{{ asset('js/frest/scripts/pickers/dateTime/pick-a-datetime.js') }}"></script>
