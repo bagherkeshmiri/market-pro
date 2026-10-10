@@ -16,7 +16,7 @@ class ListOrdersUser extends Component
 
     public function render(): View
     {
-        $orders = Order::whereUserId($this->user->id)->paginate(10);
+        $orders = Order::where('user_id',$this->user->id)->paginate(10);
         $orderTableHeads = [
             'شماره سفارش',
             'وضعیت',

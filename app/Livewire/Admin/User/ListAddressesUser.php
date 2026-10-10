@@ -16,7 +16,7 @@ class ListAddressesUser extends Component
 
     public function render(): View
     {
-        $addresses = UserAddress::whereUserId($this->user->id)->paginate(10);
+        $addresses = UserAddress::where('user_id',$this->user->id)->paginate(10);
         $addressTableHeads = [
             'استان',
             'شهر',

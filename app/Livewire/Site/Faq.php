@@ -10,7 +10,7 @@ class Faq extends SiteComponent
 {
     public function render(): View
     {
-        $faqs = \App\Models\Faq::whereIsActive(IsActive::Yes)
+        $faqs = \App\Models\Faq::where('is_active',IsActive::Yes)
             ->select([
                 'id',
                 'answer',

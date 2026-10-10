@@ -15,7 +15,7 @@ class Index extends SiteComponent
 {
     public function render(): View
     {
-        $collections = Collection::where('is_active', true)
+        $collections = Collection::where('is_active', IsActive::Yes)
             ->orderBy('sort')
             ->with([
                 'productCollection',
