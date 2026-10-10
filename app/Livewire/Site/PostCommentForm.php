@@ -47,16 +47,6 @@ class PostCommentForm extends Component
             return;
         }
 
-
-        dd(
-
-            $user
-//            $this->postId,
-//             Comment::where('commentable_id',7)->get()
-
-        );
-
-
         $recentReview = $user->comments()
             ->where('commentable_id', $this->postId)
             ->where('commentable_type', Post::class)

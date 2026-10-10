@@ -20,7 +20,7 @@ class Blog extends SiteComponent
 
     public function render(): View
     {
-        $posts = Post::whereStatus(IsActive::Yes)
+        $posts = Post::where('status', IsActive::Yes)
             ->when($this->category, function ($query) {
                 $query->where('category_id', $this->category);
             })

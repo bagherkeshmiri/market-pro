@@ -16,7 +16,7 @@ class ListPaymentsUser extends Component
 
     public function render(): View
     {
-        $payments = Payment::whereUserId($this->user->id)->paginate(10);
+        $payments = Payment::where('user_id',$this->user->id)->paginate(10);
         $paymentTableHeads = [
             'شماره سفارش',
             'درگاه',

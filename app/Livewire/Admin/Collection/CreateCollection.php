@@ -68,7 +68,7 @@ class CreateCollection extends AdminComponent
         ]);
 
         if (!is_null($this->category)) {
-            $this->unselectedProducts = Product::whereCategoryId($this->category)
+            $this->unselectedProducts = Product::where('category_id',$this->category)
                 ->select(['id', 'name'])
                 ->get()
                 ->filter(fn($product) => !in_array($product->id, array_column($this->selectedProducts, 'id')))
