@@ -40,6 +40,7 @@ class ShowCategory extends AdminComponent
         $allCategories = Category::where('id', '!=', $this->category->id)
             ->pluck('id', 'name')
             ->toArray();
+
         Arr::forget($allCategories, $this->category->title);
         $types = showEnumLabels(CategoryType::class);
         return $this->renderView(

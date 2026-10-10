@@ -214,7 +214,7 @@
             slidesPerView: 6,
             spaceBetween: 10,
             slidesPerGroup: 1,
-            loop: true,
+            loop: false,
             speed: 700,
             autoplay: false,
             grabCursor: true,

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Collection;
 
+use App\Enums\CategoryType;
 use App\Enums\CollectionType;
 use App\Enums\IsActive;
 use App\Livewire\BaseComponents\AdminComponent;
@@ -44,6 +45,7 @@ class ShowCollection extends AdminComponent
         $this->limitation = $this->collection->limitation;
         $this->isActive = $this->collection->is_active;
         $this->categories = Category::withoutTrashed()
+            ->where('type', '!=', CategoryType::Post)
             ->select([
                 'id',
                 'name',
@@ -96,7 +98,7 @@ class ShowCollection extends AdminComponent
         ]);
 
         if (!is_null($this->category)) {
-            $this->unselectedProducts = Product::where('category_id',$this->category)
+            $this->unselectedProducts = Product::where('category_id', $this->category)
                 ->select(['id', 'name'])
                 ->get()
                 ->filter(fn($product) => !in_array($product->id, array_column((array)$this->selectedProducts, 'id')))
@@ -156,7 +158,6 @@ class ShowCollection extends AdminComponent
      */
     public function update(): RedirectResponse|Redirector
     {
-
         if ($redirect = $this->validateCollectionSelection()) {
             return $redirect;
         }
