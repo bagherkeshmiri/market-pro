@@ -39,7 +39,7 @@ $(document).ready(function () {
 		}],
 		defaultLocale: "fa"
 	}
-	
+
 	// Radial Followers Chart - Primary
 	// --------------------------------
 	var radialPrimaryoptions = {
@@ -1134,9 +1134,9 @@ $(document).ready(function () {
 
 
 
-	// Widget Todo List
+	// Widget To do List
 	// ------------------
-	// Task List Widget - for completed todo item
+	// Task List Widget - for completed to do item
 	$(document).on('click', '.widget-todo-item input', function () {
 		$(this).closest('.widget-todo-item').toggleClass("completed");
 	});

@@ -1,6 +1,4 @@
-/* Todo Application css */
-/*----------------------*/
-.todo-application .content-area-wrapper {
+ {
 	border: 1px solid #DFE3E7;
 	border-radius: 0.267rem;
 }
@@ -10,7 +8,6 @@
 }
 
 .todo-application .content-area-wrapper .sidebar .todo-sidebar {
-	/* todo-sidebar menu */
 	width: 260px;
 	height: calc(100vh - 9rem);
 	border-top-right-radius: 0.267rem;
@@ -83,7 +80,6 @@
 }
 
 .todo-application .content-area-wrapper .todo-new-task-sidebar {
-	/* todo-new-task-sidebar */
 	height: calc(100vh - 9rem);
 	width: 400px;
 	border-radius: 0.267rem;
@@ -270,7 +266,6 @@
 }
 
 .todo-application .content-area-wrapper .content-right .todo-app-list-wrapper .todo-fixed-search {
-	/* Todo Fixed search */
 	padding: 0.51rem 0.1rem;
 	border-bottom: 1px solid #DFE3E7;
 	background-color: #FFFFFF;
@@ -314,7 +309,6 @@
 }
 
 .todo-application .content-area-wrapper .content-right .todo-app-list-wrapper .todo-app-list .todo-task-list .todo-task-list-wrapper .todo-item {
-	/* todo item */
 	cursor: pointer;
 	-webkit-animation: fadeIn 0.5s linear;
 	animation: fadeIn 0.5s linear;

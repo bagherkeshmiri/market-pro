@@ -895,9 +895,9 @@ $(window).on("load", function () {
 	growthChart.render();
 
 
-	// Widget Todo List
+	// Widget To do List
 	// ------------------
-	// Task List Widget - for completed todo item
+	// Task List Widget - for completed to do item
 	$(document).on('click', '.widget-todo-item input', function () {
 		$(this).closest('.widget-todo-item').toggleClass("completed");
 	});

@@ -204,7 +204,6 @@
 			}
 
 			// Added data attribute brand-center for navbar-brand-center
-			// TODO:AJ: Shift this feature in JADE.
 			if ($('.header-navbar').hasClass('navbar-brand-center')) {
 				$('.header-navbar').attr('data-nav', 'brand-center');
 			}
