@@ -25,7 +25,7 @@ return new class extends Migration {
 
             $table->string('payment_number', 20)->unique();
             $table->enum('status', ['unSuccess', 'success'])->default('unSuccess');
-            $table->decimal('amount', 10);
+            $table->unsignedBigInteger('amount');
             $table->string('ref_id')->nullable();
             $table->string('authority')->nullable();
             $table->timestamp('paid_at')->nullable();

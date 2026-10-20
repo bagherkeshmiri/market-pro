@@ -20,7 +20,7 @@ use Str;
  * @property int|null $gate_id
  * @property string $payment_number
  * @property PaymentStatus $status
- * @property numeric $amount
+ * @property int $amount
  * @property string|null $ref_id
  * @property string|null $authority
  * @property int|null $paid_at
