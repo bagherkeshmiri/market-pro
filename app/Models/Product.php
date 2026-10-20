@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Casts\CleanHtml;
 use App\Enums\DiscountType;
+use App\Enums\IsActive;
 use App\Enums\ProductStatus;
 use App\Traits\HasDefaultOrdering;
 use App\Traits\HasJalaliTimestamps;
@@ -20,6 +21,7 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property int $category_id
  * @property string $name
+ * @property int $is_active
  * @property ProductStatus $status
  * @property DiscountType $discount_type
  * @property int $price
@@ -31,7 +33,7 @@ use Illuminate\Support\Carbon;
  * @property $additional_information
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read Category $category
+ * @property-read Category|null $category
  * @property-read Collection<int, CollectionProduct> $collections
  * @property-read Collection<int, Comment> $comments
  * @property-read Collection<int, Image> $galleryImages
@@ -75,6 +77,7 @@ class Product extends Eloquent
         'long_description',
         'short_description',
         'additional_information',
+        'is_active',
     ];
 
     protected $hidden = [];
@@ -85,6 +88,7 @@ class Product extends Eloquent
         'long_description' => CleanHtml::class,
         'short_description' => CleanHtml::class,
         'additional_information' => CleanHtml::class,
+        'is_active' => IsActive::class,
     ];
 
     /*------------ Relations ------------*/

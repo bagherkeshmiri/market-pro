@@ -12,9 +12,10 @@ return new class extends Migration {
 
             $table->foreignId('category_id')
                 ->constrained('categories')
-                ->cascadeOnDelete();
+                ->restrictOnDelete();
 
             $table->string('name');
+            $table->boolean('is_active')->default(true);
             $table->enum('status', ['not_exist', 'exist'])->default('not_exist');
             $table->enum('discount_type', ['percent', 'amount'])->default('percent');
             $table->unsignedBigInteger('price')->default(0);
