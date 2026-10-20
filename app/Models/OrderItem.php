@@ -13,17 +13,18 @@ use Illuminate\Support\Carbon;
 /**
  * @property int $id
  * @property int $order_id
- * @property int $product_id
+ * @property int|null $product_id
+ * @property string $product_name
  * @property int $qty
- * @property numeric $unit_price
- * @property numeric $final_price
+ * @property int $unit_price
+ * @property int $final_price
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property OrderStatus $status
  * @property-read string $jalali_created_at
  * @property-read string $jalali_updated_at
  * @property-read Order $order
- * @property-read Product $product
+ * @property-read Product|null $product
  * @method static Builder<static>|OrderItem newModelQuery()
  * @method static Builder<static>|OrderItem newQuery()
  * @method static Builder<static>|OrderItem query()
@@ -46,6 +47,7 @@ class OrderItem extends Eloquent
         'qty',
         'unit_price',
         'final_price',
+        'product_name',
     ];
 
     protected $hidden = [];
