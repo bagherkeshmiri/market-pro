@@ -20,11 +20,11 @@ use Str;
  * @property int|null $user_address_id
  * @property string $order_number
  * @property OrderStatus $status
- * @property numeric $subtotal
- * @property numeric $discount
- * @property numeric $tax
- * @property numeric $shipping_fee
- * @property numeric $total
+ * @property int $subtotal
+ * @property int $discount
+ * @property int $tax
+ * @property int $shipping_fee
+ * @property int $total
  * @property $description
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at

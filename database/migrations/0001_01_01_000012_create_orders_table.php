@@ -12,7 +12,7 @@ return new class extends Migration {
 
             $table->foreignId('user_id')
                 ->constrained('users')
-                ->cascadeOnDelete();
+                ->restrictOnDelete();
 
             $table->foreignId('user_address_id')
                 ->nullable()
@@ -21,11 +21,11 @@ return new class extends Migration {
 
             $table->string('order_number')->unique();
             $table->enum('status', ['pending', 'paid', 'shipped', 'cancelled'])->default('pending');
-            $table->decimal('subtotal', 15);
-            $table->decimal('discount', 15)->default(0);
-            $table->decimal('tax', 15)->default(0);
-            $table->decimal('shipping_fee', 15)->default(0);
-            $table->decimal('total', 15);
+            $table->unsignedBigInteger('subtotal');
+            $table->unsignedBigInteger('discount')->default(0);
+            $table->unsignedBigInteger('tax')->default(0);
+            $table->unsignedBigInteger('shipping_fee')->default(0);
+            $table->unsignedBigInteger('total');
             $table->string('description')->nullable();
             $table->timestamps();
         });
@@ -38,12 +38,14 @@ return new class extends Migration {
                 ->cascadeOnDelete();
 
             $table->foreignId('product_id')
+                ->nullable()
                 ->constrained('products')
-                ->cascadeOnDelete();
+                ->nullOnDelete();
 
+            $table->string('product_name');
             $table->unsignedInteger('qty');
-            $table->decimal('unit_price');
-            $table->decimal('final_price');
+            $table->unsignedBigInteger('unit_price');
+            $table->unsignedBigInteger('final_price');
             $table->timestamps();
         });
     }
