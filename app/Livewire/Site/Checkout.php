@@ -171,6 +171,7 @@ class Checkout extends SiteComponent
                     'qty' => $cart['qty'],
                     'unit_price' => $cart['unit_price'],
                     'final_price' => $cart['final_price'],
+                    'product_name' => $cart['name'],
                 ]);
             }
 
@@ -235,11 +236,18 @@ class Checkout extends SiteComponent
 
                 DB::commit();
 
-                redirect($result['gateway_url']);
-
-                return redirect()->away($result['gateway_url']);
+                return $this->redirect($result['gateway_url']);
             }
         } catch (Exception $e) {
+
+            logger()->error('Checkout payment failed', [
+                'exception' => $e::class,
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+            ]);
+
+
             DB::rollBack();
             if (app()->isLocal()) {
                 session()->flash('error', $e->getMessage());
